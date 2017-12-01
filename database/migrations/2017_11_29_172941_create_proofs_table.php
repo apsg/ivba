@@ -1,0 +1,62 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateProofsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('proofs', function (Blueprint $table) {
+            $table->increments('id');
+
+            $table->string('name');
+            $table->string('city')->nullable();
+            $table->string('url')->nullable();
+
+            $table->text('body');
+
+            $table->boolean('is_registered')->default(false);
+
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('no action');
+
+            $table->timestamps();
+        });
+
+        Schema::table('users', function(Blueprint $table){
+            $table->unsignedInteger('last_proof_id')->nullable();
+            $table->datetime('last_proof_at')->nullable();
+
+            $table->foreign('last_proof_id')
+                ->references('id')->on('proofs')
+                ->onDelete('set null');
+        });
+
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+
+        Schema::table('users', function(Blueprint $table){
+            $table->dropForeign(['last_proof_id']);
+            $table->dropColumn('last_proof_id');
+            $table->dropColumn('last_proof_at');
+        });
+
+        Schema::dropIfExists('proofs');
+    }
+}
