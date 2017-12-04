@@ -9176,7 +9176,7 @@ a.btn-circle:hover {
 }
 
 .page{
-	padding-top: 50px;
+	/*padding-top: 50px;*/
 	padding-bottom: 50px;
 	min-height: 500px;
 }
@@ -9423,6 +9423,10 @@ a.btn-circle:hover {
 
 .proof-meta{
 	font-size: 10px;
+}
+
+.bg-primary{
+	color: #888888;
 }
 
 

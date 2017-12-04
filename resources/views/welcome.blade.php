@@ -1,177 +1,162 @@
 @extends('layouts.front')
 
 @section('content')
+<div class="row">
+    <div class=" col-sm-offset-2 col-md-offset-2 col-sm-8 col-md-8 col-xs-12 ">
+        <h3>Warto uczyć się z nami bo</h3>
+        <ul class="features-list">
+            <li class="wow fadeInUp" data-wow-delay="0.1s">
+                <h4 class="material-icons-devices"><a href="#">Od A do Z</a></h4>
 
-
-<!-- Start Banner Carousel -->
-<div class="banner-outer">
-  <div class="banner-slider">
-    <div class="slide1">
-      <div class="container">
-        <div class="content animated fadeInRight">
-          <div class="fl-right">
-            <h1 class="animated fadeInRight">To jest najlepsze miejsce na naukę <span class="animated fadeInRight">Excel-a</span> </h1>
-            <p class="animated fadeInRight">Skorzystaj z ponad 200 lekcji i ucz się kiedy chcesz</p>
-            <a href="{{ url('about') }}" class="btn animated fadeInRight">Zobacz jak to działa <span class="icon-more-icon"></span></a> </div>
-        </div>
-      </div>
-    </div>
-    <div class="slide2">
-      <div class="container"> 
-        <div class="content animated fadeInRight">
-            <div class="fl-right">
-            <h1 class="animated fadeInRight">Poznaj nasze kategorie<span class="animated fadeInRight">Excel-a</span> </h1>
-            <p class="animated fadeInRight">Tabele przestawne, funkcje, formuły tablicowe, makra.</p>
-            <a href="{{ url('courses') }}" class="btn animated fadeInRight">Zobacz jak to działa <span class="icon-more-icon"></span></a> </div>
-        </div>
-      </div>
-    </div>
-    <div class="slide3">
-      <div class="container">
-        <div class="content animated fadeInLeft">
-          <h1 class="animated fadeInLeft">6000 użytkowników</h1>
-          <p class="animated fadeInLeft">Dołącz do grona osób, które nauczyły się Excela z nami i odniosły sukces</p>
-          <a href="/register" class="btn animated fadeInLeft">Zarejestruj się <span class="icon-more-icon"></span></a> </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End Banner Carousel --> 
-
-<!-- Start Cources Section -->
-<section class="our-cources padding-lg">
-  <div class="container">
-    <h2> <span>Najpopularniejsze kursy</span> Czego chcesz się dzisiaj nauczyć?</h2>
-    <ul class="course-list owl-carousel">
-
-        @foreach($courses as $course)
-            <li class="equal-hight">
-            @include('partials.course_thumb')
+                <p>Nie spotkałeś się z VBA? U nas krok po kroku wprowadzimy Cię w VBA. Znasz
+                VBA? Z nami utrwalisz swoją wiedzę i dowiesz się jak można rozwiązać typowe problemy w z VBA</p>
             </li>
-        @endforeach
+            <li class="wow fadeInUp" data-wow-delay="0.3s">
+                <h4 class="material-icons-cloud_queue"><a href="#">Nie bujamy w obłokach, uczymy</a></h4>
 
-    </ul>
-  </div>
-</section>
+                <p>Znamy przepis na to aby nauczyć Cię języka VBA. Nie musisz być infomratykiem. Ważne, żebyś znał dobrze Excela i miał głowę otwartą. W zeszłym roku przeszkoliliśmy ponad 1000 osób z VBA</p>
+            </li>
+            <li class="wow fadeInUp" data-wow-delay="0.5s">
+                <h4 class="material-icons-headset_mic"><a href="#">Konferencje on-line</a></h4>
 
-<!-- End Our Importance Section --> 
-<section class="how-study padding-lg">
-    <div class="container">
-        <h2>Jak to działa?</h2>
-        <p style="text-align: center">
-        <iframe src="https://player.vimeo.com/video/232335257?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-        </p>
+                <p>Wyróżnia nas nie tylko to, że filmy są nagrane przez wieloletnich praktyków. Ale raz na tydzień organizujemy interaktywną konferencję on-line w której możesz uczestniczyć, zadawać pytania oraz pomożemy rozwiązać Twoje problemy.</p>
+            </li>
+        </ul>
     </div>
+</div>
+</div>
 </section>
+<section class="well2">
+<div class="container">
+<div class="row off">
+    <div class=" col-sm-offset-2 col-md-offset-2 col-sm-4 col-md-4 col-xs-6 ">
+        <h3>Losowe lekcje</h3>
+    </div>
+</div>
+<div class="row">
+    <div class=" col-sm-offset-2 col-md-offset-2 col-sm-4 col-md-4 col-xs-6 ">
+        <a href="//player.vimeo.com/video/37582125?wmode=transparent" data-wow-duration="1s"
+           class="thumb fancybox.iframe"><img src="images/page-1_img01.jpg" alt=""><span
+                class="thumb_overlay"></span></a>
+        <h4><a href="#">Video name 1</a></h4>
 
+        <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod.</p>
+    </div>
+    <div class="col-sm-4 col-md-4 col-xs-6">
+        <a href="//player.vimeo.com/video/37582125?wmode=transparent" data-wow-duration="1s"
+           class="thumb fancybox.iframe"><img src="images/page-1_img02.jpg" alt=""><span
+                class="thumb_overlay"></span></a>
+        <h4><a href="#">Video name 2</a></h4>
 
+        <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod.</p>
+    </div>
+</div>
+<div class="row">
+    <div class=" col-sm-offset-2 col-md-offset-2 col-sm-4 col-md-4 col-xs-6 ">
+        <a href="//player.vimeo.com/video/37582125?wmode=transparent" data-wow-duration="1s"
+           class="thumb fancybox.iframe"><img src="images/page-1_img03.jpg" alt=""><span
+                class="thumb_overlay"></span></a>
+        <h4><a href="#">Video name 3</a></h4>
 
-<!-- Start Why Choose Section -->
+        <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod.</p>
+    </div>
+    <div class="col-sm-4 col-md-4 col-xs-6">
+        <a href="//player.vimeo.com/video/37582125?wmode=transparent" data-wow-duration="1s"
+           class="thumb fancybox.iframe"><img src="images/page-1_img04.jpg" alt=""><span
+                class="thumb_overlay"></span></a>
+        <h4><a href="#">Video name 4</a></h4>
 
-<section class="why-choose padding-lg">
-  <div class="container">
-    <h2><span>Liczby mówią same</span>dlaczego warto nas wybrać</h2>
-    <ul class="our-strength">
-      <li>
-        <div class="icon"><span class="icon-certification-icon"> </span></div>
-        <span class="counter">36</span>
-        <div class="title">Kursów</div>
-      </li>
-      <li>
-        <div class="icon"><span class="icon-student-icon"></span></div>
-        <span class="counter">7000</span><span>+</span>
-        <div class="title">uczestników</div>
-      </li>
-      <li>
-        <div class="icon"><span class="icon-book-icon"></span></div>
-        <div class="couter-outer"><span class="counter">200</span><span>+</span></div>
-        <div class="title">Lekcji</div>
-      </li>
-      <li>
-        <div class="icon"><span class="fa fa-star-o"></span></div>
-        <div class="couter-outer"><span class="counter">30</span><span> dni</span></div>
-        <div class="title">Gwarancji</div>
-      </li>
-    </ul>
-  </div>
+        <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod.</p>
+    </div>
+</div>
+</div>
 </section>
+<section class="well bg-primary">
+<div class="container">
+<div class="row ">
+    <div class=" col-sm-offset-2 col-md-offset-2 col-sm-8 col-md-8 col-xs-12 ">
+        <h3 class="wow fadeInUp" data-wow-delay="0.2s"> A great way to describe your video</h3>
 
-<!-- End Why Choose Section --> 
+        <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet conse
+            ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+    </div>
+</div>
+</div>
+</section>
+<section class="well">
+<div class="container">
+<div class="row ">
+    <div class=" col-sm-offset-2 col-md-offset-2 col-sm-7  col-md-7 col-xs-12 ">
+        <h3> Koszt nauki z nami</h3>
 
-<!-- Start New & Events Section -->
-
-<section class="news-events padding-lg">
-  <div class="container">
-    <h2><span>Jest wiele sposobów na naukę</span>Nasz blog</h2>
-    <ul class="row cs-style-3">
-
-        @foreach( $blog_items as $item)
-          <li class="col-sm-4">
-            <div class="inner">
-              <figure> <img src="images/new-event-img1.jpg" class="img-responsive">
-                <figcaption>
-                  <div class="cnt-block"> <a target="_blank" href="{{ $item->link }}" class="plus-icon">+</a>
-                    <h3>{{ $item->title }}</h3>
-                    <div class="bottom-block clearfix">
-                      <div class="date">
-                        <div class="icon"><span class="icon-calander-icon"></span></div>
-                        <span>{{ \Carbon\Carbon::parse($item->pubDate)->format('Y-m-d H:i') }}</span></div>
-                    </div>
-                  </div>
-                </figcaption>
-              </figure>
+        <div class="box">
+            <div class="box_aside wow fadeInLeft" data-wow-delay="0.1s">
+                39zł
             </div>
-          </li>
-        @endforeach
-    </ul>
-    <div class="know-more-wrapper"> <a href="http://blog.iexcel.pl" class="know-more">Zobacz więcej wpisów <span class="icon-more-icon"></span></a> </div>
-  </div>
-</section>
+            <div class="box_cnt__no-flow wow fadeInRight" data-wow-delay="0.2s">
+                <h4><a href="#">Dostęp miesięczny</a></h4>
 
-<!-- End New & Events Section --> 
+                <p>Myślisz, że ryzukujesz? Przetestuj nas przez pierwszy miesiąc</p>
+            </div>
+        </div>
+        <div class="box">
+            <div class="box_aside wow fadeInLeft" data-wow-delay="0.3s">
+                179zł
+            </div>
+            <div class="box_cnt__no-flow wow fadeInRight" data-wow-delay="0.4s">
+                <h4><a href="#">Dostęp półroczny</a></h4>
 
-<section class="how-study padding-lg">
-  <div class="container">
-    <h2> <span>Losowe lekcje </span> Czego chcesz się dziś nauczyć?</h2>
-    <ul class="row">
-        @foreach($lessons as $lesson)
-            @include('partials.lesson_thumb')
-        @endforeach
-    </ul>
-  </div>
-</section>
+                <p>Zainteresowałeś się nauką VBA? Chcesz sprawdzić czy podałasz?</p>
+            </div>
+        </div>
+        <div class="box">
+            <div class="box_aside wow fadeInLeft" data-wow-delay="0.5s">
+                299zł
+            </div>
+            <div class="box_cnt__no-flow wow fadeInRight" data-wow-delay="0.6s">
+                <h4><a href="#">Roczny dostęp</a></h4>
 
-
-<!-- Start Testimonial -->
-
-<section class="testimonial padding-lg">
-  <div class="container">
-    <div class="wrapper">
-      <h2>Co o nas mówią?</h2>
-      <ul class="testimonial-slide">
-        <li>
-          <p>Szkolenia iExcel pozwoliły mi na prowadzenie szeregu usprawnień w firmie. Pomimo ciągłej pracy na excelu, moje analizy są teraz zdecydowanie bardziej profesjonalne. Nie ma w Polsce drugiej takiej firmy, która w tak przyswajalny sposób potrafi przekazać wiedzę. Osobiście – bardzo polecam! Dzięki i widzimy się na kolejnej konferencji</p>
-          <span>Łukasz Kutyłowski, <span>Warszawa</span></span> </li>
-        <li>
-          <p>Środowa konferencja była pierwszą i na pewno nie ostatnią. Zdecydowanie polecam. Super atmosfera a wiedza przekazywana w bardzo przystępny sposób!</p>
-          <span>Damian Klekot, <span>Warszawa</span></span> </li>
-        <li>
-          <p>Było przecudnie, szkoda, że nauczycieli w szkołach nie ma z takim podejściem i talentem w przekazywaniu wiedzy :)…no i te kawały</p>
-          <span>Dawid Kowalski, <span>Śrem</span></span> </li>
-      </ul>
-      <div id="bx-pager"> 
-        <a data-slide-index="0" href="">
-            <img src="images/Łukasz-Kutyłowskibig-100x100.png" class="img-circle" alt=""/></a> 
-        <a data-slide-index="1" href="">
-            <img src="images/damian_klekot-100x100.png" class="img-circle" alt="" /></a> 
-        <a data-slide-index="2" href="">
-            <img src="images/dawid_kowalski-100x100.png" class="img-circle" alt="" /></a> 
+                <p>Chcesz rozpocząć naukę? Nie ma lepszej metody. VBA ekspertem nie zostaje się z dnia na dzień. Trzeba trochę popracować:)</p>
+            </div>
         </div>
     </div>
-  </div>
+</div>
+</div>
 </section>
 
-<!-- End Testimonial --> 
+<section class="well2 bg-primary">
+<div class="container">
+<div class="row">
+    <div class=" col-sm-offset-2 col-md-offset-2 col-sm-8  col-md-8 col-xs-12 ">
+        <h3>Skontakuj się z nami</h3>
 
+        <form method="post" action="bat/rd-mailform.php" class="mailform">
+            <input type="hidden" name="form-type" value="contact">
+            <fieldset>
+                <label data-add-placeholder="true">
+                    <input type="text" name="name" placeholder="Imię:"
+                           data-constraints="@LettersOnly @NotEmpty">
+                </label>
+
+                <label data-add-placeholder="true">
+                    <input type="text" name="email" placeholder="E-mail:"
+                           data-constraints="@Email @NotEmpty">
+                </label>
+
+                <label data-add-placeholder="true">
+                     <textarea name="message" placeholder="Wiadomość:"
+                               data-constraints="@NotEmpty"></textarea>
+                </label>
+
+                <div class="mfControls center">
+                    <button type="submit" class="btn">Wyślij</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
 
 @endsection

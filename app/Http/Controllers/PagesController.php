@@ -39,7 +39,10 @@ class PagesController extends Controller
 
 		$blog_items = [];
 
-		return view('welcome')->with(compact('courses', 'lessons', 'blog_items'));
+		$is_front = true;
+
+		return view('welcome')
+			->with(compact('courses', 'lessons', 'blog_items', 'is_front'));
 	}
 
 	/**
