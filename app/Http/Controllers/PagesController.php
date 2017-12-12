@@ -28,21 +28,15 @@ class PagesController extends Controller
 				return \App\Lesson::inRandomOrder()->take(10)->get();
 			});
 
-		// $content = file_get_contents('https://blog.iexcel.pl/feed');
-		// $items =  new \SimpleXmlElement($content);
-		// $arr = [];
-		// foreach($items->channel->item as $item){
-		// 	$arr[] = $item;
-		// }
-
-		// $blog_items = array_slice($arr, 0,3);
 
 		$blog_items = [];
+
+		$access_options = \App\FullAccessOption::orderBy('price')->get();
 
 		$is_front = true;
 
 		return view('welcome')
-			->with(compact('courses', 'lessons', 'blog_items', 'is_front'));
+			->with(compact('courses', 'lessons', 'blog_items', 'is_front', 'access_options'));
 	}
 
 	/**

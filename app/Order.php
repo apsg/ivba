@@ -49,7 +49,7 @@ class Order extends Model
      * @return [type] [description]
      */
     public function sum(){
-    	return $this->is_full_access ? config('app.full_access_price') : 
+    	return $this->is_full_access ? $this->price : 
             number_format(
                 $this->courses->map(function($course){
         		  return $course->price;
@@ -98,7 +98,7 @@ class Order extends Model
         $this->confirmed_at = \Carbon\Carbon::now();
 
         if($this->is_full_access){
-            $this->user->updateFullAccess( config('app.full_access_duration') );
+            $this->user->updateFullAccess( $this->duration );
         }else{
             
             // Przyznaj dostęp do kursów

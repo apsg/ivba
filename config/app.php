@@ -1,9 +1,6 @@
 <?php
 
 return [
-
-    'full_access_price' => env('FULL_ACCESS_PRICE', '79.00'),
-    'full_access_duration' => env('FULL_ACCESS_DURATION', 365),
     
     /*
     |--------------------------------------------------------------------------
@@ -15,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'iExcel.pl'),
+    'name' => env('APP_NAME', 'iVBA.pl'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://iexcel.pl'),
+    'url' => env('APP_URL', 'http://ivba.pl'),
 
     /*
     |--------------------------------------------------------------------------

@@ -37,10 +37,7 @@
     <header class="page vide wow fadeIn" data-vide-bg="video/video-bg" data-wow-duration='5s'>
         <span class="overlay"> 
             <span class ="menu"> 
-                <a href="#">Start</a>
-                <a href="#">Lekcje</a>
-                <a href="#">Referencje</a>
-                <a href="#">Kontakt</a>
+                {!! \App\MenuItem::make(1) !!}
             </span>
         </span>
 
@@ -49,7 +46,7 @@
             
                 <div class="  col-md-offset-2 col-sm-12 col-md-8 col-xs-12 ">
                     <div class="banner">
-                        <img src="{{ url('images/iVBA_minilogo.png') }}">
+                        <a href="{{ url('/') }}"><img src="{{ url('images/iVBA_minilogo.png') }}"></a>
                     </div>
                     <h2>Zacznij uczyć się z nami
                         VBA dla Excela.</h2>
@@ -62,29 +59,19 @@
         </div>
     </header>
     @else
-    <header class="page vide wow fadeIn" data-vide-bg="video/video-bg" data-wow-duration='5s'>
+    <header class="small vide wow fadeIn" data-vide-bg="video/video-bg" data-wow-duration='5s'>
         <span class="overlay"> 
             <span class ="menu"> 
-                <a href="#">Start</a>
-                <a href="#">Lekcje</a>
-                <a href="#">Referencje</a>
-                <a href="#">Kontakt</a>
+                {!! \App\MenuItem::make(1) !!}
             </span>
         </span>
 
         <div class="container">
             <div class="row">
-            
-                <div class="  col-md-offset-2 col-sm-12 col-md-8 col-xs-12 ">
-                    <div class="banner">
-                        <img src="{{ url('images/iVBA_minilogo.png') }}">
+                <div class="col-sm-12 col-md-8 col-xs-12 ">
+                    <div class="">
+                        <a href="{{ url('/') }}"><img src="{{ url('images/iVBA_minilogo.png') }}"></a>
                     </div>
-                    <h2>Zacznij uczyć się z nami
-                        VBA dla Excela.</h2>
-
-                    <p>Gwarantujemy, że nawet nie informatyka nauczymy programować w VBA albo zwrócimy pieniądze:) </p>
-                    <a class="btn" href="#">Zapisz się</a> 
-                    <p><a href="#">Dowiedz się więcej</a> </p>
                 </div>
             </div>
         </div>
@@ -96,6 +83,21 @@
     <main>
         <section class="well bg-primary">
             <div class="container">
+                
+                @include('flash::message')
+
+                @if ($errors->any())
+                <section>
+                    <div class="container alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </section>
+                @endif
+
                 @yield('content')
             </div>
         </section>

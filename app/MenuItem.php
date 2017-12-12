@@ -18,10 +18,10 @@ class MenuItem extends Model
     	$items = static::where('menu_id', $menu_id)->get();
     	
     	return $items->map(function($item){
-    		return "<li><a href='"
+    		return "<a href='"
     			.( filter_var($item->url, FILTER_VALIDATE_URL) ? $item->url : url($item->url) ) 
     			."' ". ($item->is_new_window ? "target='_blank'>" : ">") 
-    			. $item->title . "</a></li>";
+    			. $item->title . "</a>";
     	})->implode('');
     }
 

@@ -92,36 +92,19 @@
     <div class=" col-sm-offset-2 col-md-offset-2 col-sm-7  col-md-7 col-xs-12 ">
         <h3> Koszt nauki z nami</h3>
 
+        @foreach($access_options as $option)
+
         <div class="box">
             <div class="box_aside wow fadeInLeft" data-wow-delay="0.1s">
-                39zł
+                {{ $option->price }} zł
             </div>
             <div class="box_cnt__no-flow wow fadeInRight" data-wow-delay="0.2s">
-                <h4><a href="#">Dostęp miesięczny</a></h4>
-
-                <p>Myślisz, że ryzukujesz? Przetestuj nas przez pierwszy miesiąc</p>
+                <h4><a href="{{ $option->buyLink() }}">{{ $option->name }}</a></h4>
+                <p>{{ $option->description }}</p>
             </div>
         </div>
-        <div class="box">
-            <div class="box_aside wow fadeInLeft" data-wow-delay="0.3s">
-                179zł
-            </div>
-            <div class="box_cnt__no-flow wow fadeInRight" data-wow-delay="0.4s">
-                <h4><a href="#">Dostęp półroczny</a></h4>
-
-                <p>Zainteresowałeś się nauką VBA? Chcesz sprawdzić czy podałasz?</p>
-            </div>
-        </div>
-        <div class="box">
-            <div class="box_aside wow fadeInLeft" data-wow-delay="0.5s">
-                299zł
-            </div>
-            <div class="box_cnt__no-flow wow fadeInRight" data-wow-delay="0.6s">
-                <h4><a href="#">Roczny dostęp</a></h4>
-
-                <p>Chcesz rozpocząć naukę? Nie ma lepszej metody. VBA ekspertem nie zostaje się z dnia na dzień. Trzeba trochę popracować:)</p>
-            </div>
-        </div>
+        @endforeach
+        
     </div>
 </div>
 </div>

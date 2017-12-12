@@ -256,3 +256,8 @@
 .bg-primary{
 	color: #888888;
 }
+
+header.small{
+	padding-top:0px;
+	padding-bottom: 0px;
+}

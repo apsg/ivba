@@ -40,8 +40,8 @@ class Payment{
 	    $order->payu_order_id = $payu['extOrderId'];
 
 	    if($order->is_full_access){
-		    $payu['products'][0]['name'] = 'Pełny roczny dostęp do platformy iExcel';
-		    $payu['products'][0]['unitPrice'] = 100*config('app.full_access_price');
+		    $payu['products'][0]['name'] = 'Pełny dostęp do platformy iVBA '.$order->duration.' dni';
+		    $payu['products'][0]['unitPrice'] = 100*$order->price;
 		    $payu['products'][0]['quantity'] = 1;
 	    }else{
 	    	foreach($order->courses as $course){

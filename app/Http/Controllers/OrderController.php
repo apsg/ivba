@@ -96,11 +96,13 @@ class OrderController extends Controller
     /**
      * Dodaj pełen dostęp do aktualnego zamówienia
      */
-    public function addFullAccess(){
+    public function addFullAccess(\App\FullAccessOption $option){
 
         if(\Auth::user()->canAddFullAccess()){
             $order = \Auth::user()->getCurrentOrder();
             $order->is_full_access = true;
+            $order->duration = $option->duration;
+            $order->price = $option->price;
             $order->save();
         }
         return redirect('/cart');

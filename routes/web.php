@@ -46,7 +46,7 @@ Route::post('/account/change_password', 'AccountController@changePassword');
 Route::get('/cart', 'OrderController@showCart');
 Route::get('/continue', 'PagesController@continue');
 Route::get('/buy_access', 'PagesController@buyAccess');
-Route::get('/cart/add_full_access', 'OrderController@addFullAccess');
+Route::get('/cart/add_full_access/{option}', 'OrderController@addFullAccess');
 Route::get('/cart/remove_full_access', 'OrderController@removeFullAccess');
 
 Route::any('/payu/notify', 'PayuController@notify');

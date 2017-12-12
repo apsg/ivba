@@ -1,7 +1,7 @@
 <table>
 	<tr>
 		<td style="text-align: center;">
-			<img src="{{ url('/images/logo.png') }}">
+			<img src="{{ url('/images/iVBA_minilogo.png') }}">
 		</td>
 	</tr>
 	<tr>
