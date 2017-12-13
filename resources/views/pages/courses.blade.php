@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="col-md-7 left-block">
-        <h2>Kateogrie kursów</h2>
+        <h2>Kategorie kursów</h2>
     <p>Z racji tego, że lekcji na naszej platformie jest ponad 200 zostały one podzielone na kategorie. Sposób, który polecam to jest nauka zagadnieniami. Czyli np. interesujesz się tabelami przestawnymi – wybierz ten dział.</p>
     <p>Na platformie możesz także wybrać poziomy. Np. średnio zaawansowany. Musisz mieć na uwadze, że ta sama lekcja może się znaleźć w kursie tabele przestawne jak i średnio zaawansowane.</p>
     <p>Dość gadania zabierzmy się do nauki </p>

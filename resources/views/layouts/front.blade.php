@@ -52,8 +52,8 @@
                         VBA dla Excela.</h2>
 
                     <p>Gwarantujemy, że nawet nie informatyka nauczymy programować w VBA albo zwrócimy pieniądze:) </p>
-                    <a class="btn" href="#">Zapisz się</a> 
-                    <p><a href="#">Dowiedz się więcej</a> </p>
+                    <a class="btn" href="{{ url('/register') }}">Zapisz się</a> 
+                    <p><a href="{{ url('/about') }}">Dowiedz się więcej</a> </p>
                 </div>
             </div>
         </div>

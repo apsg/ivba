@@ -6,7 +6,7 @@
 <section class="login-wrapper register">
   <div class="inner">
     <div class="regiter-inner">
-      <div class="login-logo"> <a href="{{ url('/') }}"><img src="images/logo.png" class="img-responsive" alt=""></a> </div>
+      <div class="login-logo"> <a href="{{ url('/') }}"><img src="{{ url('/images/iVBA_minilogo.png') }}" class="img-responsive" alt=""></a> </div>
       <div class="head-block">
         <h1>Zarejestruj nowe konto</h1>
       </div>
@@ -79,13 +79,14 @@
                 </div>
               
                 <div class="button-outer col-md-6">
-                    <input type="checkbox" name="rules" id="regulamin" >
-                    <label for="regulamin">Akceptuję <a target="_blank" href="{{ url('regulamin') }}">Regulamin strony iExcel.pl</a></label>
+                    <input type="checkbox" name="rules" id="regulamin" style="width:auto; height: auto;">
+                    <label for="regulamin">Akceptuję <a target="_blank" href="{{ url('regulamin') }}">Regulamin strony {{ config('app.name') }}</a></label>
                     @if ($errors->has('rules'))
                         <span class="help-block">
                             <strong>{{ $errors->first('rules') }}</strong>
                         </span>
                     @endif
+                    <br />
                     <button id="register" class="btn btn-primary">Zarejestruj mnie <span class="icon-more-icon"></span></button>
                 </div>
             </div>

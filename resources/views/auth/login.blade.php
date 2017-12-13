@@ -7,7 +7,7 @@
 <section class="login-wrapper">
   <div class="inner">
     <div class="login">
-      <div class="login-logo"> <a href="index.html"><img src="images/logo.png" class="img-responsive" alt=""></a> </div>
+      <div class="login-logo"> <a href="{{ url('/') }}"><img src="{{ url('/images/iVBA_minilogo.png') }}" class="img-responsive" alt=""></a> </div>
       <div class="head-block">
         <h1>LOGOWANIE</h1>
       </div>
