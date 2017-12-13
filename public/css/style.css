@@ -123,7 +123,7 @@ strong {
 /*=======================================================
                        Main Layout
 =========================================================*/
-* + .btn {
+* + .btn-ivba {
   margin-top: 50px;
 }
 
@@ -212,7 +212,7 @@ strong {
   }
 }
 /*==================    Buttons    ======================*/
-.btn {
+.btn-ivba {
   display: inline-block;
   font: 700 18px/35px "Montserrat", sans-serif;
   text-transform: uppercase;
@@ -223,10 +223,10 @@ strong {
   -moz-border-radius: 25px;
   border-radius: 25px;
 }
-.btn:hover {
+.btn-ivba:hover {
   background: #373737;
 }
-.btn:active {
+.btn-ivba:active {
   background: #1e1e1e;
 }
 

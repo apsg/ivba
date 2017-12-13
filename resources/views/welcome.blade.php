@@ -96,7 +96,7 @@
 
         <div class="box">
             <div class="box_aside wow fadeInLeft" data-wow-delay="0.1s">
-                {{ $option->price }} zł
+                {{ abs($option->price) }} zł
             </div>
             <div class="box_cnt__no-flow wow fadeInRight" data-wow-delay="0.2s">
                 <h4><a href="{{ $option->buyLink() }}">{{ $option->name }}</a></h4>
@@ -135,7 +135,7 @@
                 </label>
 
                 <div class="mfControls center">
-                    <button type="submit" class="btn">Wyślij</button>
+                    <button type="submit" class="btn-ivba">Wyślij</button>
                 </div>
             </fieldset>
         </form>

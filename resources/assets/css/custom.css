@@ -453,13 +453,13 @@ input:focus, textarea:focus, select:focus {
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover {
 	background: #4ab866;
 }
-.navbar-form {
+/*.navbar-form {
 	width: 30%;
 	padding: 0 25px;
 	background: #4ab866;
 	margin: 0px;
 	position: relative;
-}
+}*/
 .navbar-form .form-control {
 	width: 100%;
 	margin: 12px 0;

@@ -33,8 +33,49 @@
     <!--========================================================
                               HEADER
     =========================================================-->
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid container">
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                @auth
+                    @if(Gate::allows('admin'))
+                    <li>
+                        <a href="{{ url('admin') }}">Zaplecze administracyjne</a>
+                    </li>
+                    @endif
+                <li>
+                    <a href="{{ url('account') }}">Twoje konto</a>
+                </li>
+                <li>
+                    <a href="{{ url('cart') }}"><i class="fa fa-cart"></i> Koszyk</a>
+                </li>
+                <li>
+                    <form class="navbar-form navbar-left" action="{{ url('logout') }}" method="post">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-default">Wyloguj</button>
+                    </form>
+                </li>
+                @else
+                <li>
+                    <a class="btn btn-default navbar-btn" href="{{ url('/register') }}">Zarejestruj się</a>
+                </li>
+                <li>
+                    <a class="btn btn-default navbar-btn" href="{{ url('/login') }}">Zaloguj się</a>
+                </li>
+                @endauth
+            
+            </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+
     @if(isset($is_front))
     <header class="page vide wow fadeIn" data-vide-bg="video/video-bg" data-wow-duration='5s'>
+
         <span class="overlay"> 
             <span class ="menu"> 
                 {!! \App\MenuItem::make(1) !!}
@@ -52,7 +93,7 @@
                         VBA dla Excela.</h2>
 
                     <p>Gwarantujemy, że nawet nie informatyka nauczymy programować w VBA albo zwrócimy pieniądze:) </p>
-                    <a class="btn" href="{{ url('/register') }}">Zapisz się</a> 
+                    <a class="btn-ivba" href="{{ url('/register') }}">Zapisz się</a> 
                     <p><a href="{{ url('/about') }}">Dowiedz się więcej</a> </p>
                 </div>
             </div>
