@@ -25,7 +25,7 @@ class PagesController extends Controller
 			'lessons_front',
 			1,
 			function(){
-				return \App\Lesson::inRandomOrder()->take(10)->get();
+				return \App\Lesson::inRandomOrder()->take(4)->get();
 			});
 
 

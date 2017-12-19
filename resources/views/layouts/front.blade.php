@@ -24,7 +24,7 @@
 <!-- Magnific Popup -->
 {{-- <link href="{{ url('assets/magnific-popup/css/magnific-popup.css') }}" rel="stylesheet" type="text/css"> --}}
 <!-- Iconmoon -->
-{{-- <link href="{{ url('assets/iconmoon/css/iconmoon.css') }}" rel="stylesheet" type="text/css"> --}}
+<link href="{{ url('assets/iconmoon/css/iconmoon.css') }}" rel="stylesheet" type="text/css">
 <!-- Owl Carousel -->
 {{-- <link href="{{ url('assets/owl-carousel/css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css"> --}}
 

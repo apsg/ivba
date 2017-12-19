@@ -10,30 +10,6 @@ class Image extends Model
 {
     protected $fillable = [ 'url', 'hash' , 'filename'];
 
-    public static function boot(){
-    	parent::boot();
-
-    	/**
-    	 * Usuń fizyczny plik związany z tym obrazem
-    	 */
-    	static::deleting(function($model){
-    		// $wistia = new Wistia;
-    		// $wistia->delete_media( $model->hash );
-            // TODO : usuwanie ze storage 
-    	});
-    }
-
-    /**
-     * Wyślij plik do wistii i zapisz dane w DB
-     * @param  [type] $filePath [description]
-     * @return [type]           Obiekt
-     */
-    public static function upload( $filePath ){
-    	// $wistia = new Wistia;
-
-    	// return self::create( $wistia->uploadImage( $filePath ) );
-    }
-
     /**
      * Podaj URL do miniaturki o zadanym rozmiarze
      * @param  integer $width  [description]

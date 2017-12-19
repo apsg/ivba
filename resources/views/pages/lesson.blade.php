@@ -42,12 +42,12 @@
             <div class="detail"> <span>Trudność:</span> {{ $lesson->difficulty() }}</div>
           </div>
           @if($lesson->price == 0 || Gate::allows('access-lesson', $lesson))
-              <a href="{{ url('/learn/lesson/'.$lesson->slug) }}" class="btn">Rozpocznij lekcję <span class="icon-more-icon"></span></a> 
+              <a href="{{ url('/learn/lesson/'.$lesson->slug) }}" class="btn btn-primary">Rozpocznij lekcję <span class="icon-more-icon"></span></a> 
           @else
               <div class="duration fee clearfix">
                 <div class="detail"> <span>Cena:</span> {{ $lesson->price > 0 ? $lesson->price ." zł" : "darmowy" }} </div>
               </div>
-              <a href="{{ url('/lesson/'.$lesson->slug.'/buy') }}" class="btn">Kup dostęp <span class="icon-more-icon"></span></a> </div>
+              <a href="{{ url('/lesson/'.$lesson->slug.'/buy') }}" class="btn btn-primary">Kup dostęp <span class="icon-more-icon"></span></a> </div>
             @endif
       </div>
     </div>
