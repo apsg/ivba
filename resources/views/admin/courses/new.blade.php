@@ -9,6 +9,7 @@
 @section('pagesubname', 'Nowy kurs')
 
 @include('admin.partials.medialibrary')
+@include('admin.partials.videolibrary')
 
 @section('content')
 
