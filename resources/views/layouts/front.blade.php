@@ -2,6 +2,7 @@
 <html lang="pl">
 <head>
     <title>@yield('title') iVBA - kurs VBA on-line</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no"/>
     <link rel="stylesheet" type="text/css" href="{{ url('/css/app.css') }}">
@@ -34,43 +35,30 @@
                               HEADER
     =========================================================-->
 
-    <nav class="navbar navbar-default">
-        <div class="container-fluid container">
+    <div class="nav-front" >
+        <div class=" container">
+            <div class="pull-right">
+            @auth
+                @if(Gate::allows('admin'))
+                    <a class="btn btn-basic btn-sm" href="{{ url('admin') }}">Zaplecze administracyjne</a>
+                @endif
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                @auth
-                    @if(Gate::allows('admin'))
-                    <li>
-                        <a href="{{ url('admin') }}">Zaplecze administracyjne</a>
-                    </li>
-                    @endif
-                <li>
-                    <a href="{{ url('account') }}">Twoje konto</a>
-                </li>
-                <li>
-                    <a href="{{ url('cart') }}"><i class="fa fa-cart"></i> Koszyk</a>
-                </li>
-                <li>
-                    <form class="navbar-form navbar-left" action="{{ url('logout') }}" method="post">
-                        {{ csrf_field() }}
-                        <button type="submit" class="btn btn-default">Wyloguj</button>
-                    </form>
-                </li>
-                @else
-                <li>
-                    <a class="btn btn-default navbar-btn" href="{{ url('/register') }}">Zarejestruj się</a>
-                </li>
-                <li>
-                    <a class="btn btn-default navbar-btn" href="{{ url('/login') }}">Zaloguj się</a>
-                </li>
-                @endauth
-            
-            </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
+                <a class="btn-sm btn-basic btn" href="{{ url('account') }}">Twoje konto</a>
+
+                <a class="btn btn-basic btn-sm" href="{{ url('cart') }}"><i class="fa fa-cart"></i> Koszyk</a>
+    
+                <form style="display: inline-block;" action="{{ url('logout') }}" method="post">
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-basic btn-sm">Wyloguj</button>
+                </form>
+            @else
+                <a class="btn btn-basic btn-sm" href="{{ url('/register') }}">Zarejestruj się</a>
+
+                <a class="btn btn-basic btn-sm" href="{{ url('/login') }}">Zaloguj się</a>
+            @endauth
+            </div>
+        </div>
+    </div>
 
 
     @if(isset($is_front))

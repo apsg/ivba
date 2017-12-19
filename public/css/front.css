@@ -3833,29 +3833,6 @@ input:focus, textarea:focus, select:focus {
 .banner-outer .slide3 .content h1, .banner-outer .slide3 .content p {
 	color: #fff;
 }
-.btn {
-	display: inline-block;
-	padding: 12px 24px;
-	border-radius: 4px;
-	/*background: #ff9600;*/
-	font-family: 'Open Sans';
-	font-size: 14px;
-	/*color: #fff;*/
-	text-transform: uppercase;
-	-moz-transition: all 0.3s ease 0s;
-	-o-transition: all 0.3s ease 0s;
-	-webkit-transition: all 0.3s ease 0s;
-	-ms-transition: all 0.3s ease 0s;
-	transition: all 0.3s ease 0s;
-}
-.btn span {
-	margin-left: 8px;
-	display: inline-block;
-	vertical-align: middle;
-	margin-top: -3px;
-	content: "";
-	opacity: 0.5;
-}
 .btn:hover, .btn:focus {
 	/*background: #2c97ea;*/
 	/*color: #fff;*/
@@ -9392,6 +9369,11 @@ a.btn-circle:hover {
 header.small{
 	padding-top:0px;
 	padding-bottom: 0px;
+}
+
+.nav-front{
+	background-color: #333;
+	padding: 5px;
 }
 
 

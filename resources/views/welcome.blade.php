@@ -116,7 +116,8 @@
     <div class=" col-sm-offset-2 col-md-offset-2 col-sm-8  col-md-8 col-xs-12 ">
         <h3>Skontakuj się z nami</h3>
 
-        <form method="post" action="bat/rd-mailform.php" class="mailform">
+        <form method="post" action="{{ url('contact_form') }}" class="mailform">
+            {{ csrf_field() }}
             <input type="hidden" name="form-type" value="contact">
             <fieldset>
                 <label data-add-placeholder="true">

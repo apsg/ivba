@@ -261,3 +261,8 @@ header.small{
 	padding-top:0px;
 	padding-bottom: 0px;
 }
+
+.nav-front{
+	background-color: #333;
+	padding: 5px;
+}

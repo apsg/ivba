@@ -16,6 +16,10 @@ class VimeoHelper{
 
 		$uri = Vimeo::upload( $filePath );
 
+		Vimeo::request($uri, [
+			'name'	=> $name
+		], 'PATCH');
+
 		$data = Vimeo::request( $uri );
 
 		return [

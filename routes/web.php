@@ -71,6 +71,7 @@ Route::get('/check_cert', 'CertificatesController@check');
 
 Route::post('/get_proofs', 'ProofsController@get');
 
+Route::post('/contact_form', 'ContactFormController@send');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'] ], function(){
 
