@@ -33,7 +33,7 @@ class AdminVideosController extends Controller
      */
     public function store(Request $request){
 
-        $vid = Video::upload( $request->video->path(), $request->video->getClientOriginalName() );
+        $vid = Video::upload( $request->video->path(), $request->video->getClientOriginalName(), $request->input('title', '') );
 
         return $vid;
 

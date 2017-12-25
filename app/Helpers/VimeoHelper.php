@@ -12,12 +12,12 @@ class VimeoHelper{
 	 * @param  [type] $name     [description]
 	 * @return [type]           [description]
 	 */
-	public static function uploadVideo( $filePath, $name ){
+	public static function uploadVideo( $filePath, $name, $title = null ){
 
 		$uri = Vimeo::upload( $filePath );
 
 		Vimeo::request($uri, [
-			'name'	=> $name
+			'name'	=> $title
 		], 'PATCH');
 
 		$data = Vimeo::request( $uri );

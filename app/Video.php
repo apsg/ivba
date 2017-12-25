@@ -63,11 +63,8 @@ class Video extends Model
      * @param  [type] $path [description]
      * @return [type]       [description]
      */
-    public static function upload( $filePath, $filename ){
-        // $wistia = new Wistia;
-        // return self::create( $wistia->uploadVideo( $filePath, $filename ) );
-
-        return self::create( \App\Helpers\VimeoHelper::uploadVideo($filePath, $filename) );
+    public static function upload( $filePath, $filename, $title = null ){
+        return self::create( \App\Helpers\VimeoHelper::uploadVideo($filePath, $filename, $title) );
     }
 
     /**
