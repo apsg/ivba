@@ -29,6 +29,7 @@
 							    	<form id="add-new-video-form" action="{{ url('admin/videos') }}" method="post" enctype="multipart/form-data">
 							    		{{ csrf_field() }}
 							    		<input type="file" name="video" required="required">
+							    		<input type="hidden" name="title" id="title-additional">
 							    		<button>Wyślij</button>
 							    	</form>
 							    	<div class="progress">
@@ -107,6 +108,8 @@ $(document).ready(function(){
 
 	$("#add-new-video-form").submit(function(e){
 		e.preventDefault();
+
+		$('#title-additional').val($("#titlePL").val());
 
 		var button = $(this).find('button');
 		button.prop('disabled', true);
