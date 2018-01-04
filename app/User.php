@@ -20,6 +20,8 @@ class User extends Authenticatable
         'full_access_expires', 
         'last_proof_at', 
         'last_proof_id',
+        'days_bought',
+        'expires_at',
     ];
 
     /**
@@ -33,8 +35,9 @@ class User extends Authenticatable
 
     protected $casts = [
         'full_access_expires' => 'datetime',
-        'unsubscribed_at' => 'datetime',
-        'last_proof_at' => 'datetime',
+        'unsubscribed_at'   => 'datetime',
+        'last_proof_at'     => 'datetime',
+        'expires_at'        => 'datetime',
     ];
 
     protected $events = [

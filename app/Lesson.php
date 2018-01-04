@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model implements iOrderable
 {
-    use ChecksSlugs, Accessable;
-
+    use ChecksSlugs;
 
     public static $SUBSCRIPTION_LENGTH = 31;
 
@@ -166,6 +165,14 @@ class Lesson extends Model implements iOrderable
                 return true;
         }
         return false;
+    }
+    /**
+     * Nie ma innej opcji dostępu do pojedynczej lekcji, niż poprzez kurs
+     * @param  [type]  $user_id [description]
+     * @return boolean          [description]
+     */
+    public function hasAccess($user_id){
+        return $this->hasCourseAccess($user_id);
     }
 
     /**

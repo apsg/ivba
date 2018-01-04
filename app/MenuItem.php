@@ -15,7 +15,9 @@ class MenuItem extends Model
      * @return [type]          [description]
      */
     public static function make( $menu_id ){
-    	$items = static::where('menu_id', $menu_id)->get();
+    	$items = static::where('menu_id', $menu_id)
+            ->orderBy('position', 'desc')
+            ->get();
     	
     	return $items->map(function($item){
     		return "<a href='"

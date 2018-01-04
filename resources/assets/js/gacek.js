@@ -6,6 +6,27 @@ $(document).ready(function(){
 		}
 	});
 	
+
+    $(document).on('change', '.editable', function(e){
+
+        var data = {
+            model:  $(this).data('model'),
+            field:  $(this).data('col'),
+            id:     $(this).data('id'),
+            value:  $(this).val(),
+            _token: $('meta[name=csrf-token]').attr('content')
+        }
+
+        var input = $(this);
+
+        $.post( window.baseUrl+'/admin/update_editable', data).done(function(r){
+            console.log(r);
+
+            input.css({border: '1px solid green'});
+        });
+
+    });
+
 });
 
 

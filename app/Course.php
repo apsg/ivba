@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model implements iOrderable
 {
-    use ChecksSlugs, Accessable;
+    use ChecksSlugs;
 
     public static $SUBSCRIPTION_LENGTH = 31;
 
@@ -24,6 +24,8 @@ class Course extends Model implements iOrderable
 		"image_id",
 		"user_id",
         "video_id",
+        "position",
+        "delay",
     ];
 
     protected $with = ['image'];
@@ -112,6 +114,37 @@ class Course extends Model implements iOrderable
      */
     public function user_certificates(){
         return $this->hasMany(\App\UserCertificate::class);
+    }
+
+
+    /**
+     * Lista wszystkich dostępów dla tego elementu
+     * @return [type] [description]
+     */
+    public function access(){
+        return $this->morphMany(\App\Access::class, 'accessable');
+    }
+
+    /**
+     * Sprawdź, czy dany użytkownik ma dostęp do tego elementu
+     * @param  integer  $user_id [id użytkownika]
+     * @return boolean          [description]
+     */
+    public function hasAccess($user_id){
+
+        $user = \App\User::findOrFail($user_id);
+
+        // Użytkownik ma pełen dostęp do wszystkiego - nic innego nas nie obchodzi
+        if($user->hasFullAccess())
+            return true;
+
+        // dostęp nigdy nie był wykupiony lub wygasł
+        if( is_null($user->expires_at) || $user->expires_at->isPast() )
+            return false;
+
+        // Czy liczba wykupionych dni jest większa, niż opóźnienie kursu
+        return $this->cumulative_delay <= $user->days_bought;
+
     }
 
     /**
@@ -339,6 +372,24 @@ class Course extends Model implements iOrderable
      */
     public function getRatingsCountAttribute(){
         return $this->ratings()->count();
+    }
+
+    /**
+     * Przelicza na nowo cumulative_delay po zmianie kolejności
+     * @return [type] [description]
+     */
+    public static function reorder(){
+
+        $courses = static::query()->orderBy('position', 'asc')->get();
+
+        $sum = 0;
+
+        foreach ($courses as $course) {
+            
+            $sum = $sum + $course->delay;
+            $course->cumulative_delay = $sum;
+            $course->save();
+        }
     }
 
 }

@@ -11,6 +11,12 @@
 |
 */
 
+Route::domain('{account}.ivba.local')->group(function () {
+    Route::get('/', function ($account) {
+        dd('ok');
+    });
+});
+
 Route::get('/', 'PagesController@home');
 
 Route::post('/search', 'PagesController@search');
@@ -83,6 +89,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'] ], function
 	Route::get('courses/{course}', 'AdminCoursesController@show');
 	Route::patch('courses/{course}', 'AdminCoursesController@update');
 	Route::post('courses/{course}/lesson_order', 'AdminCoursesController@updateLessonOrder');
+	Route::post('courses_order', 'AdminCoursesController@updateOrder');
 
 	Route::get('/lesson', 'AdminLessonController@index');
 	Route::post('lesson', 'AdminLessonController@store');
@@ -165,6 +172,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'] ], function
 	Route::patch('scripts/{script}', 'AdminScriptsController@patch');
 	Route::get('scripts/{script}/delete', 'AdminScriptsController@delete');
 
+
+	Route::post('update_editable', 'AdminEditablesController@update');
 });
 
 Route::get('/test', function(){

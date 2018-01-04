@@ -104,4 +104,24 @@ class AdminCoursesController extends Controller
         return ['OK'];
     }
 
+    /**
+     * Aktualizuje kolejność kursów
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function updateOrder(Request $request){
+
+        if(!empty($request->order)){
+
+            foreach ($request->order as $order) {
+                Course::findOrFail($order['course_id'])
+                    ->update(['position' => $order['position'] ]);
+            }
+        }
+
+        Course::reorder();
+
+        return ['ok'];
+    }
+
 }
