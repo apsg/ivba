@@ -19,7 +19,6 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -9282,22 +9281,28 @@ a.btn-circle:hover {
 
 /* przywracanie zepsutych przez skórkę styli */
 
-.content ul{
+.container ul,
+.learn ul{
 	list-style: inside;
 }
 
-.content ol{
+.container ol,
+.learn ol{
 	list-style: decimal;
 	list-style-position: inside;
 }
 
-.content em,
-.content i{
+.container em,
+.container i,
+.learn em,
+.learn i{
 	font-style: italic;
 }
 
-.content b,
-.content strong{
+.container b,
+.container strong,
+.learn b,
+.learn strong{
 	font-weight: 700;
 }
 
