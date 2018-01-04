@@ -66,17 +66,23 @@
 
         <span class="overlay"> 
             <span class ="menu"> 
-                {!! \App\MenuItem::make(1) !!}
             </span>
         </span>
 
         <div class="container">
             <div class="row">
-            
-                <div class="  col-md-offset-2 col-sm-12 col-md-8 col-xs-12 ">
+                <div class="col-md-4 col-xs-12 col-sm-6">
                     <div class="banner">
                         <a href="{{ url('/') }}"><img src="{{ url('images/iVBA_minilogo.png') }}"></a>
                     </div>
+                </div>
+                <div class="col-md-8 col-xs-12 col-sm-8">
+                    <span class ="menu"> 
+                        {!! \App\MenuItem::make(1) !!}
+                    </span>
+                </div>
+                <div class="col-md-offset-2 col-sm-12 col-md-8 col-xs-12 ">
+                    
                     <h2>Zacznij uczyć się z nami
                         VBA dla Excela.</h2>
 
@@ -89,19 +95,21 @@
     </header>
     @else
     <header class="small vide wow fadeIn" data-vide-bg="video/video-bg" data-wow-duration='5s'>
-        <span class="overlay"> 
-            <span class ="menu"> 
-                {!! \App\MenuItem::make(1) !!}
-            </span>
-        </span>
+        <span class="overlay">         </span>
 
         <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-8 col-xs-12 ">
+            <div class="row" style="margin-top: 0px !important;">
+                <div class="col-sm-6 col-md-4 col-xs-12 ">
                     <div class="">
                         <a href="{{ url('/') }}"><img src="{{ url('images/iVBA_minilogo.png') }}"></a>
                     </div>
                 </div>
+                <div class="col-sm-6 col-md-8 col-xs-12 ">
+                    <span class ="menu"> 
+                        {!! \App\MenuItem::make(1) !!}
+                    </span>
+                </div>
+
             </div>
         </div>
     </header>
