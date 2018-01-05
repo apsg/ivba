@@ -371,4 +371,23 @@ class User extends Authenticatable
     {
         $this->notify(new \App\Notifications\PasswordReset($token));
     }
+
+
+    /**
+     * Zwraca aktualny dzień subskrypcji danego użytkownika
+     * @return [type] [description]
+     */
+    public function getCurrentDayAttribute(){
+
+        if(is_null($this->expires_at) || $this->expires_at->isPast())
+            return 0;
+
+        if( $this->hasFullAccess() )
+            return PHP_INT_MAX;
+
+        $days_to_end = $this->expires_at->diffInDays();
+
+        return $this->days_bought - $days_to_end;
+    }
+
 }

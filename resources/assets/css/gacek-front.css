@@ -274,3 +274,7 @@ header.small{
 	padding: 5px;
 	z-index: 100;
 }
+
+ul.features-list{
+	list-style: none;
+}

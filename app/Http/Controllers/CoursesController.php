@@ -13,8 +13,30 @@ class CoursesController extends Controller
 	 * @return [type] [description]
 	 */
     public function index(){
-    	$courses = \App\Course::orderBy('created_at', 'desc')->paginate(12);
-    	return view('pages.courses')->with(compact('courses'));
+
+        $courses = null;
+        $next = null;
+
+        if(\Auth::check()){
+            $current = \Auth::user()->current_day;
+
+        	$courses = Course::where('cumulative_delay', '<=', $current)
+            ->orderBy('position', 'asc')->paginate(12);
+
+            $next_course = Course::where('cumulative_delay', '>', $current)
+                ->orderBy('position', 'asc')
+                ->first();
+
+            if($next_course){
+                $next = $next_course->cumulative_delay - $current;
+            }
+
+        }
+        else
+            $courses = [];
+
+
+    	return view('pages.courses')->with(compact('courses', 'next'));
     }
 
     /**
