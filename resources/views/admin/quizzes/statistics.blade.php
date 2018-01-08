@@ -23,6 +23,7 @@
 					</div><!-- /.box-tools -->
 				</div><!-- /.box-header -->
 				<div class="box-body">
+					<p>Podeszło użytkowników: <strong>{{ $quiz->users->count() }} os.</strong></p>
 					<p>Średni wynik testu: <strong>{{ $avg }}</strong> pkt.</p>
 					<p>Zdawalność: <strong>{{ $passability_p }}%</strong> ({{ $passability }} os.)</p>
 					<p>Najtrudniejsze pytanie: <strong>{{ $hardest->title }}</strong> ({{ $hardest->stats*100 }}%)</p>
