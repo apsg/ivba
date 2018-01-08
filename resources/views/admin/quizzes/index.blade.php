@@ -44,6 +44,7 @@
 								<td>
 									<a href="{{ url('admin/quizzes/'.$quiz->id) }}"><i class="fa fa-edit"></i> Edytuj</a>
 									<a class="confirm" href="{{ url('admin/quizzes/'.$quiz->id.'/delete') }}"><i class="fa fa-trash"></i> Usuń</a>
+									<a href="{{ url('admin/quizzes/'.$quiz->id.'/stats') }}"><i class="fa fa-bar-chart"></i> Statystyki</a>
 								</td>
 							</tr>
 							@endforeach

@@ -148,6 +148,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'] ], function
 	Route::get('quizzes', 'AdminQuizController@index');
 	Route::post('quizzes', 'AdminQuizController@store');
 	Route::get('/quizzes/{quiz}', 'AdminQuizController@show');
+	Route::get('/quizzes/{quiz}/stats', 'AdminQuizController@statistics');
 	Route::patch('/quizzes/{quiz}', 'AdminQuizController@patch');
 	Route::get('/quizzes/{quiz}/delete', 'AdminQuizController@delete');
 	Route::post('/quizzes/{quiz}/question_order', 'AdminQuizController@updateOrder');

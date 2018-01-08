@@ -108,4 +108,36 @@ class AdminQuizController extends Controller
         return ['OK'];
     }
 
+    
+    /**
+     * Pokaż statystyki dla danego testu
+     * @param  Quiz    $quiz    [description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function statistics(Quiz $quiz, Request $request){
+
+
+        $avg = $quiz->users->avg('pivot.points');
+        $passability = $quiz->users->where('pivot.is_pass', true)->count();
+        $passability_p = 100*$passability/$quiz->users->count();
+        
+        $ids = $quiz->questions->pluck('id');
+        $stats = \DB::table('answers')
+            ->select(\DB::raw('question_id, avg(is_correct) as a'))
+            ->whereIn('question_id', $ids)
+            ->groupBy('question_id')
+            ->orderBy('a', 'asc')
+            ->get();
+
+        if($stats->count() > 0){
+            $hardest = \App\Question::find($stats->first()->question_id);
+            $hardest->stats = $stats->first()->a;
+            $easiest = \App\Question::find($stats->last()->question_id);
+            $easiest->stats = $stats->last()->a;
+        }
+
+        return view('admin.quizzes.statistics')->with(compact('quiz', 'avg', 'passability', 'passability_p', 'hardest', 'easiest'));
+    }
+
 }
