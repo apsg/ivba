@@ -11,12 +11,6 @@
 |
 */
 
-Route::domain('{account}.ivba.local')->group(function () {
-    Route::get('/', function ($account) {
-        dd('ok');
-    });
-});
-
 Route::get('/', 'PagesController@home');
 
 Route::post('/search', 'PagesController@search');
@@ -52,10 +46,14 @@ Route::post('/account/change_password', 'AccountController@changePassword');
 Route::get('/cart', 'OrderController@showCart');
 Route::get('/continue', 'PagesController@continue');
 Route::get('/buy_access', 'PagesController@buyAccess');
-Route::get('/cart/add_full_access/{option}', 'OrderController@addFullAccess');
+Route::get('/cart/add_full_access', 'OrderController@addFullAccess');
 Route::get('/cart/remove_full_access', 'OrderController@removeFullAccess');
+Route::get('/cart/add_subscription', 'OrderController@addSubscription');
 
 Route::any('/payu/notify', 'PayuController@notify');
+Route::any('/process_subscription', 'PayuController@process');
+Route::any('/notify_recurring', 'PayuController@notifyRecurring');
+
 Route::get('/order/{order}/course/{course_id}/remove', 'OrderController@removeCourse');
 Route::get('/order/{order}/lesson/{lesson_id}/remove', 'OrderController@removeLesson');
 Route::get('/order/{order}/pay', 'OrderController@pay');

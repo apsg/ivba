@@ -24,16 +24,25 @@ class Order extends Model
      * Lista kursów w tym zamówieniu
      * @return [type] [description]
      */
-    public function courses(){
-    	return $this->morphedByMany(\App\Course::class, 'orderable');
-    }
+    // public function courses(){
+    // 	return $this->morphedByMany(\App\Course::class, 'orderable');
+    // }
 
     /**
      * Lista lekcji w tym zamówieniu
      * @return [type] [description]
      */
-    public function lessons(){
-    	return $this->morphedByMany(\App\Lesson::class, 'orderable');
+    // public function lessons(){
+    // 	return $this->morphedByMany(\App\Lesson::class, 'orderable');
+    // }
+
+    /**
+     * Abonament podpięty do tego zamówienia
+     * @return [type] [description]
+     */
+    public function subscription(){
+        return $this->morphedByMany(\App\Lesson::class, 'orderable');
+        // return $this->hasOne(\App\Subscription::class);
     }
 
     /**
@@ -49,13 +58,14 @@ class Order extends Model
      * @return [type] [description]
      */
     public function sum(){
-    	return $this->is_full_access ? $this->price : 
-            number_format(
-                $this->courses->map(function($course){
-        		  return $course->price;
-        	   })->sum() + $this->lessons->map(function($lesson){
-                    return $lesson->price;
-               })->sum() , 2);
+        return $this->price;
+    	// return $this->is_full_access ? $this->price : 
+     //        number_format(
+     //            $this->courses->map(function($course){
+     //    		  return $course->price;
+     //    	   })->sum() + $this->lessons->map(function($lesson){
+     //                return $lesson->price;
+     //           })->sum() , 2);
     }
 
     /**
@@ -97,27 +107,16 @@ class Order extends Model
 
         $this->confirmed_at = \Carbon\Carbon::now();
 
+        // TODO
+
         if($this->is_full_access){
             $this->user->updateFullAccess( $this->duration );
         }else{
             
-            // Przyznaj dostęp do kursów
-            foreach($this->courses as $course){
-                \App\Access::grant(
-                    $this->user->id, 
-                    $course, 
-                    \App\Course::$SUBSCRIPTION_LENGTH
-                );
-            }
-
-            // Przyznaj dostęp do lekcji
-            foreach($this->lessons as $lesson){
-                \App\Access::grant(
-                    $this->user->id, 
-                    $lesson,
-                    \App\Lesson::$SUBSCRIPTION_LENGTH
-                );
-            }
+            $this->user->addSubscriptionDays( $this->duration );
+            $this->user->getSubscription()->update([
+                'next_payment_at' => $this->user->lastDay(),
+            ]);
         }
 
         // "Skasuj" wszystkie użyte kody rabatowe w tym zamówieniu

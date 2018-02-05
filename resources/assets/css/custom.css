@@ -1531,7 +1531,7 @@ ul.our-strength li .title {
 	top: 0px;
 	z-index: 1;
 	content: "";
-	background: url(../images/testimonial-bg.jpg) no-repeat center top / cover;
+	/*background: url(../images/testimonial-bg.jpg) no-repeat center top / cover;*/
 	opacity: 0.15;
 }
 .testimonial .container {

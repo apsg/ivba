@@ -22,6 +22,7 @@ class User extends Authenticatable
         'last_proof_id',
         'days_bought',
         'expires_at',
+        'card_token',
     ];
 
     /**
@@ -104,6 +105,28 @@ class User extends Authenticatable
      */
     public function last_proof(){
         return $this->belongsTo(\App\Proof::class, 'last_proof_id');
+    }
+
+    /**
+     * Dni wykupione przez tego użytkownika
+     * @return [type] [description]
+     */
+    public function days(){
+        return $this->hasMany(\App\AccessDay::class);
+    }
+
+    /**
+     * Ostatni dzień dostępu danego użytkownika
+     * @return [type] [description]
+     */
+    public function lastDay(){
+
+        $last = $this->days()->orderBy('date', 'desc')->first();
+
+        if($last)
+            return $last->date;
+        else
+            return null;
     }
 
     /**
@@ -379,15 +402,35 @@ class User extends Authenticatable
      */
     public function getCurrentDayAttribute(){
 
-        if(is_null($this->expires_at) || $this->expires_at->isPast())
-            return 0;
-
-        if( $this->hasFullAccess() )
-            return PHP_INT_MAX;
-
-        $days_to_end = $this->expires_at->diffInDays();
-
-        return $this->days_bought - $days_to_end;
+        return $this->days()
+            ->where('date', '<=', \Carbon\Carbon::now()->format('Y-m-d'))
+            ->count();
     }
+
+    /**
+     * Dodaj określoną liczbę dni.
+     * @param [type] $days [description]
+     */
+    public function addDays($days){
+
+        $last = $this->lastDay();
+
+        if(!$last || $last->isPast()){
+            $last = \Carbon\Carbon::now();
+            $this->days()->create([
+                'date' => $last->format('Y-m-d')
+            ]);
+        }
+
+        for($i = 0; $i<$days; $i++){
+            $last = $last->addDays(1);
+            $this->days()->create([
+                'date' => $last->format('Y-m-d')
+            ]);
+        }
+
+        return $this;
+    }
+
 
 }

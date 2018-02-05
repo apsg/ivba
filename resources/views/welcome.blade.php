@@ -55,21 +55,52 @@
 </div>
 </div>
 </section>
-<section class="well bg-primary">
-<div class="container">
-<div class="row ">
-    <div class=" col-sm-offset-2 col-md-offset-2 col-sm-8 col-md-8 col-xs-12 ">
-        <h3 class="wow fadeInUp" data-wow-delay="0.2s"> A great way to describe your video</h3>
 
-        <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet conse
-            ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+
+<section class="testimonial padding-lg">
+  <div class="container">
+    <div class="wrapper">
+      <h2>Co o nas mówią?</h2>
+
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+          <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <p>Szkolenia iExcel pozwoliły mi na prowadzenie szeregu usprawnień w firmie. Pomimo ciągłej pracy na excelu, moje analizy są teraz zdecydowanie bardziej profesjonalne. Nie ma w Polsce drugiej takiej firmy, która w tak przyswajalny sposób potrafi przekazać wiedzę. Osobiście – bardzo polecam! Dzięki i widzimy się na kolejnej konferencji</p>
+                    <span>Łukasz Kutyłowski, <span>Warszawa</span></span>
+                    <br />
+                    <img src="images/Łukasz-Kutyłowskibig-100x100.png" class="img-circle" alt=""/>
+                </div>
+                <div class="item">
+                    <p>Środowa konferencja była pierwszą i na pewno nie ostatnią. Zdecydowanie polecam. Super atmosfera a wiedza przekazywana w bardzo przystępny sposób!</p>
+                    <span>Damian Klekot, <span>Warszawa</span></span>
+                    <br />
+                    <img src="images/damian_klekot-100x100.png" class="img-circle" alt="" />
+                </div>
+
+                <div class="item">
+                    <p>Było przecudnie, szkoda, że nauczycieli w szkołach nie ma z takim podejściem i talentem w przekazywaniu wiedzy :)…no i te kawały</p>
+                    <span>Dawid Kowalski, <span>Śrem</span></span>
+                    <br />
+                    <img src="images/dawid_kowalski-100x100.png" class="img-circle" alt="" />
+                </div>
+            </div>
+
+        </div>
+
     </div>
-</div>
-</div>
+  </div>
 </section>
+
+
+
 <section class="well">
 <div class="container">
 <div class="row ">

@@ -16,33 +16,6 @@ class OrderController extends Controller
     }
 
     /**
-     * Dodaj kurs do zamówienia i przekieruj na stronę koszyka
-     * @param  Course $course [description]
-     * @return [type]         [description]
-     */
-    public function orderCourse(Course $course){
-    	$order = \Auth::user()->getCurrentOrder();
-
-    	$order->courses()->save($course);
-
-    	return redirect('/cart');
-    }
-
-    /**
-     * Dodaj lekcję do zamówienia i przekieruj na stronę koszyka
-     * @param  Lesson $lesson [description]
-     * @return [type]         [description]
-     */
-    public function orderLesson(Lesson $lesson){
-        $order = \Auth::user()->getCurrentOrder();
-
-        if(!$order->lessons()->where('id', $lesson->id)->exists())
-            $order->lessons()->attach($lesson);
-
-        return redirect('/cart');
-    }
-
-    /**
      * Pokaż koszyk
      * @param  Request $request [description]
      * @return [type]           [description]
@@ -50,28 +23,6 @@ class OrderController extends Controller
     public function showCart(Request $request){
     	$order = \Auth::user()->getCurrentOrder();
     	return view('cart')->with(compact('order'));
-    }
-
-    /**
-     * Usuń kurs z zamówienia
-     * @param  Order  $order     [description]
-     * @param  [type] $course_id [description]
-     * @return [type]            [description]
-     */
-    public function removeCourse(Order $order, $course_id){
-        $order->courses()->detach($course_id);
-        return redirect('/cart');
-    }
-
-    /**
-     * Usuń lekcję z zamówienia
-     * @param  Order  $order     [description]
-     * @param  [type] $lesson_id [description]
-     * @return [type]            [description]
-     */
-    public function removeLesson(Order $order, $lesson_id){
-        $order->lessons()->detach($lesson_id);
-        return redirect('/cart');
     }
 
     /**
@@ -89,20 +40,20 @@ class OrderController extends Controller
                 return redirect('/continue');
             else
                 return redirect('/cart');
-
         }
     }
 
     /**
      * Dodaj pełen dostęp do aktualnego zamówienia
      */
-    public function addFullAccess(\App\FullAccessOption $option){
+    public function addFullAccess(){
 
         if(\Auth::user()->canAddFullAccess()){
             $order = \Auth::user()->getCurrentOrder();
             $order->is_full_access = true;
-            $order->duration = $option->duration;
-            $order->price = $option->price;
+            $order->duration = config('ivba.full_access_duration');
+            $order->price = config('ivba.full_access_price');
+            $order->description = config('ivba.full_access_description');
             $order->save();
         }
         return redirect('/cart');

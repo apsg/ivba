@@ -67,4 +67,67 @@ class Payment{
 	    return $response->getResponse()->redirectUri;
 	}
 
+	/**
+	 * Pierwsza płatność cykliczna
+	 * @return [type] [description]
+	 */
+	public function first( \App\Order $order, $token ){
+		
+		$payu['notifyUrl'] = url('/notify_recurring');
+	    $payu['continueUrl'] = url( 'continue');
+
+		$payu['customerIp'] = request()->ip();
+	    $payu['merchantPosId'] = \OpenPayU_Configuration::getMerchantPosId();
+	    // $payu['recurring'] = "STANDARD";
+	    $payu['description'] = config('ivba.subscription_description') . ' ' . \Auth::user()->email;
+	    $payu['currencyCode'] = 'PLN';
+	    $payu['totalAmount'] = 100*$order->total();
+	    $payu['extOrderId'] =  $order->id . '_' . uniqid();
+
+	    $order->final_total = $order->total();
+	    $order->payu_order_id = $payu['extOrderId'];
+
+
+	    $payu['products'][0] = [
+	    	'name'	=> config('ivba.subscription_description'),
+	    	'unitPrice' => 100*$order->total(),
+	    	'quantity' => 1,
+	    ];
+
+	    $payu['buyer']['email'] = \Auth::user()->email;
+
+	    $payu['payMethods'] = [
+	    	'payMethod' => [
+	    		'value'	=> $token,
+	    		'type'  => 'CARD_TOKEN'
+	    	]
+	    ];
+
+	    $response = \OpenPayU_Order::create($payu);
+	    
+	    $order->save();
+
+	    return $response->getResponse();
+	}
+
+
+	/**
+	 * Oblicza SIG dla payu (recurring payment)
+	 * @param  [type] $email [description]
+	 * @return [type]        [description]
+	 */
+	public static function sig($email, $amount){
+		$str = 'PLN' 	// currency-code
+			.$email 	// customer-email
+ 			.'pl'		// customer-language
+			.config('payu.posid') 	// merchant-pos-id 
+			.'true'					// recurring-payment
+			.config('app.name')		// shop-name
+			.'true'					// store-card
+			.$amount				// total-amount
+			.config('payu.key2');   // MD5 - 2
+
+		return hash('sha256', $str);
+	}
+
 }

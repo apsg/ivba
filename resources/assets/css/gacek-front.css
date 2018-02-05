@@ -278,3 +278,14 @@ header.small{
 ul.features-list{
 	list-style: none;
 }
+
+.carousel .item{
+	min-height: 300px;
+	color: #fff;
+	font-size: 1.5em;
+}
+
+.carousel .item img{
+	display: inline-block;
+}
+
