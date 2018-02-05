@@ -74,9 +74,22 @@ class PayuController extends Controller
      * @return [type]           [description]
      */
     public function notifyRecurring(Request $request){
+        
         \Log::info($request->all());
 
-        
+        if($request->order['status'] == 'COMPLETED'){
+
+            $order = \App\Order::where('payu_order_id', '=', $request->order['extOrderId'])
+                ->firstOrFail();
+
+            $subscription = \App\Subscription::where('user_id', $order->user_id)
+                ->whereNull('cancelled_at')
+                ->first();
+
+            $order->confirm();
+
+        }
+
     }
 
 }

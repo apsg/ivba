@@ -130,6 +130,31 @@ class User extends Authenticatable
     }
 
     /**
+     * Subskrypcje tego użytkownika
+     * @return [type] [description]
+     */
+    public function subscriptions(){
+        return $this->hasMany(\App\Subscription::class);
+    }
+
+    /**
+     * Aktywna subskrypcja tego użytkownika
+     * @return [type] [description]
+     */
+    public function currentSubscription(){
+        $sub = $this->subscriptions()->whereNull('cancelled_at')->first();
+
+        if($sub)
+            return $sub;
+        else{
+            return $this->subscriptions()->create([
+                'amount'    => config('ivba.subscription_price'),
+                'duration'  => config('ivba.subscription_duration'),
+            ]);
+        }
+    }   
+
+    /**
      * Zwraca użytkowników, którzy nie wypisali się z maili typu Followup
      * @param  [type] $query [description]
      * @return [type]        [description]

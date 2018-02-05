@@ -107,15 +107,14 @@ class Order extends Model
 
         $this->confirmed_at = \Carbon\Carbon::now();
 
-        // TODO
-
         if($this->is_full_access){
             $this->user->updateFullAccess( $this->duration );
         }else{
             
             $this->user->addSubscriptionDays( $this->duration );
-            $this->user->getSubscription()->update([
-                'next_payment_at' => $this->user->lastDay(),
+            $this->user->currentSubscription()->update([
+                'is_confirmed'      => true,
+                'next_payment_at'   => $this->user->lastDay(),
             ]);
         }
 

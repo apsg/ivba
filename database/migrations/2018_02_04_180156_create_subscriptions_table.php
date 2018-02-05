@@ -22,7 +22,7 @@ class CreateSubscriptionsTable extends Migration
             $table->decimal('amount', 6, 2)->default(0);
             $table->unsignedInteger('duration')->default(0);
 
-            $table->dateTime('next_payment_at');
+            $table->dateTime('next_payment_at')->nullable();
 
             $table->boolean('is_active')->default(false);
 
