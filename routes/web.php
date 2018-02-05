@@ -52,10 +52,10 @@ Route::get('/cart/add_subscription', 'OrderController@addSubscription');
 
 Route::any('/payu/notify', 'PayuController@notify');
 Route::any('/process_subscription', 'PayuController@process');
+Route::get('/continue/{order}', 'PayuController@continueOrder');
+Route::any('/continue_recurring', 'PayuController@continueRecurring');
 Route::any('/notify_recurring', 'PayuController@notifyRecurring');
-Route::get('/subscription_success', function(){
-	dd(request()->all());
-});
+Route::get('/subscription_success', 'PayuController@subscriptionSuccess');
 
 Route::get('/order/{order}/course/{course_id}/remove', 'OrderController@removeCourse');
 Route::get('/order/{order}/lesson/{lesson_id}/remove', 'OrderController@removeLesson');

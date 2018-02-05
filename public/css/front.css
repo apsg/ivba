@@ -9397,6 +9397,10 @@ ul.features-list{
 	display: inline-block;
 }
 
+.footer-menu a{
+	padding: 5px 10px;
+}
+
 
 
 

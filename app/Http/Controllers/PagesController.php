@@ -46,6 +46,7 @@ class PagesController extends Controller
 	public function continue(Request $request){
 
 		$order = \App\Order::find( $request->order );
+
 		return view('continue')->with(compact('order'));
 	}
 

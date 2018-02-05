@@ -35,28 +35,16 @@ ga('require', 'ecommerce');
 		  'currency' : 'PLN'
 		});
 	@else
-		@foreach($order->lessons as $lesson)
-			ga('ecommerce:addItem', {
-			  'id': '{{ $order->payu_order_id }}',                    
-			  'name': '{{ $lesson->title }}',   
-			  'sku': 'LESSON_{{ $lesson->id }}',                
-			  'category': 'Lekcja',        
-			  'price': '{{ $lesson->price }}',                
-			  'quantity': '1',
-			  'currency' : 'PLN'
-			});
-		@endforeach
-
-		@foreach($order->courses as $course)
-			ga('ecommerce:addItem', {
-			  'id': '{{ $order->payu_order_id }}',                    
-			  'name': '{{ $course->title }}',   
-			  'sku': 'COURSE_{{ $course->id }}',                
-			  'category': 'Kurs',        
-			  'price': '{{ $course->price }}',                
-			  'quantity': '1'                  
-			});
-		@endforeach
+		ga('ecommerce:addItem', {
+		  'id': '{{ $order->payu_order_id ?? "" }}',    
+		  'name': 'Abonament',    
+		  'sku': 'Abonament',                 
+		  'category': 'Abonament',
+		  'price': '{{ $order->final_total }}',
+		  'quantity': '1',
+		  'currency' : 'PLN'
+		});
+		
 	@endif
 
 ga('ecommerce:send');

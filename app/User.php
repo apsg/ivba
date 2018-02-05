@@ -436,7 +436,7 @@ class User extends Authenticatable
      * Dodaj określoną liczbę dni.
      * @param [type] $days [description]
      */
-    public function addDays($days){
+    public function addSubscriptionDays($days){
 
         $last = $this->lastDay();
 
@@ -457,5 +457,12 @@ class User extends Authenticatable
         return $this;
     }
 
+    /**
+     * Czy ten użytkownik ma aktywną subskrypcję
+     * @return boolean [description]
+     */
+    public function hasActiveSubscription(){
+        return !! $this->currentSubscription()->is_active;
+    }
 
 }

@@ -113,7 +113,7 @@ class Order extends Model
             
             $this->user->addSubscriptionDays( $this->duration );
             $this->user->currentSubscription()->update([
-                'is_confirmed'      => true,
+                'is_active'         => true,
                 'next_payment_at'   => $this->user->lastDay(),
             ]);
         }

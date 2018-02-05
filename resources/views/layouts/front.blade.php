@@ -146,6 +146,16 @@
     <footer class="bg-primary">
         <div class="container">
             <div class="row">
+                <div class="col-sm-12 footer-menu">
+                    <strong>INFORMACJE:</strong>
+                    {!! \App\MenuItem::make(2) !!}
+                </div>
+                <div class="col-sm-12 footer-menu">
+                    <strong>WSPARCIE:</strong>
+                    {!! \App\MenuItem::make(3) !!}
+                </div>
+            </div>
+            <div class="row">
                 <div class=" col-sm-offset-2 col-md-offset-2 col-sm-8  col-md-8 col-xs-12 ">
 
                     <div class="copyright">

@@ -28,7 +28,10 @@
 		<h2>Wykup abonament</h2>
 		@if( Auth::check() && Auth::user()->full_access_expires && Auth::user()->full_access_expires->isFuture() )
 			<p>Masz aktywny pełen dostęp - nie możesz wykupić abonamentu</p>
+		@elseif(Auth::check() && Auth::user()->hasActiveSubscription())
+			<p>Masz już aktywny abonament</p>
 		@else
+
 			@if(\Auth::check())
 			<p>Opis abonamentu</p>
 

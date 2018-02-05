@@ -44,7 +44,6 @@ class PayuController extends Controller
 
             $result = $payment->first($order, $request->input('value') );
 
-
         } catch(\Exception $ex){
             return $ex->getMessage();
         }
@@ -60,12 +59,58 @@ class PayuController extends Controller
         }
 
         if($result->status->statusCode == "SUCCESS"){
+            $order->confirm();
             return redirect('/subscription_success');
         }
 
         // Nie powinniśmy tutaj trafić
         dd($result);
 
+    }
+
+    /**
+     * Kontynuuj..
+     * @param  Order   $order   [description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function continueOrder(\App\Order $order, Request $request){
+
+        if(isset($request->statusCode)){
+            if($request->statusCode == "SUCCESS"){
+                $order->confirm();
+                return redirect('/subscription_success');
+                // return redirect('/continue?order='.$order->id);
+            }
+        }
+
+        dd($request->all());
+    }
+
+    /**
+     * Kontynuacja po potwierdzeniu 3DS/CVV
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function continueRecurring(Request $request){
+        if(isset($request->statusCode)){
+            if($request->statusCode == "SUCCESS"){
+                $order = \App\Order::where('payu_refid', $request->refReqId)->first();
+                $order->confirm();
+                return redirect('/continue?order='.$order->id);
+            }
+        }
+
+        dd($request->all());
+    }
+
+    /**
+     * Pokaż widok końcowy procesu subskrypcji
+     * @return [type] [description]
+     */
+    public function subscriptionSuccess(){
+        $page = \App\Page::where('slug', 'subscription_success')->first();
+        return view('subscription_success')->with(compact('page'));
     }
 
     /**
