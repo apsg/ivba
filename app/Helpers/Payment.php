@@ -74,7 +74,7 @@ class Payment{
 	public function first( \App\Order $order, $token ){
 		
 		$payu['notifyUrl'] = url('/notify_recurring');
-	    $payu['continueUrl'] = url( 'continue');
+	    $payu['continueUrl'] = url( '/continue' );
 
 		$payu['customerIp'] = request()->ip();
 	    $payu['merchantPosId'] = \OpenPayU_Configuration::getMerchantPosId();

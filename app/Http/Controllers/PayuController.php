@@ -75,7 +75,6 @@ class PayuController extends Controller
      */
     public function notifyRecurring(Request $request){
         
-        \Log::info($request->all());
 
         if($request->order['status'] == 'COMPLETED'){
 
@@ -90,6 +89,7 @@ class PayuController extends Controller
 
         }
 
+        \Log::info($request->all());
     }
 
 }

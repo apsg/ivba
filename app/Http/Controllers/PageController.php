@@ -102,7 +102,7 @@ class PageController extends Controller
 			}
 
 			flash('Nie znaleziono strony, której szukasz.');
-			return redirect('/')->with(['msg' => 'Nie znaleziono strony, której szukasz']);
+			return redirect('/')->with(['msg' => 'Nie znaleziono strony, której szukasz ('.$pagename.')']);
 		}
 
 	}
