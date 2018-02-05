@@ -31,6 +31,8 @@
     <link href="{{ url('assets/owl-carousel/css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" type="text/css" href="{{ url('/css/front.css') }}">
+{{-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> --}}
+
 
     <!-- Bootstrap core CSS -->
     {{-- <link href="../../dist/css/bootstrap.min.css" rel="stylesheet"> --}}

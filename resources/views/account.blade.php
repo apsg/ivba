@@ -22,7 +22,7 @@
 					    <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="{{ $user->name }}">
 					    <p>Ta nazwa używana jest na certyfikatach, które są wystawiane po niektórych z kursów. Najlepiej więc, by znajdowało się tu Twoje imię i nazwisko.</p>
 					</div>
-					<button type="submit">Zapisz</button>
+					<button type="submit" class="btn btn-primary">Zapisz</button>
 				</form>
 			</div>
 			<div class="col-md-6">
@@ -33,7 +33,7 @@
 					<div class="form-group">
  						<p>Kliknij poniższy przycisk, aby zmienić hasło. Wyślemy do Ciebie maila, dzięki któremu zmienisz swoje hasło.</p>
  						<p>Po kliknięciu w poniższy przycisk nastąpi automatyczne wylogowanie. Odszukaj w swojej skrzynce naszą wiadomość i zmień hasło.</p>
-						<button type="submit">Zmień hasło</button>
+						<button type="submit" class="btn btn-primary">Zmień hasło</button>
 					</div>
 				</form>
 					

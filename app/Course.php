@@ -134,17 +134,16 @@ class Course extends Model implements iOrderable
 
         $user = \App\User::findOrFail($user_id);
 
+
         // Użytkownik ma pełen dostęp do wszystkiego - nic innego nas nie obchodzi
         if($user->hasFullAccess())
             return true;
-
-        // dostęp nigdy nie był wykupiony lub wygasł
-        if( is_null($user->expires_at) || $user->expires_at->isPast() )
+        
+        if(!$user->hasDayAccess())
             return false;
 
         // Czy liczba wykupionych dni jest większa, niż opóźnienie kursu
-        return $this->cumulative_delay <= $user->days_bought;
-
+        return $this->cumulative_delay <= $user->current_day;
     }
 
     /**

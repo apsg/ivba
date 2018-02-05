@@ -476,4 +476,15 @@ class User extends Authenticatable
         return !! $this->currentSubscription()->is_active;
     }
 
+    /**
+     * Czy użytkownik ma dostęp tego dnia
+     * @param  [type]  $date [description]
+     * @return boolean       [description]
+     */
+    public function hasDayAccess($date = null){
+        $day = \Carbon\Carbon::parse($date);
+
+        return $this->days()->where('date', $day->format('Y-m-d'))->exists();
+    }
+
 }
