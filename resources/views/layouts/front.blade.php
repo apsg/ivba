@@ -148,11 +148,11 @@
             <div class="row">
                 <div class="col-sm-12 footer-menu">
                     <strong>INFORMACJE:</strong>
-                    {!! \App\MenuItem::make(2) !!}
+                    {!! \App\MenuItem::make(2, 'asc') !!}
                 </div>
                 <div class="col-sm-12 footer-menu">
                     <strong>WSPARCIE:</strong>
-                    {!! \App\MenuItem::make(3) !!}
+                    {!! \App\MenuItem::make(3, 'asc') !!}
                 </div>
             </div>
             <div class="row">
