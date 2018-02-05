@@ -44,8 +44,6 @@ class MakeRecurringPayments extends Command
             ->whereNull('cancelled_at')
             ->get();
 
-        dd($subscriptions);
-
         foreach ($subscriptions as  $subscription) {
                 
             $order = \App\Order::create([
@@ -62,7 +60,6 @@ class MakeRecurringPayments extends Command
                 $order->user->notify( new \App\Notifications\SubscriptionPaid($subscription) );
             }else{
                 $subscription->cancel();
-                $order->user->notify( new \App\Notifications\SubscriptionFailed($subscription) );
             }
 
         }

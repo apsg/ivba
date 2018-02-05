@@ -28,6 +28,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\OrderLeft72hAgo' => [
             'App\Listeners\PlanOrderLeft72Followups',
         ],
+        'App\Events\SubscriptionCancelled' => [
+            'App\Listeners\SendSubscriptionFailedEmail',
+        ],
+
     ];
 
     /**

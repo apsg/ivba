@@ -28,10 +28,16 @@ class Subscription extends Model
      * @return [type] [description]
      */
     public function cancel(){
-    	$this->update([
-    		'cancelled_at' => \Carbon\Carbon::now(),
-    	]);
-        
+
+        if(is_null($this->cancelled_at)){
+        	$this->update([
+        		'cancelled_at' => \Carbon\Carbon::now(),
+        	]);
+
+            event(new \App\Events\SubscriptionCancelled($this));
+        }
+
+        return $this;
     }
 
 }
