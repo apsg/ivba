@@ -57,7 +57,7 @@ class MakeRecurringPayments extends Command
 
             if($result->status->statusCode == 'SUCCESS' ){
                 $order->confirm();
-                $order->user->notify( new \App\Notifications\SubscriptionPaid($subscription) );
+                $order->user->notify( new \App\Notifications\SubscriptionPaid($subscription->fresh()) );
             }else{
                 $subscription->cancel();
             }
