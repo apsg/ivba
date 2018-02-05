@@ -25,7 +25,7 @@ class PayuController extends Controller
     }
 
     /**
-     * [process description]
+     * Przetwarza płatność
      * @param  Request $request [description]
      * @return [type]           [description]
      */
