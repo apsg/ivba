@@ -85,7 +85,8 @@
 		    	<tr>
 			      <th>Dostęp do</th>
 			      <th>Data rozpoczęcia</th>
-			      <th>Wygasa</th>
+			      <th>Wygasa/następna płatność</th>
+			      <th>Status</th>
 			    </tr>
 		  	</thead>
 		  	<tbody>
@@ -93,32 +94,56 @@
 		    	<tr>
 		      		<th scope="row">Pełen dostęp do platformy iExcel</th>
 		      		<td>-</td>
-		      		<td>{{ \Auth::user()->full_access_expires }}</td>
+		      		<td>{{ $user->full_access_expires }}</td>
+		      		<td>
+						@if($user->full_access_expires->isPast())
+							<i class="fa fa-minus-circle text-danger"></i> Wygasł
+						@else
+							<i class=" fa fa-check text-success"></i> Aktywny
+						@endif
+		      		</td>
 		    	</tr>
 		  	@endif
-			@foreach( $accesses as $access )
+			@foreach( $user->subscriptions as $subscription )
 		    	<tr>
 		      		<th scope="row">
-		      		@if(Gate::allows('access', $access->accessable))
-		      			<a href="{{ $access->accessable->learnUrl() }}">{{ $access->accessable->cartName() }}</a>
-		      		@else
-		      			{{ $access->accessable->cartName() }}
-	      			@endif
+		      			Subskrypcja - abonament miesięczny
 		      		</th>
-		      		<td>{{ $access->created_at }}</td>
-		      		<td>{{ $access->expires }}</td>
+		      		<td>{{ $subscription->created_at->format('Y-m-d') }}</td>
+		      		<td>{{ $subscription->next_payment_at->format('Y-m-d') }}</td>
+		      		<td>
+		      			@if(!$subscription->is_active)
+		      			<i class="fa fa-minus-circle text-danger"></i> Nie potwierdzono - anulowana
+		      			@else
+							@if($subscription->cancelled_at)
+							<i class="fa fa-minus-circle text-danger"></i> Zakończono - anulowana
+							@else
+							<i class="fa fa-check text-success"></i> Aktywna 
+							<a href="{{ url('/subscription/'.$subscription->id.'/cancel') }}" class="btn btn-danger btn-sm confirm"><i class="fa fa-times"></i> Anuluj</a>
+							@endif
+		      			@endif
+
+		      		</td>
 		    	</tr>	
 		    @endforeach
+		    @if($user->remaining_days > 0)
+				<tr>
+					<th colspan="3" scope="row" class="text-right"><strong>Pozostało aktywnych dni na tym koncie:</strong></th>
+					<td>
+						<strong class="text-success">{{ $user->remaining_days }}</strong>
+					</td>
+				</tr>
+		    @endif
 		    </tbody>
 	    </table>
 
 		<hr />
-		<h3>Twoje zamówienia</h3>
+		<h3>Twoje Płatności</h3>
 		<table class="table">
 		  	<thead>
 		    	<tr>
 			      <th>#</th>
-			      <th>Kod zamówienia</th>
+			      <th>Kod płatności</th>
 			      <th>Kwota PLN</th>
 			      <th>Opłacono</th>
 			    </tr>

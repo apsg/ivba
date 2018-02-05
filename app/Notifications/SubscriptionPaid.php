@@ -7,20 +7,20 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class OrderConfirmed extends Notification
+class SubscriptionPaid extends Notification
 {
     use Queueable;
 
-    public $order;
+    public $subscription;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($order)
+    public function __construct(\App\Subscription $subscription)
     {
-        $this->order = $order;
+        $this->subscription = $subscription;
     }
 
     /**
@@ -43,14 +43,14 @@ class OrderConfirmed extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Twoje zamówienie zostało potwierdzone')
-                    ->greeting('Cześć!')
-                    ->line('Otrzymaliśmy potwierdzenie Twojego zamówienia w systemie iVBA.pl.')
-                    ->line('Zamówienie numer '.$this->order->id.' z dnia '.$this->order->created_at.' zostało potwierdzone, a dostępy aktywowane.')
-                    ->line('Opis zamówienia: '.$this->order->description)
-                    ->line('Od teraz zakupione dostępy lub abonamenty są aktywne. Możesz sprawdzić swoje dostępy na swoim profilu:')
-                    ->action('Zaloguj się do swojego profilu', url('/account'))
-                    ->line('Życzymy miłej nauki!');
+            ->subject('Przedłużono abonament w ' .config('app.name') )
+            ->greeting('Cześć!')
+            ->line('Przedłużyliśmy Twój dostęp do '.config('app.name').' o kolejne '.$this->subscription->duration.' dni w ramach wykupionego przez Ciebie abonamentu.' )
+            ->line('Obciążyliśmy Twoją kartę na kwotę: '.$this->subscription->amount)
+            ->line('Następna płatność zostanie wykonana dnia: '.$this->subscription->next_payment_at->format('Y-m-d'))
+            ->line('Aby sprawdzić swoje dostępy, aktualny abonamen i inne dane, przejdź do swojego profilu:')
+            ->action('Zaloguj się do swojego profilu', url('/account'))
+            ->line('Życzymy miłej nauki!');
     }
 
     /**

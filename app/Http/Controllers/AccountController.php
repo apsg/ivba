@@ -16,11 +16,8 @@ class AccountController extends Controller
      */
     public function show(){
     	$user = \Auth::user();
-    	$accesses = \App\Access::where('user_id', $user->id)
-    		->orderBy('expires', 'desc')
-    		->get();
             
-    	return view('account')->with(compact('user', 'accesses'));
+    	return view('account')->with(compact('user'));
     }
 
     /**

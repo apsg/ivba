@@ -7,20 +7,18 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class OrderConfirmed extends Notification
+class SubscriptionFailed extends Notification
 {
     use Queueable;
-
-    public $order;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($order)
+    public function __construct()
     {
-        $this->order = $order;
+        //
     }
 
     /**
@@ -43,14 +41,9 @@ class OrderConfirmed extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Twoje zamówienie zostało potwierdzone')
-                    ->greeting('Cześć!')
-                    ->line('Otrzymaliśmy potwierdzenie Twojego zamówienia w systemie iVBA.pl.')
-                    ->line('Zamówienie numer '.$this->order->id.' z dnia '.$this->order->created_at.' zostało potwierdzone, a dostępy aktywowane.')
-                    ->line('Opis zamówienia: '.$this->order->description)
-                    ->line('Od teraz zakupione dostępy lub abonamenty są aktywne. Możesz sprawdzić swoje dostępy na swoim profilu:')
-                    ->action('Zaloguj się do swojego profilu', url('/account'))
-                    ->line('Życzymy miłej nauki!');
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**

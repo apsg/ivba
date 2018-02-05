@@ -24,6 +24,7 @@ class Kernel extends ConsoleKernel
         Commands\SendPlannedFollowups::class,
         Commands\DiscoverLeftOrders::class,
         Commands\CopyUsersToNewsletter::class,
+        Commands\MakeRecurringPayments::class,
     ];
 
     /**

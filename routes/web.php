@@ -63,6 +63,8 @@ Route::get('/order/{order}/pay', 'OrderController@pay');
 Route::post('/order/{order}/add_coupon', 'OrderController@addCoupon');
 Route::get('/order/{order}/remove_coupon/{coupon}', 'OrderController@removeCoupon');
 
+Route::get('/subscription/{subscription}/cancel', 'SubscriptionsController@cancel');
+
 Route::get('/home', function(){ return redirect('admin'); });
 
 Route::get('/unsubscribe/{code}', 'EmailsController@unsubscribe');

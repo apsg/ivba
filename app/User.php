@@ -129,6 +129,7 @@ class User extends Authenticatable
             return null;
     }
 
+
     /**
      * Subskrypcje tego użytkownika
      * @return [type] [description]
@@ -429,6 +430,16 @@ class User extends Authenticatable
 
         return $this->days()
             ->where('date', '<=', \Carbon\Carbon::now()->format('Y-m-d'))
+            ->count();
+    }
+
+    /**
+     * Ile dni dostępu pozostało temu użytkownikowi
+     * @return [type] [description]
+     */
+    public function getRemainingDaysAttribute(){
+        return $this->days()
+            ->where('date', '>=', \Carbon\Carbon::now()->format('Y-m-d'))
             ->count();
     }
 

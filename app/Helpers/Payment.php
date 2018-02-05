@@ -110,6 +110,49 @@ class Payment{
 	    return $response->getResponse();
 	}
 
+	/**
+	 * [recurring description]
+	 * @param  \App\Order $order [description]
+	 * @return [type]            [description]
+	 */
+	public function recurring(\App\Order $order){
+
+		$payu['notifyUrl'] = url('/notify_recurring');
+	    $payu['continueUrl'] = url( '/continue/'.$order->id );
+
+		$payu['customerIp'] = request()->ip();
+	    $payu['merchantPosId'] = \OpenPayU_Configuration::getMerchantPosId();
+	    $payu['recurring'] = "STANDARD";
+	    $payu['description'] = config('ivba.subscription_description') . ' ' . $order->user->email;
+	    $payu['currencyCode'] = 'PLN';
+	    $payu['totalAmount'] = 100*$order->total();
+	    $payu['extOrderId'] =  $order->id . '_' . uniqid();
+
+	    $order->final_total = $order->total();
+	    $order->payu_order_id = $payu['extOrderId'];
+
+
+	    $payu['products'][0] = [
+	    	'name'	=> config('ivba.subscription_description'),
+	    	'unitPrice' => 100*$order->total(),
+	    	'quantity' => 1,
+	    ];
+
+	    $payu['buyer']['email'] = $order->user->email;
+
+	    $payu['payMethods'] = [
+	    	'payMethod' => [
+	    		'value'	=> $order->user->card_token,
+	    		'type'  => 'CARD_TOKEN'
+	    	]
+	    ];
+
+	    $response = \OpenPayU_Order::create($payu);
+	    
+	    $order->save();
+
+	    return $response->getResponse();
+	}
 
 	/**
 	 * Oblicza SIG dla payu (recurring payment)
