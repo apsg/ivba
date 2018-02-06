@@ -18,17 +18,24 @@ class CoursesController extends Controller
         $next = null;
 
         if(\Auth::check()){
-            $current = \Auth::user()->current_day;
+            if(\Auth::user()->hasFullAccess()){
 
-        	$courses = Course::where('cumulative_delay', '<=', $current)
-            ->orderBy('position', 'asc')->paginate(12);
+                $courses = Course::orderBy('position', 'asc')->paginate(12);
 
-            $next_course = Course::where('cumulative_delay', '>', $current)
-                ->orderBy('position', 'asc')
-                ->first();
+            }else{
 
-            if($next_course){
-                $next = $next_course->cumulative_delay - $current;
+                $current = \Auth::user()->current_day;
+
+            	$courses = Course::where('cumulative_delay', '<=', $current)
+                ->orderBy('position', 'asc')->paginate(12);
+
+                $next_course = Course::where('cumulative_delay', '>', $current)
+                    ->orderBy('position', 'asc')
+                    ->first();
+
+                if($next_course){
+                    $next = $next_course->cumulative_delay - $current;
+                }
             }
 
         }
