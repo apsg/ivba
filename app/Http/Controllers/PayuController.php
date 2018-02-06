@@ -38,8 +38,8 @@ class PayuController extends Controller
             $order = \App\Order::create([
                 'user_id'   => \Auth::user()->id,
                 'price'     => $request->amount,
-                'description' => config('ivba.subscription_description'),
-                'duration'  => 31,
+                'description' => config('ivba.subscription_description_first'),
+                'duration'  => config('ivba.subscription_duration_first'),
             ]);
 
             $result = $payment->first($order, $request->input('value') );

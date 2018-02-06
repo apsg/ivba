@@ -39,9 +39,31 @@ Session::put('url.intended', URL::full());
 			@if(\Auth::check())
 			<p>Opis abonamentu</p>
 
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Opis</th>
+						<th>Koszt</th>
+						<th>Czas trwania (dni)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Pierwsza płatność</td>
+						<td>{{ config('ivba.subscription_price_first') }} PLN</td>
+						<td>{{ config('ivba.subscription_duration_first') }}</td>
+					</tr>
+					<tr>
+						<td>Kolejne płatności</td>
+						<td>{{ config('ivba.subscription_price') }} PLN</td>
+						<td>{{ config('ivba.subscription_duration') }}</td>
+					</tr>
+				</tbody>
+			</table>
+
 			<form action="{{ url('/process_subscription') }}" method="post">
 				{{ csrf_field() }}
-				<input type="hidden" name="amount" value="{{ config('ivba.subscription_price') }}">
+				<input type="hidden" name="amount" value="{{ config('ivba.subscription_price_first') }}">
 			    <button id="pay-button" class="btn btn-primary">Wykup abonament</button>
 			</form>
 			@else
@@ -69,8 +91,8 @@ Session::put('url.intended', URL::full());
     recurring-payment="true"
     shop-name="{{ config('app.name') }}"
     store-card="true"
-    total-amount="{{ config('ivba.subscription_price') }}"
-    sig="{{ \App\Helpers\Payment::sig(Auth::user()->email, config('ivba.subscription_price')) }}">
+    total-amount="{{ 100*config('ivba.subscription_price_first') }}"
+    sig="{{ \App\Helpers\Payment::sig(Auth::user()->email, 100*config('ivba.subscription_price_first')) }}">
 </script>
 @endif
 <script type="text/javascript">

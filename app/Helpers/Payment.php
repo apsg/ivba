@@ -79,7 +79,7 @@ class Payment{
 		$payu['customerIp'] = request()->ip();
 	    $payu['merchantPosId'] = \OpenPayU_Configuration::getMerchantPosId();
 	    // $payu['recurring'] = "STANDARD";
-	    $payu['description'] = config('ivba.subscription_description') . ' ' . \Auth::user()->email;
+	    $payu['description'] = config('ivba.subscription_description_first') . ' ' . \Auth::user()->email;
 	    $payu['currencyCode'] = 'PLN';
 	    $payu['totalAmount'] = 100*$order->total();
 	    $payu['extOrderId'] =  $order->id . '_' . uniqid();
@@ -89,7 +89,7 @@ class Payment{
 
 
 	    $payu['products'][0] = [
-	    	'name'	=> config('ivba.subscription_description'),
+	    	'name'	=> config('ivba.subscription_description_first'),
 	    	'unitPrice' => 100*$order->total(),
 	    	'quantity' => 1,
 	    ];

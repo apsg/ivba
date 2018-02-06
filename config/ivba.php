@@ -14,6 +14,13 @@ return [
 
 	'full_access_description' => 'Pełen roczny dostęp do wszystkich materiałów',
 
+	
+	'subscription_price_first' => 1,
+
+	'subscription_duration_first' => 10,
+
+	'subscription_description_first' => 'Pierwsza płatność w abonamencie',
+
 
 	'subscription_price' => 29.99,
 
