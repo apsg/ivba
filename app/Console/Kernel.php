@@ -50,6 +50,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('iexcel:orders')
             ->dailyAt('13:00');
 
+        $schedule->command('ivba:recurring')
+            ->dailyAt('3:21');
+
     }
 
     /**
