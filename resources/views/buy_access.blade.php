@@ -2,6 +2,10 @@
 
 @section('title', 'Kup dostęp')
 
+@php
+Session::put('url.intended', URL::full()); 
+@endphp
+
 @section('content')
 <section class="page content">
 	<div class="container">
