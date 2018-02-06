@@ -60,11 +60,17 @@ Session::put('url.intended', URL::full());
 					</tr>
 				</tbody>
 			</table>
-
+			
+			<label>
+				<input type="checkbox" name="rules" id="rules">
+				Zapoznałam/zapoznałem się i zgadzam z <a style="vertical-align: bottom;" href="{{ url('/regulamin') }}" target="_blank">regulaminem strony {{ config('app.name') }}</a>
+			</label>
+			<br />
+			<br />
 			<form action="{{ url('/process_subscription') }}" method="post">
 				{{ csrf_field() }}
 				<input type="hidden" name="amount" value="{{ config('ivba.subscription_price_first') }}">
-			    <button id="pay-button" class="btn btn-primary">Wykup abonament</button>
+			    <button title="Aby wykupić abonament musisz potwierdzić zapoznanie się i zgodę z regulaminem" disabled="disabled" id="pay-button" class="btn btn-primary">Wykup abonament - zapłać pierwszą opłatę i zapisz kartę</button>
 			</form>
 			@else
 			<p>Zaloguj się, by wykupić abonament</p>
@@ -96,5 +102,14 @@ Session::put('url.intended', URL::full());
 </script>
 @endif
 <script type="text/javascript">
+	$(document).ready(function(){
+		$('#rules').change(function(){
+			if($(this).is(':checked')){
+				$("#pay-button").prop('disabled', false);
+			}else{
+				$("#pay-button").prop('disabled', true);
+			}
+		});
+	});
 </script>
 @endpush
