@@ -20,11 +20,11 @@
             <figure class="hidden-xs hidden-sm">
                 @if(Gate::allows('access-lesson', $lesson))
                     <a href="{{ $lesson->learnUrl() }}">
-                @else
-                    <a href="{{ $lesson->buyUrl() }}">
-                @endif
                     <img src="{{ $lesson->image->url }}" class="img-responsive" alt="">
-                </a>
+                    </a>
+                @else
+                    <img src="{{ $lesson->image->url }}" class="img-responsive" alt="">
+                @endif
             </figure>
           
         </div>
