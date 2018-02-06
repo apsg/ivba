@@ -150,6 +150,7 @@
 		    	<tr>
 			      <th>#</th>
 			      <th>Kod płatności</th>
+			      <th>Opis</th>
 			      <th>Kwota PLN</th>
 			      <th>Opłacono</th>
 			    </tr>
@@ -159,6 +160,7 @@
 				<tr>
 					<th scope="row">{{ $order->id }}</th>
 					<td>{{ $order->payu_order_id ?? $order->id }}</td>
+					<td>{{ $order->description }}</td>
 					<td>{{ $order->final_total }}</td>
 					<td>{{ $order->confirmed_at }}</td>
 				</tr>
