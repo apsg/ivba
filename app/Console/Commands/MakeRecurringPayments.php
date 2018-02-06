@@ -45,7 +45,11 @@ class MakeRecurringPayments extends Command
             ->get();
 
         foreach ($subscriptions as  $subscription) {
-                
+            
+            $subscription->update([
+                'tries' => $subscription->tries + 1,
+            ]);
+
             $order = \App\Order::create([
                 'user_id'   => $subscription->user->id,
                 'price'     => $subscription->amount,
@@ -59,7 +63,8 @@ class MakeRecurringPayments extends Command
                 $order->confirm();
                 $order->user->notify( new \App\Notifications\SubscriptionPaid($subscription->fresh()) );
             }else{
-                $subscription->cancel();
+                if($subscription->tries > 3)
+                    $subscription->cancel();
             }
 
         }
