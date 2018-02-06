@@ -35,12 +35,17 @@
 </div>
 <div class="row">
     @foreach($lessons as $lesson)
-    <div class=" col-sm-offset-2 col-md-offset-2 col-sm-4 col-md-4 col-xs-6 ">
+    <div class=" col-sm-offset-2 col-md-offset-2 col-sm-4 col-md-4 col-xs-6 lesson">
         <a href="{{ $lesson->link() }}" 
-           class="thumb "><img src="{{ $lesson->image->thumb(293, 165) }}" alt=""></a>
+           class="thumb ">
+           <img src="{{ $lesson->image->thumb(293, 165) }}" alt="">
+           <div class="play-overlay text-center v-align">
+                <div><i class="fa fa-play-circle fa-4x"></i></div>
+           </div>
+       </a>
         <h4><a href="{{ $lesson->link() }}">{{ $lesson->title }}</a></h4>
 
-        <div>{!! $lesson->introduction !!}</div>
+        {{-- <div class="introduction">{!! $lesson->introduction !!}</div> --}}
     </div>
     @endforeach
     {{-- <div class="col-sm-4 col-md-4 col-xs-6">
