@@ -40,6 +40,29 @@
             @include('partials.course_thumb')
             </li>
         @endforeach
+        
+        @if(Auth::check() && !empty($next_course))
+            
+            <li class="col-xs-6 col-sm-4 col-md-4 ">
+                <div class="inner course-thumb-new">
+                    <div class="course-img" style="background-image: url('{{ $next_course->image->thumb(600, 300) }}');">
+                            <div class="countdown">
+                                Dostęp do tego kursu uzyskasz za: 
+                                <div class="countdown-count">{{ $next }}</div>
+                                dni
+                            </div>
+                    </div>
+                    <div class="course-info">
+                        <h3>{{ $next_course->title }}</h3>
+                        <p>{{ $next_course->excerpt }}</p>
+                    </div>
+                    <div class="course-meta">
+                        <div class="course-users"> <i class="fa fa-user-o"></i> {{ $next_course->users_count }}</div>
+                    </div>
+                </div>
+            </li>
+
+        @endif
 
     </ul>
     @else

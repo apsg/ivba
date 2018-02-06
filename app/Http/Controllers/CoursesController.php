@@ -16,6 +16,7 @@ class CoursesController extends Controller
 
         $courses = null;
         $next = null;
+        $next_course = null;
 
         if(\Auth::check()){
             if(\Auth::user()->hasFullAccess()){
@@ -43,7 +44,7 @@ class CoursesController extends Controller
             $courses = [];
 
 
-    	return view('pages.courses')->with(compact('courses', 'next'));
+    	return view('pages.courses')->with(compact('courses', 'next', 'next_course'));
     }
 
     /**

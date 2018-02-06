@@ -9,9 +9,5 @@
     </div>
     <div class="course-meta">
         <div class="course-users"> <i class="fa fa-user-o"></i> {{ $course->users_count }}</div>
-        @if(!Gate::allows('access-course', $course))
-            <div class="course-price">{{ $course->price }} zł</div>
-        @endif
     </div>
-
 </div>
