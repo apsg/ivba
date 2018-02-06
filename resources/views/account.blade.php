@@ -110,7 +110,13 @@
 		      			Subskrypcja - abonament miesięczny
 		      		</th>
 		      		<td>{{ $subscription->created_at->format('Y-m-d') }}</td>
-		      		<td>{{ $subscription->next_payment_at->format('Y-m-d') }}</td>
+		      		<td>
+		      			@if($subscription->next_payment_at)
+		      			{{ $subscription->next_payment_at->format('Y-m-d') }}
+		      			@else
+		      			<i class="fa fa-minus-circle text-danger"></i> Nie potwierdzono - anulowana
+		      			@endif
+		      		</td>
 		      		<td>
 		      			@if(!$subscription->is_active)
 		      			<i class="fa fa-minus-circle text-danger"></i> Nie potwierdzono - anulowana
