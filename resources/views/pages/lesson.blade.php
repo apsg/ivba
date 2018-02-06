@@ -41,13 +41,12 @@
             <div class="icon"><span class="icon-certification-icon"></span></div>
             <div class="detail"> <span>Trudność:</span> {{ $lesson->difficulty() }}</div>
           </div>
-          @if($lesson->price == 0 || Gate::allows('access-lesson', $lesson))
-              <a href="{{ url('/learn/lesson/'.$lesson->slug) }}" class="btn btn-primary">Rozpocznij lekcję <span class="icon-more-icon"></span></a> 
-          @else
-              <div class="duration fee clearfix">
-                <div class="detail"> <span>Cena:</span> {{ $lesson->price > 0 ? $lesson->price ." zł" : "darmowy" }} </div>
-              </div>
-              <a href="{{ url('/lesson/'.$lesson->slug.'/buy') }}" class="btn btn-primary">Kup dostęp <span class="icon-more-icon"></span></a> </div>
+            @if( Gate::allows('access-lesson', $lesson))
+                <a href="{{ url('/learn/lesson/'.$lesson->slug) }}" class="btn btn-primary">Rozpocznij lekcję <span class="icon-more-icon"></span></a> 
+            @else
+                Nie masz jeszcze dostępu do tej lekcji. Poczekaj aż uzyskasz dostęp w ramach swojego abonamentu lub wykup pełen dostęp. <br />
+                <a href="{{ url('/buy_access') }}" class="btn btn-primary">Kup dostęp <span class="icon-more-icon"></span></a> 
+
             @endif
       </div>
     </div>
