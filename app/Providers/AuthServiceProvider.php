@@ -44,8 +44,7 @@ class AuthServiceProvider extends ServiceProvider
          */
         Gate::define('access-lesson', function($user, $lesson){
             return \Auth::check() && (
-                $lesson->price == 0
-                || $user->hasFullAccess()
+                $user->hasFullAccess()
                 || $lesson->hasCourseAccess($user->id)
                 || $lesson->hasAccess($user->id)
             );
