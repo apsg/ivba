@@ -102,6 +102,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'] ], function
 	Route::post('/lesson/{lesson}/items', 'AdminItemsController@add');
 	Route::post('/lesson/{lesson}/items_order', 'AdminLessonController@updateItemsOrder');
 
+	Route::get('/itemfile/{item}/delete', 'AdminItemsController@deleteFile');
+	Route::get('/itemimage/{item}/delete', 'AdminItemsController@deleteImage');
+	Route::get('/itemmovie/{item}/delete', 'AdminItemsController@deleteMovie');
+	Route::get('/itemtext/{item}/delete', 'AdminItemsController@deleTetext');
+
 	Route::get('images', 'AdminImagesController@index');
 	Route::post('images', 'AdminImagesController@store');
 

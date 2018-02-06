@@ -137,4 +137,44 @@ class AdminItemsController extends Controller
 
 
     }
+    
+    /**
+     * Usuń plik
+     * @param  ItemFile $item [description]
+     * @return [type]         [description]
+     */
+    public function deleteFile(ItemFile $item){
+        $item->delete();
+        return back()->with('message', 'Element usunięty');
+    }
+
+    /**
+     * Usuń obraz
+     * @param  ItemFile $item [description]
+     * @return [type]         [description]
+     */
+    public function deleteImage(ItemImage $item){
+        $item->delete();
+        return back()->with('message', 'Element usunięty');
+    }
+
+    /**
+     * Usuń film
+     * @param  ItemFile $item [description]
+     * @return [type]         [description]
+     */
+    public function deleteMovie(ItemMovie $item){
+        $item->delete();
+        return back()->with('message', 'Element usunięty');
+    }
+
+    /**
+     * Usuń tekst
+     * @param  ItemFile $item [description]
+     * @return [type]         [description]
+     */
+    public function deleteText(ItemText $item){
+        $item->delete();
+        return back()->with('message', 'Element usunięty');
+    }
 }

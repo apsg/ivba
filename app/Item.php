@@ -30,4 +30,20 @@ class Item extends Model{
 		return $this->morphToMany(\App\Lesson::class, 'items');
 	}
 
+	/**
+	 * Slug
+	 * @return [type] [description]
+	 */
+	public function slug(){
+		return str_slug((new \ReflectionClass($this))->getShortName());
+	}
+
+	/**
+	 * link usuwania
+	 * @return [type] [description]
+	 */
+	public function deleteLink(){
+		return url('/admin/'.$this->slug(). '/' . $this->id . '/delete');
+	}
+	
 }
