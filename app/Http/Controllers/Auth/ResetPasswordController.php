@@ -36,4 +36,28 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    /**
+     * Get the password reset validation rules.
+     *
+     * @return array
+     */
+    protected function rules()
+    {
+        return [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => [
+                'required',
+                'confirmed',
+                new \App\Rules\PasswordRule,
+            ],
+        ];
+    }
+
+
+    protected function postReset(){
+        \Log::info('post reset '.\Auth::user()->id);
+    }
+
 }

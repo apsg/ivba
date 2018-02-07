@@ -50,7 +50,13 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                new \App\Rules\PasswordRule,
+                'confirmed',
+            ],
             'g-recaptcha-response' => 'required|captcha',
             'rules' => 'required',
         ],
@@ -58,7 +64,8 @@ class RegisterController extends Controller
             'name' => 'Nazwa użytkownika jest wymagana',
             'email.required' => 'Wymagane jest podanie poprawnego adresu email',
             'email.unique' => 'Na podany email już zarejestrowano konto.',
-            'password' => 'Podaj prawidłowe hasło',
+            'password.min' => 'Hasło musi mieć minimum 8 znaków',
+            'password' => 'Podaj prawidłowe hasło. Hasło musi składać się z minimum 8 znaków, w tym przynajmniej: 1 cyfry, 1 wielkiej litery, 1 znaku specjalnego',
             'g-recaptcha-response.required' => 'Zaznacz, czy jesteś człowiekiem',
             'rules.required' => 'Musisz zaakceptować regulamin',
         ]);

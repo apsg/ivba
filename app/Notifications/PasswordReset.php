@@ -46,12 +46,8 @@ class PasswordReset extends Notification
         return (new MailMessage)
             ->subject('Reset hasła')
             ->greeting('Cześć!')
-            ->line('Z tej strony Mateusz z iExcel.pl
-Właśnie modyfikujemy nasz system do nauki Excela - będzie
-więcej lekcji :)')
-            ->line('Przenosimy wszystko! Jednak ze wzglęgu bezpieczeństwa
-nie mamy dostępu do Twojego hasła!')
-            ->line('Prosimy zrestartuj je.')
+            ->line('Z tej strony Mateusz z '.config('app.name'))
+            ->line('Ze względów bezpieczeństwa lub na Twoje życzenie uruchomiona została procedura resetu hasła. Aby je zresetować kliknij w poniższy link:')
             ->action('Zresetuj hasło', url(config('app.url') . route('password.reset', $this->token, false)))
             ->line('Ta wiadomość została wygenerowana automatycznie po migracji Twojego konta do nowego systemu.');
     }
