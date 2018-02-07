@@ -23,6 +23,8 @@ class User extends Authenticatable
         'days_bought',
         'expires_at',
         'card_token',
+        'changed_password_at',
+        'unsubscribed_at',
     ];
 
     /**
@@ -39,9 +41,10 @@ class User extends Authenticatable
         'unsubscribed_at'   => 'datetime',
         'last_proof_at'     => 'datetime',
         'expires_at'        => 'datetime',
+        'changed_password_at' => 'datetime',
     ];
 
-    protected $events = [
+    protected $dispatchesEvents = [
         'created' => \App\Events\UserRegistered::class,
     ];
 
