@@ -39,10 +39,7 @@ class AccountController extends Controller
      */
     public function changePassword(Request $request){        
         
-        $c = new \App\Http\Controllers\Auth\ForgotPasswordController;
-        $c->broker()->sendResetLink([
-                'email' => \Auth::user()->email
-                ]);
+        \App\Helpers\PasswordReset::send();
 
         \Auth::logout();
 

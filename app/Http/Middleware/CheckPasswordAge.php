@@ -17,10 +17,7 @@ class CheckPasswordAge
     {
         if(\Auth::check() && \Auth::user()->changed_password_at->diffInDays() >= 90 ){
 
-            $c = new \App\Http\Controllers\Auth\ForgotPasswordController;
-            $c->broker()->sendResetLink([
-                'email' => \Auth::user()->email
-                ]);
+            \App\Helpers\PasswordReset::send();
 
             \Auth::logout();
             return redirect('/')->withErrors(['Hasło nie było zmieniane od 90 dni. Na Twój adres mailowy wysłaliśmy link do resetu hasła. Nie będzie można się zalogować dopóki nie zmienisz hasła.']);
