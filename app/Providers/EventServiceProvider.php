@@ -31,6 +31,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\SubscriptionCancelled' => [
             'App\Listeners\SendSubscriptionFailedEmail',
         ],
+        \Illuminate\Auth\Events\PasswordReset::class => [
+            'App\Listeners\UpdateLastPasswordChange',
+        ],
 
     ];
 
