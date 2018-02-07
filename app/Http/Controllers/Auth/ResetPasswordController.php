@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 
 class ResetPasswordController extends Controller
 {
@@ -51,13 +55,23 @@ class ResetPasswordController extends Controller
                 'required',
                 'confirmed',
                 new \App\Rules\PasswordRule,
+                'different_password',
             ],
         ];
     }
 
-
-    protected function postReset(){
-        \Log::info('post reset '.\Auth::user()->id);
+    /**
+     * Komunikaty błędów
+     * @return [type] [description]
+     */
+    protected function validationErrorMessages(){
+        return [
+            'email.required'    => 'Email jest wymagany',
+            'email.email'       => 'To nie jest poprawny adres email',
+            'password.different_password' => 'Hasło musi być inne, niż 4 ostatnie hasła',
+        ];
     }
+
+
 
 }

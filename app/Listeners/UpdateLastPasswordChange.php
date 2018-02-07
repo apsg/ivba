@@ -25,9 +25,7 @@ class UpdateLastPasswordChange
      * @return void
      */
     public function handle(PasswordReset $event)
-    {
-        \Log::info('password reset');
-        
+    {        
         $event->user->update([
             'changed_password_at' => \Carbon\Carbon::now(),
         ]);
