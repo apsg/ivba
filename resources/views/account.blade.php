@@ -42,6 +42,10 @@
 		</div>
 
 		<hr />
+		<h3>Twoje dane rozliczeniowe:</h3>
+		@include('partials.user_details_form')
+
+		<hr />
 		<h3>Twoje kursy</h3>
 		<table class="table">
 		  	<thead>

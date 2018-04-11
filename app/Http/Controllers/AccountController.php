@@ -47,4 +47,26 @@ class AccountController extends Controller
         return redirect('/');
     }
 
+    /**
+     * Zaktualizuj dane użytkownika.
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function patch(Request $request){
+
+        $request->validate([
+            'first_name' => 'required',
+            'last_name'  => 'required',
+            'address'    => 'required',
+        ]);
+
+        \Auth::user()
+            ->update(
+                $request->only('first_name', 'last_name', 'address')
+            );
+
+        return back()->with(['status' => 'Zaktualizowano']);
+    }
+
+
 }

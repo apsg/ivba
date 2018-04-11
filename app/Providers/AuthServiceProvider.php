@@ -76,5 +76,15 @@ class AuthServiceProvider extends ServiceProvider
                 || \Carbon\Carbon::parse( $quiz->pivot->finished_date )
                     ->diffInDays( \Carbon\Carbon::now() ) > 14;
         });
+
+        /**
+         * Czy użytkownik może wykupić pełen dostęp?
+         */
+        Gate::define('can-buy-subscription', function($user){
+            return !empty($user->first_name) 
+                && !empty($user->last_name)
+                && !empty($user->address);
+        });
+
     }
 }

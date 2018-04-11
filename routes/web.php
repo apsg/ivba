@@ -42,6 +42,7 @@ Auth::routes();
 Route::get('/account', 'AccountController@show');
 Route::post('/account', 'AccountController@update');
 Route::post('/account/change_password', 'AccountController@changePassword');
+Route::patch('/user', 'AccountController@patch');
 
 Route::get('/cart', 'OrderController@showCart');
 Route::get('/continue', 'PagesController@continue');

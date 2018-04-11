@@ -20,13 +20,15 @@ Session::put('url.intended', URL::full());
 		@endif
 	@else
 		<h1>Kup pełen dostęp do strony</h1>
-		<p>W tym miejscu możesz kupić roczny dostęp do WSZYSTKICH zasobów na iExcel.pl na okres 1 roku.</p>
+		<p>W tym miejscu możesz kupić roczny dostęp do WSZYSTKICH zasobów na iVBA.pl na okres 1 roku.</p>
 	    <ul style="list-style: circle;">
 	        <li>Podana cena jest ceną brutto i zawiera 23% VAT - brak innych opłat</li>
 	        <li>Dostęp jest aktywowany na rok czasu - 365 dni</li>
 	        <li>Masz prawo w ciągu 30 dni zrezygnować</li>
 	    </ul>
+	    <br />
 		<a href="{{ url('/cart/add_full_access') }}" class="btn btn-primary">Kup pełen dostęp za {{ config('ivba.full_access_price') }} zł brutto</a>
+		<hr />
 	@endif
 
 		<h2>Wykup abonament</h2>
@@ -37,44 +39,58 @@ Session::put('url.intended', URL::full());
 		@else
 
 			@if(\Auth::check())
-			<p>Opis abonamentu</p>
 
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Opis</th>
-						<th>Koszt</th>
-						<th>Czas trwania (dni)</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Pierwsza płatność</td>
-						<td>{{ config('ivba.subscription_price_first') }} PLN</td>
-						<td>{{ config('ivba.subscription_duration_first') }}</td>
-					</tr>
-					<tr>
-						<td>Kolejne płatności</td>
-						<td>{{ config('ivba.subscription_price') }} PLN</td>
-						<td>{{ config('ivba.subscription_duration') }}</td>
-					</tr>
-				</tbody>
-			</table>
-			
-			<label>
-				<input type="checkbox" name="rules" id="rules">
-				Zapoznałam/zapoznałem się i zgadzam z <a style="vertical-align: bottom;" href="{{ url('/regulamin') }}" target="_blank">regulaminem strony {{ config('app.name') }}</a>
-			</label>
-			<br />
-			<br />
-			<form action="{{ url('/process_subscription') }}" method="post">
-				{{ csrf_field() }}
-				<input type="hidden" name="amount" value="{{ config('ivba.subscription_price_first') }}">
-			    <button title="Aby wykupić abonament musisz potwierdzić zapoznanie się i zgodę z regulaminem" disabled="disabled" id="pay-button" class="btn btn-primary">Wykup abonament - zapłać pierwszą opłatę i zapisz kartę</button>
-			</form>
+				@if(Gate::denies('can-buy-subscription'))
+						<p>Aby kontynuować proces zakupu abonamentu musisz uzupełnić dane rozliczeniowe swojego konta. </p>
+						<hr />
+						@include('partials.user_details_form')
+					@else
+						
+						<h5>Twoje dane rozliczeniowe:</h5>
+						<p>Imię i nazwisko: <strong>{{ \Auth::user()->full_name }}</strong></p>
+						<p>Adres: <strong>{{ \Auth::user()->address }}</strong></p>
+						<p>Złe dane? Zmień je w ustawieniach swojego profilu: <a href="{{ url('account') }}" class="btn btn-sm btn-info">Przejdź do ustawień profilu</a></p>
+						<hr />
+
+					<p>Opis abonamentu</p>
+
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Opis</th>
+								<th>Koszt</th>
+								<th>Czas trwania (dni)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Pierwsza płatność</td>
+								<td>{{ config('ivba.subscription_price_first') }} PLN</td>
+								<td>{{ config('ivba.subscription_duration_first') }}</td>
+							</tr>
+							<tr>
+								<td>Kolejne płatności</td>
+								<td>{{ config('ivba.subscription_price') }} PLN</td>
+								<td>{{ config('ivba.subscription_duration') }}</td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<label>
+						<input type="checkbox" name="rules" id="rules">
+						Zapoznałam/zapoznałem się i zgadzam z <a style="vertical-align: bottom;" href="{{ url('/regulamin') }}" target="_blank">regulaminem strony {{ config('app.name') }}</a>
+					</label>
+					<br />
+					<br />
+					<form action="{{ url('/process_subscription') }}" method="post">
+						{{ csrf_field() }}
+						<input type="hidden" name="amount" value="{{ config('ivba.subscription_price_first') }}">
+					    <button title="Aby wykupić abonament musisz potwierdzić zapoznanie się i zgodę z regulaminem" disabled="disabled" id="pay-button" class="btn btn-primary">Wykup abonament - zapłać pierwszą opłatę i zapisz kartę</button>
+					</form>
+				@endif
 			@else
-			<p>Zaloguj się, by wykupić abonament</p>
-			<a href="{{ url('/login') }}" class="btn btn-primary">Zaloguj</a>
+				<p>Zaloguj się, by wykupić abonament</p>
+				<a href="{{ url('/login') }}" class="btn btn-primary">Zaloguj</a>
 			@endif
 		@endif
 	<hr />

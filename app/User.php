@@ -25,6 +25,9 @@ class User extends Authenticatable
         'card_token',
         'changed_password_at',
         'unsubscribed_at',
+        'first_name',
+        'last_name',
+        'address',
     ];
 
     /**
@@ -488,6 +491,14 @@ class User extends Authenticatable
         $day = \Carbon\Carbon::parse($date);
 
         return $this->days()->where('date', $day->format('Y-m-d'))->exists();
+    }
+
+    /**
+     * Zwraca imię i nazwisko
+     * @return [type] [description]
+     */
+    public function getFullNameAttribute(){
+        return $this->first_name . ' ' .$this->last_name;
     }
 
 }
