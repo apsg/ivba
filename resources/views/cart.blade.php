@@ -28,7 +28,7 @@
 		      		</td>
 	      		</tr>
 		  	@else
-				@foreach( $order->courses as $course )
+				{{-- @foreach( $order->courses as $course )
 			    	<tr>
 			      		<th scope="row">{{ $loop->index+1 }}</th>
 			      		<td>{{ $course->cartName() }}</td>
@@ -50,7 +50,7 @@
 			      		</td>
 			    	</tr>	
 					
-			    @endforeach
+			    @endforeach --}}
 		    @endif
 		  	</tbody>
 		  	<tfoot>

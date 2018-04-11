@@ -58,7 +58,9 @@ class Order extends Model
      * @return [type] [description]
      */
     public function sum(){
-        return $this->price;
+
+        return $this->is_full_access ? $this->price : 0;
+        
     	// return $this->is_full_access ? $this->price : 
      //        number_format(
      //            $this->courses->map(function($course){

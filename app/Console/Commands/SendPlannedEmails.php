@@ -39,6 +39,7 @@ class SendPlannedEmails extends Command
     {
         \App\Email::where('send_at', '<=', \Carbon\Carbon::now())
             ->where('is_sent', false)
+            ->take(100)
             ->get()
             ->each->send();
     }
