@@ -59,35 +59,49 @@ Session::put('url.intended', URL::full());
 							<tr>
 								<th>Opis</th>
 								<th>Koszt</th>
-								<th>Czas trwania (dni)</th>
+								<th>Czas trwania</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>Pierwsza płatność</td>
 								<td>{{ config('ivba.subscription_price_first') }} PLN</td>
-								<td>{{ config('ivba.subscription_duration_first') }}</td>
+								<td>Dni: {{ config('ivba.subscription_duration_first') }}</td>
 							</tr>
 							<tr>
 								<td>Kolejne płatności</td>
 								<td>{{ config('ivba.subscription_price') }} PLN</td>
-								<td>{{ config('ivba.subscription_duration') }}</td>
+								<td>Miesięcy: {{ config('ivba.subscription_duration') }}</td>
 							</tr>
 						</tbody>
 					</table>
-					
+					{{-- 
 					<label>
 						<input type="checkbox" name="rules" id="rules">
 						Zapoznałam/zapoznałem się i zgadzam z <a style="vertical-align: bottom;" href="{{ url('/regulamin') }}" target="_blank">regulaminem strony {{ config('app.name') }}</a>
-					</label>
+					</label> --}}
 					<br />
 					<br />
-					<form action="{{ url('/process_subscription') }}" method="post">
+					{{-- <form action="{{ url('/process_subscription') }}" method="post">
 						{{ csrf_field() }}
 						<input type="hidden" name="amount" value="{{ config('ivba.subscription_price_first') }}">
 					    <button title="Aby wykupić abonament musisz potwierdzić zapoznanie się i zgodę z regulaminem" disabled="disabled" id="pay-button" class="btn btn-primary">Wykup abonament - zapłać pierwszą opłatę i zapisz kartę</button>
-					</form>
+					</form> --}}
 				@endif
+
+				<h3>PayPal</h3>
+
+				<form action="{{ url('/subscription/create') }}">
+					<label>
+						<input type="checkbox" name="rules" required="required" value="1">
+						Zapoznałam/zapoznałem się i zgadzam z <a style="vertical-align: bottom;" href="{{ url('/regulamin') }}" target="_blank">regulaminem strony {{ config('app.name') }} 
+						</a>
+					</label><br />
+
+					<button class="btn btn-primary">Wykup abonament</button>
+				</form>
+
+
 			@else
 				<p>Zaloguj się, by wykupić abonament</p>
 				<a href="{{ url('/login') }}" class="btn btn-primary">Zaloguj</a>

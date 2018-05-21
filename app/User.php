@@ -149,16 +149,21 @@ class User extends Authenticatable
      * @return [type] [description]
      */
     public function currentSubscription(){
-        $sub = $this->subscriptions()->whereNull('cancelled_at')->first();
-
+        $sub = $this->subscriptions()
+            ->where('valid_until', '>=', \Carbon\Carbon::now())
+            ->first();
+        
         if($sub)
             return $sub;
-        else{
-            return $this->subscriptions()->create([
-                'amount'    => config('ivba.subscription_price'),
-                'duration'  => config('ivba.subscription_duration'),
-            ]);
-        }
+
+        $this->subscriptions()
+            ->where('is_active', true)
+            ->get()
+            ->each->check();
+
+        return $this->subscriptions()
+            ->where('valid_until', '>=', \Carbon\Carbon::now())
+            ->first();
     }   
 
     /**
@@ -475,11 +480,32 @@ class User extends Authenticatable
     }
 
     /**
+     * ustaw dni subskrypcji do określonej daty
+     * @param \Carbon\Carbon $date [description]
+     */
+    public function addSubscriptionDaysUntil(\Carbon\Carbon $date){
+
+        $current = clone $date;
+
+        while(!$current->isPast()){
+            $this->days()->firstOrCreate([
+                'date' => $current->format('Y-m-d')
+            ]);
+            $current->subDays(1);
+        }
+        // dzisiejszy dzień ponownie, jeśli załapie się jako past
+        $this->days()->firstOrCreate([
+            'date' => $current->format('Y-m-d')
+        ]);
+
+    }
+
+    /**
      * Czy ten użytkownik ma aktywną subskrypcję
      * @return boolean [description]
      */
     public function hasActiveSubscription(){
-        return !! $this->currentSubscription()->is_active;
+        return !! $this->currentSubscription();
     }
 
     /**

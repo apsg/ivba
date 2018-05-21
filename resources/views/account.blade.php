@@ -115,15 +115,11 @@
 		      		</th>
 		      		<td>{{ $subscription->created_at->format('Y-m-d') }}</td>
 		      		<td>
-		      			@if($subscription->next_payment_at)
-		      			{{ $subscription->next_payment_at->format('Y-m-d') }}
-		      			@else
-		      			<i class="fa fa-minus-circle text-danger"></i> Nie potwierdzono - anulowana
-		      			@endif
+		      			{{ $subscription->valid_until }}
 		      		</td>
 		      		<td>
 		      			@if(!$subscription->is_active)
-		      			<i class="fa fa-minus-circle text-danger"></i> Nie potwierdzono - anulowana
+		      			<i class="fa fa-minus-circle text-danger"></i>Anulowana
 		      			@else
 							@if($subscription->cancelled_at)
 							<i class="fa fa-minus-circle text-danger"></i> Zakończono - anulowana

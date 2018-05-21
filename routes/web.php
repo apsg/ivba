@@ -64,6 +64,7 @@ Route::get('/order/{order}/pay', 'OrderController@pay');
 Route::post('/order/{order}/add_coupon', 'OrderController@addCoupon');
 Route::get('/order/{order}/remove_coupon/{coupon}', 'OrderController@removeCoupon');
 
+Route::get('subscription/create', 'PayPalController@create');
 Route::get('/subscription/{subscription}/cancel', 'SubscriptionsController@cancel');
 
 Route::get('/home', function(){ return redirect('admin'); });
@@ -186,14 +187,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'] ], function
 	Route::post('update_editable', 'AdminEditablesController@update');
 });
 
+Route::any('/paypal/ec-checkout-success', 'PayPalController@checkoutSuccess');
+Route::any('paypal/notify', 'PayPalController@notify');
+
 Route::get('/test', function(){
-	$content = file_get_contents('https://iexcel.pl/feed');
-	$items = new SimpleXmlElement($content);
+	
+	// $provider = \PayPal::setProvider('express_checkout');
+	// $details = $provider->getRecurringPaymentsProfileDetails('I-21SS24RYH87S');
 
+	// dd($details);
 
-	foreach( $items->channel->item as $item ){
-		print_r($item);
-	}
+	echo $_SERVER['SERVER_NAME'];
 
 });
 

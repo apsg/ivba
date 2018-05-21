@@ -13,6 +13,15 @@ class SubscriptionsController extends Controller
 	}
 
 	/**
+	 * [create description]
+	 * @return [type] [description]
+	 */
+	public function create(){
+
+
+	}
+
+	/**
 	 * Anuluj abonament
 	 * @param  Subscription $subscription [description]
 	 * @return [type]                     [description]

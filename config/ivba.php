@@ -17,14 +17,14 @@ return [
 	
 	'subscription_price_first' => 1,
 
-	'subscription_duration_first' => 10,
+	'subscription_duration_first' => 1,
 
 	'subscription_description_first' => 'Pierwsza płatność w abonamencie',
 
 
 	'subscription_price' => 29.99,
 
-	'subscription_duration' => 31,
+	'subscription_duration' => 1,
 
 	'subscription_description' => 'Abonament miesięczny iVBA.pl',
 
