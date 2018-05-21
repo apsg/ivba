@@ -115,7 +115,7 @@
 		      		</th>
 		      		<td>{{ $subscription->created_at->format('Y-m-d') }}</td>
 		      		<td>
-		      			{{ $subscription->valid_until }}
+		      			{{ $subscription->valid_until->subDays(2) }}
 		      		</td>
 		      		<td>
 		      			@if(!$subscription->is_active)

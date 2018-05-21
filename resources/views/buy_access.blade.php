@@ -87,7 +87,6 @@ Session::put('url.intended', URL::full());
 						<input type="hidden" name="amount" value="{{ config('ivba.subscription_price_first') }}">
 					    <button title="Aby wykupić abonament musisz potwierdzić zapoznanie się i zgodę z regulaminem" disabled="disabled" id="pay-button" class="btn btn-primary">Wykup abonament - zapłać pierwszą opłatę i zapisz kartę</button>
 					</form> --}}
-				@endif
 
 				<h3>PayPal</h3>
 
@@ -101,7 +100,8 @@ Session::put('url.intended', URL::full());
 					<button class="btn btn-primary">Wykup abonament</button>
 				</form>
 
-
+				@endif
+				
 			@else
 				<p>Zaloguj się, by wykupić abonament</p>
 				<a href="{{ url('/login') }}" class="btn btn-primary">Zaloguj</a>
