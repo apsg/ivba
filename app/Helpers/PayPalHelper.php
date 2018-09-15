@@ -5,51 +5,54 @@ namespace App\Helpers;
 use PayPal;
 use Carbon\Carbon;
 
-class PayPalHelper{
-	
+class PayPalHelper
+{
+    public static function getNextDate($profileid)
+    {
 
-	public static function getNextDate($profileid){
+        $provider = \PayPal::setProvider('express_checkout');
+        $details = $provider->getRecurringPaymentsProfileDetails($profileid);
 
-		$provider = \PayPal::setProvider('express_checkout');
-		$details = $provider->getRecurringPaymentsProfileDetails($profileid);
+        if (isset($details['STATUS'])) {
+            if ($details['STATUS'] == 'Active') {
+                return Carbon::parse($details['NEXTBILLINGDATE']);
+            }
 
-		if(isset($details['STATUS'])){
-			if($details['STATUS'] == 'Active')
-				return Carbon::parse($details['NEXTBILLINGDATE']);
+            if ($details['STATUS'] == 'Cancelled') {
+                return false;
+            }
 
-			if($details['STATUS'] == 'Cancelled'){
-				return false;
-			}
+            return $details;
+        }
 
-			return $details;
-		}
+        return false;
+    }
 
-		return false;
-	}
+    /**
+     * Pobiera status subskrypcji
+     * @param  [type] $profileid [description]
+     * @return [type]            [description]
+     */
+    public static function getStatus($profileid)
+    {
+        $provider = \PayPal::setProvider('express_checkout');
+        $details = $provider->getRecurringPaymentsProfileDetails($profileid);
 
-	/**
-	 * Pobiera status subskrypcji
-	 * @param  [type] $profileid [description]
-	 * @return [type]            [description]
-	 */
-	public static function getStatus($profileid){
-		$provider = \PayPal::setProvider('express_checkout');
-		$details = $provider->getRecurringPaymentsProfileDetails($profileid);
+        if (isset($details['STATUS'])) {
+            return $details['STATUS'];
+        }
 
-		if(isset($details['STATUS'])){
-			return $details['STATUS'];
-		}
+        return false;
+    }
 
-		return false;
-	}
-
-	/**
-	 * Anuluj subskrypcję
-	 * @param  [type] $profileid [description]
-	 * @return [type]            [description]
-	 */
-	public static function cancel($profileid){
-		$provider = \PayPal::setProvider('express_checkout');
-		return $provider->cancelRecurringPaymentsProfile($profileid);
-	}
+    /**
+     * Anuluj subskrypcję
+     * @param  [type] $profileid [description]
+     * @return [type]            [description]
+     */
+    public static function cancel($profileid)
+    {
+        $provider = \PayPal::setProvider('express_checkout');
+        return $provider->cancelRecurringPaymentsProfile($profileid);
+    }
 }

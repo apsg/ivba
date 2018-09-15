@@ -6,6 +6,7 @@ use App\Traits\Accessable;
 use App\Traits\ChecksSlugs;
 use App\Interfaces\iOrderable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Course extends Model implements iOrderable
 {
@@ -14,15 +15,15 @@ class Course extends Model implements iOrderable
     public static $SUBSCRIPTION_LENGTH = 31;
 
     protected $fillable = [
-		"title",
-		"description",
-		"seo_title",
-		"seo_description",
-		"price",
-		"difficulty",
-		"slug",
-		"image_id",
-		"user_id",
+        "title",
+        "description",
+        "seo_title",
+        "seo_description",
+        "price",
+        "difficulty",
+        "slug",
+        "image_id",
+        "user_id",
         "video_id",
         "position",
         "delay",
@@ -34,7 +35,8 @@ class Course extends Model implements iOrderable
      * Po czym przeszukujemy ścieżki
      * @return [type] [description]
      */
-    public function getRouteKeyName(){
+    public function getRouteKeyName()
+    {
         return 'slug';
     }
 
@@ -42,19 +44,23 @@ class Course extends Model implements iOrderable
      * Obraz przypisany do tego kursu jako okładka
      * @return [type] [description]
      */
-    public function image(){
-    	return $this->belongsTo(\App\Image::class);
+    public function image()
+    {
+        return $this->belongsTo(\App\Image::class);
     }
 
     /**
      * Film okładkowy przypisany do tego kursu
      * @return [type] [description]
      */
-    public function video(){
+    public function video()
+    {
         return $this->belongsTo(\App\Video::class);
     }
+
     /* alias */
-    public function movie(){
+    public function movie()
+    {
         return $this->belongsTo(\App\Video::class);
     }
 
@@ -62,15 +68,17 @@ class Course extends Model implements iOrderable
      * Kto utworzył dany kurs?
      * @return [type] [description]
      */
-    public function user(){
-    	return $this->belongsTo(\App\User::class);
+    public function user()
+    {
+        return $this->belongsTo(\App\User::class);
     }
 
     /**
      * Użytkownicy, którzy zapisali się na ten kurs
      * @return [type] [description]
      */
-    public function users(){
+    public function users()
+    {
         return $this->belongsToMany(\App\User::class);
     }
 
@@ -78,7 +86,8 @@ class Course extends Model implements iOrderable
      * Lista lekcji przypisanych do tego kursu
      * @return [type] [description]
      */
-    public function lessons(){
+    public function lessons()
+    {
         return $this->belongsToMany(\App\Lesson::class)
             ->withPivot('position')
             ->orderBy('position', 'asc');
@@ -88,7 +97,8 @@ class Course extends Model implements iOrderable
      * Oceny wystawione dla tego kursu
      * @return [type] [description]
      */
-    public function ratings(){
+    public function ratings()
+    {
         return $this->hasMany(\App\Rating::class);
     }
 
@@ -96,7 +106,8 @@ class Course extends Model implements iOrderable
      * Testy przypisane do tego kursu.
      * @return [type] [description]
      */
-    public function quizzes(){
+    public function quizzes()
+    {
         return $this->hasMany(\App\Quiz::class);
     }
 
@@ -104,7 +115,8 @@ class Course extends Model implements iOrderable
      * Certyfikat przypisany do tego kursu
      * @return [type] [description]
      */
-    public function certificate(){
+    public function certificate()
+    {
         return $this->hasOne(\App\Certificate::class);
     }
 
@@ -112,7 +124,8 @@ class Course extends Model implements iOrderable
      * Certyfikaty użytkowników, dla tego kursu
      * @return [type] [description]
      */
-    public function user_certificates(){
+    public function user_certificates()
+    {
         return $this->hasMany(\App\UserCertificate::class);
     }
 
@@ -121,26 +134,30 @@ class Course extends Model implements iOrderable
      * Lista wszystkich dostępów dla tego elementu
      * @return [type] [description]
      */
-    public function access(){
+    public function access()
+    {
         return $this->morphMany(\App\Access::class, 'accessable');
     }
 
     /**
      * Sprawdź, czy dany użytkownik ma dostęp do tego elementu
-     * @param  integer  $user_id [id użytkownika]
+     * @param  integer $user_id [id użytkownika]
      * @return boolean          [description]
      */
-    public function hasAccess($user_id){
+    public function hasAccess($user_id)
+    {
 
         $user = \App\User::findOrFail($user_id);
 
 
         // Użytkownik ma pełen dostęp do wszystkiego - nic innego nas nie obchodzi
-        if($user->hasFullAccess())
+        if ($user->hasFullAccess()) {
             return true;
-        
-        if(!$user->hasDayAccess())
+        }
+
+        if (!$user->hasDayAccess()) {
             return false;
+        }
 
         // Czy liczba wykupionych dni jest większa, niż opóźnienie kursu
         return $this->cumulative_delay <= $user->current_day;
@@ -150,13 +167,15 @@ class Course extends Model implements iOrderable
      * Zwraca certyfikat aktualnie zalogowanego użytkownika
      * @return [type] [description]
      */
-    public function getUserCertificateAttribute(){
-        if(\Auth::check())
+    public function getUserCertificateAttribute()
+    {
+        if (\Auth::check()) {
             return $this->user_certificates()
                 ->where('user_id', \Auth::user()->id)
                 ->first();
-        else
+        } else {
             return null;
+        }
     }
 
 
@@ -164,15 +183,17 @@ class Course extends Model implements iOrderable
      * Zwraca skrót opisu kursu
      * @return [type] [description]
      */
-    public function getExcerptAttribute(){
-        return substr( strip_tags($this->description), 0, 120).'...' ;
+    public function getExcerptAttribute()
+    {
+        return substr(strip_tags($this->description), 0, 120) . '...';
     }
 
     /**
      * Czas trwania w minutach
      * @return [type] [description]
      */
-    public function getDurationAttribute(){
+    public function getDurationAttribute()
+    {
         return $this->lessons->sum('duration');
     }
 
@@ -180,9 +201,10 @@ class Course extends Model implements iOrderable
      * Czas trwania (sformatowany)
      * @return [type] [description]
      */
-    public function duration(){
+    public function duration()
+    {
         $h = floor($this->duration / 60);
-        $m = $this->duration - $h*60;
+        $m = $this->duration - $h * 60;
 
         return $h > 0 ? "{$h}h {$m} min." : "{$m} min.";
     }
@@ -191,35 +213,42 @@ class Course extends Model implements iOrderable
      * Link do tego kursu
      * @return [type] [description]
      */
-    public function link(){
-        return url('/course/'.$this->slug);
+    public function link()
+    {
+        return url('/course/' . $this->slug);
     }
 
     /**
      * Link do rozpoczęcia nauki tego kursu
      * @return [type] [description]
      */
-    public function learnUrl(){
-        return url('/learn/course/'.$this->slug);
+    public function learnUrl()
+    {
+        return url('/learn/course/' . $this->slug);
     }
 
     /**
      * Link do ekranu zakończenia kursu
      * @return [type] [description]
      */
-    public function finishedUrl(){
-        return url('/learn/course/'.$this->slug.'/finished');
+    public function finishedUrl()
+    {
+        return url('/learn/course/' . $this->slug . '/finished');
     }
 
     /**
      * Zwraca sformatowany tekst stopnia trudności
      * @return [type] [description]
      */
-    public function difficulty(){
-        switch($this->difficulty){
-            case 1 : return "Łatwa";
-            case 2 : return "Średnia";
-            case 3 : return "Trudna";
+    public function difficulty()
+    {
+        switch ($this->difficulty) {
+            case 1 :
+                return "Łatwa";
+            case 2 :
+                return "Średnia";
+            case 3 :
+                return "Trudna";
         }
     }
 
@@ -228,8 +257,9 @@ class Course extends Model implements iOrderable
      * @param  [type] $lesson_id [description]
      * @return [type]            [description]
      */
-    public function nextLessonLink($lesson_id = null){
-        if(empty($lesson_id)){
+    public function nextLessonLink($lesson_id = null)
+    {
+        if (empty($lesson_id)) {
             return $this->learnUrl();
         }
 
@@ -238,9 +268,9 @@ class Course extends Model implements iOrderable
             ->pluck('position')
             ->first();
 
-        $next = $this->lessons()->where('position', $order+1)->first();
-        
-        if(is_null($next)){
+        $next = $this->lessons()->where('position', $order + 1)->first();
+
+        if (is_null($next)) {
             $lesson_ids = $this->lessons()->pluck('lesson_id')->all();
 
             $next = \Auth::user()
@@ -250,39 +280,40 @@ class Course extends Model implements iOrderable
                 ->first();
         }
 
-        if(is_null($next)){
+        if (is_null($next)) {
             return $this->next();
         }
 
         return $next->url($this);
-    }   
+    }
 
     /**
      * Zwraca link do następnego nieukończonego elementu w tym kursie
      * @param  [type]   $lesson_id [description]
      * @return function            [description]
      */
-    public function next( ){
-        
+    public function next()
+    {
+
         $user = \Auth::user();
 
         // Czy została jakaś lekcja do ukończenia?
         foreach ($this->lessons as $lesson) {
-            if( ! $user->hasFinishedLesson( $lesson->id ) ){
+            if (!$user->hasFinishedLesson($lesson->id)) {
                 return $lesson->learnUrl($this);
             }
         }
 
         // Czy został jakiś test do ukończenia?
         foreach ($this->quizzes as $quiz) {
-            if( ! $user->hasFinishedQuiz( $quiz->id ) ){
+            if (!$user->hasFinishedQuiz($quiz->id)) {
                 return $quiz->learnUrl();
             }
         }
 
         // Doszliśmy tutaj, czyli nie ma nic więcej.
         // Można sprawdzić, czy kurs jest zakończony i zwrócić link.
-        if( ! $user->hasFinishedCourse( $this->id ) ){
+        if (!$user->hasFinishedCourse($this->id)) {
             $this->finish();
         }
 
@@ -293,21 +324,22 @@ class Course extends Model implements iOrderable
      * Użytkownik ukończył ten kurs
      * @return [type] [description]
      */
-    public function finish(){
+    public function finish()
+    {
         $this->users()
-            ->updateExistingPivot( 
-                \Auth::user()->id ,  
-                ['finished_at' => \Carbon\Carbon::now() ]  
+            ->updateExistingPivot(
+                \Auth::user()->id,
+                ['finished_at' => \Carbon\Carbon::now()]
             );
 
-        if(!empty($this->certificate)){
+        if (!empty($this->certificate)) {
             \App\UserCertificate::create([
-                'user_id'   => \Auth::user()->id,
+                'user_id'        => \Auth::user()->id,
                 'certificate_id' => $this->certificate->id,
-                'course_id' => $this->id,
+                'course_id'      => $this->id,
             ]);
         }
-        
+
         \App\Proof::createFinishedCourse(\Auth::user(), $this);
     }
 
@@ -315,44 +347,48 @@ class Course extends Model implements iOrderable
      * Nazwa do wyświetlania w koszyku
      * @return [type] [description]
      */
-    public function cartName(){
-        return "Kurs #".$this->id." - ".$this->title;
+    public function cartName()
+    {
+        return "Kurs #" . $this->id . " - " . $this->title;
     }
 
     /**
      * Link usuwania z koszyka
      * @return [type] [description]
      */
-    public function removeLink(\App\Order $order){
-        return url('/order/'.$order->id.'/course/'.$this->id.'/remove');
+    public function removeLink(\App\Order $order)
+    {
+        return url('/order/' . $order->id . '/course/' . $this->id . '/remove');
     }
 
     /**
      * Zwraca liczbę osób zapisanych na ten kurs
      * @return [type] [description]
      */
-    public function getUsersCountAttribute(){
+    public function getUsersCountAttribute()
+    {
         $course_id = $this->id;
-        return \Cache::remember( 'course_users_count_'.$this->id,
-            60*12,
-            function() use ($course_id){
+        return \Cache::remember('course_users_count_' . $this->id,
+            60 * 12,
+            function () use ($course_id) {
                 return \DB::table('course_user')
                     ->where('course_id', $course_id)
                     ->count();
             }
-         );
+        );
     }
 
     /**
      * Zwraca ocenę dla aktualnego użytkownika
      * @return [type] [description]
      */
-    public function getRatingAttribute(){
-        if(\Auth::check()){
+    public function getRatingAttribute()
+    {
+        if (\Auth::check()) {
             return \App\Rating::where('user_id', \Auth::user()->id)
                 ->where('course_id', $this->id)
                 ->first();
-        }else{
+        } else {
             return null;
         }
     }
@@ -361,7 +397,8 @@ class Course extends Model implements iOrderable
      * Zwraca średnią wartość ocen dla tego kursu
      * @return [type] [description]
      */
-    public function getAvgRatingAttribute(){
+    public function getAvgRatingAttribute()
+    {
         return (float)$this->ratings()->avg('rating');
     }
 
@@ -369,7 +406,8 @@ class Course extends Model implements iOrderable
      * Zwraca liczbę ocen dla tego kursu
      * @return [type] [description]
      */
-    public function getRatingsCountAttribute(){
+    public function getRatingsCountAttribute()
+    {
         return $this->ratings()->count();
     }
 
@@ -377,18 +415,28 @@ class Course extends Model implements iOrderable
      * Przelicza na nowo cumulative_delay po zmianie kolejności
      * @return [type] [description]
      */
-    public static function reorder(){
+    public static function reorder()
+    {
 
         $courses = static::query()->orderBy('position', 'asc')->get();
 
         $sum = 0;
 
         foreach ($courses as $course) {
-            
+
             $sum = $sum + $course->delay;
             $course->cumulative_delay = $sum;
             $course->save();
         }
     }
 
+
+    public function getRealDelayAttribute()
+    {
+        if (Auth::check()) {
+            return max(0, $this->cumulative_delay - Auth::user()->current_day);
+        }
+
+        return $this->cumulative_delay;
+    }
 }

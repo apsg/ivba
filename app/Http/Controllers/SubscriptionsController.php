@@ -3,39 +3,43 @@
 namespace App\Http\Controllers;
 
 use App\Subscription;
+use Auth;
 use Illuminate\Http\Request;
 
 class SubscriptionsController extends Controller
 {
-    
-	public function __construct(){
-		$this->middleware('auth');
-	}
 
-	/**
-	 * [create description]
-	 * @return [type] [description]
-	 */
-	public function create(){
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * [create description]
+     * @return [type] [description]
+     */
+    public function create()
+    {
 
 
-	}
+    }
 
-	/**
-	 * Anuluj abonament
-	 * @param  Subscription $subscription [description]
-	 * @return [type]                     [description]
-	 */
-	public function cancel(Subscription $subscription){
+    /**
+     * Anuluj abonament
+     * @param  Subscription $subscription [description]
+     * @return [type]                     [description]
+     */
+    public function cancel(Subscription $subscription)
+    {
 
-		if($subscription->user_id == \Auth::user()->id){
-			$subscription->cancel();
-			flash('Anulowano subskrypcję');
-		}else{
-			flash('Nie możesz tego zrobić');
-		}
+        if ($subscription->user_id == Auth::user()->id) {
+            $subscription->cancel();
+            flash('Anulowano subskrypcję');
+        } else {
+            flash('Nie możesz tego zrobić');
+        }
 
-		return back();
-	}
+        return back();
+    }
 
 }
