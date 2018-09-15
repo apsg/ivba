@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Proof;
+use App\Rules\PasswordRule;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -27,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/welcome';
+    protected $redirectTo = '/pages/po-rejestracji';
 
     /**
      * Create a new controller instance.
@@ -42,50 +44,50 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => [
+            'name'                 => 'required|string|max:255',
+            'email'                => 'required|string|email|max:255|unique:users',
+            'password'             => [
                 'required',
                 'string',
                 'min:8',
-                new \App\Rules\PasswordRule,
+                new PasswordRule(),
                 'confirmed',
             ],
             'g-recaptcha-response' => 'required|captcha',
-            'rules' => 'required',
+            'rules'                => 'required',
         ],
-        [
-            'name' => 'Nazwa użytkownika jest wymagana',
-            'email.required' => 'Wymagane jest podanie poprawnego adresu email',
-            'email.unique' => 'Na podany email już zarejestrowano konto.',
-            'password.min' => 'Hasło musi mieć minimum 8 znaków',
-            'password' => 'Podaj prawidłowe hasło. Hasło musi składać się z minimum 8 znaków, w tym przynajmniej: 1 cyfry, 1 wielkiej litery, 1 znaku specjalnego',
-            'g-recaptcha-response.required' => 'Zaznacz, czy jesteś człowiekiem',
-            'rules.required' => 'Musisz zaakceptować regulamin',
-        ]);
+            [
+                'name'                          => 'Nazwa użytkownika jest wymagana',
+                'email.required'                => 'Wymagane jest podanie poprawnego adresu email',
+                'email.unique'                  => 'Na podany email już zarejestrowano konto.',
+                'password.min'                  => 'Hasło musi mieć minimum 8 znaków',
+                'password'                      => 'Podaj prawidłowe hasło. Hasło musi składać się z minimum 8 znaków, w tym przynajmniej: 1 cyfry, 1 wielkiej litery, 1 znaku specjalnego',
+                'g-recaptcha-response.required' => 'Zaznacz, czy jesteś człowiekiem',
+                'rules.required'                => 'Musisz zaakceptować regulamin',
+            ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)
     {
         $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'name'     => $data['name'],
+            'email'    => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
 
-        \App\Proof::createRegistered($user);
+        Proof::createRegistered($user);
 
         return $user;
     }
