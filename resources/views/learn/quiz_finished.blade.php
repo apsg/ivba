@@ -1,7 +1,7 @@
 @extends('layouts.learn')
 
 @section('title')
-		iExcel | 
+		iVBA |
 		{{ $quiz->name }} | Zakończono
 @endsection
 

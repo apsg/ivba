@@ -1,6 +1,6 @@
 @extends('layouts.front')
 
-@section('title', 'Twoje konto iExcel')
+@section('title', 'Twoje konto iVBA')
 
 @section('content')
 <section class="page content">
@@ -96,7 +96,7 @@
 		  	<tbody>
 		  	@if( !is_null(\Auth::user()->full_access_expires) )
 		    	<tr>
-		      		<th scope="row">Pełen dostęp do platformy iExcel</th>
+		      		<th scope="row">Pełen dostęp do platformy iVBA</th>
 		      		<td>-</td>
 		      		<td>{{ $user->full_access_expires }}</td>
 		      		<td>

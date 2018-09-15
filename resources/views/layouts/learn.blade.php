@@ -13,7 +13,7 @@
 
     <link rel="icon" href="../../favicon.ico">
 
-    <title>@yield('title', 'iExcel')</title>
+    <title>@yield('title', 'iVBA')</title>
 
     <link rel="stylesheet" type="text/css" href="{{ url('/css/app.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Amiko:400,600,700&amp;subset=latin-ext" rel="stylesheet">
