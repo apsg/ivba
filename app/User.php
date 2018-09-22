@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -150,7 +151,7 @@ class User extends Authenticatable
      */
     public function currentSubscription(){
         $sub = $this->subscriptions()
-            ->where('valid_until', '>=', \Carbon\Carbon::now())
+            ->where('valid_until', '>=', Carbon::now())
             ->first();
         
         if($sub)
@@ -162,7 +163,7 @@ class User extends Authenticatable
             ->each->check();
 
         return $this->subscriptions()
-            ->where('valid_until', '>=', \Carbon\Carbon::now())
+            ->where('valid_until', '>=', Carbon::now())
             ->first();
     }   
 
@@ -363,7 +364,7 @@ class User extends Authenticatable
      */
     public function updateFullAccess($days){
         if(empty($this->full_access_expires) || $this->full_access_expires->isPast() ){
-            $this->full_access_expires = \Carbon\Carbon::now()->addDays($days);
+            $this->full_access_expires = Carbon::now()->addDays($days);
             $this->save();
         }else{
             $this->full_access_expires = $this->full_access_expires->addDays($days);
@@ -417,7 +418,7 @@ class User extends Authenticatable
      * @return [type] [description]
      */
     public function unsubscribe(){
-        $this->unsubscribed_at = \Carbon\Carbon::now();
+        $this->unsubscribed_at = Carbon::now();
         $this->emails->each->delete();
         flash('Nie będziesz już otrzymywać powiadomień automatycznych');
     }
@@ -440,7 +441,7 @@ class User extends Authenticatable
     public function getCurrentDayAttribute(){
 
         return $this->days()
-            ->where('date', '<=', \Carbon\Carbon::now()->format('Y-m-d'))
+            ->where('date', '<=', Carbon::now()->format('Y-m-d'))
             ->count();
     }
 
@@ -450,7 +451,7 @@ class User extends Authenticatable
      */
     public function getRemainingDaysAttribute(){
         return $this->days()
-            ->where('date', '>=', \Carbon\Carbon::now()->format('Y-m-d'))
+            ->where('date', '>=', Carbon::now()->format('Y-m-d'))
             ->count();
     }
 
@@ -463,7 +464,7 @@ class User extends Authenticatable
         $last = $this->lastDay();
 
         if(!$last || $last->isPast()){
-            $last = \Carbon\Carbon::now();
+            $last = Carbon::now();
             $this->days()->create([
                 'date' => $last->format('Y-m-d')
             ]);
@@ -481,9 +482,9 @@ class User extends Authenticatable
 
     /**
      * ustaw dni subskrypcji do określonej daty
-     * @param \Carbon\Carbon $date [description]
+     * @param Carbon $date [description]
      */
-    public function addSubscriptionDaysUntil(\Carbon\Carbon $date){
+    public function addSubscriptionDaysUntil(Carbon $date){
 
         $current = clone $date;
 
@@ -514,7 +515,7 @@ class User extends Authenticatable
      * @return boolean       [description]
      */
     public function hasDayAccess($date = null){
-        $day = \Carbon\Carbon::parse($date);
+        $day = Carbon::parse($date);
 
         return $this->days()->where('date', $day->format('Y-m-d'))->exists();
     }

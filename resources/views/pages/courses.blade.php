@@ -48,9 +48,13 @@
                                     <div class="course-img"
                                          style="background-image: url('{{ $next_course->image->thumb(600, 300) }}');">
                                         <div class="countdown">
-                                            Dostęp do tego kursu uzyskasz za:
-                                            <div class="countdown-count">{{ $next_course->real_delay }}</div>
-                                            dni
+                                            @if(Gate::check('active'))
+                                                Dostęp do tego kursu uzyskasz za:
+                                                <div class="countdown-count">{{ $next_course->real_delay }}</div>
+                                                dni
+                                            @else
+                                                Wykup abonament lub pełen dostęp, by przejść do tego kursu.
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="course-info">
