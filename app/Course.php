@@ -2,9 +2,18 @@
 
 namespace App;
 
+use App\Access;
+use App\Certificate;
+use App\Image;
+use App\Lesson;
+use App\Quiz;
+use App\Rating;
 use App\Traits\Accessable;
 use App\Traits\ChecksSlugs;
 use App\Interfaces\iOrderable;
+use App\User;
+use App\UserCertificate;
+use App\Video;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,7 +55,7 @@ class Course extends Model implements iOrderable
      */
     public function image()
     {
-        return $this->belongsTo(\App\Image::class);
+        return $this->belongsTo(Image::class);
     }
 
     /**
@@ -55,13 +64,13 @@ class Course extends Model implements iOrderable
      */
     public function video()
     {
-        return $this->belongsTo(\App\Video::class);
+        return $this->belongsTo(Video::class);
     }
 
     /* alias */
     public function movie()
     {
-        return $this->belongsTo(\App\Video::class);
+        return $this->belongsTo(Video::class);
     }
 
     /**
@@ -70,7 +79,7 @@ class Course extends Model implements iOrderable
      */
     public function user()
     {
-        return $this->belongsTo(\App\User::class);
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -79,7 +88,7 @@ class Course extends Model implements iOrderable
      */
     public function users()
     {
-        return $this->belongsToMany(\App\User::class);
+        return $this->belongsToMany(User::class);
     }
 
     /**
@@ -88,7 +97,7 @@ class Course extends Model implements iOrderable
      */
     public function lessons()
     {
-        return $this->belongsToMany(\App\Lesson::class)
+        return $this->belongsToMany(Lesson::class)
             ->withPivot('position')
             ->orderBy('position', 'asc');
     }
@@ -99,7 +108,7 @@ class Course extends Model implements iOrderable
      */
     public function ratings()
     {
-        return $this->hasMany(\App\Rating::class);
+        return $this->hasMany(Rating::class);
     }
 
     /**
@@ -108,7 +117,7 @@ class Course extends Model implements iOrderable
      */
     public function quizzes()
     {
-        return $this->hasMany(\App\Quiz::class);
+        return $this->hasMany(Quiz::class);
     }
 
     /**
@@ -117,7 +126,7 @@ class Course extends Model implements iOrderable
      */
     public function certificate()
     {
-        return $this->hasOne(\App\Certificate::class);
+        return $this->hasOne(Certificate::class);
     }
 
     /**
@@ -126,7 +135,7 @@ class Course extends Model implements iOrderable
      */
     public function user_certificates()
     {
-        return $this->hasMany(\App\UserCertificate::class);
+        return $this->hasMany(UserCertificate::class);
     }
 
 
@@ -136,7 +145,7 @@ class Course extends Model implements iOrderable
      */
     public function access()
     {
-        return $this->morphMany(\App\Access::class, 'accessable');
+        return $this->morphMany(Access::class, 'accessable');
     }
 
     /**
@@ -147,7 +156,7 @@ class Course extends Model implements iOrderable
     public function hasAccess($user_id)
     {
 
-        $user = \App\User::findOrFail($user_id);
+        $user = User::findOrFail($user_id);
 
 
         // Użytkownik ma pełen dostęp do wszystkiego - nic innego nas nie obchodzi
@@ -169,13 +178,13 @@ class Course extends Model implements iOrderable
      */
     public function getUserCertificateAttribute()
     {
-        if (\Auth::check()) {
+        if (Auth::check()) {
             return $this->user_certificates()
-                ->where('user_id', \Auth::user()->id)
+                ->where('user_id', Auth::user()->id)
                 ->first();
-        } else {
-            return null;
         }
+
+        return null;
     }
 
 
@@ -333,7 +342,7 @@ class Course extends Model implements iOrderable
             );
 
         if (!empty($this->certificate)) {
-            \App\UserCertificate::create([
+            UserCertificate::create([
                 'user_id'        => \Auth::user()->id,
                 'certificate_id' => $this->certificate->id,
                 'course_id'      => $this->id,
@@ -385,7 +394,7 @@ class Course extends Model implements iOrderable
     public function getRatingAttribute()
     {
         if (\Auth::check()) {
-            return \App\Rating::where('user_id', \Auth::user()->id)
+            return Rating::where('user_id', \Auth::user()->id)
                 ->where('course_id', $this->id)
                 ->first();
         } else {

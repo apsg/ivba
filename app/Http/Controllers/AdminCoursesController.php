@@ -8,25 +8,28 @@ use App\Http\Requests\CourseRequest;
 
 class AdminCoursesController extends Controller
 {
-    public function __construct(){
-    	$this->middleware('auth');
-    	$this->middleware('admin');
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     /**
      * Listuj wszystkie kursy
      * @return [type] [description]
      */
-    public function index(){
-    	$courses = Course::all();
-    	return view('admin.courses')->with(compact('courses'));
+    public function index()
+    {
+        $courses = Course::all();
+        return view('admin.courses')->with(compact('courses'));
     }
 
     /**
      * Formularz dodawania nowego kursu
      * @return [type] [description]
      */
-    public function create(){
+    public function create()
+    {
         return view('admin.courses.new');
     }
 
@@ -35,10 +38,11 @@ class AdminCoursesController extends Controller
      * @param  CourseRequest $request [description]
      * @return [type]                 [description]
      */
-    public function store(CourseRequest $request){
+    public function store(CourseRequest $request)
+    {
         $fields = $request->all();
 
-        if(empty($fields['slug'])){
+        if (empty($fields['slug'])) {
             $fields['slug'] = str_slug($fields['title']);
         }
 
@@ -46,11 +50,11 @@ class AdminCoursesController extends Controller
 
         $course = Course::create($fields);
 
-        if($request->ajax()){
+        if ($request->ajax()) {
             return $course;
         }
 
-        return redirect('/admin/courses/'.$course->slug)->with('message', 'Kurs dodany!');
+        return redirect('/admin/courses/' . $course->slug)->with('message', 'Kurs dodany!');
 
     }
 
@@ -59,24 +63,26 @@ class AdminCoursesController extends Controller
      * @param  Course $course [description]
      * @return [type]         [description]
      */
-    public function show(Course $course){
+    public function show(Course $course)
+    {
         return view('admin.courses.course')->with(compact('course'));
     }
 
     /**
      * Zaktualizuj dane kursu
-     * @param  Course        $course  [description]
+     * @param  Course        $course [description]
      * @param  CourseRequest $request [description]
      * @return [type]                 [description]
      */
-    public function update(Course $course, CourseRequest $request){
-        
+    public function update(Course $course, CourseRequest $request)
+    {
+
         $fields = $request->all();
 
-        if(empty($fields['slug'])){
+        if (empty($fields['slug'])) {
             $fields['slug'] = str_slug($fields['title']);
         }
-        
+
         $course->update($fields);
 
         return back()->with('message', 'Kurs zapisany!');;
@@ -85,21 +91,22 @@ class AdminCoursesController extends Controller
 
     /**
      * Zsynchronizuj dodane lekcje do kursu
-     * @param  Course  $course  [description]
+     * @param  Course  $course [description]
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function updateLessonOrder(Course $course, Request $request){
+    public function updateLessonOrder(Course $course, Request $request)
+    {
 
         $position = [];
 
-        if(!empty($request->order)){
-            foreach($request->order as $o){
-                $position[ $o['lesson_id'] ] = ['position' => $o['position']];
+        if (!empty($request->order)) {
+            foreach ($request->order as $o) {
+                $position[$o['lesson_id']] = ['position' => $o['position']];
             }
         }
 
-        $course->lessons()->sync( $position );
+        $course->lessons()->sync($position);
 
         return ['OK'];
     }
@@ -109,19 +116,28 @@ class AdminCoursesController extends Controller
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function updateOrder(Request $request){
+    public function updateOrder(Request $request)
+    {
 
-        if(!empty($request->order)){
+        if (!empty($request->order)) {
 
             foreach ($request->order as $order) {
                 Course::findOrFail($order['course_id'])
-                    ->update(['position' => $order['position'] ]);
+                    ->update(['position' => $order['position']]);
             }
         }
 
         Course::reorder();
 
         return ['ok'];
+    }
+
+    public function delete(Course $course)
+    {
+        $course->lessons()->detach();
+        $course->delete();
+
+        return redirect('/admin/courses');
     }
 
 }

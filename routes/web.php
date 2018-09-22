@@ -92,7 +92,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'] ], function
 	Route::post('courses', 'AdminCoursesController@store');
 	Route::get('courses/new', 'AdminCoursesController@create');
 	Route::get('courses/{course}', 'AdminCoursesController@show');
-	Route::patch('courses/{course}', 'AdminCoursesController@update');
+    Route::patch('courses/{course}', 'AdminCoursesController@update');
+    Route::delete('courses/{course}', 'AdminCoursesController@delete');
 	Route::post('courses/{course}/lesson_order', 'AdminCoursesController@updateLessonOrder');
 	Route::post('courses_order', 'AdminCoursesController@updateOrder');
 

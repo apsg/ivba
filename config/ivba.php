@@ -5,7 +5,7 @@ return [
 	/**
 	 * Na jaki email mają się wysyłać formularze kontaktowe
 	 */
-	'contact_form_recipient' => 'szymon.gackowski@gmail.com',
+	'contact_form_recipient' => 'info@iexcel.pl',
 
 
 	'full_access_price'	=> 299,
@@ -22,7 +22,7 @@ return [
 	'subscription_description_first' => 'Pierwsza płatność w abonamencie',
 
 
-	'subscription_price' => 29.99,
+	'subscription_price' => 39,
 
 	'subscription_duration' => 1,
 
