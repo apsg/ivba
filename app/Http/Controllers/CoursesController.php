@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use Auth;
-use Illuminate\Http\Request;
 
 class CoursesController extends Controller
 {
@@ -15,7 +14,6 @@ class CoursesController extends Controller
      */
     public function index()
     {
-
         $courses = null;
         $next = null;
         $next_course = null;
@@ -24,6 +22,7 @@ class CoursesController extends Controller
             if (Auth::user()->hasFullAccess()) {
 
                 $courses = Course::orderBy('position', 'asc')->paginate(12);
+                $next_courses = collect([]);
 
             } else {
 
@@ -39,8 +38,8 @@ class CoursesController extends Controller
 
         } else {
             $courses = [];
+            $next_courses = collect([]);
         }
-
 
         return view('pages.courses')->with(compact('courses', 'next', 'next_courses'));
     }
