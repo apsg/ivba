@@ -7,21 +7,21 @@
 return [
     'mode'    => 'sandbox', // Can only be 'sandbox' Or 'live'. If empty or invalid, 'live' will be used.
     'sandbox' => [
-        'username'    => env('PAYPAL_SANDBOX_API_USERNAME',
-            'szymon.gackowski-facilitator_api1.gmail.com'
-        ),
-        'password'    => env('PAYPAL_SANDBOX_API_PASSWORD', 'Y4R3W32MPWTJD6LE'),
-        'secret'      => env('PAYPAL_SANDBOX_API_SECRET', 'AFcWxV21C7fd0v3bYYYRCpSSRl31A3pQTWE2xOfCqmLmfDdLmTnCVrcx'),
+        'username'    => env('PAYPAL_SANDBOX_API_USERNAME', 'm.grabowski-facilitator@itbt.pl'),
+        'password'    => env('PAYPAL_SANDBOX_API_PASSWORD', 'MML3W5W9R6R3DBXT'),
+        'secret'      => env('PAYPAL_SANDBOX_API_SECRET', 'EJQ2joMpuFsPL7sknDNHjaZK5SfLktHrFg_qAsmsfxchruioP0n16D7GE7-1zDFK1vdTfYGiIebaWcCH'),
         'certificate' => env('PAYPAL_SANDBOX_API_CERTIFICATE', ''),
-        'app_id'      => 'Aep4-5KAo3q7e-F947U7VZL6Gef9zMTDCQjZsSbc23K0yLlpMu37K49qCafG-SZZhCjBEHKjWnUJvU4o',
+        'app_id'      => 'ARDPkU14lW8iirHNtpZ4kuRwtGrlzjX6_xCkDOpkwibOLcDPfbl7tGGkokmL7JItMExctVEZCpoyv6kM',
         // Used for testing Adaptive Payments API in sandbox mode
     ],
     'live'    => [
-        'username'    => env('PAYPAL_LIVE_API_USERNAME', 'kontakt@hrvshop.com'),
+        'username'    => env('PAYPAL_LIVE_API_USERNAME', 'm.grabowski@itbt.pl'),
         'password'    => env('PAYPAL_LIVE_API_PASSWORD', 'hrvdupa498'),
-        'secret'      => env('PAYPAL_LIVE_API_SECRET', ''),
+        'secret'      => env('PAYPAL_LIVE_API_SECRET',
+            'EJtj0MqwAFhQ5Kr668Wm5JJ7-QJGZGo9j3KmPDPtYrmDWHd8C-oJTNbRzLLQfW82FfM09e3A_bZUlLUN'),
         'certificate' => env('PAYPAL_LIVE_API_CERTIFICATE', ''),
-        'app_id'      => '', // Used for Adaptive Payments API
+        'app_id'      => 'AbKs5x4oqo28dLYBAqiP0j6TMdDBlOg1qRqM-KywP1x0qU88yYOGP9bdEwQaaIT2OqQV5d-vHnFChwUH',
+        // Used for Adaptive Payments API
     ],
 
     'payment_action' => 'Sale', // Can only be 'Sale', 'Authorization' or 'Order'
