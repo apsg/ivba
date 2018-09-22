@@ -2,128 +2,145 @@
 
 namespace App\Http\Controllers;
 
-use App\Quiz;
+use App\Proof;
 use App\Course;
 use App\Lesson;
+use App\Rating;
+use Auth;
+use Gate;
 use Illuminate\Http\Request;
 
 class LearnController extends Controller
 {
-    
-	public function __construct(){
-		$this->middleware('auth');
-		$this->middleware('validity');
-	}
 
-	/**
-	 * Pokaż widok kursu
-	 * @param  Course $course [description]
-	 * @param  Lesson $lesson [description]
-	 * @return [type]         [description]
-	 */
-	public function showCourse(Course $course, Lesson $lesson, Request $request){
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('validity');
+    }
 
-		if( !empty($lesson->slug) && \Gate::denies('access-lesson', $lesson) ){
-			flash('Nie masz dostępu do tej lekcji')->warning();
-			return redirect( !is_null($course) ? $course->link() : $lesson->link() );
-		}
+    /**
+     * Pokaż widok kursu
+     * @param  Course $course [description]
+     * @param  Lesson $lesson [description]
+     * @return [type]         [description]
+     */
+    public function showCourse(Course $course, Lesson $lesson, Request $request)
+    {
+        if (!empty($lesson->slug) && Gate::denies('access-lesson', $lesson)) {
+            flash('Nie masz dostępu do tej lekcji')->warning();
+            return redirect(!is_null($course) ? $course->link() : $lesson->link());
+        }
 
-		// Jeśli nie wybrano lekcji - przekieruj do pierwszej.
-		if(empty($lesson->slug)){
-			$lesson = $course->lessons()->first();
-			return redirect('learn/course/'.$course->slug.'/lesson/'.$lesson->slug);
-		}
+        // Jeśli nie wybrano lekcji - przekieruj do pierwszej.
+        if (empty($lesson->slug)) {
+            $lesson = $course->lessons()->first();
 
-		$this->assignToUser($course, $lesson);
+            if (empty($lesson)) {
+                return back()->withErrors(["Do tego kursu nie dodano jeszcze żadnej lekcji. Poczekaj na jego uzupełnienie lub skontaktuj się z obsługą."]);
+            }
 
-		return view('learn')->with(compact('course', 'lesson'));
-	}
+            return redirect('learn/course/' . $course->slug . '/lesson/' . $lesson->slug);
+        }
 
-	/**
-	 * Pokaż lekcję
-	 * @param  Lesson $lesson [description]
-	 * @return [type]         [description]
-	 */
-	public function showLesson(Lesson $lesson){
-		$this->assignToUser(null, $lesson);
-		$course = null;
-		return view('learn')->with(compact('lesson', 'course'));
-	}
+        $this->assignToUser($course, $lesson);
 
-	/**
-	 * Przypisz kurs i lekcję do użytkownika.
-	 * @param  [type] $course [description]
-	 * @param  [type] $lesson [description]
-	 * @return [type]         [description]
-	 */
-	protected function assignToUser($course, $lesson){
-		if(!empty($course) && !\Auth::user()->hasStartedCourse($course->id))
-			\Auth::user()->courses()->attach($course);
+        return view('learn')->with(compact('course', 'lesson'));
+    }
 
-		if(!\Auth::user()->hasStartedLesson($lesson->id))
-			\Auth::user()->lessons()->attach($lesson);
-	}
+    /**
+     * Pokaż lekcję
+     * @param  Lesson $lesson [description]
+     * @return [type]         [description]
+     */
+    public function showLesson(Lesson $lesson)
+    {
+        $this->assignToUser(null, $lesson);
+        $course = null;
+        return view('learn')->with(compact('lesson', 'course'));
+    }
 
-	/**
-	 * Zakończ lekcję i przejdź do następnej. 
-	 * @param  Course $course [description]
-	 * @param  Lesson $lesson [description]
-	 * @return [type]         [description]
-	 */
-	public function finishLesson(Course $course, Lesson $lesson){
+    /**
+     * Przypisz kurs i lekcję do użytkownika.
+     * @param  [type] $course [description]
+     * @param  [type] $lesson [description]
+     * @return [type]         [description]
+     */
+    protected function assignToUser($course, $lesson)
+    {
+        if (!empty($course) && !Auth::user()->hasStartedCourse($course->id)) {
+            Auth::user()->courses()->attach($course);
+        }
 
-		$user = \Auth::user();
-		if( ! $user->hasFinishedLesson($lesson->id) )
-			\App\Proof::createFinishedLesson($user, $lesson);
+        if (!Auth::user()->hasStartedLesson($lesson->id)) {
+            Auth::user()->lessons()->attach($lesson);
+        }
+    }
 
-		$lesson->finish();
+    /**
+     * Zakończ lekcję i przejdź do następnej.
+     * @param  Course $course [description]
+     * @param  Lesson $lesson [description]
+     * @return [type]         [description]
+     */
+    public function finishLesson(Course $course, Lesson $lesson)
+    {
 
-		if(!isset($course->id)){
-			return back();
-		}
-		return redirect($course->nextLessonLink($lesson->id));
-	}
+        $user = Auth::user();
+        if (!$user->hasFinishedLesson($lesson->id)) {
+            Proof::createFinishedLesson($user, $lesson);
+        }
 
-	/**
-	 * Pokaż ekran podsumowania kursu
-	 * @param  Course $course [description]
-	 * @return [type]         [description]
-	 */
-	public function finishedCourse(Course $course){
+        $lesson->finish();
 
-		if(!\Auth::user()->hasFinishedCourse($course->id)){
-			return redirect( $course->next() );
-		}
+        if (!isset($course->id)) {
+            return back();
+        }
+        return redirect($course->nextLessonLink($lesson->id));
+    }
 
-		$rating = \App\Rating::where('user_id', \Auth::user()->id)
-			->where('course_id', $course->id)
-			->first();
-		return view('learn.finish')->with(compact('course', 'rating'));
-	}
+    /**
+     * Pokaż ekran podsumowania kursu
+     * @param  Course $course [description]
+     * @return [type]         [description]
+     */
+    public function finishedCourse(Course $course)
+    {
 
-	/**
-	 * Dodaj ocenę do kursu
-	 * @param  Course  $course  [description]
-	 * @param  Request $request [description]
-	 * @return [type]           [description]
-	 */
-	public function rate(Course $course, Request $request){
-		if(\Gate::denies('access-course', $course)){
-			return response()->json('no access', 403);
-		}
+        if (!Auth::user()->hasFinishedCourse($course->id)) {
+            return redirect($course->next());
+        }
 
-		$this->validate($request, [
-			'rating' => 'required|numeric|min:1|max:5',
-			]);
+        $rating = Rating::where('user_id', Auth::user()->id)
+            ->where('course_id', $course->id)
+            ->first();
+        return view('learn.finish')->with(compact('course', 'rating'));
+    }
 
-		$rating = \App\Rating::firstOrCreate([
-				'user_id' => \Auth::user()->id,
-				'course_id' => $course->id
-			])->update([
-				'rating' => $request->rating
-			]);
+    /**
+     * Dodaj ocenę do kursu
+     * @param  Course  $course [description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function rate(Course $course, Request $request)
+    {
+        if (Gate::denies('access-course', $course)) {
+            return response()->json('no access', 403);
+        }
 
-		return ['OK'];
-	}
+        $this->validate($request, [
+            'rating' => 'required|numeric|min:1|max:5',
+        ]);
+
+        $rating = Rating::firstOrCreate([
+            'user_id'   => Auth::user()->id,
+            'course_id' => $course->id,
+        ])->update([
+            'rating' => $request->rating,
+        ]);
+
+        return ['OK'];
+    }
 
 }
