@@ -2,26 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Payment;
+use App\Order;
+use App\Page;
+use Auth;
 use Illuminate\Http\Request;
+use Log;
 
 class PayuController extends Controller
 {
-    
+
     /**
      * Payu potwierdza opłacenie zamówienia
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function notify(Request $request){
+    public function notify(Request $request)
+    {
+        if ($request->order['status'] == 'COMPLETED') {
 
-    	if($request->order['status'] == 'COMPLETED'){
+            $order = Order::where('payu_order_id', '=', $request->order['extOrderId'])
+                ->firstOrFail();
 
-			$order = \App\Order::where('payu_order_id', '=', $request->order['extOrderId'])
-				->firstOrFail();
-
-			$order->confirm();
-
-		}
+            $order->confirm();
+        }
     }
 
     /**
@@ -29,55 +33,55 @@ class PayuController extends Controller
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function process(Request $request){
+    public function process(Request $request)
+    {
+        $payment = new Payment;
 
-        $payment = new \App\Helpers\Payment;
+        try {
 
-        try{
-
-            $order = \App\Order::create([
-                'user_id'   => \Auth::user()->id,
-                'price'     => $request->amount,
+            $order = Order::create([
+                'user_id'     => Auth::user()->id,
+                'price'       => $request->amount,
                 'description' => config('ivba.subscription_description_first'),
-                'duration'  => config('ivba.subscription_duration_first'),
+                'duration'    => config('ivba.subscription_duration_first'),
             ]);
 
-            $result = $payment->first($order, $request->input('value') );
+            $result = $payment->first($order, $request->input('value'));
 
-        } catch(\Exception $ex){
+        } catch (\Exception $ex) {
             return $ex->getMessage();
         }
 
-        \Auth::user()->update([
-            'card_token'    => $result->payMethods->payMethod->value,
+        Auth::user()->update([
+            'card_token' => $result->payMethods->payMethod->value,
         ]);
 
-        if( $result->status->statusCode == "WARNING_CONTINUE_3DS" 
-            || $result->status->statusCode == "WARNING_CONTINUE_CVV" 
-        ){
+        if ($result->status->statusCode == "WARNING_CONTINUE_3DS"
+            || $result->status->statusCode == "WARNING_CONTINUE_CVV"
+        ) {
             return redirect($result->redirectUri);
         }
 
-        if($result->status->statusCode == "SUCCESS"){
+        if ($result->status->statusCode == "SUCCESS") {
             $order->confirm();
             return redirect('/subscription_success');
         }
 
         // Nie powinniśmy tutaj trafić
         dd($result);
-
     }
 
     /**
      * Kontynuuj..
-     * @param  Order   $order   [description]
+     * @param  Order   $order [description]
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function continueOrder(\App\Order $order, Request $request){
+    public function continueOrder(Order $order, Request $request)
+    {
 
-        if(isset($request->statusCode)){
-            if($request->statusCode == "SUCCESS"){
+        if (isset($request->statusCode)) {
+            if ($request->statusCode == "SUCCESS") {
                 $order->confirm();
                 return redirect('/subscription_success');
                 // return redirect('/continue?order='.$order->id);
@@ -92,12 +96,13 @@ class PayuController extends Controller
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function continueRecurring(Request $request){
-        if(isset($request->statusCode)){
-            if($request->statusCode == "SUCCESS"){
-                $order = \App\Order::where('payu_refid', $request->refReqId)->first();
+    public function continueRecurring(Request $request)
+    {
+        if (isset($request->statusCode)) {
+            if ($request->statusCode == "SUCCESS") {
+                $order = Order::where('payu_refid', $request->refReqId)->first();
                 $order->confirm();
-                return redirect('/continue?order='.$order->id);
+                return redirect('/continue?order=' . $order->id);
             }
         }
 
@@ -108,33 +113,9 @@ class PayuController extends Controller
      * Pokaż widok końcowy procesu subskrypcji
      * @return [type] [description]
      */
-    public function subscriptionSuccess(){
-        $page = \App\Page::where('slug', 'subscription_success')->first();
+    public function subscriptionSuccess()
+    {
+        $page = Page::where('slug', 'subscription_success')->first();
         return view('subscription_success')->with(compact('page'));
     }
-
-    /**
-     * Potwierdzenie od payu.
-     * @param  Request $request [description]
-     * @return [type]           [description]
-     */
-    public function notifyRecurring(Request $request){
-        
-
-        // if($request->order['status'] == 'COMPLETED'){
-
-        //     $order = \App\Order::where('payu_order_id', '=', $request->order['extOrderId'])
-        //         ->firstOrFail();
-
-        //     $subscription = \App\Subscription::where('user_id', $order->user_id)
-        //         ->whereNull('cancelled_at')
-        //         ->first();
-
-        //     $order->confirm();
-
-        // }
-
-        \Log::info($request->all());
-    }
-
 }
