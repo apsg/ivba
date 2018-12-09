@@ -42,7 +42,7 @@ class ImportCoupons extends Command
         while($data = fgetcsv($f)){
             \App\Coupon::create([
                     'code' => $data[0],
-                    'type' => \App\Coupon::ZLOTOWY,
+                    'type' => \App\Coupon::TYPE_VALUE,
                     'amount' => config('app.full_access_price'),
                     'uses_left' => 1
                 ]);

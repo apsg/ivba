@@ -30,7 +30,7 @@
 						@foreach($coupons as $coupon)
 							<tr>
 								<td>{{ $coupon->code }}</td>
-								<td>{{ $coupon->type == 1 ? "złotowy" : "procentowy" }}</td>
+								<td>{{ $coupon->type_text }}</td>
 								<td>{{ $coupon->valueFormatted() }}</td>
 								<td>{{ $coupon->uses_left }}</td>
 								<td>
