@@ -1,14 +1,11 @@
 <?php
 
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\PagesController;
-
 require __DIR__ . '/admin/routes.php';
 require __DIR__ . '/learn/routes.php';
 
-Route::get('/', PagesController::class . '@home');
+Route::get('/', 'PagesController@home');
 
-Route::post('/search', PagesController::class . '@search');
+Route::post('/search', 'PagesController@search');
 
 Route::get('/courses', 'CoursesController@index');
 Route::get('/course', function () {
@@ -26,8 +23,8 @@ Route::post('/account/change_password', 'AccountController@changePassword');
 Route::patch('/user', 'AccountController@patch');
 
 Route::get('/cart', 'OrderController@showCart');
-Route::get('/continue', PagesController::class . '@continue');
-Route::get('/buy_access', PagesController::class . '@buyAccess');
+Route::get('/continue', 'PagesController@continue');
+Route::get('/buy_access', 'PagesController@buyAccess');
 Route::get('/cart/add_full_access', 'OrderController@addFullAccess');
 Route::get('/cart/remove_full_access', 'OrderController@removeFullAccess');
 Route::get('/cart/add_subscription', 'OrderController@addSubscription');
@@ -77,5 +74,5 @@ Route::get('/test', function () {
 });
 
 // To musi być na samym końcu, by nie blokowało innych ścieżek
-Route::get('/{page}/{subpage?}', PageController::class . '@show');
+Route::get('/{page}/{subpage?}', 'PageController@show');
 
