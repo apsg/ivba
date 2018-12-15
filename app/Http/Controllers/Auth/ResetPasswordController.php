@@ -1,13 +1,8 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Password;
 
 class ResetPasswordController extends Controller
 {
@@ -49,8 +44,8 @@ class ResetPasswordController extends Controller
     protected function rules()
     {
         return [
-            'token' => 'required',
-            'email' => 'required|email',
+            'token'    => 'required',
+            'email'    => 'required|email',
             'password' => [
                 'required',
                 'confirmed',
@@ -64,14 +59,14 @@ class ResetPasswordController extends Controller
      * Komunikaty błędów
      * @return [type] [description]
      */
-    protected function validationErrorMessages(){
+    protected function validationErrorMessages()
+    {
         return [
-            'email.required'    => 'Email jest wymagany',
-            'email.email'       => 'To nie jest poprawny adres email',
+            'email.required'              => 'Email jest wymagany',
+            'email.email'                 => 'To nie jest poprawny adres email',
             'password.different_password' => 'Hasło musi być inne, niż 4 ostatnie hasła',
         ];
     }
-
 
 
 }
