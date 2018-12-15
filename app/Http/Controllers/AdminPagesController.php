@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminPageRequest;
 use App\Page;
 use Illuminate\Http\Request;
-use App\Http\Requests\AdminPageRequest;
 
 class AdminPagesController extends Controller
 {
-    public function __construct(){
-    	$this->middleware('auth');
-    	$this->middleware('admin');
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     /**
@@ -18,19 +19,22 @@ class AdminPagesController extends Controller
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function index(Request $request){
-    	$pages = \App\Page::all();
-    	return view('admin.pages')->with(compact('pages'));
+    public function index(Request $request)
+    {
+        $pages = Page::all();
+
+        return view('admin.pages')->with(compact('pages'));
     }
 
 
     /**
      * Pokaż edycję strony
-     * @param  Page   $page [description]
+     * @param  Page $page [description]
      * @return [type]       [description]
      */
-    public function show(Page $page){
-    	return view('admin.pages.page')->with(compact('page'));
+    public function show(Page $page)
+    {
+        return view('admin.pages.page')->with(compact('page'));
     }
 
     /**
@@ -38,17 +42,20 @@ class AdminPagesController extends Controller
      * @param  AdminPageRequest $request [description]
      * @return [type]                    [description]
      */
-    public function update(Page $page, AdminPageRequest $request){
-    	$page->update($request->only(['title', 'content', 'slug']));
-    	return back();
+    public function update(Page $page, AdminPageRequest $request)
+    {
+        $page->update($request->only(['title', 'content', 'slug']));
+
+        return redirect('/admin/pages/' . $page->slug);
     }
 
     /**
      * Pokaż formularz dodawania nowej strony
      * @return [type] [description]
      */
-    public function create(){
-    	return view('admin.pages.new');
+    public function create()
+    {
+        return view('admin.pages.new');
     }
 
     /**
@@ -56,9 +63,11 @@ class AdminPagesController extends Controller
      * @param  AdminPageRequest $request [description]
      * @return [type]                    [description]
      */
-    public function store(AdminPageRequest $request){
-    	$page = Page::create($request->only(['title', 'content', 'slug']));
-    	return redirect('/admin/pages/'.$page->slug);
+    public function store(AdminPageRequest $request)
+    {
+        $page = Page::create($request->only(['title', 'content', 'slug']));
+
+        return redirect('/admin/pages/' . $page->slug);
     }
 
 }

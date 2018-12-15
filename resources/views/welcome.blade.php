@@ -104,31 +104,29 @@
   </div>
 </section>
 
+{{--<section class="well">--}}
+{{--<div class="container">--}}
+{{--<div class="row ">--}}
+    {{--<div class=" col-sm-offset-2 col-md-offset-2 col-sm-7  col-md-7 col-xs-12 ">--}}
+        {{--<h3> Koszt nauki z nami</h3>--}}
 
+        {{--@foreach($access_options as $option)--}}
 
-<section class="well">
-<div class="container">
-<div class="row ">
-    <div class=" col-sm-offset-2 col-md-offset-2 col-sm-7  col-md-7 col-xs-12 ">
-        <h3> Koszt nauki z nami</h3>
-
-        @foreach($access_options as $option)
-
-        <div class="box">
-            <div class="box_aside wow fadeInLeft" data-wow-delay="0.1s">
-                {{ abs($option->price) }} zł
-            </div>
-            <div class="box_cnt__no-flow wow fadeInRight" data-wow-delay="0.2s">
-                <h4><a href="{{ $option->buyLink() }}">{{ $option->name }}</a></h4>
-                <p>{{ $option->description }}</p>
-            </div>
-        </div>
-        @endforeach
-        
-    </div>
-</div>
-</div>
-</section>
+        {{--<div class="box">--}}
+            {{--<div class="box_aside wow fadeInLeft" data-wow-delay="0.1s">--}}
+                {{--{{ abs($option->price) }} zł--}}
+            {{--</div>--}}
+            {{--<div class="box_cnt__no-flow wow fadeInRight" data-wow-delay="0.2s">--}}
+                {{--<h4><a href="{{ $option->buyLink() }}">{{ $option->name }}</a></h4>--}}
+                {{--<p>{{ $option->description }}</p>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--@endforeach--}}
+        {{----}}
+    {{--</div>--}}
+{{--</div>--}}
+{{--</div>--}}
+{{--</section>--}}
 
 <section class="well2 bg-primary">
 <div class="container">
