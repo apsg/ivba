@@ -3,12 +3,14 @@
 namespace App;
 
 use Carbon\Carbon;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -16,10 +18,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 
-        'password', 
-        'full_access_expires', 
-        'last_proof_at', 
+        'name',
+        'email',
+        'password',
+        'full_access_expires',
+        'last_proof_at',
         'last_proof_id',
         'days_bought',
         'expires_at',
@@ -37,14 +40,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     protected $casts = [
         'full_access_expires' => 'datetime',
-        'unsubscribed_at'   => 'datetime',
-        'last_proof_at'     => 'datetime',
-        'expires_at'        => 'datetime',
+        'unsubscribed_at'     => 'datetime',
+        'last_proof_at'       => 'datetime',
+        'expires_at'          => 'datetime',
         'changed_password_at' => 'datetime',
     ];
 
@@ -56,7 +60,8 @@ class User extends Authenticatable
      * Kursy rozpoczęte przez tego użytkownika
      * @return [type] [description]
      */
-    public function courses(){
+    public function courses()
+    {
         return $this->belongsToMany(\App\Course::class)
             ->withPivot('finished_at')
             ->withTimestamps();
@@ -66,7 +71,8 @@ class User extends Authenticatable
      * Lekcje rozpoczęte przez tego użytkownika
      * @return [type] [description]
      */
-    public function lessons(){
+    public function lessons()
+    {
         return $this->belongsToMany(\App\Lesson::class)
             ->withPivot('finished_at')
             ->withTimestamps();
@@ -76,7 +82,8 @@ class User extends Authenticatable
      * Testy tego użytkownika
      * @return [type] [description]
      */
-    public function quizzes(){
+    public function quizzes()
+    {
         return $this->belongsToMany(\App\Quiz::class)
             ->withPivot('finished_date', 'points', 'is_pass')
             ->withTimestamps();
@@ -86,7 +93,8 @@ class User extends Authenticatable
      * Odpowiedzi tego użytkownika
      * @return [type] [description]
      */
-    public function answers(){
+    public function answers()
+    {
         return $this->hasMany(\App\Answer::class);
     }
 
@@ -94,7 +102,8 @@ class User extends Authenticatable
      * Zamówienia tego użytkownika
      * @return [type] [description]
      */
-    public function orders(){
+    public function orders()
+    {
         return $this->hasMany(\App\Order::class);
     }
 
@@ -102,7 +111,8 @@ class User extends Authenticatable
      * Emaile wysyłane do tego użytkownika
      * @return [type] [description]
      */
-    public function emails(){
+    public function emails()
+    {
         return $this->morphMany(\App\Email::class, 'to');
     }
 
@@ -110,7 +120,8 @@ class User extends Authenticatable
      * Ostatni wysłany proof
      * @return [type] [description]
      */
-    public function last_proof(){
+    public function last_proof()
+    {
         return $this->belongsTo(\App\Proof::class, 'last_proof_id');
     }
 
@@ -118,7 +129,8 @@ class User extends Authenticatable
      * Dni wykupione przez tego użytkownika
      * @return [type] [description]
      */
-    public function days(){
+    public function days()
+    {
         return $this->hasMany(\App\AccessDay::class);
     }
 
@@ -126,14 +138,16 @@ class User extends Authenticatable
      * Ostatni dzień dostępu danego użytkownika
      * @return [type] [description]
      */
-    public function lastDay(){
+    public function lastDay()
+    {
 
         $last = $this->days()->orderBy('date', 'desc')->first();
 
-        if($last)
+        if ($last) {
             return $last->date;
-        else
+        } else {
             return null;
+        }
     }
 
 
@@ -141,7 +155,8 @@ class User extends Authenticatable
      * Subskrypcje tego użytkownika
      * @return [type] [description]
      */
-    public function subscriptions(){
+    public function subscriptions()
+    {
         return $this->hasMany(\App\Subscription::class);
     }
 
@@ -149,13 +164,15 @@ class User extends Authenticatable
      * Aktywna subskrypcja tego użytkownika
      * @return [type] [description]
      */
-    public function currentSubscription(){
+    public function currentSubscription()
+    {
         $sub = $this->subscriptions()
             ->where('valid_until', '>=', Carbon::now())
             ->first();
-        
-        if($sub)
+
+        if ($sub) {
             return $sub;
+        }
 
         $this->subscriptions()
             ->where('is_active', true)
@@ -165,14 +182,15 @@ class User extends Authenticatable
         return $this->subscriptions()
             ->where('valid_until', '>=', Carbon::now())
             ->first();
-    }   
+    }
 
     /**
      * Zwraca użytkowników, którzy nie wypisali się z maili typu Followup
      * @param  [type] $query [description]
      * @return [type]        [description]
      */
-    public function scopeFollowups($query){
+    public function scopeFollowups($query)
+    {
         return $query->whereNull('unsubscribed_at');
     }
 
@@ -180,7 +198,8 @@ class User extends Authenticatable
      * Opłacone zamówienia tego użytkownika
      * @return [type] [description]
      */
-    public function confirmedOrders(){
+    public function confirmedOrders()
+    {
         return $this->orders()
             ->whereNotNull('confirmed_at')
             ->orderBy('created_at', 'desc')
@@ -191,16 +210,18 @@ class User extends Authenticatable
      * Zwraca aktywne zamówienie lub tworzy nowe
      * @return App\Order [description]
      */
-    public function getCurrentOrder(){
-        if( $order =  $this->orders()
+    public function getCurrentOrder()
+    {
+        if ($order = $this->orders()
             ->whereNull('confirmed_at')
             ->whereNull('payu_order_id')
-            ->first() ){
+            ->first()) {
             return $order;
-        }else{
+        } else {
             $order = new \App\Order;
             $order->user()->associate($this);
             $order->save();
+
             return $order->fresh();
         }
     }
@@ -209,15 +230,17 @@ class User extends Authenticatable
      * Zwraca URL do gravatara danego użytkownika
      * @return [type] [description]
      */
-    public function gravatarUrl(){
-        return "https://www.gravatar.com/avatar/".md5($this->email);
+    public function gravatarUrl()
+    {
+        return "https://www.gravatar.com/avatar/" . md5($this->email);
     }
 
     /**
      * Czy dany użytkownik ma aktywny pełen dostęp?
      * @return boolean [description]
      */
-    public function hasFullAccess(){
+    public function hasFullAccess()
+    {
         return $this->full_access_expires && $this->full_access_expires->isFuture();
     }
 
@@ -226,7 +249,8 @@ class User extends Authenticatable
      * @param  [type]  $lesson_id [description]
      * @return boolean            [description]
      */
-    public function hasStartedLesson($lesson_id){
+    public function hasStartedLesson($lesson_id)
+    {
         return $this->lessons()->where('lesson_id', $lesson_id)->exists();
     }
 
@@ -235,7 +259,8 @@ class User extends Authenticatable
      * @param  [type]  $course_id [description]
      * @return boolean            [description]
      */
-    public function hasStartedCourse($course_id){
+    public function hasStartedCourse($course_id)
+    {
         return $this->courses()->where('course_id', $course_id)->exists();
     }
 
@@ -244,7 +269,8 @@ class User extends Authenticatable
      * @param  [type]  $quiz_id [description]
      * @return boolean          [description]
      */
-    public function hasStartedQuiz($quiz_id){
+    public function hasStartedQuiz($quiz_id)
+    {
         return $this->quizzes()->where('quiz_id', $quiz_id)->exists();
     }
 
@@ -253,7 +279,8 @@ class User extends Authenticatable
      * @param  [type]  $lesson_id [description]
      * @return boolean            [description]
      */
-    public function hasFinishedLesson($lesson_id){
+    public function hasFinishedLesson($lesson_id)
+    {
         return $this->lessons()
             ->where('lesson_id', $lesson_id)
             ->whereNotNull('finished_at')
@@ -265,7 +292,8 @@ class User extends Authenticatable
      * @param  [type]  $course_id [description]
      * @return boolean            [description]
      */
-    public function hasFinishedCourse($course_id){
+    public function hasFinishedCourse($course_id)
+    {
         return $this->courses()
             ->where('course_id', $course_id)
             ->whereNotNull('finished_at')
@@ -277,12 +305,14 @@ class User extends Authenticatable
      * @param  [type]  $course_id [description]
      * @return boolean            [description]
      */
-    public function hasFinishedAllLessons($course_id){
+    public function hasFinishedAllLessons($course_id)
+    {
         $lesson_ids = \App\Course::findOrFail($course_id)->lessons->pluck('id');
 
         foreach ($lesson_ids as $lesson_id) {
-            if( ! $this->hasFinishedLesson($lesson_id) )
+            if (!$this->hasFinishedLesson($lesson_id)) {
                 return false;
+            }
         }
 
         return true;
@@ -293,7 +323,8 @@ class User extends Authenticatable
      * @param  [type]  $quiz_id [description]
      * @return boolean          [description]
      */
-    public function hasFinishedQuiz( $quiz_id ){
+    public function hasFinishedQuiz($quiz_id)
+    {
         return $this->quizzes()
             ->where('quiz_id', $quiz_id)
             ->whereNotNull('finished_date')
@@ -305,11 +336,12 @@ class User extends Authenticatable
      * @param  [type]  $course_id [description]
      * @return boolean            [description]
      */
-    public function hasFinishedAllQuizzes( $course_id ){
+    public function hasFinishedAllQuizzes($course_id)
+    {
         $quiz_ids = \App\Quiz::where('course_id', $course_id)->get()->pluck('id');
 
-        foreach ($quiz_ids as  $quiz_id) {
-            if( ! $this->hasFinishedQuiz($quiz_id) ){
+        foreach ($quiz_ids as $quiz_id) {
+            if (!$this->hasFinishedQuiz($quiz_id)) {
                 return false;
             }
         }
@@ -322,7 +354,8 @@ class User extends Authenticatable
      * @param  [type]  $quiz_id [description]
      * @return boolean          [description]
      */
-    public function hasPassedQuiz( $quiz_id ){
+    public function hasPassedQuiz($quiz_id)
+    {
         return $this->quizzes()
             ->where('quiz_id', $quiz_id)
             ->whereNotNull('finished_date')
@@ -335,11 +368,12 @@ class User extends Authenticatable
      * @param  [type]  $course_id [description]
      * @return boolean            [description]
      */
-    public function hasPassedAllQuizzes( $course_id ){
+    public function hasPassedAllQuizzes($course_id)
+    {
         $quiz_ids = \App\Quiz::where('course_id', $course_id)->get()->pluck('id');
 
-        foreach ($quiz_ids as  $quiz_id) {
-            if( ! $this->hasPassedQuiz($quiz_id) ){
+        foreach ($quiz_ids as $quiz_id) {
+            if (!$this->hasPassedQuiz($quiz_id)) {
                 return false;
             }
         }
@@ -352,9 +386,10 @@ class User extends Authenticatable
      * @param  [type]  $course_id [description]
      * @return boolean            [description]
      */
-    public function hasPassedCourse( $course_id ){
-        return $this->hasFinishedAllLessons( $course_id )
-            && $this->hasPassedAllQuizzes( $course_id );
+    public function hasPassedCourse($course_id)
+    {
+        return $this->hasFinishedAllLessons($course_id)
+            && $this->hasPassedAllQuizzes($course_id);
     }
 
     /**
@@ -362,14 +397,16 @@ class User extends Authenticatable
      * @param  [type] $days [description]
      * @return [type]       [description]
      */
-    public function updateFullAccess($days){
-        if(empty($this->full_access_expires) || $this->full_access_expires->isPast() ){
+    public function updateFullAccess($days)
+    {
+        if (empty($this->full_access_expires) || $this->full_access_expires->isPast()) {
             $this->full_access_expires = Carbon::now()->addDays($days);
             $this->save();
-        }else{
+        } else {
             $this->full_access_expires = $this->full_access_expires->addDays($days);
             $this->save();
         }
+
         return $this;
     }
 
@@ -377,13 +414,16 @@ class User extends Authenticatable
      * Czy można dodać kolejny pełen dostęp do tego konta?
      * @return [type] [description]
      */
-    public function canAddFullAccess(){
-        
-        if(is_null($this->full_access_expires) || $this->full_access_expires->isPast())
-            return true;
+    public function canAddFullAccess()
+    {
 
-        if($this->full_access_expires->isFuture() && $this->full_access_expires->diffInDays() < 365)
+        if (is_null($this->full_access_expires) || $this->full_access_expires->isPast()) {
             return true;
+        }
+
+        if ($this->full_access_expires->isFuture() && $this->full_access_expires->diffInDays() < 365) {
+            return true;
+        }
 
         return false;
 
@@ -393,31 +433,35 @@ class User extends Authenticatable
      * Usuń użytkownika
      * @return [type] [description]
      */
-    public function deleteLink(){
-        return url('/admin/user/'.$this->id.'/delete');
+    public function deleteLink()
+    {
+        return url('/admin/user/' . $this->id . '/delete');
     }
 
     /**
      * Link do wysyłania wygenerowanego nowego hasła
      * @return [type] [description]
      */
-    public function sendPasswordLink(){ 
-        return url('/admin/user/'.$this->id.'/send_password');
+    public function sendPasswordLink()
+    {
+        return url('/admin/user/' . $this->id . '/send_password');
     }
 
     /**
      * Pokaż podgląd/edycję użytkownika
      * @return [type] [description]
      */
-    public function editLink(){
-        return url('/admin/user/'.$this->id);
+    public function editLink()
+    {
+        return url('/admin/user/' . $this->id);
     }
 
     /**
      * Wypisuje użytkownika z otrzymywania powiadomień automatycznych.
      * @return [type] [description]
      */
-    public function unsubscribe(){
+    public function unsubscribe()
+    {
         $this->unsubscribed_at = Carbon::now();
         $this->emails->each->delete();
         flash('Nie będziesz już otrzymywać powiadomień automatycznych');
@@ -438,7 +482,8 @@ class User extends Authenticatable
      * Zwraca aktualny dzień subskrypcji danego użytkownika
      * @return [type] [description]
      */
-    public function getCurrentDayAttribute(){
+    public function getCurrentDayAttribute()
+    {
 
         return $this->days()
             ->where('date', '<=', Carbon::now()->format('Y-m-d'))
@@ -449,7 +494,8 @@ class User extends Authenticatable
      * Ile dni dostępu pozostało temu użytkownikowi
      * @return [type] [description]
      */
-    public function getRemainingDaysAttribute(){
+    public function getRemainingDaysAttribute()
+    {
         return $this->days()
             ->where('date', '>=', Carbon::now()->format('Y-m-d'))
             ->count();
@@ -459,21 +505,22 @@ class User extends Authenticatable
      * Dodaj określoną liczbę dni.
      * @param [type] $days [description]
      */
-    public function addSubscriptionDays($days){
+    public function addSubscriptionDays($days)
+    {
 
         $last = $this->lastDay();
 
-        if(!$last || $last->isPast()){
+        if (!$last || $last->isPast()) {
             $last = Carbon::now();
             $this->days()->create([
-                'date' => $last->format('Y-m-d')
+                'date' => $last->format('Y-m-d'),
             ]);
         }
 
-        for($i = 0; $i<$days; $i++){
+        for ($i = 0; $i < $days; $i++) {
             $last = $last->addDays(1);
             $this->days()->create([
-                'date' => $last->format('Y-m-d')
+                'date' => $last->format('Y-m-d'),
             ]);
         }
 
@@ -484,19 +531,20 @@ class User extends Authenticatable
      * ustaw dni subskrypcji do określonej daty
      * @param Carbon $date [description]
      */
-    public function addSubscriptionDaysUntil(Carbon $date){
+    public function addSubscriptionDaysUntil(Carbon $date)
+    {
 
         $current = clone $date;
 
-        while(!$current->isPast()){
+        while (!$current->isPast()) {
             $this->days()->firstOrCreate([
-                'date' => $current->format('Y-m-d')
+                'date' => $current->format('Y-m-d'),
             ]);
             $current->subDays(1);
         }
         // dzisiejszy dzień ponownie, jeśli załapie się jako past
         $this->days()->firstOrCreate([
-            'date' => $current->format('Y-m-d')
+            'date' => $current->format('Y-m-d'),
         ]);
 
     }
@@ -505,8 +553,9 @@ class User extends Authenticatable
      * Czy ten użytkownik ma aktywną subskrypcję
      * @return boolean [description]
      */
-    public function hasActiveSubscription(){
-        return !! $this->currentSubscription();
+    public function hasActiveSubscription()
+    {
+        return !!$this->currentSubscription();
     }
 
     /**
@@ -514,7 +563,8 @@ class User extends Authenticatable
      * @param  [type]  $date [description]
      * @return boolean       [description]
      */
-    public function hasDayAccess($date = null){
+    public function hasDayAccess($date = null)
+    {
         $day = Carbon::parse($date);
 
         return $this->days()->where('date', $day->format('Y-m-d'))->exists();
@@ -524,8 +574,9 @@ class User extends Authenticatable
      * Zwraca imię i nazwisko
      * @return [type] [description]
      */
-    public function getFullNameAttribute(){
-        return $this->first_name . ' ' .$this->last_name;
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 
 }
