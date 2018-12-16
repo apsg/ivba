@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Cache;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class HomeController extends Controller
 {
@@ -19,22 +23,27 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index(Request $request)
     {
-        $startDate = $request->input('startDate', 
-            \Carbon\Carbon::now()->startOfMonth()->format('Y-m-d')
-            );
+        $startDate = $request->input('startDate',
+            Carbon::now()->startOfMonth()->format('Y-m-d')
+        );
 
-        $endDate = $request->input('endDate', 
-            \Carbon\Carbon::now()->endOfMonth()->format('Y-m-d')
-            );
-        
-        $lastUsers = \Cache::remember('last_users', 10, function(){
-                return \App\User::latest()->take(10)->get();
-            });
+        $endDate = $request->input('endDate',
+            Carbon::now()->endOfMonth()->format('Y-m-d')
+        );
+
+        $lastUsers = Cache::remember('last_users', 10, function () {
+            return User::latest()->take(10)->get();
+        });
 
         return view('home')->with(compact('startDate', 'endDate', 'lastUsers'));
+    }
+
+    public function admin()
+    {
+        return redirect('/admin');
     }
 }

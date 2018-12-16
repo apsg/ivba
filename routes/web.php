@@ -8,9 +8,7 @@ Route::get('/', 'PagesController@home');
 Route::post('/search', 'PagesController@search');
 
 Route::get('/courses', 'CoursesController@index');
-Route::get('/course', function () {
-    return redirect('/courses', 301);
-});
+Route::get('/course', 'CoursesController@redirect');
 Route::get('/course/{course}', 'CoursesController@show');
 Route::get('/course/{course}/buy', 'OrderController@orderCourse');
 
@@ -45,9 +43,7 @@ Route::get('/order/{order}/remove_coupon/{coupon}', 'OrderController@removeCoupo
 Route::get('subscription/create', 'PayPalController@create');
 Route::get('/subscription/{subscription}/cancel', 'SubscriptionsController@cancel');
 
-Route::get('/home', function () {
-    return redirect('admin');
-});
+Route::get('/home', 'HomeController@admin');
 
 Route::get('/unsubscribe/{code}', 'EmailsController@unsubscribe');
 Route::get('/email/{email}/img', 'EmailsController@getOpenedImg');

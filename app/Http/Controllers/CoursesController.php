@@ -53,4 +53,9 @@ class CoursesController extends Controller
         return view('pages.course')->with(compact('course'));
     }
 
+    public function redirect()
+    {
+        return redirect('/courses');
+    }
+
 }
