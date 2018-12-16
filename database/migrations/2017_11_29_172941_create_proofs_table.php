@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateProofsTable extends Migration
 {
@@ -27,12 +27,13 @@ class CreateProofsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')->on('users')
-                ->onDelete('no action');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
             $table->timestamps();
         });
 
-        Schema::table('users', function(Blueprint $table){
+        Schema::table('users', function (Blueprint $table) {
             $table->unsignedInteger('last_proof_id')->nullable();
             $table->datetime('last_proof_at')->nullable();
 
@@ -51,7 +52,7 @@ class CreateProofsTable extends Migration
     public function down()
     {
 
-        Schema::table('users', function(Blueprint $table){
+        Schema::table('users', function (Blueprint $table) {
             $table->dropForeign(['last_proof_id']);
             $table->dropColumn('last_proof_id');
             $table->dropColumn('last_proof_at');
