@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="shortcut icon" type="image/x-icon" href="{{ url('images/favicon.ico') }}">
-<title>Zaloguj się | iVBA.pl</title>
+<title>Zaloguj się | inauka.pl</title>
 <!-- Reset CSS -->
 <link href="{{ url('/css/app.css') }}" rel="stylesheet" type="text/css">
 <!-- Font Awesome -->

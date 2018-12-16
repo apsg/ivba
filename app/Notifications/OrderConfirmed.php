@@ -45,7 +45,7 @@ class OrderConfirmed extends Notification
         return (new MailMessage)
                     ->subject('Twoje zamówienie zostało potwierdzone')
                     ->greeting('Cześć!')
-                    ->line('Otrzymaliśmy potwierdzenie Twojego zamówienia w systemie iVBA.pl.')
+                    ->line('Otrzymaliśmy potwierdzenie Twojego zamówienia w systemie inauka.pl.')
                     ->line('Zamówienie numer '.$this->order->id.' z dnia '.$this->order->created_at.' zostało potwierdzone, a dostępy aktywowane.')
                     ->line('Opis zamówienia: '.$this->order->description)
                     ->line('Od teraz zakupione dostępy lub abonamenty są aktywne. Możesz sprawdzić swoje dostępy na swoim profilu:')

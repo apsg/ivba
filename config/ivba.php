@@ -26,6 +26,6 @@ return [
 
 	'subscription_duration' => 1,
 
-	'subscription_description' => 'Abonament miesięczny iVBA.pl',
+	'subscription_description' => 'Abonament miesięczny inauka.pl',
 
 ];

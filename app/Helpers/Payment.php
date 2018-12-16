@@ -31,7 +31,7 @@ class Payment{
 
 	    $payu['customerIp'] = request()->ip();
 	    $payu['merchantPosId'] = \OpenPayU_Configuration::getMerchantPosId();
-	    $payu['description'] = 'Zamówienie na iVBA.pl';
+	    $payu['description'] = 'Zamówienie na inauka.pl';
 	    $payu['currencyCode'] = 'PLN';
 	    $payu['totalAmount'] = 100*$order->total();
 	    $payu['extOrderId'] = $order->id . '_' . uniqid();

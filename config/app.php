@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'iVBA.pl'),
+    'name' => env('APP_NAME', 'inauka.pl'),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://ivba.pl'),
+    'url' => env('APP_URL', 'http://inauka.pl'),
 
     /*
     |--------------------------------------------------------------------------

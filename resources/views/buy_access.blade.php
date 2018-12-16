@@ -94,7 +94,7 @@
                 @endif
             @else
                 <h1>Kup pełen dostęp do strony</h1>
-                <p>W tym miejscu możesz kupić roczny dostęp do WSZYSTKICH zasobów na iVBA.pl na okres 1 roku.</p>
+                <p>W tym miejscu możesz kupić roczny dostęp do WSZYSTKICH zasobów na inauka.pl na okres 1 roku.</p>
                 <ul style="list-style: circle;">
                     <li>Podana cena jest ceną brutto i zawiera 23% VAT - brak innych opłat</li>
                     <li>Dostęp jest aktywowany na rok czasu - 365 dni</li>

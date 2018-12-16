@@ -36,6 +36,6 @@ class ContactFormMail extends Mailable
     {
         return $this->markdown('mails.contact_form')
             ->replyTo($this->email, $this->name)
-            ->subject('Formularz kontaktowy ze strony iVBA.pl');
+            ->subject('Formularz kontaktowy ze strony inauka.pl');
     }
 }

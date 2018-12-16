@@ -45,7 +45,7 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-Pozdrawiam!<br>Mateusz z iVBA.pl
+Pozdrawiam!<br>Mateusz z inauka.pl
 @endif
 
 {{-- Subcopy --}}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <title>@yield('title') iVBA - kurs VBA on-line</title>
+    <title>@yield('title') inauka.pl</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no"/>
@@ -159,7 +159,7 @@
                 <div class=" col-sm-offset-2 col-md-offset-2 col-sm-8  col-md-8 col-xs-12 ">
 
                     <div class="copyright">
-                        <h1><a href="./">iVBA</a></h1> © <span id="copyright-year"></span> Wszystie prawa zastrzeżone
+                        <h1><a href="./">inauka</a></h1> © <span id="copyright-year"></span> Wszystie prawa zastrzeżone
                     </div>
                     <ul class="inline-list">
                         <li><a href="#" class="fa-facebook"></a></li>
