@@ -1,7 +1,7 @@
 <?php
-
 namespace App;
 
+use App\Events\UserRegistered;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -53,7 +53,7 @@ class User extends Authenticatable
     ];
 
     protected $dispatchesEvents = [
-        'created' => \App\Events\UserRegistered::class,
+        'created' => UserRegistered::class,
     ];
 
     /**
@@ -62,7 +62,7 @@ class User extends Authenticatable
      */
     public function courses()
     {
-        return $this->belongsToMany(\App\Course::class)
+        return $this->belongsToMany(Course::class)
             ->withPivot('finished_at')
             ->withTimestamps();
     }
@@ -73,7 +73,7 @@ class User extends Authenticatable
      */
     public function lessons()
     {
-        return $this->belongsToMany(\App\Lesson::class)
+        return $this->belongsToMany(Lesson::class)
             ->withPivot('finished_at')
             ->withTimestamps();
     }
@@ -84,7 +84,7 @@ class User extends Authenticatable
      */
     public function quizzes()
     {
-        return $this->belongsToMany(\App\Quiz::class)
+        return $this->belongsToMany(Quiz::class)
             ->withPivot('finished_date', 'points', 'is_pass')
             ->withTimestamps();
     }
@@ -95,7 +95,7 @@ class User extends Authenticatable
      */
     public function answers()
     {
-        return $this->hasMany(\App\Answer::class);
+        return $this->hasMany(Answer::class);
     }
 
     /**
@@ -104,7 +104,7 @@ class User extends Authenticatable
      */
     public function orders()
     {
-        return $this->hasMany(\App\Order::class);
+        return $this->hasMany(Order::class);
     }
 
     /**
@@ -113,7 +113,7 @@ class User extends Authenticatable
      */
     public function emails()
     {
-        return $this->morphMany(\App\Email::class, 'to');
+        return $this->morphMany(Email::class, 'to');
     }
 
     /**
@@ -122,7 +122,7 @@ class User extends Authenticatable
      */
     public function last_proof()
     {
-        return $this->belongsTo(\App\Proof::class, 'last_proof_id');
+        return $this->belongsTo(Proof::class, 'last_proof_id');
     }
 
     /**
@@ -131,7 +131,7 @@ class User extends Authenticatable
      */
     public function days()
     {
-        return $this->hasMany(\App\AccessDay::class);
+        return $this->hasMany(AccessDay::class);
     }
 
     /**
@@ -157,7 +157,7 @@ class User extends Authenticatable
      */
     public function subscriptions()
     {
-        return $this->hasMany(\App\Subscription::class);
+        return $this->hasMany(Subscription::class);
     }
 
     /**
@@ -218,7 +218,7 @@ class User extends Authenticatable
             ->first()) {
             return $order;
         } else {
-            $order = new \App\Order;
+            $order = new Order;
             $order->user()->associate($this);
             $order->save();
 
@@ -307,7 +307,7 @@ class User extends Authenticatable
      */
     public function hasFinishedAllLessons($course_id)
     {
-        $lesson_ids = \App\Course::findOrFail($course_id)->lessons->pluck('id');
+        $lesson_ids = Course::findOrFail($course_id)->lessons->pluck('id');
 
         foreach ($lesson_ids as $lesson_id) {
             if (!$this->hasFinishedLesson($lesson_id)) {
@@ -338,7 +338,7 @@ class User extends Authenticatable
      */
     public function hasFinishedAllQuizzes($course_id)
     {
-        $quiz_ids = \App\Quiz::where('course_id', $course_id)->get()->pluck('id');
+        $quiz_ids = Quiz::where('course_id', $course_id)->get()->pluck('id');
 
         foreach ($quiz_ids as $quiz_id) {
             if (!$this->hasFinishedQuiz($quiz_id)) {
@@ -370,7 +370,7 @@ class User extends Authenticatable
      */
     public function hasPassedAllQuizzes($course_id)
     {
-        $quiz_ids = \App\Quiz::where('course_id', $course_id)->get()->pluck('id');
+        $quiz_ids = Quiz::where('course_id', $course_id)->get()->pluck('id');
 
         foreach ($quiz_ids as $quiz_id) {
             if (!$this->hasPassedQuiz($quiz_id)) {
