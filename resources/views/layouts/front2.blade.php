@@ -30,7 +30,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="{{ asset('images/v2/inauka.png') }}">
                 </a>
             </div>
 

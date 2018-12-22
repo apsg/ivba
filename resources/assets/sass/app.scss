@@ -1,9 +1,19 @@
-
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Lato|Raleway:300,300i,400,400i,500,500i,700,700i,900,900i');
-
 // Variables
 @import "variables";
-
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.navbar-default {
+    background-color: $color-bg-orabge-dark;
+
+    .navbar-brand {
+        color: $color-white;
+    }
+
+    .navbar-nav > li > a{
+        color: $color-white;
+        font-weight: 700;
+    }
+}
