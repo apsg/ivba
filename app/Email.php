@@ -20,11 +20,11 @@ class Email extends Model
         'unsubscribed_at'   => 'datetime',
     ];
 
-    protected static function boot(){
-    	static::creating(function($model){
-    		$model->unsubscribe_code = uniqid();
-    	});
-    }
+//    protected static function boot(){
+//    	static::creating(function($model){
+//    		$model->unsubscribe_code = uniqid();
+//    	});
+//    }
 
     /**
      * Do kogo możemy wysyłać? Użytkownik albo ktoś zapisany z newslettera
