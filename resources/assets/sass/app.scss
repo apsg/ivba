@@ -3,16 +3,29 @@
 // Variables
 @import "variables";
 // Bootstrap
-@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~bootstrap/scss/bootstrap";
 
-.navbar-default {
+
+
+.header {
     background-color: $color-bg-orabge-dark;
+
+    .promo {
+        h1{
+            color: $color-white;
+            font-weight: 900;
+        }
+    }
+}
+
+.navbar-orange {
+    background-color: transparent;
 
     .navbar-brand {
         color: $color-white;
     }
 
-    .navbar-nav > li > a{
+    .navbar-nav > li > a {
         color: $color-white;
         font-weight: 700;
     }

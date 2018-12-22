@@ -26,16 +26,15 @@ $color-bg-orabge-dark: #e36427;
 
 $footer-background: $color-black;
 
-
 // Typography
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 $font-family-sans-serif: "Lato", "Raleway", sans-serif;
-$font-size-base: 14px;
+$font-size-base: 0.875rem;
 $line-height-base: 1.6;
-$text-color: #636b6f;
+$text-color: $color-gray;
 
 // Navbar
-$navbar-default-bg: #fff;
+$navbar-default-bg: $color-orange;
 
 // Buttons
 $btn-default-color: $text-color;
@@ -46,4 +45,4 @@ $input-border-focus: lighten($brand-primary, 25%);
 $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
-$panel-default-heading-bg: #fff;
+$panel-default-heading-bg: $color-bg-gray-dark;
