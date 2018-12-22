@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Course;
 use App\FullAccessOption;
 use App\Lesson;
+use App\MenuItem;
 use App\Order;
 use Cache;
 use Illuminate\Http\Request;
@@ -39,7 +40,9 @@ class PagesController extends Controller
 
         $is_front = true;
 
-        return view('layouts.front2');
+        $menu = MenuItem::getMenu(1);
+
+        return view('layouts.front2')->with(compact('menu'));
 
         return view('welcome')
             ->with(compact('courses', 'lessons', 'blog_items', 'is_front', 'access_options'));
