@@ -3,6 +3,7 @@
 namespace App;
 
 // use App\Helpers\Wistia;
+use ErrorException;
 use Illuminate\Database\Eloquent\Model;
 use ImageHelper;
 use Intervention\Image\Exception\NotReadableException;
@@ -48,14 +49,14 @@ class Image extends Model
         try {
             if (!file_exists(storage_path('app/public/images/' . $thumb))) {
                 $img = ImageHelper::make($this->path());
-
-
                 $img->fit($width, $height);
                 $img->save(storage_path('app/public/images/' . $thumb));
             }
 
             return url('storage/images/' . $thumb);
         } catch (NotReadableException $exception) {
+            return null;
+        } catch (ErrorException $exception) {
             return null;
         }
     }
