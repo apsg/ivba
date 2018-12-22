@@ -1,10 +1,12 @@
 <?php
-
 namespace App\Providers;
 
+use App\Email;
+use App\Observers\EmailObserver;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,11 +18,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        \Carbon\Carbon::setLocale('pl');
+        Carbon::setLocale('pl');
 
-        Validator::extend('different_password', function($attribute, $value, $parameters, $validator){
-
-
+        Validator::extend('different_password', function ($attribute, $value, $parameters, $validator) {
             $passwords = \DB::table('passwords')
                 ->select('password')
                 ->where('email', $validator->getData()['email'])
@@ -28,13 +28,16 @@ class AppServiceProvider extends ServiceProvider
                 ->take(4)
                 ->get();
 
-            foreach($passwords as $password){
-                if(\Hash::check($value, $password->password))
+            foreach ($passwords as $password) {
+                if (\Hash::check($value, $password->password)) {
                     return false;
+                }
             }
 
             return true;
         });
+
+        Email::observe(EmailObserver::class);
     }
 
     /**

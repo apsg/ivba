@@ -9,24 +9,4 @@ class EmailObserver
     {
         $email->unsubscribe_code = uniqid();
     }
-
-    public function updated(Email $email)
-    {
-        //
-    }
-
-    public function deleted(Email $email)
-    {
-        //
-    }
-
-    public function restored(Email $email)
-    {
-        //
-    }
-
-    public function forceDeleted(Email $email)
-    {
-        //
-    }
 }
