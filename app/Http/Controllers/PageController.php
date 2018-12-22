@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Page;
-use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
@@ -79,7 +77,6 @@ class PageController extends Controller
         => 'http://blog.iexcel.pl/jak-szybko-usunac-puste-komorki-by-zorganizowac-dane/',
         '/kredyt-hipoteczny-analiza-z-wykorzystaniem-excela/'
         => 'http://blog.iexcel.pl/kredyt-hipoteczny-analiza-z-wykorzystaniem-excela/',
-
     ];
 
     /**
@@ -103,9 +100,8 @@ class PageController extends Controller
             }
 
             flash('Nie znaleziono strony, której szukasz (' . $pagename . '/' . $subpage . ').');
+
             return redirect('/')->with(['msg' => 'Nie znaleziono strony, której szukasz (' . $pagename . ')']);
         }
-
     }
-
 }

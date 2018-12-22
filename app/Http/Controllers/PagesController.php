@@ -18,7 +18,6 @@ class PagesController extends Controller
      */
     public function home()
     {
-
         $courses = Cache::remember(
             'courses_front',
             60,
@@ -39,6 +38,8 @@ class PagesController extends Controller
         $access_options = FullAccessOption::orderBy('price')->get();
 
         $is_front = true;
+
+        return view('layouts.front2');
 
         return view('welcome')
             ->with(compact('courses', 'lessons', 'blog_items', 'is_front', 'access_options'));
