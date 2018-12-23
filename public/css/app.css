@@ -10502,6 +10502,19 @@ a.text-dark:focus {
   color: #ff7631;
 }
 
+.section-header {
+  color: #ff7631;
+  font-size: 20px;
+  padding: 10px 0;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.btn-ivba {
+  background-color: #ff7631;
+  color: #ffffff;
+}
+
 .header {
   background-color: #e36427;
   background-image: url("/images/v2/glowny_banner.png");

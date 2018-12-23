@@ -13,8 +13,21 @@
     background-color: $color-bg-gray-dark;
 }
 
-.text-orange{
+.text-orange {
     color: $color-orange;
+}
+
+.section-header {
+    color: $color-orange;
+    font-size: 20px;
+    padding: 10px 0;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.btn-ivba{
+    background-color: $color-orange;
+    color: $color-white;
 }
 
 .header {

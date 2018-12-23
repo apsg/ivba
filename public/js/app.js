@@ -1804,6 +1804,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RandomLessons",
   props: {
@@ -6096,7 +6098,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".random-lessons h3[data-v-3267d751] {\n  text-transform: uppercase;\n  font-weight: 700;\n}\n.random-lessons .lesson[data-v-3267d751] {\n  background-size: contain;\n  background-position: center center;\n}", ""]);
+exports.push([module.i, ".random-lessons[data-v-3267d751] {\n  display: flex;\n}\n.random-lessons h3[data-v-3267d751] {\n  text-transform: uppercase;\n  font-weight: 700;\n}\n.random-lessons .lesson[data-v-3267d751] {\n  background-size: cover;\n  background-position: center center;\n  height: 200px;\n  width: 300px;\n}", ""]);
 
 // exports
 
@@ -38627,14 +38629,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container random-lessons" },
-    [
-      _c("h3", { staticClass: "text-center text-orange mb-3" }, [
-        _vm._v("Losowe lekcje")
-      ]),
-      _vm._v(" "),
+  return _c("div", [
+    _c("h3", { staticClass: "text-center text-orange mb-3" }, [
+      _vm._v("Losowe lekcje")
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "container random-lessons" },
       _vm._l(_vm.lessons, function(lesson) {
         return _c(
           "div",
@@ -38648,10 +38650,10 @@ var render = function() {
             ])
           ]
         )
-      })
-    ],
-    2
-  )
+      }),
+      0
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

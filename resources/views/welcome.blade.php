@@ -31,7 +31,7 @@
     <section class="testimonial padding-lg">
         <div class="container">
             <div class="wrapper">
-                <h2>Co o nas mówią?</h2>
+                <h2 class="section-header">Co o nas mówią?</h2>
 
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
@@ -99,33 +99,35 @@
     {{--</div>--}}
     {{--</section>--}}
 
-    <section class="well2 bg-primary">
+    <section class="contact-form">
         <div class="container">
-            <div class="row">
-                <div class=" col-sm-offset-2 col-md-offset-2 col-sm-8  col-md-8 col-xs-12 ">
-                    <h3>Skontakuj się z nami</h3>
+            <div class="row mb-5 justify-content-md-center">
+                <div class="col-md-6">
+                    <h3 class="section-header text-center">Skontakuj się z nami</h3>
 
                     <form method="post" action="{{ url('contact_form') }}" class="mailform">
                         {{ csrf_field() }}
-                        <input type="hidden" name="form-type" value="contact">
+                        <input type="hidden" name="form-type" value="contact" class="form-control">
                         <fieldset>
                             <label data-add-placeholder="true">
-                                <input type="text" name="name" placeholder="Imię:"
+                                <input class="form-control" type="text" name="name" placeholder="Imię:"
                                        data-constraints="@LettersOnly @NotEmpty">
                             </label>
 
                             <label data-add-placeholder="true">
-                                <input type="text" name="email" placeholder="E-mail:"
+                                <input class="form-control" type="text" name="email" placeholder="E-mail:"
                                        data-constraints="@Email @NotEmpty">
                             </label>
 
                             <label data-add-placeholder="true">
-                     <textarea name="message" placeholder="Wiadomość:"
-                               data-constraints="@NotEmpty"></textarea>
+                            <textarea class="form-control" name="message" placeholder="Wiadomość:"
+                                      data-constraints="@NotEmpty"></textarea>
                             </label>
 
+                            {!! app('captcha')->display() !!}
+
                             <div class="mfControls center">
-                                <button type="submit" class="btn-ivba">Wyślij</button>
+                                <button type="submit" class="btn btn-ivba rounded-pill">Wyślij</button>
                             </div>
                         </fieldset>
                     </form>

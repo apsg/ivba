@@ -1,8 +1,10 @@
 <template>
-    <div class="container random-lessons">
+    <div>
         <h3 class="text-center text-orange mb-3">Losowe lekcje</h3>
-        <div class="lesson" v-for="lesson in lessons" :style="`background-image: url('`+lesson.image+`')`">
-            <a :href="lesson.url">{{ lesson.title }}</a>
+        <div class="container random-lessons">
+            <div class="lesson" v-for="lesson in lessons" :style="`background-image: url('`+lesson.image+`')`">
+                <a :href="lesson.url">{{ lesson.title }}</a>
+            </div>
         </div>
     </div>
 </template>
@@ -30,14 +32,19 @@
 
 <style scoped lang="scss">
     .random-lessons {
+
+        display: flex;
+
         h3 {
             text-transform: uppercase;
             font-weight: 700;
         }
 
         .lesson {
-            background-size: contain;
+            background-size: cover;
             background-position: center center;
+            height: 200px;
+            width: 300px;
         }
     }
 </style>

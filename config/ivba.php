@@ -2,30 +2,30 @@
 
 return [
 
-	/**
-	 * Na jaki email mają się wysyłać formularze kontaktowe
-	 */
-	'contact_form_recipient' => 'info@iexcel.pl',
+    /**
+     * Na jaki email mają się wysyłać formularze kontaktowe
+     */
+    'contact_form_recipient' => env('FORM_EMAIL', 'info@iexcel.pl'),
 
 
-	'full_access_price'	=> 299,
+    'full_access_price' => 299,
 
-	'full_access_duration' => 365,
+    'full_access_duration' => 365,
 
-	'full_access_description' => 'Pełen roczny dostęp do wszystkich materiałów',
-
-	
-	'subscription_price_first' => 1,
-
-	'subscription_duration_first' => 1,
-
-	'subscription_description_first' => 'Pierwsza płatność w abonamencie',
+    'full_access_description' => 'Pełen roczny dostęp do wszystkich materiałów',
 
 
-	'subscription_price' => 39,
+    'subscription_price_first' => 1,
 
-	'subscription_duration' => 1,
+    'subscription_duration_first' => 1,
 
-	'subscription_description' => 'Abonament miesięczny inauka.pl',
+    'subscription_description_first' => 'Pierwsza płatność w abonamencie',
+
+
+    'subscription_price' => 39,
+
+    'subscription_duration' => 1,
+
+    'subscription_description' => 'Abonament miesięczny inauka.pl',
 
 ];
