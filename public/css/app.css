@@ -10498,6 +10498,10 @@ a.text-dark:focus {
   background-color: #f5f8fa;
 }
 
+.text-orange {
+  color: #ff7631;
+}
+
 .header {
   background-color: #e36427;
 }

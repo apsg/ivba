@@ -16,7 +16,7 @@
 <body>
 <div id="app">
     <header class="header">
-        <nav class="navbar navbar-expand-lg navbar-orange bg-orange">
+        <nav class="navbar navbar-expand-sm navbar-orange bg-orange">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('images/v2/inauka.png') }}">
@@ -128,5 +128,8 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+<script type="text/javascript">
+    window.baseUrl = '{{ url('/') }}';
+</script>
 </body>
 </html>

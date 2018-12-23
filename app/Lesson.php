@@ -2,9 +2,13 @@
 
 namespace App;
 
+use App\Course;
+use App\Order;
 use App\Traits\Accessable;
 use App\Traits\ChecksSlugs;
 use App\Interfaces\iOrderable;
+use Carbon\Carbon;
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model implements iOrderable
@@ -67,7 +71,7 @@ class Lesson extends Model implements iOrderable
      * @return [type] [description]
      */
     public function courses(){
-        return $this->belongsToMany(\App\Course::class)->withPivot('position');
+        return $this->belongsToMany(Course::class)->withPivot('position');
     }
 
     /**
@@ -115,7 +119,7 @@ class Lesson extends Model implements iOrderable
      * @return [type] [description]
      */
     public function items(){
-        $itemsDB = \DB::table('items')
+        $itemsDB = DB::table('items')
             ->where('lesson_id', $this->id)
             ->orderBy('position', 'asc')
             ->get();
@@ -133,9 +137,9 @@ class Lesson extends Model implements iOrderable
      * @return integer [pozycja]
      */
     public function nextItemPosition(){
-        return \DB::table('items')
+        return DB::table('items')
             ->where('lesson_id', $this->id)
-            ->select(\DB::raw( 'MAX(position) as position' ))
+            ->select(DB::raw( 'MAX(position) as position' ))
             ->first()->position + 1;
     }
 
@@ -146,7 +150,7 @@ class Lesson extends Model implements iOrderable
      * @return [type]        [description]
      */
     public function scopeExcept($query, $id){
-        $exceptIds = \DB::table('course_lesson')
+        $exceptIds = DB::table('course_lesson')
             ->where('course_id', $id)
             ->select('lesson_id')
             ->get()->pluck('lesson_id')->all();
@@ -188,7 +192,7 @@ class Lesson extends Model implements iOrderable
      * @param  [type] $course [description]
      * @return [type]         [description]
      */
-    public function url(\App\Course $course = null){
+    public function url(Course $course = null){
         if(is_null($course)){
             return url('/learn/lesson/'.$this->slug);
         }
@@ -200,16 +204,16 @@ class Lesson extends Model implements iOrderable
      * Alias
      * @return [type] [description]
      */
-    public function learnUrl(\App\Course $course = null){
+    public function learnUrl(Course $course = null){
         return $this->url($course);
     }
 
     /**
      * Link zakończenia lekcji
-     * @param  \App\Course|null $course [description]
+     * @param  Course|null $course [description]
      * @return [type]                   [description]
      */
-    public function finishUrl(\App\Course $course = null){
+    public function finishUrl(Course $course = null){
         return $this->url($course).'/finish';
     }
 
@@ -229,7 +233,7 @@ class Lesson extends Model implements iOrderable
         $this->users()
             ->updateExistingPivot( 
                 \Auth::user()->id ,  
-                ['finished_at' => \Carbon\Carbon::now() ]  
+                ['finished_at' => Carbon::now() ]
             );
     }
 
@@ -245,7 +249,7 @@ class Lesson extends Model implements iOrderable
      * Link usuwania z koszyka
      * @return [type] [description]
      */
-    public function removeLink(\App\Order $order){
+    public function removeLink(Order $order){
         return url('/order/'.$order->id.'/lesson/'.$this->id.'/remove');
     }
 

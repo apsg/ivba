@@ -1,20 +1,22 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Lesson;
-use Illuminate\Http\Request;
+use App\Transformers\FrontpageLessonTransformer;
 
 class LessonsController extends Controller
 {
-    
-	/**
-	 * Pokaż widok pojedynczej lekcji
-	 * @param  Lesson $lesson [description]
-	 * @return [type]         [description]
-	 */
-	public function show(Lesson $lesson){
-		return view('pages.lesson')->with(compact('lesson'));
-	}
+    public function show(Lesson $lesson)
+    {
+        return view('pages.lesson')->with(compact('lesson'));
+    }
 
+    public function random($number)
+    {
+        $lessons = Lesson::inRandomOrder()->take($number)->get();
+
+        return fractal()
+            ->collection($lessons, new FrontpageLessonTransformer())
+            ->toArray();
+    }
 }

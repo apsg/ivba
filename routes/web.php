@@ -2,6 +2,7 @@
 
 require __DIR__ . '/admin/routes.php';
 require __DIR__ . '/learn/routes.php';
+require __DIR__ . '/axios.php';
 
 Route::get('/', 'PagesController@home');
 

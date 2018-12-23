@@ -20,9 +20,10 @@ window.Vue = require('vue');
 // Vue.component('categories', require('./components/Categories.vue'));
 
 import Categories from './components/Categories.vue';
+import RandomLessons from './components/RandomLessons.vue';
 
 const app = new Vue({
     el: '#app',
-    components: {Categories}
+    components: {Categories, RandomLessons}
 
 });

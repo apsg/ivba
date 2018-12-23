@@ -1,7 +1,7 @@
 @extends('layouts.front2')
 
 @section('content')
-    <div class="container py-5 promo-cards">
+    <section class="container py-5 promo-cards">
         <div class="row">
             <div class="col-md-4 text-center promo-card">
                 <img src="{{ asset('images/v2/ikonka_konferencja.png') }}">
@@ -22,43 +22,11 @@
                     wiedzę i dowiesz się jak można rozwiązać typowe problemy w VBA.</p>
             </div>
         </div>
-    </div>
-
-    <section class="well2">
-        <div class="container">
-            <div class="row off">
-                <div class=" col-sm-offset-2 col-md-offset-2 col-sm-4 col-md-4 col-xs-6 ">
-                    <h3>Losowe lekcje</h3>
-                </div>
-            </div>
-            <div class="row">
-                @foreach($lessons as $lesson)
-                    <div class=" col-sm-offset-2 col-md-offset-2 col-sm-4 col-md-4 col-xs-6 lesson">
-                        <a href="{{ $lesson->link() }}"
-                           class="thumb ">
-                            <img src="{{ $lesson->image->thumb(293, 165) }}" alt="">
-                            <div class="play-overlay text-center v-align">
-                                <div><i class="fa fa-play-circle fa-4x"></i></div>
-                            </div>
-                        </a>
-                        <h4><a href="{{ $lesson->link() }}">{{ $lesson->title }}</a></h4>
-
-                        {{-- <div class="introduction">{!! $lesson->introduction !!}</div> --}}
-                    </div>
-                @endforeach
-                {{-- <div class="col-sm-4 col-md-4 col-xs-6">
-                    <a href="//player.vimeo.com/video/37582125?wmode=transparent" data-wow-duration="1s"
-                       class="thumb fancybox.iframe"><img src="images/page-1_img02.jpg" alt=""><span
-                            class="thumb_overlay"></span></a>
-                    <h4><a href="#">Video name 2</a></h4>
-
-                    <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod.</p>
-                </div> --}}
-
-            </div>
-        </div>
     </section>
 
+    <section class="py-3 bg-gray-dark random-lessons">
+        <random-lessons num="4"></random-lessons>
+    </section>
 
     <section class="testimonial padding-lg">
         <div class="container">
