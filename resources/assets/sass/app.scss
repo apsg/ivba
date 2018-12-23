@@ -5,6 +5,13 @@
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
+.bg-gray-light {
+    background-color: $color-bg-gray-light;
+}
+
+.bg-gray-dark {
+    background-color: $color-bg-gray-dark;
+}
 
 .header {
     background-color: $color-bg-orabge-dark;
@@ -47,5 +54,22 @@ footer {
         font-weight: 700;
         margin-bottom: 0;
         text-transform: uppercase;
+    }
+}
+
+.promo-cards {
+    .promo-card {
+        font-weight: 400;
+
+        h3 {
+            color: $color-orange;
+            font-size: 20px;
+            padding: 10px 0;
+            text-transform: uppercase;
+        }
+
+        p {
+            color: $color-gray;
+        }
     }
 }

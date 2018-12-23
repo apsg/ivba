@@ -10490,6 +10490,14 @@ a.text-dark:focus {
   }
 }
 
+.bg-gray-light {
+  background-color: #fafafa;
+}
+
+.bg-gray-dark {
+  background-color: #f5f8fa;
+}
+
 .header {
   background-color: #e36427;
 }
@@ -10530,5 +10538,20 @@ footer .footer-header {
   font-weight: 700;
   margin-bottom: 0;
   text-transform: uppercase;
+}
+
+.promo-cards .promo-card {
+  font-weight: 400;
+}
+
+.promo-cards .promo-card h3 {
+  color: #ff7631;
+  font-size: 20px;
+  padding: 10px 0;
+  text-transform: uppercase;
+}
+
+.promo-cards .promo-card p {
+  color: #525252;
 }
 

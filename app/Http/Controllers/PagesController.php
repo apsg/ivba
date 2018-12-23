@@ -42,10 +42,10 @@ class PagesController extends Controller
 
         $menu = MenuItem::getMenu(1);
 
-        return view('layouts.front2')->with(compact('menu'));
+//        return view('layouts.front2')->with(compact('menu'));
 
         return view('welcome')
-            ->with(compact('courses', 'lessons', 'blog_items', 'is_front', 'access_options'));
+            ->with(compact('courses', 'lessons', 'blog_items', 'is_front', 'access_options', 'menu'));
     }
 
     /**
