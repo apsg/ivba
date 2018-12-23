@@ -70,8 +70,9 @@
         </nav>
         @if(Request::is('/'))
             <div class="container pb-3 promo">
-                <h1>Czego się dziś nauczysz?</h1>
+                <h1 class="mt-5 mb-5">Czego się dziś nauczysz?</h1>
             </div>
+            <categories></categories>
         @endif
     </header>
 
