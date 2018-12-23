@@ -10504,6 +10504,8 @@ a.text-dark:focus {
 
 .header {
   background-color: #e36427;
+  background-image: url("/images/v2/glowny_banner.png");
+  background-size: contain;
 }
 
 .header .promo h1 {
