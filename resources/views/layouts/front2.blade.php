@@ -77,6 +77,53 @@
     </header>
 
     @yield('content')
+
+    <footer class="pt-3 pb-3 text-white">
+        <div class="container py-3">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a href="#">
+                        <img src="{{ asset('/images/v2/f_ikona.png') }}"/>
+                    </a>
+                    <a href="#">
+                        <img src="{{ asset('/images/v2/twitter_ikona_stopka.png') }}"/>
+                    </a>
+                    <a href="#">
+                        <img src="{{ asset('/images/v2/google+_ikona.png') }}"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container py-3 ">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="{{url('/')}}" class="py-3">
+                        <img src="{{ asset('/images/v2/logo_stopka.png') }}">
+                    </a>
+
+                    <p>&copy; {{ Carbon\Carbon::now()->year }} ITBT</p>
+                </div>
+                <div class="col-md-8">
+                    <div class="row mb-3">
+                        <div class="col-md-3 text-right">
+                            <h3 class="footer-header">Informacje</h3>
+                        </div>
+                        <div class="col-md-9 footer-menu">
+                            {!! App\MenuItem::make(2, 'asc') !!}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 text-right">
+                            <h3 class="footer-header">Wsparcie</h3>
+                        </div>
+                        <div class="col-md-9 footer-menu">
+                            {!! App\MenuItem::make(3, 'asc') !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
 
 <!-- Scripts -->

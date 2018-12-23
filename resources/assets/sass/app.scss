@@ -6,12 +6,11 @@
 @import "~bootstrap/scss/bootstrap";
 
 
-
 .header {
     background-color: $color-bg-orabge-dark;
 
     .promo {
-        h1{
+        h1 {
             color: $color-white;
             font-weight: 900;
             font-size: 44px;
@@ -29,5 +28,24 @@
     .navbar-nav > li > a {
         color: $color-white;
         font-weight: 700;
+    }
+}
+
+footer {
+    background-color: $color-black;
+
+    a {
+        color: $color-white;
+        font-size: $font-size-base;
+        font-weight: 400;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+    .footer-header {
+        font-size: $font-size-base;
+        font-weight: 700;
+        margin-bottom: 0;
+        text-transform: uppercase;
     }
 }

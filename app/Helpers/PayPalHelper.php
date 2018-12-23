@@ -1,16 +1,15 @@
 <?php
-
 namespace App\Helpers;
 
-use PayPal;
 use Carbon\Carbon;
+use PayPal;
 
 class PayPalHelper
 {
     public static function getNextDate($profileid)
     {
 
-        $provider = \PayPal::setProvider('express_checkout');
+        $provider = PayPal::setProvider('express_checkout');
         $details = $provider->getRecurringPaymentsProfileDetails($profileid);
 
         if (isset($details['STATUS'])) {
@@ -35,7 +34,7 @@ class PayPalHelper
      */
     public static function getStatus($profileid)
     {
-        $provider = \PayPal::setProvider('express_checkout');
+        $provider = PayPal::setProvider('express_checkout');
         $details = $provider->getRecurringPaymentsProfileDetails($profileid);
 
         if (isset($details['STATUS'])) {
@@ -52,7 +51,8 @@ class PayPalHelper
      */
     public static function cancel($profileid)
     {
-        $provider = \PayPal::setProvider('express_checkout');
+        $provider = PayPal::setProvider('express_checkout');
+
         return $provider->cancelRecurringPaymentsProfile($profileid);
     }
 }
