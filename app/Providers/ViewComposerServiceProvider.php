@@ -1,7 +1,8 @@
 <?php
-
 namespace App\Providers;
 
+use App\Proof;
+use App\ViewComposers\FrontLayoutViewComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,9 +16,12 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('partials.show_proof', function ($view) {
-            $proof = \App\Proof::first();
+            $proof = Proof::first();
+
             return $view->with(compact('proof'));
         });
+
+        View::composer('layouts.front2', FrontLayoutViewComposer::class);
     }
 
     /**
