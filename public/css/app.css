@@ -10499,7 +10499,7 @@ a.text-dark:focus {
 }
 
 .text-orange {
-  color: #ff7631;
+  color: #ff7631 !important;
 }
 
 .section-header {

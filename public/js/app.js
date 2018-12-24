@@ -6125,7 +6125,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".random-lessons[data-v-3267d751] {\n  display: flex;\n}\n.random-lessons h3[data-v-3267d751] {\n  text-transform: uppercase;\n  font-weight: 700;\n}\n.random-lessons .lesson[data-v-3267d751] {\n  margin: 0 auto;\n  background-size: cover;\n  background-position: center center;\n  height: 300px;\n  width: 300px;\n}\n.random-lessons .move[data-v-3267d751] {\n  display: flex;\n  padding: 10px;\n  flex-direction: column;\n  justify-items: center;\n}", ""]);
+exports.push([module.i, ".random-lessons[data-v-3267d751] {\n  display: flex;\n}\n.random-lessons h3[data-v-3267d751] {\n  text-transform: uppercase;\n  font-weight: 700;\n}\n.random-lessons .lesson[data-v-3267d751] {\n  margin: 0 auto;\n  background-size: cover;\n  background-position: center center;\n  height: 300px;\n  width: 400px;\n  display: flex;\n  justify-content: center;\n  align-items: stretch;\n}\n.random-lessons .lesson a[data-v-3267d751] {\n  font-size: 40px;\n  align-self: center;\n  height: 40px;\n  color: inherit;\n}\n.random-lessons .lesson a[data-v-3267d751]:hover {\n  text-decoration: none;\n}", ""]);
 
 // exports
 
@@ -38689,12 +38689,12 @@ var render = function() {
               _c(
                 "div",
                 {
-                  staticClass: "lesson",
+                  staticClass: "lesson text-orange",
                   style: "background-image: url('" + lesson.image + "')"
                 },
                 [
-                  _c("a", { attrs: { href: lesson.url } }, [
-                    _vm._v(_vm._s(lesson.title))
+                  _c("a", { attrs: { href: lesson.url, alt: lesson.title } }, [
+                    _vm._v("▶")
                   ])
                 ]
               )

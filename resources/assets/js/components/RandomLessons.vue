@@ -6,9 +6,9 @@
                     :paginationEnabled="false"
                     :navigationEnabled="true">
                 <slide v-for="lesson in lessons">
-                    <div class="lesson"
+                    <div class="lesson text-orange"
                          :style="`background-image: url('`+lesson.image+`')`">
-                        <a :href="lesson.url">{{ lesson.title }}</a>
+                        <a :href="lesson.url" :alt="lesson.title">▶</a>
                     </div>
                 </slide>
             </carousel>
@@ -73,14 +73,21 @@
             background-size: cover;
             background-position: center center;
             height: 300px;
-            width: 300px;
-        }
-
-        .move {
+            width: 400px;
             display: flex;
-            padding: 10px;
-            flex-direction: column;
-            justify-items: center;
+            justify-content: center;
+            align-items: stretch;
+
+            a {
+                font-size: 40px;
+                align-self: center;
+                height: 40px;
+                color:inherit;
+
+                &:hover{
+                    text-decoration: none;
+                }
+            }
         }
     }
 </style>
