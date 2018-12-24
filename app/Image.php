@@ -7,6 +7,7 @@ use ErrorException;
 use Illuminate\Database\Eloquent\Model;
 use ImageHelper;
 use Intervention\Image\Exception\NotReadableException;
+use Throwable;
 
 class Image extends Model
 {
@@ -56,7 +57,7 @@ class Image extends Model
             return url('storage/images/' . $thumb);
         } catch (NotReadableException $exception) {
             return null;
-        } catch (ErrorException $exception) {
+        } catch (Throwable $exception) {
             return null;
         }
     }
