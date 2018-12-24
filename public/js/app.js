@@ -1763,6 +1763,8 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-carousel */ "./node_modules/vue-carousel/dist/vue-carousel.min.js");
+/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1780,8 +1782,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Categories"
+  name: "Categories",
+  components: {
+    Carousel: vue_carousel__WEBPACK_IMPORTED_MODULE_0__["Carousel"],
+    Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_0__["Slide"]
+  }
 });
 
 /***/ }),
@@ -6144,7 +6185,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.category-link[data-v-09142593] {\n    flex: 1;\n    padding: 3px;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-09142593] {\n    margin: 5px;\n}\n.VueCarousel-navigation-button[data-v-09142593] {\n    color: #fff;\n    font-size: 40px;\n    font-family: \"Lato\", \"Raleway\", sans-serif;\n    font-weight: 300;\n}\n", ""]);
 
 // exports
 
@@ -38621,36 +38662,87 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "container text-center d-flex w-50 pb-3" },
+    [
+      _c(
+        "carousel",
+        {
+          attrs: {
+            "per-page": 4,
+            navigationNextLabel: ">",
+            navigationPrevLabel: "<"
+          }
+        },
+        [
+          _c("slide", [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", { attrs: { src: "/images/v2/excel_miniaturka.png" } })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("slide", [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", {
+                attrs: { src: "/images/v2/photoshop_miniaturka.png" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("slide", [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", {
+                attrs: { src: "/images/v2/photoshop_miniaturka.png" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("slide", [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", {
+                attrs: { src: "/images/v2/photoshop_miniaturka.png" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("slide", [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", { attrs: { src: "/images/v2/excel_miniaturka.png" } })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("slide", [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", {
+                attrs: { src: "/images/v2/photoshop_miniaturka.png" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("slide", [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", {
+                attrs: { src: "/images/v2/photoshop_miniaturka.png" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("slide", [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", {
+                attrs: { src: "/images/v2/photoshop_miniaturka.png" }
+              })
+            ])
+          ])
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "container text-center d-flex w-50 pb-3" },
-      [
-        _c("a", { staticClass: "category-link", attrs: { href: "#" } }, [
-          _c("img", { attrs: { src: "/images/v2/excel_miniaturka.png" } })
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "category-link", attrs: { href: "#" } }, [
-          _c("img", { attrs: { src: "/images/v2/photoshop_miniaturka.png" } })
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "category-link", attrs: { href: "#" } }, [
-          _c("img", { attrs: { src: "/images/v2/photoshop_miniaturka.png" } })
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "category-link", attrs: { href: "#" } }, [
-          _c("img", { attrs: { src: "/images/v2/photoshop_miniaturka.png" } })
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
