@@ -27,3 +27,4 @@ const app = new Vue({
     components: {Categories, RandomLessons}
 
 });
+
