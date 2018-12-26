@@ -146,7 +146,7 @@
 <script type="text/javascript">
     window.baseUrl = '{{ url('/') }}';
 </script>
-
+{!! NoCaptcha::renderJs() !!}
 @foreach(\App\Script::all() as $script)
     {!! $script->script !!}
 @endforeach

@@ -14,8 +14,7 @@ class ContactFormController extends Controller
             'name'                 => 'required',
             'email'                => 'required',
             'message'              => 'required',
-            'g-recaptcha-response' => 'required|captcha',
-
+//            'g-recaptcha-response' => 'required|captcha',
         ]);
 
         Mail::to(config('ivba.contact_form_recipient'))

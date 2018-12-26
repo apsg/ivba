@@ -86,7 +86,8 @@
                         <input type="text" class="form-control" name="name" required placeholder="Imię">
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp"
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="email"
+                               aria-describedby="emailHelp"
                                placeholder="Email" required>
                         <small id="emailHelp" class="form-text text-muted">Nigdy nie udostępnimy Twojego adresu email
                             nikomu bez Twojej zgody.
@@ -97,9 +98,14 @@
                                   rows="3" placeholder="Wiadomość" required></textarea>
                     </div>
 
-                    {!! app('captcha')->display() !!}
-
-                    <button type="submit" class="btn btn-ivba rounded-pill">Wyślij</button>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{--{!! NoCaptcha::display() !!}--}}
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button type="submit" class="mt-2 btn btn-ivba rounded-pill">Wyślij</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
