@@ -100,7 +100,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            {{--{!! NoCaptcha::display() !!}--}}
+                            {!! NoCaptcha::display() !!}
                         </div>
                         <div class="col-md-6 text-right">
                             <button type="submit" class="mt-2 btn btn-ivba rounded-pill">Wyślij</button>
