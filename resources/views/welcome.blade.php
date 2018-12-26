@@ -75,63 +75,32 @@
         </div>
     </section>
 
-    {{--<section class="well">--}}
-    {{--<div class="container">--}}
-    {{--<div class="row ">--}}
-    {{--<div class=" col-sm-offset-2 col-md-offset-2 col-sm-7  col-md-7 col-xs-12 ">--}}
-    {{--<h3> Koszt nauki z nami</h3>--}}
-
-    {{--@foreach($access_options as $option)--}}
-
-    {{--<div class="box">--}}
-    {{--<div class="box_aside wow fadeInLeft" data-wow-delay="0.1s">--}}
-    {{--{{ abs($option->price) }} zł--}}
-    {{--</div>--}}
-    {{--<div class="box_cnt__no-flow wow fadeInRight" data-wow-delay="0.2s">--}}
-    {{--<h4><a href="{{ $option->buyLink() }}">{{ $option->name }}</a></h4>--}}
-    {{--<p>{{ $option->description }}</p>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--@endforeach--}}
-    {{----}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</section>--}}
-
     <section class="contact-form">
-        <div class="container">
-            <div class="row mb-5 justify-content-md-center">
-                <div class="col-md-6">
-                    <h3 class="section-header text-center">Skontakuj się z nami</h3>
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-md-center">
+                <form method="post" action="{{ url('contact_form') }}" class=" col-md-6">
+                    {{ csrf_field() }}
 
-                    <form method="post" action="{{ url('contact_form') }}" class="mailform">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="form-type" value="contact" class="form-control">
-                        <fieldset>
-                            <label data-add-placeholder="true">
-                                <input class="form-control" type="text" name="name" placeholder="Imię:"
-                                       data-constraints="@LettersOnly @NotEmpty">
-                            </label>
+                    <h3 class="section-header">Skontakuj się z nami</h3>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" required placeholder="Imię">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp"
+                               placeholder="Email" required>
+                        <small id="emailHelp" class="form-text text-muted">Nigdy nie udostępnimy Twojego adresu email
+                            nikomu bez Twojej zgody.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="message"
+                                  rows="3" placeholder="Wiadomość" required></textarea>
+                    </div>
 
-                            <label data-add-placeholder="true">
-                                <input class="form-control" type="text" name="email" placeholder="E-mail:"
-                                       data-constraints="@Email @NotEmpty">
-                            </label>
+                    {!! app('captcha')->display() !!}
 
-                            <label data-add-placeholder="true">
-                            <textarea class="form-control" name="message" placeholder="Wiadomość:"
-                                      data-constraints="@NotEmpty"></textarea>
-                            </label>
-
-                            {!! app('captcha')->display() !!}
-
-                            <div class="mfControls center">
-                                <button type="submit" class="btn btn-ivba rounded-pill">Wyślij</button>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
+                    <button type="submit" class="btn btn-ivba rounded-pill">Wyślij</button>
+                </form>
             </div>
         </div>
     </section>

@@ -3,7 +3,6 @@
 namespace App;
 
 // use App\Helpers\Wistia;
-use ErrorException;
 use Illuminate\Database\Eloquent\Model;
 use ImageHelper;
 use Intervention\Image\Exception\NotReadableException;

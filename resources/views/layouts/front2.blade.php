@@ -75,6 +75,18 @@
             <categories></categories>
         @endif
     </header>
+    <div class="container">
+        @include('flash::message')
+        @if ($errors->any())
+            <div class="alert alert-danger mt-3">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+    </div>
 
     @yield('content')
 
@@ -126,10 +138,19 @@
     </footer>
 </div>
 
+@stack('modals')
+
+@include('partials.show_proof')
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript">
     window.baseUrl = '{{ url('/') }}';
 </script>
+
+@foreach(\App\Script::all() as $script)
+    {!! $script->script !!}
+@endforeach
+
+@stack('scripts')
 </body>
 </html>
