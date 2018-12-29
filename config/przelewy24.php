@@ -8,4 +8,7 @@ return [
 
     'salt' => env('P24_SALT', ''),
 
+    'sandbox' => env('P24_SANDBOX', true),
+
+    'secret' => env('P24_SECRET', ''),
 ];
