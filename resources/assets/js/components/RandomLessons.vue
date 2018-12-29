@@ -5,13 +5,16 @@
             <carousel
                     :paginationEnabled="false"
                     :navigationEnabled="true">
-                <slide v-for="lesson in lessons">
+                <slide v-for="lesson in lessons" :key="lesson.id">
                     <div class="lesson text-orange"
                          :style="`background-image: url('`+lesson.image+`')`">
-                        <a :href="lesson.url" :alt="lesson.title">▶</a>
+                        <a :href="lesson.url" :alt="lesson.title">&nbsp;</a>
                     </div>
                 </slide>
             </carousel>
+            <div class="random-shadow mt-3 mb-5 text-center">
+                <img src="/images/v2/Cien_pod_losowymi.png">
+            </div>
         </div>
     </div>
 </template>
@@ -81,10 +84,11 @@
             a {
                 font-size: 40px;
                 align-self: center;
-                height: 40px;
-                color:inherit;
+                width: 100%;
+                height: 100%;
+                color: inherit;
 
-                &:hover{
+                &:hover {
                     text-decoration: none;
                 }
             }
