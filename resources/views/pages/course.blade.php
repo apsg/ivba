@@ -14,7 +14,6 @@
 
                     {!! $course->description !!}
 
-
                 </div>
                 <div class="col-md-5 col-md-pull-7">
                     <div class="enquire-wrapper">
@@ -31,16 +30,16 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="course-detail clearfix">
-                        <div class="duration clearfix">
+                    <div class="course-detail">
+                        <div class="duration">
                             <div class="icon"><span class="icon-duration-icon"></span></div>
                             <div class="detail"><span>Czas trwania</span> {{ $course->duration() }} </div>
                         </div>
-                        <div class="duration eligible clearfix">
+                        <div class="duration eligible">
                             <div class="icon"><span class="icon-certification-icon"></span></div>
                             <div class="detail"><span>Trudność:</span> {{ $course->difficulty() }}</div>
                         </div>
-                        <div class="duration eligible clearfix">
+                        <div class="duration eligible">
                             <div class="icon"><span class="icon-eligibility-icon"></span></div>
                             <div class="detail"><span>Liczba lekcji:</span> {{ $course->lessons()->count() }}</div>
                         </div>

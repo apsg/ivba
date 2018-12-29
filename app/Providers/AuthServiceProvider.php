@@ -2,11 +2,14 @@
 
 namespace App\Providers;
 
+use App\Course;
+use App\Lesson;
+use App\Quiz;
 use App\User;
 use Auth;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -16,7 +19,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Model'   => 'App\Policies\ModelPolicy',
     ];
 
     /**
@@ -38,14 +41,14 @@ class AuthServiceProvider extends ServiceProvider
         /*
         Czy dany użytkownik ma dostęp do tego kursu?
          */
-        Gate::define('access-course', function ($user, $course) {
+        Gate::define('access-course', function (User $user, Course $course) {
             return Auth::check() && ($user->hasFullAccess() || $course->hasAccess($user->id));
         });
 
         /*
         Czy dany użytkownik ma dostęp do tej lekcji?
          */
-        Gate::define('access-lesson', function ($user, $lesson) {
+        Gate::define('access-lesson', function (User $user, Lesson $lesson) {
             return Auth::check() && (
                     $user->hasFullAccess()
                     || $lesson->hasCourseAccess($user->id)
@@ -53,21 +56,20 @@ class AuthServiceProvider extends ServiceProvider
                 );
         });
 
-
         /**
          * Czy dany użytkownik ma dostęp do lekcji lub kursu?
          */
-        Gate::define('access', function ($user, $item) {
+        Gate::define('access', function (User $user, $item) {
 
             if (Auth::check() && $user->hasFullAccess()) {
                 return true;
             }
 
-            if (get_class($item) == 'App\Course') {
+            if ($item instanceof Course) {
                 return $item->hasAccess($user->id);
             }
 
-            if (get_class($item) == 'App\Lesson') {
+            if ($item instanceof Lesson) {
                 return $item->hasAccess($user->id) || $item->hasCourseAccess($user->id);
             }
 
@@ -77,7 +79,7 @@ class AuthServiceProvider extends ServiceProvider
         /**
          * Czy użytkownik może podejść ponownie do testu?
          */
-        Gate::define('retake-quiz', function ($user, $quiz) {
+        Gate::define('retake-quiz', function (User $user, Quiz $quiz) {
             return !$user->quizzes()->where('quiz_id', $quiz->id)->exists()
                 || Carbon::parse($quiz->pivot->finished_date)
                     ->diffInDays(Carbon::now()) > 14;
@@ -86,7 +88,7 @@ class AuthServiceProvider extends ServiceProvider
         /**
          * Czy użytkownik może wykupić pełen dostęp?
          */
-        Gate::define('can-buy-subscription', function ($user) {
+        Gate::define('can-buy-subscription', function (User $user) {
             return !empty($user->first_name)
                 && !empty($user->last_name)
                 && !empty($user->address);
