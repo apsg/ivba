@@ -8,14 +8,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title') {{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
 <div id="app">
-    <header class="header">
+    <header class="header mb-3">
         <nav class="navbar navbar-expand-sm navbar-orange bg-orange">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -40,10 +40,12 @@
                     <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Zaloguj</a>
+                                <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-sign-in"></i>
+                                    Zaloguj</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">Zarejestruj</a>
+                                <a class="nav-link" href="{{ route('register') }}"><i class="fa fa-wpforms"></i>
+                                    Zarejestruj</a>
                             </li>
                         @else
                             <li class="nav-item dropdown">
@@ -51,9 +53,12 @@
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-user"></i> {{ Auth::user()->name }}</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown">
+                                    <a href="{{ url('account') }}" class="dropdown-item"><i class="fa fa-user"></i> Moje
+                                        konto</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-sign-out"></i>
                                         Wyloguj
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                               style="display: none;">
@@ -62,6 +67,12 @@
                                     </a>
                                 </div>
                             </li>
+
+                            @if(Auth::user()->isadmin)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{url('/admin')}}">Administracja</a>
+                                </li>
+                            @endif
 
                         @endif
                     </ul>

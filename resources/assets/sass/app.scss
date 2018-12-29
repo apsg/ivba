@@ -1,5 +1,6 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Lato|Raleway:300,300i,400,400i,500,500i,700,700i,900,900i');
+@import "~font-awesome/scss/font-awesome";
 // Variables
 @import "variables";
 // Bootstrap
@@ -25,9 +26,14 @@
     font-weight: 700;
 }
 
-.btn-ivba{
+.btn-ivba {
     background-color: $color-orange;
     color: $color-white;
+
+    &:hover {
+        background-color: darken($color-orange, 10%);
+        color: $color-white;
+    }
 }
 
 .header {

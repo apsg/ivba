@@ -1970,7 +1970,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     onPageChange: function onPageChange(page) {
       this.page = page;
-      console.log(page);
     }
   }
 });
@@ -6267,7 +6266,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".testimonials[data-v-650ef12a] {\n  background-color: #ff7631;\n  color: #fff;\n  background-image: radial-gradient(at top, rgba(255, 255, 255, 0.3), transparent, transparent);\n  font-size: 1em;\n  font-weight: 700;\n}\n.testimonials .testimonial[data-v-650ef12a] {\n  font-size: 1.2em;\n}\nimg[data-v-650ef12a] {\n  max-width: 100%;\n}\nh3[data-v-650ef12a] {\n  font-weight: 900;\n}\n\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.slide-fade-enter-active[data-v-650ef12a] {\n  transition: all 0.3s ease;\n}\n.slide-fade-leave-active[data-v-650ef12a] {\n  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter[data-v-650ef12a], .slide-fade-leave-to[data-v-650ef12a] {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}", ""]);
+exports.push([module.i, ".testimonials[data-v-650ef12a] {\n  background-color: #ff7631;\n  color: #fff;\n  background-image: radial-gradient(at top, rgba(255, 255, 255, 0.3), transparent, transparent);\n  font-size: 1em;\n  font-weight: 700;\n}\n.testimonials .testimonial[data-v-650ef12a] {\n  font-size: 1.2em;\n}\n.testimonials img[data-v-650ef12a] {\n  max-width: 100%;\n}\n.testimonials h3[data-v-650ef12a] {\n  font-weight: 900;\n}", ""]);
 
 // exports
 
