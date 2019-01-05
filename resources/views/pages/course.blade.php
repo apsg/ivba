@@ -61,109 +61,104 @@
     <!-- End Course Description -->
 
     <!-- Start Course Details Tab -->
-    <section class="details-tab">
+    <section class="details-tab mt-3">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
-                        <ul class="nav nav-tabs course-tab" id="myTabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#curriculam" id="curriculam-tab" role="tab"
-                                                                      data-toggle="tab" aria-controls="curriculam"
-                                                                      aria-expanded="true"> <span
-                                            class="icon-curriculam-icon"></span>
-                                    <div class="block">SPIS</div>
-                                    TREŚCI </a></li>
-                            <li role="presentation" class=""><a href="#schedule" role="tab" id="schedule-tab"
-                                                                data-toggle="tab" aria-controls="schedule"
-                                                                aria-expanded="false"> <span class="fa fa-star"></span>
-                                    <div class="block">Opinie</div>
-                                </a></li>
-                            <li role="presentation" class=""><a href="#comments" role="tab" id="comments-tab"
-                                                                data-toggle="tab" aria-controls="comments"
-                                                                aria-expanded="false"> <span
-                                            class="icon-chat-icon"></span>
-                                    <div class="block">Komentarze</div>
-                                </a></li>
-                            <li role="presentation" class=""><a href="#teachers" role="tab" id="teachers-tab"
-                                                                data-toggle="tab" aria-controls="teachers"
-                                                                aria-expanded="false"> <span
-                                            class="icon-parents-icon"></span>
-                                    <div class="block">Nauczyciele</div>
-                                </a></li>
-                        </ul>
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade active in" role="tabpanel" id="curriculam"
-                                 aria-labelledby="curriculam-tab">
-                                <div class="table-responsive">
-                                    <table class="table course-table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th>Lekcje</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($course->lessons as $lesson)
-                                            <tr>
-                                                <td>
-                                                    <div class="table-col1">
-                                                        <div class="lecture-txt">Lekcja
-                                                            <span>{{ $lesson->pivot->position+1 }}</span>
-                                                            <a target="_blank" href="{{ $lesson->link() }}"
-                                                               class="preview">Podgląd</a></div>
-                                                        {{ $lesson->title }} </div>
-
-                                                </td>
-                                            </tr>
-                                        @endforeach
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" role="tabpanel" id="schedule" aria-labelledby="schedule-tab">
-                                <div class="table-responsive">
-                                    <table class="table course-table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th>Oceny</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="curriculum-tab" data-toggle="tab" href="#curriculum"
+                               role="tab"
+                               aria-controls="curriculum" aria-selected="true"><i class="fa fa-list"></i> Spis
+                                treści</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="opinions-tab" data-toggle="tab" href="#opinions" role="tab"
+                               aria-controls="opinions" aria-selected="false"><i class="fa fa-star"></i> Opinie</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab"
+                               aria-controls="comments" aria-selected="false"><i class="fa fa-comments"></i> Komentarze</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="comments-tab" data-toggle="tab" href="#teachers" role="tab"
+                               aria-controls="teachers" aria-selected="false"><i class="fa fa-graduation-cap"></i> Nauczyciele</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="curriculum" role="tabpanel"
+                             aria-labelledby="curriculam-tab">
+                            <div class="table-responsive">
+                                <table class="table course-table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Lekcje</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($course->lessons as $lesson)
                                         <tr>
                                             <td>
-                                                <h4>Średnia ocena dla tego kursu:</h4>
-                                                <span class="rating">{{ $course->avg_rating }}</span>
-                                                (ocen: {{ $course->ratings_count }})
+                                                <div class="table-col1">
+                                                    <div class="lecture-txt">Lekcja
+                                                        <span>{{ $lesson->pivot->position+1 }}</span>
+                                                        <a target="_blank" href="{{ $lesson->link() }}"
+                                                           class="preview">Podgląd</a></div>
+                                                    {{ $lesson->title }} </div>
+
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="">
-                                                    @include('partials.rating')
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    @endforeach
+
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="tab-pane fade" role="tabpanel" id="comments" aria-labelledby="comments-tab">
-                                <div class="table-responsive">
-                                    <table class="table course-table table-bordered">
-                                        <thead>
-                                        <th>Komentarze</th>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td class="table-col1">
-                                                <div id="disqus_thread"></div>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                        </div>
+                        <div class="tab-pane fade" id="opinions" role="tabpanel" aria-labelledby="opinions-tab">
+                            <div class="table-responsive">
+                                <table class="table course-table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Oceny</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <h4>Średnia ocena dla tego kursu:</h4>
+                                            <span class="rating">{{ $course->avg_rating }}</span>
+                                            (ocen: {{ $course->ratings_count }})
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="">
+                                                @include('partials.rating')
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="tab-pane fade" role="tabpanel" id="teachers" aria-labelledby="teachers-tab">
+                        </div>
+                        <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+                            <div class="table-responsive">
+                                <table class="table course-table table-bordered">
+                                    <thead>
+                                    <th>Komentarze</th>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="table-col1">
+                                            <div id="disqus_thread"></div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="teachers" role="tabpanel" aria-labelledby="teachers-tab">
+                            <div class="row">
                                 <div class="col-md-4" style="text-align: center;">
                                     <img src="{{ url('images/mati2.png') }}" alt="">
                                 </div>
@@ -181,6 +176,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

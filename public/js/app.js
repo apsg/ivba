@@ -1955,6 +1955,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -38975,7 +38976,8 @@ var render = function() {
                 attrs: {
                   paginationEnabled: false,
                   perPage: 1,
-                  "navigate-to": _vm.page
+                  "navigate-to": _vm.page,
+                  mouseDrag: false
                 }
               },
               [

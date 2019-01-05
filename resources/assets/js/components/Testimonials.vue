@@ -7,6 +7,7 @@
                             :paginationEnabled="false"
                             :perPage="1"
                             :navigate-to="page"
+                            :mouseDrag="false"
                     >
                         <slide>
                             <img class="image" src="/images/v2/opinia_persona.png">
