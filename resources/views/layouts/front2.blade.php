@@ -70,7 +70,8 @@
 
                             @if(Auth::user()->isadmin)
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{url('/admin')}}"><i class="fa fa-cogs"></i> Administracja</a>
+                                    <a class="nav-link" href="{{url('/admin')}}"><i class="fa fa-cogs"></i>
+                                        Administracja</a>
                                 </li>
                             @endif
 

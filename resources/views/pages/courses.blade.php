@@ -1,29 +1,6 @@
 @extends('layouts.front2')
 
 @section('content')
-
-
-    <!-- Start About Section -->
-    {{-- <section class="about inner padding-lg">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-5">
-            <div class="video-block">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/MEjwwe1jgFQ" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>
-          <div class="col-md-7 left-block">
-            <h2>Kategorie kursów</h2>
-        <p>Z racji tego, że lekcji na naszej platformie jest ponad 200 zostały one podzielone na kategorie. Sposób, który polecam to jest nauka zagadnieniami. Czyli np. interesujesz się tabelami przestawnymi – wybierz ten dział.</p>
-        <p>Na platformie możesz także wybrać poziomy. Np. średnio zaawansowany. Musisz mieć na uwadze, że ta sama lekcja może się znaleźć w kursie tabele przestawne jak i średnio zaawansowane.</p>
-        <p>Dość gadania zabierzmy się do nauki </p>
-
-        </div>
-        </div>
-      </div>
-    </section> --}}
-    <!-- End About Section -->
-
     <!-- Start Cources Section -->
     <section class="our-cources sub padding-lg">
         <div class="container">
@@ -112,9 +89,6 @@
             </div>
         </div>
 
-
     </section>
     <!-- End Cources Section -->
-
-
 @endsection
