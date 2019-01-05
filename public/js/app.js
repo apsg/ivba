@@ -1811,11 +1811,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Categories",
@@ -38840,14 +38835,6 @@ var render = function() {
           _c("slide", [
             _c("a", { attrs: { href: "#" } }, [
               _c("img", { attrs: { src: "/images/v2/excel_miniaturka.png" } })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("slide", [
-            _c("a", { attrs: { href: "#" } }, [
-              _c("img", {
-                attrs: { src: "/images/v2/photoshop_miniaturka.png" }
-              })
             ])
           ]),
           _vm._v(" "),

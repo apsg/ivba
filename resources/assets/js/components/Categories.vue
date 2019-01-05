@@ -40,11 +40,6 @@
                     <img src="/images/v2/photoshop_miniaturka.png">
                 </a>
             </slide>
-            <slide>
-                <a href="#">
-                    <img src="/images/v2/photoshop_miniaturka.png">
-                </a>
-            </slide>
         </carousel>
     </div>
 </template>
