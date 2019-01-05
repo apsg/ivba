@@ -70,6 +70,9 @@ Route::get('/test', function () {
 
 });
 
+
+Route::get('tpay', 'TpayController@showGate');
+
 // To musi być na samym końcu, by nie blokowało innych ścieżek
 Route::get('/{page}/{subpage?}', 'PageController@show');
 

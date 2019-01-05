@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "467e667dbe8f409b24297e5272385417",
+    "content-hash": "16f39f1c395e685528c7779323e1d9b9",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -4792,6 +4792,48 @@
             "time": "2018-11-04T00:42:54+00:00"
         },
         {
+            "name": "tpay-com/tpay-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tpay-com/tpay-php.git",
+                "reference": "979496abdc21cdf5d1c1d0c3ee8ea5792d650958"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tpay-com/tpay-php/zipball/979496abdc21cdf5d1c1d0c3ee8ea5792d650958",
+                "reference": "979496abdc21cdf5d1c1d0c3ee8ea5792d650958",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "extra": [
+                {
+                    "engine": "PHP SDK"
+                }
+            ],
+            "autoload": {
+                "classmap": [
+                    "tpayLibs/src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "tpay.com",
+                    "homepage": "https://tpay.com"
+                }
+            ],
+            "description": "tpay.com library",
+            "time": "2018-12-28T09:05:48+00:00"
+        },
+        {
             "name": "vimeo/laravel",
             "version": "5.2.0",
             "source": {
@@ -6873,6 +6915,7 @@
         "barryvdh/laravel-ide-helper": 20,
         "sentry/sentry-laravel": 20,
         "spatie/laravel-fractal": 20,
+        "tpay-com/tpay-php": 20,
         "barryvdh/laravel-debugbar": 20
     },
     "prefer-stable": false,
