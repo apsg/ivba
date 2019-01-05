@@ -208,9 +208,9 @@ class User extends Authenticatable
 
     /**
      * Zwraca aktywne zamówienie lub tworzy nowe
-     * @return App\Order [description]
+     * @return Order [description]
      */
-    public function getCurrentOrder()
+    public function getCurrentOrder() : Order
     {
         if ($order = $this->orders()
             ->whereNull('confirmed_at')

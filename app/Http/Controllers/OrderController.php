@@ -1,18 +1,18 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Order;
-use App\Course;
 use App\Coupon;
-use App\Lesson;
+use App\Helpers\Payment;
+use App\Order;
+use Auth;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    
-    public function __construct(){
-    	$this->middleware('auth');
+
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
     /**
@@ -20,42 +20,48 @@ class OrderController extends Controller
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function showCart(Request $request){
-    	$order = \Auth::user()->getCurrentOrder();
-    	return view('cart')->with(compact('order'));
+    public function showCart(Request $request)
+    {
+        $order = Auth::user()->getCurrentOrder();
+
+        return view('cart')->with(compact('order'));
     }
 
     /**
      * Wygeneruj płatność dla tego zamówienia.
-     * @param  Order  $order [description]
+     * @param  Order $order [description]
      * @return [type]        [description]
      */
-    public function pay(Order $order){
-        if($order->total() > 0){
-            $payment = new \App\Helpers\Payment;
+    public function pay(Order $order)
+    {
+        if ($order->total() > 0) {
+            $payment = new Payment();
+
             return redirect($payment->getUrl($order));
-        }else{
+        } else {
             $order->final_total = 0;
-            if($order->confirm())
+            if ($order->confirm()) {
                 return redirect('/continue');
-            else
+            } else {
                 return redirect('/cart');
+            }
         }
     }
 
     /**
      * Dodaj pełen dostęp do aktualnego zamówienia
      */
-    public function addFullAccess(){
-
-        if(\Auth::user()->canAddFullAccess()){
-            $order = \Auth::user()->getCurrentOrder();
+    public function addFullAccess()
+    {
+        if (Auth::user()->canAddFullAccess()) {
+            $order = Auth::user()->getCurrentOrder();
             $order->is_full_access = true;
             $order->duration = config('ivba.full_access_duration');
             $order->price = config('ivba.full_access_price');
             $order->description = config('ivba.full_access_description');
             $order->save();
         }
+
         return redirect('/cart');
     }
 
@@ -63,32 +69,34 @@ class OrderController extends Controller
      * Usuń pełen dostęp z koszyka
      * @return [type] [description]
      */
-    public function removeFullAccess(){
-        $order = \Auth::user()->getCurrentOrder();
+    public function removeFullAccess()
+    {
+        $order = Auth::user()->getCurrentOrder();
         $order->is_full_access = false;
         $order->save();
 
-        return redirect('/cart');   
+        return redirect('/cart');
     }
 
     /**
      * Dodaj kupon do tego zamówienia
-     * @param Order   $order   [description]
+     * @param Order   $order [description]
      * @param Request $request [description]
      */
-    public function addCoupon(Order $order, Request $request){
+    public function addCoupon(Order $order, Request $request)
+    {
         $code = $request->code;
 
         $coupon = \App\Coupon::where('code', $code)->first();
 
-        if($coupon){
-            if($coupon->uses_left > 0){
+        if ($coupon) {
+            if ($coupon->uses_left > 0) {
                 $order->coupons()->save($coupon);
                 flash('Kod rabatowy dodany');
-            }else{
+            } else {
                 flash('Wyczerpano już limit użyć tego kodu rabatowego');
             }
-        }else{
+        } else {
             flash('Nie znaleziono kuponu rabatowego o takim kodzie.')->error();
         }
 
@@ -98,12 +106,14 @@ class OrderController extends Controller
 
     /**
      * Usuń kod rabatowy z koszyka
-     * @param  Order  $order  [description]
+     * @param  Order  $order [description]
      * @param  Coupon $coupon [description]
      * @return [type]         [description]
      */
-    public function removeCoupon(Order $order, Coupon $coupon){
+    public function removeCoupon(Order $order, Coupon $coupon)
+    {
         $order->coupons()->detach($coupon);
+
         return back();
     }
 

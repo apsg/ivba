@@ -1,10 +1,12 @@
 <?php
-
 namespace App;
 
+use App\Events\UserPaidForAccess;
+use App\Notifications\OrderConfirmed;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model 
+class Order extends Model
 {
     protected $guarded = [];
 
@@ -16,69 +18,49 @@ class Order extends Model
      * Użytkownik, który wygenerował zamówienie
      * @return [type] [description]
      */
-    public function user(){
-    	return $this->belongsTo(\App\User::class);
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
-
-    /**
-     * Lista kursów w tym zamówieniu
-     * @return [type] [description]
-     */
-    // public function courses(){
-    // 	return $this->morphedByMany(\App\Course::class, 'orderable');
-    // }
-
-    /**
-     * Lista lekcji w tym zamówieniu
-     * @return [type] [description]
-     */
-    // public function lessons(){
-    // 	return $this->morphedByMany(\App\Lesson::class, 'orderable');
-    // }
 
     /**
      * Abonament podpięty do tego zamówienia
      * @return [type] [description]
      */
-    public function subscription(){
-        return $this->morphedByMany(\App\Lesson::class, 'orderable');
-        // return $this->hasOne(\App\Subscription::class);
+    public function subscription()
+    {
+        return $this->morphedByMany(Lesson::class, 'orderable');
     }
 
     /**
      * Lista kodów rabatowych dodanych do tego zamówienia
      * @return [type] [description]
      */
-    public function coupons(){
-        return $this->belongsToMany(\App\Coupon::class);
+    public function coupons()
+    {
+        return $this->belongsToMany(Coupon::class);
     }
 
     /**
      * Suma cen elementów (przed ewentualnymi rabatami)
      * @return [type] [description]
      */
-    public function sum(){
-
+    public function sum()
+    {
         return $this->is_full_access ? $this->price : 0;
-        
-    	// return $this->is_full_access ? $this->price : 
-     //        number_format(
-     //            $this->courses->map(function($course){
-     //    		  return $course->price;
-     //    	   })->sum() + $this->lessons->map(function($lesson){
-     //                return $lesson->price;
-     //           })->sum() , 2);
     }
 
     /**
      * Suma końcowa
      * @return [type] [description]
      */
-    public function total(){
+    public function total()
+    {
         $total = $this->sum();
         foreach ($this->coupons as $coupon) {
             $total = $coupon->apply($total);
         }
+
         return $total;
     }
 
@@ -86,7 +68,8 @@ class Order extends Model
      * Kwota netto
      * @return [type] [description]
      */
-    public function netto(){
+    public function netto()
+    {
         return number_format($this->total() / 1.23, 2);
     }
 
@@ -94,7 +77,8 @@ class Order extends Model
      * Kwota podatku
      * @return [type] [description]
      */
-    public function tax(){
+    public function tax()
+    {
         return $this->total() - $this->netto();
     }
 
@@ -102,21 +86,22 @@ class Order extends Model
      * Potwierdź zamówienie
      * @return [type] [description]
      */
-    public function confirm(){
-
-        if(!is_null($this->confirmed_at))
+    public function confirm()
+    {
+        if (!is_null($this->confirmed_at)) {
             return false;
+        }
 
-        $this->confirmed_at = \Carbon\Carbon::now();
+        $this->confirmed_at = Carbon::now();
 
-        if($this->is_full_access){
-            $this->user->updateFullAccess( $this->duration );
-        }else{
-            
-            $this->user->addSubscriptionDays( $this->duration );
+        if ($this->is_full_access) {
+            $this->user->updateFullAccess($this->duration);
+        } else {
+
+            $this->user->addSubscriptionDays($this->duration);
             $this->user->currentSubscription()->update([
-                'is_active'         => true,
-                'next_payment_at'   => $this->user->lastDay(),
+                'is_active'       => true,
+                'next_payment_at' => $this->user->lastDay(),
             ]);
         }
 
@@ -129,13 +114,20 @@ class Order extends Model
         $this->save();
 
         // Odpalamy zdarzenie
-        event(new \App\Events\UserPaidForAccess($this->user));
+        event(new UserPaidForAccess($this->user));
 
         // Powiadamiamy użytkownika
-        $this->user->notify( new \App\Notifications\OrderConfirmed($this) );
+        $this->user->notify(new OrderConfirmed($this));
 
         return true;
     }
 
+    public function isEmpty()
+    {
+        if ($this->is_full_access) {
+            return false;
+        }
 
+        return true;
+    }
 }

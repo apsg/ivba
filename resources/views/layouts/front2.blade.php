@@ -75,6 +75,8 @@
                                 </li>
                             @endif
 
+                            @include('partials.cart_link')
+
                         @endif
                     </ul>
                 </div>
