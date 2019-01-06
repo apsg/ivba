@@ -1,26 +1,28 @@
 @extends('layouts.login')
 
 @section('content')
-<!-- Start Register -->
-<section class="login-wrapper register">
-  <div class="inner">
-    <div class="regiter-inner">
-      <div class="login-logo"> <a href="{{ url('/') }}"><img src="images/logo.png" class="img-responsive" alt=""></a> </div>
-      <div class="head-block">
-        <h1>Wyślij email z nowym hasłem</h1>
-      </div>
-      <div class="cnt-block">
-      @if ($errors->any())
-        <section>
-            <div class=" alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </section>
-        @endif
+    <!-- Start Register -->
+    <section class="login-wrapper register">
+        <div class="inner">
+            <div class="regiter-inner">
+                <div class="login-logo"><a class="mb-4 logo" href="{{ url('/') }}">
+                        <img src="{{ url('/images/v2/inauka.png') }}" class="img-responsive" alt="">
+                    </a></div>
+                <div class="head-block">
+                    <h1>Wyślij email z nowym hasłem</h1>
+                </div>
+                <div class="cnt-block">
+                    @if ($errors->any())
+                        <section>
+                            <div class=" alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </section>
+                    @endif
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
@@ -33,8 +35,9 @@
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">Adres E-Mail</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                            <div class="col-md-12">
+                                <input id="email" type="email" class="form-control" name="email"
+                                       value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -45,8 +48,8 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-ivba">
                                     Wyślij link resetu hasła
                                 </button>
                             </div>

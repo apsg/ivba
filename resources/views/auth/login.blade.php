@@ -1,13 +1,9 @@
 @extends('layouts.login')
 
 @section('content')
-    <!-- Start Login -->
-    <section class="login-wrapper">
-        <div class="inner">
-            <div class="login">
                 <div class="login-logo"><a href="{{ url('/') }}"><img src="{{ url('/images/v2/inauka.png') }}"
                                                                       class="img-responsive" alt=""></a></div>
-                <div class="head-block">
+                <div class="head-block my-3">
                     <h1>LOGOWANIE</h1>
                 </div>
                 <div class="cnt-block">
@@ -37,13 +33,14 @@
 
                         <div class="button-outer">
                             <button class="btn btn-ivba">Zaloguj <span class="icon-more-icon"></span></button>
-                            <div class="or hidden-xs">lub</div>
+                            <br />
+                            <a href="{{ route('password.request') }}" class="forgot text-secondary"><i class="fa fa-question-circle-o"></i> Zapomniane hasło?
+                            </a>
+                            <hr />
+                            <div class="or hidden-xs">Nie masz konta?</div>
                             <a href="{{ url('/register') }}" class="btn btn-primary register">Zarejestruj <span
                                         class="icon-more-icon"></span></a>
                         </div>
-                        <div class="remember">
-                            <a href="{{ route('password.request') }}" class="forgot"><span>?</span>Zapomniane hasło?
-                            </a></div>
                     </form>
                 </div>
             </div>

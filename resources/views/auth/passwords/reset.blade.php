@@ -1,25 +1,27 @@
 @extends('layouts.login')
 
 @section('content')
-<section class="login-wrapper register">
-  <div class="inner">
-    <div class="regiter-inner">
-      <div class="login-logo"> <a href="{{ url('/') }}"><img src="images/logo.png" class="img-responsive" alt=""></a> </div>
-      <div class="head-block">
-        <h1>Resetuj hasło</h1>
-      </div>
-      <div class="cnt-block">
-      @if ($errors->any())
-        <section>
-            <div class=" alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </section>
-        @endif
+    <section class="login-wrapper register">
+        <div class="inner">
+            <div class="regiter-inner">
+                <div class="login-logo"><a href="{{ url('/') }}"><img src="images/v2/inauka.png" class="img-responsive"
+                                                                      alt=""></a></div>
+                <div class="head-block">
+
+                    <h1>Resetuj hasło</h1>
+                </div>
+                <div class="cnt-block">
+                    @if ($errors->any())
+                        <section>
+                            <div class=" alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </section>
+                    @endif
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
@@ -35,7 +37,8 @@
                             <label for="email" class="col-md-4 control-label">Adres E-Mail </label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" required autofocus>
+                                <input id="email" type="email" class="form-control" name="email"
+                                       value="{{ $email or old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -62,7 +65,8 @@
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                             <label for="password-confirm" class="col-md-4 control-label">Powtórz hasło</label>
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control"
+                                       name="password_confirmation" required>
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
