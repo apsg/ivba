@@ -16,9 +16,9 @@ class TpayController extends Controller
 
     public function showGate()
     {
-        $gate = (new CardPaymentGate())->getRedirectTransaction(Auth::user());
+//        $gate = (new CardPaymentGate())->getRedirectTransaction(Auth::user());
 
-        return redirect($gate);
+//        return redirect($gate);
     }
 
     public function debug(Request $request)

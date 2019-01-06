@@ -193,11 +193,6 @@ class User extends Authenticatable
             return $sub;
         }
 
-        $this->subscriptions()
-            ->where('is_active', true)
-            ->get()
-            ->each->check();
-
         return $this->subscriptions()
             ->where('valid_until', '>=', Carbon::now())
             ->first();

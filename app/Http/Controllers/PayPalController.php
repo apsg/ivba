@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Subscription;
 use App\Helpers\PayPalHelper;
+use App\Subscription;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -106,7 +105,6 @@ class PayPalController extends Controller
     /**
      * Co przychodzi z paypala?
      * @param  Request $request [description]
-     * @return [type]           [description]
      */
     public function notify(Request $request)
     {

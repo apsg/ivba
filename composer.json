@@ -17,6 +17,7 @@
         "laracasts/flash": "^3.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "~1.0",
+        "openpayu/openpayu": "dev-master",
         "phpdocumentor/reflection-common": "1.0",
         "sentry/sentry-laravel": "^0.12.0@dev",
         "setasign/fpdi-fpdf": "^1.6",

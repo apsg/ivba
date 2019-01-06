@@ -1,6 +1,8 @@
 <?php
 namespace App\Payments\Tpay;
 
+use App\Payment;
+use App\Payments\Exceptions\PaymentException;
 use App\Payments\Tpay\Traits\TpayCardConstructorTrait;
 use App\User;
 use tpayLibs\src\_class_tpay\PaymentCard;
@@ -10,22 +12,16 @@ class CardPaymentGate extends PaymentCard
 {
     use TpayCardConstructorTrait;
 
-    public function getRedirectTransaction(User $user)
+    public function getRedirectTransaction(Payment $payment, User $user)
     {
         try {
-            $config = [
-                'name'  => $user->full_name,
-                'email' => $user->email,
-                'desc'  => 'Pierwsza płatność dla subskrypcji na ' . config('app.name'),
-            ];
-
             $this
-                ->setAmount(config('ivba.subscription_price_first'))
+                ->setAmount($payment->amount)
                 ->setCurrency(985)
-                ->setOrderID((string)$user->getCurrentOrder()->id)
+                ->setOrderID((string)$payment->id)
                 ->setReturnUrls(url('/tpay/success'), url('/tpay/error'));
 
-            $transaction = $this->registerSale($config['name'], $config['email'], $config['desc']);
+            $transaction = $this->registerSale($user->full_name, $user->email, $payment->title);
 
             if (isset($transaction['sale_auth']) === false) {
                 throw new TException('Error generating transaction: ' . $transaction['err_desc']);
@@ -35,7 +31,7 @@ class CardPaymentGate extends PaymentCard
 
             return "https://secure.tpay.com/cards/?sale_auth=$transactionId";
         } catch (TException $e) {
-            echo 'Unable to generate transaction. Reason: ' . $e->getMessage();
+            throw new PaymentException('Payment failed: ' . $e->getMessage());
         }
     }
 }

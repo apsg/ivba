@@ -1,14 +1,14 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Payment;
+use App\Payments\PaymentService;
+use App\Repositories\SubscriptionRepository;
 use App\Subscription;
 use Auth;
-use Illuminate\Http\Request;
 
 class SubscriptionsController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -18,10 +18,20 @@ class SubscriptionsController extends Controller
      * [create description]
      * @return [type] [description]
      */
-    public function create()
+    public function create(SubscriptionRepository $subscriptionRepository, PaymentService $paymentService)
     {
+        $subscription = $subscriptionRepository->create(Auth::user());
 
+        $payment = Payment::create([
+            'subscription_id' => $subscription->id,
+            'amount'          => config('ivba.subscription_price_first'),
+            'is_recurrent'    => false,
+            'title'           => config('ivba.subscription_description_first'),
+        ]);
 
+        $url = $paymentService->payUrl($payment, Auth::user());
+
+        return redirect($url);
     }
 
     /**
@@ -31,7 +41,6 @@ class SubscriptionsController extends Controller
      */
     public function cancel(Subscription $subscription)
     {
-
         if ($subscription->user_id == Auth::user()->id) {
             $subscription->cancel();
             flash('Anulowano subskrypcję');
@@ -41,5 +50,4 @@ class SubscriptionsController extends Controller
 
         return back();
     }
-
 }

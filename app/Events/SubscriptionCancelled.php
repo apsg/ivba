@@ -1,19 +1,18 @@
 <?php
-
 namespace App\Events;
 
+use App\Subscription;
 use Illuminate\Broadcasting\Channel;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
 
 class SubscriptionCancelled
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    /** @var Subscription  */
     public $subscription;
 
     /**
@@ -21,7 +20,7 @@ class SubscriptionCancelled
      *
      * @return void
      */
-    public function __construct(\App\Subscription $subscription)
+    public function __construct(Subscription $subscription)
     {
         $this->subscription = $subscription;
     }

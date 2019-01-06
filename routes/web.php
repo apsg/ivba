@@ -41,7 +41,7 @@ Route::get('/order/{order}/pay', 'OrderController@pay');
 Route::post('/order/{order}/add_coupon', 'OrderController@addCoupon');
 Route::get('/order/{order}/remove_coupon/{coupon}', 'OrderController@removeCoupon');
 
-Route::get('subscription/create', 'PayPalController@create');
+Route::get('subscription/create', 'SubscriptionsController@create');
 Route::get('/subscription/{subscription}/cancel', 'SubscriptionsController@cancel');
 
 Route::get('/home', 'HomeController@admin');

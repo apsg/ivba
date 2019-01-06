@@ -57,8 +57,6 @@
                             </tbody>
                         </table>
 
-                        <h3>PayPal</h3>
-
                         <form action="{{ url('/subscription/create') }}">
                             <label>
                                 <input type="checkbox" name="rules" required="required" value="1">
@@ -69,6 +67,9 @@
 
                             </label><br/><br/>
 
+                            <label>Klikając w poniższy przycisk zatwierdzisz subskrypcję abonamentu. Nastąpi
+                                przekierowanie do systemu płatniczego w celu przeprowadzenia pierwszej płatności. Po
+                                udanej płatności subskrypcja będzie aktywna.</label>
                             <button class="btn btn-primary">Wykup abonament</button>
                         </form>
 
