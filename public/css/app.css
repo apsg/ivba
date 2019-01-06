@@ -13573,6 +13573,10 @@ a.text-dark:focus {
   color: #ffffff;
 }
 
+.login {
+  font-family: "Lato", "Raleway", sans-serif;
+}
+
 .header {
   background-color: #e36427;
   background-image: url("/images/v2/glowny_banner.png");
