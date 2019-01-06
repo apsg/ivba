@@ -7,6 +7,25 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * Class User
+ *
+ * @property string      name
+ * @property string      email
+ * @property string      password
+ * @property string      full_access_expires
+ * @property Carbon      last_proof_at
+ * @property integer     last_proof_id
+ * @property integer     days_bought
+ * @property Carbon      expires_at
+ * @property string      card_token
+ * @property Carbon      changed_password_at
+ * @property Carbon      unsubscribed_at
+ * @property string      first_name
+ * @property string      last_name
+ * @property string      address
+ * @property-read string full_name
+ */
 class User extends Authenticatable
 {
     use Notifiable;

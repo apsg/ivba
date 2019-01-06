@@ -28,6 +28,7 @@
     "font-awesome": "^4.7.0",
     "jquery-migrate": "~3.0.0",
     "jquery-ui": "^1.12.1",
+    "npm": "^6.5.0",
     "tinymce": "^4.6.3",
     "vue-carousel": "^0.16.2"
   }

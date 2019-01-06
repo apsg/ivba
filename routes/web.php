@@ -72,6 +72,9 @@ Route::get('/test', function () {
 
 
 Route::get('tpay', 'TpayController@showGate');
+Route::get('tpay/success', 'TpayController@debug');
+Route::get('tpay/error', 'TpayController@debug');
+Route::any('tpay/notify', 'TpayController@notification');
 
 // To musi być na samym końcu, by nie blokowało innych ścieżek
 Route::get('/{page}/{subpage?}', 'PageController@show');
