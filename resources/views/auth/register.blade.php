@@ -6,8 +6,11 @@
     <section class="login-wrapper register">
         <div class="inner">
             <div class="regiter-inner">
-                <div class="login-logo"><a href="{{ url('/') }}"><img src="{{ url('/images/v2/inauka.png') }}"
-                                                                      class="img-responsive" alt=""></a></div>
+                <div class="login-logo">
+                    <a href="{{ url('/') }}">
+                        <img src="{{ url('/images/v2/inauka.png') }}" class="img-responsive" alt="">
+                    </a>
+                </div>
                 <div class="head-block">
                     <h1>Zarejestruj nowe konto</h1>
                 </div>
