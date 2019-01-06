@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Transformers\CoursesTransformer;
 use Auth;
+use Illuminate\Support\Collection;
 
 class CoursesController extends Controller
 {
@@ -14,34 +16,27 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        $courses = null;
-        $next = null;
-        $next_course = null;
+        return view('pages.courses');
+    }
+
+    public function list()
+    {
+        /** @var Collection $courses */
+        $courses = collect([]);
+        $current = null;
 
         if (Auth::check()) {
             if (Auth::user()->hasFullAccess()) {
-
-                $courses = Course::orderBy('position', 'asc')->paginate(12);
-                $next_courses = collect([]);
-
+                $courses = Course::orderBy('position', 'asc')->get();
             } else {
-
                 $current = Auth::user()->current_day;
-
-                $courses = Course::where('cumulative_delay', '<=', $current)
-                    ->orderBy('position', 'asc')->paginate(12);
-
-                $next_courses = Course::where('cumulative_delay', '>', $current)
-                    ->orderBy('position', 'asc')
-                    ->get();
+                $courses = Course::orderBy('position', 'asc')->get();
             }
 
-        } else {
-            $courses = [];
-            $next_courses = collect([]);
         }
 
-        return view('pages.courses')->with(compact('courses', 'next', 'next_courses'));
+        return fractal()->collection($courses, new CoursesTransformer($current))
+            ->toArray();
     }
 
     /**
