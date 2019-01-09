@@ -1,9 +1,11 @@
 <template>
     <div class="container text-center d-flex w-50 pb-3">
         <carousel
-                :per-page="4"
+                :perPage="4"
                 :navigationNextLabel="`>`"
                 :navigationPrevLabel="`<`"
+                ref="carousel"
+                style="width: 100%;"
         >
             <slide>
                 <a href="#">
@@ -49,7 +51,17 @@
 
     export default {
         name: "Categories",
-        components: {Carousel, Slide}
+        components: {Carousel, Slide},
+
+        data() {
+            return {
+                ready: false,
+            }
+        },
+
+        mounted() {
+            this.ready = true;
+        }
     }
 </script>
 

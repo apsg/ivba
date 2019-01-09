@@ -1811,12 +1811,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Categories",
   components: {
     Carousel: vue_carousel__WEBPACK_IMPORTED_MODULE_0__["Carousel"],
     Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_0__["Slide"]
+  },
+  data: function data() {
+    return {
+      ready: false
+    };
+  },
+  mounted: function mounted() {
+    this.ready = true;
   }
 });
 
@@ -38893,8 +38903,10 @@ var render = function() {
       _c(
         "carousel",
         {
+          ref: "carousel",
+          staticStyle: { width: "100%" },
           attrs: {
-            "per-page": 4,
+            perPage: 4,
             navigationNextLabel: ">",
             navigationPrevLabel: "<"
           }
