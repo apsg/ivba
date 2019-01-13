@@ -6359,7 +6359,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\na[data-v-09142593] {\n    margin: 5px;\n}\n.VueCarousel-navigation-button[data-v-09142593] {\n    color: #fff;\n    font-size: 40px;\n    font-family: \"Lato\", \"Raleway\", sans-serif;\n    font-weight: 300;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-09142593] {\n    margin: 5px;\n}\n", ""]);
 
 // exports
 

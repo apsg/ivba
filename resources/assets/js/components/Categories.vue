@@ -69,11 +69,4 @@
     a {
         margin: 5px;
     }
-
-    .VueCarousel-navigation-button {
-        color: #fff;
-        font-size: 40px;
-        font-family: "Lato", "Raleway", sans-serif;
-        font-weight: 300;
-    }
 </style>
