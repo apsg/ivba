@@ -23,10 +23,10 @@ import Categories from './components/Categories.vue';
 import RandomLessons from './components/RandomLessons.vue';
 import Testimonials from './components/Testimonials.vue';
 import Courses from './components/Courses.vue';
+import CourseRating from './components/CourseRating.vue';
 
 const app = new Vue({
     el: '#app',
-    components: {Categories, RandomLessons, Testimonials, Courses}
-
+    components: {Categories, RandomLessons, Testimonials, Courses, CourseRating}
 });
 

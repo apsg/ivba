@@ -14,5 +14,6 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         '/payu/notify',
         '/tpay/notify',
+        '/tpay/success',
     ];
 }
