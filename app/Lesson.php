@@ -6,12 +6,12 @@ use App\Course;
 use App\Order;
 use App\Traits\Accessable;
 use App\Traits\ChecksSlugs;
-use App\Interfaces\iOrderable;
+use App\Interfaces\OrderableContract;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
-class Lesson extends Model implements iOrderable
+class Lesson extends Model implements OrderableContract
 {
     use ChecksSlugs;
 

@@ -27,7 +27,7 @@ class SubscriptionsController extends Controller
 
         $payment = $paymentRepository->createFirst($subscription);
 
-        $url = $paymentService->payUrl($payment, Auth::user());
+        $url = $paymentService->payUrl($payment);
 
         return redirect($url);
     }

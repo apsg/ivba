@@ -3,12 +3,17 @@ namespace App\Payments;
 
 use App\Payment;
 use App\Payments\Tpay\CardPaymentGate;
-use App\User;
+use Auth;
+use Illuminate\Auth\Access\AuthorizationException;
 
 class PaymentService
 {
-    public function payUrl(Payment $payment, User $user)
+    public function payUrl(Payment $payment)
     {
-        return (new CardPaymentGate())->getRedirectTransaction($payment, $user);
+        if (!Auth::user()->can('pay', $payment)) {
+            throw  new AuthorizationException('You do not have access to process this payment');
+        }
+
+        return (new CardPaymentGate())->getRedirectTransaction($payment, $payment->subscription->user);
     }
 }

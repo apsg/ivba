@@ -8,6 +8,11 @@ use Illuminate\Support\Collection;
 
 /**
  * Class Subscription
+ * @property int                       user_id
+ * @property string                    profileid
+ * @property bool                      is_active
+ * @property Carbon                    cancelled_at
+ * @property int                       tries
  * @property Carbon                    valid_until
  * @property-read User                 user
  * @property-read Collection|Payment[] payments

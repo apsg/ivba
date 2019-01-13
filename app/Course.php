@@ -10,14 +10,14 @@ use App\Quiz;
 use App\Rating;
 use App\Traits\Accessable;
 use App\Traits\ChecksSlugs;
-use App\Interfaces\iOrderable;
+use App\Interfaces\OrderableContract;
 use App\User;
 use App\UserCertificate;
 use App\Video;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class Course extends Model implements iOrderable
+class Course extends Model implements OrderableContract
 {
     use ChecksSlugs;
 

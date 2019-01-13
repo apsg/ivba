@@ -88,7 +88,7 @@
             </table>
 
             <hr/>
-            <h3>Twoje dostępy</h3>
+            <h3>Twoje dostępy i subskrypcje</h3>
             <table class="table">
                 <thead>
                 <tr>
@@ -120,11 +120,11 @@
                         </th>
                         <td>{{ $subscription->created_at->format('Y-m-d') }}</td>
                         <td>
-                            {{ $subscription->valid_until->subDays(2) }}
+                            {{ $subscription->valid_until }}
                         </td>
                         <td>
                             @if(!$subscription->is_active)
-                                <i class="fa fa-minus-circle text-danger"></i>Anulowana
+                                <i class="fa fa-minus-circle text-danger"></i>Anulowana lub niepotwierdzona
                             @else
                                 @if($subscription->cancelled_at)
                                     <i class="fa fa-minus-circle text-danger"></i> Zakończono - anulowana

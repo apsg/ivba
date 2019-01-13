@@ -1,9 +1,10 @@
 <?php
-
 namespace App\Providers;
 
 use App\Course;
 use App\Lesson;
+use App\Payment;
+use App\Policies\PaymentPolicy;
 use App\Quiz;
 use App\User;
 use Auth;
@@ -19,7 +20,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model'   => 'App\Policies\ModelPolicy',
+        Payment::class => PaymentPolicy::class,
     ];
 
     /**
