@@ -70,7 +70,7 @@
                             <label>Klikając w poniższy przycisk zatwierdzisz subskrypcję abonamentu. Nastąpi
                                 przekierowanie do systemu płatniczego w celu przeprowadzenia pierwszej płatności. Po
                                 udanej płatności subskrypcja będzie aktywna.</label>
-                            <button class="btn btn-primary">Wykup abonament</button>
+                            <button class="btn btn-primary"><i class="fa fa-money"></i> >  Przejdź do operatora płatności by wykupić abonament</button>
                         </form>
 
                     @endif
@@ -102,8 +102,8 @@
                     <li>Masz prawo w ciągu 30 dni zrezygnować</li>
                 </ul>
                 <br/>
-                <a href="{{ url('/cart/add_full_access') }}" class="btn btn-primary">Kup pełen dostęp
-                    za {{ config('ivba.full_access_price') }} zł brutto</a>
+                <a href="{{ url('/cart/add_full_access') }}" class="btn btn-primary">Dodaj pełen dostęp
+                    za {{ config('ivba.full_access_price') }} zł brutto do koszyka</a>
                 <hr/>
             @endif
             <hr/>

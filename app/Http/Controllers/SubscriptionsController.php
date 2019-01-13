@@ -1,8 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Payment;
 use App\Payments\PaymentService;
+use App\Repositories\PaymentRepository;
 use App\Repositories\SubscriptionRepository;
 use App\Subscription;
 use Auth;
@@ -18,16 +18,14 @@ class SubscriptionsController extends Controller
      * [create description]
      * @return [type] [description]
      */
-    public function create(SubscriptionRepository $subscriptionRepository, PaymentService $paymentService)
-    {
+    public function create(
+        SubscriptionRepository $subscriptionRepository,
+        PaymentRepository $paymentRepository,
+        PaymentService $paymentService
+    ) {
         $subscription = $subscriptionRepository->create(Auth::user());
 
-        $payment = Payment::create([
-            'subscription_id' => $subscription->id,
-            'amount'          => config('ivba.subscription_price_first'),
-            'is_recurrent'    => false,
-            'title'           => config('ivba.subscription_description_first'),
-        ]);
+        $payment = $paymentRepository->createFirst($subscription);
 
         $url = $paymentService->payUrl($payment, Auth::user());
 

@@ -4,11 +4,13 @@ namespace App;
 use App\Events\SubscriptionCancelled;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 /**
  * Class Subscription
- * @property Carbon    valid_until
- * @property-read User user
+ * @property Carbon                    valid_until
+ * @property-read User                 user
+ * @property-read Collection|Payment[] payments
  */
 class Subscription extends Model
 {

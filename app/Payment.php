@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Payment
- * @property string subscription_id
- * @property string title
- * @property float  amount
- * @property string external_id
- * @property Carbon cancelled_at
- * @property bool   is_recurrent
+ * @property string            subscription_id
+ * @property string            title
+ * @property float             amount
+ * @property string            external_id
+ * @property Carbon            cancelled_at
+ * @property bool              is_recurrent
+ * @property-read Subscription subscription
  *
  */
 class Payment extends Model
