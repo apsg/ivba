@@ -1978,7 +1978,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       proof: null,
-      should_show: false
+      should_show: false,
+      nextTimeout: 30000
     };
   },
   mounted: function mounted() {
@@ -1995,7 +1996,8 @@ __webpack_require__.r(__webpack_exports__);
     show: function show() {
       this.should_show = true;
       setTimeout(this.hide, 3000);
-      setTimeout(this.getProof, 30000);
+      setTimeout(this.getProof, this.nextTimeout);
+      this.nextTimeout += 10000;
     },
     hide: function hide() {
       this.should_show = false;

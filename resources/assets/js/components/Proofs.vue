@@ -27,6 +27,7 @@
             return {
                 proof: null,
                 should_show: false,
+                nextTimeout: 30000,
             }
         },
 
@@ -44,7 +45,8 @@
             show() {
                 this.should_show = true;
                 setTimeout(this.hide, 3000);
-                setTimeout(this.getProof, 30000);
+                setTimeout(this.getProof, this.nextTimeout);
+                this.nextTimeout += 10000;
             },
 
             hide() {
@@ -60,6 +62,5 @@
         width: 350px;
         max-width: 90%;
     }
-
 
 </style>
