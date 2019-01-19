@@ -37,7 +37,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\CheckForEmailClickedLinks::class,
             \App\Http\Middleware\CheckPasswordAge::class,
-            HttpsMiddleware::class,
+//            HttpsMiddleware::class,
         ],
 
         'api' => [

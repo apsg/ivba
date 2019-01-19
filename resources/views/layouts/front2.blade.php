@@ -166,5 +166,8 @@
 @endforeach
 
 @stack('scripts')
+
+@include('cookieConsent::index')
+
 </body>
 </html>

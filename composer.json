@@ -21,6 +21,7 @@
         "phpdocumentor/reflection-common": "1.0",
         "sentry/sentry-laravel": "^0.12.0@dev",
         "setasign/fpdi-fpdf": "^1.6",
+        "spatie/laravel-cookie-consent": "dev-master",
         "spatie/laravel-fractal": "dev-master",
         "srmklive/paypal": "~1.0",
         "tom-lingham/searchy": "^3.0",

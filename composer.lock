@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f11f101ea4182491c199b4eb94bea273",
+    "content-hash": "1dcb180f60501ddcf0ec116c5c05dfd3",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -3551,6 +3551,74 @@
             "time": "2018-10-08T09:18:33+00:00"
         },
         {
+            "name": "spatie/laravel-cookie-consent",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-cookie-consent.git",
+                "reference": "ad6283a03d1a6d3709eec0e89c85f9e003bd75bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-cookie-consent/zipball/ad6283a03d1a6d3709eec0e89c85f9e003bd75bd",
+                "reference": "ad6283a03d1a6d3709eec0e89c85f9e003bd75bd",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cookie": "~5.5.0|~5.6.0|~5.7.0",
+                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0",
+                "illuminate/view": "~5.5.0|~5.6.0|~5.7.0",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "~1.4",
+                "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0",
+                "phpunit/phpunit": "^6.3|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\CookieConsent\\CookieConsentServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\CookieConsent\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Willem Van Bockstal",
+                    "email": "willem@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Make your Laravel app comply with the crazy EU cookie law",
+            "homepage": "https://github.com/spatie/cookie-consent",
+            "keywords": [
+                "comply",
+                "cookie",
+                "cookie-consent",
+                "eu",
+                "law",
+                "spatie"
+            ],
+            "time": "2019-01-14T09:20:17+00:00"
+        },
+        {
             "name": "spatie/laravel-fractal",
             "version": "dev-master",
             "source": {
@@ -6961,6 +7029,7 @@
         "barryvdh/laravel-ide-helper": 20,
         "openpayu/openpayu": 20,
         "sentry/sentry-laravel": 20,
+        "spatie/laravel-cookie-consent": 20,
         "spatie/laravel-fractal": 20,
         "tpay-com/tpay-php": 20,
         "barryvdh/laravel-debugbar": 20
