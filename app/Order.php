@@ -27,10 +27,10 @@ class Order extends Model
      * Abonament podpięty do tego zamówienia
      * @return [type] [description]
      */
-    public function subscription()
-    {
-        return $this->morphedByMany(Lesson::class, 'orderable');
-    }
+//    public function subscription()
+//    {
+//        return $this->morphedByMany(Lesson::class, 'orderable');
+//    }
 
     /**
      * Lista kodów rabatowych dodanych do tego zamówienia

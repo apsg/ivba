@@ -40,15 +40,16 @@ class AdminOrdersController extends Controller
                 if ($item->is_full_access) {
                     return "Pałen dostęp";
                 } else {
-                    $items = [];
-                    foreach ($item->courses as $course) {
-                        $items[] = 'Kurs: ' . $course->title;
-                    }
-                    foreach ($item->lessons as $lesson) {
-                        $items[] = 'Lekcja: ' . $lesson->title;
-                    }
-
-                    return implode(', ', $items);
+//                    $items = [];
+//                    foreach ($item->courses as $course) {
+//                        $items[] = 'Kurs: ' . $course->title;
+//                    }
+//                    foreach ($item->lessons as $lesson) {
+//                        $items[] = 'Lekcja: ' . $lesson->title;
+//                    }
+//
+//                    return implode(', ', $items);
+                    return '';
                 }
             })
             ->addColumn('coupons', function ($item) {
