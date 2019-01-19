@@ -58,6 +58,7 @@ Route::get('/certificate/{certificate}/download', 'CertificatesController@downlo
 Route::get('/check_cert', 'CertificatesController@check');
 
 Route::post('/get_proofs', 'ProofsController@get');
+Route::get('/proofs/next', 'ProofsController@axiosGet');
 
 Route::post('/contact_form', 'ContactFormController@send');
 

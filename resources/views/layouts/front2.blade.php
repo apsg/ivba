@@ -108,13 +108,13 @@
         <div class="container py-3">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <a href="#">
+                    <a href="https://facebook.com/wideokursy/" target="_blank">
                         <img src="{{ asset('/images/v2/f_ikona.png') }}"/>
                     </a>
                     <a href="#">
                         <img src="{{ asset('/images/v2/twitter_ikona_stopka.png') }}"/>
                     </a>
-                    <a href="#">
+                    <a href="https://www.youtube.com/channel/UCC5LbbtBFGyGuBxsUVe-trg" target="_blank">
                         <img src="{{ asset('/images/v2/google+_ikona.png') }}"/>
                     </a>
                 </div>
@@ -150,11 +150,14 @@
             </div>
         </div>
     </footer>
+
+    <proofs></proofs>
+
 </div>
 
 @stack('modals')
 
-@include('partials.show_proof')
+{{--@include('partials.show_proof')--}}
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript">
