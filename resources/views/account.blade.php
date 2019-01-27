@@ -193,9 +193,9 @@
                             @endif
 
                             @if($payment->cancelled_at)
-                                <span class="text-warning"><i class="fa fa-warning"></i> Płatność odrzucona {{ $payment->cancelled_at }}.
+                                <span class="text-danger"><i class="fa fa-warning"></i> Płatność odrzucona {{ $payment->cancelled_at }}.
                                     @if(!empty($payment->cancel_reason))
-                                        <br/>Powód: {{ $payment->cancel_reason }}
+                                        <br/>Powód: {{ $payment->reason }}
                                     @endif
                                 </span>
                             @endif

@@ -1,6 +1,7 @@
 <?php
 namespace App;
 
+use App\Payments\Tpay\TpayHelper;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -12,8 +13,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property float             amount
  * @property string            external_id
  * @property Carbon            cancelled_at
+ * @property Carbon            confirmed_at
  * @property bool              is_recurrent
+ * @property string|null       cancel_reason
  * @property-read Subscription subscription
+ * @property-read string       reason
  * @method Builder|Payment forUser(User $user)
  */
 class Payment extends Model
@@ -49,4 +53,8 @@ class Payment extends Model
         $query->whereIn('subscription_id', $user->subscriptions->pluck('id'));
     }
 
+    public function getReasonAttribute()
+    {
+        return TpayHelper::translateReason($this->cancel_reason);
+    }
 }
