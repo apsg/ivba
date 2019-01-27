@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Events\ActiveSubscriptionExpiredEvent;
 use App\Events\FirstPaymentCorrectEvent;
 use App\Events\SubscriptionCancelled;
+use App\Events\SubscriptionProlongedEvent;
 use App\Events\SubscriptionStartedEvent;
 use App\Payments\Listeners\StartSubscriptionAfterFirstPaymentListener;
 use App\Payments\Listeners\TryToProlongSubscriptionListener;
@@ -37,6 +38,9 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\SendSubscriptionFailedEmail',
         ],
         SubscriptionStartedEvent::class              => [
+            //
+        ],
+        SubscriptionProlongedEvent::class            => [
             //
         ],
         ActiveSubscriptionExpiredEvent::class        => [

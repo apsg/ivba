@@ -2,6 +2,7 @@
 namespace App;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon            cancelled_at
  * @property bool              is_recurrent
  * @property-read Subscription subscription
- *
+ * @method Builder|Payment forUser(User $user)
  */
 class Payment extends Model
 {
@@ -29,8 +30,8 @@ class Payment extends Model
     ];
 
     protected $casts = [
-        'confirmed_at' => 'date',
-        'cancelled_at' => 'date',
+        'confirmed_at' => 'datetime',
+        'cancelled_at' => 'datetime',
     ];
 
     public function subscription()
@@ -41,6 +42,11 @@ class Payment extends Model
     public function isFirstPayment() : bool
     {
         return !$this->is_recurrent;
+    }
+
+    public function scopeForUser($query, User $user)
+    {
+        $query->whereIn('subscription_id', $user->subscriptions->pluck('id'));
     }
 
 }

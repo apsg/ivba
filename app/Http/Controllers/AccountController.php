@@ -2,34 +2,42 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\PasswordReset;
+use App\Payment;
+use Auth;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
-    public function __construct(){
-    	$this->middleware('auth');
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
     /**
      * Pokaż dane konta
      * @return [type] [description]
      */
-    public function show(){
-    	$user = \Auth::user();
-            
-    	return view('account')->with(compact('user'));
+    public function show()
+    {
+        $user = Auth::user();
+
+        $payments = Payment::forUser($user)->orderBy('created_at', 'desc')->get();
+
+        return view('account')->with(compact('user', 'payments'));
     }
 
     /**
      * Zaktualizuj dane użytkownika
      * @return [type] [description]
      */
-    public function update(Request $request){
-    	$user = \Auth::user();
+    public function update(Request $request)
+    {
+        $user = Auth::user();
 
-    	$user->update($request->only('name'));
+        $user->update($request->only('name'));
 
-    	return redirect('account');
+        return redirect('account');
     }
 
     /**
@@ -37,13 +45,14 @@ class AccountController extends Controller
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function changePassword(Request $request){        
-        
-        \App\Helpers\PasswordReset::send();
+    public function changePassword(Request $request)
+    {
+        PasswordReset::send();
 
-        \Auth::logout();
+        Auth::logout();
 
         flash('Link do resetu hasła został pomyślnie wysłany. Nastąpiło automatyczne wylogowanie.');
+
         return redirect('/');
     }
 
@@ -52,7 +61,8 @@ class AccountController extends Controller
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function patch(Request $request){
+    public function patch(Request $request)
+    {
 
         $request->validate([
             'first_name' => 'required',
@@ -60,7 +70,7 @@ class AccountController extends Controller
             'address'    => 'required',
         ]);
 
-        \Auth::user()
+        Auth::user()
             ->update(
                 $request->only('first_name', 'last_name', 'address')
             );

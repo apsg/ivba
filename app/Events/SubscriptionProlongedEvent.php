@@ -1,9 +1,10 @@
 <?php
+
 namespace App\Events;
 
 use Illuminate\Broadcasting\PrivateChannel;
 
-class ActiveSubscriptionExpiredEvent extends BaseSubscriptionEvent
+class SubscriptionProlongedEvent extends BaseSubscriptionEvent
 {
     /**
      * Get the channels the event should broadcast on.

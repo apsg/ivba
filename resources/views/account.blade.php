@@ -172,6 +172,36 @@
                         <td>{{ $order->confirmed_at }}</td>
                     </tr>
                 @endforeach
+                @foreach($payments as $payment)
+                    <tr>
+                        <th scope="row">{{ $payment->id }}</th>
+                        <td>{{ $payment->id }}</td>
+                        <td>
+                            {{ $payment->title }}<br/>
+                            @if($payment->is_recurrent)
+                                <span class="text-info"><i
+                                            class="fa fa-info"></i> Automatyczna płatność miesięczna</span>
+                            @else
+                                <span class="text-info"><i
+                                            class="fa fa-info"></i> Pierwsza płatność w abonamencie</span>
+                            @endif
+                        </td>
+                        <td>{{ $payment->final_total }}</td>
+                        <td>
+                            @if($payment->confirmed_at)
+                                <span class="text-success"><i class="fa fa-check"></i> Płatność zrealizowana {{ $payment->confirmed_at }}</span>
+                            @endif
+
+                            @if($payment->cancelled_at)
+                                <span class="text-warning"><i class="fa fa-warning"></i> Płatność odrzucona {{ $payment->cancelled_at }}.
+                                    @if(!empty($payment->cancel_reason))
+                                        <br/>Powód: {{ $payment->cancel_reason }}
+                                    @endif
+                                </span>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
 

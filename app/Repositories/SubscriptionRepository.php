@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Events\SubscriptionCancelled;
+use App\Events\SubscriptionProlongedEvent;
 use App\Events\SubscriptionStartedEvent;
 use App\Payments\Exceptions\PaymentException;
 use App\Subscription;
@@ -50,7 +51,7 @@ class SubscriptionRepository
         $subscription->update([
             'is_active'   => true,
             'token'       => $token,
-            'valid_until' => Carbon::now(),
+            'valid_until' => Carbon::now()->addDays(config('ivba.subscription_duration_first')),
             'amount'      => config('ivba.subscription_price'),
         ]);
 
@@ -68,9 +69,12 @@ class SubscriptionRepository
         $valid = max($subscription->valid_until->timestamp, Carbon::now()->timestamp);
 
         $subscription->update([
-            'valid_until' => Carbon::createFromTimestamp($valid)->addMinutes(3),
+            // TODO change this to months
+            'valid_until' => Carbon::createFromTimestamp($valid)->addDays(config('ivba.subscription_duration')),
             'tries'       => 0,
         ]);
+
+        event(new SubscriptionProlongedEvent($subscription));
 
         return $subscription;
     }
