@@ -27,6 +27,16 @@ class TpayController extends Controller
         return redirect('/buy_access');
     }
 
+    public function success()
+    {
+        return redirect('/success');
+    }
+
+    public function error()
+    {
+        return redirect('/error');
+    }
+
     public function handleResponse(Request $request)
     {
         $handler = (new CardNotification())->handleNotification($request->input('type'));
