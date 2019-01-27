@@ -186,7 +186,7 @@
                                             class="fa fa-info"></i> Pierwsza płatność w abonamencie</span>
                             @endif
                         </td>
-                        <td>{{ $payment->final_total }}</td>
+                        <td>{{ $payment->amount }}</td>
                         <td>
                             @if($payment->confirmed_at)
                                 <span class="text-success"><i class="fa fa-check"></i> Płatność zrealizowana {{ $payment->confirmed_at }}</span>
