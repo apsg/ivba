@@ -65,10 +65,26 @@ class SubscriptionRepository
             throw new InvalidArgumentException("Subscription {$subscription->id} was cancelled {$subscription->cancelled_at}");
         }
 
+        $valid = max($subscription->valid_until->timestamp, Carbon::now()->timestamp);
+
         $subscription->update([
-            'valid_until' => $subscription->valid_until->addMinutes(3),
+            'valid_until' => Carbon::createFromTimestamp($valid)->addMinutes(3),
+            'tries'       => 0,
         ]);
 
         return $subscription;
+    }
+
+    public function tryFailed(Subscription $subscription)
+    {
+        if ($subscription->tries < 3) {
+            $subscription->update([
+                'tries' => $subscription->tries + 1,
+            ]);
+
+            return $subscription;
+        }
+
+        return $this->cancel($subscription);
     }
 }

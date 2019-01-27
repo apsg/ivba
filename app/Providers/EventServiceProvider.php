@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Events\ActiveSubscriptionExpiredEvent;
 use App\Events\FirstPaymentCorrectEvent;
 use App\Events\SubscriptionCancelled;
 use App\Events\SubscriptionStartedEvent;
 use App\Payments\Listeners\StartSubscriptionAfterFirstPaymentListener;
+use App\Payments\Listeners\TryToProlongSubscriptionListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -36,6 +38,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         SubscriptionStartedEvent::class              => [
             //
+        ],
+        ActiveSubscriptionExpiredEvent::class        => [
+            TryToProlongSubscriptionListener::class,
         ],
         \Illuminate\Auth\Events\PasswordReset::class => [
             'App\Listeners\UpdateLastPasswordChange',

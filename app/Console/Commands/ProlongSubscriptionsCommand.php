@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Events\ActiveSubscriptionExpiredEvent;
 use App\Subscription;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -39,12 +40,12 @@ class ProlongSubscriptionsCommand extends Command
      */
     public function handle()
     {
-
         $subscriptions = Subscription::where('is_active', true)
             ->where('valid_until', '<', Carbon::now())
             ->get();
 
-        dd($subscriptions);
-
+        foreach ($subscriptions as $subscription) {
+            event(new ActiveSubscriptionExpiredEvent($subscription));
+        }
     }
 }

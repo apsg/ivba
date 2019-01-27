@@ -1,7 +1,10 @@
 <?php
 namespace App\Payments\Tpay;
 
+use App\Payment;
+use App\Payments\Exceptions\PaymentException;
 use App\Payments\Tpay\Traits\TpayCardConstructorTrait;
+use App\Repositories\PaymentRepository;
 use tpayLibs\src\_class_tpay\PaymentCard;
 
 class RecurrentPaymentGate extends PaymentCard
@@ -10,20 +13,22 @@ class RecurrentPaymentGate extends PaymentCard
 
     private $transactionId = null;
 
+    /** @var Payment */
+    private $payment;
+
     public function init(
-        $saleDescription,
-        $clientToken,
-        $amount,
-        $orderId = null,
-        $currency = 985,
-        $language = 'pl'
+        string $saleDescription,
+        string $clientToken,
+        Payment $payment
     ) {
+
+        $this->payment = $payment;
         //Prepare transaction data
         $this
-            ->setAmount($amount)
-            ->setCurrency($currency)
-            ->setOrderID($orderId)
-            ->setLanguage($language)
+            ->setAmount($this->payment->amount)
+            ->setCurrency(985)
+            ->setOrderID($this->payment->id)
+            ->setLanguage('pl')
             ->setClientToken($clientToken);
         //Prepare unpaid transaction
         $transaction = $this->presaleMethod($saleDescription);
@@ -38,21 +43,18 @@ class RecurrentPaymentGate extends PaymentCard
         //In test mode this method has 50% probability of success
         $result = $this->saleMethod($this->transactionId);
         if (isset($result['status']) && $result['status'] === 'correct') {
-            return $this->setOrderAsConfirmed();
+            return $this->confirmPayment();
         } else {
-            //Log rejection code
-            return $result['reason'];
+            app(PaymentRepository::class)
+                ->rejectRecurrent($this->payment, array_get($result, 'reason'));
+            throw new PaymentException("Payment failed: " . $result['reason']);
         }
     }
 
-    private function setOrderAsConfirmed()
+    private function confirmPayment()
     {
-        //Code updating order ($this->orderID) status as paid at your DB
-        //Save transaction ID for later use
+        return app(PaymentRepository::class)
+            ->confirmRecurrent($this->payment);
     }
 
 }
-
-(new RecurrentPayment())
-    ->init('payment for order xyz', 't5a96d292cd0a5c63a14c30adeae55cb200df087', 12.50, 'order_123456', 985, 'pl')
-    ->payBySavedCreditCard();

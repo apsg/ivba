@@ -14,6 +14,7 @@ use Illuminate\Support\Collection;
  * @property Carbon                    cancelled_at
  * @property int                       tries
  * @property Carbon                    valid_until
+ * @property float                     amount
  * @property-read User                 user
  * @property-read Collection|Payment[] payments
  * @method-static Builder|Subscription active()

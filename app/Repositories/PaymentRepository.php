@@ -13,7 +13,7 @@ class PaymentRepository
     const STATUS_DECLINED = 'declined';
 
 
-    public function createFirst(Subscription $subscription)
+    public function createFirst(Subscription $subscription) : Payment
     {
         return Payment::create([
             'subscription_id' => $subscription->id,
@@ -23,11 +23,11 @@ class PaymentRepository
         ]);
     }
 
-    public function createRecurrent(Subscription $subscription)
+    public function createRecurrent(Subscription $subscription) : Payment
     {
         return Payment::create([
             'subscription_id' => $subscription->id,
-            'amount'          => config('ivba.subscription_price'),
+            'amount'          => $subscription->amount,
             'is_recurrent'    => true,
             'title'           => config('ivba.subscription_description'),
         ]);
@@ -55,6 +55,25 @@ class PaymentRepository
 
             event(new FirstPaymentIncorrectEvent($payment));
         }
+
+        return $payment;
+    }
+
+    public function confirmRecurrent(Payment $payment) : Payment
+    {
+        $payment->update([
+            'confirmed_at' => Carbon::now(),
+        ]);
+
+        return $payment;
+    }
+
+    public function rejectRecurrent(Payment $payment, string $reson = null) : Payment
+    {
+        $payment->update([
+            'cancelled_at'  => Carbon::now(),
+            'cancel_reason' => $reson,
+        ]);
 
         return $payment;
     }
