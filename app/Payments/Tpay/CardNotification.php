@@ -58,6 +58,8 @@ class CardNotification extends PaymentCard
             ->setCurrency(985)
             ->setOrderID($payment->id);
 
+        $reason = array_get($notification, 'reason') ?? '';
+
         $this->validateCardSign(
             $notification['sign'],
             $notification['sale_auth'],
@@ -66,7 +68,7 @@ class CardNotification extends PaymentCard
             $notification['status'],
             $notification['test_mode'],
             $notification['type'],
-            array_get($notification, 'reason')
+            $reason
         );
 
         return $notification;

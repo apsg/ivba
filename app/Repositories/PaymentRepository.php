@@ -33,7 +33,7 @@ class PaymentRepository
         ]);
     }
 
-    public function handle($paymentId, string $status, array $data = []) : Payment
+    public function handle($paymentId, string $status = null, array $data = []) : Payment
     {
         /** @var Payment $payment */
         $payment = Payment::findOrFail((int)$paymentId);
