@@ -1,6 +1,7 @@
 <?php
 namespace App\Payments\Tpay;
 
+use App\Payment;
 use App\Payments\Tpay\Traits\TpayCardConstructorTrait;
 use tpayLibs\src\_class_tpay\PaymentCard;
 use tpayLibs\src\_class_tpay\Utilities\TException;
@@ -41,29 +42,38 @@ class CardNotification extends PaymentCard
     }
 
 
-    private function getTpayNotification()
+    public function notification()
     {
         //Jeżeli chcesz wyłączyć sprawdzanie adresu IP serwera Tpay, wykonaj tą komendę:
         $this->disableValidationServerIP();
         //Jeżeli korzystasz z proxy, wykonaj tą komendę aby sprawdzić adres IP w tablicy HTTP_X_FORWARDED_FOR:
 //        $this->enableForwardedIPValidation();
 
-        $notification = $this->handleNotification();
+        $notification = $this->handleNotification(CardDictionary::SALE);
 
-        $shopOrderData = $this->getOrderDetailsFromDatabase($notification['order_id']);
+        $payment = $this->getOrderDetailsFromDatabase($notification['order_id']);
 
         $this
-            ->setAmount($shopOrderData['amount'])
-            ->setCurrency($shopOrderData['currency'])
-            ->setOrderID($notification['order_id']);
-        $this->validateCardSign($notification['sign'], $notification['sale_auth'],
-            $notification['card'], $notification['date'], $notification['status']);
+            ->setAmount($payment->amount)
+            ->setCurrency(985)
+            ->setOrderID($payment->id);
+
+        $this->validateCardSign(
+            $notification['sign'],
+            $notification['sale_auth'],
+            $notification['card'],
+            $notification['date'],
+            $notification['status'],
+            $notification['test_mode'],
+            $notification['type'],
+            array_get($notification, 'reason')
+        );
 
         return $notification;
     }
 
-    private function getOrderDetailsFromDatabase($order_id) : array
+    private function getOrderDetailsFromDatabase($order_id) : Payment
     {
-        return [];
+        return Payment::findOrFail($order_id);
     }
 }

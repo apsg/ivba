@@ -3,15 +3,15 @@ namespace App\Http\Controllers;
 
 use App\Payments\Tpay\CardNotification;
 use App\Payments\Tpay\OnSiteGate;
+use App\Repositories\PaymentRepository;
 use Illuminate\Http\Request;
 use Log;
-use tpayLibs\src\Dictionaries\CardDictionary;
 
 class TpayController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('notification');
+        $this->middleware('auth')->only('showGate');
     }
 
     public function showGate()
@@ -24,7 +24,7 @@ class TpayController extends Controller
 
     public function debug(Request $request)
     {
-        dd($request->all());
+        return redirect('/buy_access');
     }
 
     public function handleResponse(Request $request)
@@ -32,12 +32,17 @@ class TpayController extends Controller
         $handler = (new CardNotification())->handleNotification($request->input('type'));
     }
 
-    public function notification(Request $request)
+    public function notification(Request $request, PaymentRepository $paymentRepository)
     {
         Log::info('tpay notification', $request->all());
 
-        $n = (new CardNotification())
-            ->handleNotification(CardDictionary::SALE);
+        $paymentRepository->handle(
+            $request->input('order_id'),
+            $request->input('status'),
+            $request->all()
+        );
+
+        $n = (new CardNotification())->notification();
 
         return response()->json([$n], 200);
     }

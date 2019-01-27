@@ -71,7 +71,6 @@ Route::get('/test', function () {
 
 });
 
-
 Route::get('tpay', 'TpayController@showGate');
 Route::any('tpay/success', 'TpayController@debug');
 Route::any('tpay/error', 'TpayController@debug');

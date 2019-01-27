@@ -14,7 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-<div id="app">
+<div @if(request()->path() != 'buy_access' ) id="app" @endif>
     <header class="header mb-3">
         <nav class="navbar navbar-expand-sm navbar-orange bg-orange">
             <div class="container">
@@ -154,6 +154,10 @@
     <proofs></proofs>
 
 </div>
+
+@if(request()->path() === 'buy_access')
+    <div id="app"></div>
+@endif
 
 @stack('modals')
 

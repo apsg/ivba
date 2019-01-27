@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-use App\Events\SubscriptionCancelled;
+use App\Repositories\SubscriptionRepository;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
@@ -16,6 +16,7 @@ use Illuminate\Support\Collection;
  * @property Carbon                    valid_until
  * @property-read User                 user
  * @property-read Collection|Payment[] payments
+ * @method-static Builder|Subscription active()
  */
 class Subscription extends Model
 {
@@ -47,14 +48,20 @@ class Subscription extends Model
         return $this->valid_until->isFuture();
     }
 
+    public function isActive()
+    {
+        return $this->is_active;
+    }
+
     public function cancel()
     {
-        $this->update([
-            'is_active' => false,
-        ]);
-
-        event(new SubscriptionCancelled($this));
+        app(SubscriptionRepository::class)->cancel($this);
 
         return $this;
+    }
+
+    public function scopeActive($query)
+    {
+        $query->where('is_active', '=', true);
     }
 }

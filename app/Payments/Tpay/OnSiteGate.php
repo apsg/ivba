@@ -2,22 +2,14 @@
 namespace App\Payments\Tpay;
 
 use App\Payments\Exceptions\PaymentException;
+use App\Payments\Tpay\Traits\TpayCardConstructorTrait;
 use tpayLibs\src\_class_tpay\PaymentForms\PaymentCardForms;
 use tpayLibs\src\_class_tpay\Utilities\Util;
 use tpayLibs\src\Dictionaries\FieldsConfigDictionary;
 
 class OnSiteGate extends PaymentCardForms
 {
-    public function __construct()
-    {
-        //This is pre-configured sandbox access. You should use your own data in production mode.
-        $this->cardApiKey = 'bda5eda723bf1ae71a82e90a249803d3f852248d';
-        $this->cardApiPass = 'IhZVgraNcZoWPLgA';
-        $this->cardKeyRSA = 'LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0NCk1JR2ZNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0R05BRENCaVFLQmdRQ2NLRTVZNU1Wemd5a1Z5ODNMS1NTTFlEMEVrU2xadTRVZm1STS8NCmM5L0NtMENuVDM2ekU0L2dMRzBSYzQwODRHNmIzU3l5NVpvZ1kwQXFOVU5vUEptUUZGVyswdXJacU8yNFRCQkxCcU10TTVYSllDaVQNCmVpNkx3RUIyNnpPOFZocW9SK0tiRS92K1l1YlFhNGQ0cWtHU0IzeHBhSUJncllrT2o0aFJDOXk0WXdJREFRQUINCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQ';
-        $this->cardVerificationCode = '6680181602d396e640cb091ea5418171';
-        $this->cardHashAlg = 'sha1';
-        parent::__construct();
-    }
+    use TpayCardConstructorTrait;
 
     public function init()
     {
@@ -53,7 +45,7 @@ class OnSiteGate extends PaymentCardForms
         $this->setOneTimer(false);
 //        }
         $this->setAmount(123)->setCurrency(985)->setOrderID('test payment 123');
-        $this->setLanguage('en')->setReturnUrls(url('/tpay/success'), url('/tpay/error'));
+        $this->setLanguage('pl')->setReturnUrls(url('/tpay/success'), url('/tpay/error'));
 
         return $failOver === false ?
             $this->registerSale($clientName, $clientEmail, 'test sale', $cardData) :

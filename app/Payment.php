@@ -24,11 +24,23 @@ class Payment extends Model
         'external_id',
         'cancelled_at',
         'is_recurrent',
+        'confirmed_at',
+        'cancel_reason',
+    ];
+
+    protected $casts = [
+        'confirmed_at' => 'date',
+        'cancelled_at' => 'date',
     ];
 
     public function subscription()
     {
         return $this->belongsTo(Subscription::class);
+    }
+
+    public function isFirstPayment() : bool
+    {
+        return !$this->is_recurrent;
     }
 
 }

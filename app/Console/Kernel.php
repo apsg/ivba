@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\ProlongSubscriptionsCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,23 +25,23 @@ class Kernel extends ConsoleKernel
         Commands\SendPlannedFollowups::class,
         Commands\DiscoverLeftOrders::class,
         Commands\CopyUsersToNewsletter::class,
-        Commands\MakeRecurringPayments::class,
+        ProlongSubscriptionsCommand::class,
     ];
 
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param  \Illuminate\Console\Scheduling\Schedule $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        
+
         $schedule->command('iexcel:followups')
             ->everyMinute();
-        
+
         $schedule->command('iexcel:emails')
             ->everyMinute();
 
@@ -50,8 +51,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('iexcel:orders')
             ->dailyAt('13:00');
 
-        $schedule->command('ivba:recurring')
-            ->dailyAt('3:21');
+        $schedule->command('subscriptions:prolong')
+            ->everyMinute();
 
     }
 

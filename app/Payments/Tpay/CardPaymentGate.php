@@ -19,7 +19,8 @@ class CardPaymentGate extends PaymentCard
                 ->setAmount($payment->amount)
                 ->setCurrency(985)
                 ->setOrderID((string)$payment->id)
-                ->setReturnUrls(url('/tpay/success'), url('/tpay/error'));
+                ->setReturnUrls(url('/tpay/success'), url('/tpay/error'))
+                ->setOneTimer(false);
 
             $transaction = $this->registerSale($user->full_name, $user->email, $payment->title);
 
