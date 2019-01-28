@@ -12,6 +12,14 @@ use InvalidArgumentException;
 
 class SubscriptionRepository
 {
+    protected $daysRepository;
+
+    public function __construct()
+    {
+        $this->daysRepository = app(AccessDaysRepository::class);
+    }
+
+
     public function create(User $user) : Subscription
     {
         if ($user->hasActiveSubscription()) {
@@ -55,6 +63,8 @@ class SubscriptionRepository
             'amount'      => config('ivba.subscription_price'),
         ]);
 
+        $this->daysRepository->sync($subscription->user, $subscription->valid_until);
+
         event(new SubscriptionStartedEvent($subscription));
 
         return $subscription;
@@ -73,6 +83,8 @@ class SubscriptionRepository
             'valid_until' => Carbon::createFromTimestamp($valid)->addDays(config('ivba.subscription_duration')),
             'tries'       => 0,
         ]);
+
+        $this->daysRepository->sync($subscription->user, $subscription->valid_until);
 
         event(new SubscriptionProlongedEvent($subscription));
 

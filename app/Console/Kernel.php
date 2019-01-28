@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\FixAccessDays;
 use App\Console\Commands\ProlongSubscriptionsCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -26,6 +27,7 @@ class Kernel extends ConsoleKernel
         Commands\DiscoverLeftOrders::class,
         Commands\CopyUsersToNewsletter::class,
         ProlongSubscriptionsCommand::class,
+        FixAccessDays::class,
     ];
 
     /**
