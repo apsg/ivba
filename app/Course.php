@@ -155,7 +155,7 @@ class Course extends Model implements OrderableContract
      */
     public function hasAccess($user_id)
     {
-
+        /** @var User $user */
         $user = User::findOrFail($user_id);
 
 
