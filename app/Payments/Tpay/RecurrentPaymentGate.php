@@ -42,12 +42,13 @@ class RecurrentPaymentGate extends PaymentCard
         //Try to execute payment
         //In test mode this method has 50% probability of success
         $result = $this->saleMethod($this->transactionId);
+        
         if (isset($result['status']) && $result['status'] === 'correct') {
             return $this->confirmPayment();
         } else {
             app(PaymentRepository::class)
                 ->rejectRecurrent($this->payment, array_get($result, 'reason'));
-            throw new PaymentException("Payment failed: " . $result['reason']);
+            throw new PaymentException("Payment failed: " . array_get($result, 'reason'));
         }
     }
 
