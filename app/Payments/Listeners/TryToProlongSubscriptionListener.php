@@ -6,6 +6,7 @@ use App\Payments\Exceptions\PaymentException;
 use App\Payments\Tpay\RecurrentPaymentGate;
 use App\Repositories\PaymentRepository;
 use App\Repositories\SubscriptionRepository;
+use tpayLibs\src\_class_tpay\Utilities\TException;
 
 class TryToProlongSubscriptionListener
 {
@@ -32,6 +33,8 @@ class TryToProlongSubscriptionListener
 
             $this->subscriptionRepository->prolong($event->subscription);
         } catch (PaymentException $exception) {
+            $this->subscriptionRepository->tryFailed($event->subscription);
+        } catch (TException $exception) {
             $this->subscriptionRepository->tryFailed($event->subscription);
         }
     }

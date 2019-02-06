@@ -6,6 +6,7 @@ use App\Payments\Exceptions\PaymentException;
 use App\Payments\Tpay\Traits\TpayCardConstructorTrait;
 use App\Repositories\PaymentRepository;
 use tpayLibs\src\_class_tpay\PaymentCard;
+use tpayLibs\src\_class_tpay\Utilities\TException;
 
 class RecurrentPaymentGate extends PaymentCard
 {
@@ -16,6 +17,14 @@ class RecurrentPaymentGate extends PaymentCard
     /** @var Payment */
     private $payment;
 
+    /**
+     * @param string  $saleDescription
+     * @param string  $clientToken
+     * @param Payment $payment
+     * @return $this
+     * @throws PaymentException
+     * @throws TException
+     */
     public function init(
         string $saleDescription,
         string $clientToken,
@@ -31,18 +40,28 @@ class RecurrentPaymentGate extends PaymentCard
             ->setLanguage('pl')
             ->setClientToken($clientToken);
         //Prepare unpaid transaction
-        $transaction = $this->presaleMethod($saleDescription);
-        $this->transactionId = $transaction['sale_auth'];
 
-        return $this;
+        try {
+            $transaction = $this->presaleMethod($saleDescription);
+            $this->transactionId = $transaction['sale_auth'];
+
+            return $this;
+        } catch (TException $exception) {
+            throw new PaymentException($exception->getMessage());
+        }
     }
 
+    /**
+     * @return Payment
+     * @throws PaymentException
+     * @throws TException
+     */
     public function payBySavedCreditCard()
     {
         //Try to execute payment
         //In test mode this method has 50% probability of success
         $result = $this->saleMethod($this->transactionId);
-        
+
         if (isset($result['status']) && $result['status'] === 'correct') {
             return $this->confirmPayment();
         } else {
