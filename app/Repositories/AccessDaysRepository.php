@@ -7,9 +7,12 @@ use Carbon\Carbon;
 
 class AccessDaysRepository
 {
-
-    public function sync(User $user, Carbon $toDate, Carbon $fromDate = null)
+    public function sync(User $user = null, Carbon $toDate = null, Carbon $fromDate = null)
     {
+        if ($user === null || $toDate === null) {
+            return;
+        }
+
         if ($fromDate === null) {
             $current = Carbon::now();
         } else {
@@ -28,5 +31,4 @@ class AccessDaysRepository
             $current->addDay();
         }
     }
-
 }

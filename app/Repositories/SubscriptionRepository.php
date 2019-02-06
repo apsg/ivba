@@ -84,6 +84,8 @@ class SubscriptionRepository
             'tries'       => 0,
         ]);
 
+        $subscription->load('user');
+
         $this->daysRepository->sync($subscription->user, $subscription->valid_until);
 
         event(new SubscriptionProlongedEvent($subscription));
