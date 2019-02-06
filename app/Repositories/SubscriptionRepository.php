@@ -70,6 +70,18 @@ class SubscriptionRepository
         return $subscription;
     }
 
+    public function grantAccessDays(Subscription $subscription, int $days, bool $active = false)
+    {
+        $subscription->update([
+            'is_active'   => $active,
+            'valid_until' => Carbon::now()->addDays($days),
+        ]);
+
+        $this->daysRepository->sync($subscription->user, $subscription->valid_until);
+
+        return $subscription;
+    }
+
     public function prolong(Subscription $subscription) : Subscription
     {
         if (!$subscription->isActive()) {
