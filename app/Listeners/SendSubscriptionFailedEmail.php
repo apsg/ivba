@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\SubscriptionCancelled;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendSubscriptionFailedEmail
 {
@@ -21,15 +19,19 @@ class SendSubscriptionFailedEmail
     /**
      * Handle the event.
      *
-     * @param  SubscriptionPaymentFailed  $event
+     * @param  SubscriptionPaymentFailed $event
      * @return void
      */
     public function handle(SubscriptionCancelled $event)
     {
-        
+        $event->subscription->load('user');
+
+        if ($event->subscription->user === null) {
+            return;
+        }
+
         $event->subscription->user->notify(
             new \App\Notifications\SubscriptionFailed($event->subscription)
         );
-
     }
 }
