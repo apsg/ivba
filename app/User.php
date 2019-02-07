@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-use App\Events\UserRegistered;
+use App\Events\UserRegisteredEvent;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -72,7 +72,7 @@ class User extends Authenticatable
     ];
 
     protected $dispatchesEvents = [
-        'created' => UserRegistered::class,
+        'created' => UserRegisteredEvent::class,
     ];
 
     /**

@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\UserRegistered;
+use App\Events\UserRegisteredEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -21,10 +21,10 @@ class PlanUserRegisteredFollowups
     /**
      * Handle the event.
      *
-     * @param  UserRegistered  $event
+     * @param  UserRegisteredEvent $event
      * @return void
      */
-    public function handle(UserRegistered $event)
+    public function handle(UserRegisteredEvent $event)
     {
         $fcs = \App\FollowupContent::where('event', $event::EVENTNAME )->get();
 

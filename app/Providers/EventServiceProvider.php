@@ -7,6 +7,7 @@ use App\Events\FirstPaymentCorrectEvent;
 use App\Events\SubscriptionCancelled;
 use App\Events\SubscriptionProlongedEvent;
 use App\Events\SubscriptionStartedEvent;
+use App\Listeners\Emails\SendEmailAfterRegistrationListener;
 use App\Payments\Listeners\StartSubscriptionAfterFirstPaymentListener;
 use App\Payments\Listeners\TryToProlongSubscriptionListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -19,8 +20,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        \App\Events\UserRegistered::class            => [
+        \App\Events\UserRegisteredEvent::class       => [
             'App\Listeners\PlanUserRegisteredFollowups',
+            SendEmailAfterRegistrationListener::class,
         ],
         \App\Events\UserPaidForAccess::class         => [
             'App\Listeners\PlanUserPaidFollowups',

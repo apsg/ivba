@@ -67,7 +67,12 @@ Route::any('paypal/notify', 'PayPalController@notify');
 
 Route::get('/test', function () {
 
-    return new \App\Mail\TestMail();
+    $mail = new \App\Mail\TestMail();
+
+    Mail::to(App\User::find(1))
+        ->send($mail);
+
+    return $mail;
 
 });
 
