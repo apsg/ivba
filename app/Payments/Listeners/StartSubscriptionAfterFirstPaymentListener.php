@@ -15,7 +15,6 @@ class StartSubscriptionAfterFirstPaymentListener
         $this->repository = app(SubscriptionRepository::class);
     }
 
-
     public function handle(FirstPaymentCorrectEvent $event)
     {
         try {
