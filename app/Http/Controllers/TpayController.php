@@ -34,7 +34,7 @@ class TpayController extends Controller
 
     public function error()
     {
-        return redirect('/error');
+        return redirect('/blad-platnosci');
     }
 
     public function handleResponse(Request $request)

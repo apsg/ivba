@@ -1,5 +1,5 @@
 <template>
-    <div class="proofs fixed-bottom mb-5 ml-5">
+    <div class="proofs fixed-bottom ml-5">
         <transition name="fade">
             <a :href="proof.url" v-if="proof && should_show" class="text-dark">
                 <div class="proof rounded-pill d-flex bg-white border border-dark">
@@ -9,10 +9,10 @@
                     <div class="proof-body py-1">
                         <div class="proof-title">
                             <strong>{{ proof.name }}</strong>
-                            <span v-if="proof.city">({{ proof.city }})</span>
                         </div>
                         <div class="proof-text">{{ proof.body }}</div>
-                        <div class="proof-meta">{{ proof.created_at }}</div>
+                        <div class="proof-meta">{{ proof.created_at }} <span v-if="proof.city">z {{ proof.city }}</span>
+                        </div>
                     </div>
                 </div>
             </a>
@@ -58,9 +58,15 @@
 
 <style lang="scss">
 
-    .proof {
-        width: 350px;
-        max-width: 90%;
+    .proofs {
+
+        margin-bottom: 50px;
+
+        .proof {
+            width: 350px;
+            max-width: 90%;
+        }
+
     }
 
 </style>
