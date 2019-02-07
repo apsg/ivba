@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\SubscriptionCancelled;
+use App\Notifications\SubscriptionFailed;
 
 class SendSubscriptionFailedEmail
 {
@@ -31,7 +32,7 @@ class SendSubscriptionFailedEmail
         }
 
         $event->subscription->user->notify(
-            new \App\Notifications\SubscriptionFailed($event->subscription)
+            new SubscriptionFailed($event->subscription)
         );
     }
 }

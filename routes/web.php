@@ -67,7 +67,7 @@ Route::any('paypal/notify', 'PayPalController@notify');
 
 Route::get('/test', function () {
 
-    throw new Exception('test');
+    return new \App\Mail\TestMail();
 
 });
 
