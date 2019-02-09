@@ -1,7 +1,9 @@
 <?php
 namespace App\Helpers;
 
+use App\Events\FirstPaymentCorrectEvent;
 use App\Events\SubscriptionAbandonedEvent;
+use App\Events\SubscriptionPaymentFailedEvent;
 use App\Events\SubscriptionProlongedEvent;
 use App\Events\UserRegisteredEvent;
 
@@ -26,9 +28,12 @@ class FollowupsHelper
     ];
 
     const EVENTS = [
-        UserRegisteredEvent::class        => self::EVENT_REGISTERED,
-        SubscriptionAbandonedEvent::class => self::EVENT_PAYMENT_ABANDON,
-        SubscriptionProlongedEvent::class => self::EVENT_AUTO_PAYMENT_SUCCESS,
+        UserRegisteredEvent::class            => self::EVENT_REGISTERED,
+        SubscriptionAbandonedEvent::class     => self::EVENT_PAYMENT_ABANDON,
+        FirstPaymentCorrectEvent::class       => self::EVENT_PAYMENT_SUCCESS,
+        SubscriptionProlongedEvent::class     => self::EVENT_AUTO_PAYMENT_SUCCESS,
+        SubscriptionPaymentFailedEvent::class => self::EVENT_AUTO_PAYMENT_ERROR,
+
     ];
 
     public static function getName($event)

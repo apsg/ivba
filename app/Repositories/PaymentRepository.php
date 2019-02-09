@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use App\Events\FirstPaymentCorrectEvent;
 use App\Events\FirstPaymentIncorrectEvent;
+use App\Events\SubscriptionPaymentFailedEvent;
 use App\Payment;
 use App\Subscription;
 use Carbon\Carbon;
@@ -74,6 +75,8 @@ class PaymentRepository
             'cancelled_at'  => Carbon::now(),
             'cancel_reason' => $reson,
         ]);
+
+        event(new SubscriptionPaymentFailedEvent($payment));
 
         return $payment;
     }

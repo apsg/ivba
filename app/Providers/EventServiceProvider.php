@@ -5,11 +5,15 @@ namespace App\Providers;
 use App\Events\ActiveSubscriptionExpiredEvent;
 use App\Events\FirstPaymentCorrectEvent;
 use App\Events\SubscriptionCancelled;
+use App\Events\SubscriptionPaymentFailedEvent;
 use App\Events\SubscriptionProlongedEvent;
 use App\Events\SubscriptionStartedEvent;
+use App\Events\UserRegisteredEvent;
 use App\Listeners\Emails\SendEmailAfterRegistrationListener;
+use App\Listeners\FollowupsListener;
 use App\Payments\Listeners\StartSubscriptionAfterFirstPaymentListener;
 use App\Payments\Listeners\TryToProlongSubscriptionListener;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -20,39 +24,44 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        \App\Events\UserRegisteredEvent::class       => [
+        UserRegisteredEvent::class                => [
             'App\Listeners\PlanUserRegisteredFollowups',
             SendEmailAfterRegistrationListener::class,
+            FollowupsListener::class,
         ],
-        \App\Events\UserPaidForAccess::class         => [
+        \App\Events\UserPaidForAccess::class      => [
             'App\Listeners\PlanUserPaidFollowups',
         ],
-        \App\Events\UserPaidAccessFinished::class    => [
+        \App\Events\UserPaidAccessFinished::class => [
             'App\Listeners\PlanUserExpiredFollowups',
         ],
-        'App\Events\OrderLeft24hAgo'                 => [
-            'App\Listeners\PlanOrderLeft24Followups',
+        'App\Events\OrderLeft24hAgo'              => [
+            //
         ],
-        'App\Events\OrderLeft72hAgo'                 => [
-            'App\Listeners\PlanOrderLeft72Followups',
+        'App\Events\OrderLeft72hAgo'              => [
+            //
         ],
-        SubscriptionCancelled::class                 => [
+        SubscriptionCancelled::class              => [
             'App\Listeners\SendSubscriptionFailedEmail',
         ],
-        SubscriptionStartedEvent::class              => [
-            //
+        SubscriptionStartedEvent::class           => [
+            FollowupsListener::class,
         ],
-        SubscriptionProlongedEvent::class            => [
-            //
+        SubscriptionProlongedEvent::class         => [
+            FollowupsListener::class,
         ],
-        ActiveSubscriptionExpiredEvent::class        => [
+        ActiveSubscriptionExpiredEvent::class     => [
             TryToProlongSubscriptionListener::class,
         ],
-        \Illuminate\Auth\Events\PasswordReset::class => [
+        SubscriptionPaymentFailedEvent::class     => [
+            FollowupsListener::class,
+        ],
+        PasswordReset::class                      => [
             'App\Listeners\UpdateLastPasswordChange',
         ],
-        FirstPaymentCorrectEvent::class              => [
+        FirstPaymentCorrectEvent::class           => [
             StartSubscriptionAfterFirstPaymentListener::class,
+            FollowupsListener::class,
         ],
 
     ];
