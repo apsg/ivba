@@ -32,18 +32,18 @@
                 <div class="col-sm-12">
                     <div class="course-detail d-flex align-items-end">
                         <div class="duration">
-                            <div class="icon text-center"><i class="fa fa-clock-o fa-4x"></i> </div>
+                            <div class="icon text-center"><i class="fa fa-clock-o fa-2x"></i> </div>
                             <div class="detail"><span>Czas trwania</span> {{ $course->duration() }} </div>
                         </div>
                         <div class="duration eligible">
                             <div class="icon text-center">
-                                <i class="fa fa-4x fa-bar-chart-o"></i>
+                                <i class="fa fa-2x fa-bar-chart-o"></i>
                             </div>
                             <div class="detail"><span>Trudność:</span> {{ $course->difficulty() }}</div>
                         </div>
                         <div class="duration eligible">
                             <div class="icon text-center">
-                                <i class="fa fa-4x fa-list-ol"></i>
+                                <i class="fa fa-2x fa-list-ol"></i>
                             </div>
                             <div class="detail"><span>Liczba lekcji:</span> {{ $course->lessons()->count() }}</div>
                         </div>

@@ -59,7 +59,7 @@ class SubscriptionRepository
         $subscription->update([
             'is_active'   => true,
             'token'       => $token,
-            'valid_until' => Carbon::now()->addDays(config('ivba.subscription_duration_first')),
+            'valid_until' => Carbon::now()->addDays(config('ivba.subscription_duration')), // TODO change to months
             'amount'      => config('ivba.subscription_price'),
         ]);
 

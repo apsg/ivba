@@ -24,7 +24,7 @@ class StartSubscriptionAfterFirstPaymentListener
         } catch (PaymentException $exception) {
             $this->repository->grantAccessDays(
                 $event->payment->subscription,
-                config('ivba.subscription_duration_first')
+                config('ivba.subscription_duration')
             );
         }
     }

@@ -40,19 +40,13 @@
                             <tr>
                                 <th>Opis</th>
                                 <th>Koszt</th>
-                                <th>Czas trwania</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Pierwsza płatność</td>
-                                <td>{{ config('ivba.subscription_price_first') }} PLN</td>
-                                <td>Dni: {{ config('ivba.subscription_duration_first') }}</td>
-                            </tr>
-                            <tr>
-                                <td>Kolejne płatności</td>
+                                <td>Miesięczna płatność</td>
                                 <td>{{ config('ivba.subscription_price') }} PLN</td>
-                                <td>Miesięcy: {{ config('ivba.subscription_duration') }}</td>
+                                {{--<td>Miesięcy: {{ config('ivba.subscription_duration') }}</td>--}}
                             </tr>
                             </tbody>
                         </table>
@@ -70,7 +64,9 @@
                             <label>Klikając w poniższy przycisk zatwierdzisz subskrypcję abonamentu. Nastąpi
                                 przekierowanie do systemu płatniczego w celu przeprowadzenia pierwszej płatności. Po
                                 udanej płatności subskrypcja będzie aktywna.</label>
-                            <button class="btn btn-primary"><i class="fa fa-money"></i> >  Przejdź do operatora płatności by wykupić abonament</button>
+                            <button class="btn btn-primary"><i class="fa fa-money"></i> > Przejdź do operatora płatności
+                                by wykupić abonament
+                            </button>
                         </form>
 
                     @endif

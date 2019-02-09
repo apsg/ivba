@@ -16,12 +16,12 @@ return [
     'full_access_description' => 'Pełen roczny dostęp do wszystkich materiałów',
 
 
-    'subscription_price_first'    => 1,
+//    'subscription_price_first'    => 1,
 
     /** Duration in days */
-    'subscription_duration_first' => 1,
+//    'subscription_duration_first' => 1,
 
-    'subscription_description_first' => 'Pierwsza płatność w abonamencie',
+//    'subscription_description_first' => 'Pierwsza płatność w abonamencie',
 
 
     'subscription_price'    => 19,
