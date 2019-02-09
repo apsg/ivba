@@ -30,17 +30,21 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="course-detail">
+                    <div class="course-detail d-flex align-items-end">
                         <div class="duration">
-                            <div class="icon"><span class="icon-duration-icon"></span></div>
+                            <div class="icon text-center"><i class="fa fa-clock-o fa-4x"></i> </div>
                             <div class="detail"><span>Czas trwania</span> {{ $course->duration() }} </div>
                         </div>
                         <div class="duration eligible">
-                            <div class="icon"><span class="icon-certification-icon"></span></div>
+                            <div class="icon text-center">
+                                <i class="fa fa-4x fa-bar-chart-o"></i>
+                            </div>
                             <div class="detail"><span>Trudność:</span> {{ $course->difficulty() }}</div>
                         </div>
                         <div class="duration eligible">
-                            <div class="icon"><span class="icon-eligibility-icon"></span></div>
+                            <div class="icon text-center">
+                                <i class="fa fa-4x fa-list-ol"></i>
+                            </div>
                             <div class="detail"><span>Liczba lekcji:</span> {{ $course->lessons()->count() }}</div>
                         </div>
 
