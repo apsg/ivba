@@ -2,38 +2,43 @@
 
 namespace App;
 
+use App\Mail\StandardEmail;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Mail;
 
 class Email extends Model
 {
 
-	const NEWSLETTER = 1;
-	const FOLLOWUP = 2;
-	const SINGLE = 3;
+    const NEWSLETTER = 1;
+    const FOLLOWUP = 2;
+    const SINGLE = 3;
 
     protected $guarded = [];
 
     protected $casts = [
-    	'send_at'      => 'datetime',
-        'opened_at'    => 'datetime',
-        'clicked_at'   => 'datetime',
-        'unsubscribed_at'   => 'datetime',
+        'send_at'         => 'datetime',
+        'opened_at'       => 'datetime',
+        'clicked_at'      => 'datetime',
+        'unsubscribed_at' => 'datetime',
     ];
 
     /**
      * Do kogo możemy wysyłać? Użytkownik albo ktoś zapisany z newslettera
      * @return [type] [description]
      */
-    public function to(){
-    	return $this->morphTo();
+    public function to()
+    {
+        return $this->morphTo();
     }
 
     /**
      * Email może należeć do newslettera
      * @return [type] [description]
      */
-    public function newsletter(){
-        return $this->belongsTo(\App\Newsletter::class);
+    public function newsletter()
+    {
+        return $this->belongsTo(Newsletter::class);
     }
 
     /**
@@ -41,8 +46,9 @@ class Email extends Model
      * @param  [type] $query [description]
      * @return [type]        [description]
      */
-    public function scopePlanned($query){
-    	$query->where('send_at', '>', \Carbon\Carbon::now());
+    public function scopePlanned($query)
+    {
+        $query->where('send_at', '>', Carbon::now());
     }
 
     /**
@@ -50,37 +56,40 @@ class Email extends Model
      * @param  [type] $query [description]
      * @return [type]        [description]
      */
-    public function scopeDue($query){
-    	$query->where('send_at', '<=', \Carbon\Carbon::now())
-    		->where('is_sent', 'false');
+    public function scopeDue($query)
+    {
+        $query->where('send_at', '<=', Carbon::now())
+            ->where('is_sent', 'false');
     }
 
     /**
      * Wyślij email.
      * @return [type] [description]
      */
-    public function send(){
-
+    public function send()
+    {
         $this->convertLinks();
 
-    	\Mail::to( $this->to->email )
-    		->send( new \App\Mail\StandardEmail($this) );	
+        Mail::to($this->to->email)
+            ->send(new StandardEmail($this));
 
-    	$this->update(['is_sent' => true ]);
-    	return $this;
+        $this->update(['is_sent' => true]);
+
+        return $this;
     }
 
     /**
      * Dodaj do linków kod śledzenia kliknięć
      * @return [type] [description]
      */
-    protected function convertLinks(){
+    protected function convertLinks()
+    {
 
         $pattern = '/href="[a-zA-Z\d:\/\.]+/i';
-        $replace = '${0}?eid='.$this->id;
+        $replace = '${0}?eid=' . $this->id;
 
         $this->update([
-            'body'  => preg_replace($pattern, $replace, $this->body),
+            'body' => preg_replace($pattern, $replace, $this->body),
         ]);
     }
 
