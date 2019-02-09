@@ -150,7 +150,7 @@ class FollowupsController extends Controller
             'unsubscribe_code' => uniqid(),
         ]);
 
-        flash('Wysłano');
+        flash('Przygotowano do wysłania');
 
         return back();
     }

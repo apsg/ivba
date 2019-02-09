@@ -11,7 +11,9 @@ Dziękujemy!<br>
 {{ config('app.name') }}
 
 ---
+@if(!empty($email->unsubscribe_code))
 Jeśli nie chcesz więcej otrzymywać maili tego typu, [wypisz się z tych powiadomień]({{ url('/unsubscribe/'.$email->unsubscribe_code) }})
+@endif
 
 ![img]({{ url('email/'.$email->id.'/img') }})
 @endcomponent
