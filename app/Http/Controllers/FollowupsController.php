@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class FollowupsController extends Controller
 {
-    public function __construct(){
-    	$this->middleware('auth');
-    	$this->middleware('admin');
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin');
     }
 
 
@@ -17,24 +18,23 @@ class FollowupsController extends Controller
      * Pokaż spis followupów
      * @return [type] [description]
      */
-    public function index(){
+    public function index()
+    {
+        $followups = FollowupContent::all()
+            ->groupBy('event');
 
-    	$followups = [];
-    	$followups['userregistered'] = \App\FollowupContent::where('event', 'userregistered')->get();
-    	$followups['userpaid'] = \App\FollowupContent::where('event', 'userpaid')->get();
-    	$followups['userexpired'] = \App\FollowupContent::where('event', 'userexpired')->get();
-        $followups['orderleft24'] = \App\FollowupContent::where('event', 'orderleft24')->get();
-        $followups['orderleft72'] = \App\FollowupContent::where('event', 'orderleft72')->get();
-
-    	return view('admin.followups.followups')->with(compact('followups'));
+        return view('admin.followups.followups')->with(compact('followups'));
     }
 
     /**
      * Pokaż widok tworzenia nowego followupa
      * @return [type] [description]
      */
-    public function create(){
-    	return view('admin.followups.new');
+    public function create()
+    {
+        $selected = request()->input('selected');
+
+        return view('admin.followups.new')->with(compact('selected'));
     }
 
     /**
@@ -42,47 +42,46 @@ class FollowupsController extends Controller
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $this->validate($request, [
-            'title' => 'required',
-            'body' => 'required',
-            'slug' => 'required|unique:followup_contents',
-            'delay' => 'required|numeric|min:0',
-            'unit' => 'required|numeric',
-            'event' => 'required',
+            'title'      => 'required',
+            'body'       => 'required',
+            'slug'       => 'required|unique:followup_contents',
+            'delay'      => 'required|numeric|min:0',
+            'unit'       => 'required|numeric',
+            'event'      => 'required',
             'attachment' => 'file',
-            ]);
+        ]);
 
         $interval = "P0D";
 
-        if($request->delay>0){
-        	if($request->unit < 3){
-        		$interval = "PT".$request->delay.($request->unit == 1 ? "M" : "H");
-        	}else{
-        		$interval = "P".$request->delay.($request->unit == 3 ? "H" : "W");
-        	}
+        if ($request->delay > 0) {
+            if ($request->unit < 3) {
+                $interval = "PT" . $request->delay . ($request->unit == 1 ? "M" : "H");
+            } else {
+                $interval = "P" . $request->delay . ($request->unit == 3 ? "H" : "W");
+            }
         }
 
         $attachment = null;
 
-        if($request->attachment){
+        if ($request->attachment) {
             $attachment = $request->attachment
-                ->storeAs('attachments', $request->attachment->getClientOriginalName() );
+                ->storeAs('attachments', $request->attachment->getClientOriginalName());
         }
 
         $followup = FollowupContent::create([
-        		'title' => $request->title,
-        		'body'  => $request->body,
-        		'slug'  => $request->slug,
-        		'delay' => $interval,
-        		'event' => $request->event,
-                'attachment' => $attachment,
-        	]);
+            'title'      => $request->title,
+            'body'       => $request->body,
+            'slug'       => $request->slug,
+            'delay'      => $interval,
+            'event'      => $request->event,
+            'attachment' => $attachment,
+        ]);
 
 
-
-        return redirect('/admin/followups/'.$followup->id);
-
+        return redirect('/admin/followups/' . $followup->id);
     }
 
     /**
@@ -90,7 +89,8 @@ class FollowupsController extends Controller
      * @param  FollowupContent $followup [description]
      * @return [type]                    [description]
      */
-    public function edit(FollowupContent $followup){
+    public function edit(FollowupContent $followup)
+    {
         return view('admin.followups.edit')->with(compact('followup'));
     }
 
@@ -98,35 +98,37 @@ class FollowupsController extends Controller
     /**
      * Zaktualizuj Treść Followupu
      * @param  FollowupContent $followup [description]
-     * @param  Request         $request  [description]
+     * @param  Request         $request [description]
      * @return [type]                    [description]
      */
-    public function patch(FollowupContent $followup, Request $request){
+    public function patch(FollowupContent $followup, Request $request)
+    {
 
         $this->validate($request, [
-            'title' => 'required',
-            'body' => 'required',
-            'slug' => 'required|unique:followup_contents,id,'.$followup->id,
-            'delay' => 'required',
+            'title'      => 'required',
+            'body'       => 'required',
+            'slug'       => 'required|unique:followup_contents,id,' . $followup->id,
+            'delay'      => 'required',
             'attachment' => 'file',
-            ]);
+        ]);
 
         $attachment = $followup->attachment;
 
-        if($request->attachment){
+        if ($request->attachment) {
             $attachment = $request->attachment
-                ->storeAs('attachments', $request->attachment->getClientOriginalName() );
+                ->storeAs('attachments', $request->attachment->getClientOriginalName());
         }
 
         $followup->update([
-                'title'     => $request->title,
-                'body'      => $request->body,
-                'slug'      => $request->slug,
-                'delay'     => $request->delay,
-                'attachment'=> $attachment,
-            ]);
+            'title'      => $request->title,
+            'body'       => $request->body,
+            'slug'       => $request->slug,
+            'delay'      => $request->delay,
+            'attachment' => $attachment,
+        ]);
 
         flash('Zapisano poprawnie');
+
         return back();
     }
 
@@ -135,21 +137,22 @@ class FollowupsController extends Controller
      * @param  FollowupContent $followup [description]
      * @return [type]                    [description]
      */
-    public function sendTest(FollowupContent $followup){
+    public function sendTest(FollowupContent $followup)
+    {
 
         \Auth::user()->emails()->create([
-                'from'      => config('mail.from.address'),
-                'title'     => $followup->title,
-                'body'      => $followup->body,
-                'send_at'   => \Carbon\Carbon::now(),
-                'type'      => 2,
-                'attachment' => $followup->attachment,
-                'unsubscribe_code' => uniqid(),
-            ]);
+            'from'             => config('mail.from.address'),
+            'title'            => $followup->title,
+            'body'             => $followup->body,
+            'send_at'          => \Carbon\Carbon::now(),
+            'type'             => 2,
+            'attachment'       => $followup->attachment,
+            'unsubscribe_code' => uniqid(),
+        ]);
 
         flash('Wysłano');
-        return back();
 
+        return back();
     }
 
     /**
@@ -157,11 +160,12 @@ class FollowupsController extends Controller
      * @param  FollowupContent $followup [description]
      * @return [type]                    [description]
      */
-    public function destroy(FollowupContent $followup){
+    public function destroy(FollowupContent $followup)
+    {
         $followup->delete();
 
         flash('Usunięto');
+
         return back();
     }
-
 }

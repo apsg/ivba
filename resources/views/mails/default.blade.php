@@ -1,16 +1,17 @@
-<table>
-	<tr>
-		<td style="text-align: center;">
-			<img src="{{ url('/images/iVBA_minilogo.png') }}">
-		</td>
-	</tr>
-	<tr>
-		<td>
-			{!! $email->body !!}
-		</td>
-	</tr>
-</table>
+@component('mail::message')
+# {{ $email->title }}
 
-<hr />
-<p>Jeśli nie chcesz więcej otrzymywać maili tego typu, <a href="{{ url('/unsubscribe/'.$email->unsubscribe_code) }}">wypisz się z tych powiadomień</a></p>
-<img src="{{ url('email/'.$email->id.'/img') }}">
+{!! $email->body !!}
+
+@component('mail::button', ['url' => url('/account')])
+    Zobacz swoje konto w serwisie {{ config('app.name') }}
+@endcomponent
+
+Dziękujemy!<br>
+{{ config('app.name') }}
+
+---
+Jeśli nie chcesz więcej otrzymywać maili tego typu, [wypisz się z tych powiadomień]({{ url('/unsubscribe/'.$email->unsubscribe_code) }})
+
+![img]({{ url('email/'.$email->id.'/img') }})
+@endcomponent

@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Events\SubscriptionAbandonedEvent;
 use App\Subscription;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class CheckForUnpaidPaymentsCommand extends Command
@@ -41,5 +43,14 @@ class CheckForUnpaidPaymentsCommand extends Command
         $unpaidSubscriptions = Subscription::whereNull('valid_until')
             ->whereNull('cancelled_at')
             ->get();
+
+        foreach ($unpaidSubscriptions as $subscription) {
+
+            event(new SubscriptionAbandonedEvent($subscription));
+
+            $subscription->update([
+                'cancelled_at' => Carbon::now(),
+            ]);
+        }
     }
 }

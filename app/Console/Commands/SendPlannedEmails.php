@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Email;
 use Illuminate\Console\Command;
 
 class SendPlannedEmails extends Command
@@ -37,7 +38,7 @@ class SendPlannedEmails extends Command
      */
     public function handle()
     {
-        \App\Email::where('send_at', '<=', \Carbon\Carbon::now())
+        Email::where('send_at', '<=', \Carbon\Carbon::now())
             ->where('is_sent', false)
             ->take(100)
             ->get()

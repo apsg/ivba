@@ -1,12 +1,10 @@
 <?php
-
 namespace App\Mail;
 
 use App\Email;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class StandardEmail extends Mailable
 {
@@ -19,7 +17,7 @@ class StandardEmail extends Mailable
      *
      * @return void
      */
-    public function __construct(\App\Email $email)
+    public function __construct(Email $email)
     {
         $this->email = $email;
     }
@@ -31,13 +29,13 @@ class StandardEmail extends Mailable
      */
     public function build()
     {
-        if( empty($this->email->attachment) ){
-            return $this->view('mails.default')
+        if (empty($this->email->attachment)) {
+            return $this->markdown('mails.default')
                 ->subject($this->email->title);
-        }else{
-            return $this->view('mails.default')
+        } else {
+            return $this->markdown('mails.default')
                 ->subject($this->email->title)
-                ->attach( storage_path( 'app/'.$this->email->attachment ) );
+                ->attach(storage_path('app/' . $this->email->attachment));
         }
     }
 }
