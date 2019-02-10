@@ -2141,6 +2141,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -39654,6 +39664,13 @@ var render = function() {
                     staticClass: "image",
                     attrs: { src: "/images/v2/opinia_persona.png" }
                   })
+                ]),
+                _vm._v(" "),
+                _c("slide", [
+                  _c("img", {
+                    staticClass: "image",
+                    attrs: { src: "/images/v2/opinia_persona.png" }
+                  })
                 ])
               ],
               1
@@ -39681,22 +39698,38 @@ var render = function() {
               },
               [
                 _c("slide", [
-                  _c("p", { staticClass: "testimonial" }, [_vm._v("Abc")]),
+                  _c("p", { staticClass: "testimonial" }, [
+                    _vm._v(
+                      "Szkolenia iExcel pozwoliły mi na prowadzenie szeregu usprawnień w\n                            firmie. Pomimo ciągłej pracy na excelu, moje analizy są teraz zdecydowanie bardziej\n                            profesjonalne. Nie ma w Polsce drugiej takiej firmy, która w tak przyswajalny sposób\n                            potrafi przekazać wiedzę. Osobiście – bardzo polecam! Dzięki i widzimy się na kolejnej\n                            konferencji\n                        "
+                    )
+                  ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "name" }, [
-                    _vm._v("Dariusz Skórniewski, Warszawa")
+                    _vm._v("Łukasz Kutyłowski, Warszawa")
                   ])
                 ]),
                 _vm._v(" "),
                 _c("slide", [
                   _c("p", { staticClass: "testimonial" }, [
                     _vm._v(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisi\n                            nunc, tempus eget tortor non, feugiat finibus ligula. Nam massa felis, laoreet non magna\n                            sit amet, faucibus egestas diam. Quisque neque risus, lacinia eu elit consequat,\n                            interdum pellentesque lectus. Maecenas in dui ante. Donec posuere et lectus eu mollis.\n                            Mauris nisi nisl, molestie non porta elementum, efficitur ac leo. Maecenas rutrum\n                            porttitor lorem, quis posuere massa interdum nec.\n                        "
+                      "Środowa konferencja była pierwszą i na pewno nie ostatnią.\n                            Zdecydowanie polecam. Super atmosfera a wiedza przekazywana w bardzo przystępny sposób!\n                        "
                     )
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "name" }, [
-                    _vm._v("Antoni Brzęczyszczykiwicz")
+                    _vm._v("Damian Klekot, Warszawa")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("slide", [
+                  _c("p", { staticClass: "testimonial" }, [
+                    _vm._v(
+                      "Było przecudnie, szkoda, że nauczycieli w szkołach nie ma z takim\n                            podejściem i talentem w przekazywaniu wiedzy :)…no i te kawały\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "name" }, [
+                    _vm._v("Dawid Kowalski, Śrem")
                   ])
                 ])
               ],

@@ -15,6 +15,9 @@
                         <slide>
                             <img class="image" src="/images/v2/opinia_persona.png">
                         </slide>
+                        <slide>
+                            <img class="image" src="/images/v2/opinia_persona.png">
+                        </slide>
                     </carousel>
                 </div>
                 <div class="col-md-8 pl-3 d-flex justify-content-between flex-column">
@@ -25,18 +28,25 @@
                             :navigate-to="page"
                     >
                         <slide>
-                            <p class="testimonial">Abc</p>
-                            <p class="name">Dariusz Skórniewski, Warszawa</p>
+                            <p class="testimonial">Szkolenia iExcel pozwoliły mi na prowadzenie szeregu usprawnień w
+                                firmie. Pomimo ciągłej pracy na excelu, moje analizy są teraz zdecydowanie bardziej
+                                profesjonalne. Nie ma w Polsce drugiej takiej firmy, która w tak przyswajalny sposób
+                                potrafi przekazać wiedzę. Osobiście – bardzo polecam! Dzięki i widzimy się na kolejnej
+                                konferencji
+                            </p>
+                            <p class="name">Łukasz Kutyłowski, Warszawa</p>
                         </slide>
                         <slide>
-                            <p class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisi
-                                nunc, tempus eget tortor non, feugiat finibus ligula. Nam massa felis, laoreet non magna
-                                sit amet, faucibus egestas diam. Quisque neque risus, lacinia eu elit consequat,
-                                interdum pellentesque lectus. Maecenas in dui ante. Donec posuere et lectus eu mollis.
-                                Mauris nisi nisl, molestie non porta elementum, efficitur ac leo. Maecenas rutrum
-                                porttitor lorem, quis posuere massa interdum nec.
+                            <p class="testimonial">Środowa konferencja była pierwszą i na pewno nie ostatnią.
+                                Zdecydowanie polecam. Super atmosfera a wiedza przekazywana w bardzo przystępny sposób!
                             </p>
-                            <p class="name">Antoni Brzęczyszczykiwicz</p>
+                            <p class="name">Damian Klekot, Warszawa</p>
+                        </slide>
+                        <slide>
+                            <p class="testimonial">Było przecudnie, szkoda, że nauczycieli w szkołach nie ma z takim
+                                podejściem i talentem w przekazywaniu wiedzy :)…no i te kawały
+                            </p>
+                            <p class="name">Dawid Kowalski, Śrem</p>
                         </slide>
                     </carousel>
                 </div>
