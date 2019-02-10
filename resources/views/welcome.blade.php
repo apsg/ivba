@@ -24,7 +24,7 @@
         </div>
     </section>
 
-    <section class="py-3 bg-gray-dark random-lessons">
+    <section class="py-3 bg-gray-dark random-lessons row">
         <random-lessons num="4"></random-lessons>
     </section>
 

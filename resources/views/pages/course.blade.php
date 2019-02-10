@@ -31,33 +31,40 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="course-detail d-flex align-items-end">
-                        <div class="duration">
-                            <div class="icon text-center"><i class="fa fa-clock-o fa-2x"></i> </div>
+                        <div class="p-3">
+                            <div class="icon text-center"><i class="fa fa-clock-o fa-2x"></i></div>
                             <div class="detail"><span>Czas trwania</span> {{ $course->duration() }} </div>
                         </div>
-                        <div class="duration eligible">
+                        <div class="p-3 eligible">
                             <div class="icon text-center">
                                 <i class="fa fa-2x fa-bar-chart-o"></i>
                             </div>
                             <div class="detail"><span>Trudność:</span> {{ $course->difficulty() }}</div>
                         </div>
-                        <div class="duration eligible">
+                        <div class="p-3 eligible">
                             <div class="icon text-center">
                                 <i class="fa fa-2x fa-list-ol"></i>
                             </div>
                             <div class="detail"><span>Liczba lekcji:</span> {{ $course->lessons()->count() }}</div>
                         </div>
-
                         @if( Gate::allows('access-course', $course))
-                            <a href="{{ url('/learn/course/'.$course->slug) }}" class="btn btn-primary">Rozpocznij kurs
-                                <span class="icon-more-icon"></span></a>
-                        @else
-                            Nie masz jeszcze dostępu do tego kursu. Poczekaj aż uzyskasz dostęp w ramach swojego
-                            abonamentu lub wykup pełen dostęp. <br/>
-                            <a href="{{ url('/buy_access') }}" class="btn btn-primary">Kup dostęp <span
-                                        class="icon-more-icon"></span></a>
-                        @endif
+                            <div>
 
+                                <a href="{{ url('/learn/course/'.$course->slug) }}" class="btn btn-primary">Rozpocznij
+                                    kurs
+                                    <span class="icon-more-icon"></span></a>
+                            </div>
+                        @else
+                            <div>
+                                Nie masz jeszcze dostępu do tego kursu. Poczekaj aż uzyskasz dostęp w ramach swojego
+                                abonamentu lub wykup pełen dostęp.
+                            </div>
+                            <div>
+                                <a href="{{ url('/buy_access') }}" class="btn btn-primary">
+                                    Kup dostęp
+                                </a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -86,7 +93,8 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="comments-tab" data-toggle="tab" href="#teachers" role="tab"
-                               aria-controls="teachers" aria-selected="false"><i class="fa fa-graduation-cap"></i> Nauczyciele</a>
+                               aria-controls="teachers" aria-selected="false"><i class="fa fa-graduation-cap"></i>
+                                Nauczyciele</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
