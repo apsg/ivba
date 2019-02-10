@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Events\FullAccessGrantedEvent;
 use App\Notifications\RandomPasswordGenerated;
 use App\User;
 use Carbon\Carbon;
@@ -134,6 +135,8 @@ class AdminUserController extends Controller
                 'full_access_expires' => $user->full_access_expires->addYear(),
             ]);
         }
+
+        event(new FullAccessGrantedEvent($user));
 
         flash('Przyznano lub przedłużono pełen dostęp na rok');
 

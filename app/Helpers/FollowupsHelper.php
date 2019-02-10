@@ -2,7 +2,9 @@
 namespace App\Helpers;
 
 use App\Events\FirstPaymentCorrectEvent;
+use App\Events\NewAccessGrantedEvent;
 use App\Events\SubscriptionAbandonedEvent;
+use App\Events\SubscriptionCancelled;
 use App\Events\SubscriptionPaymentFailedEvent;
 use App\Events\SubscriptionProlongedEvent;
 use App\Events\UserRegisteredEvent;
@@ -33,7 +35,8 @@ class FollowupsHelper
         FirstPaymentCorrectEvent::class       => self::EVENT_PAYMENT_SUCCESS,
         SubscriptionProlongedEvent::class     => self::EVENT_AUTO_PAYMENT_SUCCESS,
         SubscriptionPaymentFailedEvent::class => self::EVENT_AUTO_PAYMENT_ERROR,
-
+        SubscriptionCancelled::class          => self::EVENT_AUTO_PAYMENT_CANCEL,
+        NewAccessGrantedEvent::class          => self::EVENT_ACCESS_GRANTED,
     ];
 
     public static function getName($event)

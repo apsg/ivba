@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Events\ActiveSubscriptionExpiredEvent;
 use App\Events\FirstPaymentCorrectEvent;
+use App\Events\NewAccessGrantedEvent;
 use App\Events\SubscriptionCancelled;
 use App\Events\SubscriptionPaymentFailedEvent;
 use App\Events\SubscriptionProlongedEvent;
@@ -61,6 +62,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         FirstPaymentCorrectEvent::class           => [
             StartSubscriptionAfterFirstPaymentListener::class,
+            FollowupsListener::class,
+        ],
+        NewAccessGrantedEvent::class              => [
             FollowupsListener::class,
         ],
 

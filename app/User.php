@@ -443,19 +443,11 @@ class User extends Authenticatable
 
     }
 
-    /**
-     * Usuń użytkownika
-     * @return [type] [description]
-     */
     public function deleteLink()
     {
         return url('/admin/user/' . $this->id . '/delete');
     }
 
-    /**
-     * Link do wysyłania wygenerowanego nowego hasła
-     * @return [type] [description]
-     */
     public function sendPasswordLink()
     {
         return url('/admin/user/' . $this->id . '/send_password');
@@ -466,19 +458,11 @@ class User extends Authenticatable
         return url('/admin/user/' . $this->id . '/grant_full_access');
     }
 
-    /**
-     * Pokaż podgląd/edycję użytkownika
-     * @return [type] [description]
-     */
     public function editLink()
     {
         return url('/admin/user/' . $this->id);
     }
 
-    /**
-     * Wypisuje użytkownika z otrzymywania powiadomień automatycznych.
-     * @return [type] [description]
-     */
     public function unsubscribe()
     {
         $this->unsubscribed_at = Carbon::now();
@@ -486,21 +470,11 @@ class User extends Authenticatable
         flash('Nie będziesz już otrzymywać powiadomień automatycznych');
     }
 
-    /**
-     * Nadpisana wiadomość z resetem hasła.
-     * @param  [type] $token [description]
-     * @return [type]        [description]
-     */
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new \App\Notifications\PasswordReset($token));
     }
 
-
-    /**
-     * Zwraca aktualny dzień subskrypcji danego użytkownika
-     * @return [type] [description]
-     */
     public function getCurrentDayAttribute()
     {
 
