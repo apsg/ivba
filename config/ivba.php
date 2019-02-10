@@ -21,7 +21,7 @@ return [
     /** Duration in days */
 //    'subscription_duration_first' => 1,
 
-//    'subscription_description_first' => 'Pierwsza płatność w abonamencie',
+    'subscription_description_first' => 'Pierwsza płatność w abonamencie',
 
 
     'subscription_price'    => 19,

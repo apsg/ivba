@@ -18,7 +18,7 @@ class PaymentRepository
     {
         return Payment::create([
             'subscription_id' => $subscription->id,
-            'amount'          => config('ivba.subscription_price_first'),
+            'amount'          => config('ivba.subscription_price'),
             'is_recurrent'    => false,
             'title'           => config('ivba.subscription_description_first'),
         ]);

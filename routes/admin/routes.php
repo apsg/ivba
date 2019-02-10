@@ -52,6 +52,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::patch('/user/{user}', 'AdminUserController@patch');
     Route::get('/user/{user}/delete', 'AdminUserController@delete');
     Route::get('/user/{user}/send_password', 'AdminUserController@sendPassword');
+    Route::get('/user/{user}/grant_full_access', 'AdminUserController@grantFullAccess');
 
     Route::get('/menu', 'AdminMenusController@index');
     Route::post('/menu', 'AdminMenusController@store');

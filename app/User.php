@@ -13,7 +13,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string      name
  * @property string      email
  * @property string      password
- * @property string      full_access_expires
+ * @property Carbon      full_access_expires
  * @property Carbon      last_proof_at
  * @property integer     last_proof_id
  * @property integer     days_bought
@@ -459,6 +459,11 @@ class User extends Authenticatable
     public function sendPasswordLink()
     {
         return url('/admin/user/' . $this->id . '/send_password');
+    }
+
+    public function grantFullAccessLink()
+    {
+        return url('/admin/user/' . $this->id . '/grant_full_access');
     }
 
     /**

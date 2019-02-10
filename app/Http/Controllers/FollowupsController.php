@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\FollowupContent;
+use Auth;
 use Illuminate\Http\Request;
 
 class FollowupsController extends Controller
@@ -71,7 +72,7 @@ class FollowupsController extends Controller
                 ->storeAs('attachments', $request->attachment->getClientOriginalName());
         }
 
-        $followup = FollowupContent::create([
+        FollowupContent::create([
             'title'      => $request->title,
             'body'       => $request->body,
             'slug'       => $request->slug,
@@ -80,8 +81,9 @@ class FollowupsController extends Controller
             'attachment' => $attachment,
         ]);
 
+        flash('Dodano pomyślnie');
 
-        return redirect('/admin/followups/' . $followup->id);
+        return redirect('/admin/followups');
     }
 
     /**
@@ -103,7 +105,6 @@ class FollowupsController extends Controller
      */
     public function patch(FollowupContent $followup, Request $request)
     {
-
         $this->validate($request, [
             'title'      => 'required',
             'body'       => 'required',
@@ -139,8 +140,7 @@ class FollowupsController extends Controller
      */
     public function sendTest(FollowupContent $followup)
     {
-
-        \Auth::user()->emails()->create([
+        Auth::user()->emails()->create([
             'from'             => config('mail.from.address'),
             'title'            => $followup->title,
             'body'             => $followup->body,
