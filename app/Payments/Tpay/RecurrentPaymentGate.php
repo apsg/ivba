@@ -17,14 +17,6 @@ class RecurrentPaymentGate extends PaymentCard
     /** @var Payment */
     private $payment;
 
-    /**
-     * @param string  $saleDescription
-     * @param string  $clientToken
-     * @param Payment $payment
-     * @return $this
-     * @throws PaymentException
-     * @throws TException
-     */
     public function init(
         string $saleDescription = null,
         string $clientToken = null,
@@ -56,11 +48,6 @@ class RecurrentPaymentGate extends PaymentCard
         }
     }
 
-    /**
-     * @return Payment
-     * @throws PaymentException
-     * @throws TException
-     */
     public function payBySavedCreditCard()
     {
         //Try to execute payment

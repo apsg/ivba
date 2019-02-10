@@ -8,38 +8,43 @@
                 style="width: 100%;"
         >
             <slide>
-                <a href="#">
+                <a href="/course/access">
+                    <img src="/images/v2/access.png">
+                </a>
+            </slide>
+            <slide>
+                <a href="/course/excel">
                     <img src="/images/v2/excel_miniaturka.png">
                 </a>
             </slide>
             <slide>
-                <a href="#">
+                <a href="/course/narzedzia-google">
+                    <img src="/images/v2/dysk_google.png">
+                </a>
+            </slide>
+            <slide>
+                <a href="/course/kamera">
+                    <img src="/images/v2/kamera.png">
+                </a>
+            </slide>
+            <slide>
+                <a href="/course/photoshop">
                     <img src="/images/v2/photoshop_miniaturka.png">
                 </a>
             </slide>
             <slide>
-                <a href="#">
-                    <img src="/images/v2/photoshop_miniaturka.png">
+                <a href="/course/power-point">
+                    <img src="/images/v2/power_point.png">
                 </a>
             </slide>
             <slide>
-                <a href="#">
-                    <img src="/images/v2/photoshop_miniaturka.png">
+                <a href="/course/power-bi">
+                    <img src="/images/v2/powerbi.png">
                 </a>
             </slide>
             <slide>
-                <a href="#">
-                    <img src="/images/v2/excel_miniaturka.png">
-                </a>
-            </slide>
-            <slide>
-                <a href="#">
-                    <img src="/images/v2/photoshop_miniaturka.png">
-                </a>
-            </slide>
-            <slide>
-                <a href="#">
-                    <img src="/images/v2/photoshop_miniaturka.png">
+                <a href="/course/kurs-wordpress">
+                    <img src="/images/v2/wordpress.png">
                 </a>
             </slide>
         </carousel>
