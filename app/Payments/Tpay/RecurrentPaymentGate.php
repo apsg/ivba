@@ -26,10 +26,15 @@ class RecurrentPaymentGate extends PaymentCard
      * @throws TException
      */
     public function init(
-        string $saleDescription,
-        string $clientToken,
-        Payment $payment
+        string $saleDescription = null,
+        string $clientToken = null,
+        Payment $payment = null
     ) {
+        if ($clientToken === null || $payment === null) {
+            throw new PaymentException('Missing token or payment');
+        }
+
+        $saleDescription = $saleDescription ?? '';
 
         $this->payment = $payment;
         //Prepare transaction data

@@ -190,15 +190,20 @@
                         <td>
                             @if($payment->confirmed_at)
                                 <span class="text-success"><i class="fa fa-check"></i> Płatność zrealizowana {{ $payment->confirmed_at }}</span>
-                            @endif
-
-                            @if($payment->cancelled_at)
+                            @elseif($payment->cancelled_at)
                                 <span class="text-danger"><i class="fa fa-warning"></i> Płatność odrzucona {{ $payment->cancelled_at }}.
                                     @if(!empty($payment->cancel_reason))
                                         <br/>Powód: {{ $payment->reason }}
                                     @endif
                                 </span>
+                            @else
+                                <span>
+                                    <i class="fa fa-question-circle"></i> Płatność oczekuje na potwierdzenie lub została porzucona.
+                                    <br/>Płatność rozpoczęta {{ $payment->created_at }}
+                                </span>
                             @endif
+
+
                         </td>
                     </tr>
                 @endforeach
