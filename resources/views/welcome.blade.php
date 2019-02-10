@@ -1,25 +1,31 @@
 @extends('layouts.front2')
 
+@section('title', 'Wideo kursy i konferencje  z Excel, Power BI, Photoshop, Prezentacji.')
+
 @section('content')
     <section class="container py-5 promo-cards">
         <div class="row">
             <div class="col-md-4 text-center promo-card">
                 <img src="{{ asset('images/v2/ikonka_konferencja.png') }}">
                 <h3>Od a do z</h3>
-                <p>Nie spotkałeś się z VBA? U nas krok po kroku wprowadzimy cię w VBA. Znasz VBA? Z nami utrwalisz swoją
-                    wiedzę i dowiesz się jak można rozwiązać typowe problemy w VBA.</p>
+                <p>Na portalu iNauka znajdziesz omówione najważniejsze programy. Od Excela, przez prezentację, analizę
+                    Business Intelligence, bazy danych a skończywszy na retuszu zdjęć, tworzeniu grafiki i obróbce
+                    filmów wideo. </p>
             </div>
             <div class="col-md-4 text-center promo-card">
                 <img src="{{ asset('images/v2/ikonka_nie_bujamy.png') }}">
                 <h3>Nie bujamy w obłokach, uczymy</h3>
-                <p>Nie spotkałeś się z VBA? U nas krok po kroku wprowadzimy cię w VBA. Znasz VBA? Z nami utrwalisz swoją
-                    wiedzę i dowiesz się jak można rozwiązać typowe problemy w VBA.</p>
+                <p>Twórca platformy Mateusz ma ponad 10 letnie doświadczenie w prowadzeniu szkoleń a 5 letnie w pracy na
+                    uczelni. Cyklicznie z jego porad korzysta ponad 250 000 osób. Dlatego dla wszystkich uczesnitków
+                    platformy wprowadziliśmy liczne wyzwania, zadania domowe i specjalną punktację - dzięki temu
+                    mobilizujemy Cię do nauki.</p>
             </div>
             <div class="col-md-4 text-center promo-card">
                 <img src="{{ asset('images/v2/ikonka_od_a_do_z.png') }}">
                 <h3>Konferencje on-line</h3>
-                <p>Nie spotkałeś się z VBA? U nas krok po kroku wprowadzimy cię w VBA. Znasz VBA? Z nami utrwalisz swoją
-                    wiedzę i dowiesz się jak można rozwiązać typowe problemy w VBA.</p>
+                <p>Cyklicznie organizujemy zamknięte konferencję w których będziesz mógł uczestniczyć. Na żywo odpowiemy
+                    na Twoje pytania. Z naszych badań wynika, że konferencję on-line na żywo to najskuteczniejszy sposób
+                    nauki. W zeszłym roku przeprowadziliśmy ich ponad 230.</p>
             </div>
         </div>
     </section>
