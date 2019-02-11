@@ -114,12 +114,6 @@
                     <a href="https://facebook.com/wideokursy/" target="_blank">
                         <img src="{{ asset('/images/v2/f_ikona.png') }}"/>
                     </a>
-                    <a href="#">
-                        <img src="{{ asset('/images/v2/twitter_ikona_stopka.png') }}"/>
-                    </a>
-                    <a href="https://www.youtube.com/channel/UCC5LbbtBFGyGuBxsUVe-trg" target="_blank">
-                        <img src="{{ asset('/images/v2/google+_ikona.png') }}"/>
-                    </a>
                 </div>
             </div>
         </div>
@@ -129,7 +123,6 @@
                     <a href="{{url('/')}}" class="py-3">
                         <img src="{{ asset('/images/v2/logo_stopka.png') }}">
                     </a>
-
                     <p>&copy; {{ Carbon\Carbon::now()->year }} ITBT</p>
                 </div>
                 <div class="col-md-8">
@@ -149,6 +142,13 @@
                             {!! App\MenuItem::make(3, 'asc') !!}
                         </div>
                     </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <p><strong>IT&Business Training Mateusz Grabowski</strong> <br/>
+                        ul. Zygmunta Starego 1/3, 44-100 Gliwice |
+                        NIP: 6312273946 |
+                        REGON: 240829920
+                    </p>
                 </div>
             </div>
         </div>

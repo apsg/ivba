@@ -33,7 +33,7 @@
                 </a>
             </slide>
             <slide>
-                <a href="/course/power-point">
+                <a href="/course/powerpoint">
                     <img src="/images/v2/power_point.png">
                 </a>
             </slide>

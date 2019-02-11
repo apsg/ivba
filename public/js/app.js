@@ -39185,7 +39185,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("slide", [
-            _c("a", { attrs: { href: "/course/power-point" } }, [
+            _c("a", { attrs: { href: "/course/powerpoint" } }, [
               _c("img", { attrs: { src: "/images/v2/power_point.png" } })
             ])
           ]),
