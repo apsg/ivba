@@ -1,5 +1,5 @@
 <template>
-    <div class="container text-center d-flex w-50 pb-3">
+    <div class="container text-center d-flex w-50 pb-3 mx-auto">
         <carousel
                 :perPage="4"
                 :navigationNextLabel="`>`"
