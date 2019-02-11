@@ -19,7 +19,6 @@ class SubscriptionRepository
         $this->daysRepository = app(AccessDaysRepository::class);
     }
 
-
     public function create(User $user) : Subscription
     {
         if ($user->hasActiveSubscription()) {
@@ -59,7 +58,7 @@ class SubscriptionRepository
         $subscription->update([
             'is_active'   => true,
             'token'       => $token,
-            'valid_until' => Carbon::now()->addDays(config('ivba.subscription_duration')), // TODO change to months
+            'valid_until' => Carbon::now()->addMonths(config('ivba.subscription_duration')),
             'amount'      => config('ivba.subscription_price'),
         ]);
 
@@ -91,8 +90,7 @@ class SubscriptionRepository
         $valid = max($subscription->valid_until->timestamp, Carbon::now()->timestamp);
 
         $subscription->update([
-            // TODO change this to months
-            'valid_until' => Carbon::createFromTimestamp($valid)->addDays(config('ivba.subscription_duration')),
+            'valid_until' => Carbon::createFromTimestamp($valid)->addMonths(config('ivba.subscription_duration')),
             'tries'       => 0,
         ]);
 
