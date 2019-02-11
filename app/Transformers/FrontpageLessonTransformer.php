@@ -10,7 +10,7 @@ class FrontpageLessonTransformer extends TransformerAbstract
     {
         return [
             'title' => $lesson->title,
-            'image' => $lesson->image->url,
+            'image' => $lesson->image->thumb(400,300),
             'url'   => $lesson->url(),
         ];
     }
