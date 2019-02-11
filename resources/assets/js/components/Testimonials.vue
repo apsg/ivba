@@ -10,13 +10,13 @@
                             :mouseDrag="false"
                     >
                         <slide>
-                            <img class="image" src="/images/v2/opinia_persona.png">
+                            <img class="image" src="/images/v2/lukasz_kutylowski.png">
                         </slide>
                         <slide>
-                            <img class="image" src="/images/v2/opinia_persona.png">
+                            <img class="image" src="/images/v2/damian_klekot.png">
                         </slide>
                         <slide>
-                            <img class="image" src="/images/v2/opinia_persona.png">
+                            <img class="image" src="/images/v2/barbara.png">
                         </slide>
                     </carousel>
                 </div>
@@ -28,25 +28,26 @@
                             :navigate-to="page"
                     >
                         <slide>
-                            <p class="testimonial">Szkolenia iExcel pozwoliły mi na prowadzenie szeregu usprawnień w
-                                firmie. Pomimo ciągłej pracy na excelu, moje analizy są teraz zdecydowanie bardziej
-                                profesjonalne. Nie ma w Polsce drugiej takiej firmy, która w tak przyswajalny sposób
-                                potrafi przekazać wiedzę. Osobiście – bardzo polecam! Dzięki i widzimy się na kolejnej
-                                konferencji
-                            </p>
-                            <p class="name">Łukasz Kutyłowski, Warszawa</p>
+                            <p class="testimonial">Szkolenia z Excela pozwoliły mi na
+                                prowadzenie szeregu usprawnień w firmie. Pomimo ciągłej pracy na excelu, moje analizy są
+                                teraz zdecydowanie bardziej profesjonalne. Nie ma w Polsce drugiej takiej firmy, która w
+                                tak przyswajalny sposób potrafi przekazać wiedzę. Osobiście – bardzo polecam! Dzięki i
+                                widzimy się na kolejnej konferencji
+                            <p class="name">Łukasz Kutyłowski (Warszawa)</p>
                         </slide>
                         <slide>
-                            <p class="testimonial">Środowa konferencja była pierwszą i na pewno nie ostatnią.
-                                Zdecydowanie polecam. Super atmosfera a wiedza przekazywana w bardzo przystępny sposób!
+                            <p class="testimonial">Środowa konferencja była pierwszą i na pewno
+                                nie ostatnią. Zdecydowanie polecam. Super atmosfera a wiedza przekazywana w bardzo
+                                przystępny sposób!
                             </p>
-                            <p class="name">Damian Klekot, Warszawa</p>
+                            <p class="name">Damian Klekot (Warszawa)</p>
                         </slide>
                         <slide>
-                            <p class="testimonial">Było przecudnie, szkoda, że nauczycieli w szkołach nie ma z takim
-                                podejściem i talentem w przekazywaniu wiedzy :)…no i te kawały
+                            <p class="testimonial">Systematycznie biorę udział w szkoleniach
+                                organizowanych przez Mateusza. Mogę to podsumować tylko tak: Trudne zagadnienia tłumaczy
+                                w bardzo prosty sposób.
                             </p>
-                            <p class="name">Dawid Kowalski, Śrem</p>
+                            <p class="name">Barbara Żukowska (Gliwice)</p>
                         </slide>
                     </carousel>
                 </div>

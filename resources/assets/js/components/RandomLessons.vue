@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="mx-auto">
         <h3 class="text-center text-orange mb-3">Losowe lekcje</h3>
         <div class="container">
             <carousel

@@ -84,7 +84,10 @@
         </nav>
         @if(Request::is('/'))
             <div class="container pb-3 promo">
-                <h1 class="mt-5 mb-5">Czego się dziś nauczysz?</h1>
+                <h1 class="mt-5 mb-5">
+                    Czego się dziś nauczysz?
+                    <span class="badge ml-3"><a class="text-white text-sm font-weight-light" href="{{ url('/spis') }}">(spis kursów)</a> </span>
+                </h1>
             </div>
             <categories></categories>
         @endif

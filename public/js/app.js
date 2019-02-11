@@ -2151,6 +2151,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -39566,7 +39567,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
+  return _c("div", { staticClass: "mx-auto" }, [
     _c("h3", { staticClass: "text-center text-orange mb-3" }, [
       _vm._v("Losowe lekcje")
     ]),
@@ -39655,21 +39656,21 @@ var render = function() {
                 _c("slide", [
                   _c("img", {
                     staticClass: "image",
-                    attrs: { src: "/images/v2/opinia_persona.png" }
+                    attrs: { src: "/images/v2/lukasz_kutylowski.png" }
                   })
                 ]),
                 _vm._v(" "),
                 _c("slide", [
                   _c("img", {
                     staticClass: "image",
-                    attrs: { src: "/images/v2/opinia_persona.png" }
+                    attrs: { src: "/images/v2/damian_klekot.png" }
                   })
                 ]),
                 _vm._v(" "),
                 _c("slide", [
                   _c("img", {
                     staticClass: "image",
-                    attrs: { src: "/images/v2/opinia_persona.png" }
+                    attrs: { src: "/images/v2/barbara.png" }
                   })
                 ])
               ],
@@ -39700,36 +39701,35 @@ var render = function() {
                 _c("slide", [
                   _c("p", { staticClass: "testimonial" }, [
                     _vm._v(
-                      "Szkolenia iExcel pozwoliły mi na prowadzenie szeregu usprawnień w\n                            firmie. Pomimo ciągłej pracy na excelu, moje analizy są teraz zdecydowanie bardziej\n                            profesjonalne. Nie ma w Polsce drugiej takiej firmy, która w tak przyswajalny sposób\n                            potrafi przekazać wiedzę. Osobiście – bardzo polecam! Dzięki i widzimy się na kolejnej\n                            konferencji\n                        "
+                      "Szkolenia z Excela pozwoliły mi na\n                            prowadzenie szeregu usprawnień w firmie. Pomimo ciągłej pracy na excelu, moje analizy są\n                            teraz zdecydowanie bardziej profesjonalne. Nie ma w Polsce drugiej takiej firmy, która w\n                            tak przyswajalny sposób potrafi przekazać wiedzę. Osobiście – bardzo polecam! Dzięki i\n                            widzimy się na kolejnej konferencji\n                        "
                     )
                   ]),
-                  _vm._v(" "),
                   _c("p", { staticClass: "name" }, [
-                    _vm._v("Łukasz Kutyłowski, Warszawa")
+                    _vm._v("Łukasz Kutyłowski (Warszawa)")
                   ])
                 ]),
                 _vm._v(" "),
                 _c("slide", [
                   _c("p", { staticClass: "testimonial" }, [
                     _vm._v(
-                      "Środowa konferencja była pierwszą i na pewno nie ostatnią.\n                            Zdecydowanie polecam. Super atmosfera a wiedza przekazywana w bardzo przystępny sposób!\n                        "
+                      "Środowa konferencja była pierwszą i na pewno\n                            nie ostatnią. Zdecydowanie polecam. Super atmosfera a wiedza przekazywana w bardzo\n                            przystępny sposób!\n                        "
                     )
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "name" }, [
-                    _vm._v("Damian Klekot, Warszawa")
+                    _vm._v("Damian Klekot (Warszawa)")
                   ])
                 ]),
                 _vm._v(" "),
                 _c("slide", [
                   _c("p", { staticClass: "testimonial" }, [
                     _vm._v(
-                      "Było przecudnie, szkoda, że nauczycieli w szkołach nie ma z takim\n                            podejściem i talentem w przekazywaniu wiedzy :)…no i te kawały\n                        "
+                      "Systematycznie biorę udział w szkoleniach\n                            organizowanych przez Mateusza. Mogę to podsumować tylko tak: Trudne zagadnienia tłumaczy\n                            w bardzo prosty sposób.\n                        "
                     )
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "name" }, [
-                    _vm._v("Dawid Kowalski, Śrem")
+                    _vm._v("Barbara Żukowska (Gliwice)")
                   ])
                 ])
               ],
