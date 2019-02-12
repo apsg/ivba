@@ -40,7 +40,7 @@
             </li>
 
             {{-- Zamówienia --}}
-            <li class="treeview @if(request()->is('admin/orders*')) active @endif">
+            <li class="treeview @if(request()->is('admin/orders*') || request()->is('admin/payments*') ) active @endif">
                 <a href="#">
                     <i class="fa fa-shopping-bag"></i> <span>Zamówienia</span>
                     <span class="pull-right-container">
