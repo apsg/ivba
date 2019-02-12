@@ -103,5 +103,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 
     Route::get('subscriptions/{subscription}/cancel', 'AdminSubcriptionsController@cancel');
 
+    Route::get('payments', 'AdminPaymentsController@index');
+    Route::get('/payments/data', 'AdminPaymentsController@getData');
+
     Route::post('update_editable', 'AdminEditablesController@update');
 });

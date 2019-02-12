@@ -29,8 +29,12 @@ class TpayHelper
         '99' => 'Niewłaściwe hasło API',
     ];
 
-    public static function translateReason(string $code) : string
+    public static function translateReason(string $code = null) : string
     {
+        if ($code === null) {
+            return '';
+        }
+
         if (isset(static::REASONS[$code])) {
             return static::REASONS[$code];
         }
