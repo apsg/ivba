@@ -40,12 +40,14 @@ class PaymentRepository
         $payment = Payment::findOrFail((int)$paymentId);
 
         if ($status === static::STATUS_CORRECT) {
-            $payment->update([
-                'confirmed_at' => Carbon::now(),
-                'external_id'  => array_get($data, 'cli_auth'),
-            ]);
+            if ($payment->confirmed_at === null) {
+                $payment->update([
+                    'confirmed_at' => Carbon::now(),
+                    'external_id'  => array_get($data, 'cli_auth'),
+                ]);
 
-            event(new FirstPaymentCorrectEvent($payment));
+                event(new FirstPaymentCorrectEvent($payment));
+            }
         }
 
         if ($status === static::STATUS_DECLINED) {
