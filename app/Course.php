@@ -3,6 +3,9 @@ namespace App;
 
 use App\Interfaces\OrderableContract;
 use App\Traits\ChecksSlugs;
+use Cache;
+use Carbon\Carbon;
+use DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -180,27 +183,24 @@ class Course extends Model implements OrderableContract
 
     /**
      * Zwraca skrót opisu kursu
-     * @return [type] [description]
      */
-    public function getExcerptAttribute()
+    public function getExcerptAttribute() : string
     {
-        return Str::limit(html_entity_decode(strip_tags($this->description)), 120   );
+        return Str::limit(html_entity_decode(strip_tags($this->description)), 120);
     }
 
     /**
      * Czas trwania w minutach
-     * @return [type] [description]
      */
-    public function getDurationAttribute()
+    public function getDurationAttribute() : int
     {
         return $this->lessons->sum('duration');
     }
 
     /**
      * Czas trwania (sformatowany)
-     * @return [type] [description]
      */
-    public function duration()
+    public function duration() : string
     {
         $h = floor($this->duration / 60);
         $m = $this->duration - $h * 60;
@@ -210,36 +210,32 @@ class Course extends Model implements OrderableContract
 
     /**
      * Link do tego kursu
-     * @return [type] [description]
      */
-    public function link()
+    public function link() : string
     {
         return url('/course/' . $this->slug);
     }
 
     /**
      * Link do rozpoczęcia nauki tego kursu
-     * @return [type] [description]
      */
-    public function learnUrl()
+    public function learnUrl() : string
     {
         return url('/learn/course/' . $this->slug);
     }
 
     /**
      * Link do ekranu zakończenia kursu
-     * @return [type] [description]
      */
-    public function finishedUrl()
+    public function finishedUrl() : string
     {
         return url('/learn/course/' . $this->slug . '/finished');
     }
 
     /**
      * Zwraca sformatowany tekst stopnia trudności
-     * @return [type] [description]
      */
-    public function difficulty()
+    public function difficulty() : string
     {
         switch ($this->difficulty) {
             case 1 :
@@ -251,12 +247,7 @@ class Course extends Model implements OrderableContract
         }
     }
 
-    /**
-     * [nextLessonLink description]
-     * @param  [type] $lesson_id [description]
-     * @return [type]            [description]
-     */
-    public function nextLessonLink($lesson_id = null)
+    public function nextLessonLink($lesson_id = null) : string
     {
         if (empty($lesson_id)) {
             return $this->learnUrl();
@@ -272,7 +263,7 @@ class Course extends Model implements OrderableContract
         if (is_null($next)) {
             $lesson_ids = $this->lessons()->pluck('lesson_id')->all();
 
-            $next = \Auth::user()
+            $next = Auth::user()
                 ->lessons()
                 ->whereIn('lesson_id', $lesson_ids)
                 ->whereNull('finished_at')
@@ -288,13 +279,10 @@ class Course extends Model implements OrderableContract
 
     /**
      * Zwraca link do następnego nieukończonego elementu w tym kursie
-     * @param  [type]   $lesson_id [description]
-     * @return function            [description]
      */
-    public function next()
+    public function next() : string
     {
-
-        $user = \Auth::user();
+        $user = Auth::user();
 
         // Czy została jakaś lekcja do ukończenia?
         foreach ($this->lessons as $lesson) {
@@ -321,41 +309,40 @@ class Course extends Model implements OrderableContract
 
     /**
      * Użytkownik ukończył ten kurs
-     * @return [type] [description]
      */
-    public function finish()
+    public function finish() : self
     {
         $this->users()
             ->updateExistingPivot(
-                \Auth::user()->id,
-                ['finished_at' => \Carbon\Carbon::now()]
+                Auth::user()->id,
+                ['finished_at' => Carbon::now()]
             );
 
         if (!empty($this->certificate)) {
             UserCertificate::create([
-                'user_id'        => \Auth::user()->id,
+                'user_id'        => Auth::user()->id,
                 'certificate_id' => $this->certificate->id,
                 'course_id'      => $this->id,
             ]);
         }
 
-        \App\Proof::createFinishedCourse(\Auth::user(), $this);
+        Proof::createFinishedCourse(Auth::user(), $this);
+
+        return $this;
     }
 
     /**
      * Nazwa do wyświetlania w koszyku
-     * @return [type] [description]
      */
-    public function cartName()
+    public function cartName() : string
     {
         return "Kurs #" . $this->id . " - " . $this->title;
     }
 
     /**
      * Link usuwania z koszyka
-     * @return [type] [description]
      */
-    public function removeLink(\App\Order $order)
+    public function removeLink(Order $order) : string
     {
         return url('/order/' . $order->id . '/course/' . $this->id . '/remove');
     }
@@ -364,14 +351,14 @@ class Course extends Model implements OrderableContract
      * Zwraca liczbę osób zapisanych na ten kurs
      * @return [type] [description]
      */
-    public function getUsersCountAttribute()
+    public function getUsersCountAttribute() : int
     {
         $course_id = $this->id;
 
-        return \Cache::remember('course_users_count_' . $this->id,
+        return Cache::remember('course_users_count_' . $this->id,
             60 * 12,
             function () use ($course_id) {
-                return \DB::table('course_user')
+                return DB::table('course_user')
                     ->where('course_id', $course_id)
                     ->count();
             }
@@ -380,12 +367,11 @@ class Course extends Model implements OrderableContract
 
     /**
      * Zwraca ocenę dla aktualnego użytkownika
-     * @return [type] [description]
      */
     public function getRatingAttribute()
     {
-        if (\Auth::check()) {
-            return Rating::where('user_id', \Auth::user()->id)
+        if (Auth::check()) {
+            return Rating::where('user_id', Auth::user()->id)
                 ->where('course_id', $this->id)
                 ->first();
         } else {
@@ -395,29 +381,34 @@ class Course extends Model implements OrderableContract
 
     /**
      * Zwraca średnią wartość ocen dla tego kursu
-     * @return [type] [description]
      */
-    public function getAvgRatingAttribute()
+    public function getAvgRatingAttribute() : float
     {
         return (float)$this->ratings()->avg('rating');
     }
 
     /**
      * Zwraca liczbę ocen dla tego kursu
-     * @return [type] [description]
      */
-    public function getRatingsCountAttribute()
+    public function getRatingsCountAttribute() : int
     {
         return $this->ratings()->count();
     }
 
+    public function getRealDelayAttribute() : int
+    {
+        if (Auth::check()) {
+            return max(0, $this->cumulative_delay - Auth::user()->current_day);
+        }
+
+        return $this->cumulative_delay;
+    }
+
     /**
      * Przelicza na nowo cumulative_delay po zmianie kolejności
-     * @return [type] [description]
      */
-    public static function reorder()
+    public static function reorder() : void
     {
-
         $courses = static::query()->orderBy('position', 'asc')->get();
 
         $sum = 0;
@@ -428,15 +419,5 @@ class Course extends Model implements OrderableContract
             $course->cumulative_delay = $sum;
             $course->save();
         }
-    }
-
-
-    public function getRealDelayAttribute()
-    {
-        if (Auth::check()) {
-            return max(0, $this->cumulative_delay - Auth::user()->current_day);
-        }
-
-        return $this->cumulative_delay;
     }
 }
