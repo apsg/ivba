@@ -8,7 +8,7 @@
                         <img class="card-img-top" :src="course.img" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">{{ course.title }}</h5>
-                            <p class="card-text">{{ course.excerpt }}</p>
+                            <p class="card-text" v-html="course.excerpt"></p>
                             <a v-if="course.wait == 0" :href="course.url" class="btn btn-ivba">Rozpocznij kurs</a>
                             <span v-else class="border py-2 px-3"><i class="fa fa-clock-o"></i> Uzyskasz dostęp za {{ course.wait }} dni</span>
                         </div>

@@ -1,21 +1,11 @@
 <?php
-
 namespace App;
 
-use App\Access;
-use App\Certificate;
-use App\Image;
-use App\Lesson;
-use App\Quiz;
-use App\Rating;
-use App\Traits\Accessable;
-use App\Traits\ChecksSlugs;
 use App\Interfaces\OrderableContract;
-use App\User;
-use App\UserCertificate;
-use App\Video;
+use App\Traits\ChecksSlugs;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class Course extends Model implements OrderableContract
 {
@@ -194,7 +184,7 @@ class Course extends Model implements OrderableContract
      */
     public function getExcerptAttribute()
     {
-        return substr(strip_tags($this->description), 0, 120) . '...';
+        return Str::limit(html_entity_decode(strip_tags($this->description)), 120   );
     }
 
     /**
@@ -377,6 +367,7 @@ class Course extends Model implements OrderableContract
     public function getUsersCountAttribute()
     {
         $course_id = $this->id;
+
         return \Cache::remember('course_users_count_' . $this->id,
             60 * 12,
             function () use ($course_id) {

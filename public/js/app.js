@@ -39440,9 +39440,10 @@ var render = function() {
                   _vm._v(_vm._s(course.title))
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "card-text" }, [
-                  _vm._v(_vm._s(course.excerpt))
-                ]),
+                _c("p", {
+                  staticClass: "card-text",
+                  domProps: { innerHTML: _vm._s(course.excerpt) }
+                }),
                 _vm._v(" "),
                 course.wait == 0
                   ? _c(
