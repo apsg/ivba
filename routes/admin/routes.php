@@ -101,6 +101,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::patch('scripts/{script}', 'AdminScriptsController@patch');
     Route::get('scripts/{script}/delete', 'AdminScriptsController@delete');
 
+    Route::get('subscriptions/{subscription}/cancel', 'AdminSubcriptionsController@cancel');
 
     Route::post('update_editable', 'AdminEditablesController@update');
 });

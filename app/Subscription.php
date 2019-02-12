@@ -65,4 +65,9 @@ class Subscription extends Model
     {
         $query->where('is_active', '=', true);
     }
+
+    public function cancelLink()
+    {
+        return url('/admin/subscriptions/' . $this->id . '/cancel');
+    }
 }

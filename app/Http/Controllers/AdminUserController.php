@@ -21,7 +21,6 @@ class AdminUserController extends Controller
 
     /**
      * Pokaż listę użytkowników
-     * @return [type] [description]
      */
     public function index()
     {
@@ -34,8 +33,6 @@ class AdminUserController extends Controller
 
     /**
      * Usuwanie użytkownika
-     * @param  User $user [description]
-     * @return [type]       [description]
      */
     public function delete(User $user)
     {
@@ -49,15 +46,8 @@ class AdminUserController extends Controller
         return back();
     }
 
-
-    /**
-     * [sendPassword description]
-     * @param  User $user [description]
-     * @return [type]       [description]
-     */
     public function sendPassword(User $user)
     {
-
         $password = str_random(8);
 
         $user->password = Hash::make($password);
@@ -68,22 +58,33 @@ class AdminUserController extends Controller
         return back();
     }
 
-
-    /**
-     * Zwraca dane dla dataTables
-     * @param  Request $request [description]
-     * @return [type]           [description]
-     */
     public function getData(Request $request)
     {
-        $model = User::query();
+        $model = User::query()->with('subscription');
 
         return DataTables::of($model)
-            ->addColumn('options', function ($item) {
-                return '<a href="' . $item->sendPasswordLink() . '" class="btn btn-info"><i class="fa fa-envelope-o"></i> Wyślij losowe hasło</a>
+            ->addColumn('options', function (User $item) {
+                $options = '<a href="' . $item->sendPasswordLink() . '" class="btn btn-info"><i class="fa fa-envelope-o"></i> Wyślij losowe hasło</a>
                     <a href="' . $item->deleteLink() . '" class="btn btn-warning" onclick="return confirm(\'Na pewno chcesz usunąć?\');"><i class="fa fa-trash"></i> Usuń</a>
                     <a href="' . $item->editLink() . '" class="btn btn-default"><i class="fa fa-edit"></i> Edytuj</a>
                     <a href="' . $item->grantFullAccessLink() . '" class="btn btn-ivba confirm"><i class="fa fa-key"></i> Przyznaj pełen dostęp na rok</a>';
+
+                if ($item->subscription !== null && $item->subscription->is_active) {
+                    $options .= '<a href="' . $item->subscription->cancelLink() . '" class="btn btn-secondary confirm"><i class="fa fa-times"></i> Anuluj subskrypcję</a>';
+                }
+
+                return $options;
+            })
+            ->addColumn('subscription', function (User $item) {
+                $subscription = $item->subscription;
+
+                if ($subscription === null) {
+                    return null;
+                }
+
+                return "Ważna do: " . $subscription->valid_until . PHP_EOL
+                    . "Aktywna: " . ($subscription->is_active ? "Tak" : "Nie") . PHP_EOL
+                    . 'Kwota: ' . $subscription->amount . ' PLN';
             })
             ->rawColumns(['options'])
             ->make(true);
