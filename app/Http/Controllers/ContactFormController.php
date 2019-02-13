@@ -17,7 +17,7 @@ class ContactFormController extends Controller
             'g-recaptcha-response' => 'required|captcha',
         ]);
 
-        Mail::to("szymon.gackowski@gmail.com")
+        Mail::to(config('ivba.contact_form_recipient'))
             ->send(new ContactFormMail($request->email, $request->name, $request->message));
 
         return ['ok'];
