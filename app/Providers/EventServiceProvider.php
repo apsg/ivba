@@ -11,6 +11,10 @@ use App\Events\SubscriptionProlongedEvent;
 use App\Events\SubscriptionStartedEvent;
 use App\Events\UserRegisteredEvent;
 use App\Listeners\Emails\SendEmailAfterRegistrationListener;
+use App\Listeners\Excelmailing\SubscriptionStartedListener;
+use App\Listeners\Excelmailing\UserAccessFinishedListener;
+use App\Listeners\Excelmailing\UserAccessListener;
+use App\Listeners\Excelmailing\UserRegisteredListener;
 use App\Listeners\FollowupsListener;
 use App\Payments\Listeners\StartSubscriptionAfterFirstPaymentListener;
 use App\Payments\Listeners\TryToProlongSubscriptionListener;
@@ -29,12 +33,15 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\PlanUserRegisteredFollowups',
             SendEmailAfterRegistrationListener::class,
             FollowupsListener::class,
+            UserRegisteredListener::class,
         ],
         \App\Events\UserPaidForAccess::class      => [
             'App\Listeners\PlanUserPaidFollowups',
+            UserAccessListener::class,
         ],
         \App\Events\UserPaidAccessFinished::class => [
             'App\Listeners\PlanUserExpiredFollowups',
+            UserAccessFinishedListener::class,
         ],
         'App\Events\OrderLeft24hAgo'              => [
             //
@@ -44,9 +51,11 @@ class EventServiceProvider extends ServiceProvider
         ],
         SubscriptionCancelled::class              => [
             'App\Listeners\SendSubscriptionFailedEmail',
+            SubscriptionStartedListener::class,
         ],
         SubscriptionStartedEvent::class           => [
             FollowupsListener::class,
+            SubscriptionStartedListener::class,
         ],
         SubscriptionProlongedEvent::class         => [
             FollowupsListener::class,

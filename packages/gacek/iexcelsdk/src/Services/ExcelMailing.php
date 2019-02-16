@@ -11,42 +11,27 @@ class ExcelMailing extends BaseIExcelService
 
     protected $url = 'http://excelmailing.pl/mailing.php';
 
-    public function register($email)
+    public function register(string $email = null)
     {
-        $res = $this->send([
+        return $this->send([
             'email'  => $email,
             'action' => static::ACTION_REGISTERED,
         ]);
-
-        return [
-            'status' => $res->getStatusCode(),
-            'body'   => $res->getBody()->getContents(),
-        ];
     }
 
-    public function access($email)
+    public function access(string $email = null)
     {
-        $res = $this->send([
+        return $this->send([
             'email'  => $email,
             'action' => static::ACTION_ACCESS,
         ]);
-
-        return [
-            'status' => $res->getStatusCode(),
-            'body'   => $res->getBody()->getContents(),
-        ];
     }
 
-    public function expired($email)
+    public function expired(string $email = null)
     {
-        $res = $this->send([
+        return $this->send([
             'email'  => $email,
             'action' => static::ACTION_EXPIRED,
         ]);
-
-        return [
-            'status' => $res->getStatusCode(),
-            'body'   => $res->getBody()->getContents(),
-        ];
     }
 }

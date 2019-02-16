@@ -1,6 +1,7 @@
 <?php
 namespace App\Events;
 
+use App\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -13,6 +14,7 @@ class UserRegisteredEvent
 
     const EVENTNAME = 'userregistered';
 
+    /** @var User */
     public $user;
 
     /**
@@ -20,7 +22,7 @@ class UserRegisteredEvent
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct(User $user)
     {
         $this->user = $user;
     }
