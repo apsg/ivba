@@ -66,7 +66,7 @@ class CardNotification extends PaymentCard
             $notification['card'],
             $notification['date'],
             $notification['status'],
-            $notification['test_mode'],
+            array_get($notification, 'test_mode'),
             $notification['type'],
             $reason
         );
