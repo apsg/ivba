@@ -1,0 +1,13 @@
+{
+    "name": "gacek/iexcelsdk",
+    "description": "iExcel SDK",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Szymon Gackowski",
+            "email": "szymon.gackowski@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

@@ -1,5 +1,7 @@
 <?php
 
+use Gacek\IExcel\IExcelServiceProvider;
+
 return [
 
     /*
@@ -176,6 +178,7 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+        IExcelServiceProvider::class,
 
         /*
          * Application Service Providers...
