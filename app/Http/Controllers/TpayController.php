@@ -45,14 +45,14 @@ class TpayController extends Controller
     public function notification(Request $request, PaymentRepository $paymentRepository)
     {
         Log::info('tpay notification', $request->all());
+        
+        $n = (new CardNotification())->notification();
 
         $paymentRepository->handle(
             $request->input('order_id'),
             $request->input('status'),
             $request->all()
         );
-
-        $n = (new CardNotification())->notification();
 
         return response()->json([$n], 200);
     }
