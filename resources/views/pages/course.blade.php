@@ -114,7 +114,7 @@
                                                 <div class="table-col1">
                                                     <div class="lecture-txt">Lekcja
                                                         <span>{{ $lesson->pivot->position+1 }}</span>
-                                                        <a target="_blank" href="{{ $lesson->link() }}"
+                                                        <a target="_blank" href="{{ $lesson->previewLink() }}"
                                                            class="preview">Podgląd</a></div>
                                                     {{ $lesson->title }} </div>
 

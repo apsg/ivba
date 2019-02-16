@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Proof;
 use App\Course;
 use App\Lesson;
+use App\Proof;
 use App\Rating;
 use Auth;
 use Gate;
@@ -29,7 +29,8 @@ class LearnController extends Controller
     {
         if (!empty($lesson->slug) && Gate::denies('access-lesson', $lesson)) {
             flash('Nie masz dostępu do tej lekcji')->warning();
-            return redirect(!is_null($course) ? $course->link() : $lesson->link());
+
+            return redirect(!is_null($course) ? $course->link() : $lesson->previewLink());
         }
 
         // Jeśli nie wybrano lekcji - przekieruj do pierwszej.
@@ -50,59 +51,52 @@ class LearnController extends Controller
 
     /**
      * Pokaż lekcję
-     * @param  Lesson $lesson [description]
-     * @return [type]         [description]
      */
     public function showLesson(Lesson $lesson)
     {
         $this->assignToUser(null, $lesson);
         $course = null;
+
         return view('learn')->with(compact('lesson', 'course'));
     }
 
     /**
      * Przypisz kurs i lekcję do użytkownika.
-     * @param  [type] $course [description]
-     * @param  [type] $lesson [description]
-     * @return [type]         [description]
      */
-    protected function assignToUser($course, $lesson)
+    protected function assignToUser(Course $course = null, Lesson $lesson = null)
     {
         if (!empty($course) && !Auth::user()->hasStartedCourse($course->id)) {
             Auth::user()->courses()->attach($course);
         }
 
         if (!Auth::user()->hasStartedLesson($lesson->id)) {
-            Auth::user()->lessons()->attach($lesson);
+            Auth::user()->lessons()->attach($lesson, [
+                'course_id' => $course->id,
+            ]);
         }
     }
 
     /**
      * Zakończ lekcję i przejdź do następnej.
-     * @param  Course $course [description]
-     * @param  Lesson $lesson [description]
-     * @return [type]         [description]
      */
     public function finishLesson(Course $course, Lesson $lesson)
     {
-
         $user = Auth::user();
         if (!$user->hasFinishedLesson($lesson->id)) {
             Proof::createFinishedLesson($user, $lesson);
         }
 
-        $lesson->finish();
+        $lesson->finish($course->id);
 
         if (!isset($course->id)) {
             return back();
         }
+
         return redirect($course->nextLessonLink($lesson->id));
     }
 
     /**
      * Pokaż ekran podsumowania kursu
-     * @param  Course $course [description]
-     * @return [type]         [description]
      */
     public function finishedCourse(Course $course)
     {
@@ -114,6 +108,7 @@ class LearnController extends Controller
         $rating = Rating::where('user_id', Auth::user()->id)
             ->where('course_id', $course->id)
             ->first();
+
         return view('learn.finish')->with(compact('course', 'rating'));
     }
 

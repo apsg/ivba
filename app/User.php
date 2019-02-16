@@ -78,7 +78,6 @@ class User extends Authenticatable
 
     /**
      * Kursy rozpoczęte przez tego użytkownika
-     * @return [type] [description]
      */
     public function courses()
     {
@@ -89,18 +88,16 @@ class User extends Authenticatable
 
     /**
      * Lekcje rozpoczęte przez tego użytkownika
-     * @return [type] [description]
      */
     public function lessons()
     {
         return $this->belongsToMany(Lesson::class)
-            ->withPivot('finished_at')
+            ->withPivot(['finished_at', 'course_id'])
             ->withTimestamps();
     }
 
     /**
      * Testy tego użytkownika
-     * @return [type] [description]
      */
     public function quizzes()
     {
@@ -111,7 +108,6 @@ class User extends Authenticatable
 
     /**
      * Odpowiedzi tego użytkownika
-     * @return [type] [description]
      */
     public function answers()
     {
@@ -120,7 +116,6 @@ class User extends Authenticatable
 
     /**
      * Zamówienia tego użytkownika
-     * @return [type] [description]
      */
     public function orders()
     {
@@ -129,7 +124,6 @@ class User extends Authenticatable
 
     /**
      * Emaile wysyłane do tego użytkownika
-     * @return [type] [description]
      */
     public function emails()
     {
@@ -138,7 +132,6 @@ class User extends Authenticatable
 
     /**
      * Ostatni wysłany proof
-     * @return [type] [description]
      */
     public function last_proof()
     {
@@ -147,7 +140,6 @@ class User extends Authenticatable
 
     /**
      * Dni wykupione przez tego użytkownika
-     * @return [type] [description]
      */
     public function days()
     {
@@ -156,7 +148,6 @@ class User extends Authenticatable
 
     /**
      * Ostatni dzień dostępu danego użytkownika
-     * @return [type] [description]
      */
     public function lastDay()
     {

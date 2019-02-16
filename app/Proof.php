@@ -46,7 +46,7 @@ class Proof extends Model
         return static::create([
             'name'          => static::getName($user),
             'city'          => CityFromIp::get(request()->ip()),
-            'url'           => $lesson->link(),
+            'url'           => $lesson->previewLink(),
             'body'          => "Ukończył/a lekcję: " . $lesson->title,
             'user_id'       => $user->id,
             'is_registered' => true,
