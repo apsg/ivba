@@ -1,13 +1,35 @@
 <?php
 namespace Gacek\IExcel;
 
+use GuzzleHttp\Client;
+
 abstract class BaseIExcelService
 {
     /** @var string */
     protected $token;
 
+    /** @var string */
+    protected $url;
+
+    /** @var Client */
+    protected $client;
+
     public function __construct(string $token = null)
     {
         $this->token = $token;
+        $this->client = new Client();
+    }
+
+    public function send($data, string $method = 'POST')
+    {
+        return $this->client->request(
+            $method,
+            $this->url,
+            [
+                'form_params' => array_merge([
+                    'source' => config('iexcel.source'),
+                ], $data)
+            ]
+        );
     }
 }
