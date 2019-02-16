@@ -154,7 +154,9 @@
         </div>
     </footer>
 
-    <proofs></proofs>
+    @guest
+        <proofs></proofs>
+    @endguest
 
 </div>
 
