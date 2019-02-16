@@ -14,29 +14,11 @@
 
     <title>@yield('title', 'iVBA')</title>
 
-    {{--<link rel="stylesheet" type="text/css" href="{{ asset('/css/front.css') }}">--}}
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">
-    {{--<link href="https://fonts.googleapis.com/css?family=Amiko:400,600,700&amp;subset=latin-ext" rel="stylesheet">--}}
-<!-- Bootstrap -->
-    {{--<link href="{{ url('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">--}}
-<!-- Select2 -->
-    {{--<link href="{{ url('assets/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css">--}}
-<!-- Font Awesome -->
-    {{--<link href="{{ url('assets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">--}}
-<!-- Magnific Popup -->
-    {{--<link href="{{ url('assets/magnific-popup/css/magnific-popup.css') }}" rel="stylesheet" type="text/css">--}}
-<!-- Iconmoon -->
-    {{--<link href="{{ url('assets/iconmoon/css/iconmoon.css') }}" rel="stylesheet" type="text/css">--}}
-<!-- Owl Carousel -->
-    {{--<link href="{{ url('assets/owl-carousel/css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css">--}}
-
-    {{-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> --}}
-
 </head>
 
 <body class="learn">
 <div id="app">
-
 
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
@@ -65,45 +47,6 @@
             </main>
         </div>
     </div>
-    {{----}}
-
-    {{--<nav class="navbar navbar-inverse navbar-fixed-top">--}}
-    {{--<div class="container-fluid">--}}
-    {{--<div class="navbar-header">--}}
-    {{--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"--}}
-    {{--aria-expanded="false" aria-controls="navbar">--}}
-    {{--<span class="sr-only">Toggle navigation</span>--}}
-    {{--<span class="icon-bar"></span>--}}
-    {{--<span class="icon-bar"></span>--}}
-    {{--<span class="icon-bar"></span>--}}
-    {{--</button>--}}
-    {{--<a class="navbar-brand" href="{{ url('/') }}"><img src="{{ url('/images/iVBA_minilogo.png') }}"></a>--}}
-    {{--</div>--}}
-    {{--<div id="navbar" class="navbar-collapse collapse">--}}
-    {{--<ul class="nav navbar-nav navbar-right">--}}
-
-    {{--@yield('navbar')--}}
-
-    {{--</ul>--}}
-
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</nav>--}}
-
-    {{--<div class="container-fluid">--}}
-    {{--<div class="row">--}}
-    {{--<div class="col-sm-3 col-md-2 sidebar">--}}
-
-    {{--@yield('sidebar')--}}
-
-    {{--</div>--}}
-    {{--<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">--}}
-
-    {{--@yield('content')--}}
-
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
 </div>
 
 @stack('modals')

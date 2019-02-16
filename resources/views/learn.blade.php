@@ -15,10 +15,10 @@
 @section('navbar')
     @if(\Auth::user()->hasFinishedLesson($lesson->id))
         @if(!empty($course))
-            <a href="{{ $lesson->finishUrl($course) }}" class="btn btn-ivba">Zakończ lekcję</a>
+            <a href="{{ $lesson->finishUrl($course) }}" class="btn btn-ivba">Oznacz lekcję jako zakończoną</a>
         @endif
     @else
-        <a href="{{ $lesson->finishUrl($course) }}" class="btn btn-ivba">Zakończ lekcję </a>
+        <a href="{{ $lesson->finishUrl($course) }}" class="btn btn-ivba">Oznacz lekcję jako zakończoną </a>
     @endif
 @endsection
 
