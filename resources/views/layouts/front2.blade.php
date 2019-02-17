@@ -158,6 +158,15 @@
         <proofs></proofs>
     @endguest
 
+    @auth
+        @if($lastLesson !== null)
+            <last-lesson
+                    url="{{ $lastLesson['url'] }}"
+                    lesson="{{ $lastLesson['lesson'] }}"
+                    course="{{ $lastLesson['course'] }}"></last-lesson>
+        @endif
+    @endauth
+
 </div>
 
 @if(request()->path() === 'buy_access')

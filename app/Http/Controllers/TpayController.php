@@ -58,6 +58,10 @@ class TpayController extends Controller
 
             return response()->json([$n], 200);
         } catch (TException $exception) {
+            Log::error('Tpay exception', [
+                'message' => $exception->getMessage(),
+            ]);
+
             return response()->json([], 422);
         }
     }

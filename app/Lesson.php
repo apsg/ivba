@@ -8,7 +8,28 @@ use Auth;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
+/**
+ * Class Lesson
+ *
+ * @property string                   title
+ * @property string                   description
+ * @property string                   seo_title
+ * @property string                   seo_description
+ * @property float                    price
+ * @property int                      difficulty
+ * @property string                   slug
+ * @property int                      image_id
+ * @property int                      video_id
+ * @property int                      user_id
+ * @property string                   introduction
+ * @property int                      duration
+ *
+ * @property-read Image               image
+ * @property-read Video               video
+ * @property-read Collection|Course[] courses
+ */
 class Lesson extends Model implements OrderableContract
 {
     use ChecksSlugs;
@@ -47,7 +68,7 @@ class Lesson extends Model implements OrderableContract
      */
     public function image()
     {
-        return $this->belongsTo(\App\Image::class);
+        return $this->belongsTo(Image::class);
     }
 
     /**
@@ -56,7 +77,7 @@ class Lesson extends Model implements OrderableContract
      */
     public function video()
     {
-        return $this->belongsTo(\App\Video::class);
+        return $this->belongsTo(Video::class);
     }
 
     /**
@@ -65,7 +86,7 @@ class Lesson extends Model implements OrderableContract
      */
     public function user()
     {
-        return $this->belongsTo(\App\User::class);
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -83,7 +104,7 @@ class Lesson extends Model implements OrderableContract
      */
     public function images()
     {
-        return $this->morphedByMany(\App\ItemImage::class, 'items')->withPivot('position');
+        return $this->morphedByMany(ItemImage::class, 'items')->withPivot('position');
     }
 
     /**
@@ -92,7 +113,7 @@ class Lesson extends Model implements OrderableContract
      */
     public function texts()
     {
-        return $this->morphedByMany(\App\ItemText::class, 'items')->withPivot('position');
+        return $this->morphedByMany(ItemText::class, 'items')->withPivot('position');
     }
 
     /**
@@ -101,7 +122,7 @@ class Lesson extends Model implements OrderableContract
      */
     public function files()
     {
-        return $this->morphedByMany(\App\ItemFile::class, 'items')->withPivot('position');
+        return $this->morphedByMany(ItemFile::class, 'items')->withPivot('position');
     }
 
     /**
@@ -110,7 +131,7 @@ class Lesson extends Model implements OrderableContract
      */
     public function videos()
     {
-        return $this->morphedByMany(\App\ItemMovie::class, 'items')->withPivot('position');
+        return $this->morphedByMany(ItemMovie::class, 'items')->withPivot('position');
     }
 
     /**
@@ -119,7 +140,7 @@ class Lesson extends Model implements OrderableContract
      */
     public function users()
     {
-        return $this->belongsToMany(\App\User::class);
+        return $this->belongsToMany(User::class);
     }
 
     /**

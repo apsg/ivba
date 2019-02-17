@@ -25,9 +25,18 @@ import Testimonials from './components/Testimonials.vue';
 import Courses from './components/Courses.vue';
 import CourseRating from './components/CourseRating.vue';
 import Proofs from './components/Proofs.vue';
+import LastLesson from './components/LastLesson.vue';
 
 const app = new Vue({
     el: '#app',
-    components: {Categories, RandomLessons, Testimonials, Courses, CourseRating, Proofs}
+    components: {
+        Categories,
+        RandomLessons,
+        Testimonials,
+        Courses,
+        CourseRating,
+        Proofs,
+        LastLesson
+    }
 });
 
