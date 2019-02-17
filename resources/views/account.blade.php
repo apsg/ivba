@@ -7,6 +7,17 @@
         <div class="container">
             <h1>Twoje konto</h1>
             <hr/>
+
+            @if(!!$lastLesson)
+                <div class="alert alert-info">
+                    Ostatnio realizowana lekcja: <strong>{{ $lastLesson['lesson'] }}</strong>
+                    w kursie: <strong>{{ $lastLesson['course'] }}</strong>.
+                    <a href="{{ $lastLesson['url'] }}" class="btn btn-ivba ml-5">Kontynuuj naukę</a>
+
+                </div>
+                <hr/>
+            @endif
+
             <div class="row">
                 <div class="col-md-6">
                     <form action="{{ url('/account') }}" method="post">

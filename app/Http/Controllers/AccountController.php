@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\PasswordReset;
 use App\Payment;
+use App\Services\LastLessonService;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -18,13 +19,15 @@ class AccountController extends Controller
      * Pokaż dane konta
      * @return [type] [description]
      */
-    public function show()
+    public function show(LastLessonService $service)
     {
         $user = Auth::user();
 
         $payments = Payment::forUser($user)->orderBy('created_at', 'desc')->get();
 
-        return view('account')->with(compact('user', 'payments'));
+        $lastLesson = $service->get($user);
+
+        return view('account')->with(compact('user', 'payments', 'lastLesson'));
     }
 
     /**
