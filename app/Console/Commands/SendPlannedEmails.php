@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Email;
+use Carbon\Carbon;
+use Doctrine\DBAL\Query\QueryException;
 use Illuminate\Console\Command;
 
 class SendPlannedEmails extends Command
@@ -31,17 +33,19 @@ class SendPlannedEmails extends Command
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle()
     {
-        Email::where('send_at', '<=', \Carbon\Carbon::now())
-            ->where('is_sent', false)
-            ->take(100)
-            ->get()
-            ->each->send();
+        try {
+            $emailsToSend = Email::where('send_at', '<=', Carbon::now())
+                ->where('is_sent', false)
+                ->take(100)
+                ->get();
+
+            foreach ($emailsToSend as $email) {
+                $email->send();
+            }
+        } catch (QueryException $exception) {
+            // do nothing, it would be sent the next time
+        }
     }
 }
