@@ -71,7 +71,7 @@ class LearnController extends Controller
 
         if (!Auth::user()->hasStartedLesson($lesson->id)) {
             Auth::user()->lessons()->attach($lesson, [
-                'course_id' => $course->id,
+                'course_id' => $course->id ?? null,
             ]);
         }
     }
