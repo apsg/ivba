@@ -6,6 +6,7 @@ use App\Payments\Tpay\OnSiteGate;
 use App\Repositories\PaymentRepository;
 use Illuminate\Http\Request;
 use Log;
+use tpayLibs\src\_class_tpay\Utilities\TException;
 
 class TpayController extends Controller
 {
@@ -44,16 +45,20 @@ class TpayController extends Controller
 
     public function notification(Request $request, PaymentRepository $paymentRepository)
     {
-        Log::info('tpay notification', $request->all());
+        try {
+            Log::info('tpay notification', $request->all());
 
-        $n = (new CardNotification())->notification();
+            $n = (new CardNotification())->notification();
 
-        $paymentRepository->handle(
-            $request->input('order_id'),
-            $request->input('status'),
-            $request->all()
-        );
+            $paymentRepository->handle(
+                $request->input('order_id'),
+                $request->input('status'),
+                $request->all()
+            );
 
-        return response()->json([$n], 200);
+            return response()->json([$n], 200);
+        } catch (TException $exception) {
+            return response()->json([], 422);
+        }
     }
 }
