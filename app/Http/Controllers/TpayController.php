@@ -48,13 +48,13 @@ class TpayController extends Controller
         try {
             Log::info('tpay notification', $request->all());
 
-            $n = (new CardNotification())->notification();
-
             $paymentRepository->handle(
                 $request->input('order_id'),
                 $request->input('status'),
                 $request->all()
             );
+
+            $n = (new CardNotification())->notification();
 
             return response()->json([$n], 200);
         } catch (TException $exception) {
