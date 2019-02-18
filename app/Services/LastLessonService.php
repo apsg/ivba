@@ -23,9 +23,11 @@ class LastLessonService
         /** @var Course $course */
         $course = Course::find($lesson->pivot->course_id);
 
-        $url = $lesson->pivot->finished_at === null ?
-            $lesson->learnUrl($course)
-            : $course->next();
+        $url = $lesson->learnUrl($course);
+
+        if ($lesson->pivot->finished_at !== null && $course !== null) {
+            $url = $course->next();
+        }
 
         return [
             'lesson' => $lesson->title,
