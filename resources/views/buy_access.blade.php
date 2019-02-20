@@ -61,9 +61,33 @@
 
                             </label><br/><br/>
 
-                            <label>Klikając w poniższy przycisk zatwierdzisz subskrypcję abonamentu. Nastąpi
-                                przekierowanie do systemu płatniczego w celu przeprowadzenia pierwszej płatności. Po
-                                udanej płatności subskrypcja będzie aktywna.</label>
+                            <div class="alert alert-info d-flex">
+                                <div class="align-self-center pr-3">
+                                    <i class="fa fa-2x fa-info"></i>
+                                </div>
+                                <div>
+                                    Klikając w poniższy przycisk zatwierdzisz subskrypcję
+                                    abonamentu. Nastąpi
+                                    przekierowanie do systemu płatniczego w celu przeprowadzenia pierwszej płatności. Po
+                                    udanej płatności subskrypcja będzie aktywna.
+                                </div>
+                            </div>
+                            <div class="alert alert-info d-flex">
+                                <div class="align-self-center pr-3">
+                                    <i class="fa fa-2x fa-info"></i>
+                                </div>
+                                <div>
+                                    <strong>
+                                        W kolejnych miesiącach automatycznie pobierzemy kwotę abonamentu z Twojej karty.
+                                        W
+                                        każdej chwili możesz zrezygnować z abonamentu </strong>
+                                    (Moje Konto ->Anuluj subskrypcję lub
+                                    pisząc maila hello@iNauka.pl ) Pamiętaj w ciągu 30 dni możesz zrezygnować z naszej
+                                    usługi. Transakcje kartą obsługuję Elavon z Tpay.com - nasza firma nie ma dostępu do
+                                    danych z Twojej karty.
+                                </div>
+                            </div>
+                            </label>
                             <button class="btn btn-primary"><i class="fa fa-money"></i> > Przejdź do operatora płatności
                                 by wykupić abonament
                             </button>

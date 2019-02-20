@@ -64,16 +64,19 @@ class Email extends Model
 
     /**
      * Wyślij email.
-     * @return [type] [description]
      */
     public function send()
     {
         $this->convertLinks();
+        
+        try {
+            Mail::to($this->to->email)
+                ->send(new StandardEmail($this));
 
-        Mail::to($this->to->email)
-            ->send(new StandardEmail($this));
-
-        $this->update(['is_sent' => true]);
+            $this->update(['is_sent' => true]);
+        } catch (\Swift_TransportException $exception) {
+            $this->delete();
+        }
 
         return $this;
     }
