@@ -68,7 +68,7 @@ class Email extends Model
     public function send()
     {
         $this->convertLinks();
-        
+
         try {
             Mail::to($this->to->email)
                 ->send(new StandardEmail($this));
