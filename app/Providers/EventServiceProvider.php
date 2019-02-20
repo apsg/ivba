@@ -4,11 +4,13 @@ namespace App\Providers;
 
 use App\Events\ActiveSubscriptionExpiredEvent;
 use App\Events\FirstPaymentCorrectEvent;
+use App\Events\FullAccessGrantedEvent;
 use App\Events\NewAccessGrantedEvent;
 use App\Events\SubscriptionCancelled;
 use App\Events\SubscriptionPaymentFailedEvent;
 use App\Events\SubscriptionProlongedEvent;
 use App\Events\SubscriptionStartedEvent;
+use App\Events\UserPaidForAccess;
 use App\Events\UserRegisteredEvent;
 use App\Listeners\Emails\SendEmailAfterRegistrationListener;
 use App\Listeners\Excelmailing\SubscriptionStartedListener;
@@ -35,7 +37,7 @@ class EventServiceProvider extends ServiceProvider
             FollowupsListener::class,
             UserRegisteredListener::class,
         ],
-        \App\Events\UserPaidForAccess::class      => [
+        UserPaidForAccess::class                  => [
             'App\Listeners\PlanUserPaidFollowups',
             UserAccessListener::class,
         ],
@@ -75,6 +77,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         NewAccessGrantedEvent::class              => [
             FollowupsListener::class,
+        ],
+        FullAccessGrantedEvent::class             => [
+            UserAccessListener::class,
         ],
 
     ];

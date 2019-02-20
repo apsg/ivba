@@ -1,12 +1,11 @@
 <?php
 namespace App\Listeners\Excelmailing;
 
-use App\Events\UserPaidForAccess;
 use Gacek\IExcel\IExcel;
 
 class UserAccessListener
 {
-    public function handle(UserPaidForAccess $event)
+    public function handle($event)
     {
         app(IExcel::class)
             ->excelmailing()
