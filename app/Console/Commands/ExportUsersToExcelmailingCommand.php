@@ -56,12 +56,14 @@ class ExportUsersToExcelmailingCommand extends Command
                 continue;
             }
 
-            if ($user->full_access_expires->isFuture() || $user->subscription->valid_until->isFuture()) {
+            if (($user->full_access_expires !== null && $user->full_access_expires->isFuture())
+                || ($user->subscription !== null && $user->subscription->valid_until->isFuture())) {
                 $excelmailing->access($user->email);
                 continue;
             }
 
-            if ($user->full_access_expires->isPast() || $user->subscription->valid_until->isPast()) {
+            if (($user->full_access_expires !== null && $user->full_access_expires->isPast())
+                || ($user->subscription !== null && $user->subscription->valid_until->isPast())) {
                 $excelmailing->expired($user->email);
                 continue;
             }
