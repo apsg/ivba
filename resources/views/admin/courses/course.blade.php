@@ -60,7 +60,7 @@
                     </div>
                     <div class="box-body">
                         <ul class="sortable" id="lessons-availible">
-                            @foreach( \App\Lesson::except($course->id)->get() as $lesson )
+                            @foreach( \App\Lesson::except($course->id)->orderBy('created_at', 'desc')->get() as $lesson )
                                 <li class="sortable-item" data-lesson-id="{{ $lesson->id }}">{{ $lesson->title }}</li>
                             @endforeach
                         </ul>
