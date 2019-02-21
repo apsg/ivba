@@ -2058,8 +2058,7 @@ __webpack_require__.r(__webpack_exports__);
       setTimeout(this.getProof, this.nextTimeout);
       this.nextTimeout += 10000;
     },
-    hide: function hide() {
-      this.should_show = false;
+    hide: function hide() {// this.should_show = false;
     }
   }
 });
@@ -6555,7 +6554,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".proofs {\n  margin-bottom: 50px;\n}\n.proofs .proof {\n  width: 350px;\n  max-width: 90%;\n}", ""]);
+exports.push([module.i, ".proofs {\n  margin-bottom: 90px;\n}\n.proofs .proof {\n  width: 350px;\n  max-width: 90%;\n}", ""]);
 
 // exports
 

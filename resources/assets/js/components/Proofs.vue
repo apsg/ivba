@@ -50,7 +50,7 @@
             },
 
             hide() {
-                this.should_show = false;
+                // this.should_show = false;
             }
         },
     }
@@ -60,7 +60,7 @@
 
     .proofs {
 
-        margin-bottom: 50px;
+        margin-bottom: 90px;
 
         .proof {
             width: 350px;
