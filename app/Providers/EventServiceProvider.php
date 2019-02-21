@@ -6,10 +6,13 @@ use App\Events\ActiveSubscriptionExpiredEvent;
 use App\Events\FirstPaymentCorrectEvent;
 use App\Events\FullAccessGrantedEvent;
 use App\Events\NewAccessGrantedEvent;
+use App\Events\OrderLeft24hAgo;
+use App\Events\OrderLeft72hAgo;
 use App\Events\SubscriptionCancelled;
 use App\Events\SubscriptionPaymentFailedEvent;
 use App\Events\SubscriptionProlongedEvent;
 use App\Events\SubscriptionStartedEvent;
+use App\Events\UserPaidAccessFinished;
 use App\Events\UserPaidForAccess;
 use App\Events\UserRegisteredEvent;
 use App\Listeners\Emails\SendEmailAfterRegistrationListener;
@@ -18,6 +21,11 @@ use App\Listeners\Excelmailing\UserAccessFinishedListener;
 use App\Listeners\Excelmailing\UserAccessListener;
 use App\Listeners\Excelmailing\UserRegisteredListener;
 use App\Listeners\FollowupsListener;
+use App\Listeners\PlanUserExpiredFollowups;
+use App\Listeners\PlanUserPaidFollowups;
+use App\Listeners\PlanUserRegisteredFollowups;
+use App\Listeners\SendSubscriptionFailedEmail;
+use App\Listeners\UpdateLastPasswordChange;
 use App\Payments\Listeners\StartSubscriptionAfterFirstPaymentListener;
 use App\Payments\Listeners\TryToProlongSubscriptionListener;
 use Illuminate\Auth\Events\PasswordReset;
@@ -32,27 +40,27 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         UserRegisteredEvent::class                => [
-            'App\Listeners\PlanUserRegisteredFollowups',
+            PlanUserRegisteredFollowups::class,
             SendEmailAfterRegistrationListener::class,
             FollowupsListener::class,
             UserRegisteredListener::class,
         ],
         UserPaidForAccess::class                  => [
-            'App\Listeners\PlanUserPaidFollowups',
+            PlanUserPaidFollowups::class,
             UserAccessListener::class,
         ],
-        \App\Events\UserPaidAccessFinished::class => [
-            'App\Listeners\PlanUserExpiredFollowups',
+        UserPaidAccessFinished::class => [
+            PlanUserExpiredFollowups::class,
             UserAccessFinishedListener::class,
         ],
-        'App\Events\OrderLeft24hAgo'              => [
+        OrderLeft24hAgo::class              => [
             //
         ],
-        'App\Events\OrderLeft72hAgo'              => [
+        OrderLeft72hAgo::class              => [
             //
         ],
         SubscriptionCancelled::class              => [
-            'App\Listeners\SendSubscriptionFailedEmail',
+            SendSubscriptionFailedEmail::class,
             SubscriptionStartedListener::class,
         ],
         SubscriptionStartedEvent::class           => [
@@ -69,7 +77,7 @@ class EventServiceProvider extends ServiceProvider
             FollowupsListener::class,
         ],
         PasswordReset::class                      => [
-            'App\Listeners\UpdateLastPasswordChange',
+            UpdateLastPasswordChange::class,
         ],
         FirstPaymentCorrectEvent::class           => [
             StartSubscriptionAfterFirstPaymentListener::class,
