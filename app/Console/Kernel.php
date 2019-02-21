@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\ExportUsersToExcelmailingCommand;
 use App\Console\Commands\FixAccessDays;
 use App\Console\Commands\ProlongSubscriptionsCommand;
 use Illuminate\Console\Scheduling\Schedule;
@@ -28,6 +29,7 @@ class Kernel extends ConsoleKernel
         Commands\CopyUsersToNewsletter::class,
         ProlongSubscriptionsCommand::class,
         FixAccessDays::class,
+        ExportUsersToExcelmailingCommand::class,
     ];
 
     /**

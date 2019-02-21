@@ -13,8 +13,8 @@ use Illuminate\Support\Collection;
  * @property bool                      is_active
  * @property Carbon                    cancelled_at
  * @property int                       tries
- * @property Carbon                    valid_until
  * @property float                     amount
+ * @property-read  Carbon                    valid_until
  * @property-read User                 user
  * @property-read Collection|Payment[] payments
  * @method-static Builder|Subscription active()
