@@ -39,9 +39,15 @@
         </div>
 
         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+            <div class="alert alert-info">
+                Dbamy o bezpieczeństwo Twoich danych hasło powinno zawierać: 1 dużą literę, 1 cyfrę, 1 znak
+                specjalny i składać się z minimum 8 znaków.
+            </div>
             <label for="password" class="control-label">Hasło</label>
 
             <div class="col-md-12">
+
+
                 <input id="password" type="password" class="form-control" name="password" required>
 
                 @if ($errors->has('password'))
