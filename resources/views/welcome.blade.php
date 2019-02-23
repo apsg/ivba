@@ -6,31 +6,55 @@
     <section class="container py-5 promo-cards">
         <div class="row">
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/ikonka_konferencja.png') }}">
-                <h3>Od a do z</h3>
-                <p>Na portalu iNauka znajdziesz omówione najważniejsze programy. Od Excela, przez prezentację, analizę
-                    Business Intelligence, bazy danych a skończywszy na retuszu zdjęć, tworzeniu grafiki i obróbce
-                    filmów wideo. </p>
+                <img src="{{ asset('images/v2/1_kursanci6k.png') }}">
+                <h3>Kursanci</h3>
+                <p>Już ponad 5000 osób korzysta z naszej platformy do nauki.</p>
             </div>
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/ikonka_nie_bujamy.png') }}">
-                <h3>Nie bujamy w obłokach, uczymy</h3>
-                <p>Twórca platformy Mateusz ma ponad 10 letnie doświadczenie w prowadzeniu szkoleń a 5 letnie w pracy na
-                    uczelni. Cyklicznie z jego porad korzysta ponad 250 000 osób. Dlatego dla wszystkich uczesnitków
-                    platformy wprowadziliśmy liczne wyzwania, zadania domowe i specjalną punktację - dzięki temu
-                    mobilizujemy Cię do nauki.</p>
+                <img src="{{ asset('images/v2/2_certyfikat.png') }}">
+                <h3>Certyfikaty</h3>
+                <p> Zdobądź certyfikat z wybranego kursu lub specjalizacji.
+                    (będą fizyczne certyfikaty? Jeśli tak to warto wspomnieć)</p>
             </div>
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/ikonka_od_a_do_z.png') }}">
-                <h3>Konferencje on-line</h3>
-                <p>Cyklicznie organizujemy zamknięte konferencję w których będziesz mógł uczestniczyć. Na żywo odpowiemy
-                    na Twoje pytania. Z naszych badań wynika, że konferencję on-line na żywo to najskuteczniejszy sposób
-                    nauki. W zeszłym roku przeprowadziliśmy ich ponad 230.</p>
+                <img src="{{ asset('images/v2/3_grupa wsparcia.png') }}">
+                <h3> Grupa wsparcia</h3>
+                <p> Dołącz do naszej grupy wsparcia i wymieniaj wiedzą z innymi osobami</p>
+            </div>
+            <div class="col-md-4 text-center promo-card">
+                <img src="{{ asset('images/v2/4_tempo.png') }}">
+                <h3> Wygoda</h3>
+                <p>Ucz się gdzie chcesz i kiedy chcesz we własnym tempie.</p>
+            </div>
+            <div class="col-md-4 text-center promo-card">
+                <img src="{{ asset('images/v2/5_update.png') }}">
+                <h3>Aktualizacje</h3>
+                <p>Kursy aktualizujemy. Raz w miesiącu dodajemy nowy kurs.</p>
+            </div>
+            <div class="col-md-4 text-center promo-card">
+                <img src="{{ asset('images/v2/6_lekcje.png') }}">
+                <h3>Lekcje</h3>
+                <p>Na naszym portalu znajdziesz ponad 300 lekcji, a ich liczba stale rośnie.</p>
+            </div>
+            <div class="col-md-4 text-center promo-card">
+                <img src="{{ asset('images/v2/7_ambasadorzy.png') }}">
+                <h3>Ambasadorzy</h3>
+                <p>Poznaj naszych ambasadorów, do których możesz zwrócić się po pomoc.</p>
+            </div>
+            <div class="col-md-4 text-center promo-card">
+                <img src="{{ asset('images/v2/8_webinary.png') }}">
+                <h3>Webinary</h3>
+                <p>Cykliczne, zamknięte szkolenia on-line na wyciągnięcie ręki.</p>
+            </div>
+            <div class="col-md-4 text-center promo-card">
+                <img src="{{ asset('images/v2/9_zwrot.png') }}">
+                <h3>Zwrot</h3>
+                <p>Masz 30 dni na rezygnację z naszej platformy.</p>
             </div>
         </div>
     </section>
 
-    <section class="py-3 bg-gray-dark random-lessons row">
+    <section class="bg-gray-dark random-lessons row">
         <random-lessons num="4"></random-lessons>
     </section>
 

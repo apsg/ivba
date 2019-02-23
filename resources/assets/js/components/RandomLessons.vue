@@ -1,8 +1,9 @@
 <template>
-    <div class="mx-auto">
+    <div class="mx-auto random-lessons">
         <h3 class="text-center text-orange mb-3">Losowe lekcje</h3>
-        <div class="container">
+        <div class="">
             <carousel
+                    class="mx-auto w-75"
                     :paginationEnabled="false"
                     :navigationEnabled="true">
                 <slide v-for="lesson in lessons" :key="lesson.id">
@@ -13,9 +14,10 @@
                 </slide>
             </carousel>
             <div class="random-shadow mt-3 mb-5 text-center">
-                <img src="/images/v2/Cien_pod_losowymi.png">
+                <img src="/images/v2/Cien_pod_losowymi.png" class="w-100">
             </div>
         </div>
+        
     </div>
 </template>
 
@@ -64,7 +66,7 @@
 <style scoped lang="scss">
     .random-lessons {
 
-        display: flex;
+        max-width: 100%;
 
         h3 {
             text-transform: uppercase;
