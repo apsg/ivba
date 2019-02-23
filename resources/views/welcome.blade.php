@@ -63,9 +63,9 @@
         </div>
     </section>
 
-    <section class="bg-gray-dark random-lessons row">
-        <random-lessons num="4"></random-lessons>
-    </section>
+    {{--<section class="bg-gray-dark random-lessons row">--}}
+        {{--<random-lessons num="4"></random-lessons>--}}
+    {{--</section>--}}
 
     <testimonials></testimonials>
 
