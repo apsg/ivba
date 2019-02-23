@@ -2,8 +2,8 @@
 namespace App\Http\Controllers;
 
 use App\Coupon;
-use App\Helpers\Payment;
 use App\Order;
+use App\Payments\Tpay\TpayTransaction;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -35,9 +35,9 @@ class OrderController extends Controller
     public function pay(Order $order)
     {
         if ($order->total() > 0) {
-            $payment = new Payment();
+            $transaction = new TpayTransaction($order);
 
-            return redirect($payment->getUrl($order));
+            return redirect($transaction->createTransaction());
         } else {
             $order->final_total = 0;
             if ($order->confirm()) {

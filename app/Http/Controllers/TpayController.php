@@ -1,8 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Payments\Requests\TpayIpnRequest;
 use App\Payments\Tpay\CardNotification;
 use App\Payments\Tpay\OnSiteGate;
+use App\Payments\Tpay\TransactionNotification;
 use App\Repositories\PaymentRepository;
 use Illuminate\Http\Request;
 use Log;
@@ -64,5 +66,24 @@ class TpayController extends Controller
 
             return response()->json([], 422);
         }
+    }
+
+    public function ipn(TpayIpnRequest $request)
+    {
+        \Log::info('ipn', $request->all());
+
+        if ($request->isSuccess()) {
+            $order = $request->order();
+            if ($order !== null) {
+                $order->confirm($request->externalId());
+            }
+        }
+
+        return (new TransactionNotification())
+            ->disableValidationServerIP()
+            ->checkPayment();
+
+        // Notification received
+        return response()->json([], 200);
     }
 }

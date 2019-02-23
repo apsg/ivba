@@ -226,7 +226,7 @@ class User extends Authenticatable
     {
         if ($order = $this->orders()
             ->whereNull('confirmed_at')
-            ->whereNull('payu_order_id')
+            ->whereNull('external_payment_id')
             ->first()) {
             return $order;
         } else {
@@ -570,4 +570,20 @@ class User extends Authenticatable
         return $this->first_name . ' ' . $this->last_name;
     }
 
+
+    public function activeSubscription()
+    {
+        /** @var Subscription $subscription */
+        $subscription = $this->currentSubscription();
+
+        if ($subscription === null) {
+            return null;
+        }
+
+        if (!$subscription->isActive()) {
+            return null;
+        }
+
+        return $subscription;
+    }
 }

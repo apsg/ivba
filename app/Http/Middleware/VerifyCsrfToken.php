@@ -15,5 +15,6 @@ class VerifyCsrfToken extends BaseVerifier
         '/payu/notify',
         '/tpay/notify',
         '/tpay/success',
+        '/tpay/ipn',
     ];
 }

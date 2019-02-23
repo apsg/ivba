@@ -15,6 +15,7 @@ use App\Events\SubscriptionStartedEvent;
 use App\Events\UserPaidAccessFinished;
 use App\Events\UserPaidForAccess;
 use App\Events\UserRegisteredEvent;
+use App\Listeners\CancelExistingSubscriptionListener;
 use App\Listeners\Emails\SendEmailAfterRegistrationListener;
 use App\Listeners\Excelmailing\SubscriptionCancelledListener;
 use App\Listeners\Excelmailing\SubscriptionStartedListener;
@@ -49,6 +50,7 @@ class EventServiceProvider extends ServiceProvider
         UserPaidForAccess::class              => [
             PlanUserPaidFollowups::class,
             UserAccessListener::class,
+            CancelExistingSubscriptionListener::class,
         ],
         UserPaidAccessFinished::class         => [
             PlanUserExpiredFollowups::class,

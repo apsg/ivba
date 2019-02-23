@@ -26,6 +26,7 @@
 							<th>Zawartość</th>
 							<th>Kody rabatowe</th>
 							<th>Kwota</th>
+							<th>ID</th>
 							<th>Opłacono</th>
 						</tr></thead>
 						<tbody>
@@ -60,7 +61,8 @@
             { data: 'created_at', name: 'created_at', searchable: false, orderable: true },
             { data: 'items2', name: 'items2', searchable: false, orderable: false },
             { data: 'coupons', name: 'coupons', searchable: false, orderable: true },
-            { data: 'total', name: 'total', searchable: true, orderable: true },
+			{ data: 'total', name: 'total', searchable: true, orderable: true },
+			{ data: 'external_payment_id', name: 'external_payment_id', searchable: true, orderable: true },
             { data: 'confirmed_at', name: 'confirmed_at', searchable: true, orderable: true },
         ],
         'iDisplayLength' : 10,

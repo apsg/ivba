@@ -28,8 +28,7 @@ class AdminOrdersController extends Controller
      */
     public function getData(Request $request)
     {
-        $orders = Order::whereNotNull('payu_order_id')
-            ->orWhere('confirmed_at', '!=', null)
+        $orders = Order::confirmed()
             ->with(['user']);
 
         return DataTables::of($orders)
@@ -40,15 +39,6 @@ class AdminOrdersController extends Controller
                 if ($item->is_full_access) {
                     return "Pałen dostęp";
                 } else {
-//                    $items = [];
-//                    foreach ($item->courses as $course) {
-//                        $items[] = 'Kurs: ' . $course->title;
-//                    }
-//                    foreach ($item->lessons as $lesson) {
-//                        $items[] = 'Lekcja: ' . $lesson->title;
-//                    }
-//
-//                    return implode(', ', $items);
                     return '';
                 }
             })
