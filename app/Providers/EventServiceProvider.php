@@ -16,6 +16,7 @@ use App\Events\UserPaidAccessFinished;
 use App\Events\UserPaidForAccess;
 use App\Events\UserRegisteredEvent;
 use App\Listeners\Emails\SendEmailAfterRegistrationListener;
+use App\Listeners\Excelmailing\SubscriptionCancelledListener;
 use App\Listeners\Excelmailing\SubscriptionStartedListener;
 use App\Listeners\Excelmailing\UserAccessFinishedListener;
 use App\Listeners\Excelmailing\UserAccessListener;
@@ -39,54 +40,54 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        UserRegisteredEvent::class                => [
+        UserRegisteredEvent::class            => [
             PlanUserRegisteredFollowups::class,
             SendEmailAfterRegistrationListener::class,
             FollowupsListener::class,
             UserRegisteredListener::class,
         ],
-        UserPaidForAccess::class                  => [
+        UserPaidForAccess::class              => [
             PlanUserPaidFollowups::class,
             UserAccessListener::class,
         ],
-        UserPaidAccessFinished::class => [
+        UserPaidAccessFinished::class         => [
             PlanUserExpiredFollowups::class,
             UserAccessFinishedListener::class,
         ],
-        OrderLeft24hAgo::class              => [
+        OrderLeft24hAgo::class                => [
             //
         ],
-        OrderLeft72hAgo::class              => [
+        OrderLeft72hAgo::class                => [
             //
         ],
-        SubscriptionCancelled::class              => [
+        SubscriptionCancelled::class          => [
             SendSubscriptionFailedEmail::class,
-            SubscriptionStartedListener::class,
+            SubscriptionCancelledListener::class,
         ],
-        SubscriptionStartedEvent::class           => [
+        SubscriptionStartedEvent::class       => [
             FollowupsListener::class,
             SubscriptionStartedListener::class,
         ],
-        SubscriptionProlongedEvent::class         => [
+        SubscriptionProlongedEvent::class     => [
             FollowupsListener::class,
         ],
-        ActiveSubscriptionExpiredEvent::class     => [
+        ActiveSubscriptionExpiredEvent::class => [
             TryToProlongSubscriptionListener::class,
         ],
-        SubscriptionPaymentFailedEvent::class     => [
+        SubscriptionPaymentFailedEvent::class => [
             FollowupsListener::class,
         ],
-        PasswordReset::class                      => [
+        PasswordReset::class                  => [
             UpdateLastPasswordChange::class,
         ],
-        FirstPaymentCorrectEvent::class           => [
+        FirstPaymentCorrectEvent::class       => [
             StartSubscriptionAfterFirstPaymentListener::class,
             FollowupsListener::class,
         ],
-        NewAccessGrantedEvent::class              => [
+        NewAccessGrantedEvent::class          => [
             FollowupsListener::class,
         ],
-        FullAccessGrantedEvent::class             => [
+        FullAccessGrantedEvent::class         => [
             UserAccessListener::class,
         ],
 
