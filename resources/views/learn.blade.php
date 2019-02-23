@@ -33,8 +33,11 @@
         @if($course)
             {{ $course->title }}
         @endif
+        @if($course!== null && $lesson !== null)
+            |
+        @endif
         @if($lesson->title)
-            | {{ $lesson->title }}
+            {{ $lesson->title }}
         @endif
     </h1>
     <div class="row">
