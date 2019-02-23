@@ -3,6 +3,15 @@
 @section('title', 'Wideo kursy i konferencje  z Excel, Power BI, Photoshop, Prezentacji.')
 
 @section('content')
+    <section class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-orange text-center my-3">Jak działa platforma?</h2>
+                <iframe src="https://player.vimeo.com/video/319020879" class="w-100" height="400" frameborder="0"
+                        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
     <section class="container py-5 promo-cards">
         <div class="row">
             <div class="col-md-4 text-center promo-card">
