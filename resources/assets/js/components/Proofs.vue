@@ -50,7 +50,7 @@
             },
 
             hide() {
-                // this.should_show = false;
+                this.should_show = false;
             }
         },
     }

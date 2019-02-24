@@ -15,7 +15,7 @@ class ProofTransformer extends TransformerAbstract
 
         return [
             'url'        => $proof->url,
-            'name'       => $proof->name,
+            'name'       => $this->gdpr($proof->name),
             'city'       => $proof->city,
             'body'       => $proof->body,
             'created_at' => $this->date($proof->created_at),
@@ -33,5 +33,11 @@ class ProofTransformer extends TransformerAbstract
         }
 
         return $date->diffForHumans();
+    }
+
+    protected function gdpr(string $name) : string
+    {
+        return str_split($name, 4)[0]
+            . str_repeat('*', max(0, strlen($name) - 4));
     }
 }

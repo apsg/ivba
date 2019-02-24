@@ -2058,7 +2058,8 @@ __webpack_require__.r(__webpack_exports__);
       setTimeout(this.getProof, this.nextTimeout);
       this.nextTimeout += 10000;
     },
-    hide: function hide() {// this.should_show = false;
+    hide: function hide() {
+      this.should_show = false;
     }
   }
 });

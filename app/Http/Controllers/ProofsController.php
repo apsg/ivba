@@ -19,7 +19,6 @@ class ProofsController extends Controller
      */
     public function get(Request $request)
     {
-
         $proof = null;
 
         if (Auth::check()) {
