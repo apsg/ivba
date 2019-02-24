@@ -28,7 +28,7 @@
                     <a href="{{ url('admin/user') }}" class="btn btn-default">Anuluj/wróć do spisu</a>
                 </form>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12 mt-3">
                 <div class="card">
                     <div class="card-header text-bold">
                         Szczegóły użytkownika
