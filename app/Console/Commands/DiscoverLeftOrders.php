@@ -2,6 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Events\OrderLeft24hAgo;
+use App\Events\OrderLeft72hAgo;
+use App\Order;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class DiscoverLeftOrders extends Command
@@ -37,30 +41,30 @@ class DiscoverLeftOrders extends Command
      */
     public function handle()
     {
-        $start = \Carbon\Carbon::now()->subDays(2);
-        $end = \Carbon\Carbon::now()->subDays(1);
+        $start = Carbon::now()->subDays(2);
+        $end = Carbon::now()->subDays(1);
 
-        $orders = \App\Order::where('updated_at', '>=', $start)
+        $orders = Order::where('updated_at', '>=', $start)
             ->where('updated_at', '<', $end)
-            ->whereNotNull('payu_order_id')
+            ->whereNotNull('external_payment_id')
             ->whereNUll('confirmed_at')
             ->get();
 
         foreach ($orders as $order) {
-            event(new \App\Events\OrderLeft24hAgo($order));
+            event(new OrderLeft24hAgo($order));
         }
 
-        $start = \Carbon\Carbon::now()->subDays(4);
-        $end = \Carbon\Carbon::now()->subDays(3);
+        $start = Carbon::now()->subDays(4);
+        $end = Carbon::now()->subDays(3);
 
-        $orders = \App\Order::where('updated_at', '>=', $start)
+        $orders = Order::where('updated_at', '>=', $start)
             ->where('updated_at', '<', $end)
-            ->whereNotNull('payu_order_id')
+            ->whereNotNull('external_payment_id')
             ->whereNUll('confirmed_at')
             ->get();
 
         foreach ($orders as $order) {
-            event(new \App\Events\OrderLeft72hAgo($order));
+            event(new OrderLeft72hAgo($order));
         }
     }
 }
