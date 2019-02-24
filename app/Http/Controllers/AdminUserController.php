@@ -2,7 +2,9 @@
 namespace App\Http\Controllers;
 
 use App\Events\FullAccessGrantedEvent;
+use App\Http\Requests\Admin\AccessRequest;
 use App\Notifications\RandomPasswordGenerated;
+use App\Repositories\SubscriptionRepository;
 use App\User;
 use Carbon\Carbon;
 use DataTables;
@@ -64,16 +66,8 @@ class AdminUserController extends Controller
 
         return DataTables::of($model)
             ->addColumn('options', function (User $item) {
-                $options = '<a href="' . $item->sendPasswordLink() . '" class="btn btn-info"><i class="fa fa-envelope-o"></i> Wyślij losowe hasło</a>
-                    <a href="' . $item->deleteLink() . '" class="btn btn-warning" onclick="return confirm(\'Na pewno chcesz usunąć?\');"><i class="fa fa-trash"></i> Usuń</a>
-                    <a href="' . $item->editLink() . '" class="btn btn-default"><i class="fa fa-edit"></i> Edytuj</a>
-                    <a href="' . $item->grantFullAccessLink() . '" class="btn btn-ivba confirm"><i class="fa fa-key"></i> Przyznaj pełen dostęp na rok</a>';
-
-                if ($item->subscription !== null && $item->subscription->is_active) {
-                    $options .= '<a href="' . $item->subscription->cancelLink() . '" class="btn btn-secondary confirm"><i class="fa fa-times"></i> Anuluj subskrypcję</a>';
-                }
-
-                return $options;
+                return '<a href="' . $item->deleteLink() . '" class="btn btn-warning" onclick="return confirm(\'Na pewno chcesz usunąć?\');"><i class="fa fa-trash"></i> Usuń</a>
+                    <a href="' . $item->editLink() . '" class="btn btn-default"><i class="fa fa-edit"></i> Edytuj</a>';
             })
             ->addColumn('subscription', function (User $item) {
                 $subscription = $item->subscription;
@@ -125,21 +119,51 @@ class AdminUserController extends Controller
 
     }
 
-    public function grantFullAccess(User $user)
+    public function grantFullAccess(User $user, AccessRequest $request)
     {
         if ($user->full_access_expires === null || $user->full_access_expires->isPast()) {
             $user->update([
-                'full_access_expires' => Carbon::now()->addYear(),
+                'full_access_expires' => Carbon::now()->addMonths($request->duration),
             ]);
+
+            event(new FullAccessGrantedEvent($user));
         } else {
             $user->update([
-                'full_access_expires' => $user->full_access_expires->addYear(),
+                'full_access_expires' => $user->full_access_expires->addMonths($request->duration),
             ]);
         }
 
-        event(new FullAccessGrantedEvent($user));
+        flash('Przyznano lub przedłużono pełen dostęp');
 
-        flash('Przyznano lub przedłużono pełen dostęp na rok');
+        return back();
+    }
+
+    public function grantSubscriptionAccess(User $user, AccessRequest $request, SubscriptionRepository $repository)
+    {
+        if ($user->hasFullAccess()) {
+            flash('Nie można uruchomić subskrupcji użytkownikowi, który posiada aktywny pełen dostęp.');
+
+            return back();
+        }
+
+        $subscription = $user->subscription ?? $repository->create($user);
+
+        $days = Carbon::parse($subscription->valid_until)->addMonths($request->duration)->diffInDays();
+
+        $repository->grantAccessDays($subscription, $days);
+
+        flash('Przyznano dostęp subskrypcyjny');
+
+        return back();
+    }
+
+    public function cancelFullAccess(User $user)
+    {
+        $user->update([
+            'full_access_expires' => null,
+        ]);
+
+        flash('Anulowano');
 
         return back();
     }

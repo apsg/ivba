@@ -50,9 +50,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('/users/data', 'AdminUserController@getData');
     Route::get('/user/{user}', 'AdminUserController@edit');
     Route::patch('/user/{user}', 'AdminUserController@patch');
-    Route::get('/user/{user}/delete', 'AdminUserController@delete');
-    Route::get('/user/{user}/send_password', 'AdminUserController@sendPassword');
-    Route::get('/user/{user}/grant_full_access', 'AdminUserController@grantFullAccess');
+    Route::get('/user/{user}/delete', 'AdminUserController@delete')->name('admin.users.delete');
+    Route::get('/user/{user}/send_password', 'AdminUserController@sendPassword')
+        ->name('admin.users.send_password');
+    Route::post('/user/{user}/grant_full_access', 'AdminUserController@grantFullAccess')
+        ->name('admin.users.full_access');
+    Route::post('/user/{user}/grant_subscription_access', 'AdminUserController@grantSubscriptionAccess')
+        ->name('admin.users.subscription_access');
+    Route::get('/user/{user}/cancel_full_access', 'AdminUserController@cancelFullAccess')
+        ->name('admin.users.cancel_full_access');
+
 
     Route::get('/menu', 'AdminMenusController@index');
     Route::post('/menu', 'AdminMenusController@store');

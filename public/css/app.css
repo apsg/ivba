@@ -13636,6 +13636,10 @@ footer .footer-header {
   color: #525252;
 }
 
+.content {
+  overflow: hidden;
+}
+
 .form-signin {
   width: 100%;
   max-width: 70%;
