@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Coupon;
 use App\Order;
+use App\Payments\Tpay\TpayMethodSelector;
 use App\Payments\Tpay\TpayTransaction;
 use Auth;
 use Illuminate\Http\Request;
@@ -24,7 +25,10 @@ class OrderController extends Controller
     {
         $order = Auth::user()->getCurrentOrder();
 
-        return view('cart')->with(compact('order'));
+        $form = (new TpayMethodSelector())
+            ->getBankForm(route('order.pay', compact('order')));
+
+        return view('cart')->with(compact('order', 'form'));
     }
 
     /**
@@ -32,12 +36,12 @@ class OrderController extends Controller
      * @param  Order $order [description]
      * @return [type]        [description]
      */
-    public function pay(Order $order)
+    public function pay(Order $order, Request $request)
     {
         if ($order->total() > 0) {
             $transaction = new TpayTransaction($order);
 
-            return redirect($transaction->createTransaction());
+            return redirect($transaction->createTransaction((int)$request->input('group')));
         } else {
             $order->final_total = 0;
             if ($order->confirm()) {

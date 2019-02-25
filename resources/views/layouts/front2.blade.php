@@ -14,7 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-<div @if(request()->path() != 'buy_access' ) id="app" @endif>
+<div @if(request()->path() != 'cart' ) id="app" @endif>
     <header class="header mb-3">
         <nav class="navbar navbar-expand-sm navbar-orange bg-orange">
             <div class="container">
@@ -169,7 +169,7 @@
 
 </div>
 
-@if(request()->path() === 'buy_access')
+@if(request()->path() === 'cart')
     <div id="app"></div>
 @endif
 

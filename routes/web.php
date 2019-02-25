@@ -37,7 +37,7 @@ Route::get('/subscription_success', 'PayuController@subscriptionSuccess');
 
 Route::get('/order/{order}/course/{course_id}/remove', 'OrderController@removeCourse');
 Route::get('/order/{order}/lesson/{lesson_id}/remove', 'OrderController@removeLesson');
-Route::get('/order/{order}/pay', 'OrderController@pay');
+Route::post('/order/{order}/pay', 'OrderController@pay')->name('order.pay');
 Route::post('/order/{order}/add_coupon', 'OrderController@addCoupon');
 Route::get('/order/{order}/remove_coupon/{coupon}', 'OrderController@removeCoupon');
 

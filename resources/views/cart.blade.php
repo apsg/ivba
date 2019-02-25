@@ -106,18 +106,21 @@
             <div class="row">
                 <div class="col-md-12">
                     <hr/>
-                    <input id="regulamin" type="checkbox" name="rules">
-                    <label for="regulamin">
-                        Akceptuję <a href="{{ url('/regulamin') }}" target="_blank">Regulamin strony iExcel.pl</a> (wymagane)
-                    </label>
-                    <hr/>
                     <div class="alert alert-info">
-                        Po kliknięciu w przycisk <strong>kupuję i płacę</strong> nastąpi przekierowanie do systemu
-                        płatności. Pełen dostęp zostanie uruchomiony po poprawnym potwierdzeniu udanej płatności.
+                        Po zaakceptowaniu regulaminu strony zobaczysz dostępne metody płatności.
                     </div>
+                    <div class="form-group">
+                        <input id="regulamin" type="checkbox" name="rules" class="">
+                        <label for="regulamin" class="form-check-label">
+                            Akceptuję <a href="{{ url('/regulamin') }}" target="_blank">Regulamin strony iExcel.pl</a>
+                            (wymagane)
+                        </label>
+                    </div>
+                    <hr/>
 
-                    <a href="{{ url('/order/'.$order->id.'/pay') }}" class="btn btn-primary" id="pay"
-                       style="pointer-events: none;">Kupuję i płacę</a>
+                    <div id="selector" style="display: none;">
+                        {!! $form !!}
+                    </div>
                 </div>
             </div>
         </div>
@@ -125,13 +128,14 @@
 @endsection
 
 @push('scripts')
-
     <script type="text/javascript">
         $(document).ready(function () {
             $("#regulamin").change(function () {
                 if ($(this).is(":checked")) {
+                    $('#selector').show();
                     $("#pay").css({'pointer-events': 'auto'});
                 } else {
+                    $('#selector').hide();
                     $("#pay").css({'pointer-events': 'none'});
                 }
             });
@@ -141,9 +145,6 @@
                     alert('Prosimy wpierw przeczytać i zaakceptować regulamin');
                 }
             });
-
-
         });
     </script>
-
 @endpush

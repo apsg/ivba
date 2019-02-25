@@ -16,7 +16,7 @@ class TpayTransaction extends TransactionApi
     public function __construct(Order $order)
     {
         $this->merchantSecret = config('tpay.transaction.secret');
-        $this->merchantId = (string)(config('tpay.transaction.id'));
+        $this->merchantId = (int)config('tpay.transaction.id');
         $this->trApiKey = config('tpay.transaction.api_key');
         $this->trApiPass = config('tpay.transaction.api_pass');
 
@@ -25,7 +25,7 @@ class TpayTransaction extends TransactionApi
         parent::__construct();
     }
 
-    public function createTransaction()
+    public function createTransaction(int $group) : string
     {
         $config = [
             'amount'       => $this->order->total(),
@@ -36,7 +36,7 @@ class TpayTransaction extends TransactionApi
             'return_url'   => url('/tpay/success'),
             'email'        => $this->order->user->email,
             'name'         => $this->order->user->full_name,
-            'group'        => isset($_POST['group']) ? (int)$_POST['group'] : 150,
+            'group'        => $group,
             'accept_tos'   => 1,
         ];
 
