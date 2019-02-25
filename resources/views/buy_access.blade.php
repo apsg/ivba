@@ -101,7 +101,7 @@
                 @endif
             @endif
             <hr/>
-            @if(app()->isLocal())
+            {{--@if(app()->isLocal())--}}
                 @if( Auth::check() && Auth::user()->full_access_expires && Auth::user()->full_access_expires->isFuture() )
 
                     @if( !Auth::user()->canAddFullAccess() )
@@ -128,7 +128,7 @@
                         za {{ config('ivba.full_access_price') }} zł brutto do koszyka</a>
                     <hr/>
                 @endif
-            @endif
+            {{--@endif--}}
             <hr/>
         </div>
     </section>
