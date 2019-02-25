@@ -89,8 +89,10 @@ class Order extends Model
         $this->confirmed_at = Carbon::now();
         $this->external_payment_id = $externalId;
 
+
         if ($this->is_full_access) {
-            $this->user->updateFullAccess($this->duration);
+            $days = Carbon::now()->addMonths()->diffInDays();
+            $this->user->updateFullAccess($days);
         } else {
             // and nothing else matters...
         }
