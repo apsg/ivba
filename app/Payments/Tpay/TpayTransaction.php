@@ -32,7 +32,7 @@ class TpayTransaction extends TransactionApi
             'description'  => 'Zamówienie numer #' . $this->order->id . ' w systemie ' . config('app.name'),
             'crc'          => $this->order->id . '|' . uniqid(),
             'result_url'   => $this->getIpnUrl(),
-            'result_email' => 'gacek@pasterzdrzew.pl',
+            'result_email' => config('ivba.contact_form_recipient'),
             'return_url'   => url('/tpay/success'),
             'email'        => $this->order->user->email,
             'name'         => $this->order->user->full_name,
