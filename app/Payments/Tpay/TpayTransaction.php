@@ -16,7 +16,7 @@ class TpayTransaction extends TransactionApi
     public function __construct(Order $order)
     {
         $this->merchantSecret = config('tpay.transaction.secret');
-        $this->merchantId = config('tpay.transaction.id');
+        $this->merchantId = (string)(config('tpay.transaction.id'));
         $this->trApiKey = config('tpay.transaction.api_key');
         $this->trApiPass = config('tpay.transaction.api_pass');
 
