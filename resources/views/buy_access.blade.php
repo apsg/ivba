@@ -27,9 +27,10 @@
                     <p>Masz już aktywny abonament</p>
                 @else
                     @include('partials.buy_access.subscription')
-                    <hr/>
-                    @include('partials.buy_access.full_access')
                 @endif
+
+                <hr/>
+                @include('partials.buy_access.full_access')
             @endif
             <hr/>
         </div>
