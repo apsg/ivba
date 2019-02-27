@@ -21,7 +21,7 @@
                     <tr>
                         <th>1</th>
                         <td>Pełen dostęp do wszystkich materiałów</td>
-                        <td>{{ $order->duration }} dni</td>
+                        <td>{{ $order->duration }} miesięcy</td>
                         <td>{{ $order->sum() }}</td>
                         <td>
                             <a href="{{ url('/cart/remove_full_access') }}" alt="usuń element z koszyka"><i
