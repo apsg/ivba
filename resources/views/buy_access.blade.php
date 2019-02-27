@@ -44,7 +44,7 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Miesięczna płatność</td>
+                                <td>Stała miesięczna płatność</td>
                                 <td>{{ config('ivba.subscription_price') }} PLN</td>
                                 {{--<td>Miesięcy: {{ config('ivba.subscription_duration') }}</td>--}}
                             </tr>
@@ -66,17 +66,6 @@
                                     <i class="fa fa-2x fa-info"></i>
                                 </div>
                                 <div>
-                                    Klikając w poniższy przycisk zatwierdzisz subskrypcję
-                                    abonamentu. Nastąpi
-                                    przekierowanie do systemu płatniczego w celu przeprowadzenia pierwszej płatności. Po
-                                    udanej płatności subskrypcja będzie aktywna.
-                                </div>
-                            </div>
-                            <div class="alert alert-info d-flex">
-                                <div class="align-self-center pr-3">
-                                    <i class="fa fa-2x fa-info"></i>
-                                </div>
-                                <div>
                                     <strong>
                                         W kolejnych miesiącach automatycznie pobierzemy kwotę abonamentu z Twojej karty.
                                         W
@@ -88,11 +77,43 @@
                                 </div>
                             </div>
                             </label>
-                            <button class="btn btn-primary"><i class="fa fa-money"></i> > Przejdź do operatora płatności
+                            <button class="btn btn-ivba"><i class="fa fa-money"></i> > Przejdź do operatora płatności
                                 by wykupić abonament
                             </button>
                         </form>
 
+                    @endif
+
+                    <hr/>
+
+                    @if( Auth::check() && Auth::user()->full_access_expires && Auth::user()->full_access_expires->isFuture() )
+
+                        @if( !Auth::user()->canAddFullAccess() )
+                            Ważność Twojego konta jest dłuższa niż rok (ważne do {{ Auth::user()->full_access_expires }}
+                            ).
+                            Nie
+                            można teraz przedłużyć bardziej.
+                        @else
+                            <h1>Przedłuż pełen dostęp do strony</h1>
+                            <p>Masz już wykupiony pełen dostęp ważny do dnia {{ Auth::user()->full_access_expires }},
+                                ale
+                                możesz
+                                go już teraz przedłużyć, jeśli chcesz</p>
+                            <a href="{{ url('/cart/add_full_access') }}" class="btn btn-primary">Przedłuż dostęp</a>
+                        @endif
+                    @else
+                        <h1>Kup pełen dostęp do strony</h1>
+                        <p>W tym miejscu możesz kupić roczny dostęp do WSZYSTKICH zasobów na inauka.pl na okres 1
+                            roku.</p>
+                        <ul style="list-style: circle;">
+                            <li>Podana cena jest ceną brutto i zawiera 23% VAT - brak innych opłat</li>
+                            <li>Dostęp jest aktywowany na rok czasu - 365 dni</li>
+                            <li>Masz prawo w ciągu 30 dni zrezygnować</li>
+                        </ul>
+                        <br/>
+                        <a href="{{ url('/cart/add_full_access') }}" class="btn btn-primary">Dodaj pełen dostęp
+                            za {{ config('ivba.full_access_price') }} zł brutto do koszyka</a>
+                        <hr/>
                     @endif
 
                 @else
@@ -100,35 +121,6 @@
                     <a href="{{ url('/login') }}" class="btn btn-primary">Zaloguj</a>
                 @endif
             @endif
-            <hr/>
-            {{--@if(app()->isLocal())--}}
-                @if( Auth::check() && Auth::user()->full_access_expires && Auth::user()->full_access_expires->isFuture() )
-
-                    @if( !Auth::user()->canAddFullAccess() )
-                        Ważność Twojego konta jest dłuższa niż rok (ważne do {{ Auth::user()->full_access_expires }}).
-                        Nie
-                        można teraz przedłużyć bardziej.
-                    @else
-                        <h1>Przedłuż pełen dostęp do strony</h1>
-                        <p>Masz już wykupiony pełen dostęp ważny do dnia {{ Auth::user()->full_access_expires }}, ale
-                            możesz
-                            go już teraz przedłużyć, jeśli chcesz</p>
-                        <a href="{{ url('/cart/add_full_access') }}" class="btn btn-primary">Przedłuż dostęp</a>
-                    @endif
-                @else
-                    <h1>Kup pełen dostęp do strony</h1>
-                    <p>W tym miejscu możesz kupić roczny dostęp do WSZYSTKICH zasobów na inauka.pl na okres 1 roku.</p>
-                    <ul style="list-style: circle;">
-                        <li>Podana cena jest ceną brutto i zawiera 23% VAT - brak innych opłat</li>
-                        <li>Dostęp jest aktywowany na rok czasu - 365 dni</li>
-                        <li>Masz prawo w ciągu 30 dni zrezygnować</li>
-                    </ul>
-                    <br/>
-                    <a href="{{ url('/cart/add_full_access') }}" class="btn btn-primary">Dodaj pełen dostęp
-                        za {{ config('ivba.full_access_price') }} zł brutto do koszyka</a>
-                    <hr/>
-                @endif
-            {{--@endif--}}
             <hr/>
         </div>
     </section>
