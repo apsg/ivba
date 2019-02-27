@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property string|null external_payment_id
  * @property Carbon      confirmed_at
+ * @property int         duration
  * @property-read User   user
  */
 class Order extends Model
@@ -29,7 +30,6 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
-
 
     /**
      * Lista kodów rabatowych dodanych do tego zamówienia
@@ -89,9 +89,8 @@ class Order extends Model
         $this->confirmed_at = Carbon::now();
         $this->external_payment_id = $externalId;
 
-
         if ($this->is_full_access) {
-            $days = Carbon::now()->addMonths()->diffInDays();
+            $days = Carbon::now()->addMonths($this->duration)->diffInDays();
             $this->user->updateFullAccess($days);
         } else {
             // and nothing else matters...
@@ -122,7 +121,6 @@ class Order extends Model
 
         return true;
     }
-
 
     public function scopeConfirmed($query)
     {
