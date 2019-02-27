@@ -8,7 +8,7 @@ class TransactionNotification extends BasicNotificationHandler
     public function __construct()
     {
         $this->merchantSecret = config('tpay.transaction.secret');
-        $this->merchantId = config('tpay.transaction.id');
+        $this->merchantId = (int)config('tpay.transaction.id');
         parent::__construct();
     }
     /*
