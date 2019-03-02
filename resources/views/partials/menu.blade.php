@@ -1,34 +1,57 @@
-<ul class="nav navbar-nav">
-    
-    {!! \App\MenuItem::make(1) !!}
+<ul class="nav navbar-nav ml-auto">
 
-    {{-- <li> <a href="{{ url('/courses') }}">Kursy</a></li>
-    <li> <a href="{{ url('/about') }}">Jak to działa?</a></li>
-    <li> <a href="{{ url('/buy_access') }}">Kup dostęp</a></li> 
-    <li> <a href="https://iexcel.pl/blog">Blog</a></li>
-    <li> <a href="{{ url('/contact') }}">Kontakt</a></li>
-    --}}
-    {{-- <li class="dropdown"> <a data-toggle="dropdown" href="#">Our Courses <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-    <ul class="dropdown-menu">
-      <li><a href="course-listing.html">course Listing</a></li>
-      <li><a href="mba-marketing.html">MBA Marketing</a></li>
-      <li><a href="mba-general.html">MBA General</a></li>
-      <li><a href="mba-operations.html">MBA Operations</a></li>
-    </ul>
-    </li> --}}
-    {{-- <li> <a href="gallery.html">Gallery</a></li> --}}
-    {{-- <li class="dropdown"> <a data-toggle="dropdown" href="#">Pages <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-    <ul class="dropdown-menu">
-      <li class="visible-xs"><a href="register.html">Register</a></li>
-      <li class="visible-xs"><a href="apply-online.html">Apply online</a></li>
-      <li class="visible-xs"><a href="blog.html">Blog</a></li>
-      <li class="visible-xs"><a href="faq.html">FAQs</a></li>
-      <li><a href="news.html">Latest News</a></li>
-      <li><a href="testimonials.html">Testimonials</a></li>
-      <li class="hidden-xs"><a href="privacy.html">Privacy Policy</a></li>
-      <li class="hidden-xs"><a href="terms.html">Terms of Use</a></li>
-      <li class="hidden-xs"><a href="generic-ui.html">Generic UI</a></li>
-    </ul>
-    </li> --}}
+    @foreach($menu as $item)
 
+        @if($item->url != '/buy_access'
+        || Auth::guest()
+        || !Auth::user()->hasFullAccess()
+        || !Auth::user()->hasActiveSubscription())
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url($item->url) }}"
+                   @if($item->is_new_window) target="_blank" @endif>{{ $item->title }}</a>
+            </li>
+        @endif
+    @endforeach
+
+<!-- Authentication Links -->
+    @if (Auth::guest())
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-sign-in"></i>
+                Zaloguj</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}"><i class="fa fa-wpforms"></i>
+                Zarejestruj</a>
+        </li>
+    @else
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user"></i> {{ Auth::user()->name }}</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown">
+                <a href="{{ url('account') }}" class="dropdown-item"><i class="fa fa-user"></i> Moje
+                    konto</a>
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                    <i class="fa fa-sign-out"></i>
+                    Wyloguj
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                          style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </a>
+            </div>
+        </li>
+
+        @if(Auth::user()->isadmin)
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/admin')}}"><i class="fa fa-cogs"></i>
+                    Administracja</a>
+            </li>
+        @endif
+
+        @include('partials.cart_link')
+
+    @endif
 </ul>

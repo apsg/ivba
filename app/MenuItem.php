@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Helpers\MenuHelper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
@@ -11,12 +12,12 @@ class MenuItem extends Model
 
     /**
      * Wygeneruj menu o określonym id
-     * @param  [type] $menu_id [description]
-     * @return [type]          [description]
      */
-    public static function make($menu_id, $order = 'desc')
+    public static function make(int $menuId, $order = 'desc')
     {
-        $items = static::where('menu_id', $menu_id)
+        return MenuHelper::make($menuId, $order);
+
+        $items = static::where('menu_id', $menuId)
             ->orderBy('position', $order)
             ->get();
 
@@ -28,10 +29,10 @@ class MenuItem extends Model
         })->implode('');
     }
 
-    public static function getMenu(int $menuId) : Collection
+    public static function getMenu(int $menuId, string $order = 'asc') : Collection
     {
         return static::where('menu_id', '=', $menuId)
-            ->orderBy('position', 'asc')
+            ->orderBy('position', $order)
             ->get();
     }
 }
