@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Auth;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Quiz extends Model
@@ -10,111 +12,111 @@ class Quiz extends Model
 
     /**
      * Kurs, do którego ten test jest przypisany
-     * @return [type] [description]
      */
-    public function course(){
-    	return $this->belongsTo(\App\Course::class);
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
     }
 
     /**
      * Pytania przypisane do tego testu
-     * @return [type] [description]
      */
-    public function questions(){
-    	return $this->hasMany(\App\Question::class)
+    public function questions()
+    {
+        return $this->hasMany(Question::class)
             ->orderBy('position');
     }
 
     /**
      * Użytkownicy, którzy wzięli udział w tym teście
-     * @return [type] [description]
      */
-    public function users(){
-        return $this->belongsToMany(\App\User::class)
+    public function users()
+    {
+        return $this->belongsToMany(User::class)
             ->withPivot('finished_date', 'points', 'is_pass');
     }
 
     /**
      * Zwraca link do tego quizu
-     * @param  \App\Course $course [description]
-     * @return [type]              [description]
      */
-    public function url(){
-        return url('/learn/course/'.$this->course->slug.'/quiz/'.$this->id);
+    public function url()
+    {
+        return url('/learn/course/' . $this->course->slug . '/quiz/' . $this->id);
     }
+
     // Alias
-    public function learnUrl(){
+    public function learnUrl()
+    {
         return $this->url();
     }
 
     /**
      * Link rozpoczynania quizu
-     * @return [type] [description]
      */
-    public function startUrl(){
-        return url('/learn/course/'.$this->course->slug.'/quiz/'.$this->id.'/start');
+    public function startUrl()
+    {
+        return url('/learn/course/' . $this->course->slug . '/quiz/' . $this->id . '/start');
     }
 
     /**
-     * Zwraca następne pytanie dla tego użytkownika (lub null, jeśli 
+     * Zwraca następne pytanie dla tego użytkownika (lub null, jeśli
      * odpowiedział już na wszystkie pytania).
-     * @return [type] [description]
      */
-    public function nextQuestion( \App\User $user ){
-
+    public function nextQuestion(User $user)
+    {
         $ids = $user->answers->pluck('question_id');
 
-        if( $this->is_random ) 
+        if ($this->is_random) {
             return $this->questions()
                 ->whereNotIn('id', $ids)
                 ->inRandomOrder()
                 ->first();
-        else
+        } else {
             return $this->questions()
                 ->whereNotIn('id', $ids)
                 ->orderBy('position', 'asc')
                 ->first();
+        }
     }
 
     /**
      * Zakończ kurs
-     * @return [type] [description]
      */
-    public function finish(){
+    public function finish() : self
+    {
         $question_ids = $this->questions->pluck('id');
 
 
-        $points = \App\Answer::where('user_id', \Auth::user()->id)
+        $points = Answer::where('user_id', Auth::user()->id)
             ->whereIn('question_id', $question_ids)
             ->sum('points');
 
         $percentage = 100 * $points / $this->max_points;
 
-        $this->users()->updateExistingPivot( \Auth::user()->id , [
-            'points'    => $points,
-            'finished_date' => \Carbon\Carbon::now() ,
-            'is_pass'   => $percentage >= $this->pass_threshold,
-        ] );
+        $this->users()->updateExistingPivot(Auth::user()->id, [
+            'points'        => $points,
+            'finished_date' => Carbon::now(),
+            'is_pass'       => $percentage >= $this->pass_threshold,
+        ]);
 
+        return $this;
     }
 
     /**
      * zwraca maksymalną liczbę punktów za ten test
-     * @return [type] [description]
      */
-    public function getMaxPointsAttribute(){
+    public function getMaxPointsAttribute() : int
+    {
         return $this->questions()->sum('points');
     }
 
-    /**
-     * [userScore description]
-     * @param  \App\User $user [description]
-     * @return [type]          [description]
-     */
-    public function userScore(\App\User $user){
+    public function userScore(User $user)
+    {
         return $this->users()
-            ->where('user_id', $user->id)
-            ->first()->pivot->points;
+                ->where('user_id', $user->id)
+                ->first()
+                ->pivot
+                ->points ?? 0;
     }
 
 }

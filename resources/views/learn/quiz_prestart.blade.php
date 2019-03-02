@@ -24,6 +24,6 @@
 		<p>Po zakończeniu testu będzie można ponownie podejść do niego po 14 dniach.</p>
 	<hr />
 	<p>Chcesz rozpocząć ten test?</p>
-	<a href="{{ $quiz->startUrl() }}" class="btn btn-default">Rozpocznij test</a>
+	<a href="{{ $quiz->startUrl() }}" class="btn btn-ivba">Rozpocznij test</a>
 	</div>
 @endsection
