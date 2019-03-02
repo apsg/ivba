@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read Subscription subscription
  * @property-read string       reason
  * @method Builder|Payment forUser(User $user)
+ * @method Builder|Payment confirmed()
  */
 class Payment extends Model
 {
@@ -51,6 +52,11 @@ class Payment extends Model
     public function scopeForUser($query, User $user)
     {
         $query->whereIn('subscription_id', $user->subscriptions->pluck('id'));
+    }
+
+    public function scopeConfirmed($query)
+    {
+        $query->whereNotNull('confirmed_at');
     }
 
     public function getReasonAttribute()

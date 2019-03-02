@@ -4,6 +4,8 @@ namespace App\Helpers;
 
 use App\Email;
 use App\Order;
+use App\Payment;
+use App\Subscription;
 use App\User;
 use Cache;
 use Carbon\Carbon;
@@ -15,7 +17,6 @@ class Statistics
 
     /**
      * Ilu mamy zarejestrowanych użytkowników
-     * @return [type] [description]
      */
     public static function countRegisteredUsers()
     {
@@ -26,7 +27,6 @@ class Statistics
 
     /**
      * Ilu użytkowników zarejestrowało się od początku tygodnia
-     * @return [type] [description]
      */
     public static function countRegisteredUsersThisWeek()
     {
@@ -39,9 +39,6 @@ class Statistics
 
     /**
      * Ilu użytkowników zarejestrowało się w zadanym przedziale
-     * @param  [type] $start [description]
-     * @param  [type] $end   [description]
-     * @return [type]        [description]
      */
     public static function countRegisteredUsersInRange($start, $end)
     {
@@ -54,7 +51,6 @@ class Statistics
 
     /**
      * Ilu użytkowników ma wykupiony pełen dostęp
-     * @return [type] [description]
      */
     public static function countPaidUsers()
     {
@@ -65,7 +61,6 @@ class Statistics
 
     /**
      * Ilu użytkowników wykupiło dostęp w tym tygodniu
-     * @return [type] [description]
      */
     public static function countPaidUsersThisWeek()
     {
@@ -81,7 +76,6 @@ class Statistics
 
     /**
      * Ilu użytkowników wykupiło dostęp w przedziale
-     * @return [type] [description]
      */
     public static function countPaidUsersInRange($start, $end)
     {
@@ -96,7 +90,6 @@ class Statistics
 
     /**
      * Liczba złożonych zamówień
-     * @return [type] [description]
      */
     public static function countOrders()
     {
@@ -107,7 +100,6 @@ class Statistics
 
     /**
      * Liczba potwierdzonych zamówień
-     * @return [type] [description]
      */
     public static function countConfirmedOrders()
     {
@@ -118,7 +110,6 @@ class Statistics
 
     /**
      * Liczba złożonych zamówień w tym tygodniu
-     * @return [type] [description]
      */
     public static function countOrdersThisWeek()
     {
@@ -131,7 +122,6 @@ class Statistics
 
     /**
      * Liczba złożonych zamówień w zadanym okresie
-     * @return [type] [description]
      */
     public static function countOrdersInRange($start, $end)
     {
@@ -145,7 +135,6 @@ class Statistics
 
     /**
      * Liczba potwierdzonych zamówień w tym tygodniu
-     * @return [type] [description]
      */
     public static function countConfirmedOrdersThisWeek()
     {
@@ -160,7 +149,6 @@ class Statistics
 
     /**
      * Liczba potwierdzonych zamówień w zadanym okresie
-     * @return [type] [description]
      */
     public static function countConfirmedOrdersInRange($start, $end)
     {
@@ -174,7 +162,6 @@ class Statistics
 
     /**
      * Zwraca sumę płatności
-     * @return [type] [description]
      */
     public static function sumPayments()
     {
@@ -186,7 +173,6 @@ class Statistics
 
     /**
      * Zwraca sumę płatności
-     * @return [type] [description]
      */
     public static function sumPaymentsThisWeek()
     {
@@ -202,7 +188,6 @@ class Statistics
 
     /**
      * Zwraca sumę płatności w zadanym okresie
-     * @return [type] [description]
      */
     public static function sumPaymentsInRange($start, $end)
     {
@@ -216,9 +201,6 @@ class Statistics
 
     /**
      * Ile wysłano maili w zadanym okresie
-     * @param  [type] $start [description]
-     * @param  [type] $end   [description]
-     * @return [type]        [description]
      */
     public static function countEmailsSent($start, $end)
     {
@@ -231,9 +213,6 @@ class Statistics
 
     /**
      * Ile wysłano maili w zadanym okresie zostało otwartych
-     * @param  [type] $start [description]
-     * @param  [type] $end   [description]
-     * @return [type]        [description]
      */
     public static function countEmailsOpened($start, $end)
     {
@@ -247,9 +226,6 @@ class Statistics
 
     /**
      * Jaki procent wysłanych maili został otwarty?
-     * @param  [type] $start [description]
-     * @param  [type] $end   [description]
-     * @return [type]        [description]
      */
     public static function procEmailsOpened($start, $end)
     {
@@ -263,9 +239,6 @@ class Statistics
 
     /**
      * Ile wysłano maili w zadanym okresie zostało klikniętych
-     * @param  [type] $start [description]
-     * @param  [type] $end   [description]
-     * @return [type]        [description]
      */
     public static function countEmailsClicked($start, $end)
     {
@@ -279,9 +252,6 @@ class Statistics
 
     /**
      * Jaki procent wysłanych maili został kliknięty?
-     * @param  [type] $start [description]
-     * @param  [type] $end   [description]
-     * @return [type]        [description]
      */
     public static function procEmailsClicked($start, $end)
     {
@@ -295,9 +265,6 @@ class Statistics
 
     /**
      * Ile wysłano maili w zadanym okresie zostało klikniętych
-     * @param  [type] $start [description]
-     * @param  [type] $end   [description]
-     * @return [type]        [description]
      */
     public static function countEmailsUnsubscribed($start, $end)
     {
@@ -311,9 +278,6 @@ class Statistics
 
     /**
      * Jaki procent wysłanych maili został wypisany?
-     * @param  [type] $start [description]
-     * @param  [type] $end   [description]
-     * @return [type]        [description]
      */
     public static function procEmailsUnsubscribed($start, $end)
     {
@@ -323,5 +287,38 @@ class Statistics
         } else {
             return 0;
         }
+    }
+
+    public static function countSubscriptions()
+    {
+        return Cache::remember(__FUNCTION__, static::TIME, function () {
+            return Subscription::active()->count();
+        });
+    }
+
+    public static function countSubscriptionsInRange($start, $end)
+    {
+        return Cache::remember(__FUNCTION__ . $start . $end, static::TIME, function () use ($start, $end) {
+            return Subscription::active()
+                ->whereBetween('valid_until', [$start, $end])
+                ->count();
+        });
+    }
+
+    public static function sumSubscriptionsPayments()
+    {
+        return Cache::remember(__FUNCTION__, static::TIME, function () {
+            return Payment::confirmed()
+                ->sum('amount');
+        });
+    }
+
+    public static function sumSubscriptionsPaymentsInRange($start, $end)
+    {
+        return Cache::remember(__FUNCTION__, static::TIME, function () use ($start, $end) {
+            return Payment::confirmed()
+                ->whereBetween('confirmed_at', [$start, $end])
+                ->sum('amount');
+        });
     }
 }
