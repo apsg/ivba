@@ -74,6 +74,6 @@ class CertificatesController extends Controller
 
     protected function convert(string $string) : string
     {
-        return mb_convert_encoding($string, 'utf-8');
+        return iconv('UTF-8', 'iso-8859-2', $string);
     }
 }
