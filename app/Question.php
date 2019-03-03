@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     protected $guarded = [];
-    
+
     /**
      * Typy pytań, jakie możemy mieć w systemie
      */
@@ -22,23 +22,26 @@ class Question extends Model
      * Do którego testu należy to pytanie
      * @return [type] [description]
      */
-    public function quiz(){
-    	return $this->belongsTo(\App\Quiz::class);
+    public function quiz()
+    {
+        return $this->belongsTo(\App\Quiz::class);
     }
 
     /**
      * Odpowiedzi do tego pytania
      * @return [type] [description]
      */
-    public function options(){
-    	return $this->hasMany(\App\QuestionOption::class);
+    public function options()
+    {
+        return $this->hasMany(\App\QuestionOption::class);
     }
 
     /**
      * Zwraca nazwę dla poszczególnych typów
      * @return [type] [description]
      */
-    public function getTypeNameAttribute(){
+    public function getTypeNameAttribute()
+    {
         switch ($this->type) {
             case static::SINGLE:
                 return "Jednokrotny wybór";
@@ -56,10 +59,12 @@ class Question extends Model
      * Sprawdza, czy pytanie jest poprawne
      * @return boolean [description]
      */
-    public function isValid(){
+    public function isValid()
+    {
 
-        if(empty($this->content))
+        if (empty($this->content)) {
             return false;
+        }
 
         switch ($this->type) {
             case static::SINGLE:
@@ -76,28 +81,32 @@ class Question extends Model
 
     /**
      * Sprawdza, czy podana odpowiedź jest prawidłowa
-     * @param  [type] $answer [description]
-     * @return [type]         [description]
      */
-    public function check( $answer ){
-
+    public function check($answer)
+    {
         switch ($this->type) {
-            case static::SINGLE:{
-                $correct = $this->options()
-                    ->where('is_correct')
-                    ->get()->pluck('id')
-                    ->toArray();
-                return in_array($answer, $correct);
-                break;
-            }
-            case static::MULTIPLE: {
-                $correct = $this->options()
-                    ->where('is_correct')
-                    ->get()->pluck('id')
-                    ->toArray();
-                return empty( array_diff($correct, $answer) );
-                break;
-            }
+            case static::SINGLE:
+                {
+                    $answer = (int)$answer;
+
+                    $correct = $this->options()
+                        ->correct()
+                        ->get()->pluck('id')
+                        ->toArray();
+
+                    return in_array($answer, $correct);
+                    break;
+                }
+            case static::MULTIPLE:
+                {
+                    $correct = $this->options()
+                        ->correct()
+                        ->get()->pluck('id')
+                        ->toArray();
+
+                    return empty(array_diff($correct, $answer));
+                    break;
+                }
             case static::OPEN:
                 return strtolower($answer) == strtolower($this->answer);
                 break;

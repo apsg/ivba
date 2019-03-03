@@ -58,6 +58,11 @@ class Quiz extends Model
         return url('/learn/course/' . $this->course->slug . '/quiz/' . $this->id . '/start');
     }
 
+    public function resetLink()
+    {
+        return url('/learn/course/' . $this->course->slug . '/quiz/' . $this->id . '/reset');
+    }
+
     /**
      * Zwraca następne pytanie dla tego użytkownika (lub null, jeśli
      * odpowiedział już na wszystkie pytania).

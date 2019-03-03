@@ -8,6 +8,7 @@ Route::post('/learn/course/{course}/rate', 'LearnController@rate');
 
 Route::get('/learn/course/{course}/quiz/{quiz}', 'QuizController@showQuiz');
 Route::get('/learn/course/{course}/quiz/{quiz}/start', 'QuizController@start');
+Route::get('/learn/course/{course}/quiz/{quiz}/reset', 'QuizController@reset');
 
 Route::get('/learn/lesson/{lesson}', 'LearnController@showLesson');
 Route::get('/learn/lesson/{lesson}/finish', 'LearnController@finishLesson');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use App\Course;
 use App\Proof;
 use App\Quiz;
@@ -12,6 +13,7 @@ class QuizController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('admin')->only('reset');
     }
 
     /**
@@ -53,5 +55,15 @@ class QuizController extends Controller
         return redirect($quiz->url());
     }
 
+    public function reset(Course $course, Quiz $quiz)
+    {
+        Answer::whereIn('question_id', $quiz->questions->pluck('id'))
+            ->where('user_id', Auth::user()->id)
+            ->delete();
+
+        Auth::user()->quizzes()->detach($quiz->id);
+
+        return redirect($quiz->url());
+    }
 
 }
