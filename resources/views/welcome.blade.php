@@ -22,8 +22,7 @@
             <div class="col-md-4 text-center promo-card">
                 <img src="{{ asset('images/v2/2_certyfikat.png') }}">
                 <h3>Certyfikaty</h3>
-                <p> Zdobądź certyfikat z wybranego kursu lub specjalizacji.
-                    (będą fizyczne certyfikaty? Jeśli tak to warto wspomnieć)</p>
+                <p> Zdobądź certyfikat z wybranego kursu lub specjalizacji.</p>
             </div>
             <div class="col-md-4 text-center promo-card">
                 <img src="{{ asset('images/v2/3_grupa wsparcia.png') }}">
