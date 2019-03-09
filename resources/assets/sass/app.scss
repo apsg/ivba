@@ -5,6 +5,8 @@
 @import "variables";
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
+// Components
+@import "meter";
 
 .bg-gray-light {
     background-color: $color-bg-gray-light;

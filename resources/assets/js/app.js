@@ -17,7 +17,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// Vue.component('categories', require('./components/Categories.vue'));
+// Vue.component('progress-bar', require('./components/ProgressBar.vue'));
 
 import Categories from './components/Categories.vue';
 import RandomLessons from './components/RandomLessons.vue';
@@ -26,6 +26,7 @@ import Courses from './components/Courses.vue';
 import CourseRating from './components/CourseRating.vue';
 import Proofs from './components/Proofs.vue';
 import LastLesson from './components/LastLesson.vue';
+import ProgressBar from './components/ProgressBar.vue';
 
 const app = new Vue({
     el: '#app',
@@ -36,7 +37,8 @@ const app = new Vue({
         Courses,
         CourseRating,
         Proofs,
-        LastLesson
+        LastLesson,
+        ProgressBar
     }
 });
 
