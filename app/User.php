@@ -240,7 +240,6 @@ class User extends Authenticatable
 
     /**
      * Zwraca URL do gravatara danego użytkownika
-     * @return [type] [description]
      */
     public function gravatarUrl()
     {
@@ -249,7 +248,6 @@ class User extends Authenticatable
 
     /**
      * Czy dany użytkownik ma aktywny pełen dostęp?
-     * @return boolean [description]
      */
     public function hasFullAccess()
     {
@@ -258,8 +256,6 @@ class User extends Authenticatable
 
     /**
      * Czy dany użytkownik rozpoczął tę lekcję?
-     * @param  [type]  $lesson_id [description]
-     * @return boolean            [description]
      */
     public function hasStartedLesson($lesson_id)
     {
@@ -268,8 +264,6 @@ class User extends Authenticatable
 
     /**
      * Czy dany użytkownik rozpoczął ten kurs?
-     * @param  [type]  $course_id [description]
-     * @return boolean            [description]
      */
     public function hasStartedCourse($course_id)
     {
@@ -278,8 +272,6 @@ class User extends Authenticatable
 
     /**
      * Czy użytkownik już rozpoczął ten kurs?
-     * @param  [type]  $quiz_id [description]
-     * @return boolean          [description]
      */
     public function hasStartedQuiz($quiz_id)
     {
@@ -288,8 +280,6 @@ class User extends Authenticatable
 
     /**
      * Czy dany użytkownik zakończył tę lekcję?
-     * @param  [type]  $lesson_id [description]
-     * @return boolean            [description]
      */
     public function hasFinishedLesson($lesson_id)
     {
@@ -301,8 +291,6 @@ class User extends Authenticatable
 
     /**
      * Czy dany użytkownik ukończył ten kurs?
-     * @param  [type]  $course_id [description]
-     * @return boolean            [description]
      */
     public function hasFinishedCourse($course_id)
     {
@@ -314,8 +302,6 @@ class User extends Authenticatable
 
     /**
      * Czy użytkownik ukończył wszystkie lekcje z danego kursu.
-     * @param  [type]  $course_id [description]
-     * @return boolean            [description]
      */
     public function hasFinishedAllLessons($course_id)
     {
@@ -332,8 +318,6 @@ class User extends Authenticatable
 
     /**
      * Czy dany użytkownik ukończył ten test?
-     * @param  [type]  $quiz_id [description]
-     * @return boolean          [description]
      */
     public function hasFinishedQuiz($quiz_id)
     {
@@ -345,8 +329,6 @@ class User extends Authenticatable
 
     /**
      * Czy użytkownik ukończył wszystkie testy w danym kursie
-     * @param  [type]  $course_id [description]
-     * @return boolean            [description]
      */
     public function hasFinishedAllQuizzes($course_id)
     {
@@ -363,8 +345,6 @@ class User extends Authenticatable
 
     /**
      * Czy użytkownik zdał ten test?
-     * @param  [type]  $quiz_id [description]
-     * @return boolean          [description]
      */
     public function hasPassedQuiz($quiz_id)
     {
@@ -377,8 +357,6 @@ class User extends Authenticatable
 
     /**
      * Czy użytkownik zdał wszystkie testy przypisane do tego kursu?
-     * @param  [type]  $course_id [description]
-     * @return boolean            [description]
      */
     public function hasPassedAllQuizzes($course_id)
     {
@@ -395,8 +373,6 @@ class User extends Authenticatable
 
     /**
      * Czy użytkownik ukończył pozytywnie ten kurs?
-     * @param  [type]  $course_id [description]
-     * @return boolean            [description]
      */
     public function hasPassedCourse($course_id)
     {
@@ -406,8 +382,6 @@ class User extends Authenticatable
 
     /**
      * Aktualizuje pełen dostęp o określoną liczbę dni dostępu
-     * @param  [type] $days [description]
-     * @return [type]       [description]
      */
     public function updateFullAccess($days)
     {
@@ -424,7 +398,6 @@ class User extends Authenticatable
 
     /**
      * Czy można dodać kolejny pełen dostęp do tego konta?
-     * @return [type] [description]
      */
     public function canAddFullAccess()
     {
@@ -438,7 +411,6 @@ class User extends Authenticatable
         }
 
         return false;
-
     }
 
     public function deleteLink()
@@ -483,7 +455,6 @@ class User extends Authenticatable
 
     /**
      * Ile dni dostępu pozostało temu użytkownikowi
-     * @return [type] [description]
      */
     public function getRemainingDaysAttribute()
     {
@@ -494,11 +465,9 @@ class User extends Authenticatable
 
     /**
      * Dodaj określoną liczbę dni.
-     * @param [type] $days [description]
      */
     public function addSubscriptionDays($days)
     {
-
         $last = $this->lastDay();
 
         if (!$last || $last->isPast()) {
@@ -520,7 +489,6 @@ class User extends Authenticatable
 
     /**
      * ustaw dni subskrypcji do określonej daty
-     * @param Carbon $date [description]
      */
     public function addSubscriptionDaysUntil(Carbon $date)
     {
@@ -542,7 +510,6 @@ class User extends Authenticatable
 
     /**
      * Czy ten użytkownik ma aktywną subskrypcję
-     * @return boolean [description]
      */
     public function hasActiveSubscription()
     {
@@ -551,10 +518,8 @@ class User extends Authenticatable
 
     /**
      * Czy użytkownik ma dostęp tego dnia
-     * @param  [type]  $date [description]
-     * @return boolean       [description]
      */
-    public function hasDayAccess($date = null)
+    public function hasDayAccess($date = null) : bool
     {
         $day = Carbon::parse($date);
 
@@ -563,13 +528,11 @@ class User extends Authenticatable
 
     /**
      * Zwraca imię i nazwisko
-     * @return [type] [description]
      */
     public function getFullNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
     }
-
 
     public function activeSubscription()
     {
