@@ -99,7 +99,7 @@
                         <p>Wielkość liter ma znaczenie!</p>
                     </div>
                     <div class="col-md-4">
-                        <button type="submit" class="btn btn-ivba">Dodaj</button>
+                        <button type="submit" class="btn btn-ivba">Dodaj kupon</button>
                     </div>
                 </form>
             </div>
@@ -112,7 +112,7 @@
                     <div class="form-group">
                         <input id="regulamin" type="checkbox" name="rules" class="">
                         <label for="regulamin" class="form-check-label">
-                            Akceptuję <a href="{{ url('/regulamin') }}" target="_blank">Regulamin strony iExcel.pl</a>
+                            Akceptuję <a href="{{ url('/regulamin') }}" target="_blank">Regulamin strony {{ config('app.name') }}</a>
                             (wymagane)
                         </label>
                     </div>
