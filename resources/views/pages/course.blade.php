@@ -87,10 +87,10 @@
                             <a class="nav-link" id="opinions-tab" data-toggle="tab" href="#opinions" role="tab"
                                aria-controls="opinions" aria-selected="false"><i class="fa fa-star"></i> Opinie</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab"
-                               aria-controls="comments" aria-selected="false"><i class="fa fa-comments"></i> Komentarze</a>
-                        </li>
+                        {{--<li class="nav-item">--}}
+                            {{--<a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab"--}}
+                               {{--aria-controls="comments" aria-selected="false"><i class="fa fa-comments"></i> Komentarze</a>--}}
+                        {{--</li>--}}
                         <li class="nav-item">
                             <a class="nav-link" id="comments-tab" data-toggle="tab" href="#teachers" role="tab"
                                aria-controls="teachers" aria-selected="false"><i class="fa fa-graduation-cap"></i>
@@ -153,22 +153,22 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
-                            <div class="table-responsive">
-                                <table class="table course-table table-bordered">
-                                    <thead>
-                                    <th>Komentarze</th>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td class="table-col1">
-                                            <div id="disqus_thread"></div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        {{--<div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">--}}
+                            {{--<div class="table-responsive">--}}
+                                {{--<table class="table course-table table-bordered">--}}
+                                    {{--<thead>--}}
+                                    {{--<th>Komentarze</th>--}}
+                                    {{--</thead>--}}
+                                    {{--<tbody>--}}
+                                    {{--<tr>--}}
+                                        {{--<td class="table-col1">--}}
+                                            {{--<div id="disqus_thread"></div>--}}
+                                        {{--</td>--}}
+                                    {{--</tr>--}}
+                                    {{--</tbody>--}}
+                                {{--</table>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                         <div class="tab-pane fade" id="teachers" role="tabpanel" aria-labelledby="teachers-tab">
                             <div class="row">
                                 <div class="col-md-4" style="text-align: center;">
