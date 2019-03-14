@@ -166,7 +166,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         Barryvdh\Debugbar\ServiceProvider::class,
-        Yajra\Disqus\DisqusServiceProvider::class,
+//        Yajra\Disqus\DisqusServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Vimeo\Laravel\VimeoServiceProvider::class,
         TomLingham\Searchy\SearchyServiceProvider::class,

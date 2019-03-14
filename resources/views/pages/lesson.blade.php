@@ -59,7 +59,6 @@
 
     <section class="details-tab">
         <div class="container">
-            <div id="disqus_thread"></div>
         </div>
     </section>
 
