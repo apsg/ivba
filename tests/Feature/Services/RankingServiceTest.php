@@ -27,7 +27,7 @@ class RankingServiceTest extends TestCase
             'email' => $this->faker->email,
         ]);
 
-        factory(Lesson::class, 10)->create();
+//        factory(Lesson::class, 10)->create();
 
     }
 
