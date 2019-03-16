@@ -3,6 +3,7 @@ namespace Gacek\IExcel;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
 
 abstract class BaseIExcelService
 {
@@ -39,6 +40,8 @@ abstract class BaseIExcelService
                 'body'   => $response->getBody()->getContents(),
             ];
         } catch (ClientException $exception) {
+            return [];
+        } catch (ConnectException $exception) {
             return [];
         }
     }
