@@ -2,9 +2,17 @@
 
 namespace App;
 
-use App\Order;
+use App\Exceptions\NoCouponUsesLeftException;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Coupon
+ * @package App
+ *
+ * @property string code
+ * @property int    uses_left
+ * @property int    type
+ */
 class Coupon extends Model
 {
     protected $guarded = [];
@@ -17,7 +25,6 @@ class Coupon extends Model
 
     /**
      * Zamówienia, do których użyto tego kodu
-     * @return [type] [description]
      */
     public function orders()
     {
@@ -26,8 +33,6 @@ class Coupon extends Model
 
     /**
      * Zastosuj kupon i zwróć cenę po obniżce
-     * @param  [type] $total [description]
-     * @return [type]        [description]
      */
     public function apply($total)
     {
@@ -46,8 +51,6 @@ class Coupon extends Model
 
     /**
      * Zwraca link usuwania z koszyka
-     * @param  Order $order [description]
-     * @return [type]            [description]
      */
     public function removeLink(Order $order)
     {
@@ -56,7 +59,6 @@ class Coupon extends Model
 
     /**
      * Zwraca sformatowaną wartość kuponu
-     * @return [type] [description]
      */
     public function valueFormatted()
     {
@@ -65,7 +67,6 @@ class Coupon extends Model
 
     /**
      * Zwraca link edycji kuponu
-     * @return [type] [description]
      */
     public function editLink()
     {
@@ -74,7 +75,6 @@ class Coupon extends Model
 
     /**
      * Zwraca link usuwania kuponu
-     * @return [type] [description]
      */
     public function deleteLink()
     {
@@ -100,5 +100,30 @@ class Coupon extends Model
         }
 
         return 'nieznany';
+    }
+
+    public function isSubscription()
+    {
+        if ($this->type === static::TYPE_SUBSCRIPTION_PERCENT) {
+            return true;
+        }
+
+        if ($this->type === static::TYPE_SUBSCRIPTION_VALUE) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function use() : self
+    {
+        if ($this->uses_left <= 0) {
+            throw new NoCouponUsesLeftException();
+        }
+
+        $this->uses_left -= 1;
+        $this->save();
+
+        return $this;
     }
 }

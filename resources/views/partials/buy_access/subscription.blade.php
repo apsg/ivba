@@ -8,23 +8,12 @@
 
 <p>Opis abonamentu</p>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>Opis</th>
-        <th>Koszt</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>Stała miesięczna płatność</td>
-        <td>{{ config('ivba.subscription_price') }} PLN</td>
-        {{--<td>Miesięcy: {{ config('ivba.subscription_duration') }}</td>--}}
-    </tr>
-    </tbody>
-</table>
 
-<form action="{{ url('/subscription/create') }}">
+<form action="{{ url('/subscription/create') }}" method="post">
+    @csrf
+
+    <price-and-coupon price="{{ config('ivba.subscription_price') }}"></price-and-coupon>
+
     <label>
         <input type="checkbox" name="rules" required="required" value="1">
         Zapoznałam/zapoznałem się i zgadzam z <a style="vertical-align: bottom;"

@@ -9,13 +9,15 @@ use Illuminate\Support\Collection;
 /**
  * Class Subscription
  * @property int                       user_id
+ * @property int                       coupon_id
  * @property string                    profileid
  * @property bool                      is_active
  * @property Carbon                    cancelled_at
  * @property int                       tries
  * @property float                     amount
- * @property-read  Carbon                    valid_until
+ * @property-read  Carbon              valid_until
  * @property-read User                 user
+ * @property-read Coupon               coupon
  * @property-read Collection|Payment[] payments
  * @method-static Builder|Subscription active()
  */
@@ -33,6 +35,11 @@ class Subscription extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function coupon()
+    {
+        return $this->belongsTo(Coupon::class);
     }
 
     public function payments()
@@ -69,5 +76,12 @@ class Subscription extends Model
     public function cancelLink()
     {
         return url('/admin/subscriptions/' . $this->id . '/cancel');
+    }
+
+    public function getFinalTotalAttribute()
+    {
+        if ($this->coupon === null) {
+            return $this->amount;
+        }
     }
 }

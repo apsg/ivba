@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use App\Coupon;
 use App\Events\SubscriptionCancelled;
 use App\Events\SubscriptionProlongedEvent;
 use App\Events\SubscriptionStartedEvent;
@@ -19,14 +20,21 @@ class SubscriptionRepository
         $this->daysRepository = app(AccessDaysRepository::class);
     }
 
-    public function create(User $user) : Subscription
+    public function create(User $user, Coupon $coupon = null) : Subscription
     {
         if ($user->hasActiveSubscription()) {
             return $user->currentSubscription();
         }
 
+        $amount = config('ivba.subscription_price');
+        if ($coupon !== null) {
+            $amount = $coupon->apply($amount);
+        }
+
         $subscription = Subscription::create([
-            'user_id' => $user->id,
+            'user_id'   => $user->id,
+            'coupon_id' => $coupon->id ?? null,
+            'amount'    => $amount,
         ]);
 
         return $subscription;
@@ -59,8 +67,11 @@ class SubscriptionRepository
             'is_active'   => true,
             'token'       => $token,
             'valid_until' => Carbon::now()->addMonths(config('ivba.subscription_duration')),
-            'amount'      => config('ivba.subscription_price'),
         ]);
+
+        if ($subscription->coupon !== null) {
+            $subscription->coupon->use();
+        }
 
         $this->daysRepository->sync($subscription->user, $subscription->valid_until);
 

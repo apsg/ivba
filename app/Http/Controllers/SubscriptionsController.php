@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Axios\CheckCouponRequest;
+use App\Http\Requests\CreateSubscriptionRequest;
 use App\Payments\PaymentService;
 use App\Repositories\PaymentRepository;
 use App\Repositories\SubscriptionRepository;
@@ -14,16 +16,13 @@ class SubscriptionsController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * [create description]
-     * @return [type] [description]
-     */
     public function create(
+        CreateSubscriptionRequest $request,
         SubscriptionRepository $subscriptionRepository,
         PaymentRepository $paymentRepository,
         PaymentService $paymentService
     ) {
-        $subscription = $subscriptionRepository->create(Auth::user());
+        $subscription = $subscriptionRepository->create(Auth::user(), $request->coupon());
 
         $payment = $paymentRepository->createFirst($subscription);
 
@@ -34,8 +33,6 @@ class SubscriptionsController extends Controller
 
     /**
      * Anuluj abonament
-     * @param  Subscription $subscription [description]
-     * @return [type]                     [description]
      */
     public function cancel(Subscription $subscription)
     {
@@ -47,5 +44,30 @@ class SubscriptionsController extends Controller
         }
 
         return back();
+    }
+
+    public function checkCoupon(CheckCouponRequest $request)
+    {
+        if ($request->coupon() === null) {
+            return response()->json([
+                'message' => 'Coupon not found',
+            ], 404);
+        }
+
+        if (!$request->coupon()->isSubscription()) {
+            return response()->json(['message' => 'wrong type'], 422);
+        }
+
+        if ($request->coupon()->uses_left === 0) {
+            return response()->json([
+                'message' => 'No uses left',
+            ], 403);
+        }
+
+        return [
+            'price' => sprintf('%.2f',
+                $request->coupon()->apply(config('ivba.subscription_price'))
+            ),
+        ];
     }
 }
