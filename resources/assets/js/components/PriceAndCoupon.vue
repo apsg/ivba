@@ -10,7 +10,12 @@
             <tbody>
             <tr>
                 <td>Stała miesięczna płatność</td>
-                <td>{{ currentPrice }} PLN</td>
+                <td v-if="currentPrice == price">{{ currentPrice }} PLN</td>
+                <td v-if="currentPrice!=price">
+                    <del>{{ price }}</del>
+                    <span class="text-success"><strong>{{ currentPrice }}</strong></span>
+                     PLN
+                </td>
             </tr>
             </tbody>
         </table>

@@ -2044,6 +2044,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PriceAndCoupon",
   props: {
@@ -39945,7 +39950,20 @@ var render = function() {
         _c("tr", [
           _c("td", [_vm._v("Stała miesięczna płatność")]),
           _vm._v(" "),
-          _c("td", [_vm._v(_vm._s(_vm.currentPrice) + " PLN")])
+          _vm.currentPrice == _vm.price
+            ? _c("td", [_vm._v(_vm._s(_vm.currentPrice) + " PLN")])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.currentPrice != _vm.price
+            ? _c("td", [
+                _c("del", [_vm._v(_vm._s(_vm.price))]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-success" }, [
+                  _c("strong", [_vm._v(_vm._s(_vm.currentPrice))])
+                ]),
+                _vm._v("\n                 PLN\n            ")
+              ])
+            : _vm._e()
         ])
       ])
     ]),
