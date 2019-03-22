@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Coupon;
+use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -14,10 +15,8 @@ class AdminCouponsController extends Controller
         $this->middleware('admin');
     }
 
-
     /**
      * Pokaż listę kuponów
-     * @return [type] [description]
      */
     public function index()
     {
@@ -27,12 +26,10 @@ class AdminCouponsController extends Controller
 
     /**
      * Usuń kupon
-     * @param  Coupon $coupon [description]
-     * @return [type]         [description]
      */
     public function delete(Coupon $coupon)
     {
-        if (\Gate::allows('admin')) {
+        if (Gate::allows('admin')) {
             $coupon->delete();
         }
         return back();
@@ -40,7 +37,6 @@ class AdminCouponsController extends Controller
 
     /**
      * Widok tworzenia nowego kodu rabatowego
-     * @return [type] [description]
      */
     public function create()
     {
@@ -49,8 +45,6 @@ class AdminCouponsController extends Controller
 
     /**
      * Widok edycji kuponu
-     * @param  Coupon $coupon [description]
-     * @return [type]         [description]
      */
     public function show(Coupon $coupon)
     {
@@ -59,8 +53,6 @@ class AdminCouponsController extends Controller
 
     /**
      * Widok edycji kuponu
-     * @param  Coupon $coupon [description]
-     * @return [type]         [description]
      */
     public function edit(Coupon $coupon)
     {
@@ -69,8 +61,6 @@ class AdminCouponsController extends Controller
 
     /**
      * Zapisz nowy kupon
-     * @param  Request $request [description]
-     * @return [type]           [description]
      */
     public function store(Request $request)
     {
@@ -81,16 +71,13 @@ class AdminCouponsController extends Controller
             'type'      => 'required|in:1,2,3,4',
         ]);
 
-        $coupon = \App\Coupon::create($request->all());
+        $coupon = Coupon::create($request->all());
 
         return redirect('/admin/coupon/' . $coupon->id);
     }
 
     /**
      * Zaktualizuj istniejący kupon
-     * @param  Coupon  $coupon [description]
-     * @param  Request $request [description]
-     * @return [type]           [description]
      */
     public function update(Coupon $coupon, Request $request)
     {
@@ -109,5 +96,4 @@ class AdminCouponsController extends Controller
 
         return back();
     }
-
 }

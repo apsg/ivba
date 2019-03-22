@@ -14,7 +14,7 @@
                 <td v-if="currentPrice!=price">
                     <del>{{ price }}</del>
                     <span class="text-success"><strong>{{ currentPrice }}</strong></span>
-                     PLN
+                    PLN
                 </td>
             </tr>
             </tbody>

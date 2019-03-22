@@ -39961,7 +39961,7 @@ var render = function() {
                 _c("span", { staticClass: "text-success" }, [
                   _c("strong", [_vm._v(_vm._s(_vm.currentPrice))])
                 ]),
-                _vm._v("\n                 PLN\n            ")
+                _vm._v("\n                PLN\n            ")
               ])
             : _vm._e()
         ])

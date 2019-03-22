@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\Model;
  * Class Coupon
  * @package App
  *
- * @property string code
- * @property int    uses_left
- * @property int    type
+ * @property string      code
+ * @property int         uses_left
+ * @property int         type
+ * @property-read string type_text
  */
 class Coupon extends Model
 {
@@ -40,10 +41,10 @@ class Coupon extends Model
             return $total;
         }
 
-        if ($this->type == static::TYPE_VALUE || $this->type == static::TYPE_SUBSCRIPTION_VALUE) {
+        if ($this->type == self::TYPE_VALUE || $this->type == self::TYPE_SUBSCRIPTION_VALUE) {
             // Kupon złotowy
             return max(0, $total - $this->amount);
-        } elseif ($this->type == static::TYPE_PERCENT || $this->type == static::TYPE_SUBSCRIPTION_PERCENT) {
+        } elseif ($this->type == self::TYPE_PERCENT || $this->type == self::TYPE_SUBSCRIPTION_PERCENT) {
             // kupon procentowy
             return max(0, (100 - $this->amount) * $total / 100);
         }
@@ -83,19 +84,19 @@ class Coupon extends Model
 
     public function getTypeTextAttribute()
     {
-        if ($this->type === static::TYPE_VALUE) {
+        if ($this->type == self::TYPE_VALUE) {
             return "Złotowy";
         }
 
-        if ($this->type === static::TYPE_PERCENT) {
+        if ($this->type == self::TYPE_PERCENT) {
             return "Procentowy";
         }
 
-        if ($this->type === static::TYPE_SUBSCRIPTION_VALUE) {
+        if ($this->type == self::TYPE_SUBSCRIPTION_VALUE) {
             return "Złotowy - subskrypcje";
         }
 
-        if ($this->type === static::TYPE_SUBSCRIPTION_PERCENT) {
+        if ($this->type == self::TYPE_SUBSCRIPTION_PERCENT) {
             return "Procentowy - subskrypcje";
         }
 
@@ -104,11 +105,11 @@ class Coupon extends Model
 
     public function isSubscription()
     {
-        if ($this->type === static::TYPE_SUBSCRIPTION_PERCENT) {
+        if ($this->type == self::TYPE_SUBSCRIPTION_PERCENT) {
             return true;
         }
 
-        if ($this->type === static::TYPE_SUBSCRIPTION_VALUE) {
+        if ($this->type == self::TYPE_SUBSCRIPTION_VALUE) {
             return true;
         }
 
