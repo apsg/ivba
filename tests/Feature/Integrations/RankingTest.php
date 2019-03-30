@@ -1,7 +1,9 @@
 <?php
 namespace Tests\Feature\Integrations;
 
+use App\Course;
 use App\Lesson;
+use App\Quiz;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -9,7 +11,7 @@ use Tests\TestCase;
 
 class RankingTest extends TestCase
 {
-    use DatabaseTransactions;
+//    use DatabaseTransactions;
     use WithFaker;
 
     /** @var User */
@@ -51,9 +53,29 @@ class RankingTest extends TestCase
 
         // when
         $lesson->finish();
+        $lesson->finish(); // Double finishing the lesson should grant the points only once
         $afterPoints = $this->user->total_points;
 
         // then
         $this->assertEquals($initialPoints + config('rating.lesson'), $afterPoints);
+    }
+
+    /** @test */
+    public function it_adds_points_when_user_passes_quiz()
+    {
+        // given
+        $course = factory(Course::class)->create();
+        /** @var Quiz $quiz */
+        $quiz = factory(Quiz::class)->create([
+            'course_id' => $course->id,
+        ]);
+        $initialPoints = $this->user->total_points;
+
+        // when
+        $quiz->finish();
+        $afterPoints = $this->user->total_points;
+
+        // then
+        $this->assertEquals($initialPoints + config('rating.quiz'), $afterPoints);
     }
 }

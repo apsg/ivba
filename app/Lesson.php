@@ -169,7 +169,8 @@ class Lesson extends Model implements OrderableContract
      */
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)
+            ->withPivot('finished_at', 'course_id');
     }
 
     /**
@@ -293,18 +294,33 @@ class Lesson extends Model implements OrderableContract
     /**
      * Uzytkownik ukończył lekcję.
      */
-    public function finish(int $courseId = null)
+    public function finish(int $courseId = null) : self
     {
-        $this->users()
-            ->updateExistingPivot(
-                Auth::user()->id,
-                array_filter([
-                    'finished_at' => Carbon::now(),
-                    'course_id'   => $courseId,
-                ])
-            );
+        if (!$this->isFinishedByUser(Auth::user())) {
+            event(new UserFinishedLessonEvent(Auth::user()->id));
+            $this->users()
+                ->updateExistingPivot(
+                    Auth::user()->id,
+                    array_filter([
+                        'finished_at' => Carbon::now(),
+                        'course_id'   => $courseId,
+                    ])
+                );
+        }
 
-        event(new UserFinishedLessonEvent(Auth::user()->id));
+        return $this;
+    }
+
+    public function isFinishedByUser(User $user = null) : bool
+    {
+        if ($user === null) {
+            return false;
+        }
+
+        return $this->users()
+            ->where('user_id', $user->id)
+            ->wherePivot('finished_at', '!=', null)
+            ->exists();
     }
 
     /**

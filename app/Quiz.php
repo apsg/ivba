@@ -9,18 +9,18 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * App\Quiz
  *
- * @property int $id
- * @property int $course_id
- * @property string $name
- * @property int $is_certified
- * @property int $is_random
- * @property int $pass_threshold
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Course $course
- * @property-read mixed $max_points
+ * @property int                                                           $id
+ * @property int                                                           $course_id
+ * @property string                                                        $name
+ * @property int                                                           $is_certified
+ * @property int                                                           $is_random
+ * @property int                                                           $pass_threshold
+ * @property \Illuminate\Support\Carbon|null                               $created_at
+ * @property \Illuminate\Support\Carbon|null                               $updated_at
+ * @property-read \App\Course                                              $course
+ * @property-read mixed                                                    $max_points
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Question[] $questions
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $users
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[]     $users
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz query()
@@ -118,13 +118,12 @@ class Quiz extends Model
     public function finish() : self
     {
         $question_ids = $this->questions->pluck('id');
-
-
+        
         $points = Answer::where('user_id', Auth::user()->id)
             ->whereIn('question_id', $question_ids)
             ->sum('points');
 
-        $percentage = 100 * $points / $this->max_points;
+        $percentage = $this->max_points != 0 ? 100 * $points / $this->max_points : 1;
 
         $this->users()->updateExistingPivot(Auth::user()->id, [
             'points'        => $points,
