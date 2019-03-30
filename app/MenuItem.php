@@ -6,6 +6,30 @@ use App\Helpers\MenuHelper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
+/**
+ * App\MenuItem
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $url
+ * @property int $is_new_window
+ * @property int $menu_id
+ * @property int $position
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MenuItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MenuItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MenuItem query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MenuItem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MenuItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MenuItem whereIsNewWindow($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MenuItem whereMenuId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MenuItem wherePosition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MenuItem whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MenuItem whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MenuItem whereUrl($value)
+ * @mixin \Eloquent
+ */
 class MenuItem extends Model
 {
     protected $fillable = ['menu_id', 'position', 'title', 'url'];

@@ -5,6 +5,36 @@ namespace App;
 use App\Item;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\ItemFile
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $path
+ * @property string $type
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $hash
+ * @property int $host
+ * @property string|null $size
+ * @property string $name
+ * @property string $mime
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereHash($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereHost($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereMime($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile wherePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereSize($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class ItemFile extends Item
 {
 

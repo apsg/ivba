@@ -6,6 +6,24 @@ use ImageHelper;
 use Intervention\Image\Exception\NotReadableException;
 use Throwable;
 
+/**
+ * App\Image
+ *
+ * @property int $id
+ * @property string $url
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string $filename
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereFilename($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereUrl($value)
+ * @mixin \Eloquent
+ */
 class Image extends Model
 {
     protected $fillable = ['url', 'hash', 'filename'];

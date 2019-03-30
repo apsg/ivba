@@ -6,6 +6,34 @@ use Auth;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Quiz
+ *
+ * @property int $id
+ * @property int $course_id
+ * @property string $name
+ * @property int $is_certified
+ * @property int $is_random
+ * @property int $pass_threshold
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Course $course
+ * @property-read mixed $max_points
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Question[] $questions
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $users
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz whereCourseId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz whereIsCertified($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz whereIsRandom($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz wherePassThreshold($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Quiz extends Model
 {
     protected $guarded = [];

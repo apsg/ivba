@@ -11,7 +11,7 @@
             </div>
 
             <courses></courses>
-            
+
         </div>
 
     </section>

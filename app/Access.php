@@ -4,6 +4,31 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Access
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string|null $accessable_type
+ * @property int|null $accessable_id
+ * @property \Illuminate\Support\Carbon $expires
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $accessable
+ * @property-read \App\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Access newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Access newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Access query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Access valid()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Access whereAccessableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Access whereAccessableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Access whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Access whereExpires($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Access whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Access whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Access whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Access extends Model
 {
 

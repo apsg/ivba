@@ -5,6 +5,30 @@ use App\Helpers\VimeoHelper;
 use Illuminate\Database\Eloquent\Model;
 use Vimeo;
 
+/**
+ * App\Video
+ *
+ * @property int $id
+ * @property string $filename
+ * @property string $hash
+ * @property string $url
+ * @property string $thumb
+ * @property string|null $embed
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Video newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Video newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Video query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Video whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Video whereEmbed($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Video whereFilename($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Video whereHash($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Video whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Video whereThumb($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Video whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Video whereUrl($value)
+ * @mixin \Eloquent
+ */
 class Video extends Model
 {
     protected $guarded = [];

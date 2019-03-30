@@ -4,6 +4,23 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Item
+ *
+ * @property int $lesson_id
+ * @property int $items_id
+ * @property string $items_type
+ * @property int $position
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Lesson[] $lesson
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Item newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Item newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Item query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Item whereItemsId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Item whereItemsType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Item whereLessonId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Item wherePosition($value)
+ * @mixin \Eloquent
+ */
 class Item extends Model{
 
 	protected $guarded = [];

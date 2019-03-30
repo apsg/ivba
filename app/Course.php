@@ -10,6 +10,65 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
+/**
+ * App\Course
+ *
+ * @property int $id
+ * @property string $slug
+ * @property int $user_id
+ * @property string $title
+ * @property string $description
+ * @property float $price
+ * @property string|null $seo_title
+ * @property string|null $seo_description
+ * @property int|null $image_id
+ * @property int $difficulty
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int|null $video_id
+ * @property int $position
+ * @property int $delay Liczba dni
+ * @property int $cumulative_delay
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Access[] $access
+ * @property-read \App\Certificate $certificate
+ * @property-read mixed $avg_rating
+ * @property-read mixed $duration
+ * @property-read mixed $excerpt
+ * @property-read mixed $rating
+ * @property-read mixed $ratings_count
+ * @property-read mixed $real_delay
+ * @property-read \[type] $user_certificate
+ * @property-read \[type] $users_count
+ * @property-read \App\Image|null $image
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Lesson[] $lessons
+ * @property-read \App\Video $movie
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Quiz[] $quizzes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Rating[] $ratings
+ * @property-read \App\User $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\UserCertificate[] $user_certificates
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $users
+ * @property-read \App\Video|null $video
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course whereCumulativeDelay($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course whereDelay($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course whereDifficulty($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course whereImageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course wherePosition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course whereSeoDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course whereSeoTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Course whereVideoId($value)
+ * @mixin \Eloquent
+ */
 class Course extends Model implements OrderableContract
 {
     use ChecksSlugs;

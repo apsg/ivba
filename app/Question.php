@@ -4,6 +4,37 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Question
+ *
+ * @property int $id
+ * @property int $quiz_id
+ * @property int $type
+ * @property string $title
+ * @property string $content
+ * @property int $points
+ * @property int $position
+ * @property string|null $answer
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \[type] $type_name
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\QuestionOption[] $options
+ * @property-read \App\Quiz $quiz
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Question newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Question newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Question query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereAnswer($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Question wherePoints($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Question wherePosition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereQuizId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Question extends Model
 {
     protected $guarded = [];

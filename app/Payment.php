@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Payment
+ *
  * @property string            subscription_id
  * @property string            title
  * @property float             amount
@@ -20,6 +21,34 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read string       reason
  * @method Builder|Payment forUser(User $user)
  * @method Builder|Payment confirmed()
+ * @property int $id
+ * @property int $subscription_id
+ * @property string $title
+ * @property float $amount
+ * @property string|null $external_id
+ * @property \Illuminate\Support\Carbon|null $confirmed_at
+ * @property \Illuminate\Support\Carbon|null $cancelled_at
+ * @property string|null $cancel_reason
+ * @property int $is_recurrent
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $reason
+ * @property-read \App\Subscription $subscription
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereCancelReason($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereCancelledAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereConfirmedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereExternalId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereIsRecurrent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereSubscriptionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Payment extends Model
 {

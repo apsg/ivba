@@ -8,12 +8,41 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Order
- * @package App
  *
+ * @package App
  * @property string|null external_payment_id
  * @property Carbon      confirmed_at
  * @property int         duration
  * @property-read User   user
+ * @property int $id
+ * @property int $user_id
+ * @property \Illuminate\Support\Carbon|null $confirmed_at
+ * @property int $is_full_access
+ * @property string|null $external_payment_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property float|null $final_total
+ * @property float|null $price
+ * @property int|null $duration
+ * @property string|null $description
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Coupon[] $coupons
+ * @property-read \App\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order confirmed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereConfirmedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDuration($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereExternalPaymentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereFinalTotal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereIsFullAccess($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereUserId($value)
+ * @mixin \Eloquent
  */
 class Order extends Model
 {
