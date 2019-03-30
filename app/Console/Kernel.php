@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\ClearAccountCommand;
 use App\Console\Commands\ExportUsersToExcelmailingCommand;
 use App\Console\Commands\FixAccessDays;
 use App\Console\Commands\ProlongSubscriptionsCommand;
@@ -30,6 +31,7 @@ class Kernel extends ConsoleKernel
         ProlongSubscriptionsCommand::class,
         FixAccessDays::class,
         ExportUsersToExcelmailingCommand::class,
+        ClearAccountCommand::class,
     ];
 
     /**

@@ -40,6 +40,11 @@ class RecurrentPaymentGate extends PaymentCard
 
         try {
             $transaction = $this->presaleMethod($saleDescription);
+
+            if (isset($transaction['err_code'])) {
+                throw new PaymentException(array_get($transaction, 'err_desc'));
+            }
+
             $this->transactionId = $transaction['sale_auth'];
 
             return $this;

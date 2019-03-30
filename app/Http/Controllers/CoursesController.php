@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Course;
@@ -12,7 +11,6 @@ class CoursesController extends Controller
 
     /**
      * Pokaż stronę kursów
-     * @return [type] [description]
      */
     public function index()
     {
@@ -25,14 +23,11 @@ class CoursesController extends Controller
         $courses = collect([]);
         $current = null;
 
-        if (Auth::check()) {
-            if (Auth::user()->hasFullAccess()) {
-                $courses = Course::orderBy('position', 'asc')->get();
-            } else {
-                $current = Auth::user()->current_day;
-                $courses = Course::orderBy('position', 'asc')->get();
-            }
-
+        if (Auth::check() && Auth::user()->hasFullAccess()) {
+            $courses = Course::orderBy('position', 'asc')->get();
+        } else {
+            $current = Auth::user()->current_day ?? null;
+            $courses = Course::orderBy('position', 'asc')->get();
         }
 
         return fractal()->collection($courses, new CoursesTransformer($current))
