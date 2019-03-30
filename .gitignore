@@ -11,6 +11,7 @@ Homestead.yaml
 npm-debug.log
 .env
 _ide_helper.php
+_ide_helper_models.php
 .phpstorm.meta.php
 ngrok\.sh
 ngrok.sh

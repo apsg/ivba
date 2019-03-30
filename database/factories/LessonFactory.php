@@ -13,5 +13,6 @@ $factory->define(Lesson::class, function (Faker $faker) {
         "price"           => 0,
         "introduction"    => $faker->paragraph,
         "duration"        => $faker->randomNumber(),
+        "user_id"         => 1,
     ];
 });

@@ -11,57 +11,42 @@ use Illuminate\Notifications\Notifiable;
 /**
  * Class User
  *
- * @property string                   name
- * @property string                   email
- * @property string                   password
- * @property-read Carbon              full_access_expires
- * @property Carbon                   last_proof_at
- * @property integer                  last_proof_id
- * @property integer                  days_bought
- * @property Carbon                   expires_at
- * @property string                   card_token
- * @property Carbon                   changed_password_at
- * @property Carbon                   unsubscribed_at
- * @property string                   first_name
- * @property string                   last_name
- * @property string                   address
- * @property-read string              full_name
- * @property-read HasOne|Subscription subscription
- * @property int $id
- * @property string $name
- * @property string $email
- * @property string $password
- * @property string|null $remember_token
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property int $isadmin
- * @property \Illuminate\Support\Carbon|null $full_access_expires
- * @property \Illuminate\Support\Carbon|null $unsubscribed_at
- * @property int|null $last_proof_id
- * @property \Illuminate\Support\Carbon|null $last_proof_at
- * @property int $days_bought
- * @property \Illuminate\Support\Carbon|null $expires_at
- * @property string|null $card_token
- * @property \Illuminate\Support\Carbon $changed_password_at
- * @property string|null $first_name
- * @property string|null $last_name
- * @property string|null $phone
- * @property string|null $address
- * @property string|null $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Answer[] $answers
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Course[] $courses
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\AccessDay[] $days
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Email[] $emails
- * @property-read mixed $current_day
- * @property-read mixed $full_name
- * @property-read mixed $remaining_days
- * @property-read \App\Proof|null $last_proof
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Lesson[] $lessons
+ * @property string                                                                                                         name
+ * @property string                                                                                                         email
+ * @property string                                                                                                         password
+ * @property-read Carbon                                                                                                    full_access_expires
+ * @property Carbon                                                                                                         last_proof_at
+ * @property integer                                                                                                        last_proof_id
+ * @property integer                                                                                                        days_bought
+ * @property Carbon                                                                                                         expires_at
+ * @property string                                                                                                         card_token
+ * @property Carbon                                                                                                         changed_password_at
+ * @property Carbon                                                                                                         unsubscribed_at
+ * @property string                                                                                                         first_name
+ * @property string                                                                                                         last_name
+ * @property string                                                                                                         address
+ * @property-read string                                                                                                    full_name
+ * @property-read HasOne|Subscription                                                                                       subscription
+ * @property int                                                                                                            $id
+ * @property string|null                                                                                                    $remember_token
+ * @property \Illuminate\Support\Carbon|null                                                                                $created_at
+ * @property \Illuminate\Support\Carbon|null                                                                                $updated_at
+ * @property int                                                                                                            $isadmin
+ * @property string|null                                                                                                    $phone
+ * @property string|null                                                                                                    $deleted_at
+ * @property-read int                                                                                                       total_points
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Answer[]                                                    $answers
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Course[]                                                    $courses
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\AccessDay[]                                                 $days
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Email[]                                                     $emails
+ * @property-read mixed                                                                                                     $current_day
+ * @property-read mixed                                                                                                     $remaining_days
+ * @property-read \App\Proof|null                                                                                           $last_proof
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Lesson[]                                                    $lessons
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Order[] $orders
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Quiz[] $quizzes
- * @property-read \App\Subscription $subscription
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Subscription[] $subscriptions
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Order[]                                                     $orders
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Quiz[]                                                      $quizzes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Subscription[]                                              $subscriptions
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User followups()
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User newModelQuery()
@@ -236,16 +221,19 @@ class User extends Authenticatable
 
     /**
      * Subskrypcje tego użytkownika
-     * @return [type] [description]
      */
     public function subscriptions()
     {
         return $this->hasMany(Subscription::class);
     }
 
+    public function points()
+    {
+        return $this->hasMany(Point::class);
+    }
+
     /**
      * Aktywna subskrypcja tego użytkownika
-     * @return [type] [description]
      */
     public function currentSubscription()
     {
@@ -527,6 +515,11 @@ class User extends Authenticatable
         return $this->days()
             ->where('date', '>=', Carbon::now()->format('Y-m-d'))
             ->count();
+    }
+
+    public function getTotalPointsAttribute()
+    {
+        return $this->points()->sum('points');
     }
 
     /**

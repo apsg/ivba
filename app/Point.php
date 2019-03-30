@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Point extends Model
 {
-    protected $fillable = [];
+    protected $guarded = [];
 
     public function user()
     {

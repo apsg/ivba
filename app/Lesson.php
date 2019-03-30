@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\UserFinishedLessonEvent;
 use App\Interfaces\OrderableContract;
 use App\Traits\ChecksSlugs;
 use Auth;
@@ -13,44 +14,29 @@ use Illuminate\Support\Collection;
 /**
  * Class Lesson
  *
- * @property string                   title
- * @property string                   description
- * @property string                   seo_title
- * @property string                   seo_description
- * @property float                    price
- * @property int                      difficulty
- * @property string                   slug
- * @property int                      image_id
- * @property int                      video_id
- * @property int                      user_id
- * @property string                   introduction
- * @property int                      duration
- * @property-read Image               image
- * @property-read Video               video
- * @property-read Collection|Course[] courses
- * @property int $id
- * @property int $user_id
- * @property string $slug
- * @property string $title
- * @property string $introduction
- * @property string $description
- * @property float $price
- * @property int $duration
- * @property string|null $seo_title
- * @property string|null $seo_description
- * @property int|null $image_id
- * @property int $difficulty
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property int|null $video_id
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Course[] $courses
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\ItemFile[] $files
- * @property-read \App\Image|null $image
+ * @property string                                                         title
+ * @property string                                                         description
+ * @property string                                                         seo_title
+ * @property string                                                         seo_description
+ * @property float                                                          price
+ * @property int                                                            difficulty
+ * @property string                                                         slug
+ * @property int                                                            image_id
+ * @property int                                                            video_id
+ * @property int                                                            user_id
+ * @property string                                                         introduction
+ * @property int                                                            duration
+ * @property-read Image                                                     image
+ * @property-read Video                                                     video
+ * @property-read Collection|Course[]                                       courses
+ * @property int                                                            $id
+ * @property \Illuminate\Support\Carbon|null                                $created_at
+ * @property \Illuminate\Support\Carbon|null                                $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\ItemFile[]  $files
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\ItemImage[] $images
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\ItemText[] $texts
- * @property-read \App\User $user
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $users
- * @property-read \App\Video|null $video
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\ItemText[]  $texts
+ * @property-read \App\User                                                 $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[]      $users
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\ItemMovie[] $videos
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson except($id)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson newModelQuery()
@@ -317,6 +303,8 @@ class Lesson extends Model implements OrderableContract
                     'course_id'   => $courseId,
                 ])
             );
+
+        event(new UserFinishedLessonEvent(Auth::user()->id));
     }
 
     /**

@@ -12,6 +12,7 @@ use App\Events\SubscriptionCancelled;
 use App\Events\SubscriptionPaymentFailedEvent;
 use App\Events\SubscriptionProlongedEvent;
 use App\Events\SubscriptionStartedEvent;
+use App\Events\UserFinishedLessonEvent;
 use App\Events\UserPaidAccessFinished;
 use App\Events\UserPaidForAccess;
 use App\Events\UserRegisteredEvent;
@@ -23,6 +24,7 @@ use App\Listeners\Excelmailing\UserAccessFinishedListener;
 use App\Listeners\Excelmailing\UserAccessListener;
 use App\Listeners\Excelmailing\UserRegisteredListener;
 use App\Listeners\FollowupsListener;
+use App\Listeners\GrantPointsForFinishedLessonListener;
 use App\Listeners\PlanUserExpiredFollowups;
 use App\Listeners\PlanUserPaidFollowups;
 use App\Listeners\PlanUserRegisteredFollowups;
@@ -92,7 +94,9 @@ class EventServiceProvider extends ServiceProvider
         FullAccessGrantedEvent::class         => [
             UserAccessListener::class,
         ],
-
+        UserFinishedLessonEvent::class        => [
+            GrantPointsForFinishedLessonListener::class,
+        ],
     ];
 
     /**
