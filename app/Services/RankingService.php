@@ -87,6 +87,7 @@ class RankingService
                 $data = $query->get()
                     ->sortBy('points')
                     ->reverse()
+                    ->values()
                     ->transform(function ($item, $key) {
                         $item->position = $key + 1;
 
