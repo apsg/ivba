@@ -71,7 +71,8 @@ class RankingService
                 $query = Point::select(
                     'user_id',
                     \DB::raw('sum(points.points) as points'),
-                    'users.name'
+                    'users.name',
+                    'users.email'
                 )->join('users', 'points.user_id', '=', 'users.id')
                     ->groupBy('points.user_id')
                     ->orderBy('points.points', 'desc');

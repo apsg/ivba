@@ -2330,6 +2330,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Ranking",
   data: function data() {
@@ -40529,7 +40533,13 @@ var render = function() {
               _vm._v(_vm._s(item.position))
             ]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(item.name))]),
+            _c("td", [_c("img", { attrs: { src: item.avatar } })]),
+            _vm._v(" "),
+            _c("td", [
+              _vm._v(
+                "\n                " + _vm._s(item.name) + "\n            "
+              )
+            ]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(item.points))])
           ])
@@ -40547,6 +40557,8 @@ var staticRenderFns = [
     return _c("thead", [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th"),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Imię")]),
         _vm._v(" "),

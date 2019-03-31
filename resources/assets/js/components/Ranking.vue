@@ -15,6 +15,7 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
+                <th></th>
                 <th scope="col">Imię</th>
                 <th scope="col">Punkty</th>
             </tr>
@@ -24,7 +25,10 @@
                 :class="item.is_me ? 'table-success' : ''"
             >
                 <th scope="row">{{ item.position }}</th>
-                <td>{{ item.name }}</td>
+                <td><img :src="item.avatar"></td>
+                <td>
+                    {{ item.name }}
+                </td>
                 <td>{{ item.points }}</td>
             </tr>
             </tbody>
