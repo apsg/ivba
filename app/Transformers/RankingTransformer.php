@@ -18,7 +18,7 @@ class RankingTransformer extends TransformerAbstract
     {
         return [
             'position' => $item->position,
-            'name'     => $this->obfuscate($item),
+            'name'     => mb_convert_encoding($this->obfuscate($item), 'UTF-8'),
             'points'   => $item->points,
             'is_me'    => $this->isMe($item->user_id),
         ];
