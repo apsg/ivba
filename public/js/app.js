@@ -40491,7 +40491,7 @@ var render = function() {
         "a",
         {
           staticClass: "btn btn-outline-primary m-3",
-          class: _vm.active == "month" ? "btn-primary" : "",
+          class: _vm.active == "month" ? "btn-ivba" : "",
           on: {
             click: function($event) {
               $event.preventDefault()
@@ -40506,7 +40506,7 @@ var render = function() {
         "a",
         {
           staticClass: "btn btn-outline-primary m-3",
-          class: _vm.active == "total" ? "btn-primary" : "",
+          class: _vm.active == "total" ? "btn-ivba" : "",
           on: {
             click: function($event) {
               $event.preventDefault()

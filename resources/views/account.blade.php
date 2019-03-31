@@ -40,7 +40,7 @@
                 <div class="tab-pane fade show active" id="ranking" role="tabpanel" aria-labelledby="ranking-tab">
                     <ranking-user></ranking-user>
                 </div>
-                <div class="tab-pane fade show active" id="courses" role="tabpanel" aria-labelledby="courses-tab">
+                <div class="tab-pane fade" id="courses" role="tabpanel" aria-labelledby="courses-tab">
                     <h3>Twoje kursy</h3>
                     <table class="table">
                         <thead>

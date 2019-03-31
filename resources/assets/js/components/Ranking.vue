@@ -2,11 +2,11 @@
     <div>
         <div class="d-flex">
             <a class="btn btn-outline-primary m-3"
-               :class="active == 'month' ? 'btn-primary' : ''"
+               :class="active == 'month' ? 'btn-ivba' : ''"
                @click.prevent="fetchMonthlyRanking"
             >Ranking miesięczny</a>
             <a class="btn btn-outline-primary m-3"
-               :class="active == 'total' ? 'btn-primary' : ''"
+               :class="active == 'total' ? 'btn-ivba' : ''"
                @click.prevent="fetchRanking"
             >Ranking wszechczasów</a>
         </div>
