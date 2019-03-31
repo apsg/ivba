@@ -27,6 +27,8 @@ import Proofs from './components/Proofs.vue';
 import LastLesson from './components/LastLesson.vue';
 import ProgressBar from './components/ProgressBar.vue';
 import PriceAndCoupon from './components/PriceAndCoupon.vue';
+import Ranking from './components/Ranking.vue';
+import RankingUser from './components/RankingUser.vue';
 
 const app = new Vue({
     el: '#app',
@@ -39,7 +41,9 @@ const app = new Vue({
         Proofs,
         LastLesson,
         ProgressBar,
-        'price-and-coupon': PriceAndCoupon
+        'price-and-coupon': PriceAndCoupon,
+        Ranking,
+        'ranking-user': RankingUser
     }
 });
 

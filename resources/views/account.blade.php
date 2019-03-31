@@ -20,7 +20,11 @@
 
             <ul class="nav nav-tabs nav-pills nav-justified" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="courses-tab" data-toggle="tab" href="#courses" role="tab"
+                    <a class="nav-link active" id="ranking-tab" data-toggle="tab" href="#ranking" role="tab"
+                       aria-controls="ranking" aria-selected="true">Ranking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="courses-tab" data-toggle="tab" href="#courses" role="tab"
                        aria-controls="courses" aria-selected="true">Kursy</a>
                 </li>
                 <li class="nav-item">
@@ -33,7 +37,10 @@
                 </li>
             </ul>
             <div class="tab-content mt-3" id="myTabContent">
-                <div class="tab-pane fade show active" id="courses" role="tabpanel" aria-labelledby="courses-tab">
+                <div class="tab-pane fade show active" id="ranking" role="tabpanel" aria-labelledby="ranking-tab">
+                    <ranking-user></ranking-user>
+                </div>
+                <div class="tab-pane fade " id="courses" role="tabpanel" aria-labelledby="courses-tab">
                     <h3>Twoje kursy</h3>
                     <table class="table">
                         <thead>

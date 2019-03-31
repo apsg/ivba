@@ -115,11 +115,29 @@ class RankingService
                 ->points ?? 0;
     }
 
+    public function getUserPointsThisMonth(User $user) : int
+    {
+        return $this->getThisMonthRanking()
+                ->where('user_id', $user->id)
+                ->first()
+                ->points ?? 0;
+    }
+
     public function getUserMonthlyPosiotion(User $user) : int
     {
         return $this->getThisMonthRanking()
                 ->where('user_id', $user)
                 ->first()
                 ->position ?? 0;
+    }
+
+    public function getTotalUsers() : int
+    {
+        return $this->getRanking()->count();
+    }
+
+    public function getTotalUsersThisMonth() : int
+    {
+        return $this->getThisMonthRanking()->count();
     }
 }

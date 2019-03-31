@@ -65,6 +65,10 @@ Route::post('/contact_form', 'ContactFormController@send');
 Route::any('/paypal/ec-checkout-success', 'PayPalController@checkoutSuccess');
 Route::any('paypal/notify', 'PayPalController@notify');
 
+Route::get('/ranking', 'RankingController@index');
+Route::get('/a/ranking/my', 'RankingController@my');
+
+
 Route::get('/test', function () {
 
     $mail = new \App\Mail\TestMail();
