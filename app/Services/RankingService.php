@@ -90,7 +90,7 @@ class RankingService
         return $this->getRanking($start, $end);
     }
 
-    protected function clearCachedRating()
+    public function clearCachedRating()
     {
         $start = Carbon::now()->startOfMonth();
         $end = Carbon::now()->endOfMonth();
@@ -102,9 +102,17 @@ class RankingService
     public function getUserPosition(User $user) : int
     {
         return $this->getRanking()
-                ->where('user_id', $user)
+                ->where('user_id', $user->id)
                 ->first()
                 ->position ?? 0;
+    }
+
+    public function getUserPoints(User $user) : int
+    {
+        return $this->getRanking()
+                ->where('user_id', $user->id)
+                ->first()
+                ->points ?? 0;
     }
 
     public function getUserMonthlyPosiotion(User $user) : int

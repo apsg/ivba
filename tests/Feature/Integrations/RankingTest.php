@@ -4,6 +4,7 @@ namespace Tests\Feature\Integrations;
 use App\Course;
 use App\Lesson;
 use App\Quiz;
+use App\Services\RankingService;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -79,4 +80,5 @@ class RankingTest extends TestCase
         // then
         $this->assertEquals($initialPoints + config('rating.quiz'), $afterPoints);
     }
+
 }
