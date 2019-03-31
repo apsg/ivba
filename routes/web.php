@@ -67,6 +67,8 @@ Route::any('paypal/notify', 'PayPalController@notify');
 
 Route::get('/ranking', 'RankingController@index');
 Route::get('/a/ranking/my', 'RankingController@my');
+Route::get('/a/ranking/month', 'RankingController@month');
+Route::get('/a/ranking/total', 'RankingController@total');
 
 
 Route::get('/test', function () {

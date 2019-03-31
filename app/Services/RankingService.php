@@ -44,7 +44,7 @@ class RankingService
         if ($customDate !== null) {
             $customDate = Carbon::parse($customDate);
         }
-    
+
         $this->grant($user, config('rating.quiz'), $customDate);
 
         $this->clearCachedRating();

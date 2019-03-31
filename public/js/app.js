@@ -2302,19 +2302,66 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Ranking",
   data: function data() {
     return {
-      'ranking': []
+      'ranking': [],
+      'active': null
     };
   },
   mounted: function mounted() {
     this.fetchMonthlyRanking();
   },
   methods: {
-    fetchMonthlyRanking: function fetchMonthlyRanking() {},
-    fetchRanking: function fetchRanking() {}
+    fetchMonthlyRanking: function fetchMonthlyRanking() {
+      var _this = this;
+
+      axios.get('/a/ranking/month').then(function (data) {
+        _this.ranking = data.data.data;
+        _this.active = 'month';
+      }).catch(function () {
+        _this.ranking = [];
+      });
+    },
+    fetchRanking: function fetchRanking() {
+      var _this2 = this;
+
+      axios.get('/a/ranking/total').then(function (data) {
+        _this2.ranking = data.data.data;
+        _this2.active = 'total';
+      }).catch(function () {
+        _this2.ranking = [];
+      });
+    }
   }
 });
 
@@ -40438,9 +40485,76 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", [
+    _c("div", { staticClass: "d-flex" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-outline-primary m-3",
+          class: _vm.active == "month" ? "btn-primary" : "",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.fetchMonthlyRanking($event)
+            }
+          }
+        },
+        [_vm._v("Ranking miesięczny")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-outline-primary m-3",
+          class: _vm.active == "total" ? "btn-primary" : "",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.fetchRanking($event)
+            }
+          }
+        },
+        [_vm._v("Ranking wszechczasów")]
+      )
+    ]),
+    _vm._v(" "),
+    _c("table", { staticClass: "table table-striped" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        _vm._l(_vm.ranking, function(item) {
+          return _c("tr", { class: item.is_me ? "table-success" : "" }, [
+            _c("th", { attrs: { scope: "row" } }, [
+              _vm._v(_vm._s(item.position))
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(item.name))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(item.points))])
+          ])
+        }),
+        0
+      )
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Imię")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Punkty")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
