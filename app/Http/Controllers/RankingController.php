@@ -47,7 +47,7 @@ class RankingController extends Controller
     public function total()
     {
         $data = $this->service->getRanking();
-
+        
         return fractal($data)
             ->transformWith(new RankingTransformer(\Auth::user()))
             ->respond(200);

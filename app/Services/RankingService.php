@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 class RankingService
 {
     const RANKING_CACHE_KEY = 'ranking';
-    const RANKING_CACHE_DURATION = 10;
+    const RANKING_CACHE_DURATION = 1;
 
     /**
      * @param User|int|null $user
@@ -68,12 +68,9 @@ class RankingService
             . ($end->timestamp ?? 'all'),
             self::RANKING_CACHE_DURATION,
             function () use ($start, $end) {
-                \DB::statement('SET @row_number = 0;');
-
                 $query = Point::select(
                     'user_id',
                     \DB::raw('sum(points.points) as points'),
-                    \DB::raw('(@row_number:=@row_number + 1) AS position'),
                     'users.name'
                 )->join('users', 'points.user_id', '=', 'users.id')
                     ->groupBy('points.user_id')
@@ -87,7 +84,16 @@ class RankingService
                     $query = $query->where('points.created_at', '<=', $end);
                 }
 
-                return $query->get()->sortBy('points');
+                $data = $query->get()
+                    ->sortBy('points')
+                    ->reverse()
+                    ->transform(function ($item, $key) {
+                        $item->position = $key + 1;
+
+                        return $item;
+                    });
+
+                return $data;
             });
     }
 
