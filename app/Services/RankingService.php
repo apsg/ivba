@@ -16,7 +16,7 @@ class RankingService
      * @param int           $points
      * @throws \Exception
      */
-    public function grant($user = null, int $points = 1) : void
+    public function grant($user = null, int $points = 1, Carbon $customDate = null) : void
     {
         if ($user === null) {
             return;
@@ -32,22 +32,31 @@ class RankingService
             $userId = $user->id;
         }
 
-        Point::create([
-            'user_id' => $userId,
-            'points'  => $points,
-        ]);
+        Point::create(array_filter([
+            'user_id'    => $userId,
+            'points'     => $points,
+            'created_at' => $customDate,
+        ]));
     }
 
-    public function grantForQuiz($user = null)
+    public function grantForQuiz($user = null, $customDate = null)
     {
-        $this->grant($user, config('rating.quiz'));
+        if ($customDate !== null) {
+            $customDate = Carbon::parse($customDate);
+        }
+    
+        $this->grant($user, config('rating.quiz'), $customDate);
 
         $this->clearCachedRating();
     }
 
-    public function grantForLesson($user = null)
+    public function grantForLesson($user = null, $customDate = null)
     {
-        $this->grant($user, config('rating.lesson'));
+        if ($customDate !== null) {
+            $customDate = Carbon::parse($customDate);
+        }
+
+        $this->grant($user, config('rating.lesson'), $customDate);
 
         $this->clearCachedRating();
     }
