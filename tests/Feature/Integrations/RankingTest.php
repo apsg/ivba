@@ -11,7 +11,7 @@ use Tests\TestCase;
 
 class RankingTest extends TestCase
 {
-//    use DatabaseTransactions;
+    use DatabaseTransactions;
     use WithFaker;
 
     /** @var User */
@@ -73,6 +73,7 @@ class RankingTest extends TestCase
 
         // when
         $quiz->finish();
+        $quiz->finish(); // Double passing the quiz should grant the points only once
         $afterPoints = $this->user->total_points;
 
         // then

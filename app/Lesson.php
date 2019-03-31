@@ -296,11 +296,17 @@ class Lesson extends Model implements OrderableContract
      */
     public function finish(int $courseId = null) : self
     {
-        if (!$this->isFinishedByUser(Auth::user())) {
-            event(new UserFinishedLessonEvent(Auth::user()->id));
+        $user = Auth::user();
+
+        if (!$user->hasStartedLesson($this->id)) {
+            $this->users()->save($user);
+        }
+
+        if (!$user->hasFinishedLesson($this->id)) {
+            event(new UserFinishedLessonEvent($user->id));
             $this->users()
                 ->updateExistingPivot(
-                    Auth::user()->id,
+                    $user->id,
                     array_filter([
                         'finished_at' => Carbon::now(),
                         'course_id'   => $courseId,
@@ -311,21 +317,8 @@ class Lesson extends Model implements OrderableContract
         return $this;
     }
 
-    public function isFinishedByUser(User $user = null) : bool
-    {
-        if ($user === null) {
-            return false;
-        }
-
-        return $this->users()
-            ->where('user_id', $user->id)
-            ->wherePivot('finished_at', '!=', null)
-            ->exists();
-    }
-
     /**
      * Nazwa do wyświetlania w koszyku
-     * @return [type] [description]
      */
     public function cartName()
     {

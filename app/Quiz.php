@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\UserHasPassedQuizEvent;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -118,17 +119,30 @@ class Quiz extends Model
     public function finish() : self
     {
         $question_ids = $this->questions->pluck('id');
-        
-        $points = Answer::where('user_id', Auth::user()->id)
+
+        /** @var User $user */
+        $user = Auth::user();
+
+        if (!$user->hasStartedQuiz($this->id)) {
+            $this->users()->save($user);
+        }
+
+        $points = Answer::where('user_id', $user->id)
             ->whereIn('question_id', $question_ids)
             ->sum('points');
 
         $percentage = $this->max_points != 0 ? 100 * $points / $this->max_points : 1;
 
-        $this->users()->updateExistingPivot(Auth::user()->id, [
+        $isPass = $percentage >= $this->pass_threshold;
+
+        if ($isPass && !$user->hasPassedQuiz($this->id)) {
+            event(new UserHasPassedQuizEvent($user));
+        }
+
+        $this->users()->updateExistingPivot($user->id, [
             'points'        => $points,
             'finished_date' => Carbon::now(),
-            'is_pass'       => $percentage >= $this->pass_threshold,
+            'is_pass'       => $isPass,
         ]);
 
         return $this;
