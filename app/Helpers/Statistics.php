@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Helpers;
 
 use App\Email;
@@ -12,7 +11,6 @@ use Carbon\Carbon;
 
 class Statistics
 {
-
     const TIME = 60; // ile minut pamiętać wyniki
 
     /**

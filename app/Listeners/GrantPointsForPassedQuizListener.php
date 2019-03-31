@@ -3,14 +3,14 @@
 namespace App\Listeners;
 
 use App\Events\UserHasPassedQuizEvent;
-use App\Services\PointsService;
+use App\Services\RankingService;
 
 class GrantPointsForPassedQuizListener
 {
-    /** @var PointsService */
+    /** @var RankingService */
     public $service;
 
-    public function __construct(PointsService $service)
+    public function __construct(RankingService $service)
     {
         $this->service = $service;
     }

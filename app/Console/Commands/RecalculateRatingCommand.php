@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Point;
-use App\Services\PointsService;
+use App\Services\RankingService;
 use App\User;
 use DB;
 use Illuminate\Console\Command;
@@ -24,7 +24,7 @@ class RecalculateRatingCommand extends Command
      */
     protected $description = 'Command description';
 
-    /** @var PointsService */
+    /** @var RankingService */
     protected $service;
 
     /**
@@ -32,7 +32,7 @@ class RecalculateRatingCommand extends Command
      *
      * @return void
      */
-    public function __construct(PointsService $service)
+    public function __construct(RankingService $service)
     {
         parent::__construct();
 

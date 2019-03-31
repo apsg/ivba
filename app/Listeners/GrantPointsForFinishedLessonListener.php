@@ -2,18 +2,18 @@
 namespace App\Listeners;
 
 use App\Events\UserFinishedLessonEvent;
-use App\Services\PointsService;
+use App\Services\RankingService;
 use App\User;
 
 class GrantPointsForFinishedLessonListener
 {
-    /** @var PointsService */
+    /** @var RankingService */
     protected $service;
 
     /**
      * Create the event listener.
      */
-    public function __construct(PointsService $service)
+    public function __construct(RankingService $service)
     {
         $this->service = $service;
     }
