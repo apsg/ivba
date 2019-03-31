@@ -87,7 +87,7 @@ class RankingService
                     $query = $query->where('points.created_at', '<=', $end);
                 }
 
-                return $query->get();
+                return $query->get()->sortBy('points');
             });
     }
 
