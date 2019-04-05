@@ -27,8 +27,7 @@
         "tom-lingham/searchy": "^3.0",
         "tpay-com/tpay-php": "dev-master",
         "vimeo/laravel": "^5.0",
-        "yajra/laravel-datatables-oracle": "~8.0",
-        "yajra/laravel-disqus": "^1.0"
+        "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2@dev",

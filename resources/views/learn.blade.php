@@ -72,6 +72,5 @@
     </div>
     <div class="col-md-12">
         <hr/>
-        <div id="disqus_thread"></div>
     </div>
 @endsection
