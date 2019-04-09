@@ -18,24 +18,24 @@ class CoursesTransformer extends TransformerAbstract
     {
         if ($this->currentDay === null || $course->cumulative_delay <= $this->currentDay) {
             return [
-                'title'   => $this->conv($course->title),
-                'excerpt' => $this->conv($course->excerpt),
-                'img'     => $course->image->thumb(600, 300),
+                'title'   => $this->convert($course->title),
+                'excerpt' => $this->convert($course->excerpt),
+                'img'     => $course->image ? $course->image->thumb(600, 300) : null,
                 'url'     => $course->link(),
                 'wait'    => 0,
             ];
         }
 
         return [
-            'title'   => $this->conv($course->title),
-            'excerpt' => $this->conv($course->excerpt),
-            'img'     => $course->image->thumb(600, 300),
+            'title'   => $this->convert($course->title),
+            'excerpt' => $this->convert($course->excerpt),
+            'img'     => $course->image ? $course->image->thumb(600, 300) : null,
             'url'     => null,
             'wait'    => $course->cumulative_delay - $this->currentDay,
         ];
     }
 
-    protected function conv(string $text) : string
+    protected function convert(string $text) : string
     {
         return mb_convert_encoding($text, 'UTF-8');
     }

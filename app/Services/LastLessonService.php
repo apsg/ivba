@@ -9,7 +9,9 @@ class LastLessonService
 {
     public function get(User $user)
     {
-        $lesson = $user->lessons()->orderBy('updated_at', 'desc')->first();
+        $lesson = $user->lessons()
+            ->orderBy('lesson_user.updated_at', 'desc')
+            ->first();
 
         if ($lesson === null) {
             return null;
