@@ -1,5 +1,9 @@
 <?php
 
+use App\Question;
+use App\QuestionOption;
+use App\Quiz;
+
 require __DIR__ . '/admin/routes.php';
 require __DIR__ . '/learn/routes.php';
 require __DIR__ . '/axios.php';
@@ -73,12 +77,30 @@ Route::get('/a/ranking/total', 'RankingController@total');
 
 Route::get('/test', function () {
 
-    $mail = new \App\Mail\TestMail();
 
-    Mail::to(App\User::find(1))
-        ->send($mail);
+    $quiz = factory(Quiz::class)->create([
+        'course_id' => 2,
+    ]);
 
-    return $mail;
+    $quiz->questions()->save(factory(Question::class)->create([
+        'quiz_id' => $quiz->id,
+    ]));
+
+    /** @var Question $singleQuestion */
+    $singleQuestion = factory(Question::class, 'single')->create([
+        'quiz_id' => $quiz->id,
+    ]);
+
+    $singleQuestion->options()->save(factory(QuestionOption::class, 'correct')->make());
+    $singleQuestion->options()->save(factory(QuestionOption::class, 'incorrect')->make());
+
+    $multipleQuestion = factory(Question::class, 'multiple')->create([
+        'quiz_id' => $quiz->id,
+    ]);
+    $multipleQuestion->options()->save(factory(QuestionOption::class, 'correct')->make());
+    $multipleQuestion->options()->save(factory(QuestionOption::class, 'incorrect')->make());
+    $multipleQuestion->options()->save(factory(QuestionOption::class, 'correct')->make());
+    $multipleQuestion->options()->save(factory(QuestionOption::class, 'incorrect')->make());
 
 });
 

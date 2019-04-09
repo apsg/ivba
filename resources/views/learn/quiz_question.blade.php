@@ -40,7 +40,7 @@
 
 			@if( $question->type == \App\Question::MULTIPLE )
 				@foreach($question->options as $option)	
-				<input id="answer_{{ $option->id }}" class="form-control" type="checkbox" name="answer[]" value="{{ $option->id }}">
+				<input id="answer_{{ $option->id }}" class="" type="checkbox" name="answer[]" value="{{ $option->id }}">
 				<label for="answer_{{ $option->id }}">
 					{{ $option->title }}
 				</label><br />
