@@ -7,19 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * App\Question
  *
- * @property int $id
- * @property int $quiz_id
- * @property int $type
- * @property string $title
- * @property string $content
- * @property int $points
- * @property int $position
- * @property string|null $answer
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int                                                                 $id
+ * @property int                                                                 $quiz_id
+ * @property int                                                                 $type
+ * @property string                                                              $title
+ * @property string                                                              $content
+ * @property int                                                                 $points
+ * @property int                                                                 $position
+ * @property string|null                                                         $answer
+ * @property \Illuminate\Support\Carbon|null                                     $created_at
+ * @property \Illuminate\Support\Carbon|null                                     $updated_at
  * @property-read \[type] $type_name
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\QuestionOption[] $options
- * @property-read \App\Quiz $quiz
+ * @property-read \App\Quiz                                                      $quiz
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Question newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Question newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Question query()
@@ -90,9 +90,8 @@ class Question extends Model
      * Sprawdza, czy pytanie jest poprawne
      * @return boolean [description]
      */
-    public function isValid()
+    public function isValid() : bool
     {
-
         if (empty($this->content)) {
             return false;
         }
@@ -113,7 +112,7 @@ class Question extends Model
     /**
      * Sprawdza, czy podana odpowiedź jest prawidłowa
      */
-    public function check($answer)
+    public function check($answer) : bool
     {
         switch ($this->type) {
             case static::SINGLE:
@@ -144,7 +143,5 @@ class Question extends Model
         }
 
         return false;
-
     }
-
 }
