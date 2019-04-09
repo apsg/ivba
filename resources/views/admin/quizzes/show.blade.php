@@ -255,7 +255,10 @@
                 content_css: [
                     '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
                     '//www.tinymce.com/css/codepen.min.css'
-                ]
+                ],
+                relative_urls: false,
+                remove_script_host: false,
+                convert_urls: true,
             });
         });
 
