@@ -60,6 +60,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('/user/{user}/cancel_full_access', 'AdminUserController@cancelFullAccess')
         ->name('admin.users.cancel_full_access');
 
+    Route::get('/user/ranking/{type}', 'AdminUserController@ranking');
 
     Route::get('/menu', 'AdminMenusController@index');
     Route::post('/menu', 'AdminMenusController@store');

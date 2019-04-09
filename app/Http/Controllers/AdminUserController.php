@@ -5,6 +5,7 @@ use App\Events\FullAccessGrantedEvent;
 use App\Http\Requests\Admin\AccessRequest;
 use App\Notifications\RandomPasswordGenerated;
 use App\Repositories\SubscriptionRepository;
+use App\Services\RankingService;
 use App\User;
 use Carbon\Carbon;
 use DataTables;
@@ -86,7 +87,7 @@ class AdminUserController extends Controller
 
     /**
      * Pokaż podgląd edycji użytkownika
-     * @param  User $user [description]
+     * @param User $user [description]
      * @return [type]       [description]
      */
     public function edit(User $user)
@@ -96,8 +97,8 @@ class AdminUserController extends Controller
 
     /**
      * Zaktualizuj użytkownika
-     * @param  User    $user [description]
-     * @param  Request $request [description]
+     * @param User    $user [description]
+     * @param Request $request [description]
      * @return [type]           [description]
      */
     public function patch(User $user, Request $request)
@@ -166,5 +167,20 @@ class AdminUserController extends Controller
         flash('Anulowano');
 
         return back();
+    }
+
+    public function ranking($type, RankingService $service)
+    {
+        $ranking = [];
+
+        if ($type == 'all') {
+            $ranking = $service->getRanking();
+        }
+
+        if ($type == 'month') {
+            $ranking = $service->getThisMonthRanking();
+        }
+
+        return view('admin.ranking')->with(compact('type', 'ranking'));
     }
 }
