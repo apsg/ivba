@@ -81,9 +81,20 @@ class AuthServiceProvider extends ServiceProvider
          * Czy użytkownik może podejść ponownie do testu?
          */
         Gate::define('retake-quiz', function (User $user, Quiz $quiz) {
-            return !$user->quizzes()->where('quiz_id', $quiz->id)->exists()
-                || Carbon::parse($quiz->pivot->finished_date)
-                    ->diffInDays(Carbon::now()) > 14;
+            if ($user->cannot('access', $quiz->course)) {
+                return false;
+            }
+
+            $quiz = $user->quizzes()
+                ->withPivot('finished_date')
+                ->where('quiz_id', $quiz->id)
+                ->first();
+
+            if ($quiz === null) {
+                return true;
+            }
+
+            return Carbon::parse($quiz->pivot->finished_date)->diffInDays() > 14;
         });
 
         /**

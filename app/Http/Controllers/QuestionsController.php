@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Answer;
 use App\Question;
+use App\Repositories\AnswerRepository;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -17,19 +16,9 @@ class QuestionsController extends Controller
     /**
      * Zapisuje i sprawdza poprawność odpowiedzi.
      */
-    public function checkAnswer(Question $question, Request $request)
+    public function checkAnswer(Question $question, Request $request, AnswerRepository $repository)
     {
-        $correct = $question->check($request->answer);
-
-        Answer::firstOrCreate([
-            'user_id'     => Auth::user()->id,
-            'question_id' => $question->id,
-        ])
-            ->update([
-                'answer'     => $request->answer,
-                'is_correct' => $correct,
-                'points'     => $correct ? $question->points : 0,
-            ]);
+        $repository->checkUser(Auth::user(), $question, $request->answer);
 
         return back();
     }

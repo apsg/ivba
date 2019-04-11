@@ -129,6 +129,10 @@ class Question extends Model
                 }
             case static::MULTIPLE:
                 {
+                    if (!is_array($answer)) {
+                        return false;
+                    }
+
                     $correct = $this->options()
                         ->correct()
                         ->get()->pluck('id')
@@ -138,8 +142,38 @@ class Question extends Model
                     break;
                 }
             case static::OPEN:
-                return strtolower($answer) == strtolower($this->answer);
-                break;
+                {
+                    if (!is_string($answer)) {
+                        return false;
+                    }
+
+                    return strtolower($answer) == strtolower($this->answer);
+                    break;
+                }
+        }
+
+        return false;
+    }
+
+    public function getCorrectAnswer()
+    {
+        switch ($this->type) {
+            case static::SINGLE:
+                {
+                    return $this->options()
+                        ->correct()
+                        ->get()->pluck('id')
+                        ->toArray();
+                }
+            case static::MULTIPLE:
+                {
+                    return $this->options()
+                        ->correct()
+                        ->get()->pluck('id')
+                        ->toArray();
+                }
+            case static::OPEN:
+                return $this->answer;
         }
 
         return false;
