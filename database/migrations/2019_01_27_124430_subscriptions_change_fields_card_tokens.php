@@ -15,7 +15,7 @@ class SubscriptionsChangeFieldsCardTokens extends Migration
     {
         Schema::table('subscriptions', function (Blueprint $table) {
             $table->string('token')->nullable();
-            $table->float('amount', 5, 2)->default(0);
+//            $table->float('amount', 5, 2)->default(0);
         });
     }
 
@@ -28,7 +28,7 @@ class SubscriptionsChangeFieldsCardTokens extends Migration
     {
         Schema::table('subscriptions', function (Blueprint $table) {
             $table->dropColumn('token');
-            $table->dropColumn('amount');
+//            $table->dropColumn('amount');
         });
     }
 }
