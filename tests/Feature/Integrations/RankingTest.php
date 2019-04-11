@@ -4,7 +4,6 @@ namespace Tests\Feature\Integrations;
 use App\Course;
 use App\Lesson;
 use App\Quiz;
-use App\Services\RankingService;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -20,9 +19,9 @@ class RankingTest extends TestCase
 
     public function setUp()
     {
-        parent::setUp();
+        putenv('CACHE_DRIVER=array');
 
-//        $this->artisan('db:seed');
+        parent::setUp();
 
         $this->user = User::create([
             'name'  => $this->faker->name,
@@ -68,7 +67,8 @@ class RankingTest extends TestCase
         $course = factory(Course::class)->create();
         /** @var Quiz $quiz */
         $quiz = factory(Quiz::class)->create([
-            'course_id' => $course->id,
+            'course_id'      => $course->id,
+            'pass_threshold' => 0,
         ]);
         $initialPoints = $this->user->total_points;
 

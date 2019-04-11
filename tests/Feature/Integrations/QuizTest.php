@@ -94,9 +94,9 @@ class QuizTest extends TestCase
             app(AnswerRepository::class)
                 ->checkUser($this->user, $question, 'incorrect');
         }
-        $this->quiz->finish();
 
         // when
+        $this->quiz->finish();
 
         // then
         $this->assertTrue($this->user->can('access', $this->quiz->course));
@@ -104,7 +104,13 @@ class QuizTest extends TestCase
 
         // when
         Carbon::setTestNow(Carbon::now()->addMonth());
+        $quiz = $this->user->quizzes()
+            ->withPivot('finished_date')
+            ->where('quiz_id', $this->quiz->id)
+            ->first();
 
-        $this->assertTrue($this->user->can('retake-quiz', $this->quiz));
+        // then
+        $this->assertTrue(Carbon::parse($quiz->pivot->finished_date)->diffInDays() > 14);
+        $this->assertTrue($this->user->can('retake-quiz', $quiz));
     }
 }
