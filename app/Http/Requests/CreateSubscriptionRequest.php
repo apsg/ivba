@@ -9,7 +9,7 @@ class CreateSubscriptionRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'string',
+//            'code' => 'sometimes|string',
         ];
     }
 
