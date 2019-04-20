@@ -5,8 +5,10 @@ use App\Course;
 use App\Lesson;
 use App\Payment;
 use App\Policies\PaymentPolicy;
+use App\Policies\UserCertificatePolicy;
 use App\Quiz;
 use App\User;
+use App\UserCertificate;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -20,7 +22,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        Payment::class => PaymentPolicy::class,
+        Payment::class         => PaymentPolicy::class,
+        UserCertificate::class => UserCertificatePolicy::class,
     ];
 
     /**

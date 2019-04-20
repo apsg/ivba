@@ -11,6 +11,7 @@ class CertificatesController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except('check');
+        $this->middleware('can:view,certificate')->only('download');
     }
 
     public function download(UserCertificate $certificate)
