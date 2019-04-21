@@ -19,8 +19,6 @@ class RankingTest extends TestCase
 
     public function setUp()
     {
-        putenv('CACHE_DRIVER=array');
-
         parent::setUp();
 
         $this->user = User::create([
@@ -80,5 +78,4 @@ class RankingTest extends TestCase
         // then
         $this->assertEquals($initialPoints + config('rating.quiz'), $afterPoints);
     }
-
 }

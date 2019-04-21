@@ -20,8 +20,6 @@ class AuthServiceProvider extends ServiceProvider
 {
     /**
      * The policy mappings for the application.
-     *
-     * @var array
      */
     protected $policies = [
         Payment::class         => PaymentPolicy::class,
@@ -32,8 +30,6 @@ class AuthServiceProvider extends ServiceProvider
 
     /**
      * Register any authentication / authorization services.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -118,6 +114,5 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('active', function (User $user) {
             return $user->hasFullAccess() || $user->hasActiveSubscription();
         });
-
     }
 }
