@@ -4,6 +4,8 @@ namespace App\Providers;
 use App\Course;
 use App\Lesson;
 use App\Payment;
+use App\Policies\CoursePolicy;
+use App\Policies\LessonPolicy;
 use App\Policies\PaymentPolicy;
 use App\Policies\UserCertificatePolicy;
 use App\Quiz;
@@ -24,6 +26,8 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Payment::class         => PaymentPolicy::class,
         UserCertificate::class => UserCertificatePolicy::class,
+        Course::class          => CoursePolicy::class,
+        Lesson::class          => LessonPolicy::class,
     ];
 
     /**
@@ -64,7 +68,6 @@ class AuthServiceProvider extends ServiceProvider
          * Czy dany użytkownik ma dostęp do lekcji lub kursu?
          */
         Gate::define('access', function (User $user, $item) {
-
             if (Auth::check() && $user->hasFullAccess()) {
                 return true;
             }
