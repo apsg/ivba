@@ -56,7 +56,7 @@
                         @foreach( $user->courses as $course )
                             <tr>
                                 <th scope="row">{{ $course->title }}</th>
-                                <td>{{ $course->created_at }}</td>
+                                <td>{{ $course->pivot->created_at }}</td>
                                 <td>{{ $course->pivot->finished_at }}</td>
                                 <td>
                                     @if(Gate::allows('access', $course))

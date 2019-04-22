@@ -20,7 +20,7 @@
                         <figure class="hidden-xs hidden-sm">
                             @if($course->video()->exists())
                                 {!! $course->video->embed(450, 300) !!}
-                            @else
+                            @elseif($course->image)
                                 <img src="{{ $course->image->url }}" class="img-responsive" alt="">
                             @endif
                         </figure>

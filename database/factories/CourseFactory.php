@@ -10,6 +10,7 @@ $factory->define(App\Course::class, function (Faker $faker) {
         "user_id"     => 1,
         "position"    => \App\Course::max('position') + 1,
         "delay"       => rand(0, 10),
+        "difficulty"  => rand(1, 3),
     ];
 });
 

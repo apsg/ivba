@@ -304,6 +304,8 @@ class Course extends Model implements OrderableContract
             case 3 :
                 return "Trudna";
         }
+
+        return '';
     }
 
     public function nextLessonLink($lesson_id = null) : string
