@@ -8,6 +8,9 @@ class UserRegisteredListener
 {
     public function handle(UserRegisteredEvent $event)
     {
+        if(app()->environment() === 'testing')
+            return;
+
         app(IExcel::class)
             ->excelmailing()
             ->register($event->user->email ?? null);

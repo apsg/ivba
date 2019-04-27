@@ -74,6 +74,8 @@ Route::get('/a/ranking/my', 'RankingController@my');
 Route::get('/a/ranking/month', 'RankingController@month');
 Route::get('/a/ranking/total', 'RankingController@total');
 
+Route::get('/p/{partner}', 'PartnerController@index');
+
 
 Route::get('/test', function () {
 

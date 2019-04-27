@@ -25,6 +25,10 @@ use Illuminate\Notifications\Notifiable;
  * @property string                                                            first_name
  * @property string                                                            last_name
  * @property string                                                            address
+ * @property string|null                                                       partner_key
+ * @property-read string                                                       partner_uniqid
+ * @property int|null                                                          partner_id
+ * @property-read User|null                                                    partner
  * @property-read string                                                       full_name
  * @property-read HasOne|Subscription                                          subscription
  * @property int                                                               $id
@@ -74,6 +78,8 @@ class User extends Authenticatable
         'first_name',
         'last_name',
         'address',
+        'partner_key',
+        'partner_id',
     ];
 
     /**
@@ -84,6 +90,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'card_token',
     ];
 
     protected $casts = [
@@ -200,6 +207,11 @@ class User extends Authenticatable
     public function points()
     {
         return $this->hasMany(Point::class);
+    }
+
+    public function partner()
+    {
+        return $this->belongsTo(User::class, 'partner_id');
     }
 
     /**
@@ -577,5 +589,21 @@ class User extends Authenticatable
         }
 
         return $subscription;
+    }
+
+    public function partnerLink()
+    {
+        return url('/p/' . $this->partner_uniqid);
+    }
+
+    public function getPartnerUniqidAttribute() : string
+    {
+        if (empty($this->partner_key)) {
+            $this->update([
+                'partner_key' => uniqid(),
+            ]);
+        }
+
+        return $this->partner_key;
     }
 }
