@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/inauka_custom.css') }}" rel="stylesheet">
 </head>
 <body>
 <div @if(request()->path() != 'cart' ) id="app" @endif>
@@ -128,6 +129,7 @@
 {{--@include('partials.show_proof')--}}
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('/js/inauka_custom.js') }}"></script>
 <script type="text/javascript">
     window.baseUrl = '{{ url('/') }}';
 </script>
