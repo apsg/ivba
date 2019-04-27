@@ -80,6 +80,7 @@
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="row">
+                        <partner-link link="{{$user->partnerLink()}}" count="{{ $user->refs()->count() }}"></partner-link>
                         <div class="col-md-6">
                             <form action="{{ url('/account') }}" method="post">
                                 {{ csrf_field() }}

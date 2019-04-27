@@ -21,6 +21,7 @@
     "sass": "^1.15.2",
     "sass-loader": "^7.1.0",
     "vue": "^2.5.17",
+    "vue-flash-message": "^0.7.2",
     "vue-template-compiler": "^2.5.21"
   },
   "dependencies": {
@@ -30,6 +31,7 @@
     "jquery-ui": "^1.12.1",
     "npm": "^6.5.0",
     "tinymce": "^4.6.3",
-    "vue-carousel": "^0.16.2"
+    "vue-carousel": "^0.16.2",
+    "vue-clipboard2": "^0.3.0"
   }
 }

@@ -11,12 +11,8 @@ require('jquery-migrate');
 
 window.Vue = require('vue');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
+import VueClipboard from 'vue-clipboard2';
+import VueFlashMessage from 'vue-flash-message';
 
 import Categories from './components/Categories.vue';
 import RandomLessons from './components/RandomLessons.vue';
@@ -29,6 +25,10 @@ import ProgressBar from './components/ProgressBar.vue';
 import PriceAndCoupon from './components/PriceAndCoupon.vue';
 import Ranking from './components/Ranking.vue';
 import RankingUser from './components/RankingUser.vue';
+import PartnerLink from './components/PartnerLink.vue';
+
+Vue.use(VueClipboard);
+Vue.use(VueFlashMessage);
 
 const app = new Vue({
     el: '#app',
@@ -43,7 +43,8 @@ const app = new Vue({
         ProgressBar,
         'price-and-coupon': PriceAndCoupon,
         Ranking,
-        'ranking-user': RankingUser
+        'ranking-user': RankingUser,
+        'partner-link': PartnerLink,
     }
 });
 

@@ -15,6 +15,8 @@
 </head>
 <body>
 <div @if(request()->path() != 'cart' ) id="app" @endif>
+    <flash-message class="fm-container"></flash-message>
+
     <header class="header mb-3">
         <nav class="navbar navbar-expand-sm navbar-orange bg-orange">
             <div class="container">
@@ -115,7 +117,6 @@
                     course="{{ $lastLesson['course'] }}"></last-lesson>
         @endif
     @endauth
-
 </div>
 
 @if(request()->path() === 'cart')

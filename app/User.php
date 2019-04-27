@@ -3,6 +3,7 @@ namespace App;
 
 use App\Events\UserRegisteredEvent;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -29,6 +30,7 @@ use Illuminate\Notifications\Notifiable;
  * @property-read string                                                       partner_uniqid
  * @property int|null                                                          partner_id
  * @property-read User|null                                                    partner
+ * @property-read Collection|User[]                                            refs
  * @property-read string                                                       full_name
  * @property-read HasOne|Subscription                                          subscription
  * @property int                                                               $id
@@ -212,6 +214,11 @@ class User extends Authenticatable
     public function partner()
     {
         return $this->belongsTo(User::class, 'partner_id');
+    }
+
+    public function refs()
+    {
+        return $this->hasMany(User::class, 'partner_id');
     }
 
     /**
