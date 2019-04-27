@@ -3,16 +3,19 @@
 namespace Tests\Feature\Integrations;
 
 use App\Http\Middleware\EncryptCookies;
+use App\Services\PartnerProgramService;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\Cookie;
 use Tests\TestCase;
 
 class PartnerProgramTest extends TestCase
 {
-//    use DatabaseTransactions;
+    use DatabaseTransactions;
     use WithFaker;
     use InteractsWithDatabase;
 
@@ -113,5 +116,47 @@ class PartnerProgramTest extends TestCase
             'email'      => $email,
             'partner_id' => $this->user->id,
         ]);
+    }
+
+    /** @test */
+    public function it_returns_correct_data_in_partner_program_service()
+    {
+        // given
+        $partner1 = factory(User::class)->create();
+        $partner2 = factory(User::class)->create();
+
+        $user1 = factory(User::class)->create([
+            'partner_id' => $partner1->id
+        ]);
+        $user2 = factory(User::class)->create([
+            'partner_id' => $partner1->id
+        ]);
+        $user3 = factory(User::class)->create([
+            'partner_id' => $partner2->id
+        ]);
+        $user4 = factory(User::class)->create([
+            'partner_id' => $partner2->id
+        ]);
+        $user5 = factory(User::class)->create([
+            'partner_id' => $partner2->id
+        ]);
+        $user5->created_at = Carbon::now()->subMonths(3);
+        $user5->save();
+
+        // when
+        /** @var Collection $data */
+        $data = app(PartnerProgramService::class)->all();
+        $dataPartner1 = $data->where('id', '=', $partner1->id)->first();
+        $dataPartner2 = $data->where('id', '=', $partner2->id)->first();
+
+        // then
+        $this->assertNotNull($dataPartner1);
+        $this->assertNotNull($dataPartner2);
+
+        $this->assertEquals(2, $dataPartner1->refs_month);
+        $this->assertEquals(2, $dataPartner1->refs_year);
+
+        $this->assertEquals(2, $dataPartner2->refs_month);
+        $this->assertEquals(3, $dataPartner2->refs_year);
     }
 }

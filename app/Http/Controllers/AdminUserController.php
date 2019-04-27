@@ -5,6 +5,7 @@ use App\Events\FullAccessGrantedEvent;
 use App\Http\Requests\Admin\AccessRequest;
 use App\Notifications\RandomPasswordGenerated;
 use App\Repositories\SubscriptionRepository;
+use App\Services\PartnerProgramService;
 use App\Services\RankingService;
 use App\User;
 use Carbon\Carbon;
@@ -182,5 +183,12 @@ class AdminUserController extends Controller
         }
 
         return view('admin.ranking')->with(compact('type', 'ranking'));
+    }
+
+    public function partner(PartnerProgramService $service)
+    {
+        $partners = $service->all();
+
+        return view('admin.users.partner')->with(compact('partners'));
     }
 }

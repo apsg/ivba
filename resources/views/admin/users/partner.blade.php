@@ -1,17 +1,11 @@
 @extends('admin.layouts.admin')
 
 @push('breadcrumbs')
-    <li class="active">Ranking</li>
+    <li class="active">Partnerzy</li>
 @endpush
 
-@section('pagename', 'Ranking')
-@section('pagesubname')
-    @if($type == 'all')
-        wszechczasów
-    @else
-        miesięczny
-    @endif
-@endsection
+@section('pagename', 'Program partnerski')
+@section('pagesubname', 'Statystyki')
 
 @section('content')
     <section class="content">
@@ -20,21 +14,21 @@
                 <table class="table table-striped" id="table">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Email</th>
                         <th scope="col">Imię</th>
-                        <th scope="col">Punkty</th>
+                        <th scope="col">Rejestracji w miesiącu</th>
+                        <th scope="col">Rejestracji w roku</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($ranking as $item)
+                    @foreach($partners as $item)
                         <tr>
-                            <th scope="row">{{ $item->position }}</th>
-                            <td>{{ $item->user->email }}</td>
+                            <td>{{ $item->email }}</td>
                             <td>
-                                {{ $item->user->name }}
+                                {{ $item->name }}
                             </td>
-                            <td>{{ $item->points }}</td>
+                            <td>{{ $item->refs_month }}</td>
+                            <td>{{ $item->refs_year }}</td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -45,4 +39,11 @@
 @endsection
 
 @push('scripts')
+    <script type="application/javascript">
+        $(document).ready(function () {
+            $("#table").dataTable({
+                'order': [[2, 'desc']],
+            });
+        });
+    </script>
 @endpush

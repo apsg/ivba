@@ -32,13 +32,6 @@ Route::get('/cart/add_full_access', 'OrderController@addFullAccess');
 Route::get('/cart/remove_full_access', 'OrderController@removeFullAccess');
 Route::get('/cart/add_subscription', 'OrderController@addSubscription');
 
-Route::any('/payu/notify', 'PayuController@notify');
-Route::any('/process_subscription', 'PayuController@process');
-Route::get('/continue/{order}', 'PayuController@continueOrder');
-Route::any('/continue_recurring', 'PayuController@continueRecurring');
-Route::any('/notify_recurring', 'PayuController@notifyRecurring');
-Route::get('/subscription_success', 'PayuController@subscriptionSuccess');
-
 Route::get('/order/{order}/course/{course_id}/remove', 'OrderController@removeCourse');
 Route::get('/order/{order}/lesson/{lesson_id}/remove', 'OrderController@removeLesson');
 Route::post('/order/{order}/pay', 'OrderController@pay')->name('order.pay');
@@ -65,9 +58,6 @@ Route::post('/get_proofs', 'ProofsController@get');
 Route::get('/proofs/next', 'ProofsController@axiosGet');
 
 Route::post('/contact_form', 'ContactFormController@send');
-
-Route::any('/paypal/ec-checkout-success', 'PayPalController@checkoutSuccess');
-Route::any('paypal/notify', 'PayPalController@notify');
 
 Route::get('/ranking', 'RankingController@index');
 Route::get('/a/ranking/my', 'RankingController@my');

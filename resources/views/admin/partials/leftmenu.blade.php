@@ -150,12 +150,19 @@
                     {{-- <li class="@if(request()->is('admin/user/new')) active @endif"><a href="{{ url('admin/user/new') }}"><i class="fa fa-plus"></i> Dodaj nowy</a></li> --}}
                 </ul>
                 <ul class="treeview-menu">
-                    <li class="@if(request()->is('admin/user/ranking/all')) active @endif"><a href="{{ url('admin/user/ranking/all') }}"><i
+                    <li class="@if(request()->is('admin/user/ranking/all')) active @endif"><a
+                                href="{{ url('admin/user/ranking/all') }}"><i
                                     class="fa fa-users"></i> Ranking wszechczasów</a></li>
                 </ul>
                 <ul class="treeview-menu">
-                    <li class="@if(request()->is('admin/user/ranking/month')) active @endif"><a href="{{ url('admin/user/ranking/month') }}"><i
+                    <li class="@if(request()->is('admin/user/ranking/month')) active @endif"><a
+                                href="{{ url('admin/user/ranking/month') }}"><i
                                     class="fa fa-users"></i> Ranking miesiąca</a></li>
+                </ul>
+                <ul class="treeview-menu">
+                    <li class="@if(request()->is('admin/user/partners')) active @endif"><a
+                                href="{{ url('admin/user/partners') }}"><i
+                                    class="fa fa-users"></i> Program partnerski</a></li>
                 </ul>
             </li>
             {{-- k. Użytkownicy --}}

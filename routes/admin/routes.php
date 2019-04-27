@@ -47,6 +47,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::patch('/coupon/{coupon}', 'AdminCouponsController@update');
 
     Route::get('/user', 'AdminUserController@index');
+    Route::get('/user/partners', 'AdminUserController@partner')->name('admin.users.partners');
+    Route::get('/user/ranking/{type}', 'AdminUserController@ranking');
+
     Route::get('/users/data', 'AdminUserController@getData');
     Route::get('/user/{user}', 'AdminUserController@edit');
     Route::patch('/user/{user}', 'AdminUserController@patch');
@@ -59,8 +62,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         ->name('admin.users.subscription_access');
     Route::get('/user/{user}/cancel_full_access', 'AdminUserController@cancelFullAccess')
         ->name('admin.users.cancel_full_access');
-
-    Route::get('/user/ranking/{type}', 'AdminUserController@ranking');
 
     Route::get('/menu', 'AdminMenusController@index');
     Route::post('/menu', 'AdminMenusController@store');
