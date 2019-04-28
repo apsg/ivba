@@ -20,7 +20,7 @@ class SendSubscriptionFailedEmail
     /**
      * Handle the event.
      *
-     * @param  SubscriptionPaymentFailed $event
+     * @param SubscriptionPaymentFailed $event
      * @return void
      */
     public function handle(SubscriptionCancelled $event)
@@ -30,9 +30,12 @@ class SendSubscriptionFailedEmail
         if ($event->subscription->user === null) {
             return;
         }
-
-        $event->subscription->user->notify(
-            new SubscriptionFailed($event->subscription)
-        );
+        try {
+            $event->subscription->user->notify(
+                new SubscriptionFailed($event->subscription)
+            );
+        } catch (\Swift_TransportException $e) {
+            // Do nothing
+        }
     }
 }

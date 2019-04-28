@@ -22,35 +22,10 @@ use Illuminate\Support\Collection;
  * @property-read Collection|Payment[] payments
  * @method-static Builder|Subscription active()
  * @property int $id
- * @property int $user_id
- * @property \Illuminate\Support\Carbon|null $valid_until
- * @property int $is_active
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $cancelled_at
- * @property int $tries
  * @property string|null $token
- * @property float $amount
- * @property int|null $coupon_id
- * @property-read \App\Coupon|null $coupon
  * @property-read mixed $final_total
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Payment[] $payments
- * @property-read \App\User $user
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription active()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription whereAmount($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription whereCancelledAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription whereCouponId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription whereToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription whereTries($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription whereValidUntil($value)
  * @mixin \Eloquent
  */
 class Subscription extends Model
