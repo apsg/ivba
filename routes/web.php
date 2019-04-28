@@ -66,36 +66,6 @@ Route::get('/a/ranking/total', 'RankingController@total');
 
 Route::get('/p/{partner}', 'PartnerController@index');
 
-
-Route::get('/test', function () {
-
-
-    $quiz = factory(Quiz::class)->create([
-        'course_id' => 2,
-    ]);
-
-    $quiz->questions()->save(factory(Question::class)->create([
-        'quiz_id' => $quiz->id,
-    ]));
-
-    /** @var Question $singleQuestion */
-    $singleQuestion = factory(Question::class, 'single')->create([
-        'quiz_id' => $quiz->id,
-    ]);
-
-    $singleQuestion->options()->save(factory(QuestionOption::class, 'correct')->make());
-    $singleQuestion->options()->save(factory(QuestionOption::class, 'incorrect')->make());
-
-    $multipleQuestion = factory(Question::class, 'multiple')->create([
-        'quiz_id' => $quiz->id,
-    ]);
-    $multipleQuestion->options()->save(factory(QuestionOption::class, 'correct')->make());
-    $multipleQuestion->options()->save(factory(QuestionOption::class, 'incorrect')->make());
-    $multipleQuestion->options()->save(factory(QuestionOption::class, 'correct')->make());
-    $multipleQuestion->options()->save(factory(QuestionOption::class, 'incorrect')->make());
-
-});
-
 Route::get('tpay', 'TpayController@showGate');
 Route::any('tpay/success', 'TpayController@success');
 Route::any('tpay/error', 'TpayController@error');
