@@ -100,7 +100,7 @@ class RegisterController extends Controller
         $cookies = collect(request()->cookies->all());
         /** @var Cookie $cookie */
         $cookie = $cookies->filter(function ($cookie) {
-            if ($cookie === null || ($cookie instanceof Cookie)) {
+            if ($cookie === null || !($cookie instanceof Cookie)) {
                 return false;
             }
 
