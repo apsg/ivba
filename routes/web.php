@@ -1,9 +1,5 @@
 <?php
 
-use App\Question;
-use App\QuestionOption;
-use App\Quiz;
-
 require __DIR__ . '/admin/routes.php';
 require __DIR__ . '/learn/routes.php';
 require __DIR__ . '/axios.php';
