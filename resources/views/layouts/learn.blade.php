@@ -12,14 +12,13 @@
 
     <link rel="icon" href="{{ url('/favicon.ico') }}">
 
-    <title>@yield('title', 'iVBA')</title>
+    <title>@yield('title', config('app.name'))</title>
 
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">
 </head>
 
 <body class="learn">
 <div id="app">
-
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ url('/') }}">
             <img src="{{ asset('/images/v2/inauka.png') }}">

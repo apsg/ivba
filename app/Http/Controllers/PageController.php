@@ -81,7 +81,7 @@ class PageController extends Controller
 
     /**
      * Pokaż stronę statyczną
-     * @param  Page $page [description]
+     * @param Page $page [description]
      * @return [type]       [description]
      */
     public function show($pagename, $subpage = null)

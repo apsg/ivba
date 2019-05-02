@@ -48,8 +48,8 @@ class RandomPasswordGenerated extends Notification
                     ->line('Wygenerowano dla Ciebie nowe hasło w systemie iExcel.pl. Pamiętaj, by zmienić to hasło zaraz po zalogowaniu.')
                     ->line('Twoje nowe hasło:')
                     ->line($this->password)
-                    ->action('Zaloguj się na iExcel.pl', url('/login'))
-                    ->line('Dziękujemy za używanie iExcel.pl');
+                    ->action('Zaloguj się na inauka.pl', url('/login'))
+                    ->line('Dziękujemy za używanie inauka.pl');
     }
 
     /**
