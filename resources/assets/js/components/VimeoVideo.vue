@@ -43,8 +43,8 @@
     .video {
         img {
             position: absolute;
-            bottom: 20px;
-            right: -10px;
+            bottom: 19px;
+            right: -12px;
             width: 150px;
         }
 

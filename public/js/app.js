@@ -7154,7 +7154,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".video img[data-v-fa7d3ae4] {\n  position: absolute;\n  bottom: 20px;\n  right: -10px;\n  width: 150px;\n}\n.video:hover img[data-v-fa7d3ae4] {\n  display: none;\n}", ""]);
+exports.push([module.i, ".video img[data-v-fa7d3ae4] {\n  position: absolute;\n  bottom: 19px;\n  right: -12px;\n  width: 150px;\n}\n.video:hover img[data-v-fa7d3ae4] {\n  display: none;\n}", ""]);
 
 // exports
 
