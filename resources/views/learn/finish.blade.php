@@ -1,7 +1,7 @@
 @extends('layouts.learn')
 
 @section('title')
-    iVBA |
+    {{ config('app.name') }} |
     {{ $course->title }}
 @endsection
 
