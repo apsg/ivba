@@ -3,8 +3,9 @@
         <progress
                 v-if="progress"
                 :value="finished"
-                :max="total"></progress>
-        <a v-if="progress" v-tooltip="'Postęp: '+finished+'/'+total+' ('+progress+'%)'">{{ p }}%</a>
+                :max="total"
+        ></progress>
+        <a v-if="progress" v-tooltip="'Postęp: '+ finished +'/'+total+' ('+ p +'%)'">{{ p }}%</a>
 
         <progress v-if="!progress"></progress>
     </div>

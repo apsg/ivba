@@ -2188,6 +2188,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ProgressBar",
   props: {
@@ -47675,9 +47676,9 @@ var render = function() {
                   "/" +
                   _vm.total +
                   " (" +
-                  _vm.progress +
+                  _vm.p +
                   "%)",
-                expression: "'Postęp: '+finished+'/'+total+' ('+progress+'%)'"
+                expression: "'Postęp: '+ finished +'/'+total+' ('+ p +'%)'"
               }
             ]
           },

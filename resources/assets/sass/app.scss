@@ -8,6 +8,7 @@
 // Components
 @import "meter";
 @import "~vue-flash-message/dist/vue-flash-message.min.css";
+@import "tooltip";
 
 .bg-gray-light {
     background-color: $color-bg-gray-light;
@@ -250,7 +251,7 @@ footer {
     }
 }
 
-.fm-container{
+.fm-container {
     position: absolute;
     top: 100px;
     right: 0;
