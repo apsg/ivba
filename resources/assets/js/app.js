@@ -1,9 +1,3 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
 require('jquery-ui');
@@ -26,7 +20,8 @@ import PriceAndCoupon from './components/PriceAndCoupon.vue';
 import Ranking from './components/Ranking.vue';
 import RankingUser from './components/RankingUser.vue';
 import PartnerLink from './components/PartnerLink.vue';
-import VTooltip from 'v-tooltip'
+import VTooltip from 'v-tooltip';
+import VimeoVideo from './components/VimeoVideo.vue';
 
 Vue.use(VueClipboard);
 Vue.use(VueFlashMessage);
@@ -47,6 +42,7 @@ const app = new Vue({
         Ranking,
         'ranking-user': RankingUser,
         'partner-link': PartnerLink,
+        'vimeo-video': VimeoVideo,
     }
 });
 

@@ -8,12 +8,12 @@ use Vimeo;
 /**
  * App\Video
  *
- * @property int $id
- * @property string $filename
- * @property string $hash
- * @property string $url
- * @property string $thumb
- * @property string|null $embed
+ * @property int                             $id
+ * @property string                          $filename
+ * @property string                          $hash
+ * @property string                          $url
+ * @property string                          $thumb
+ * @property string|null                     $embed
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Video newModelQuery()
@@ -47,8 +47,8 @@ class Video extends Model
 
     /**
      * Zwróć link do miniatury o podanych wymiarach
-     * @param  integer $width szerokość
-     * @param  integer $height wysokość
+     * @param integer $width szerokość
+     * @param integer $height wysokość
      * @return [string]          url do pliku
      */
     public function thumb($width = 200, $height = 200)
@@ -87,8 +87,8 @@ class Video extends Model
 
     /**
      * Wygeneruj kod do zagnieżdżania filmu
-     * @param  integer $width [description]
-     * @param  integer $height [description]
+     * @param integer $width [description]
+     * @param integer $height [description]
      * @return [type]          [description]
      */
     public function embed($width = 400, $height = 300)
@@ -100,5 +100,17 @@ class Video extends Model
             'width="' . $width . '"',
             'height="' . $height . '"',
         ], $this->embed);
+    }
+
+    public function embedSrc() : string
+    {
+        $result = '';
+        preg_match('/src=["\']+(.*?)["\']+/i', $this->embed, $result);
+
+        if (!empty($result)) {
+            return $result[1];
+        }
+
+        return '';
     }
 }

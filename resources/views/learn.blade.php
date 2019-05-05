@@ -42,9 +42,13 @@
     </h1>
     <div class="row">
 
-        <div class="col-md-12 video centered">
-            {!! $lesson->video ? $lesson->video->embed(1000, 600) : "" !!}
-        </div>
+{{--        <div class="col-md-12 video centered">--}}
+{{--            {!! $lesson->video ? $lesson->video->embed(1000, 600) : "" !!}--}}
+{{--        </div>--}}
+        @if($lesson->video)
+            <vimeo-video src="{{ $lesson->video->embedSrc() }}"></vimeo-video>
+        @endif
+
         @if($lesson->files()->count() > 0)
             <div class="col-md-12">
                 <hr/>
@@ -74,3 +78,10 @@
         <hr/>
     </div>
 @endsection
+<script>
+    import VimeoVideo from "../assets/js/components/VimeoVideo";
+
+    export default {
+        components: {VimeoVideo}
+    }
+</script>
