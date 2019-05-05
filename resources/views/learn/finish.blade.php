@@ -20,11 +20,16 @@
         @if( !empty($course->certificate) )
 
             @if( \Auth::user()->hasPassedCourse( $course->id ) && !empty($course->user_certificate) )
-                <a class="btn btn-success" href="{{ $course->user_certificate->getDownloadUrl() }}">Ściągnij certyfikat
-                    ukończenia kursu</a>
-                <p>Na certyfikacie widnieją złe dane? Wpisz swoje poprawne imię i nazwisko w <a
-                            href="{{url('/account')}}" target="_blank">ustawieniach swojego profilu</a>, a następnie
-                    ściągnij certyfikat jeszcze raz.</p>
+                <div class="col-md-12">
+                    <a class="btn btn-success" href="{{ $course->user_certificate->getDownloadUrl() }}">Ściągnij
+                        certyfikat
+                        ukończenia kursu</a>
+                </div>
+                <div class="col-md-12">
+                    <p>Na certyfikacie widnieją złe dane? Wpisz swoje poprawne imię i nazwisko w <a
+                                href="{{url('/account')}}" target="_blank">ustawieniach swojego profilu</a>, a następnie
+                        ściągnij certyfikat jeszcze raz.</p>
+                </div>
             @else
                 <p>Niestety, ten kurs nie posiada certyfikatu lub niektóre testy nie zostały zaliczone, przez co nie
                     możemy wystawić Ci certyfikatu. Możesz ponownie podejść do rozwiązywania testu po 14 dniach od jego
