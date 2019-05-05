@@ -27,6 +27,7 @@ use App\Listeners\Excelmailing\UserRegisteredListener;
 use App\Listeners\FollowupsListener;
 use App\Listeners\GrantPointsForFinishedLessonListener;
 use App\Listeners\GrantPointsForPassedQuizListener;
+use App\Listeners\InvalidateCachedProgressListener;
 use App\Listeners\PlanUserExpiredFollowups;
 use App\Listeners\PlanUserPaidFollowups;
 use App\Listeners\PlanUserRegisteredFollowups;
@@ -98,9 +99,11 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserFinishedLessonEvent::class        => [
             GrantPointsForFinishedLessonListener::class,
+            InvalidateCachedProgressListener::class,
         ],
         UserHasPassedQuizEvent::class         => [
             GrantPointsForPassedQuizListener::class,
+            InvalidateCachedProgressListener::class,
         ],
     ];
 

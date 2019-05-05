@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Quiz;
 use App\User;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -15,9 +16,13 @@ class UserHasPassedQuizEvent
     /** @var User */
     public $user;
 
-    public function __construct(User $user)
+    /** @var Quiz */
+    public $quiz;
+
+    public function __construct(User $user, Quiz $quiz)
     {
         $this->user = $user;
+        $this->quiz = $quiz;
     }
 
     /**

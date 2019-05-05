@@ -10,16 +10,21 @@ class UserFinishedLessonEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    /** @var int */
     public $userId;
+
+    /** @var int */
+    public $courseId;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(int $userId)
+    public function __construct(int $userId, int $courseId = null)
     {
         $this->userId = $userId;
+        $this->courseId = $courseId;
     }
 
     /**

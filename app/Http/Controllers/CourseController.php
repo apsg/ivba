@@ -1,9 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Helpers\ProgressHelper;
 use App\Services\CourseProgressService;
+use App\User;
+use Auth;
+use Cache;
 
 class CourseController extends Controller
 {
@@ -14,11 +17,18 @@ class CourseController extends Controller
 
     public function progress(Course $course, CourseProgressService $service)
     {
-        $user = \Auth::user();
-        $total = $service->total($course);
-        $finished = $service->finished($user, $course);
-        $progress = $service->progress($user, $course);
+        /** @var User $user */
+        $user = Auth::user();
 
-        return response()->json(compact('total', 'finished', 'progress'));
+        return Cache::remember(ProgressHelper::cacheKey($user, $course),
+            60,
+            function () use ($user, $service, $course) {
+
+                $total = $service->total($course);
+                $finished = $service->finished($user, $course);
+                $progress = $service->progress($user, $course);
+
+                return response()->json(compact('total', 'finished', 'progress'));
+            });
     }
 }

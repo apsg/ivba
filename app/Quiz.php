@@ -136,7 +136,7 @@ class Quiz extends Model
         $isPass = $percentage >= $this->pass_threshold;
 
         if ($isPass && !$user->hasPassedQuiz($this->id)) {
-            event(new UserHasPassedQuizEvent($user));
+            event(new UserHasPassedQuizEvent($user, $this));
         }
 
         $this->users()->updateExistingPivot($user->id, [

@@ -303,7 +303,7 @@ class Lesson extends Model implements OrderableContract
         }
 
         if (!$user->hasFinishedLesson($this->id)) {
-            event(new UserFinishedLessonEvent($user->id));
+            event(new UserFinishedLessonEvent($user->id, $courseId));
             $this->users()
                 ->updateExistingPivot(
                     $user->id,
