@@ -26,9 +26,11 @@ import PriceAndCoupon from './components/PriceAndCoupon.vue';
 import Ranking from './components/Ranking.vue';
 import RankingUser from './components/RankingUser.vue';
 import PartnerLink from './components/PartnerLink.vue';
+import VTooltip from 'v-tooltip'
 
 Vue.use(VueClipboard);
 Vue.use(VueFlashMessage);
+Vue.use(VTooltip);
 
 const app = new Vue({
     el: '#app',
@@ -40,7 +42,7 @@ const app = new Vue({
         CourseRating,
         Proofs,
         LastLesson,
-        ProgressBar,
+        'progress-bar': ProgressBar,
         'price-and-coupon': PriceAndCoupon,
         Ranking,
         'ranking-user': RankingUser,

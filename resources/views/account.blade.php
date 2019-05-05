@@ -47,7 +47,7 @@
                         <tr>
                             <th>Kurs</th>
                             <th>Data rozpoczęcia</th>
-                            <th>Data ukończenia</th>
+                            <th>Postęp</th>
                             <th>Link</th>
                             <th>Pobierz certyfikat</th>
                         </tr>
@@ -57,7 +57,9 @@
                             <tr>
                                 <th scope="row">{{ $course->title }}</th>
                                 <td>{{ $course->pivot->created_at }}</td>
-                                <td>{{ $course->pivot->finished_at }}</td>
+                                <td>
+                                    <progress-bar slug="{{ $course->slug }}"></progress-bar>
+                                </td>
                                 <td>
                                     @if(Gate::allows('access', $course))
                                         <a href="{{ $course->learnUrl() }}">Przejdź do kursu</a>
@@ -80,7 +82,8 @@
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="row">
-                        <partner-link link="{{$user->partnerLink()}}" count="{{ $user->refs()->count() }}"></partner-link>
+                        <partner-link link="{{$user->partnerLink()}}"
+                                      count="{{ $user->refs()->count() }}"></partner-link>
                         <div class="col-md-6">
                             <form action="{{ url('/account') }}" method="post">
                                 {{ csrf_field() }}

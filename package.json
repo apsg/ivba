@@ -31,6 +31,7 @@
     "jquery-ui": "^1.12.1",
     "npm": "^6.5.0",
     "tinymce": "^4.6.3",
+    "v-tooltip": "^2.0.2",
     "vue-carousel": "^0.16.2",
     "vue-clipboard2": "^0.3.0"
   }

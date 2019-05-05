@@ -1,8 +1,12 @@
 <template>
-    <div class="progressbar d-flex">
-        <div class="meter orange flex-fill">
-            <span :style="width">{{ current }}/{{ max }}</span>
-        </div>
+    <div>
+        <progress
+                v-if="progress"
+                :value="progress"
+                :max="total"></progress>
+        <a v-if="progress" v-tooltip="'Postęp: '+finished+'/'+total+' ('+progress+'%)'">{{ p }}%</a>
+
+        <progress v-if="!progress"></progress>
     </div>
 </template>
 
@@ -11,50 +15,41 @@
         name: "ProgressBar",
 
         props: {
-            min:{
-                type: Number,
-                default: 0,
+            slug: {
+                type: String,
+                default: '',
             },
+        },
 
-            max:{
-                type: Number,
-                default: 100,
-            },
-
-            current:{
-                type: Number,
-                default: 10,
+        data() {
+            return {
+                progress: null,
+                total: null,
+                finished: null,
             }
         },
 
-        computed:{
-            width()
-            {
-                let width = 100*(this.current-this.min)/(this.max - this.min);
+        mounted() {
+            axios.get('/learn/course/' + this.slug + '/progress')
+                .then(data => {
+                    this.progress = data.data.progress;
+                    this.total = data.data.total;
+                    this.finished = data.data.finished;
+                });
+        },
 
-                return "width: " + width + "%;";
+        computed: {
+            p() {
+                if (!this.progress)
+                    return 0;
+
+                return (100 * this.progress).toFixed(2);
             }
         }
+
     }
 </script>
 
 <style scoped lang="scss">
-
-    .progressbar{
-        height: 35px;
-
-        .meter {
-            height: 100%;
-
-            span{
-                color: #fff;
-                vertical-align: middle;
-                padding-left:10px;
-                line-height:12px;
-                font-weight: 700;
-            }
-        }
-    }
-
 
 </style>
