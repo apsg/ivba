@@ -47657,7 +47657,7 @@ var render = function() {
     _vm.progress
       ? _c("progress", {
           attrs: { max: _vm.total },
-          domProps: { value: _vm.progress }
+          domProps: { value: _vm.finished }
         })
       : _vm._e(),
     _vm._v(" "),
