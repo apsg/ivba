@@ -3,11 +3,13 @@
 @section('content')
     <section class="login-wrapper register">
         <div class="inner">
-            <div class="regiter-inner">
-                <div class="login-logo"><a href="{{ url('/') }}"><img src="images/v2/inauka.png" class="img-responsive"
-                                                                      alt=""></a></div>
+            <div class="register-inner">
+                <div class="login-logo">
+                    <a href="{{ url('/') }}">
+                        <img src="images/v2/inauka.png" class="img-responsive" alt="">
+                    </a>
+                </div>
                 <div class="head-block">
-
                     <h1>Resetuj hasło</h1>
                 </div>
                 <div class="cnt-block">
@@ -34,9 +36,9 @@
                         <input type="hidden" name="token" value="{{ $token }}">
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Adres E-Mail </label>
+                            <label for="email" class=" control-label">Adres E-Mail </label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="email" type="email" class="form-control" name="email"
                                        value="{{ $email or old('email') }}" required autofocus>
 
@@ -49,9 +51,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Hasło</label>
+                            <label for="password" class=" control-label">Hasło</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="password" type="password" class="form-control" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -63,8 +65,8 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Powtórz hasło</label>
-                            <div class="col-md-6">
+                            <label for="password-confirm" class=" control-label">Powtórz hasło</label>
+                            <div class="col-md-12">
                                 <input id="password-confirm" type="password" class="form-control"
                                        name="password_confirmation" required>
 
@@ -77,8 +79,8 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-ivba">
                                     Resetuj hasło
                                 </button>
                             </div>

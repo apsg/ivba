@@ -13984,3 +13984,9 @@ footer .footer-header {
   z-index: 1000;
 }
 
+@media screen and (min-width: 1024px) {
+  .register-inner {
+    width: 900px;
+  }
+}
+
