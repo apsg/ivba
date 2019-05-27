@@ -10,6 +10,8 @@
 
     <title>@yield('title') {{ config('app.name', 'Laravel') }}</title>
 
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}"/>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/inauka_custom.css') }}" rel="stylesheet">
