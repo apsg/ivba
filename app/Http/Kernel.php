@@ -36,7 +36,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\CheckForEmailClickedLinks::class,
-            \App\Http\Middleware\CheckPasswordAge::class,
+//            \App\Http\Middleware\CheckPasswordAge::class,
             HttpsMiddleware::class,
         ],
 
