@@ -13,7 +13,7 @@
 
             @if(!Auth::check())
 
-                <p>Zaloguj się, by wykupić abonament lub pełen dostęp</p>
+                <p>Zaloguj się, by wykupić abonament lub pełen dostęp.</p>
                 <a href="{{ url('/login') }}" class="btn btn-primary">Zaloguj</a>
             @elseif(Gate::denies('can-buy-subscription'))
                 <p>Aby kontynuować proces zakupu abonamentu musisz uzupełnić dane rozliczeniowe swojego
