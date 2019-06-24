@@ -28,10 +28,14 @@ Route::get('/cart/add_full_access', 'OrderController@addFullAccess');
 Route::get('/cart/remove_full_access', 'OrderController@removeFullAccess');
 Route::get('/cart/add_subscription', 'OrderController@addSubscription');
 
+Route::get('/easy_access', 'EasyAccessController@showForm');
+Route::get('/easy_access/add/{duration}', 'EasyAccessController@add');
+
 Route::get('/order/{order}/course/{course_id}/remove', 'OrderController@removeCourse');
 Route::get('/order/{order}/lesson/{lesson_id}/remove', 'OrderController@removeLesson');
 Route::post('/order/{order}/pay', 'OrderController@pay')->name('order.pay');
 Route::post('/order/{order}/add_coupon', 'OrderController@addCoupon');
+Route::get('/order/{order}/remove_easy_access', 'OrderController@removeEasyAccess');
 Route::get('/order/{order}/remove_coupon/{coupon}', 'OrderController@removeCoupon');
 
 Route::post('subscription/create', 'SubscriptionsController@create');

@@ -13,7 +13,6 @@ class PaymentRepository
     const STATUS_CORRECT = 'correct';
     const STATUS_DECLINED = 'declined';
 
-
     public function createFirst(Subscription $subscription) : Payment
     {
         return Payment::create([

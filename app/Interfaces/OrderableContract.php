@@ -5,7 +5,7 @@ use App\Order;
 
 interface OrderableContract
 {
-    public function cartName();
+    public function cartName() : string;
 
-    public function removeLink(Order $order);
+    public function removeLink(Order $order) : string;
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Course;
 use App\FullAccessOption;
 use App\Lesson;
-use App\MenuItem;
 use App\Order;
 use Cache;
 use Illuminate\Http\Request;
@@ -70,7 +69,7 @@ class PagesController extends Controller
 
     /**
      * Obsługa strony z wynikami wyszukiwania
-     * @param  Request $request [description]
+     * @param Request $request [description]
      * @return [type]           [description]
      */
     public function search(Request $request)

@@ -121,4 +121,10 @@ class OrderController extends Controller
         return back();
     }
 
+    public function removeEasyAccess(Order $order)
+    {
+        $order->clear();
+
+        return back();
+    }
 }

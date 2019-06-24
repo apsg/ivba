@@ -320,23 +320,21 @@ class Lesson extends Model implements OrderableContract
     /**
      * Nazwa do wyświetlania w koszyku
      */
-    public function cartName()
+    public function cartName() : string
     {
         return "Lekcja #" . $this->id . " - " . $this->title;
     }
 
     /**
      * Link usuwania z koszyka
-     * @return [type] [description]
      */
-    public function removeLink(Order $order)
+    public function removeLink(Order $order) : string
     {
         return url('/order/' . $order->id . '/lesson/' . $this->id . '/remove');
     }
 
     /**
      * Zwraca sformatowany tekst stopnia trudności
-     * @return [type] [description]
      */
     public function difficulty()
     {

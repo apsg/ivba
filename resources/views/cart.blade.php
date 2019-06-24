@@ -28,6 +28,18 @@
                                         class="fa fa-remove"></i></a>
                         </td>
                     </tr>
+                @elseif($order->is_easy_access)
+                    <tr>
+                        <th>1</th>
+                        <td>{{ $order->description }}</td>
+                        <td>Miesięcy: {{ $order->duration }}</td>
+                        <td>{{ $order->sum() }}</td>
+                        <td>
+                            <a href="{{ url('/order/'.$order->id.'/remove_easy_access') }}"
+                               alt="usuń element z koszyka"><i
+                                        class="fa fa-remove"></i></a>
+                        </td>
+                    </tr>
                 @else
                     {{-- do nothing for now --}}
                 @endif
@@ -112,7 +124,8 @@
                     <div class="form-group">
                         <input id="regulamin" type="checkbox" name="rules" class="">
                         <label for="regulamin" class="form-check-label">
-                            Akceptuję <a href="{{ url('/regulamin') }}" target="_blank">Regulamin strony {{ config('app.name') }}</a>
+                            Akceptuję <a href="{{ url('/regulamin') }}" target="_blank">Regulamin
+                                strony {{ config('app.name') }}</a>
                             (wymagane)
                         </label>
                     </div>

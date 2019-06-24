@@ -3,6 +3,7 @@ namespace App;
 
 use App\Events\UserPaidForAccess;
 use App\Notifications\OrderConfirmed;
+use App\Repositories\AccessDaysRepository;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,38 +11,21 @@ use Illuminate\Database\Eloquent\Model;
  * Class Order
  *
  * @package App
- * @property string|null external_payment_id
- * @property Carbon      confirmed_at
- * @property int         duration
- * @property-read User   user
- * @property int $id
- * @property int $user_id
- * @property \Illuminate\Support\Carbon|null $confirmed_at
- * @property int $is_full_access
- * @property string|null $external_payment_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property float|null $final_total
- * @property float|null $price
- * @property int|null $duration
- * @property string|null $description
+ * @property string|null                                                 external_payment_id
+ * @property Carbon                                                      confirmed_at
+ * @property int                                                         duration
+ * @property-read User                                                   user
+ * @property int                                                         $id
+ * @property int                                                         $user_id
+ * @property bool                                                        $is_full_access
+ * @property bool                                                        is_easy_access
+ * @property \Illuminate\Support\Carbon|null                             $created_at
+ * @property \Illuminate\Support\Carbon|null                             $updated_at
+ * @property float|null                                                  $final_total
+ * @property float|null                                                  $price
+ * @property string|null                                                 $description
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Coupon[] $coupons
- * @property-read \App\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order confirmed()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Order newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Order newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Order query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereConfirmedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDuration($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereExternalPaymentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereFinalTotal($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereIsFullAccess($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Order wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereUserId($value)
  * @mixin \Eloquent
  */
 class Order extends Model
@@ -69,12 +53,17 @@ class Order extends Model
         return $this->belongsToMany(Coupon::class);
     }
 
+    public function orderables()
+    {
+        return $this->morphMany();
+    }
+
     /**
      * Suma cen elementów (przed ewentualnymi rabatami)
      */
     public function sum() : float
     {
-        return $this->is_full_access ? $this->price : 0;
+        return $this->is_full_access || $this->is_easy_access ? $this->price : 0;
     }
 
     /**
@@ -121,8 +110,11 @@ class Order extends Model
         if ($this->is_full_access) {
             $days = Carbon::now()->addMonths($this->duration)->diffInDays();
             $this->user->updateFullAccess($days);
-        } else {
-            // and nothing else matters...
+        }
+
+        if ($this->is_easy_access) {
+            app(AccessDaysRepository::class)
+                ->grantAccessMonths($this->user, $this->duration);
         }
 
         // "Skasuj" wszystkie użyte kody rabatowe w tym zamówieniu
@@ -157,5 +149,31 @@ class Order extends Model
             $q->whereNotNull('confirmed_at')
                 ->orWhereNotNull('external_payment_id');
         });
+    }
+
+    public function setEasyAccess(int $duration) : self
+    {
+        $this->update([
+            'is_full_access' => false,
+            'is_easy_access' => true,
+            'duration'       => $duration,
+            'description'    => 'Dostęp do strony ' . config('app.name') . ' ' . $duration . ' mies.',
+            'price'          => $duration * config('ivba.subscription_price'),
+        ]);
+
+        return $this;
+    }
+
+    public function clear() : self
+    {
+        $this->update([
+            'is_full_access' => false,
+            'is_easy_access' => false,
+            'duration'       => 0,
+            'description'    => '',
+            'price'          => 0,
+        ]);
+
+        return $this;
     }
 }

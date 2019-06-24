@@ -9,31 +9,21 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Payment
  *
- * @property string            subscription_id
- * @property string            title
- * @property float             amount
- * @property string            external_id
- * @property Carbon            cancelled_at
- * @property Carbon            confirmed_at
- * @property bool              is_recurrent
- * @property string|null       cancel_reason
- * @property-read Subscription subscription
- * @property-read string       reason
+ * @property string                          subscription_id
+ * @property string                          title
+ * @property float                           amount
+ * @property string                          external_id
+ * @property Carbon                          cancelled_at
+ * @property Carbon                          confirmed_at
+ * @property bool                            is_recurrent
+ * @property string|null                     cancel_reason
+ * @property-read Subscription               subscription
+ * @property-read string                     reason
  * @method Builder|Payment forUser(User $user)
  * @method Builder|Payment confirmed()
- * @property int $id
- * @property int $subscription_id
- * @property string $title
- * @property float $amount
- * @property string|null $external_id
- * @property \Illuminate\Support\Carbon|null $confirmed_at
- * @property \Illuminate\Support\Carbon|null $cancelled_at
- * @property string|null $cancel_reason
- * @property int $is_recurrent
+ * @property int                             $id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read mixed $reason
- * @property-read \App\Subscription $subscription
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment query()

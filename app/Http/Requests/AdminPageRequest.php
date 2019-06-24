@@ -24,9 +24,9 @@ class AdminPageRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title'   => 'required',
             'content' => 'required',
-            'slug' => 'required|unique:pages,slug,'.($this->route('page')->id ?? "")
+            'slug'    => 'required|unique:pages,slug,' . ($this->route('page')->id ?? ""),
         ];
     }
 }

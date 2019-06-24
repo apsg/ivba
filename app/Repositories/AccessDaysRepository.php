@@ -31,4 +31,28 @@ class AccessDaysRepository
             $current->addDay();
         }
     }
+
+    public function grantAccessMonths(User $user, int $months)
+    {
+        $lastDay = $this->getLastAccessDay($user);
+
+        $toDay = (clone $lastDay)->addMonths($months);
+
+        $this->sync($user, $toDay, $lastDay);
+    }
+
+    public function getLastAccessDay(User $user) : Carbon
+    {
+        /** @var AccessDay $lastDay */
+        $lastDay = $user->days()
+            ->future()
+            ->orderBy('date', 'desc')
+            ->first();
+
+        if ($lastDay === null) {
+            return Carbon::now();
+        }
+
+        return Carbon::parse($lastDay->date);
+    }
 }
