@@ -82,6 +82,7 @@ class User extends Authenticatable
         'address',
         'partner_key',
         'partner_id',
+        'isadmin',
     ];
 
     /**
