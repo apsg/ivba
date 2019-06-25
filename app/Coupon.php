@@ -3,35 +3,23 @@
 namespace App;
 
 use App\Exceptions\NoCouponUsesLeftException;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * Class Coupon
  *
  * @package App
- * @property string      code
- * @property int         uses_left
- * @property int         type
- * @property-read string type_text
- * @property int $id
- * @property string $code
- * @property int $type
- * @property float $amount
- * @property int $uses_left
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read mixed $type_text
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Order[] $orders
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Coupon newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Coupon newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Coupon query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Coupon whereAmount($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Coupon whereCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Coupon whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Coupon whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Coupon whereType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Coupon whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Coupon whereUsesLeft($value)
+ * @property string                  code
+ * @property int                     uses_left
+ * @property int                     type
+ * @property-read string             type_text
+ * @property int                     $id
+ * @property float                   amount
+ * @property Carbon|null             created_at
+ * @property Carbon|null             updated_at
+ * @property-read Collection|Order[] $orders
  * @mixin \Eloquent
  */
 class Coupon extends Model

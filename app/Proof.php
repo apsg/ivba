@@ -17,27 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int         user_id
  * @property Carbon      created_at
  * @property Carbon      updated_at
- * @property int $id
- * @property string $name
- * @property string|null $city
- * @property string|null $url
- * @property string $body
- * @property int $is_registered
- * @property int $user_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proof newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proof newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proof query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proof whereBody($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proof whereCity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proof whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proof whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proof whereIsRegistered($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proof whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proof whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proof whereUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proof whereUserId($value)
+ * @property int         $id
  * @mixin \Eloquent
  */
 class Proof extends Model

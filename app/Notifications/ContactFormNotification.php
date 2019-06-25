@@ -43,7 +43,7 @@ class ContactFormNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line($message)
+                    ->line($this->message)
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }

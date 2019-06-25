@@ -81,7 +81,7 @@ class RecalculateRatingCommand extends Command
         }
 
         foreach ($passedQuizzes as $quiz) {
-            $this->service->grantForQuiz($quiz->user_id, $lesson->created_at);
+            $this->service->grantForQuiz($quiz->user_id, $quiz->created_at);
         }
 
         $this->info('Finished');
