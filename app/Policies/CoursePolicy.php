@@ -12,10 +12,6 @@ class CoursePolicy
 
     /**
      * Determine whether the user can view the course.
-     *
-     * @param \App\User   $user
-     * @param \App\Course $course
-     * @return mixed
      */
     public function view(User $user, Course $course)
     {
@@ -24,6 +20,14 @@ class CoursePolicy
 
     public function access(User $user, Course $course)
     {
-        return $user->hasFullAccess() || $course->hasAccess($user->id);
+        if ($user->hasFullAccess()) {
+            return true;
+        }
+
+        if ($course->hasAccess($user->id)) {
+            return true;
+        }
+
+        return false;
     }
 }

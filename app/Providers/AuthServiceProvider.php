@@ -46,38 +46,16 @@ class AuthServiceProvider extends ServiceProvider
         Czy dany użytkownik ma dostęp do tego kursu?
          */
         Gate::define('access-course', function (User $user, Course $course) {
-            return Auth::check() && ($user->hasFullAccess() || $course->hasAccess($user->id));
+            return Gate::check('access', $course);
         });
 
         /*
         Czy dany użytkownik ma dostęp do tej lekcji?
          */
         Gate::define('access-lesson', function (User $user, Lesson $lesson) {
-            return Auth::check() && (
-                    $user->hasFullAccess()
-                    || $lesson->hasCourseAccess($user->id)
-                    || $lesson->hasAccess($user->id)
-                );
+            return Gate::check('access', $lesson);
         });
 
-        /**
-         * Czy dany użytkownik ma dostęp do lekcji lub kursu?
-         */
-        Gate::define('access', function (User $user, $item) {
-            if (Auth::check() && $user->hasFullAccess()) {
-                return true;
-            }
-
-            if ($item instanceof Course) {
-                return $item->hasAccess($user->id);
-            }
-
-            if ($item instanceof Lesson) {
-                return $item->hasAccess($user->id) || $item->hasCourseAccess($user->id);
-            }
-
-            return false;
-        });
 
         /**
          * Czy użytkownik może podejść ponownie do testu?

@@ -34,7 +34,7 @@ class CourseProgressTest extends TestCase
         parent::setUp();
 
         $this->user = factory(User::class)->create();
-        $this->course = $this->creteCourse(5);
+        $this->course = $this->createCourse(5);
         $this->quiz = $this->createQuiz($this->course);
         $this->service = app(CourseProgressService::class);
     }

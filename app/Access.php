@@ -1,7 +1,9 @@
 <?php
 namespace App;
 
+use App\Interfaces\AccessableContract;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -11,11 +13,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property int         $user_id
  * @property string|null $accessable_type
  * @property int|null    $accessable_id
- * @property Carbon      $expires
+ * @property Carbon|null $expires_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Model  $accessable
  * @property-read User   $user
+ * @method Builder forUser(User $user)
+ * @method Builder forItem(AccessableContract $item)
+ * @method Builder valid()
  * @mixin \Eloquent
  */
 class Access extends Model
@@ -24,7 +29,7 @@ class Access extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'expires' => 'datetime',
+        'expires_at' => 'datetime',
     ];
 
     /**
@@ -48,46 +53,20 @@ class Access extends Model
      */
     public function scopeValid($query)
     {
-        $query->where('expires', '>', Carbon::now());
+        $query->where(function ($q) {
+            $q->whereNull('expires_at')
+                ->orWhere('expires_at', '>', Carbon::now());
+        });
     }
 
-    /**
-     * Przyznaj użytkownikowi dostęp do elementu na X dni
-     * @param integer $user_id [description]
-     * @param model   $item [description]
-     * @param integer $days [description]
-     * @return [type]          [description]
-     */
-    public static function grant($user_id, $item, $days)
+    public function scopeForUser($query, User $user)
     {
-
-        if ($access = Access::where([
-            'user_id'         => $user_id,
-            'accessable_type' => get_class($item),
-            'accessable_id'   => $item->id,
-        ])->first()) {
-            // jeśli dostęp istnieje, ale wygasł, aktywujemy
-            if ($access->expires->isPast()) {
-                $access->update([
-                    'expires' => Carbon::now()->addDays($days),
-                ]);
-
-                return $access;
-            } else {
-                // jeśli dostęp istnieje - przedłużamy
-                $access->expires = $access->expires->addDays($days);
-                $access->save();
-
-                return $access;
-            }
-        } else {
-            return static::create([
-                'user_id'         => $user_id,
-                'accessable_type' => get_class($item),
-                'accessable_id'   => $item->id,
-                'expires'         => Carbon::now()->addDays($days),
-            ]);
-        }
+        $query->where('user_id', '=', $user->id);
     }
 
+    public function scopeForItem($query, AccessableContract $item)
+    {
+        $query->where('accessable_id', '=', $item->id)
+            ->where('accessable_type', '=', get_class($item));
+    }
 }

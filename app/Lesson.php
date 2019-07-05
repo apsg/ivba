@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Events\UserFinishedLessonEvent;
+use App\Interfaces\AccessableContract;
 use App\Interfaces\OrderableContract;
 use App\Traits\ChecksSlugs;
 use Auth;
@@ -14,52 +15,33 @@ use Illuminate\Support\Collection;
 /**
  * Class Lesson
  *
- * @property string                                                         title
- * @property string                                                         description
- * @property string                                                         seo_title
- * @property string                                                         seo_description
- * @property float                                                          price
- * @property int                                                            difficulty
- * @property string                                                         slug
- * @property int                                                            image_id
- * @property int                                                            video_id
- * @property int                                                            user_id
- * @property string                                                         introduction
- * @property int                                                            duration
- * @property-read Image                                                     image
- * @property-read Video                                                     video
- * @property-read Collection|Course[]                                       courses
- * @property int                                                            $id
- * @property \Illuminate\Support\Carbon|null                                $created_at
- * @property \Illuminate\Support\Carbon|null                                $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\ItemFile[]  $files
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\ItemImage[] $images
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\ItemText[]  $texts
- * @property-read \App\User                                                 $user
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[]      $users
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\ItemMovie[] $videos
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson except($id)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson whereDifficulty($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson whereDuration($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson whereImageId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson whereIntroduction($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson whereSeoDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson whereSeoTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Lesson whereVideoId($value)
+ * @property string                      title
+ * @property string                      description
+ * @property string                      seo_title
+ * @property string                      seo_description
+ * @property float                       price
+ * @property int                         difficulty
+ * @property string                      slug
+ * @property int                         image_id
+ * @property int                         video_id
+ * @property int                         user_id
+ * @property string                      introduction
+ * @property int                         duration
+ * @property-read Image                  image
+ * @property-read Video                  video
+ * @property-read Collection|Course[]    courses
+ * @property int                         $id
+ * @property Carbon|null                 $created_at
+ * @property Carbon|null                 $updated_at
+ * @property-read Collection|ItemFile[]  $files
+ * @property-read Collection|ItemImage[] $images
+ * @property-read Collection|ItemText[]  $texts
+ * @property-read User                   $user
+ * @property-read Collection|User[]      $users
+ * @property-read Collection|ItemMovie[] $videos
  * @mixin \Eloquent
  */
-class Lesson extends Model implements OrderableContract
+class Lesson extends Model implements OrderableContract, AccessableContract
 {
     use ChecksSlugs;
 
@@ -84,7 +66,6 @@ class Lesson extends Model implements OrderableContract
 
     /**
      * Po czym przeszukujemy ścieżki
-     * @return [type] [description]
      */
     public function getRouteKeyName()
     {

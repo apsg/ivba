@@ -40,7 +40,7 @@ class QuizTest extends TestCase
         $this->user->update([
             'full_access_expires' => Carbon::now()->addMonth(),
         ]);
-        $this->course = $this->creteCourse();
+        $this->course = $this->createCourse();
         $this->quiz = $this->createQuiz($this->course);
 
         $this->actingAs($this->user);

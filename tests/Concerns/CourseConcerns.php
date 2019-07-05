@@ -6,7 +6,7 @@ use App\Lesson;
 
 trait CourseConcerns
 {
-    public function creteCourse($lessons = 0) : Course
+    public function createCourse($lessons = 0) : Course
     {
         $course = factory(Course::class)->create();
 

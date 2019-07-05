@@ -12,10 +12,6 @@ class LessonPolicy
 
     /**
      * Determine whether the user can view the lesson.
-     *
-     * @param \App\User   $user
-     * @param \App\Lesson $lesson
-     * @return mixed
      */
     public function view(User $user, Lesson $lesson)
     {

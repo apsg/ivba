@@ -14,8 +14,8 @@ class AccessesChangeExpirationColumn extends Migration
     public function up()
     {
         Schema::table('accesses', function (Blueprint $table) {
-            $table->dateTime('expires')->nullable()->change();
-            $table->renameColumn('expires', 'expires_at');
+            $table->dropColumn('expires');
+            $table->dateTime('expires_at')->nullable();
         });
     }
 
@@ -27,8 +27,8 @@ class AccessesChangeExpirationColumn extends Migration
     public function down()
     {
         Schema::table('accesses', function (Blueprint $table) {
-            $table->dateTime('expires_at')->change();
-            $table->renameColumn('expires_at', 'expires');
+            $table->dropColumn('expires_at');
+            $table->dateTime('expires');
         });
     }
 }
