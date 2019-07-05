@@ -9,12 +9,13 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\Concerns\CourseConcerns;
 use Tests\Concerns\QuizConcerns;
+use Tests\Concerns\UserConcerns;
 use Tests\TestCase;
 
 class QuizTest extends TestCase
 {
     use DatabaseTransactions;
-
+    use UserConcerns;
     use QuizConcerns;
     use CourseConcerns;
 
