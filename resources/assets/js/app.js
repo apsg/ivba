@@ -22,6 +22,7 @@ import RankingUser from './components/RankingUser.vue';
 import PartnerLink from './components/PartnerLink.vue';
 import VTooltip from 'v-tooltip';
 import VimeoVideo from './components/VimeoVideo.vue';
+import Quicksale from './components/Quicksale.vue';
 
 Vue.use(VueClipboard);
 Vue.use(VueFlashMessage);
@@ -43,6 +44,7 @@ const app = new Vue({
         'ranking-user': RankingUser,
         'partner-link': PartnerLink,
         'vimeo-video': VimeoVideo,
+        'quicksale': Quicksale
     }
 });
 

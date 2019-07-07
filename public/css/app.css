@@ -13741,6 +13741,13 @@ a.text-dark:focus {
   transition: opacity 0.15s;
 }
 
+html,
+body.quicksale {
+  height: 100%;
+  margin-bottom: 0px !important;
+  background-color: #fd7e14;
+}
+
 .bg-gray-light {
   background-color: #fafafa;
 }

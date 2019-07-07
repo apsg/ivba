@@ -193,6 +193,7 @@ class Order extends Model
             'description'    => '',
             'price'          => 0,
         ]);
+        $this->quick_sales()->detach();
 
         return $this;
     }

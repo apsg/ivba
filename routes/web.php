@@ -70,8 +70,14 @@ Route::get('tpay', 'TpayController@showGate');
 Route::any('tpay/success', 'TpayController@success');
 Route::any('tpay/error', 'TpayController@error');
 Route::any('tpay/notify', 'TpayController@notification');
-ROute::any('tpay/ipn', 'TpayController@ipn');
+Route::any('tpay/ipn', 'TpayController@ipn');
+
+Route::group(['prefix' => 'qs'], function () {
+    Route::get('/{hash}', 'QuickSalesController@show');
+    Route::post('/{hash}/order', 'QuickSalesController@order');
+});
 
 // To musi być na samym końcu, by nie blokowało innych ścieżek
 Route::get('/{page}/{subpage?}', 'PageController@show');
+
 
