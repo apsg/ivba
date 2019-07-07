@@ -4,28 +4,32 @@ namespace App;
 use App\Events\UserPaidForAccess;
 use App\Notifications\OrderConfirmed;
 use App\Repositories\AccessDaysRepository;
+use App\Repositories\AccessRepository;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Order
  *
  * @package App
- * @property string|null                                                 external_payment_id
- * @property Carbon                                                      confirmed_at
- * @property int                                                         duration
- * @property-read User                                                   user
- * @property int                                                         $id
- * @property int                                                         $user_id
- * @property bool                                                        $is_full_access
- * @property bool                                                        is_easy_access
- * @property \Illuminate\Support\Carbon|null                             $created_at
- * @property \Illuminate\Support\Carbon|null                             $updated_at
- * @property float|null                                                  $final_total
- * @property float|null                                                  $price
- * @property string|null                                                 $description
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Coupon[] $coupons
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Order confirmed()
+ * @property string|null                 external_payment_id
+ * @property Carbon                      confirmed_at
+ * @property int                         duration
+ * @property-read User                   user
+ * @property int                         $id
+ * @property int                         $user_id
+ * @property bool                        $is_full_access
+ * @property bool                        is_easy_access
+ * @property Carbon|null                 $created_at
+ * @property Carbon|null                 $updated_at
+ * @property float|null                  $final_total
+ * @property float|null                  $price
+ * @property string|null                 $description
+ * @property-read Collection|Coupon[]    $coupons
+ * @property-read Collection|QuickSale[] quick_sales
+ * @method static Builder|Order confirmed()
  * @mixin \Eloquent
  */
 class Order extends Model
@@ -46,16 +50,15 @@ class Order extends Model
 
     /**
      * Lista kodów rabatowych dodanych do tego zamówienia
-     * @return [type] [description]
      */
     public function coupons()
     {
         return $this->belongsToMany(Coupon::class);
     }
 
-    public function orderables()
+    public function quick_sales()
     {
-        return $this->morphMany();
+        return $this->morphedByMany(QuickSale::class, 'orderable');
     }
 
     /**
@@ -63,7 +66,18 @@ class Order extends Model
      */
     public function sum() : float
     {
-        return $this->is_full_access || $this->is_easy_access ? $this->price : 0;
+        if ($this->is_full_access || $this->is_easy_access) {
+            return $this->price;
+        }
+
+        return $this->countOrderablesSum();
+    }
+
+    protected function countOrderablesSum() : float
+    {
+        $quickSalesSum = $this->quick_sales()->sum('price');
+
+        return $quickSalesSum;
     }
 
     /**
@@ -115,6 +129,12 @@ class Order extends Model
         if ($this->is_easy_access) {
             app(AccessDaysRepository::class)
                 ->grantAccessMonths($this->user, $this->duration);
+        }
+
+        $accessRepository = app(AccessRepository::class);
+
+        foreach ($this->quick_sales as $quickSale) {
+            $accessRepository->grant($this->user, $quickSale->course);
         }
 
         // "Skasuj" wszystkie użyte kody rabatowe w tym zamówieniu

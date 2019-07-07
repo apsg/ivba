@@ -53,7 +53,7 @@ class EasyAccessControllerTest extends TestCase
      * @test
      * @dataProvider durations
      */
-    public function it_should_add_orderable_item_to_cart_when_user_clicks_on_easy_access($duration, $result)
+    public function it_should_add_orderable_item_to_cart_when_user_clicks_on_easy_access($duration, $resultShouldBeOk)
     {
         // given
         $url = url('easy_access/add/' . $duration);
@@ -66,7 +66,7 @@ class EasyAccessControllerTest extends TestCase
         $order = $this->user->getCurrentOrder();
 
         // then
-        if ($result) {
+        if ($resultShouldBeOk) {
             $response->assertSessionDoesntHaveErrors();
             $response->assertRedirect('/cart');
             $this->assertEquals($duration, $order->duration);
