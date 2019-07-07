@@ -46,7 +46,7 @@
                             <div class="d-flex">
                                 <a href="{{ url('/admin/quicksales/'.$sale->id) }}"
                                    class="btn btn-primary mr-3">Zobacz</a>
-                                <form action="{{ url('/admin/quicksales'. $sale->id) }}" method="post">
+                                <form action="{{ url('/admin/quicksales/'. $sale->id) }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger confirm"><i class="fa fa-trash"></i> Usuń</button>
