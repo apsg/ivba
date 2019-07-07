@@ -116,4 +116,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('/payments/data', 'AdminPaymentsController@getData');
 
     Route::post('update_editable', 'AdminEditablesController@update');
+
+    Route::group(['prefix' => 'quicksales'], function () {
+        Route::get('/', 'AdminQuickSalesController@index');
+        Route::get('/create', 'AdminQuickSalesController@create');
+        Route::post('/', 'AdminQuickSalesController@store');
+        Route::delete('/{quickSale}', 'AdminQuickSalesController@destroy');
+    });
 });

@@ -25,7 +25,7 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li class="header">MAIN NAVIGATION</li>
+            <li class="header">NAWIGACJA</li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Kokpit</span>
@@ -40,7 +40,7 @@
             </li>
 
             {{-- Zamówienia --}}
-            <li class="treeview @if(request()->is('admin/orders*') || request()->is('admin/payments*') ) active @endif">
+            <li class="treeview @if(request()->is('admin/orders*') || request()->is('admin/payments*') || request()->is('admin/quicksales*') ) active @endif">
                 <a href="#">
                     <i class="fa fa-shopping-bag"></i> <span>Zamówienia</span>
                     <span class="pull-right-container">
@@ -52,6 +52,10 @@
                                     class="fa fa-shopping-bag"></i> Zamówienia</a></li>
                     <li class="@if(request()->is('admin/payments')) active @endif"><a
                                 href="{{ url('admin/payments') }}"><i class="fa fa-credit-card"></i> Płatności</a>
+                    </li>
+                    <li class="@if(request()->is('admin/quicksales')) active @endif"><a
+                                href="{{ url('admin/quicksales') }}"><i class="fa fa-fighter-jet"></i> Szybka
+                            sprzedaż</a>
                     </li>
                 </ul>
             </li>

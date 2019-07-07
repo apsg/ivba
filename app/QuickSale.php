@@ -28,7 +28,18 @@ use Illuminate\Database\Eloquent\Model;
  */
 class QuickSale extends Model implements OrderableContract
 {
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'hash',
+        'description',
+        'rules_url',
+        'price',
+        'full_price',
+        'course_id',
+        'message_email',
+        'message_subject',
+        'message_body',
+    ];
 
     public function course()
     {
