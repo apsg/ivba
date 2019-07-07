@@ -27,7 +27,9 @@ class QuickSaleTest extends TestCase
         // given
 
         // when
+        /** @var QuickSale $object */
         $object = factory(QuickSale::class)->create();
+        $object = $object->fresh();
 
         // then
         $this->assertNotNull($object->id);
@@ -37,5 +39,8 @@ class QuickSaleTest extends TestCase
             'name' => $object->name,
         ]);
         $this->assertInstanceOf(OrderableContract::class, $object);
+        $this->assertNotNull($object->hash);
+        $this->assertNotNull($object->link);
+        $this->assertStringEndsNotWith(url('/qs/'), $object->link);
     }
 }

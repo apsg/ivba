@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int         id
+ * @property string      hash
  * @property string      name
  * @property string|null description
  * @property string      rules_url
@@ -21,6 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property Carbon      created_at
  * @property Carbon      updated_at
+ *
+ * @property-read string link
  *
  */
 class QuickSale extends Model implements OrderableContract
@@ -40,5 +43,10 @@ class QuickSale extends Model implements OrderableContract
     public function removeLink(Order $order) : string
     {
         // TODO: Implement removeLink() method.
+    }
+
+    public function getLinkAttribute()
+    {
+        return url('/qs/' . $this->hash);
     }
 }

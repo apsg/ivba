@@ -3,6 +3,8 @@ namespace App\Providers;
 
 use App\Email;
 use App\Observers\EmailObserver;
+use App\Observers\QuickSaleObserver;
+use App\QuickSale;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
@@ -38,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Email::observe(EmailObserver::class);
+        QuickSale::observe(QuickSaleObserver::class);
     }
 
     /**

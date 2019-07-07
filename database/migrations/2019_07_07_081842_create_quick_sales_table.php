@@ -15,6 +15,7 @@ class CreateQuickSalesTable extends Migration
     {
         Schema::create('quick_sales', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('hash')->nullable();
 
             $table->string('name');
             $table->text('description')->nullable();
