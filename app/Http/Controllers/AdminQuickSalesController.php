@@ -10,7 +10,7 @@ class AdminQuickSalesController extends Controller
 {
     public function index()
     {
-        $quickSales = QuickSale::all();
+        $quickSales = QuickSale::with('course')->get();
 
         return view('admin.quicksales.index')->with(compact('quickSales'));
     }

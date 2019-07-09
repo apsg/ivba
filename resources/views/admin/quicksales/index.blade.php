@@ -37,6 +37,7 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text">{{ $sale->description }}</p>
+                            <p class="card-text"><strong>Kurs #{{ $sale->course->id }}</strong> - {{ $sale->course->title }}</p>
 
                         </div>
                         <div class="card-footer text-muted d-flex justify-content-between">
