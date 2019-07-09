@@ -59,11 +59,11 @@ class TpayTransaction extends TransactionApi
 
     protected function getIpnUrl() : string
     {
-        if (app()->environment() === 'production') {
+//        if (app()->environment() === 'production') {
             return url('/tpay/ipn');
-        }
+//        }
 
-        return 'http://53100be8.ngrok.io/tpay/ipn';
+//        return 'http://53100be8.ngrok.io/tpay/ipn';
     }
 
 }

@@ -2384,6 +2384,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Quicksale",
   props: {
@@ -2399,12 +2433,14 @@ __webpack_require__.r(__webpack_exports__);
       username: null,
       email: null,
       phone: null,
-      errors: []
+      errors: [],
+      order: null,
+      group: null
     };
   },
   computed: {
     progress: function progress() {
-      return "width: " + 100 * this.step / 3 + "%;";
+      return "width: " + 100 * this.step / 4 + "%;";
     },
     isStep2Completed: function isStep2Completed() {
       return this.username != null && this.email != null && this.phone != null;
@@ -2419,7 +2455,16 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return true;
+    },
+    isTpayEnabled: function isTpayEnabled() {
+      return typeof window.tr_groups !== 'undefined' && window.tr_groups.length > 0;
+    },
+    groups: function groups() {
+      return tr_groups;
     }
+  },
+  mounted: function mounted() {
+    console.log(tr_groups);
   },
   methods: {
     stepIn: function stepIn() {
@@ -2432,7 +2477,7 @@ __webpack_require__.r(__webpack_exports__);
     checkStep2: function checkStep2(e) {
       e.preventDefault();
     },
-    finish: function finish() {
+    createOrder: function createOrder() {
       var _this = this;
 
       axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/order', {
@@ -2441,9 +2486,26 @@ __webpack_require__.r(__webpack_exports__);
         phone: this.phone
       }).then(function (response) {
         console.log(response);
+        _this.order = response.data.order_id;
+        _this.step += 1;
       }).catch(function (error) {
         console.log(error.response);
         _this.errors = error.response.data.errors;
+      });
+    },
+    finish: function finish() {
+      var _this2 = this;
+
+      axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/finish', {
+        email: this.email,
+        order: this.order,
+        group: this.group
+      }).then(function (response) {
+        console.log(response);
+        window.location.href = response.data.url;
+      }).catch(function (error) {
+        console.log(error.response);
+        _this2.errors = error.response.data.errors;
       });
     }
   }
@@ -7241,7 +7303,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".card[data-v-0b4ced8d] {\n  min-height: 300px;\n  background-color: #fafafa;\n}\n.step[data-v-0b4ced8d] {\n  padding: 20px;\n}\n.price[data-v-0b4ced8d] {\n  font-size: 15px;\n  font-weight: bold;\n}\n.price-old[data-v-0b4ced8d] {\n  text-decoration: line-through;\n  color: #3a3a3a;\n}", ""]);
+exports.push([module.i, ".card[data-v-0b4ced8d] {\n  min-height: 300px;\n  background-color: #fafafa;\n}\n.step[data-v-0b4ced8d] {\n  padding: 20px;\n}\n.price[data-v-0b4ced8d] {\n  font-size: 15px;\n  font-weight: bold;\n}\n.price-old[data-v-0b4ced8d] {\n  text-decoration: line-through;\n  color: #3a3a3a;\n}\n.tpay-logo[data-v-0b4ced8d] {\n  max-width: 300px;\n}\n.bank-logo[data-v-0b4ced8d] {\n  height: 50px;\n  max-width: 100%;\n}\n.group-selection[data-v-0b4ced8d] {\n  display: none;\n}\n.groups[data-v-0b4ced8d] {\n  height: 500px;\n}\n.groups .group label[data-v-0b4ced8d] {\n  border: 2px solid transparent;\n}\n.groups .group label.selected[data-v-0b4ced8d] {\n  border: 2px solid green;\n}", ""]);
 
 // exports
 
@@ -48331,7 +48393,7 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm.step == 3
+      _vm.step === 3
         ? _c("div", { staticClass: "step" }, [
             _vm._m(2),
             _vm._v(" "),
@@ -48352,13 +48414,107 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "button",
-                { staticClass: "btn btn-primary", on: { click: _vm.finish } },
+                {
+                  staticClass: "btn btn-primary",
+                  on: { click: _vm.createOrder }
+                },
                 [
                   _vm._v("Kupuję i płacę "),
                   _c("i", { staticClass: "fa fa-chevron-right" })
                 ]
               )
             ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.step == 4
+        ? _c("div", { staticClass: "step" }, [
+            _vm.isTpayEnabled
+              ? _c("div", [
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "row overflow-auto groups mb-3" },
+                    _vm._l(_vm.groups, function(method) {
+                      return _c("div", { staticClass: "col-md-4 group" }, [
+                        _c(
+                          "label",
+                          { class: _vm.group == method[0] ? "selected" : "" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.group,
+                                  expression: "group"
+                                }
+                              ],
+                              staticClass: "group-selection",
+                              attrs: { type: "radio", name: "group" },
+                              domProps: {
+                                value: method[0],
+                                checked: _vm._q(_vm.group, method[0])
+                              },
+                              on: {
+                                change: function($event) {
+                                  _vm.group = method[0]
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("img", {
+                              staticClass: "bank-logo",
+                              attrs: { src: method[3] }
+                            }),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "text-center" }, [
+                              _vm._v(_vm._s(method[1]))
+                            ])
+                          ]
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-center" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-secondary",
+                  on: { click: _vm.stepBack }
+                },
+                [
+                  _c("i", { staticClass: "fa fa-chevron-left" }),
+                  _vm._v(" Wstecz\n            ")
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { disabled: !_vm.group },
+                  on: { click: _vm.finish }
+                },
+                [
+                  _vm._v("Kupuję i płacę "),
+                  _c("i", { staticClass: "fa fa-chevron-right" })
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            !_vm.isTpayEnabled
+              ? _c("div", { staticClass: "alert alert-danger" }, [
+                  _vm._v(
+                    "\n            Błąd systemu płatności. Spróbuj później lub skontaktuj się z nami.\n        "
+                  )
+                ])
+              : _vm._e()
           ])
         : _vm._e()
     ]
@@ -48405,9 +48561,22 @@ var staticRenderFns = [
     return _c("div", [
       _c("p", [
         _vm._v(
-          "Kliknięcie w przycisk kupuję i płacę potwierdza zamówienie oraz przenosi do systemu płatności"
+          "Kliknięcie w przycisk kupuję i płacę potwierdza zamówienie oraz przenosi do wyboru metody\n                płatności"
         )
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center" }, [
+      _c("img", {
+        staticClass: "tpay-logo",
+        attrs: { src: "https://tpay.com/img/logo/tpaycom.png" }
+      }),
+      _vm._v(" "),
+      _c("p", [_vm._v("Wybierz metodę płatności:")])
     ])
   }
 ]

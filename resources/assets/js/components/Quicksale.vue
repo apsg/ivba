@@ -65,10 +65,11 @@
             </form>
         </div>
 
-        <div class="step" v-if="step==3">
+        <div class="step" v-if="step ===3">
             <h5><span class="badge badge-pill badge-primary">3</span> Płatność</h5>
             <div>
-                <p>Kliknięcie w przycisk kupuję i płacę potwierdza zamówienie oraz przenosi do systemu płatności</p>
+                <p>Kliknięcie w przycisk kupuję i płacę potwierdza zamówienie oraz przenosi do wyboru metody
+                    płatności</p>
             </div>
             <div class="text-center">
                 <button
@@ -76,12 +77,45 @@
                         class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Wstecz
                 </button>
                 <button
-                        @click="finish"
+                        @click="createOrder"
                         class="btn btn-primary">Kupuję i płacę <i class="fa fa-chevron-right"></i>
                 </button>
             </div>
         </div>
 
+        <div class="step" v-if="step==4">
+            <div v-if="isTpayEnabled">
+                <div class="text-center">
+                    <img src="https://tpay.com/img/logo/tpaycom.png" class="tpay-logo">
+                    <p>Wybierz metodę płatności:</p>
+                </div>
+                <div class="row overflow-auto groups mb-3">
+                    <div v-for="method in groups" class="col-md-4 group">
+                        <label :class="(group==method[0]) ? 'selected' : ''">
+                            <input type="radio" :value="method[0]" name="group" v-model="group"
+                                   class="group-selection"/>
+                            <img :src="method[3]" class="bank-logo">
+                            <p class="text-center">{{ method[1] }}</p>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button
+                        @click="stepBack"
+                        class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Wstecz
+                </button>
+                <button
+                        :disabled="!group"
+                        @click="finish"
+                        class="btn btn-primary">Kupuję i płacę <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
+            <div v-if="!isTpayEnabled" class="alert alert-danger">
+                Błąd systemu płatności. Spróbuj później lub skontaktuj się z nami.
+            </div>
+
+        </div>
     </div>
 </template>
 
@@ -104,12 +138,14 @@
                 email: null,
                 phone: null,
                 errors: [],
+                order: null,
+                group: null,
             }
         },
 
         computed: {
             progress() {
-                return "width: " + (100 * this.step / 3) + "%;";
+                return "width: " + (100 * this.step / 4) + "%;";
             },
 
             isStep2Completed() {
@@ -128,7 +164,20 @@
                 }
 
                 return true;
+            },
+
+            isTpayEnabled() {
+                return typeof window.tr_groups !== 'undefined'
+                    && window.tr_groups.length > 0;
+            },
+
+            groups() {
+                return tr_groups;
             }
+        },
+
+        mounted() {
+            console.log(tr_groups);
         },
 
         methods: {
@@ -146,7 +195,7 @@
                 e.preventDefault();
             },
 
-            finish() {
+            createOrder() {
                 axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/order', {
                     name: this.username,
                     email: this.email,
@@ -154,12 +203,29 @@
                 })
                     .then(response => {
                         console.log(response);
+                        this.order = response.data.order_id;
+                        this.step += 1;
+
                     }).catch(error => {
                     console.log(error.response);
                     this.errors = error.response.data.errors;
                 });
-            }
+            },
 
+            finish() {
+                axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/finish', {
+                    email: this.email,
+                    order: this.order,
+                    group: this.group
+                })
+                    .then(response => {
+                        console.log(response);
+                        window.location.href = response.data.url;
+                    }).catch(error => {
+                    console.log(error.response);
+                    this.errors = error.response.data.errors;
+                });
+            },
         }
     }
 </script>
@@ -182,6 +248,33 @@
     .price-old {
         text-decoration: line-through;
         color: #3a3a3a;
+    }
+
+    .tpay-logo {
+        max-width: 300px;
+    }
+
+    .bank-logo {
+        height: 50px;
+        max-width: 100%;
+    }
+
+    .group-selection {
+        display: none;
+    }
+
+    .groups {
+        height: 500px;
+
+        .group {
+            label {
+                border: 2px solid transparent;
+            }
+
+            label.selected {
+                border: 2px solid green;
+            }
+        }
     }
 
 </style>

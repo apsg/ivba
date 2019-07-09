@@ -580,6 +580,10 @@ class User extends Authenticatable
      */
     public function getFullNameAttribute()
     {
+        if (empty($this->first_name)) {
+            return $this->name;
+        }
+
         return $this->first_name . ' ' . $this->last_name;
     }
 

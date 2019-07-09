@@ -22,6 +22,7 @@
         <quicksale :sale="{{ json_encode($sale) }}"></quicksale>
     </div>
 </div>
+<script src="https://secure.tpay.com/groups-{{ config('tpay.transaction.id') }}.js"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('/js/inauka_custom.js') }}"></script>
 <script type="text/javascript">

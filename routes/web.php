@@ -75,6 +75,7 @@ Route::any('tpay/ipn', 'TpayController@ipn');
 Route::group(['prefix' => 'qs'], function () {
     Route::get('/{hash}', 'QuickSalesController@show');
     Route::post('/{hash}/order', 'QuickSalesController@order');
+    Route::post('/{hash}/finish', 'QuickSalesController@finish');
 });
 
 // To musi być na samym końcu, by nie blokowało innych ścieżek
