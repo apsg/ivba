@@ -8,6 +8,7 @@ use App\Events\FullAccessGrantedEvent;
 use App\Events\NewAccessGrantedEvent;
 use App\Events\OrderLeft24hAgo;
 use App\Events\OrderLeft72hAgo;
+use App\Events\QuickSaleConfirmedEvent;
 use App\Events\SubscriptionCancelled;
 use App\Events\SubscriptionPaymentFailedEvent;
 use App\Events\SubscriptionProlongedEvent;
@@ -19,6 +20,7 @@ use App\Events\UserPaidForAccess;
 use App\Events\UserRegisteredEvent;
 use App\Listeners\CancelExistingSubscriptionListener;
 use App\Listeners\Emails\SendEmailAfterRegistrationListener;
+use App\Listeners\Emails\SendQuickSaleEmailListener;
 use App\Listeners\Excelmailing\SubscriptionCancelledListener;
 use App\Listeners\Excelmailing\SubscriptionStartedListener;
 use App\Listeners\Excelmailing\UserAccessFinishedListener;
@@ -104,6 +106,9 @@ class EventServiceProvider extends ServiceProvider
         UserHasPassedQuizEvent::class         => [
             GrantPointsForPassedQuizListener::class,
             InvalidateCachedProgressListener::class,
+        ],
+        QuickSaleConfirmedEvent::class        => [
+            SendQuickSaleEmailListener::class,
         ],
     ];
 

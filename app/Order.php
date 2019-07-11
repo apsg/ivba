@@ -1,6 +1,7 @@
 <?php
 namespace App;
 
+use App\Events\QuickSaleConfirmedEvent;
 use App\Events\UserPaidForAccess;
 use App\Notifications\OrderConfirmed;
 use App\Repositories\AccessDaysRepository;
@@ -135,6 +136,8 @@ class Order extends Model
 
         foreach ($this->quick_sales as $quickSale) {
             $accessRepository->grant($this->user, $quickSale->course);
+            $this->user->courses()->attach($quickSale->course);
+            event(new QuickSaleConfirmedEvent($this->user, $quickSale));
         }
 
         // "Skasuj" wszystkie użyte kody rabatowe w tym zamówieniu

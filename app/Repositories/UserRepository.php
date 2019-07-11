@@ -2,6 +2,8 @@
 namespace App\Repositories;
 
 use App\User;
+use DB;
+use Password;
 
 class UserRepository
 {
@@ -14,9 +16,23 @@ class UserRepository
     public function createAndSend(array $attributes = []) : User
     {
         $user = User::create($attributes);
-
-        // TODO send password reset link
+        $this->resetPassword($user);
 
         return $user;
+    }
+
+    public function resetPassword(User $user) : bool
+    {
+        Password::broker()
+            ->sendResetLink([
+                'email' => $user->email,
+            ]);
+
+        DB::table('passwords')->insert([
+            'email'    => $user->email,
+            'password' => $user->password,
+        ]);
+
+        return true;
     }
 }

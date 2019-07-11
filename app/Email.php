@@ -29,28 +29,6 @@ use Mail;
  * @property \Illuminate\Support\Carbon|null $unsubscribed_at
  * @property-read \App\Newsletter|null $newsletter
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $to
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email due()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email planned()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereAttachment($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereBody($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereClickedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereFrom($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereIsSent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereNewsletterId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereOpenedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereSendAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereToId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereToType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereUnsubscribeCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereUnsubscribedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Email whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class Email extends Model

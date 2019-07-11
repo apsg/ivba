@@ -2418,6 +2418,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Quicksale",
   props: {
@@ -7303,7 +7305,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".card[data-v-0b4ced8d] {\n  min-height: 300px;\n  background-color: #fafafa;\n}\n.step[data-v-0b4ced8d] {\n  padding: 20px;\n}\n.price[data-v-0b4ced8d] {\n  font-size: 15px;\n  font-weight: bold;\n}\n.price-old[data-v-0b4ced8d] {\n  text-decoration: line-through;\n  color: #3a3a3a;\n}\n.tpay-logo[data-v-0b4ced8d] {\n  max-width: 300px;\n}\n.bank-logo[data-v-0b4ced8d] {\n  height: 50px;\n  max-width: 100%;\n}\n.group-selection[data-v-0b4ced8d] {\n  display: none;\n}\n.groups[data-v-0b4ced8d] {\n  height: 500px;\n}\n.groups .group label[data-v-0b4ced8d] {\n  border: 2px solid transparent;\n}\n.groups .group label.selected[data-v-0b4ced8d] {\n  border: 2px solid green;\n}", ""]);
+exports.push([module.i, ".card[data-v-0b4ced8d] {\n  min-height: 300px;\n  background-color: #fafafa;\n}\n.step[data-v-0b4ced8d] {\n  padding: 20px;\n}\n.price[data-v-0b4ced8d] {\n  font-size: 15px;\n  font-weight: bold;\n}\n.old-price[data-v-0b4ced8d] {\n  text-decoration: line-through;\n  color: #3a3a3a;\n}\n.tpay-logo[data-v-0b4ced8d] {\n  max-width: 300px;\n}\n.bank-logo[data-v-0b4ced8d] {\n  height: 50px;\n  max-width: 100%;\n}\n.group-selection[data-v-0b4ced8d] {\n  display: none;\n}\n.groups[data-v-0b4ced8d] {\n  height: 500px;\n}\n.groups .group label[data-v-0b4ced8d] {\n  border: 2px solid transparent;\n}\n.groups .group label.selected[data-v-0b4ced8d] {\n  border: 2px solid green;\n}", ""]);
 
 // exports
 
@@ -48262,7 +48264,10 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-primary",
-                  attrs: { disabled: !_vm.confirmed },
+                  attrs: {
+                    title: "Musisz zaakceptować regulamin aby przejsć dalej",
+                    disabled: !_vm.confirmed
+                  },
                   on: {
                     click: function($event) {
                       $event.preventDefault()
@@ -48271,7 +48276,7 @@ var render = function() {
                   }
                 },
                 [
-                  _vm._v("Dalej "),
+                  _vm._v("\n                Dalej "),
                   _c("i", { staticClass: "fa fa-chevron-right" })
                 ]
               )

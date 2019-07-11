@@ -66,5 +66,11 @@ class QuickSaleOrderableTest extends TestCase
         // then
         $this->assertTrue(\Gate::allows('access', $this->course));
         $this->assertTrue(\Gate::allows('access', $this->course->lessons[0]));
+
+        // when
+        $response = $this->actingAs($this->user)
+            ->get('/account');
+
+        $response->assertSee($this->course->title);
     }
 }

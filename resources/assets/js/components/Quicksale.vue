@@ -29,9 +29,11 @@
             </label>
             <div class="text-center">
                 <button
+                        title="Musisz zaakceptować regulamin aby przejsć dalej"
                         @click.prevent="stepIn"
                         :disabled="!confirmed"
-                        class="btn btn-primary">Dalej <i class="fa fa-chevron-right"></i>
+                        class="btn btn-primary">
+                    Dalej <i class="fa fa-chevron-right"></i>
                 </button>
             </div>
         </div>
@@ -245,7 +247,7 @@
         font-weight: bold;
     }
 
-    .price-old {
+    .old-price {
         text-decoration: line-through;
         color: #3a3a3a;
     }
