@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Axios\QuickSaleFinishRequest;
 use App\Http\Requests\Axios\QuickSaleOrderRequest;
+use App\Http\Requests\Axios\QUickSalePrevalidateRequest;
 use App\Payments\Tpay\TpayTransaction;
 use App\QuickSale;
 use App\Repositories\QuickSaleRepository;
@@ -38,6 +39,11 @@ class QuickSalesController extends Controller
         return [
             'order_id' => $order->id,
         ];
+    }
+
+    public function prevalidate(QUickSalePrevalidateRequest $request)
+    {
+        return response()->json([], 200);
     }
 
     public function finish(

@@ -2420,6 +2420,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Quicksale",
   props: {
@@ -2495,8 +2497,22 @@ __webpack_require__.r(__webpack_exports__);
         _this.errors = error.response.data.errors;
       });
     },
-    finish: function finish() {
+    prevalidate: function prevalidate() {
       var _this2 = this;
+
+      axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/prevalidate', {
+        email: this.email,
+        name: this.username,
+        phone: this.phone
+      }).then(function (response) {
+        _this2.stepIn();
+      }).catch(function (error) {
+        console.log(error.response);
+        _this2.errors = error.response.data.errors;
+      });
+    },
+    finish: function finish() {
+      var _this3 = this;
 
       axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/finish', {
         email: this.email,
@@ -2507,8 +2523,11 @@ __webpack_require__.r(__webpack_exports__);
         window.location.href = response.data.url;
       }).catch(function (error) {
         console.log(error.response);
-        _this2.errors = error.response.data.errors;
+        _this3.errors = error.response.data.errors;
       });
+    },
+    format: function format(str) {
+      return str.replace('Atrybut phone', 'Numer telefonu');
     }
   }
 });
@@ -48182,7 +48201,13 @@ var render = function() {
             "div",
             { staticClass: "alert alert-danger" },
             _vm._l(_vm.errors, function(error) {
-              return _c("div", [_vm._v(_vm._s(error))])
+              return _c(
+                "div",
+                _vm._l(error, function(message) {
+                  return _c("div", [_vm._v(_vm._s(_vm.format(message)))])
+                }),
+                0
+              )
             }),
             0
           )
@@ -48365,7 +48390,11 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", required: "" },
+                      attrs: {
+                        type: "text",
+                        required: "",
+                        placeholder: "podaj 9 cyfr"
+                      },
                       domProps: { value: _vm.phone },
                       on: {
                         input: function($event) {
@@ -48385,7 +48414,7 @@ var render = function() {
                     {
                       staticClass: "btn btn-primary",
                       attrs: { disabled: !_vm.isStep2Completed },
-                      on: { click: _vm.stepIn }
+                      on: { click: _vm.prevalidate }
                     },
                     [
                       _vm._v("Dalej "),

@@ -75,6 +75,7 @@ Route::any('tpay/ipn', 'TpayController@ipn');
 Route::group(['prefix' => 'qs'], function () {
     Route::get('/{hash}', 'QuickSalesController@show');
     Route::post('/{hash}/order', 'QuickSalesController@order');
+    Route::post('/{hash}/prevalidate', 'QuickSalesController@prevalidate');
     Route::post('/{hash}/finish', 'QuickSalesController@finish');
 });
 

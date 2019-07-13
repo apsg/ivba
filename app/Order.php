@@ -196,6 +196,7 @@ class Order extends Model
             'description'    => '',
             'price'          => 0,
         ]);
+        $this->coupons()->detach();
         $this->quick_sales()->detach();
 
         return $this;

@@ -7,7 +7,9 @@
         <h4 class="text-center m-1"><i class="fa fa-cart"></i> {{ sale.name }}</h4>
 
         <div v-if="hasErrors" class="alert alert-danger">
-            <div v-for="error in errors">{{ error }}</div>
+            <div v-for="error in errors">
+                <div v-for="message in error">{{ format(message) }}</div>
+            </div>
         </div>
 
         <div v-if="step==1" class="step">
@@ -54,12 +56,12 @@
 
                     <div class="form-group">
                         <label>Telefon</label>
-                        <input class="form-control" type="text" required v-model="phone"/>
+                        <input class="form-control" type="text" required v-model="phone" placeholder="podaj 9 cyfr"/>
                     </div>
                 </div>
                 <div class="text-center">
                     <button
-                            @click="stepIn"
+                            @click="prevalidate"
                             :disabled="!isStep2Completed"
                             class="btn btn-primary">Dalej <i class="fa fa-chevron-right"></i>
                     </button>
@@ -193,7 +195,6 @@
             },
 
             checkStep2(e) {
-
                 e.preventDefault();
             },
 
@@ -214,6 +215,19 @@
                 });
             },
 
+            prevalidate() {
+                axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/prevalidate', {
+                    email: this.email,
+                    name: this.username,
+                    phone: this.phone
+                }).then(response => {
+                    this.stepIn();
+                }).catch(error => {
+                    console.log(error.response);
+                    this.errors = error.response.data.errors;
+                });
+            },
+
             finish() {
                 axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/finish', {
                     email: this.email,
@@ -227,6 +241,10 @@
                     console.log(error.response);
                     this.errors = error.response.data.errors;
                 });
+            },
+
+            format(str) {
+                return str.replace('Atrybut phone', 'Numer telefonu');
             },
         }
     }
