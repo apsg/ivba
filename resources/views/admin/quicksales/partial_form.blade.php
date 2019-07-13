@@ -15,6 +15,12 @@
             <input name="rules_url" type="text" required class="form-control"
                    value="{{ old('rules_url') ?? $quickSale->rules_url ?? '' }}">
         </div>
+        <div class="form-group">
+            <label>Strona przekierowania po płatności (relatywna <span class="text-monospace">/przyklad</span> lub
+                absolutna <span class="text-monospace">http://test.com</span>).</label>
+            <input name="redirect_url" type="text" class="form-control"
+                   value="{{ old('redirect_url') ?? $quickSale->redirect_url ?? '' }}">
+        </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
@@ -33,10 +39,11 @@
     <div class="col-md-12">
         <label>Wybierz kurs przypięty do szybkiej sprzedaży</label>
         <select name="course_id" class="form-control">
+            <option value="">-- brak --</option>
             @foreach($courses as $course)
                 <option
-                        @if($course->id == $quickSale->course_id)
-                            selected="selected"
+                        @if(isset($quickSale) && $course->id == $quickSale->course_id)
+                        selected="selected"
                         @endif
                         value="{{ $course->id }}">
                     #{{$course->id}} - {{ $course->title }}

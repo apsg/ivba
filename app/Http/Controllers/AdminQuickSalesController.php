@@ -22,14 +22,13 @@ class AdminQuickSalesController extends Controller
             ->select(['id', 'title'])
             ->get();
 
-        flash('Zapisano');
-
         return view('admin.quicksales.create')->with(compact('courses'));
     }
 
     public function store(QuickSaleRequest $request)
     {
         QuickSale::create($request->except(['_token']));
+        flash('Zapisano');
 
         return redirect('/admin/quicksales');
     }

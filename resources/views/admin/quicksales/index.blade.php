@@ -38,8 +38,10 @@
                         <div class="card-body row">
                             <div class="col-md-6">
                                 <p class="card-text">{{ $sale->description }}</p>
-                                <p class="card-text"><strong>Kurs #{{ $sale->course->id }}</strong>
-                                    - {{ $sale->course->title }}</p>
+                                @if($sale->course)
+                                    <p class="card-text"><strong>Kurs #{{ $sale->course->id }}</strong>
+                                        - {{ $sale->course->title }}</p>
+                                @endif
                             </div>
                             <div class="col-md-6">
                                 <h3>Statystyki zakupów</h3>

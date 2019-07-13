@@ -54,6 +54,7 @@ class QuickSalesController extends Controller
     ) {
         $user = $userRepository->findByEmail($request->input('email', ''));
         $order = $user->getCurrentOrder();
+        $quickSale = $repository->findByHash($hash);
 
         if ($order->id != $request->input('order')) {
             return response()->json([
@@ -68,7 +69,10 @@ class QuickSalesController extends Controller
         }
 
         $transaction = new TpayTransaction($order);
-        $url = $transaction->createTransaction((int)$request->input('group'));
+        $url = $transaction->createTransaction(
+            (int)$request->input('group'),
+            $quickSale->redirect_url
+        );
 
         return response()->json([
             'url' => $url,

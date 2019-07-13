@@ -25,7 +25,7 @@ class TpayTransaction extends TransactionApi
         parent::__construct();
     }
 
-    public function createTransaction(int $group) : string
+    public function createTransaction(int $group, string $returnUrl = 'success') : string
     {
         $config = [
             'amount'       => $this->order->total(),
@@ -33,7 +33,7 @@ class TpayTransaction extends TransactionApi
             'crc'          => $this->order->id . '|' . uniqid(),
             'result_url'   => $this->getIpnUrl(),
             'result_email' => config('ivba.contact_form_recipient'),
-            'return_url'   => url('/tpay/success'),
+            'return_url'   => url('/tpay/success?return=' . $returnUrl),
             'email'        => $this->order->user->email,
             'name'         => $this->order->user->full_name,
             'group'        => $group,
@@ -60,7 +60,7 @@ class TpayTransaction extends TransactionApi
     protected function getIpnUrl() : string
     {
 //        if (app()->environment() === 'production') {
-            return url('/tpay/ipn');
+        return url('/tpay/ipn');
 //        }
 
 //        return 'http://53100be8.ngrok.io/tpay/ipn';

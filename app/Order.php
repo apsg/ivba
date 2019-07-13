@@ -135,8 +135,10 @@ class Order extends Model
         $accessRepository = app(AccessRepository::class);
 
         foreach ($this->quick_sales as $quickSale) {
-            $accessRepository->grant($this->user, $quickSale->course);
-            $this->user->courses()->attach($quickSale->course);
+            if ($quickSale->course !== null) {
+                $accessRepository->grant($this->user, $quickSale->course);
+                $this->user->courses()->attach($quickSale->course);
+            }
             event(new QuickSaleConfirmedEvent($this->user, $quickSale));
         }
 

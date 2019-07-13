@@ -21,6 +21,8 @@ use Illuminate\Support\Collection;
  * @property string                  message_subject
  * @property string                  message_body
  *
+ * @property string|null             redirect_url
+ *
  * @property Carbon                  created_at
  * @property Carbon                  updated_at
  *
@@ -42,6 +44,7 @@ class QuickSale extends Model implements OrderableContract
         'message_email',
         'message_subject',
         'message_body',
+        'redirect_url',
     ];
 
     public function orders()

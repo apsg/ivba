@@ -30,8 +30,12 @@ class TpayController extends Controller
         return redirect('/buy_access');
     }
 
-    public function success()
+    public function success(Request $request)
     {
+        if ($request->input('return') !== null) {
+            return redirect($request->input('return'));
+        }
+
         return redirect('/success');
     }
 
@@ -82,8 +86,5 @@ class TpayController extends Controller
         return (new TransactionNotification())
             ->disableValidationServerIP()
             ->checkPayment();
-
-        // Notification received
-        return response()->json([], 200);
     }
 }

@@ -13,10 +13,11 @@ class QuickSaleRequest extends FormRequest
             'rules_url'       => 'required|url',
             'price'           => 'required|numeric|min:0',
             'full_price'      => 'sometimes|nullable|numeric|min:0',
-            'course_id'       => 'required|numeric|exists:courses,id',
+            'course_id'       => 'sometimes|nullable|numeric|exists:courses,id',
             'message_email'   => 'sometimes|nullable|email',
             'message_subject' => 'sometimes|nullable|string',
             'message_body'    => 'sometimes|nullable|string',
+            'redirect_url'    => 'sometimes|nullable|string',
         ];
     }
 }
