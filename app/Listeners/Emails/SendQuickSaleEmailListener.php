@@ -14,7 +14,7 @@ class SendQuickSaleEmailListener
             'from'    => $event->quicksale->message_email,
             'send_at' => Carbon::now(),
             'title'   => $event->quicksale->message_subject,
-            'body'    => $event->quicksale->message_body,
+            'body'    => nl2br($event->quicksale->message_body),
             'type'    => Email::SINGLE,
             'to_id'   => $event->user->id,
             'to_type' => User::class,

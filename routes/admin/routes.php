@@ -122,5 +122,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::get('/create', 'AdminQuickSalesController@create');
         Route::post('/', 'AdminQuickSalesController@store');
         Route::delete('/{quickSale}', 'AdminQuickSalesController@destroy');
+        Route::get('/{quickSale}', 'AdminQuickSalesController@show');
+        Route::put('/{quickSale}', 'AdminQuickSalesController@update')->name('admin.quicksale.update');
+        Route::get('/{quickSale}/report', 'AdminQuickSalesController@downloadReport');
     });
 });

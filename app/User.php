@@ -83,6 +83,7 @@ class User extends Authenticatable
         'partner_key',
         'partner_id',
         'isadmin',
+        'phone',
     ];
 
     /**

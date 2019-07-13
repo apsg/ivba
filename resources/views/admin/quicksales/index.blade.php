@@ -35,10 +35,24 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">{{ $sale->description }}</p>
-                            <p class="card-text"><strong>Kurs #{{ $sale->course->id }}</strong> - {{ $sale->course->title }}</p>
+                        <div class="card-body row">
+                            <div class="col-md-6">
+                                <p class="card-text">{{ $sale->description }}</p>
+                                <p class="card-text"><strong>Kurs #{{ $sale->course->id }}</strong>
+                                    - {{ $sale->course->title }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h3>Statystyki zakupów</h3>
+                                <p>Zamówiono: <strong>{{ $sale->orders()->count() }} razy</strong>, w tym
+                                    potwierdzono <strong>{{ $sale->confirmed_orders()->count() }}</strong> razy.
+                                </p>
 
+                                <a href="{{ url('/admin/quicksales/'.$sale->id.'/report') }}"
+                                   class="btn btn-primary">
+                                    <i class="fa fa-download"></i>
+                                    Pobierz raport
+                                </a>
+                            </div>
                         </div>
                         <div class="card-footer text-muted d-flex justify-content-between">
                             <div>
