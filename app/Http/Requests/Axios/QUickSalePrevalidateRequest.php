@@ -8,7 +8,7 @@ class QUickSalePrevalidateRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|exists:users,email',
+            'email' => 'required|email',
             'phone' => 'required|numeric|regex:/\d{9}/i',
             'name'  => 'required|string',
         ];

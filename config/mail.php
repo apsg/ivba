@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'no-reply@iexcel.pl'),
-        'name' => env('MAIL_FROM_NAME', 'inauka.pl'),
+        'name'    => env('MAIL_FROM_NAME', 'inauka.pl'),
     ],
 
     /*
