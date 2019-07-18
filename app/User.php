@@ -3,6 +3,7 @@ namespace App;
 
 use App\Events\UserRegisteredEvent;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,47 +13,48 @@ use Illuminate\Notifications\Notifiable;
 /**
  * Class User
  *
- * @property string                              name
- * @property string                              email
- * @property string                              password
- * @property-read Carbon                         full_access_expires
- * @property Carbon                              last_proof_at
- * @property integer                             last_proof_id
- * @property integer                             days_bought
- * @property Carbon                              expires_at
- * @property string                              card_token
- * @property Carbon                              changed_password_at
- * @property Carbon                              unsubscribed_at
- * @property string                              first_name
- * @property string                              last_name
- * @property string                              address
- * @property string|null                         partner_key
- * @property-read string                         partner_uniqid
- * @property int|null                            partner_id
- * @property-read User|null                      partner
- * @property-read Collection|User[]              refs
- * @property-read string                         full_name
- * @property-read HasOne|Subscription            subscription
- * @property int                                 $id
- * @property string|null                         $remember_token
- * @property \Illuminate\Support\Carbon|null     $created_at
- * @property \Illuminate\Support\Carbon|null     $updated_at
- * @property int                                 $isadmin
- * @property string|null                         $phone
- * @property string|null                         $deleted_at
- * @property-read int                            total_points
- * @property-read Collection|\App\Answer[]       $answers
- * @property-read Collection|\App\Course[]       $courses
- * @property-read Collection|\App\AccessDay[]    $days
- * @property-read Collection|\App\Email[]        $emails
- * @property-read mixed                          $current_day
- * @property-read mixed                          $remaining_days
- * @property-read \App\Proof|null                $last_proof
- * @property-read Collection|\App\Lesson[]       $lessons
- * @property-read Collection|\App\Order[]        $orders
- * @property-read Collection|\App\Quiz[]         $quizzes
- * @property-read Collection|\App\Subscription[] $subscriptions
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User followups()
+ * @property string                         name
+ * @property string                         email
+ * @property string                         password
+ * @property-read Carbon                    full_access_expires
+ * @property Carbon                         last_proof_at
+ * @property integer                        last_proof_id
+ * @property integer                        days_bought
+ * @property Carbon                         expires_at
+ * @property string                         card_token
+ * @property Carbon                         changed_password_at
+ * @property Carbon                         unsubscribed_at
+ * @property string                         first_name
+ * @property string                         last_name
+ * @property string                         address
+ * @property string|null                    partner_key
+ * @property-read string                    partner_uniqid
+ * @property int|null                       partner_id
+ * @property-read User|null                 partner
+ * @property-read Collection|User[]         refs
+ * @property-read string                    full_name
+ * @property-read HasOne|Subscription       subscription
+ * @property int                            $id
+ * @property string|null                    $remember_token
+ * @property Carbon|null                    $created_at
+ * @property Carbon|null                    $updated_at
+ * @property int                            $isadmin
+ * @property string|null                    $phone
+ * @property string|null                    $deleted_at
+ * @property-read int                       total_points
+ * @property-read Collection|Answer[]       $answers
+ * @property-read Collection|Course[]       $courses
+ * @property-read Collection|AccessDay[]    $days
+ * @property-read Collection|Email[]        $emails
+ * @property-read mixed                     $current_day
+ * @property-read mixed                     $remaining_days
+ * @property-read \App\Proof|null           $last_proof
+ * @property-read Collection|Lesson[]       $lessons
+ * @property-read Collection|Order[]        $orders
+ * @property-read Collection|Quiz[]         $quizzes
+ * @property-read Collection|Subscription[] $subscriptions
+ * @property-read Collection|Access[]       $accesses
+ * @method static Builder|User followups()
  * @mixin \Eloquent
  */
 class User extends Authenticatable
@@ -221,6 +223,12 @@ class User extends Authenticatable
     public function refs()
     {
         return $this->hasMany(User::class, 'partner_id');
+    }
+
+    public function accesses()
+    {
+        return $this->hasMany(Access::class)
+            ->with('accessable');
     }
 
     /**

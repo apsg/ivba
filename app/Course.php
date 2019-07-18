@@ -465,4 +465,9 @@ class Course extends Model implements OrderableContract, AccessableContract
             $course->save();
         }
     }
+
+    public function __toString()
+    {
+        return "Kurs: " . $this->title;
+    }
 }

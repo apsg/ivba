@@ -189,6 +189,18 @@
                                 </td>
                             </tr>
                         @endif
+
+                        @foreach($user->accesses as $access)
+                            <tr>
+                                <th scope="row">
+                                    {{ $access->accessable }}
+                                </th>
+                                <td>{{ $access->created_at->format('Y-m-d') }}</td>
+                                <td>bezterminowo</td>
+                                <td><i class="fa fa-check"></i> Aktywny</td>
+                            </tr>
+                        @endforeach
+
                         </tbody>
                     </table>
 
