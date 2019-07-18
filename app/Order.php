@@ -203,4 +203,13 @@ class Order extends Model
 
         return $this;
     }
+
+    public function getDescription() : string
+    {
+        if ($this->quick_sales()->count() > 0) {
+            return $this->quick_sales[0]->name;
+        }
+
+        return $this->description ?? '';
+    }
 }
