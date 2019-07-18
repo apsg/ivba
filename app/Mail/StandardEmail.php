@@ -20,6 +20,12 @@ class StandardEmail extends Mailable
     public function __construct(Email $email)
     {
         $this->email = $email;
+
+//        if ($email->from) {
+//            $this->from($email->from);
+//        }
+
+        $this->subject = $email->title;
     }
 
     /**
@@ -29,13 +35,13 @@ class StandardEmail extends Mailable
      */
     public function build()
     {
-        if (empty($this->email->attachment)) {
-            return $this->markdown('mails.default')
-                ->subject($this->email->title);
-        } else {
-            return $this->markdown('mails.default')
-                ->subject($this->email->title)
-                ->attach(storage_path('app/' . $this->email->attachment));
+        $mail = $this->markdown('mails.default')
+            ->subject($this->email->title);
+
+        if ($this->email->attachment) {
+            $mail = $mail->attach(storage_path('app/' . $this->email->attachment));
         }
+
+        return $mail;
     }
 }

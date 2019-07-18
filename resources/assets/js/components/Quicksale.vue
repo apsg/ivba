@@ -284,7 +284,7 @@
     }
 
     .groups {
-        height: 500px;
+        height: 300px;
 
         .group {
             label {

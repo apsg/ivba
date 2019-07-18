@@ -10,25 +10,25 @@ use Mail;
 /**
  * App\Email
  *
- * @property int $id
- * @property string $from
- * @property int $to_id
- * @property string $to_type
- * @property string $title
- * @property string $body
- * @property \Illuminate\Support\Carbon $send_at
- * @property int $is_sent
- * @property int $type
- * @property string|null $attachment
- * @property string|null $unsubscribe_code
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property int|null $newsletter_id
- * @property \Illuminate\Support\Carbon|null $opened_at
- * @property \Illuminate\Support\Carbon|null $clicked_at
- * @property \Illuminate\Support\Carbon|null $unsubscribed_at
- * @property-read \App\Newsletter|null $newsletter
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $to
+ * @property int                  $id
+ * @property string               $from
+ * @property int                  $to_id
+ * @property string               $to_type
+ * @property string               $title
+ * @property string               $body
+ * @property Carbon               $send_at
+ * @property int                  $is_sent
+ * @property int                  $type
+ * @property string|null          $attachment
+ * @property string|null          $unsubscribe_code
+ * @property Carbon|null          $created_at
+ * @property Carbon|null          $updated_at
+ * @property int|null             $newsletter_id
+ * @property Carbon|null          $opened_at
+ * @property Carbon|null          $clicked_at
+ * @property Carbon|null          $unsubscribed_at
+ * @property-read Newsletter|null $newsletter
+ * @property-read Model|\Eloquent $to
  * @mixin \Eloquent
  */
 class Email extends Model

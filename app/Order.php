@@ -137,7 +137,11 @@ class Order extends Model
         foreach ($this->quick_sales as $quickSale) {
             if ($quickSale->course !== null) {
                 $accessRepository->grant($this->user, $quickSale->course);
-                $this->user->courses()->attach($quickSale->course);
+                if (!$this->user->courses()
+                    ->where('courses.id', '=', $quickSale->course->id)
+                    ->exists()) {
+                    $this->user->courses()->attach($quickSale->course);
+                }
             }
             event(new QuickSaleConfirmedEvent($this->user, $quickSale));
         }
