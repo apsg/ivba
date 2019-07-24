@@ -20,7 +20,7 @@ return [
     ],
 
     'ses' => [
-        'key' => env('SES_KEY'),
+        'key'    => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
         'region' => 'us-east-1',
     ],
@@ -30,9 +30,13 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\User::class,
-        'key' => env('STRIPE_KEY'),
+        'model'  => App\User::class,
+        'key'    => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'fakturownia' => [
+        'url'   => env('FAKTUROWNIA_URL', 'https://tmgfv.fakturownia.pl'),
+        'token' => env('FAKTUROWNIA_TOKEN', '4LKI41aAgCU8lzjdiVB7/tmgfv'),
+    ],
 ];

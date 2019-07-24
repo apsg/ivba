@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property float|null                  $final_total
  * @property float|null                  $price
  * @property string|null                 $description
+ * @property int|null                    $invoice_id
  * @property-read Collection|Coupon[]    $coupons
  * @property-read Collection|QuickSale[] quick_sales
  * @method static Builder|Order confirmed()
