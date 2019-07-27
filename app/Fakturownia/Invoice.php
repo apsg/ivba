@@ -29,7 +29,7 @@ class Invoice
 
         $response = $this->client->addInvoice($this->getAttributes());
 
-        if ($response['success'] !== true) {
+        if ($response['success'] !== true || data_get($response, 'response.code') === 'error') {
             throw new InvoiceException(array_get($response, 'response'));
         }
 
@@ -45,19 +45,22 @@ class Invoice
         $now = Carbon::now()->format('Y-m-d');
 
         $attributes = [
-            "kind"          => "vat",
-            "number"        => null,
-            "sell_date"     => $this->order->confirmed_at->format('Y-m-d'),
-            "issue_date"    => $now,
-            "payment_to"    => $now,
-            "seller_name"   => "Mateusz Grabowski",
-            "seller_tax_no" => "5252445767",
-            "buyer_name"    => $this->getClientName(),
-            "buyer_email"   => $this->order->user->email,
-            "buyer_tax_no"  => "5252445767",
-            "positions"     => $this->getPositions(),
-            'paid_date'     => $this->order->confirmed_at->format('Y-m-d'),
-            'status'        => 'paid',
+            "kind"             => "vat",
+            "number"           => null,
+            "sell_date"        => $this->order->confirmed_at->format('Y-m-d'),
+            "issue_date"       => $now,
+            "payment_to"       => $now,
+            "seller_name"      => "IT&Business Training Mateusz Grabowski",
+            'seller_street'    => 'ul. Zygmunta Starego 1/3',
+            'seller_post_code' => '44-100',
+            'seller_city'      => 'Gliwice',
+            "seller_tax_no"    => "631-227-39-46",
+            "buyer_name"       => $this->getClientName(),
+            "buyer_email"      => $this->order->user->email,
+            "buyer_tax_no"     => "5252445767",
+            "positions"        => $this->getPositions(),
+            'paid_date'        => $this->order->confirmed_at->format('Y-m-d'),
+            'status'           => 'paid',
         ];
 
         return $attributes;
