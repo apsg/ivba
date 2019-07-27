@@ -41,4 +41,13 @@ class InvoiceRequest extends Model
 
         return $invoiceId;
     }
+
+    public function reject() : self
+    {
+        $this->update([
+            'refused_at' => Carbon::now(),
+        ]);
+
+        return $this;
+    }
 }

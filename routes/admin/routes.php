@@ -126,4 +126,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::put('/{quickSale}', 'AdminQuickSalesController@update')->name('admin.quicksale.update');
         Route::get('/{quickSale}/report', 'AdminQuickSalesController@downloadReport');
     });
+
+    Route::group(['prefix' => 'invoices'], function () {
+        Route::get('/', 'AdminInvoicesController@index');
+        Route::get('/{invoiceRequest}/accept', 'AdminInvoicesController@accept')->name('admin.invoice.accept');
+        Route::get('/{invoiceRequest}/reject', 'AdminInvoicesController@reject')->name('admin.invoice.reject');
+    });
+
 });

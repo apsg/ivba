@@ -172,6 +172,6 @@ class InvoiceOceanClient extends InvoiceOcean
             return null;
         }
 
-        return $this->getApiUrl() . '/invoices/' . $invoiceId . '.json?api_token=' . $this->getApiToken();
+        return $this->getApiUrl() . '/invoices/' . $invoiceId . '.pdf?api_token=' . $this->getApiToken();
     }
 }

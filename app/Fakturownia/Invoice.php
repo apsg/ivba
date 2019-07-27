@@ -33,7 +33,7 @@ class Invoice
             throw new InvoiceException(array_get($response, 'response'));
         }
 
-        $invoiceId = array_get($response, 'response.id');
+        $invoiceId = data_get($response, 'response.id');
 
         app(OrdersRepository::class)->attachInvoice($this->order, $invoiceId);
 
@@ -53,8 +53,11 @@ class Invoice
             "seller_name"   => "Mateusz Grabowski",
             "seller_tax_no" => "5252445767",
             "buyer_name"    => $this->getClientName(),
+            "buyer_email"   => $this->order->user->email,
             "buyer_tax_no"  => "5252445767",
             "positions"     => $this->getPositions(),
+            'paid_date'     => $this->order->confirmed_at->format('Y-m-d'),
+            'status'        => 'paid',
         ];
 
         return $attributes;
