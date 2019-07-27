@@ -3,6 +3,7 @@ namespace App;
 
 use App\Events\QuickSaleConfirmedEvent;
 use App\Events\UserPaidForAccess;
+use App\Fakturownia\Invoice;
 use App\Notifications\OrderConfirmed;
 use App\Repositories\AccessDaysRepository;
 use App\Repositories\AccessRepository;
@@ -31,6 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null                    $invoice_id
  * @property-read Collection|Coupon[]    $coupons
  * @property-read Collection|QuickSale[] quick_sales
+ * @property-read InvoiceRequest|null    invoice_request
  * @method static Builder|Order confirmed()
  * @mixin \Eloquent
  */
@@ -61,6 +63,11 @@ class Order extends Model
     public function quick_sales()
     {
         return $this->morphedByMany(QuickSale::class, 'orderable');
+    }
+
+    public function invoice_request()
+    {
+        return $this->hasOne(InvoiceRequest::class);
     }
 
     /**
@@ -216,5 +223,14 @@ class Order extends Model
         }
 
         return $this->description ?? '';
+    }
+
+    public function invoiceDownloadUrl() : ?string
+    {
+        if ($this->invoice_id) {
+            return (new Invoice($this))->getDownloadUrl();
+        }
+
+        return null;
     }
 }

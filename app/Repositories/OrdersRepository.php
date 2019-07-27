@@ -13,4 +13,9 @@ class OrdersRepository
 
         return $order;
     }
+
+    public function create(array $attributes) : Order
+    {
+        return Order::create($attributes);
+    }
 }

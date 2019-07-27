@@ -2,9 +2,11 @@
 namespace App\Http\Controllers;
 
 use App\Coupon;
+use App\InvoiceRequest;
 use App\Order;
 use App\Payments\Tpay\TpayMethodSelector;
 use App\Payments\Tpay\TpayTransaction;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -18,7 +20,7 @@ class OrderController extends Controller
 
     /**
      * Pokaż koszyk
-     * @param  Request $request [description]
+     * @param Request $request [description]
      * @return [type]           [description]
      */
     public function showCart(Request $request)
@@ -33,7 +35,7 @@ class OrderController extends Controller
 
     /**
      * Wygeneruj płatność dla tego zamówienia.
-     * @param  Order $order [description]
+     * @param Order $order [description]
      * @return [type]        [description]
      */
     public function pay(Order $order, Request $request)
@@ -110,8 +112,8 @@ class OrderController extends Controller
 
     /**
      * Usuń kod rabatowy z koszyka
-     * @param  Order  $order [description]
-     * @param  Coupon $coupon [description]
+     * @param Order  $order [description]
+     * @param Coupon $coupon [description]
      * @return [type]         [description]
      */
     public function removeCoupon(Order $order, Coupon $coupon)
@@ -124,6 +126,31 @@ class OrderController extends Controller
     public function removeEasyAccess(Order $order)
     {
         $order->clear();
+
+        return back();
+    }
+
+    public function requestInvoice(Order $order)
+    {
+        /** @var User $user */
+        $user = auth()->user();
+
+        if ($user->first_name === null || $user->last_name === null || $user->taxid === null) {
+            flash('Proszę uzupełnić dane do faktury');
+
+            return redirect(url('/account'))
+                ->withErrors(['Proszę uzupełnić dane do faktury']);
+        }
+
+        if ($order->invoice_request !== null) {
+            flash('Już wygenerowano wcześniej prośbę o fakturę dla tego zamówienia.');
+
+            return back()->withErrors(['Prośba już istnieje']);
+        }
+
+        InvoiceRequest::create([
+            'order_id' => $order->id,
+        ]);
 
         return back();
     }

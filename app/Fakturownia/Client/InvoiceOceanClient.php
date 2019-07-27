@@ -165,4 +165,13 @@ class InvoiceOceanClient extends InvoiceOcean
 
         return $result;
     }
+
+    public function getInvoiceUrl(int $invoiceId = null) : ?string
+    {
+        if ($invoiceId === null) {
+            return null;
+        }
+
+        return $this->getApiUrl() . '/invoices/' . $invoiceId . '.json?api_token=' . $this->getApiToken();
+    }
 }

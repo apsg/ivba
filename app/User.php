@@ -24,9 +24,10 @@ use Illuminate\Notifications\Notifiable;
  * @property string                         card_token
  * @property Carbon                         changed_password_at
  * @property Carbon                         unsubscribed_at
- * @property string                         first_name
- * @property string                         last_name
- * @property string                         address
+ * @property string|null                    first_name
+ * @property string|null                    last_name
+ * @property string|null                    address
+ * @property string|null                    taxid
  * @property string|null                    partner_key
  * @property-read string                    partner_uniqid
  * @property int|null                       partner_id
@@ -86,6 +87,7 @@ class User extends Authenticatable
         'partner_id',
         'isadmin',
         'phone',
+        'taxid',
     ];
 
     /**

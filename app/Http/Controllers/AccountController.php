@@ -27,7 +27,7 @@ class AccountController extends Controller
 
         $lastLesson = $service->get($user);
 
-        return view('account')->with(compact('user', 'payments', 'lastLesson'));
+        return view('account.account')->with(compact('user', 'payments', 'lastLesson'));
     }
 
     /**
@@ -45,7 +45,7 @@ class AccountController extends Controller
 
     /**
      * Zmień hasło
-     * @param  Request $request [description]
+     * @param Request $request [description]
      * @return [type]           [description]
      */
     public function changePassword(Request $request)
@@ -61,7 +61,7 @@ class AccountController extends Controller
 
     /**
      * Zaktualizuj dane użytkownika.
-     * @param  Request $request [description]
+     * @param Request $request [description]
      * @return [type]           [description]
      */
     public function patch(Request $request)
@@ -71,11 +71,12 @@ class AccountController extends Controller
             'first_name' => 'required',
             'last_name'  => 'required',
             'address'    => 'required',
+            'taxid'      => 'sometimes',
         ]);
 
         Auth::user()
             ->update(
-                $request->only('first_name', 'last_name', 'address')
+                $request->only('first_name', 'last_name', 'address', 'taxid')
             );
 
         return back()->with(['status' => 'Zaktualizowano']);

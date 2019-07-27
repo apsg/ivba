@@ -20,6 +20,11 @@
                class="form-control" value="{{ \Auth::user()->address }}">
     </div>
 
+    <div class="form-group">
+        <label>NIP (do faktury)</label>
+        <input placeholder="podaj nip" type="text" name="taxid" class="form-control" value="{{ \Auth::user()->taxid }}">
+    </div>
+
     <button class="btn btn-ivba"><i class="fa fa-save"></i> Zapisz i kontynuuj</button>
 
 </form>

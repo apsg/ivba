@@ -37,6 +37,7 @@ Route::post('/order/{order}/pay', 'OrderController@pay')->name('order.pay');
 Route::post('/order/{order}/add_coupon', 'OrderController@addCoupon');
 Route::get('/order/{order}/remove_easy_access', 'OrderController@removeEasyAccess');
 Route::get('/order/{order}/remove_coupon/{coupon}', 'OrderController@removeCoupon');
+Route::get('/order/{order}/request-invoice', 'OrderController@requestInvoice')->name('order.request-invoice');
 
 Route::post('subscription/create', 'SubscriptionsController@create');
 Route::get('/subscription/{subscription}/cancel', 'SubscriptionsController@cancel');

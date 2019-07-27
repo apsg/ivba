@@ -100,4 +100,9 @@ class Invoice
 
         return $positions;
     }
+
+    public function getDownloadUrl() : ?string
+    {
+        return $this->client->getInvoiceUrl($this->order->invoice_id);
+    }
 }
