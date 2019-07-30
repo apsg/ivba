@@ -18,10 +18,14 @@ class FollowupsListener
         $followupContents = FollowupContent::where('event', $eventName)->get();
 
         foreach ($followupContents as $content) {
-            $content->followups()->create([
-                'user_id' => $this->getUserId($event),
-                'send_at' => Carbon::now()->add($content->interval),
-            ]);
+            try {
+                $content->followups()->create([
+                    'user_id' => $this->getUserId($event),
+                    'send_at' => Carbon::now()->add($content->interval),
+                ]);
+            } catch (\Exception $exception) {
+                // Do nothing
+            }
         }
     }
 
