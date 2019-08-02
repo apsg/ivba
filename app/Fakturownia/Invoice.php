@@ -15,6 +15,9 @@ class Invoice
     /** @var Order */
     protected $order;
 
+    /** @var int|null */
+    protected $invoiceId;
+
     public function __construct(Order $order)
     {
         $this->client = new InvoiceOceanClient();
@@ -33,11 +36,20 @@ class Invoice
             throw new InvoiceException(array_get($response, 'response'));
         }
 
-        $invoiceId = data_get($response, 'response.id');
+        $this->invoiceId = data_get($response, 'response.id');
 
-        app(OrdersRepository::class)->attachInvoice($this->order, $invoiceId);
+        app(OrdersRepository::class)->attachInvoice($this->order, $this->invoiceId);
 
-        return $invoiceId;
+        return $this->invoiceId;
+    }
+
+    public function sendEmail()
+    {
+        if ($this->invoiceId !== null) {
+            return $this->client->sendInvoice($this->invoiceId);
+        }
+
+        return null;
     }
 
     protected function getAttributes() : array

@@ -33,10 +33,12 @@ class InvoiceRequest extends Model
 
     public function confirm()
     {
-        $invoiceId = (new Invoice($this->order))->generate();
+        $invoice = new Invoice($this->order);
+        $invoiceId = $invoice->generate();
 
         if ($invoiceId !== null) {
             $this->delete();
+            $invoice->sendEmail();
         }
 
         return $invoiceId;
