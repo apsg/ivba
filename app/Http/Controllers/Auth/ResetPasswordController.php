@@ -50,7 +50,7 @@ class ResetPasswordController extends Controller
                 'required',
                 'confirmed',
                 new \App\Rules\PasswordRule,
-                'different_password',
+//                'different_password',
             ],
         ];
     }

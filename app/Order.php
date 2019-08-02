@@ -165,8 +165,10 @@ class Order extends Model
         // Odpalamy zdarzenie
         event(new UserPaidForAccess($this->user));
 
-        // Powiadamiamy użytkownika
-        $this->user->notify(new OrderConfirmed($this));
+        if (!$this->isQuickSales()) // Powiadamiamy użytkownika
+        {
+            $this->user->notify(new OrderConfirmed($this));
+        }
 
         return true;
     }
@@ -232,5 +234,10 @@ class Order extends Model
         }
 
         return null;
+    }
+
+    public function isQuickSales() : bool
+    {
+        return $this->quick_sales()->count() > 0;
     }
 }

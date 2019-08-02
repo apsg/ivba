@@ -2,6 +2,7 @@
 namespace App;
 
 use App\Events\UserRegisteredEvent;
+use App\Notifications\PasswordReset;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -497,7 +498,7 @@ class User extends Authenticatable
 
     public function sendPasswordResetNotification($token)
     {
-        $this->notify(new \App\Notifications\PasswordReset($token));
+        $this->notify(new PasswordReset($token, $this->created_at->diffInMinutes() < 5));
     }
 
     public function getCurrentDayAttribute()

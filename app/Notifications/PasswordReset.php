@@ -12,14 +12,18 @@ class PasswordReset extends Notification
 
     public $token;
 
+    /** @var bool */
+    public $isFresh;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($token)
+    public function __construct($token, bool $isFresh = false)
     {
         $this->token = $token;
+        $this->isFresh = $isFresh;
     }
 
     /**
@@ -41,6 +45,19 @@ class PasswordReset extends Notification
      */
     public function toMail($notifiable)
     {
+        if ($this->isFresh) {
+            return (new MailMessage)
+                ->subject('Ustaw hasło')
+                ->greeting('Cześć!')
+                ->line('Z tej strony Mateusz z ' . config('app.name'))
+                ->line('Założyliśmy Ci konto na naszym portalu! Będziesz tam miał dostęp do zakupionych kursów. '
+                    . 'Aby móc z niego w pełni korzystać musisz ustawić sobie hasło. '
+                    . 'Aby to zrobić kliknij w poniższy link:')
+                ->action('Ustaw hasło', url(config('app.url') . route('password.reset', $this->token, false)))
+                ->line('Możesz też w swoim panelu zarządzania kontem dodać dane do faktury:')
+                ->action('Zobacz swoje dane', url('/account'));
+        }
+
         return (new MailMessage)
             ->subject('Reset hasła')
             ->greeting('Cześć!')
@@ -48,8 +65,7 @@ class PasswordReset extends Notification
             ->line('Ze względów bezpieczeństwa lub na Twoje życzenie uruchomiona została procedura resetu hasła. '
                 . 'Jeśli dopiero co utworzono Twoje konto, dzięki poniższemu linkowi możesz ustawić swoje hasło. '
                 . 'Aby je zresetować kliknij w poniższy link:')
-            ->action('Zresetuj hasło', url(config('app.url') . route('password.reset', $this->token, false)))
-            ->line('Ta wiadomość została wygenerowana automatycznie po migracji Twojego konta do nowego systemu.');
+            ->action('Zresetuj hasło', url(config('app.url') . route('password.reset', $this->token, false)));
     }
 
     /**
