@@ -15,7 +15,17 @@
         <tr>
             <th scope="row">{{ $order->id }}</th>
             <td>{{ $order->payu_order_id ?? $order->id }}</td>
-            <td>{{ $order->getDescription() }}</td>
+            <td>
+                {{ $order->getDescription() }}
+                @if($order->isQuickSales())
+                    <p>
+                        <a href="{{ url($order->quick_sales[0]->redirect_url) }}">
+                            <i class="fa fa-link"></i>
+                            {{ url($order->quick_sales[0]->redirect_url) }}
+                        </a>
+                    </p>
+                @endif
+            </td>
             <td>{{ $order->final_total ?? $order->total() }}</td>
             <td>{{ $order->confirmed_at }}</td>
             <td>
