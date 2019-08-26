@@ -64,10 +64,19 @@ class AdminQuickSalesController extends Controller
     {
         $data = $quickSale->confirmed_orders()
             ->get();
-//            ->only(['id', 'confirmed_at', 'user.email', 'user.name']);
 
         $csvExporter = new Export();
-        $csvExporter->build($data, ['id', 'confirmed_at', 'user_id', 'user.email', 'user.name', 'user.phone']);
+        $csvExporter->build($data, [
+            'id',
+            'confirmed_at',
+            'user_id',
+            'user.email',
+            'user.name',
+            'user.phone',
+            'user.street',
+            'user.city',
+            'user.postcode',
+        ]);
 
         $csvExporter->download();
 
