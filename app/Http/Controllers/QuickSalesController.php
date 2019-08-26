@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Axios\QuickSaleFinishRequest;
 use App\Http\Requests\Axios\QuickSaleOrderRequest;
-use App\Http\Requests\Axios\QUickSalePrevalidateRequest;
+use App\Http\Requests\Axios\QuickSalePrevalidateRequest;
 use App\Payments\Tpay\TpayTransaction;
 use App\QuickSale;
 use App\Repositories\QuickSaleRepository;
@@ -15,7 +15,7 @@ class QuickSalesController extends Controller
     public function show(string $hash, QuickSaleRepository $repository)
     {
         $sale = $repository->findByHash($hash)
-            ->only(['id', 'price', 'full_price', 'name', 'description', 'rules_url', 'hash']);
+            ->only(['id', 'price', 'full_price', 'name', 'description', 'rules_url', 'hash', 'is_full_data_required']);
 
         return view('quicksale')->with(compact('sale'));
     }
@@ -30,8 +30,10 @@ class QuickSalesController extends Controller
         $sale = $repository->findByHash($hash);
         $user = $userRepository->findByEmail($request->input('email', ''));
         if ($user === null) {
-            $userRepository->createAndSend($request->all(['name', 'email', 'phone']));
+            $user = $userRepository->createAndSend($request->all(['name', 'email', 'phone']));
         }
+
+        $user->update(array_filter($request->all(['street', 'postcode', 'city'])));
 
         $order = $user->getCurrentOrder()->clear();
         $order->quick_sales()->save($sale);
@@ -41,7 +43,7 @@ class QuickSalesController extends Controller
         ];
     }
 
-    public function prevalidate(QUickSalePrevalidateRequest $request)
+    public function prevalidate(QuickSalePrevalidateRequest $request)
     {
         return response()->json([], 200);
     }

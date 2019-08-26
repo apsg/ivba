@@ -16,6 +16,7 @@ use Illuminate\Support\Collection;
  * @property float|null              full_price
  * @property int                     course_id
  * @property-read Course             course
+ * @property boolean                 is_full_data_required
  *
  * @property string                  message_email
  * @property string                  message_subject
@@ -45,6 +46,7 @@ class QuickSale extends Model implements OrderableContract
         'message_subject',
         'message_body',
         'redirect_url',
+        'is_full_data_required',
     ];
 
     public function orders()
@@ -70,7 +72,7 @@ class QuickSale extends Model implements OrderableContract
 
     public function removeLink(Order $order) : string
     {
-        // TODO: Implement removeLink() method.
+        return ''; // We do not need it for this type of orderables
     }
 
     public function getLinkAttribute()

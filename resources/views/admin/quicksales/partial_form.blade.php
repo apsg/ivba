@@ -22,18 +22,28 @@
                    value="{{ old('redirect_url') ?? $quickSale->redirect_url ?? '' }}">
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="form-group">
             <label>Cena zł</label>
             <input name="price" type="number" min="0" step="0.01" required class="form-control"
                    value="{{ old('price') ?? $quickSale->price ?? ''  }}">
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="form-group">
             <label>Cena zł przed obniżką (opcjonalnie)</label>
             <input name="full_price" type="number" min="0" step="0.01" class="form-control"
                    value="{{ old('fulL_price') ?? $quickSale->full_price ?? ''  }}">
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-check">
+
+            <input name="is_full_data_required" type="checkbox" class="form-check-input" id="defaultCheck1"
+                   @if(old('is_full_data_required') || !empty($quickSale->is_full_data_required) ) checked @endif value="1">
+            <label class="form-check-label" for="defaultCheck1">
+                <strong>Wymagaj pełnych danych (adres itp)</strong>
+            </label>
         </div>
     </div>
     <div class="col-md-12">

@@ -2422,6 +2422,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Quicksale",
   props: {
@@ -2439,7 +2454,10 @@ __webpack_require__.r(__webpack_exports__);
       phone: null,
       errors: [],
       order: null,
-      group: null
+      group: null,
+      street: null,
+      postcode: null,
+      city: null
     };
   },
   computed: {
@@ -2447,6 +2465,10 @@ __webpack_require__.r(__webpack_exports__);
       return "width: " + 100 * this.step / 4 + "%;";
     },
     isStep2Completed: function isStep2Completed() {
+      if (this.sale.is_full_data_required) {
+        return this.username != null && this.email != null && this.phone != null && this.street != null && this.postcode != null && this.city != null;
+      }
+
       return this.username != null && this.email != null && this.phone != null;
     },
     hasErrors: function hasErrors() {
@@ -2468,7 +2490,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    console.log(tr_groups);
+    console.log(this.sale);
   },
   methods: {
     stepIn: function stepIn() {
@@ -2487,7 +2509,11 @@ __webpack_require__.r(__webpack_exports__);
       axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/order', {
         name: this.username,
         email: this.email,
-        phone: this.phone
+        phone: this.phone,
+        street: this.street,
+        postcode: this.postcode,
+        city: this.city,
+        is_full_data_required: this.sale.is_full_data_required
       }).then(function (response) {
         console.log(response);
         _this.order = response.data.order_id;
@@ -2503,7 +2529,11 @@ __webpack_require__.r(__webpack_exports__);
       axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/prevalidate', {
         email: this.email,
         name: this.username,
-        phone: this.phone
+        phone: this.phone,
+        street: this.street,
+        postcode: this.postcode,
+        city: this.city,
+        is_full_data_required: this.sale.is_full_data_required
       }).then(function (response) {
         _this2.stepIn();
       }).catch(function (error) {
@@ -48407,6 +48437,88 @@ var render = function() {
                     })
                   ])
                 ]),
+                _vm._v(" "),
+                _vm.sale.is_full_data_required
+                  ? _c("div", [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Ulica")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.street,
+                              expression: "street"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", required: "" },
+                          domProps: { value: _vm.street },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.street = $event.target.value
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Kod pocztowy")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.postcode,
+                              expression: "postcode"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", required: "" },
+                          domProps: { value: _vm.postcode },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.postcode = $event.target.value
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Miasto")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.city,
+                              expression: "city"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", required: "" },
+                          domProps: { value: _vm.city },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.city = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c("div", { staticClass: "text-center" }, [
                   _c(

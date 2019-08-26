@@ -59,6 +59,21 @@
                         <input class="form-control" type="text" required v-model="phone" placeholder="podaj 9 cyfr"/>
                     </div>
                 </div>
+                <div v-if="sale.is_full_data_required">
+
+                    <div class="form-group">
+                        <label>Ulica</label>
+                        <input class="form-control" type="text" required v-model="street"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Kod pocztowy</label>
+                        <input class="form-control" type="text" required v-model="postcode"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Miasto</label>
+                        <input class="form-control" type="text" required v-model="city"/>
+                    </div>
+                </div>
                 <div class="text-center">
                     <button
                             @click="prevalidate"
@@ -144,6 +159,9 @@
                 errors: [],
                 order: null,
                 group: null,
+                street: null,
+                postcode: null,
+                city: null,
             }
         },
 
@@ -153,6 +171,15 @@
             },
 
             isStep2Completed() {
+                if (this.sale.is_full_data_required) {
+                    return this.username != null
+                        && this.email != null
+                        && this.phone != null
+                        && this.street != null
+                        && this.postcode != null
+                        && this.city != null;
+                }
+
                 return this.username != null
                     && this.email != null
                     && this.phone != null;
@@ -181,7 +208,7 @@
         },
 
         mounted() {
-            console.log(tr_groups);
+            console.log(this.sale);
         },
 
         methods: {
@@ -202,7 +229,11 @@
                 axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/order', {
                     name: this.username,
                     email: this.email,
-                    phone: this.phone
+                    phone: this.phone,
+                    street: this.street,
+                    postcode: this.postcode,
+                    city: this.city,
+                    is_full_data_required: this.sale.is_full_data_required,
                 })
                     .then(response => {
                         console.log(response);
@@ -219,7 +250,11 @@
                 axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/prevalidate', {
                     email: this.email,
                     name: this.username,
-                    phone: this.phone
+                    phone: this.phone,
+                    street: this.street,
+                    postcode: this.postcode,
+                    city: this.city,
+                    is_full_data_required: this.sale.is_full_data_required,
                 }).then(response => {
                     this.stepIn();
                 }).catch(error => {
