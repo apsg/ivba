@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 
     Route::get('videos', 'AdminVideosController@index');
     Route::post('videos', 'AdminVideosController@store');
+    Route::post('videos/import', 'AdminVideosController@import');
 
     Route::get('/pages', 'AdminPagesController@index');
     Route::get('/pages/new', 'AdminPagesController@create');

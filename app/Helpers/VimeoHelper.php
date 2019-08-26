@@ -9,9 +9,8 @@ class VimeoHelper
     /**
      * Wysyła wideo na vimeo i zwraca dane do stworzenia obiektu Video
      */
-    public static function uploadVideo($filePath, $name, $title = null)
+    public static function uploadVideo($filePath, $name, $title = null) : array
     {
-
         $uri = Vimeo::upload($filePath);
 
         Vimeo::request($uri, [
@@ -23,6 +22,19 @@ class VimeoHelper
         return [
             'url'      => $data['body']['link'],
             'hash'     => str_replace('/videos/', '', $uri),
+            'thumb'    => '',
+            'embed'    => $data['body']['embed']['html'],
+            'filename' => $name,
+        ];
+    }
+
+    public static function import($url, $name = '') : array
+    {
+        $data = Vimeo::request($url);
+
+        return [
+            'url'      => $data['body']['link'],
+            'hash'     => str_replace('/videos/', '', $url),
             'thumb'    => '',
             'embed'    => $data['body']['embed']['html'],
             'filename' => $name,
