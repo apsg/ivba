@@ -1,6 +1,8 @@
 <?php
 namespace App;
 
+use App\Fakturownia\PaymentInvoice;
+use App\Interfaces\InvoicableContract;
 use App\Payments\Tpay\TpayHelper;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -9,38 +11,26 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Payment
  *
- * @property string                          subscription_id
- * @property string                          title
- * @property float                           amount
- * @property string                          external_id
- * @property Carbon                          cancelled_at
- * @property Carbon                          confirmed_at
- * @property bool                            is_recurrent
- * @property string|null                     cancel_reason
- * @property-read Subscription               subscription
- * @property-read string                     reason
+ * @property string              subscription_id
+ * @property string              title
+ * @property float               amount
+ * @property string              external_id
+ * @property int|null            invoice_id
+ * @property Carbon              cancelled_at
+ * @property Carbon              confirmed_at
+ * @property bool                is_recurrent
+ * @property string|null         cancel_reason
+ * @property-read Subscription   subscription
+ * @property-read string         reason
+ * @property-read InvoiceRequest invoice_request
  * @method Builder|Payment forUser(User $user)
  * @method Builder|Payment confirmed()
- * @property int                             $id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereAmount($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereCancelReason($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereCancelledAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereConfirmedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereExternalId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereIsRecurrent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereSubscriptionId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Payment whereUpdatedAt($value)
+ * @property int                 $id
+ * @property Carbon|null         $created_at
+ * @property Carbon|null         $updated_at
  * @mixin \Eloquent
  */
-class Payment extends Model
+class Payment extends Model implements InvoicableContract
 {
     protected $fillable = [
         'subscription_id',
@@ -51,6 +41,7 @@ class Payment extends Model
         'is_recurrent',
         'confirmed_at',
         'cancel_reason',
+        'invoice_id',
     ];
 
     protected $casts = [
@@ -61,6 +52,11 @@ class Payment extends Model
     public function subscription()
     {
         return $this->belongsTo(Subscription::class);
+    }
+
+    public function invoice_request()
+    {
+        return $this->morphOne(InvoiceRequest::class, 'invoicable');
     }
 
     public function isFirstPayment() : bool
@@ -81,5 +77,45 @@ class Payment extends Model
     public function getReasonAttribute()
     {
         return TpayHelper::translateReason($this->cancel_reason);
+    }
+
+    // --------------- InvoicableContract ----------------
+
+    public function hasInvoice() : bool
+    {
+        return $this->invoice_id !== null;
+    }
+
+    public function invoiceDownloadUrl() : ?string
+    {
+        if ($this->hasInvoice()) {
+            return (new PaymentInvoice($this))->getDownloadUrl();
+        }
+
+        return null;
+    }
+
+    public function invoiceId() : ?int
+    {
+        return $this->invoice_id;
+    }
+
+    public function getSellDateFormatted() : string
+    {
+        if ($this->confirmed_at === null) {
+            return now()->format('Y-m-d');
+        }
+
+        return $this->confirmed_at->format('Y-m-d');
+    }
+
+    public function getEmail() : string
+    {
+        return $this->subscription->user->email ?? '';
+    }
+
+    public function getUser() : User
+    {
+        return $this->subscription->user;
     }
 }

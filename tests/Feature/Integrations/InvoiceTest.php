@@ -3,6 +3,7 @@ namespace Tests\Feature\Integrations;
 
 use App\Fakturownia\Client\InvoiceOceanClient;
 use App\InvoiceRequest;
+use App\Order;
 use App\User;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -45,7 +46,7 @@ class InvoiceTest extends TestCase
             ->assertSessionHasErrors();
 
         $this->assertDatabaseMissing('invoice_requests', [
-            'order_id' => $order->id,
+            'invoicable_id' => $order->id,
         ]);
     }
 
@@ -72,7 +73,8 @@ class InvoiceTest extends TestCase
             ->assertSessionDoesntHaveErrors();
 
         $this->assertDatabaseHas('invoice_requests', [
-            'order_id' => $order->id,
+            'invoicable_id'   => $order->id,
+            'invoicable_type' => Order::class,
         ]);
     }
 
@@ -92,7 +94,8 @@ class InvoiceTest extends TestCase
             'user_id' => $this->user->id,
         ]);
         $request = InvoiceRequest::create([
-            'order_id' => $order->id,
+            'invoicable_id'   => $order->id,
+            'invoicable_type' => Order::class,
         ]);
 
         // when

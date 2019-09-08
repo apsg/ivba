@@ -3,7 +3,8 @@ namespace App;
 
 use App\Events\QuickSaleConfirmedEvent;
 use App\Events\UserPaidForAccess;
-use App\Fakturownia\Invoice;
+use App\Fakturownia\OrderInvoice;
+use App\Interfaces\InvoicableContract;
 use App\Notifications\OrderConfirmed;
 use App\Repositories\AccessDaysRepository;
 use App\Repositories\AccessRepository;
@@ -36,7 +37,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Order confirmed()
  * @mixin \Eloquent
  */
-class Order extends Model
+class Order extends Model implements InvoicableContract
 {
     protected $guarded = [];
 
@@ -67,7 +68,7 @@ class Order extends Model
 
     public function invoice_request()
     {
-        return $this->hasOne(InvoiceRequest::class);
+        return $this->morphOne(InvoiceRequest::class, 'invoicable');
     }
 
     /**
@@ -227,17 +228,44 @@ class Order extends Model
         return $this->description ?? '';
     }
 
+    public function isQuickSales() : bool
+    {
+        return $this->quick_sales()->count() > 0;
+    }
+
+    // ------ InvoicableContract ------
+
     public function invoiceDownloadUrl() : ?string
     {
-        if ($this->invoice_id) {
-            return (new Invoice($this))->getDownloadUrl();
+        if ($this->hasInvoice()) {
+            return (new OrderInvoice($this))->getDownloadUrl();
         }
 
         return null;
     }
 
-    public function isQuickSales() : bool
+    public function hasInvoice() : bool
     {
-        return $this->quick_sales()->count() > 0;
+        return $this->invoice_id !== null;
+    }
+
+    public function invoiceId() : ?int
+    {
+        return $this->invoice_id;
+    }
+
+    public function getSellDateFormatted() : string
+    {
+        return $this->confirmed_at->format('Y-m-d');
+    }
+
+    public function getEmail() : string
+    {
+        return $this->user->email ?? '';
+    }
+
+    public function getUser() : User
+    {
+        return $this->user;
     }
 }

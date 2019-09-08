@@ -3,31 +3,30 @@ namespace App\Fakturownia;
 
 use App\Fakturownia\Client\InvoiceOceanClient;
 use App\Fakturownia\Exceptions\InvoiceException;
-use App\Order;
-use App\Repositories\OrdersRepository;
+use App\Interfaces\InvoicableContract;
 use Carbon\Carbon;
 
-class Invoice
+abstract class AbstractInvoice
 {
     /** @var InvoiceOceanClient */
     protected $client;
 
-    /** @var Order */
-    protected $order;
+    /** @var InvoicableContract */
+    protected $item;
 
     /** @var int|null */
     protected $invoiceId;
 
-    public function __construct(Order $order)
+    public function __construct(InvoicableContract $item)
     {
         $this->client = new InvoiceOceanClient();
-        $this->order = $order;
+        $this->item = $item;
     }
 
     public function generate() : int
     {
-        if ($this->order->invoice_id !== null) {
-            return $this->order->invoice_id;
+        if ($this->item->hasInvoice()) {
+            return $this->item->invoiceId();
         }
 
         $response = $this->client->addInvoice($this->getAttributes());
@@ -38,7 +37,7 @@ class Invoice
 
         $this->invoiceId = data_get($response, 'response.id');
 
-        app(OrdersRepository::class)->attachInvoice($this->order, $this->invoiceId);
+        $this->attachInvoiceToItem($this->invoiceId);
 
         return $this->invoiceId;
     }
@@ -59,7 +58,7 @@ class Invoice
         $attributes = [
             "kind"             => "vat",
             "number"           => null,
-            "sell_date"        => $this->order->confirmed_at->format('Y-m-d'),
+            "sell_date"        => $this->item->getSellDateFormatted(),
             "issue_date"       => $now,
             "payment_to"       => $now,
             "seller_name"      => "IT&Business Training Mateusz Grabowski",
@@ -68,59 +67,24 @@ class Invoice
             'seller_city'      => 'Gliwice',
             "seller_tax_no"    => "631-227-39-46",
             "buyer_name"       => $this->getClientName(),
-            "buyer_email"      => $this->order->user->email,
+            "buyer_email"      => $this->item->getEmail(),
             "buyer_tax_no"     => "5252445767",
             "positions"        => $this->getPositions(),
-            'paid_date'        => $this->order->confirmed_at->format('Y-m-d'),
+            'paid_date'        => $this->item->getSellDateFormatted(),
             'status'           => 'paid',
         ];
 
         return $attributes;
     }
 
-    protected function getClientName() : string
-    {
-        $user = $this->order->user;
+    protected abstract function attachInvoiceToItem($invoiceId);
 
-        if (!empty($user->last_name)) {
-            return implode(', ', array_filter([
-                $user->full_name,
-                $user->address,
-            ]));
-        }
+    protected abstract function getClientName() : string;
 
-        return $user->name;
-    }
-
-    protected function getPositions() : array
-    {
-        if ($this->order->is_full_access || $this->order->is_easy_access) {
-            return [
-                [
-                    "name"              => $this->order->description,
-                    "tax"               => 23,
-                    "total_price_gross" => $this->order->total(),
-                    "quantity"          => 1,
-                ],
-            ];
-        }
-
-        $positions = [];
-
-        foreach ($this->order->quick_sales as $quickSale) {
-            $positions[] = [
-                "name"              => $quickSale->name,
-                "tax"               => 23,
-                "total_price_gross" => $quickSale->price,
-                "quantity"          => 1,
-            ];
-        }
-
-        return $positions;
-    }
+    protected abstract function getPositions() : array;
 
     public function getDownloadUrl() : ?string
     {
-        return $this->client->getInvoiceUrl($this->order->invoice_id);
+        return $this->client->getInvoiceUrl($this->item->invoiceId());
     }
 }

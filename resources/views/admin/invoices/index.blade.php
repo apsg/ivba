@@ -32,22 +32,24 @@
                             </thead>
                             @foreach($invoices as $invoice)
                                 <tr>
-                                    <td>{{ $invoice->order->user->name }}</td>
-                                    <td>{{ $invoice->order->user->email }}</td>
+                                    <td>{{ $invoice->invoicable->getUser()->name }}</td>
+                                    <td>{{ $invoice->invoicable->getEmail() }}</td>
                                     <td>
-                                        Imię: {{ $invoice->order->user->first_name }} <br>
-                                        Nazwisko: {{ $invoice->order->user->last_name }}<br>
-                                        Adres: {{ $invoice->order->user->address }}<br>
-                                        NIP: {{ $invoice->order->user->taxid }}<br>
+                                        Imię: {{ $invoice->invoicable->getUser()->first_name }} <br>
+                                        Nazwisko: {{ $invoice->invoicable->getUser()->last_name }}<br>
+                                        Adres: {{ $invoice->invoicable->getUser()->address }}<br>
+                                        NIP: {{ $invoice->invoicable->getUser()->taxid }}<br>
                                     </td>
                                     <td>{{ $invoice->created_at }}</td>
-                                    <td>{{ $invoice->order->getDescription() }}</td>
-                                    <td>{{ $invoice->order->total() }} PLN</td>
+                                    <td>{{ $invoice->getDescription() }}</td>
+                                    <td>{{ $invoice->getTotal() }} PLN</td>
                                     <td>
-                                        <a href="{{ route('admin.invoice.accept', $invoice->id) }}" class="btn btn-primary">
+                                        <a href="{{ route('admin.invoice.accept', $invoice->id) }}"
+                                           class="btn btn-primary">
                                             <i class="fa fa-check"></i> Zatwierdź
                                         </a>
-                                        <a href="{{ route('admin.invoice.reject', $invoice->id) }}" class="btn btn-danger">
+                                        <a href="{{ route('admin.invoice.reject', $invoice->id) }}"
+                                           class="btn btn-danger">
                                             <i class="fa fa-times"></i> Odrzuć
                                         </a>
                                     </td>

@@ -149,7 +149,8 @@ class OrderController extends Controller
         }
 
         InvoiceRequest::create([
-            'order_id' => $order->id,
+            'invoicable_id'   => $order->id,
+            'invoicable_type' => Order::class,
         ]);
 
         return back();

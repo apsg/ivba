@@ -80,7 +80,8 @@ Route::group(['prefix' => 'qs'], function () {
     Route::post('/{hash}/finish', 'QuickSalesController@finish');
 });
 
+Route::get('/payments/{payment}/request-invoice', 'PaymentsController@requestInvoice');
+
+
 // To musi być na samym końcu, by nie blokowało innych ścieżek
 Route::get('/{page}/{subpage?}', 'PageController@show');
-
-

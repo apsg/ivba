@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\Events\FirstPaymentCorrectEvent;
 use App\Events\FirstPaymentIncorrectEvent;
 use App\Events\SubscriptionPaymentFailedEvent;
+use App\Order;
 use App\Payment;
 use App\Subscription;
 use Carbon\Carbon;
@@ -78,6 +79,15 @@ class PaymentRepository
         ]);
 
         event(new SubscriptionPaymentFailedEvent($payment));
+
+        return $payment;
+    }
+
+    public function attachInvoice(Payment $payment, int $invoiceId) : Payment
+    {
+        $payment->update([
+            'invoice_id' => $invoiceId,
+        ]);
 
         return $payment;
     }

@@ -1,22 +1,24 @@
 <?php
-
 namespace App;
 
-use App\Fakturownia\Invoice;
+use App\Fakturownia\OrderInvoice;
+use App\Fakturownia\PaymentInvoice;
+use App\Interfaces\InvoicableContract;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class InvoiceRequest
+ * Class App\InvoiceRequest
  * @package App
  *
- * @property int         id
- * @property int         order_id
- * @property Carbon      created_at
- * @property Carbon      updated_at
- * @property Carbon|null refused_at
+ * @property int                     id
+ * @property int                     invoicable_id
+ * @property string                  invoicable_type
+ * @property Carbon                  created_at
+ * @property Carbon                  updated_at
+ * @property Carbon|null             refused_at
  *
- * @property-read Order  order
+ * @property-read InvoicableContract invoicable
  */
 class InvoiceRequest extends Model
 {
@@ -26,14 +28,27 @@ class InvoiceRequest extends Model
         'refused_at',
     ];
 
-    public function order()
+    public function invoicable()
     {
-        return $this->belongsTo(Order::class);
+        return $this->morphTo('invoicable');
     }
 
     public function confirm()
     {
-        $invoice = new Invoice($this->order);
+        $invoice = null;
+
+        if ($this->invoicable instanceof Order) {
+            $invoice = new OrderInvoice($this->invoicable);
+        }
+
+        if ($this->invoicable instanceof Payment) {
+            $invoice = new PaymentInvoice($this->invoicable);
+        }
+
+        if ($invoice === null) {
+            return null;
+        }
+
         $invoiceId = $invoice->generate();
 
         if ($invoiceId !== null) {
@@ -51,5 +66,31 @@ class InvoiceRequest extends Model
         ]);
 
         return $this;
+    }
+
+    public function getDescription() : string
+    {
+        if ($this->invoicable instanceof Order) {
+            return $this->invoicable->description;
+        }
+
+        if ($this->invoicable instanceof Payment) {
+            return $this->invoicable->title;
+        }
+
+        return '';
+    }
+
+    public function getTotal() : string
+    {
+        if ($this->invoicable instanceof Order) {
+            return $this->invoicable->total();
+        }
+
+        if ($this->invoicable instanceof Payment) {
+            return $this->invoicable->amount;
+        }
+
+        return '';
     }
 }

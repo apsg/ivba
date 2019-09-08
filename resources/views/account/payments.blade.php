@@ -29,7 +29,7 @@
             <td>{{ $order->final_total ?? $order->total() }}</td>
             <td>{{ $order->confirmed_at }}</td>
             <td>
-                @if($order->invoice_id)
+                @if($order->hasInvoice())
                     <a href="{{ $order->invoiceDownloadUrl() }}" class="btn btn-primary" target="_blank">
                         <i class="fa fa-download"></i> Pobierz
                     </a>
@@ -67,18 +67,33 @@
                     <span class="text-success"><i class="fa fa-check"></i> Płatność zrealizowana {{ $payment->confirmed_at }}</span>
                 @elseif($payment->cancelled_at)
                     <span class="text-danger"><i class="fa fa-warning"></i> Płatność odrzucona {{ $payment->cancelled_at }}.
-                                    @if(!empty($payment->cancel_reason))
+                        @if(!empty($payment->cancel_reason))
                             <br/>Powód: {{ $payment->reason }}
                         @endif
-                                </span>
+                    </span>
                 @else
                     <span>
-                                    <i class="fa fa-question-circle"></i> Płatność oczekuje na potwierdzenie lub została porzucona.
-                                    <br/>Płatność rozpoczęta {{ $payment->created_at }}
-                                </span>
+                        <i class="fa fa-question-circle"></i> Płatność oczekuje na potwierdzenie lub została porzucona.
+                        <br/>Płatność rozpoczęta {{ $payment->created_at }}
+                    </span>
                 @endif
-
-
+            </td>
+            <td>
+                @if($payment->hasInvoice())
+                    <a href="{{ $payment->invoiceDownloadUrl() }}" class="btn btn-primary" target="_blank">
+                        <i class="fa fa-download"></i> Pobierz
+                    </a>
+                @elseif($payment->invoice_request!==null)
+                    @if($payment->invoice_request->refused_at !== null)
+                        Odrzucono dnia {{ $payment->invoice_request->refused_at }}
+                    @else
+                        Weryfikujemy dane. Po potwierdzeniu otrzymasz fakturę mailem lub będzie ona do pobrania w tym
+                        miejscu
+                    @endif
+                @else
+                    <a href="{{ url('/payments/'.$payment->id.'/request-invoice') }}" class="btn btn-ivba">Poproś o
+                        fakturę</a>
+                @endif
             </td>
         </tr>
     @endforeach
