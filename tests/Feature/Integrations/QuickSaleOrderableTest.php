@@ -6,6 +6,7 @@ use App\QuickSale;
 use App\User;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\Concerns\CourseConcerns;
 use Tests\Concerns\UserConcerns;
 use Tests\TestCase;
@@ -15,6 +16,7 @@ class QuickSaleOrderableTest extends TestCase
     use InteractsWithDatabase, DatabaseTransactions;
     use CourseConcerns;
     use UserConcerns;
+    use WithFaker;
 
     /** @var User */
     protected $user;
@@ -72,5 +74,27 @@ class QuickSaleOrderableTest extends TestCase
             ->get('/account');
 
         $response->assertSee($this->course->title);
+    }
+
+    /** @test */
+    public function user_can_download_quicksale_item_on_his_account_page()
+    {
+        // given
+        $url = $this->faker->url;
+        $quickSale = factory(QuickSale::class)->create([
+            'file_url' => $url,
+        ]);
+        $order = $this->user->getCurrentOrder();
+        $order->quick_sales()->save($quickSale);
+        $order = $order->fresh();
+        $this->actingAs($this->user);
+
+        // when
+        $order->confirm('test');
+
+        // then
+        $this->actingAs($this->user)
+            ->get('/account')
+            ->assertSee($url);
     }
 }

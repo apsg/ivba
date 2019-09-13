@@ -17,13 +17,10 @@
             <td>{{ $order->payu_order_id ?? $order->id }}</td>
             <td>
                 {{ $order->getDescription() }}
-                @if($order->isQuickSales())
-                    <p>
-                        <a href="{{ url($order->quick_sales[0]->redirect_url) }}">
-                            <i class="fa fa-link"></i>
-                            {{ url($order->quick_sales[0]->redirect_url) }}
-                        </a>
-                    </p>
+                @if($order->isQuickSales() && $order->quick_sales[0]->file_url !== null)
+                    <a target="_blank" href="{{ url($order->quick_sales[0]->file_url) }}" class="ml-1">
+                        <i class="fa fa-link"></i> Pobierz
+                    </a>
                 @endif
             </td>
             <td>{{ $order->final_total ?? $order->total() }}</td>
