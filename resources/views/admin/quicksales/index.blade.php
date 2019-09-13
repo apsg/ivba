@@ -19,7 +19,7 @@
         </div>
         <div class="row mt-4">
             @foreach($quickSales as $sale)
-                <div class="col-md-12">
+                <div class="col-md-12 mb-3">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">{{ $sale->name }}</h5>

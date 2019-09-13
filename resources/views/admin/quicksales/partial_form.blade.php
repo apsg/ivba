@@ -40,7 +40,8 @@
         <div class="form-check">
 
             <input name="is_full_data_required" type="checkbox" class="form-check-input" id="defaultCheck1"
-                   @if(old('is_full_data_required') || !empty($quickSale->is_full_data_required) ) checked @endif value="1">
+                   @if(old('is_full_data_required') || !empty($quickSale->is_full_data_required) ) checked
+                   @endif value="1">
             <label class="form-check-label" for="defaultCheck1">
                 <strong>Wymagaj pełnych danych (adres itp)</strong>
             </label>
@@ -60,6 +61,13 @@
                 </option>
             @endforeach
         </select>
+    </div>
+    <div class="col-md-12">
+        <div class="form-group">
+            <label>Link załącznika:</label>
+            <input name="file_url" type="url" class="form-control"
+                   value="{{ old('file_url') ?? $quickSale->file_url ?? '' }}">
+        </div>
     </div>
     <div class="col-md-12">
         <h3 class="mt-2">Email</h3>
