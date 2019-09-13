@@ -35,6 +35,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read Collection|QuickSale[] quick_sales
  * @property-read InvoiceRequest|null    invoice_request
  * @method static Builder|Order confirmed()
+ * @method static Builder|Order quickSales()
  * @mixin \Eloquent
  */
 class Order extends Model implements InvoicableContract
@@ -189,6 +190,11 @@ class Order extends Model implements InvoicableContract
             $q->whereNotNull('confirmed_at')
                 ->orWhereNotNull('external_payment_id');
         });
+    }
+
+    public function scopeQuickSales($query)
+    {
+        $query->has('quick_sales');
     }
 
     public function setEasyAccess(int $duration) : self

@@ -56,6 +56,7 @@ use Illuminate\Notifications\Notifiable;
  * @property-read \App\Proof|null           $last_proof
  * @property-read Collection|Lesson[]       $lessons
  * @property-read Collection|Order[]        $orders
+ * @property-read Collection|Order[]        $quick_sale_order
  * @property-read Collection|Quiz[]         $quizzes
  * @property-read Collection|Subscription[] $subscriptions
  * @property-read Collection|Access[]       $accesses
@@ -164,6 +165,14 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function quick_sale_orders()
+    {
+        return $this->hasMany(Order::class)
+            ->confirmed()
+            ->has('quick_sales')
+            ->with('quick_sales');
     }
 
     /**
