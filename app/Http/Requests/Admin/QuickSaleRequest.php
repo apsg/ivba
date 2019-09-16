@@ -8,16 +8,17 @@ class QuickSaleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'            => 'required|string',
-            'description'     => 'string',
-            'rules_url'       => 'required|url',
-            'price'           => 'required|numeric|min:0',
-            'full_price'      => 'sometimes|nullable|numeric|min:0',
-            'course_id'       => 'sometimes|nullable|numeric|exists:courses,id',
-            'message_email'   => 'sometimes|nullable|email',
-            'message_subject' => 'sometimes|nullable|string',
-            'message_body'    => 'sometimes|nullable|string',
-            'redirect_url'    => 'sometimes|nullable|string',
+            'name'                  => 'required|string',
+            'description'           => 'string',
+            'rules_url'             => 'required|url',
+            'price'                 => 'required|numeric|min:0',
+            'full_price'            => 'sometimes|nullable|numeric|min:0',
+            'course_id'             => 'sometimes|nullable|numeric|exists:courses,id',
+            'message_email'         => 'sometimes|nullable|email',
+            'message_subject'       => 'sometimes|nullable|string',
+            'message_body'          => 'sometimes|nullable|string',
+            'redirect_url'          => 'sometimes|nullable|string',
+            'is_full_data_required' => 'required|bool',
         ];
     }
 }
