@@ -51,6 +51,10 @@ class QuickSale extends Model implements OrderableContract
         'file_url',
     ];
 
+    protected $casts = [
+        'is_full_data_required' => 'boolean',
+    ];
+
     public function orders()
     {
         return $this->morphToMany(Order::class, 'orderable');
