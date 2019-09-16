@@ -35,7 +35,7 @@ class AdminQuickSalesController extends Controller
 
     public function update(QuickSale $quickSale, QuickSaleRequest $request)
     {
-        $quickSale->update($request->except(['_token']));
+        $quickSale->update($request->getData());
 
         flash('Zaktualizowano pomyślnie');
 
