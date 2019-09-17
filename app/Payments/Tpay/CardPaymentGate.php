@@ -25,7 +25,7 @@ class CardPaymentGate extends PaymentCard
             $transaction = $this->registerSale($user->full_name, $user->email, $payment->title);
 
             if (isset($transaction['sale_auth']) === false) {
-                throw new TException('Error generating transaction: ' . $transaction['err_desc']);
+                throw new TException('Error generating transaction: ' . array_get($transaction,'err_desc'));
             }
 
             $transactionId = $transaction['sale_auth'];
