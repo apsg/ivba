@@ -135,11 +135,15 @@ class Order extends Model implements InvoicableContract
         if ($this->is_full_access) {
             $days = Carbon::now()->addMonths($this->duration)->diffInDays();
             $this->user->updateFullAccess($days);
+
+            event(new UserPaidForAccess($this->user));
         }
 
         if ($this->is_easy_access) {
             app(AccessDaysRepository::class)
                 ->grantAccessMonths($this->user, $this->duration);
+
+            event(new UserPaidForAccess($this->user));
         }
 
         $accessRepository = app(AccessRepository::class);
@@ -163,9 +167,6 @@ class Order extends Model implements InvoicableContract
         }
 
         $this->save();
-
-        // Odpalamy zdarzenie
-        event(new UserPaidForAccess($this->user));
 
         if (!$this->isQuickSales()) // Powiadamiamy użytkownika
         {

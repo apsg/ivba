@@ -15,6 +15,7 @@ $factory->define(QuickSale::class, function (Faker $faker) {
         'message_email'   => $faker->email,
         'message_subject' => $faker->sentence,
         'message_body'    => $faker->paragraph,
+        'file_url'        => $faker->boolean ? $faker->url : null,
     ];
 });
 
