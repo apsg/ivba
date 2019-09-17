@@ -87,6 +87,7 @@ class InvoiceTest extends TestCase
                 'response' => [
                     'id' => 123,
                 ],
+                'success'  => true,
             ]);
         });
 
@@ -102,6 +103,6 @@ class InvoiceTest extends TestCase
         $request->confirm();
 
         // then
-        $this->assertNotNull($order->invoice_id);
+        $this->assertNotNull($order->fresh()->invoice_id);
     }
 }

@@ -24,7 +24,7 @@ class OrderInvoice extends AbstractInvoice
         $response = $this->client->addInvoice($this->getAttributes());
 
         if ($response['success'] !== true || data_get($response, 'response.code') === 'error') {
-            throw new InvoiceException(array_get($response, 'response'));
+            throw new InvoiceException(array_get($response, 'response', ''));
         }
 
         $this->invoiceId = data_get($response, 'response.id');
