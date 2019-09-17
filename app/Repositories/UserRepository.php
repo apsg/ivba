@@ -15,7 +15,9 @@ class UserRepository
 
     public function createAndSend(array $attributes = []) : User
     {
-        $user = User::create($attributes);
+        $user = User::create(array_merge([
+            'password' => uniqid(),
+        ], $attributes));
         $this->resetPassword($user);
 
         return $user;
