@@ -129,9 +129,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     });
 
     Route::group(['prefix' => 'invoices'], function () {
-        Route::get('/', 'AdminInvoicesController@index');
+        Route::get('/', 'AdminInvoicesController@index')->name('admin.invoice.index');
         Route::get('/{invoiceRequest}/accept', 'AdminInvoicesController@accept')->name('admin.invoice.accept');
         Route::get('/{invoiceRequest}/reject', 'AdminInvoicesController@reject')->name('admin.invoice.reject');
+        Route::get('/{invoiceRequest}/edit', 'AdminInvoicesController@edit')->name('admin.invoice.edit');
+        Route::post('/{invoiceRequest}/update', 'AdminInvoicesController@update')->name('admin.invoice.update');
     });
 
 });

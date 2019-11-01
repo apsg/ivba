@@ -35,8 +35,7 @@
                                     <td>{{ $invoice->invoicable->getUser()->name }}</td>
                                     <td>{{ $invoice->invoicable->getEmail() }}</td>
                                     <td>
-                                        Imię: {{ $invoice->invoicable->getUser()->first_name }} <br>
-                                        Nazwisko: {{ $invoice->invoicable->getUser()->last_name }}<br>
+                                        Nazwa: {{ $invoice->invoicable->getUser()->company_name }} <br>
                                         Adres: {{ $invoice->invoicable->getUser()->address }}<br>
                                         NIP: {{ $invoice->invoicable->getUser()->taxid }}<br>
                                     </td>
@@ -52,6 +51,11 @@
                                            class="btn btn-danger">
                                             <i class="fa fa-times"></i> Odrzuć
                                         </a>
+                                        <a href="{{ route('admin.invoice.edit', $invoice->id) }}"
+                                           class="btn btn-secondary">
+                                            <i class="fa fa-edit"></i> Edytuj
+                                        </a>
+                                    </td>
                                     </td>
                                 </tr>
                             @endforeach

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\InvoiceRequest;
+use Illuminate\Http\Request;
 
 class AdminInvoicesController extends Controller
 {
@@ -36,5 +37,19 @@ class AdminInvoicesController extends Controller
         flash('Żądanie odrzucone');
 
         return back();
+    }
+
+    public function edit(InvoiceRequest $invoiceRequest)
+    {
+        return view('admin.invoices.edit')->with(compact('invoiceRequest'));
+    }
+
+    public function update(InvoiceRequest $invoiceRequest, Request $request)
+    {
+        $invoiceRequest->user()->update($request->only('company_name', 'address', 'taxid'));
+
+        flash('Zaktualizowano pomyślnie');
+
+        return redirect(route('admin.invoice.index'));
     }
 }

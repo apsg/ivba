@@ -93,4 +93,18 @@ class InvoiceRequest extends Model
 
         return '';
     }
+
+    public function user() : ?User
+    {
+
+        if ($this->invoicable instanceof Order) {
+            return $this->invoicable->user;
+        }
+
+        if ($this->invoicable instanceof Payment) {
+            return $this->invoicable->subscription->user;
+        }
+
+        return null;
+    }
 }
