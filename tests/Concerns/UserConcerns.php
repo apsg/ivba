@@ -6,9 +6,9 @@ use Carbon\Carbon;
 
 trait UserConcerns
 {
-    public function createUser() : User
+    public function createUser(array $attributes = []) : User
     {
-        return factory(User::class)->create();
+        return factory(User::class)->create($attributes);
     }
 
     public function createAdmin() : User

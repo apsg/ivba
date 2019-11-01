@@ -135,7 +135,7 @@ class OrderController extends Controller
         /** @var User $user */
         $user = auth()->user();
 
-        if ($user->first_name === null || $user->last_name === null || $user->taxid === null) {
+        if ($user->company_name === null || $user->taxid === null || $user->address === null) {
             flash('Proszę uzupełnić dane do faktury');
 
             return redirect(url('/account'))

@@ -46,4 +46,9 @@ class PaymentInvoice extends AbstractInvoice
 
         return $positions;
     }
+
+    protected function getClientTaxId() : string
+    {
+        return $this->item->subscription->user->taxid ?? null;
+    }
 }

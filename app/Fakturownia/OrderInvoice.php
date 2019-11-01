@@ -47,14 +47,19 @@ class OrderInvoice extends AbstractInvoice
     {
         $user = $this->item->user;
 
-        if (!empty($user->last_name)) {
+        if (!empty($user->company_name)) {
             return implode(', ', array_filter([
-                $user->full_name,
+                $user->company_name,
                 $user->address,
             ]));
         }
 
         return $user->name;
+    }
+
+    protected function getClientTaxId() : string
+    {
+        return $this->item->user->taxid ?? "";
     }
 
     protected function getPositions() : array
@@ -93,4 +98,5 @@ class OrderInvoice extends AbstractInvoice
     {
         app(OrdersRepository::class)->attachInvoice($this->item, $this->invoiceId);
     }
+
 }

@@ -51,14 +51,14 @@ abstract class AbstractInvoice
         return null;
     }
 
-    protected function getAttributes() : array
+    public function getAttributes() : array
     {
         $now = Carbon::now()->format('Y-m-d');
 
         $attributes = [
             "kind"             => "vat",
             "number"           => null,
-            "sell_date"        => $this->item->getSellDateFormatted(),
+            "sell_date"        => $now,
             "issue_date"       => $now,
             "payment_to"       => $now,
             "seller_name"      => "IT&Business Training Mateusz Grabowski",
@@ -68,7 +68,7 @@ abstract class AbstractInvoice
             "seller_tax_no"    => "631-227-39-46",
             "buyer_name"       => $this->getClientName(),
             "buyer_email"      => $this->item->getEmail(),
-            "buyer_tax_no"     => "5252445767",
+            "buyer_tax_no"     => $this->getClientTaxId(),
             "positions"        => $this->getPositions(),
             'paid_date'        => $this->item->getSellDateFormatted(),
             'status'           => 'paid',
@@ -82,6 +82,8 @@ abstract class AbstractInvoice
     protected abstract function getClientName() : string;
 
     protected abstract function getPositions() : array;
+
+    protected abstract function getClientTaxId() : string;
 
     public function getDownloadUrl() : ?string
     {

@@ -7,7 +7,7 @@ trait OrdersConcerns
 {
     public function createOrder(array $attrubutes = []) : Order
     {
-        return factory(Order::class)->create();
+        return factory(Order::class)->create($attrubutes);
     }
 
 

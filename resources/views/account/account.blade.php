@@ -127,7 +127,6 @@
                     </div>
 
                     <hr/>
-                    <h3>Twoje dane rozliczeniowe:</h3>
                     @include('partials.user_details_form')</div>
 
                 <div class="tab-pane fade" id="finance" role="tabpanel" aria-labelledby="finance-tab">

@@ -16,7 +16,7 @@ class InvoiceOceanClient extends InvoiceOcean
             config('services.fakturownia.token')
         );
 
-//        $this->_debug = app()->environment('local');
+        $this->_debug = app()->environment('local');
     }
 
     /**

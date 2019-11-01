@@ -29,6 +29,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string|null                    last_name
  * @property string|null                    address
  * @property string|null                    taxid
+ * @property string|null                    company_name
  * @property string|null                    street
  * @property string|null                    postcode
  * @property string|null                    city
@@ -96,6 +97,7 @@ class User extends Authenticatable
         'street',
         'postcode',
         'city',
+        'company_name',
     ];
 
     /**

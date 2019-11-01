@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\PasswordReset;
+use App\Http\Requests\UpdateUserInvoiceDataRequest;
 use App\Payment;
 use App\Services\LastLessonService;
 use Auth;
@@ -59,24 +60,11 @@ class AccountController extends Controller
         return redirect('/');
     }
 
-    /**
-     * Zaktualizuj dane użytkownika.
-     * @param Request $request [description]
-     * @return [type]           [description]
-     */
-    public function patch(Request $request)
+    public function patch(UpdateUserInvoiceDataRequest $request)
     {
-
-        $request->validate([
-            'first_name' => 'required',
-            'last_name'  => 'required',
-            'address'    => 'required',
-            'taxid'      => 'sometimes',
-        ]);
-
         Auth::user()
             ->update(
-                $request->only('first_name', 'last_name', 'address', 'taxid')
+                $request->validated()
             );
 
         return back()->with(['status' => 'Zaktualizowano']);
