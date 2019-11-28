@@ -10,7 +10,7 @@ class UpdateUserInvoiceDataRequest extends FormRequest
         return [
             'company_name' => 'required',
             'address'      => 'required',
-            'taxid'        => 'required',
+            'taxid'        => 'sometimes',
         ];
     }
 
