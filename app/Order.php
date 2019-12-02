@@ -170,7 +170,11 @@ class Order extends Model implements InvoicableContract
 
         if (!$this->isQuickSales()) // Powiadamiamy użytkownika
         {
-            $this->user->notify(new OrderConfirmed($this));
+            try {
+                $this->user->notify(new OrderConfirmed($this));
+            } catch (\Exception $exception) {
+                // do nothing
+            }
         }
 
         return true;
