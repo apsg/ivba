@@ -14,8 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::setDefaultConnection('testing');
-
         $user = factory(User::class)->create([
             'isadmin' => true,
         ]);
