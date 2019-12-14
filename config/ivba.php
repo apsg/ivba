@@ -24,7 +24,7 @@ return [
     'subscription_description_first' => 'Pierwsza płatność w abonamencie',
 
 
-    'subscription_price'    => 49,
+    'subscription_price'    => env('SUBSCRIPTION_PRICE', 49),
 
     /** Duration in months */
     'subscription_duration' => 1,
