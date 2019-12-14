@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "86bdc85d4ac08db7ba12752a24e1de3b",
+    "content-hash": "9c822a86ad620e3045840680f54e71f0",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -115,6 +115,64 @@
             ],
             "description": "A pure PHP server and client for the tus resumable upload protocol v1.0.0",
             "time": "2018-10-24T15:04:19+00:00"
+        },
+        {
+            "name": "apsg/multisite",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/apsg/Multisite.git",
+                "reference": "1d5238f9dba1dbd60456c41ff5404aaf844a7595"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/apsg/Multisite/zipball/1d5238f9dba1dbd60456c41ff5404aaf844a7595",
+                "reference": "1d5238f9dba1dbd60456c41ff5404aaf844a7595",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5|~6"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.1",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "~7.0",
+                "sempro/phpunit-pretty-print": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Apsg\\Multisite\\MultisiteServiceProvider"
+                    ],
+                    "aliases": {
+                        "Multisite": "Apsg\\Multisite\\Facades\\Multisite"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Apsg\\Multisite\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Szymon Gackowski",
+                    "email": "szymon@gackowski.edu.pl",
+                    "homepage": "http://gackowski.edu.pl"
+                }
+            ],
+            "description": "Package for laravel multisite feature (multiple installations)",
+            "homepage": "https://github.com/apsg/multisite",
+            "keywords": [
+                "laravel",
+                "multisite"
+            ],
+            "time": "2019-12-14T14:17:18+00:00"
         },
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -7196,6 +7254,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "anhskohbo/no-captcha": 20,
+        "apsg/multisite": 20,
         "barryvdh/laravel-ide-helper": 20,
         "openpayu/openpayu": 20,
         "sentry/sentry-laravel": 20,

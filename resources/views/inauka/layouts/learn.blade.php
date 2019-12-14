@@ -15,6 +15,7 @@
     <title>@yield('title', config('app.name'))</title>
 
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ multisite_css() }}">
 </head>
 
 <body class="learn">
@@ -71,6 +72,7 @@
 <script type="text/javascript" src="{{ url('assets/owl-carousel/js/owl.carousel.min.js') }}"></script>
 
 <script type="text/javascript" src="{{ url('/js/front.js') }}"></script>
+<script src="{{ multisite_js() }}"></script>
 
 @stack('scripts')
 </body>

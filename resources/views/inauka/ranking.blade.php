@@ -1,4 +1,4 @@
-@extends('layouts.front2')
+@extends('inauka.layouts.front2')
 
 @section('title', 'Ranking')
 

@@ -42,3 +42,14 @@ mix.scripts([
     // 'resources/assets/js/modernizr.custom.js',
     'resources/assets/js/custom.js',
 ], 'public/js/front.js');
+
+// ----- MULTISITE -----------------
+let domains = [
+    'inauka',
+    'projekt30'
+];
+
+for (let domain of domains) {
+    mix.js('resources/assets/js/' + domain + '.js', 'public/js', domain + '.js')
+        .sass('resources/assets/sass/' + domain + '.scss', 'public/css', domain + '.css');
+}

@@ -15,6 +15,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/inauka_custom.css') }}" rel="stylesheet">
+    <link href="{{ multisite_css() }}" rel="stylesheet">
 </head>
 <body>
 <div @if(request()->path() != 'cart' ) id="app" @endif>
@@ -132,6 +133,7 @@
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('/js/inauka_custom.js') }}"></script>
+<script src="{{ multisite_js() }}"></script>
 <script type="text/javascript">
     window.baseUrl = '{{ url('/') }}';
 </script>
