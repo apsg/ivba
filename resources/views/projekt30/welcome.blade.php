@@ -17,7 +17,7 @@
             <div class="col-md-4 text-center promo-card">
                 <img src="{{ asset('images/v2/1_kursanci6k.png') }}">
                 <h3>Kursanci</h3>
-                <p>Już ponad 5000 osób korzysta z naszej platformy do nauki.</p>
+                <p>Już ponad 6000 osób korzysta z naszej platformy do nauki.</p>
             </div>
             <div class="col-md-4 text-center promo-card">
                 <img src="{{ asset('images/v2/2_certyfikat.png') }}">
