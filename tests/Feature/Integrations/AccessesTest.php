@@ -33,7 +33,10 @@ class AccessesTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = $this->createUser();
+        $this->user = $this->createUser([
+            'isadmin'             => false,
+            'full_access_expires' => null,
+        ]);
         $this->course = $this->createCourse(3);
         $this->repository = app(AccessRepository::class);
     }
