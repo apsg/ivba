@@ -8,7 +8,7 @@ return [
     'contact_form_recipient' => env('FORM_EMAIL', 'info@iexcel.pl'),
 
 
-    'full_access_price'    => 499,
+    'full_access_price'    => env('FULL_ACCESS_PRICE', 499),
 
     /** Duration in months */
     'full_access_duration' => 12,
