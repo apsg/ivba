@@ -122,12 +122,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/apsg/Multisite.git",
-                "reference": "1d5238f9dba1dbd60456c41ff5404aaf844a7595"
+                "reference": "f757c8a333c6f01057c95ad62db4400c7b8cfe21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apsg/Multisite/zipball/1d5238f9dba1dbd60456c41ff5404aaf844a7595",
-                "reference": "1d5238f9dba1dbd60456c41ff5404aaf844a7595",
+                "url": "https://api.github.com/repos/apsg/Multisite/zipball/f757c8a333c6f01057c95ad62db4400c7b8cfe21",
+                "reference": "f757c8a333c6f01057c95ad62db4400c7b8cfe21",
                 "shasum": ""
             },
             "require": {
@@ -153,7 +153,10 @@
             "autoload": {
                 "psr-4": {
                     "Apsg\\Multisite\\": "src/"
-                }
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -172,7 +175,7 @@
                 "laravel",
                 "multisite"
             ],
-            "time": "2019-12-14T14:17:18+00:00"
+            "time": "2019-12-18T18:08:56+00:00"
         },
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -2516,12 +2519,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/PayU/openpayu_php.git",
+                "url": "https://github.com/PayU-EMEA/openpayu_php.git",
                 "reference": "3d79a87d182e065afd88896011cb3ded56968aed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PayU/openpayu_php/zipball/3d79a87d182e065afd88896011cb3ded56968aed",
+                "url": "https://api.github.com/repos/PayU-EMEA/openpayu_php/zipball/3d79a87d182e065afd88896011cb3ded56968aed",
                 "reference": "3d79a87d182e065afd88896011cb3ded56968aed",
                 "shasum": ""
             },

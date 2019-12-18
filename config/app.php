@@ -163,11 +163,9 @@ return [
         Illuminate\Session\SessionServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
-//        Illuminate\View\ViewServiceProvider::class,
-        \Apsg\Multisite\Providers\ViewServiceProvider::class,
+        Illuminate\View\ViewServiceProvider::class,
 
         Barryvdh\Debugbar\ServiceProvider::class,
-//        Yajra\Disqus\DisqusServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Vimeo\Laravel\VimeoServiceProvider::class,
         TomLingham\Searchy\SearchyServiceProvider::class,
