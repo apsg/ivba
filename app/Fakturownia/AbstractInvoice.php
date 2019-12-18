@@ -19,7 +19,7 @@ abstract class AbstractInvoice
 
     public function __construct(InvoicableContract $item)
     {
-        $this->client = new InvoiceOceanClient();
+        $this->client = app(InvoiceOceanClient::class);
         $this->item = $item;
     }
 

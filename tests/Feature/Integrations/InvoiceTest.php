@@ -60,9 +60,8 @@ class InvoiceTest extends TestCase
         ]);
 
         $this->user->update([
-            'first_name' => $this->faker->firstName,
-            'last_name'  => $this->faker->lastName,
-            'taxid'      => '1234567890',
+            'company_name' => $this->faker->firstName,
+            'taxid'        => '1234567890',
         ]);
 
         // when
@@ -71,7 +70,8 @@ class InvoiceTest extends TestCase
 
         // then
         $response->assertStatus(302)
-            ->assertSessionDoesntHaveErrors();
+            ->assertSessionHasNoErrors();
+
 
         $this->assertDatabaseHas('invoice_requests', [
             'invoicable_id'   => $order->id,
@@ -84,12 +84,17 @@ class InvoiceTest extends TestCase
     {
         // given
         $this->mock(InvoiceOceanClient::class, function ($mock) {
-            $mock->shouldReceive('addInvoice')->once()->andReturn([
-                'response' => [
-                    'id' => 123,
-                ],
-                'success'  => true,
-            ]);
+            $mock->shouldReceive('addInvoice')
+                ->once()
+                ->andReturn([
+                    'response' => [
+                        'id' => 123,
+                    ],
+                    'success'  => true,
+                ]);
+            $mock->shouldReceive('sendInvoice')
+                ->once()
+                ->andReturnNull();
         });
 
         $order = $this->createOrder([
@@ -119,7 +124,7 @@ class InvoiceTest extends TestCase
         $postcode = "12-234";
 
         $user = $this->createUser([
-            'address'       => $street,
+            'address'      => $street,
             'postcode'     => $postcode,
             'taxid'        => $nip,
             'company_name' => $name,
