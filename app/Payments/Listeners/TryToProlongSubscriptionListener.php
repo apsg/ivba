@@ -24,6 +24,11 @@ class TryToProlongSubscriptionListener
             $payment = app(PaymentRepository::class)
                 ->createRecurrent($event->subscription);
 
+            \Log::info(__CLASS__, [
+                'user'    => $event->subscription->user_id,
+                'payment' => $payment->id,
+            ]);
+
             (new RecurrentPaymentGate())
                 ->init(
                     config('ivba.subscription_description'),
@@ -31,12 +36,17 @@ class TryToProlongSubscriptionListener
                     $payment
                 )->payBySavedCreditCard();
 
-            $this->subscriptionRepository->prolong($event->subscription);
+            $subscription = $this->subscriptionRepository->prolong($event->subscription);
+
+            \Log::info('SUBSCRIPTION PROLONGED', [
+                'subscription' => $subscription->id,
+                'valid_until'  => $subscription->valid_until,
+            ]);
+
         } catch (PaymentException $exception) {
             $this->subscriptionRepository->tryFailed($event->subscription);
         } catch (TException $exception) {
             $this->subscriptionRepository->tryFailed($event->subscription);
         }
     }
-
 }

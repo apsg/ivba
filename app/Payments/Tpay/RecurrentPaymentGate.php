@@ -59,6 +59,10 @@ class RecurrentPaymentGate extends PaymentCard
         //In test mode this method has 50% probability of success
         $result = $this->saleMethod($this->transactionId);
 
+        \Log::info(__FUNCTION__, [
+            'response' => $result,
+        ]);
+
         if (isset($result['status']) && $result['status'] === 'correct') {
             return $this->confirmPayment();
         } else {
