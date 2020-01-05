@@ -82,6 +82,10 @@ Route::group(['prefix' => 'qs'], function () {
 
 Route::get('/payments/{payment}/request-invoice', 'PaymentsController@requestInvoice');
 
+Route::get('/test', function () {
+    return storage_path();
+});
+
 
 // To musi być na samym końcu, by nie blokowało innych ścieżek
 Route::get('/{page}/{subpage?}', 'PageController@show');
