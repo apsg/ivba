@@ -26,7 +26,7 @@
         @endif
         <hr/>
         @if( Gate::allows('retake-quiz', $quiz) )
-            <p>Retake</p>
+            <a class="btn btn-ivba" href="{{ $quiz->resetLink() }}">Podejdź ponownie do testu</a>
         @else
             <p>Możesz kolejny raz podejść do testu
                 dnia: {{ \Carbon\Carbon::parse( $quiz->pivot->finished_date)->addDays(14) }}
