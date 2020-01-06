@@ -90,8 +90,6 @@
 @push('scripts')
     <script type="text/javascript">
         $(document).ready(function () {
-
-
             tinymce.init({
                 selector: '.tinymce',
                 height: 500,

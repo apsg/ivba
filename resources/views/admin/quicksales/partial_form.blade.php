@@ -38,7 +38,6 @@
     </div>
     <div class="col-md-4">
         <div class="form-check">
-
             <input name="is_full_data_required" type="checkbox" class="form-check-input" id="defaultCheck1"
                    @if(old('is_full_data_required') || !empty($quickSale->is_full_data_required) ) checked
                    @endif value="1">
@@ -83,8 +82,37 @@
         </div>
         <div class="form-group">
             <label>Treść</label>
-            <textarea name="message_body"
-                      class="form-control">{{ old('message_body') ?? $quickSale->message_body ?? '' }}</textarea>
+            <textarea name="message_body" class="tinymce">{{ old('message_body') ?? $quickSale->message_body ?? '' }}</textarea>
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            tinymce.init({
+                selector: '.tinymce',
+                height: 500,
+                relative_urls: false,
+                remove_script_host: false,
+                file_browser_callback: function (field_name, url, type, win) {
+                    console.log(field_name);
+                    window.media_src_input = "#" + field_name;
+                    $("#medialibrary").fadeIn(100);
+                    loadImages();
+                },
+                plugins: [
+                    "advlist autolink lists link image charmap print preview anchor",
+                    "searchreplace visualblocks code fullscreen",
+                    "insertdatetime media table paste imagetools"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+                // imagetools_cors_hosts: ['www.tinymce.com', 'codepen.io'],
+                content_css: [
+                    '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                    '//www.tinymce.com/css/codepen.min.css'
+                ]
+            });
+        });
+    </script>
+@endpush
