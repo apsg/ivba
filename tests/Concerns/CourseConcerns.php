@@ -1,6 +1,7 @@
 <?php
 namespace Tests\Concerns;
 
+use App\Certificate;
 use App\Course;
 use App\Lesson;
 
@@ -24,5 +25,12 @@ trait CourseConcerns
         $course->lessons()->attach($lesson->id);
 
         return $lesson;
+    }
+
+    protected function attachCertificate(Course $course) : Certificate
+    {
+        return factory(Certificate::class)->create([
+            'course_id' => $course->id,
+        ]);
     }
 }

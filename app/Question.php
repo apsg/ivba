@@ -116,40 +116,40 @@ class Question extends Model
     {
         switch ($this->type) {
             case static::SINGLE:
-                {
-                    $answer = (int)$answer;
+            {
+                $answer = (int)$answer;
 
-                    $correct = $this->options()
-                        ->correct()
-                        ->get()->pluck('id')
-                        ->toArray();
+                $correct = $this->options()
+                    ->correct()
+                    ->get()->pluck('id')
+                    ->toArray();
 
-                    return in_array($answer, $correct);
-                    break;
-                }
+                return in_array($answer, $correct);
+                break;
+            }
             case static::MULTIPLE:
-                {
-                    if (!is_array($answer)) {
-                        return false;
-                    }
-
-                    $correct = $this->options()
-                        ->correct()
-                        ->get()->pluck('id')
-                        ->toArray();
-
-                    return empty(array_diff($correct, $answer));
-                    break;
+            {
+                if (!is_array($answer)) {
+                    return false;
                 }
+
+                $correct = $this->options()
+                    ->correct()
+                    ->get()->pluck('id')
+                    ->toArray();
+
+                return empty(array_diff($correct, $answer));
+                break;
+            }
             case static::OPEN:
-                {
-                    if (!is_string($answer)) {
-                        return false;
-                    }
-
-                    return strtolower($answer) == strtolower($this->answer);
-                    break;
+            {
+                if (!is_string($answer)) {
+                    return false;
                 }
+
+                return strtolower($answer) == strtolower($this->answer);
+                break;
+            }
         }
 
         return false;
@@ -159,19 +159,19 @@ class Question extends Model
     {
         switch ($this->type) {
             case static::SINGLE:
-                {
-                    return $this->options()
-                        ->correct()
-                        ->get()->pluck('id')
-                        ->toArray();
-                }
+            {
+                return $this->options()
+                    ->correct()
+                    ->get()->pluck('id')
+                    ->toArray();
+            }
             case static::MULTIPLE:
-                {
-                    return $this->options()
-                        ->correct()
-                        ->get()->pluck('id')
-                        ->toArray();
-                }
+            {
+                return $this->options()
+                    ->correct()
+                    ->get()->pluck('id')
+                    ->toArray();
+            }
             case static::OPEN:
                 return $this->answer;
         }

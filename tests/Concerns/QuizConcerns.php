@@ -8,7 +8,6 @@ use App\Quiz;
 
 trait QuizConcerns
 {
-
     public function createQuiz(Course $course) : Quiz
     {
         $quiz = factory(Quiz::class)->create([
