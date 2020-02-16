@@ -1,5 +1,6 @@
 <?php
 
+use App\Domains\Admin\Controllers\SettingsController;
 use App\Http\Controllers\AdminCertificatesController;
 use App\Http\Controllers\AdminCouponsController;
 use App\Http\Controllers\AdminCoursesController;
@@ -163,6 +164,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::get('/{invoiceRequest}/edit', AdminInvoicesController::class . '@edit')->name('admin.invoice.edit');
         Route::post('/{invoiceRequest}/update',
             AdminInvoicesController::class . '@update')->name('admin.invoice.update');
+    });
+
+    Route::group([
+        'prefix' => 'settings',
+    ], function () {
+        Route::get('/', SettingsController::class . '@index');
+        Route::post('/set', SettingsController::class . '@set')->name('admin.settings.set');
+        Route::delete('/delete', SettingsController::class . '@destroy')->name('admin.settings.delete');
     });
 
 });

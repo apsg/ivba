@@ -212,6 +212,9 @@
             <li class="@if(request()->is('admin/scripts')) active @endif"><a href="{{ url('admin/scripts') }}"><i
                             class="fa fa-code text-aqua"></i> <span>Skrypty</span></a></li>
 
+            <li class="@if(request()->is('admin/settings')) active @endif"><a href="{{ url('admin/settings') }}"><i
+                            class="fa fa-cogs text-green"></i> <span>Ustawienia</span></a></li>
+
             {{-- k. Menu --}}
 
         </ul>
