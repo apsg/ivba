@@ -197,12 +197,22 @@ class AdminUserController extends Controller
     {
         // TODO disable debugbar here
 
-        $users = User::expired()->orderBy('created_at')->get();
+        $users = User::expired()
+            ->with('subscription')
+            ->orderBy('created_at')
+            ->get();
         $exporter = new Export();
         $exporter->beforeEach(function (User $user) {
             $user->type = $user->full_access_expires !== null ? 'Pełen dostęp' : 'Subskrypcja';
+            $user->expired = $user->full_access_expires ?? $user->subscription->cancelled_at ?? null;
         });
-        $exporter->build($users, ['email', 'full_name' => 'Imię', 'created_at' => 'Utworzony', 'type' => 'Typ']);
+        $exporter->build($users, [
+            'email',
+            'full_name'  => 'Imię',
+            'created_at' => 'Utworzony',
+            'expired'    => 'Wygasł',
+            'type'       => 'Typ',
+        ]);
 
         return $exporter->download();
     }
