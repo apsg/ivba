@@ -7,7 +7,6 @@ return [
      */
     'contact_form_recipient' => env('FORM_EMAIL', 'info@iexcel.pl'),
 
-
     'full_access_price'    => env('FULL_ACCESS_PRICE', 499),
 
     /** Duration in months */
@@ -15,14 +14,12 @@ return [
 
     'full_access_description' => 'Pełen roczny dostęp do wszystkich materiałów',
 
-
-//    'subscription_price_first'    => 1,
+    'subscription_price_first'    => 1,
 
     /** Duration in days */
-//    'subscription_duration_first' => 1,
+    'subscription_duration_first' => 1,
 
     'subscription_description_first' => 'Pierwsza płatność w abonamencie',
-
 
     'subscription_price'    => env('SUBSCRIPTION_PRICE', 49),
 
