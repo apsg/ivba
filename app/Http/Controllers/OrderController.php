@@ -62,9 +62,9 @@ class OrderController extends Controller
         if (Auth::user()->canAddFullAccess()) {
             $order = Auth::user()->getCurrentOrder();
             $order->is_full_access = true;
-            $order->duration = config('ivba.full_access_duration');
-            $order->price = config('ivba.full_access_price');
-            $order->description = config('ivba.full_access_description');
+            $order->duration = setting('ivba.full_access_duration');
+            $order->price = setting('ivba.full_access_price');
+            $order->description = setting('ivba.full_access_description');
             $order->save();
         }
 

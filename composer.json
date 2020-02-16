@@ -46,7 +46,10 @@
         "psr-4": {
             "App\\": "app/",
             "Gacek\\IExcel\\": "packages/gacek/iexcelsdk/src/"
-        }
+        },
+        "files": [
+            "app/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

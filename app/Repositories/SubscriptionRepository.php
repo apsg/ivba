@@ -26,7 +26,7 @@ class SubscriptionRepository
             return $user->currentSubscription();
         }
 
-        $amount = config('ivba.subscription_price');
+        $amount = setting('ivba.subscription_price');
         if ($coupon !== null) {
             $amount = $coupon->apply($amount);
         }
@@ -40,10 +40,6 @@ class SubscriptionRepository
         return $subscription;
     }
 
-    /**
-     * Anuluj subskrypcję
-     * @return [type] [description]
-     */
     public function cancel(Subscription $subscription) : Subscription
     {
         $subscription->update([
@@ -66,7 +62,7 @@ class SubscriptionRepository
         $subscription->update([
             'is_active'   => true,
             'token'       => $token,
-            'valid_until' => Carbon::now()->addMonths(config('ivba.subscription_duration')),
+            'valid_until' => Carbon::now()->addDays(setting('ivba.subscription_duration_first')),
         ]);
 
         if ($subscription->coupon !== null) {

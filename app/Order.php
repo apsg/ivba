@@ -209,7 +209,7 @@ class Order extends Model implements InvoicableContract
             'is_easy_access' => true,
             'duration'       => $duration,
             'description'    => 'Dostęp do strony ' . config('app.name') . ' ' . $duration . ' mies.',
-            'price'          => $duration * config('ivba.subscription_price'),
+            'price'          => $duration * Setting::get('ivba.subscription_price'),
         ]);
 
         return $this;

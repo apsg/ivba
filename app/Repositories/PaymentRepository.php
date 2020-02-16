@@ -4,7 +4,6 @@ namespace App\Repositories;
 use App\Events\FirstPaymentCorrectEvent;
 use App\Events\FirstPaymentIncorrectEvent;
 use App\Events\SubscriptionPaymentFailedEvent;
-use App\Order;
 use App\Payment;
 use App\Subscription;
 use Carbon\Carbon;
@@ -18,7 +17,7 @@ class PaymentRepository
     {
         return Payment::create([
             'subscription_id' => $subscription->id,
-            'amount'          => $subscription->amount,
+            'amount'          => setting('ivba.subscription_price_first'),
             'is_recurrent'    => false,
             'title'           => config('ivba.subscription_description_first'),
         ]);

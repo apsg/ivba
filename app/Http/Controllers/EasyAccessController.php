@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Domains\Admin\Models\Setting;
 use App\Http\Requests\EasyAccessAddRequest;
 use App\Order;
 use Auth;
@@ -14,7 +15,7 @@ class EasyAccessController extends Controller
 
     public function showForm()
     {
-        $price1 = config('ivba.subscription_price');
+        $price1 = Setting::get('ivba.subscription_price');
         $price3 = 3 * $price1;
         $price6 = 6 * $price1;
 

@@ -9,6 +9,10 @@
             </thead>
             <tbody>
             <tr>
+                <td>Pierwsza płatność w abonamencie ({{ first_duration }} dni dostępu)</td>
+                <td>{{ first_price }} PLN</td>
+            </tr>
+            <tr>
                 <td>Stała miesięczna płatność</td>
                 <td v-if="currentPrice == price">{{ currentPrice }} PLN</td>
                 <td v-if="currentPrice!=price">
@@ -45,10 +49,18 @@
             price: {
                 type: String,
                 required: true,
+            },
+            first_price: {
+                type: String,
+                required: true,
+            },
+            first_duration: {
+                type: String,
+                required: true,
             }
         },
 
-        data() {
+        data () {
             return {
                 currentPrice: 0,
                 coupon: '',
@@ -56,12 +68,12 @@
             }
         },
 
-        mounted() {
+        mounted () {
             this.currentPrice = parseInt(this.price);
         },
 
         methods: {
-            checkCoupon(e) {
+            checkCoupon (e) {
                 console.log(this.coupon);
                 axios.post('/a/check_coupon', {
                     'code': this.coupon

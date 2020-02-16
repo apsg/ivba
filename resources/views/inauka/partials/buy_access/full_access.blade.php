@@ -20,6 +20,6 @@
     </ul>
     <br/>
     <a href="{{ url('/cart/add_full_access') }}" class="btn btn-primary">Dodaj pełen dostęp
-        za {{ config('ivba.full_access_price') }} zł brutto do koszyka</a>
+        za {{ setting('ivba.full_access_price') }} zł brutto do koszyka</a>
     <hr/>
 @endif

@@ -2110,10 +2110,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PriceAndCoupon",
   props: {
     price: {
+      type: String,
+      required: true
+    },
+    first_price: {
+      type: String,
+      required: true
+    },
+    first_duration: {
       type: String,
       required: true
     }
@@ -47971,6 +47983,18 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("tbody", [
+        _c("tr", [
+          _c("td", [
+            _vm._v(
+              "Pierwsza płatność w abonamencie (" +
+                _vm._s(_vm.first_duration) +
+                " dni dostępu)"
+            )
+          ]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(_vm.first_price) + " PLN")])
+        ]),
+        _vm._v(" "),
         _c("tr", [
           _c("td", [_vm._v("Stała miesięczna płatność")]),
           _vm._v(" "),

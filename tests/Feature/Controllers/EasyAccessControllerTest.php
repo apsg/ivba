@@ -24,7 +24,7 @@ class EasyAccessControllerTest extends TestCase
         parent::setUp();
 
         $this->user = factory(User::class)->create();
-        $this->singlePrice = config('ivba.subscription_price');
+        $this->singlePrice = Setting::get('ivba.subscription_price');
 
         $this->withoutNotifications();
     }

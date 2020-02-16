@@ -66,7 +66,7 @@ class SubscriptionsController extends Controller
 
         return [
             'price' => sprintf('%.2f',
-                $request->coupon()->apply(config('ivba.subscription_price'))
+                $request->coupon()->apply(Setting::get('ivba.subscription_price'))
             ),
         ];
     }
