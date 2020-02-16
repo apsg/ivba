@@ -651,14 +651,14 @@ class User extends Authenticatable
 
     public function scopeExpired(Builder $builder)
     {
-        $now = Carbon::now();
-        $expiredIds = Subscription::where('cancelled_at', '<', $now)
-            ->select('user_id')
-            ->get()
-            ->pluck('user_id');
-
-        $builder->where('full_access_expires', '<', $now)
-            ->orWhere('unsubscribed_at', '<', $now)
-            ->orWhereIn('id', $expiredIds);
+        $builder->where(function ($q) {
+            $q->whereNull('full_access_expires')
+                ->orWhere('full_access_expires', '<', Carbon::now());
+        })->where(function ($q) {
+            $q->doesntHave('subscription')
+                ->orWhereHas('subscription', function (Builder $query) {
+                    $query->where('cancelled_at', '<', Carbon::now());
+                });
+        });
     }
 }
