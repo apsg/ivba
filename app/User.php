@@ -62,6 +62,7 @@ use Illuminate\Notifications\Notifiable;
  * @property-read Collection|Subscription[] $subscriptions
  * @property-read Collection|Access[]       $accesses
  * @method static Builder|User followups()
+ * @method static Builder|User expired()
  * @mixin \Eloquent
  */
 class User extends Authenticatable
@@ -646,5 +647,18 @@ class User extends Authenticatable
         }
 
         return $this->partner_key;
+    }
+
+    public function scopeExpired(Builder $builder)
+    {
+        $now = Carbon::now();
+        $expiredIds = Subscription::where('cancelled_at', '<', $now)
+            ->select('user_id')
+            ->get()
+            ->pluck('user_id');
+
+        $builder->where('full_access_expires', '<', $now)
+            ->orWhere('unsubscribed_at', '<', $now)
+            ->orWhereIn('id', $expiredIds);
     }
 }

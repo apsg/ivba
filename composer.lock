@@ -5083,12 +5083,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/usmanhalalit/laracsv.git",
-                "reference": "444aaa0af65cd70c303ebe8517ff00787b589378"
+                "reference": "f15ae413dcdf67eb6eddc27d863adc7062755ce3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/usmanhalalit/laracsv/zipball/444aaa0af65cd70c303ebe8517ff00787b589378",
-                "reference": "444aaa0af65cd70c303ebe8517ff00787b589378",
+                "url": "https://api.github.com/repos/usmanhalalit/laracsv/zipball/f15ae413dcdf67eb6eddc27d863adc7062755ce3",
+                "reference": "f15ae413dcdf67eb6eddc27d863adc7062755ce3",
                 "shasum": ""
             },
             "require": {
@@ -5125,7 +5125,7 @@
                 "export",
                 "laravel"
             ],
-            "time": "2019-03-31T13:06:56+00:00"
+            "time": "2020-02-10T12:21:02+00:00"
         },
         {
             "name": "vimeo/laravel",
@@ -5426,6 +5426,7 @@
                 "psr",
                 "psr-7"
             ],
+            "abandoned": "laminas/laminas-diactoros",
             "time": "2018-09-27T19:45:25+00:00"
         }
     ],

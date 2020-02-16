@@ -13,7 +13,9 @@ use DataTables;
 use Gate;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Validation\Rule;
+use Laracsv\Export;
 
 class AdminUserController extends Controller
 {
@@ -118,7 +120,6 @@ class AdminUserController extends Controller
         flash('Zaktualizowano pomyślnie');
 
         return back();
-
     }
 
     public function grantFullAccess(User $user, AccessRequest $request)
@@ -190,5 +191,19 @@ class AdminUserController extends Controller
         $partners = $service->all();
 
         return view('admin.users.partner')->with(compact('partners'));
+    }
+
+    public function expiredReport()
+    {
+        // TODO disable debugbar here
+
+        $users = User::expired()->orderBy('created_at')->get();
+        $exporter = new Export();
+        $exporter->beforeEach(function (User $user) {
+            $user->type = $user->full_access_expires !== null ? 'Pełen dostęp' : 'Subskrypcja';
+        });
+        $exporter->build($users, ['email', 'full_name' => 'Imię', 'created_at' => 'Utworzony', 'type' => 'Typ']);
+
+        return $exporter->download();
     }
 }

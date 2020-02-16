@@ -38,6 +38,17 @@
                         -
                     </div><!-- box-footer -->
                 </div><!-- /.box -->
+
+                <div class="box">
+                    <div class="box-header">
+                        <h5>Raporty</h5>
+                    </div>
+                    <div class="box-body">
+                        <a href="{{ route('admin.users.expired_report') }}" class="btn btn-primary">
+                            Pobierz raport wygasłych kont
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
