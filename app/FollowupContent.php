@@ -4,22 +4,23 @@ namespace App;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use DateInterval;
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * App\FollowupContent
  *
- * @property int $id
- * @property string $event
- * @property string $delay
- * @property string $slug
- * @property string $title
- * @property string $body
- * @property string|null $attachment
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
+ * @property int             $id
+ * @property string          $event
+ * @property string          $delay
+ * @property string          $slug
+ * @property string          $title
+ * @property string          $body
+ * @property string|null     $attachment
+ * @property Carbon|null     $created_at
+ * @property Carbon|null     $updated_at
  * @property-read Followup[] $followups
- * @property-read mixed $interval
+ * @property-read mixed      $interval
  * @method static FollowupContent newModelQuery()
  * @method static FollowupContent newQuery()
  * @method static FollowupContent query()
@@ -52,7 +53,11 @@ class FollowupContent extends Model
      */
     public function getIntervalAttribute()
     {
-        return CarbonInterval::instance(new DateInterval($this->delay));
+        try {
+            return CarbonInterval::instance(new DateInterval($this->delay));
+        } catch (Exception $exception) {
+            return CarbonInterval::create(new DateInterval('PT10M'));
+        }
     }
 
     /**
