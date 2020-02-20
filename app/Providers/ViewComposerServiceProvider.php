@@ -21,7 +21,7 @@ class ViewComposerServiceProvider extends ServiceProvider
         ];
 
         foreach ($domains as $domain) {
-            View::composer($domain . 'partials.show_proof', function ($view) {
+            View::composer($domain . '.partials.show_proof', function ($view) {
                 $proof = Proof::first();
 
                 return $view->with(compact('proof'));
@@ -29,6 +29,9 @@ class ViewComposerServiceProvider extends ServiceProvider
 
             View::composer($domain . '.layouts.front2', FrontLayoutViewComposer::class);
         }
+
+        View::composer('layouts.front2', FrontLayoutViewComposer::class);
+
     }
 
     /**
