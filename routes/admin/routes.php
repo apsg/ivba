@@ -43,7 +43,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('lesson/new', AdminLessonController::class . '@create');
     Route::get('lesson/{lesson}', AdminLessonController::class . '@show');
     Route::patch('lesson/{lesson}', AdminLessonController::class . '@update');
-    Route::post('/lesson/{lesson}/items', 'AdminItemsController@add');
+    Route::post('/lesson/{lesson}/items', AdminItemsController::class . '@add');
     Route::post('/lesson/{lesson}/items_order', AdminLessonController::class . '@updateItemsOrder');
 
     Route::get('/itemfile/{item}/delete', AdminItemsController::class . '@deleteFile');
