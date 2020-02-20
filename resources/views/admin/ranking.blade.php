@@ -30,9 +30,9 @@
                     @foreach($ranking as $item)
                         <tr>
                             <th scope="row">{{ $item->position }}</th>
-                            <td>{{ $item->user->email }}</td>
+                            <td>{{ $item->user->email ?? "" }}</td>
                             <td>
-                                {{ $item->user->name }}
+                                {{ $item->user->name ?? "" }}
                             </td>
                             <td>{{ $item->points }}</td>
                         </tr>

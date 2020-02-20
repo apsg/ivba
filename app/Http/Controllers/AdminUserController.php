@@ -13,7 +13,6 @@ use DataTables;
 use Gate;
 use Hash;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Validation\Rule;
 use Laracsv\Export;
 
