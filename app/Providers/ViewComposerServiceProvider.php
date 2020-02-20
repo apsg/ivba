@@ -15,13 +15,20 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('partials.show_proof', function ($view) {
-            $proof = Proof::first();
+        $domains = [
+            'inauka',
+            'projekt30',
+        ];
 
-            return $view->with(compact('proof'));
-        });
+        foreach ($domains as $domain) {
+            View::composer($domain . 'partials.show_proof', function ($view) {
+                $proof = Proof::first();
 
-        View::composer('layouts.front2', FrontLayoutViewComposer::class);
+                return $view->with(compact('proof'));
+            });
+
+            View::composer($domain . '.layouts.front2', FrontLayoutViewComposer::class);
+        }
     }
 
     /**
