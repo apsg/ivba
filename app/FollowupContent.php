@@ -56,7 +56,7 @@ class FollowupContent extends Model
         try {
             return CarbonInterval::instance(new DateInterval($this->delay));
         } catch (Exception $exception) {
-            return CarbonInterval::create(new DateInterval('PT10M'));
+            return CarbonInterval::instance(new DateInterval('PT10M'));
         }
     }
 
