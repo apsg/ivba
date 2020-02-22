@@ -49129,7 +49129,7 @@ var render = function() {
               "col-md-8 pl-3 d-flex justify-content-between flex-column"
           },
           [
-            _c("h3", { staticClass: "text-center" }, [
+            _c("h3", { staticClass: "text-center text-testimonials-header" }, [
               _vm._v("Opinie o naszych usługach:")
             ]),
             _vm._v(" "),

@@ -21,7 +21,7 @@
                     </carousel>
                 </div>
                 <div class="col-md-8 pl-3 d-flex justify-content-between flex-column">
-                    <h3 class="text-center">Opinie o naszych usługach:</h3>
+                    <h3 class="text-center text-testimonials-header">Opinie o naszych usługach:</h3>
                     <carousel
                             :perPage="1"
                             @pageChange="onPageChange"

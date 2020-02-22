@@ -22,10 +22,10 @@
     <flash-message class="fm-container"></flash-message>
 
     <header class="header mb-3">
-        <nav class="navbar navbar-expand-sm navbar-orange bg-orange">
+        <nav class="navbar navbar-expand-sm navbar-orange">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('images/v2/inauka.png') }}">
+                    <img src="{{ asset('images/projekt30/p30-logo.png') }}">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-inauka"
                         aria-controls="navbar-inauka" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,15 +63,15 @@
     @yield('content')
 
     <footer class="pt-3 pb-3 mt-3 text-white">
-        <div class="container py-3">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a href="https://facebook.com/wideokursy/" target="_blank">
-                        <img src="{{ asset('/images/v2/f_ikona.png') }}"/>
-                    </a>
-                </div>
-            </div>
-        </div>
+{{--        <div class="container py-3">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-md-12 text-center">--}}
+{{--                    <a href="https://facebook.com/wideokursy/" target="_blank">--}}
+{{--                        <img src="{{ asset('/images/v2/f_ikona.png') }}"/>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <div class="container py-3 ">
             <div class="row">
                 <div class="col-md-4">
@@ -80,7 +80,7 @@
                     </a>
                     <p>&copy; {{ Carbon\Carbon::now()->year }} ITBT</p>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <div class="row mb-3">
                         <div class="col-md-3 text-right">
                             <h3 class="footer-header">Informacje</h3>
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 text-center">
+                <div class="col-md-4 text-center">
                     <p><strong>IT&Business Training Mateusz Grabowski</strong> <br/>
                         ul. Zygmunta Starego 1/3, 44-100 Gliwice |
                         NIP: 6312273946 |

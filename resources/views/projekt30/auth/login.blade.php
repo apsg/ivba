@@ -1,7 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
-    <div class="login-logo"><a href="{{ url('/') }}"><img src="{{ url('/images/v2/inauka.png') }}"
+    <div class="login-logo"><a href="{{ url('/') }}"><img src="{{ asset('/images/projekt30/p30-logo.png') }}"
                                                           class="img-responsive" alt=""></a></div>
     <div class="head-block my-3">
         <h1>LOGOWANIE</h1>
@@ -39,7 +39,7 @@
                 </a>
                 <hr/>
                 <div class="or hidden-xs">Nie masz konta?</div>
-                <a href="{{ url('/register') }}" class="btn btn-primary register">Zarejestruj <span
+                <a href="{{ url('/register') }}" class="btn btn-secondary register">Zarejestruj <span
                             class="icon-more-icon"></span></a>
             </div>
         </form>

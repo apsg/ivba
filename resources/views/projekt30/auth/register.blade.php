@@ -4,7 +4,7 @@
     <form id="formularz" class="form-signin" role="form" method="POST" action="{{ route('register') }}">
 
         <a class="mb-4 logo" href="{{ url('/') }}">
-            <img src="{{ url('/images/v2/inauka.png') }}" class="img-responsive" alt="">
+            <img src="{{ asset('/images/projekt30/p30-logo.png') }}" class="img-responsive" alt="">
         </a>
         <h1 class="h3 mb-3 font-weight-normal">Zarejestruj nowe konto</h1>
         {{ csrf_field() }}

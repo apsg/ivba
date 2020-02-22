@@ -1,0 +1,95 @@
+@import "variables";
+
+$color-p30-gray: #251d22;
+$color-p30-orange: #f79e1c;
+$color-p30-red: #f42525;
+$color-p30-green: #8dc63f;
+
+.header {
+    background-image: url("/images/projekt30/tlo.png");
+    background-size: cover;
+}
+
+.navbar-orange {
+    .navbar-brand {
+        color: $color-gray;
+    }
+
+    .navbar-nav > li > a {
+        color: $color-gray;
+    }
+}
+
+.text-orange,
+.text-p30-orange {
+    color: $color-p30-orange !important;
+}
+
+.bg-orange {
+    background-color: $color-p30-orange !important;
+}
+
+.text-testimonials-header {
+    color: $color-white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $color-p30-gray;
+    font-weight: 700;
+}
+
+.promo-cards {
+    .promo-card {
+        h3 {
+            color: $color-p30-orange;
+        }
+
+        p {
+            color: $color-p30-gray;
+        }
+    }
+}
+
+.text-bold {
+    font-weight: 700;
+}
+
+.start-grow {
+    h3 {
+        font-weight: 900;
+        font-size: 25px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+}
+
+.btn-p30-green {
+    background-color: $color-p30-green;
+    color: $color-white !important;
+    font-weight: 700;
+    border-radius: 35px;
+
+    &:hover {
+        background-color: darken($color-p30-green, 10%);
+        color: $color-white !important;
+    }
+}
+
+.btn-big {
+    font-size: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+footer{
+    & * {
+        color: $color-white;
+    }
+}

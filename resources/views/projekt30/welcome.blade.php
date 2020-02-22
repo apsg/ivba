@@ -5,101 +5,61 @@
 @section('content')
     <section class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-orange text-center my-3">Jak działa platforma?</h2>
+            <div class="col-md-6">
                 <iframe src="https://player.vimeo.com/video/319020879" class="w-100" height="400" frameborder="0"
                         webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+            <div class="col-md-6 pt-5">
+                <div class="d-flex">
+                    <h2 class="flex-grow-1">Zapraszam Cię na wspólny <span class="text-p30-orange">projekt</span></h2>
+                    <div>
+                        <img class="" src="{{ url('/images/projekt30/zapraszam-na.png') }}"/>
+                    </div>
+                </div>
+                <p class="">O co chodzi z tą platfromą...</p>
             </div>
         </div>
     </section>
     <section class="container py-5 promo-cards">
         <div class="row">
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/1_kursanci6k.png') }}">
-                <h3>Kursanci</h3>
-                <p>Już ponad 6000 osób korzysta z naszej platformy do nauki.</p>
+                <img src="{{ asset('images/projekt30/kursanci-2.png') }}">
             </div>
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/2_certyfikat.png') }}">
-                <h3>Certyfikaty</h3>
-                <p> Zdobądź certyfikat z wybranego kursu lub specjalizacji.</p>
+                <img src="{{ asset('images/projekt30/webinaria-2.png') }}">
             </div>
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/3_grupa wsparcia.png') }}">
-                <h3> Grupa wsparcia</h3>
-                <p> Dołącz do naszej grupy wsparcia i wymieniaj wiedzą z innymi osobami</p>
+                <img src="{{ asset('images/projekt30/lekcje-2.png') }}">
             </div>
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/4_tempo.png') }}">
-                <h3> Wygoda</h3>
-                <p>Ucz się gdzie chcesz i kiedy chcesz we własnym tempie.</p>
+                <img src="{{ asset('images/projekt30/grupa-wsparcia2.png') }}">
             </div>
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/5_update.png') }}">
-                <h3>Aktualizacje</h3>
-                <p>Kursy aktualizujemy. Raz w miesiącu dodajemy nowy kurs.</p>
+                <img src="{{ asset('images/projekt30/casestudy2.png') }}">
             </div>
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/6_lekcje.png') }}">
-                <h3>Lekcje</h3>
-                <p>Na naszym portalu znajdziesz ponad 300 lekcji, a ich liczba stale rośnie.</p>
-            </div>
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/7_ambasadorzy.png') }}">
-                <h3>Ambasadorzy</h3>
-                <p>Poznaj naszych ambasadorów, do których możesz zwrócić się po pomoc.</p>
-            </div>
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/8_webinary.png') }}">
-                <h3>Webinary</h3>
-                <p>Cykliczne, zamknięte szkolenia on-line na wyciągnięcie ręki.</p>
-            </div>
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/9_zwrot.png') }}">
-                <h3>Zwrot</h3>
-                <p>Masz 30 dni na rezygnację z naszej platformy.</p>
+                <img src="{{ asset('images/projekt30/sukces2.png') }}">
             </div>
         </div>
     </section>
 
-    {{--<section class="bg-gray-dark random-lessons row">--}}
-        {{--<random-lessons num="4"></random-lessons>--}}
-    {{--</section>--}}
-
     <testimonials></testimonials>
 
-    <section class="contact-form">
-        <div class="container mt-5 mb-5">
-            <div class="row justify-content-md-center">
-                <form method="post" action="{{ url('contact_form') }}" class=" col-md-6">
-                    {{ csrf_field() }}
-
-                    <h3 class="section-header">Skontakuj się z nami</h3>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="name" required placeholder="Imię">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail1" name="email"
-                               aria-describedby="emailHelp"
-                               placeholder="Email" required>
-                        <small id="emailHelp" class="form-text text-muted">Nigdy nie udostępnimy Twojego adresu email
-                            nikomu bez Twojej zgody.
-                        </small>
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" name="message"
-                                  rows="3" placeholder="Wiadomość" required></textarea>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            {!! NoCaptcha::display() !!}
-                        </div>
-                        <div class="col-md-6 text-right">
-                            <button type="submit" class="mt-2 btn btn-ivba rounded-pill">Wyślij</button>
-                        </div>
-                    </div>
-                </form>
+    <section class="start-grow">
+        <div class="container mt-5 mb-5 row">
+            <div class="col-md-6 text-center">
+                <img src="{{ asset('/images/projekt30/rozpocznij-rozwoj-ilustracja.png') }}" class="w-75" />
+            </div>
+            <div class="col-md-6 pt-5">
+                <h3 class="mb-3">Rozpocznij swój rozwój z nami</h3>
+                <p>Sprzedaż i reklama w internecie, na pozór banalna, zmienia się gdy chcesz być liderem w swojej branży.
+                    Jak to wszystko prowadzić i robić to dobrze?</p>
+                <p class="text-right pr-5 text-bold">Dowiesz się u nas</p>
+                <div class="text-center">
+                    <a href="{{ url('/register') }}" class="btn btn-p30-green btn-big">
+                        Zarejestruj się <i class="fa fa-chevron-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
