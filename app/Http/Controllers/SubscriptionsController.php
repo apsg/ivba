@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Domains\Admin\Models\Setting;
 use App\Http\Requests\Axios\CheckCouponRequest;
 use App\Http\Requests\CreateSubscriptionRequest;
 use App\Payments\PaymentService;

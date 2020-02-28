@@ -1,6 +1,7 @@
 <?php
 namespace App;
 
+use App\Domains\Admin\Models\Setting;
 use App\Events\QuickSaleConfirmedEvent;
 use App\Events\UserPaidForAccess;
 use App\Fakturownia\OrderInvoice;
