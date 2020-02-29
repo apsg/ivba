@@ -25,23 +25,35 @@
     </section>
     <section class="container py-5 promo-cards">
         <div class="row">
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/projekt30/kursanci-2.png') }}">
+            <div class="col-md-4 text-center promo-card p-3">
+                <div class="bg-white rounded rounded-30 p-3">
+                    <img src="{{ asset('images/projekt30/ikona-kursanci.png') }}">
+                </div>
             </div>
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/projekt30/webinaria-2.png') }}">
+            <div class="col-md-4 text-center promo-card p-3">
+                <div class="bg-white rounded rounded-30 p-3">
+                    <img src="{{ asset('images/projekt30/ikona-webinaria.png') }}">
+                </div>
             </div>
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/projekt30/lekcje-2.png') }}">
+            <div class="col-md-4 text-center promo-card p-3">
+                <div class="bg-white rounded rounded-30 p-3">
+                    <img src="{{ asset('images/projekt30/lekcje.png') }}">
+                </div>
             </div>
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/projekt30/grupa-wsparcia2.png') }}">
+            <div class="col-md-4 text-center promo-card p-3">
+                <div class="bg-white rounded rounded-30 p-3">
+                    <img src="{{ asset('images/projekt30/grupa wsparcia.png') }}">
+                </div>
             </div>
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/projekt30/casestudy2.png') }}">
+            <div class="col-md-4 text-center promo-card p-3">
+                <div class="bg-white rounded rounded-30 p-3">
+                    <img src="{{ asset('images/projekt30/case-study.png') }}">
+                </div>
             </div>
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/projekt30/sukces2.png') }}">
+            <div class="col-md-4 text-center promo-card p-3">
+                <div class="bg-white rounded rounded-30 p-3">
+                    <img src="{{ asset('images/projekt30/sukces.png') }}">
+                </div>
             </div>
         </div>
     </section>
@@ -51,11 +63,12 @@
     <section class="start-grow">
         <div class="container mt-5 mb-5 row">
             <div class="col-md-6 text-center">
-                <img src="{{ asset('/images/projekt30/rozpocznij-rozwoj-ilustracja.png') }}" class="w-75" />
+                <img src="{{ asset('/images/projekt30/rozpocznij-rozwoj-ilustracja.png') }}" class="w-75"/>
             </div>
             <div class="col-md-6 pt-5">
                 <h3 class="mb-3">Rozpocznij swój rozwój z nami</h3>
-                <p>Sprzedaż i reklama w internecie, na pozór banalna, zmienia się gdy chcesz być liderem w swojej branży.
+                <p>Sprzedaż i reklama w internecie, na pozór banalna, zmienia się gdy chcesz być liderem w swojej
+                    branży.
                     Jak to wszystko prowadzić i robić to dobrze?</p>
                 <p class="text-right pr-5 text-bold">Dowiesz się u nas</p>
                 <div class="text-center">
