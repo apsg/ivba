@@ -82,6 +82,18 @@ h6 {
     }
 }
 
+.btn-p30-red {
+    background-color: $color-p30-red;
+    color: $color-white !important;
+    font-weight: 700;
+    border-radius: 35px;
+
+    &:hover {
+        background-color: darken($color-p30-red, 10%);
+        color: $color-white !important;
+    }
+}
+
 .btn-big {
     font-size: 1.5rem;
     padding-left: 1.5rem;

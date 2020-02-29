@@ -6,7 +6,10 @@
     <section class="container">
         <div class="row">
             <div class="col-md-6">
-                <iframe src="https://player.vimeo.com/video/319020879" class="w-100" height="400" frameborder="0"
+                <iframe src="https://player.vimeo.com/video/319020879"
+                        class="w-100 h-100 rounded"
+                        style="border-radius: 30px !important;"
+                        frameborder="0"
                         webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
             <div class="col-md-6 pt-5">
