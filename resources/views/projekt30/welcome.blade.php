@@ -66,12 +66,12 @@
                 <img src="{{ asset('/images/projekt30/rozpocznij-rozwoj-ilustracja.png') }}" class="w-75"/>
             </div>
             <div class="col-md-6 pt-5">
-                <h3 class="mb-3">Rozpocznij swój rozwój z nami</h3>
-                <p>Sprzedaż i reklama w internecie, na pozór banalna, zmienia się gdy chcesz być liderem w swojej
+                <h3 class="mb-3 text-center">Rozpocznij swój rozwój z nami</h3>
+                <p class="text-center">Sprzedaż i reklama w internecie, na pozór banalna, zmienia się gdy chcesz być liderem w swojej
                     branży.
                     Jak to wszystko prowadzić i robić to dobrze?</p>
                 <p class="text-right pr-5 text-bold">Dowiesz się u nas</p>
-                <div class="text-center">
+                <div class="text-center mb-5">
                     <a href="{{ url('/register') }}" class="btn btn-p30-green btn-big">
                         Zarejestruj się <i class="fa fa-chevron-right"></i>
                     </a>
