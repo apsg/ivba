@@ -2877,6 +2877,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -49210,110 +49215,119 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "testimonials bg-orange py-5" }, [
-    _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
+    _c(
+      "div",
+      { staticClass: "container" },
+      [
+        _c("h3", { staticClass: "text-center text-testimonials-header" }, [
+          _vm._v("Opinie o naszych usługach:")
+        ]),
+        _vm._v(" "),
         _c(
-          "div",
-          { staticClass: "col-md-4 text-center" },
+          "carousel",
+          {
+            attrs: {
+              paginationEnabled: true,
+              perPage: 1,
+              "navigate-to": _vm.page,
+              mouseDrag: true
+            }
+          },
           [
-            _c(
-              "carousel",
-              {
-                attrs: {
-                  paginationEnabled: false,
-                  perPage: 1,
-                  "navigate-to": _vm.page,
-                  mouseDrag: false
-                }
-              },
-              [
-                _c("slide", [
+            _c("slide", [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-4 text-center" }, [
                   _c("img", {
                     staticClass: "image",
                     attrs: { src: "/images/v2/lukasz_kutylowski.png" }
                   })
                 ]),
                 _vm._v(" "),
-                _c("slide", [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-md-8 pl-3 d-flex justify-content-between flex-column pt-5"
+                  },
+                  [
+                    _c("p", { staticClass: "testimonial" }, [
+                      _vm._v(
+                        "Szkolenia z Excela pozwoliły mi na\n                            prowadzenie szeregu usprawnień w firmie. Pomimo ciągłej pracy na excelu, moje analizy są\n                            teraz zdecydowanie bardziej profesjonalne. Nie ma w Polsce drugiej takiej firmy, która w\n                            tak przyswajalny sposób potrafi przekazać wiedzę. Osobiście – bardzo polecam! Dzięki i\n                            widzimy się na kolejnej konferencji\n                        "
+                      )
+                    ]),
+                    _c("p", { staticClass: "name" }, [
+                      _vm._v("Łukasz Kutyłowski (Warszawa)")
+                    ])
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("slide", [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-4 text-center" }, [
                   _c("img", {
                     staticClass: "image",
                     attrs: { src: "/images/v2/damian_klekot.png" }
                   })
                 ]),
                 _vm._v(" "),
-                _c("slide", [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-md-8 pl-3 d-flex justify-content-between flex-column pt-5"
+                  },
+                  [
+                    _c("p", { staticClass: "testimonial" }, [
+                      _vm._v(
+                        "Środowa konferencja była pierwszą i na pewno\n                            nie ostatnią. Zdecydowanie polecam. Super atmosfera a wiedza przekazywana w bardzo\n                            przystępny sposób!\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "name" }, [
+                      _vm._v("Damian Klekot (Warszawa)")
+                    ])
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("slide", [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-4 text-center" }, [
                   _c("img", {
                     staticClass: "image",
                     attrs: { src: "/images/v2/barbara.png" }
                   })
-                ])
-              ],
-              1
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "col-md-8 pl-3 d-flex justify-content-between flex-column"
-          },
-          [
-            _c("h3", { staticClass: "text-center text-testimonials-header" }, [
-              _vm._v("Opinie o naszych usługach:")
-            ]),
-            _vm._v(" "),
-            _c(
-              "carousel",
-              {
-                attrs: { perPage: 1, "navigate-to": _vm.page },
-                on: { pageChange: _vm.onPageChange }
-              },
-              [
-                _c("slide", [
-                  _c("p", { staticClass: "testimonial" }, [
-                    _vm._v(
-                      "Szkolenia z Excela pozwoliły mi na\n                            prowadzenie szeregu usprawnień w firmie. Pomimo ciągłej pracy na excelu, moje analizy są\n                            teraz zdecydowanie bardziej profesjonalne. Nie ma w Polsce drugiej takiej firmy, która w\n                            tak przyswajalny sposób potrafi przekazać wiedzę. Osobiście – bardzo polecam! Dzięki i\n                            widzimy się na kolejnej konferencji\n                        "
-                    )
-                  ]),
-                  _c("p", { staticClass: "name" }, [
-                    _vm._v("Łukasz Kutyłowski (Warszawa)")
-                  ])
                 ]),
                 _vm._v(" "),
-                _c("slide", [
-                  _c("p", { staticClass: "testimonial" }, [
-                    _vm._v(
-                      "Środowa konferencja była pierwszą i na pewno\n                            nie ostatnią. Zdecydowanie polecam. Super atmosfera a wiedza przekazywana w bardzo\n                            przystępny sposób!\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "name" }, [
-                    _vm._v("Damian Klekot (Warszawa)")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("slide", [
-                  _c("p", { staticClass: "testimonial" }, [
-                    _vm._v(
-                      "Systematycznie biorę udział w szkoleniach\n                            organizowanych przez Mateusza. Mogę to podsumować tylko tak: Trudne zagadnienia tłumaczy\n                            w bardzo prosty sposób.\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "name" }, [
-                    _vm._v("Barbara Żukowska (Gliwice)")
-                  ])
-                ])
-              ],
-              1
-            )
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-md-8 pl-3 d-flex justify-content-between flex-column pt-5"
+                  },
+                  [
+                    _c("p", { staticClass: "testimonial" }, [
+                      _vm._v(
+                        "Systematycznie biorę udział w szkoleniach\n                            organizowanych przez Mateusza. Mogę to podsumować tylko tak: Trudne zagadnienia tłumaczy\n                            w bardzo prosty sposób.\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "name" }, [
+                      _vm._v("Barbara Żukowska (Gliwice)")
+                    ])
+                  ]
+                )
+              ])
+            ])
           ],
           1
         )
-      ])
-    ])
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []
