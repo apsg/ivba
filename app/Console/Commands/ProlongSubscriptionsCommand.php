@@ -33,14 +33,9 @@ class ProlongSubscriptionsCommand extends Command
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle()
     {
-        $subscriptions = Subscription::where('is_active', true)
+        $subscriptions = Subscription::active()
             ->where('valid_until', '<', Carbon::now())
             ->get();
 

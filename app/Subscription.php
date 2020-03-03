@@ -9,23 +9,23 @@ use Illuminate\Support\Collection;
 /**
  * Class Subscription
  *
- * @property int                       user_id
- * @property int                       coupon_id
- * @property string                    profileid
- * @property bool                      is_active
- * @property Carbon                    cancelled_at
- * @property int                       tries
- * @property float                     amount
- * @property-read Carbon              valid_until
- * @property-read User                 user
- * @property-read Coupon               coupon
- * @property-read Collection|Payment[] payments
+ * @property int                             user_id
+ * @property int                             coupon_id
+ * @property string                          profileid
+ * @property bool                            is_active
+ * @property Carbon                          cancelled_at
+ * @property int                             tries
+ * @property float                           amount
+ * @property-read Carbon                     valid_until
+ * @property-read User                       user
+ * @property-read Coupon                     coupon
+ * @property-read Collection|Payment[]       payments
  * @method-static Builder|Subscription active()
- * @property int $id
+ * @property int                             $id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $token
- * @property-read mixed $final_total
+ * @property string|null                     $token
+ * @property-read mixed                      $final_total
  * @mixin \Eloquent
  */
 class Subscription extends Model

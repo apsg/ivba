@@ -254,6 +254,7 @@ class User extends Authenticatable
 
     /**
      * Aktywna subskrypcja tego użytkownika
+     * @return Subscription|null
      */
     public function currentSubscription()
     {

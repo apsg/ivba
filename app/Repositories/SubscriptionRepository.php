@@ -9,6 +9,7 @@ use App\Payments\Exceptions\PaymentException;
 use App\Subscription;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use InvalidArgumentException;
 
 class SubscriptionRepository
@@ -22,9 +23,10 @@ class SubscriptionRepository
 
     public function create(User $user, Coupon $coupon = null) : Subscription
     {
-        if ($user->hasActiveSubscription()) {
-            return $user->currentSubscription();
-        }
+//        if ($user->hasActiveSubscription()) {
+//            return $user->currentSubscription();
+//        }
+        $this->cancelAllSubscriptions($user);
 
         $amount = setting('ivba.subscription_price');
         if ($coupon !== null) {
@@ -51,6 +53,24 @@ class SubscriptionRepository
         event(new SubscriptionCancelled($subscription));
 
         return $subscription;
+    }
+
+    /**
+     * @return Collection|Subscription[]
+     */
+    public function cancelAllSubscriptions(User $user) : Collection
+    {
+        $user->subscriptions()->update([
+            'cancelled_at' => Carbon::now(),
+            'is_active'    => false,
+            'token'        => null,
+        ]);
+
+        $user->subscriptions->each(function (Subscription $subscription) {
+            event(new SubscriptionCancelled($subscription));
+        });
+
+        return $user->subscriptions;
     }
 
     public function makeActive(Subscription $subscription, $token = null) : Subscription
