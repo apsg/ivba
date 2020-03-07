@@ -12,17 +12,11 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Pokaż koszyk
-     * @param Request $request [description]
-     * @return [type]           [description]
-     */
     public function showCart(Request $request)
     {
         $order = Auth::user()->getCurrentOrder();
@@ -84,30 +78,34 @@ class OrderController extends Controller
         return redirect('/cart');
     }
 
-    /**
-     * Dodaj kupon do tego zamówienia
-     * @param Order   $order [description]
-     * @param Request $request [description]
-     */
     public function addCoupon(Order $order, Request $request)
     {
         $code = $request->code;
 
-        $coupon = \App\Coupon::where('code', $code)->first();
+        $coupon = Coupon::where('code', $code)->first();
 
-        if ($coupon) {
-            if ($coupon->uses_left > 0) {
-                $order->coupons()->save($coupon);
-                flash('Kod rabatowy dodany');
-            } else {
-                flash('Wyczerpano już limit użyć tego kodu rabatowego');
-            }
-        } else {
+        if ($coupon === null) {
             flash('Nie znaleziono kuponu rabatowego o takim kodzie.')->error();
+
+            return back();
         }
 
-        return back();
+        if ($coupon->uses_left < 1) {
+            flash('Wyczerpano już limit użyć tego kodu rabatowego');
 
+            return back();
+        }
+
+        if ($order->coupons()->where('id', $coupon->id)->exists()) {
+            flash('Ten kupon został już dodany do tego zamówienia. Nie możesz dodać dwa razy tego samego kuponu.');
+
+            return back();
+        }
+
+        $order->coupons()->save($coupon);
+        flash('Kod rabatowy dodany');
+
+        return back();
     }
 
     /**
@@ -116,22 +114,29 @@ class OrderController extends Controller
      * @param Coupon $coupon [description]
      * @return [type]         [description]
      */
-    public function removeCoupon(Order $order, Coupon $coupon)
-    {
+    public
+    function removeCoupon(
+        Order $order,
+        Coupon $coupon
+    ) {
         $order->coupons()->detach($coupon);
 
         return back();
     }
 
-    public function removeEasyAccess(Order $order)
-    {
+    public
+    function removeEasyAccess(
+        Order $order
+    ) {
         $order->clear();
 
         return back();
     }
 
-    public function requestInvoice(Order $order)
-    {
+    public
+    function requestInvoice(
+        Order $order
+    ) {
         /** @var User $user */
         $user = auth()->user();
 
