@@ -19,7 +19,7 @@
                         <img class="" src="{{ url('/images/projekt30/zapraszam-na.png') }}"/>
                     </div>
                 </div>
-                <p class="">O co chodzi z tą platfromą...</p>
+                <p class="">O co chodzi z tą platfromą...?</p>
             </div>
         </div>
     </section>
