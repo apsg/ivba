@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <a href="{{url('/')}}" class="py-3">
-                        <img src="{{ asset('/images/v2/logo_stopka.png') }}">
+                        <img src="{{ asset('/images/projekt30/p30-logo_stopka.png') }}">
                     </a>
                     <p>&copy; {{ Carbon\Carbon::now()->year }} ITBT</p>
                 </div>

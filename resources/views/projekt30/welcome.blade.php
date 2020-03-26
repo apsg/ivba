@@ -1,6 +1,6 @@
 @extends('layouts.front2')
 
-@section('title', 'Projekt30 - kompleksowe szkolenie z e-marketingu')
+@section('title', 'Projekt30 - kompleksowe szkolenia z e-marketingu')
 
 @section('content')
     <section class="container">

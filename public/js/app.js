@@ -49423,12 +49423,12 @@ var render = function() {
               _c("div", { staticClass: "col-sm-6 text-left" }, [
                 _c("h3", [_vm._v("Checklisty")]),
                 _vm._v(" "),
-                _c("p", [_vm._v("Lorem ipsum dolor sit")]),
+                _c("p", [_vm._v("Spokojnie nie pogubisz się. Przygotowaliśmy dla Ciebie checklisty. ")]),
                 _vm._v(" "),
                 _c(
                   "a",
-                  { staticClass: "btn btn-p30-red", attrs: { href: "" } },
-                  [_vm._v("Link")]
+                  { staticClass: "btn btn-p30-red", attrs: { href: "/checklisty" } },
+                  [_vm._v("Zobacz")]
                 )
               ])
             ])
@@ -49444,14 +49444,14 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 text-left" }, [
-                _c("h3", [_vm._v("Darmowa porada")]),
+                _c("h3", [_vm._v("Darmowe porady")]),
                 _vm._v(" "),
-                _c("p", [_vm._v("Lorem ipsum dolor sit")]),
+                _c("p", [_vm._v("Zarejestuj się i sprawdź jak wyglądają nasze darmowe porady.")]),
                 _vm._v(" "),
                 _c(
                   "a",
-                  { staticClass: "btn btn-p30-red", attrs: { href: "" } },
-                  [_vm._v("Link")]
+                  { staticClass: "btn btn-p30-red", attrs: { href: "/porady" } },
+                  [_vm._v("Zobacz")]
                 )
               ])
             ])
@@ -49467,14 +49467,14 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 text-left" }, [
-                _c("h3", [_vm._v("Grupa")]),
+                _c("h3", [_vm._v("Grupa wsparcia")]),
                 _vm._v(" "),
-                _c("p", [_vm._v("Lorem ipsum dolor sit")]),
+                _c("p", [_vm._v("Dołącz do 1000 firm, którym pomagamy. ")]),
                 _vm._v(" "),
                 _c(
                   "a",
-                  { staticClass: "btn btn-p30-red", attrs: { href: "" } },
-                  [_vm._v("Link")]
+                  { staticClass: "btn btn-p30-red", attrs: { href: "/grupa" } },
+                  [_vm._v("Zobacz")]
                 )
               ])
             ])
@@ -49490,14 +49490,14 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 text-left" }, [
-                _c("h3", [_vm._v("Nagrania konfa")]),
+                _c("h3", [_vm._v("Konferencje on-line")]),
                 _vm._v(" "),
-                _c("p", [_vm._v("Lorem ipsum dolor sit")]),
+                _c("p", [_vm._v("Cykliczne szkolenia on-line tylko dla osób z projektu30")]),
                 _vm._v(" "),
                 _c(
                   "a",
-                  { staticClass: "btn btn-p30-red", attrs: { href: "" } },
-                  [_vm._v("Link")]
+                  { staticClass: "btn btn-p30-red", attrs: { href: "/konferencje" } },
+                  [_vm._v("Zobacz")]
                 )
               ])
             ])
