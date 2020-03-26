@@ -19,7 +19,7 @@
                         <img class="" src="{{ url('/images/projekt30/zapraszam-na.png') }}"/>
                     </div>
                 </div>
-                <p class="">O co chodzi z tą platfromą...?</p>
+                <p class="">Masz problemy ze sprzedażą w Internecie? Chcesz zwiększyć zasięgi? Zoptymalizować swoje działania sprzedażowe. A może masz ciekawy pomysł? Pokażemy Ci jak sprzedaje się w Internecie. Pokaże Ci moje case-e. Poprzez wyzwania na żywo udowodnię Ci, że da się w Polsce sprzedawać spore ilości towaru. A może podbijemy świat? </p>
             </div>
         </div>
     </section>
