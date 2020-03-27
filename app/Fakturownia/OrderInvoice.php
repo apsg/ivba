@@ -98,5 +98,4 @@ class OrderInvoice extends AbstractInvoice
     {
         app(OrdersRepository::class)->attachInvoice($this->item, $this->invoiceId);
     }
-
 }
