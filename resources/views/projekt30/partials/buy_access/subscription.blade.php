@@ -12,7 +12,11 @@
 <form action="{{ url('/subscription/create') }}" method="post">
     @csrf
 
-    <price-and-coupon price="{{ setting('ivba.subscription_price') }}"></price-and-coupon>
+    <price-and-coupon
+            price="{{ setting('ivba.subscription_price') }}"
+            first_price="{{ setting('ivba.subscription_price_first') }}"
+            first_duration="{{ setting('ivba.subscription_duration_first') }}"
+    ></price-and-coupon>
 
     <label>
         <input type="checkbox" name="rules" required="required" value="1">

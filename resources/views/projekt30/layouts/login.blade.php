@@ -28,25 +28,30 @@
         html,
         body {
             height: 100%;
+            background-color: #fafafa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
         }
 
-        body {
-            display: -ms-flexbox;
-            display: -webkit-box;
-            display: flex;
-            -ms-flex-align: center;
-            -ms-flex-pack: center;
-            -webkit-box-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            justify-content: center;
-            padding-top: 40px;
-            padding-bottom: 40px;
-            background-color: #f5f5f5;
-        }
+        /*body {*/
+        /*    display: -ms-flexbox;*/
+        /*    display: -webkit-box;*/
+        /*    display: flex;*/
+        /*    -ms-flex-align: center;*/
+        /*    -ms-flex-pack: center;*/
+        /*    -webkit-box-align: center;*/
+        /*    align-items: center;*/
+        /*    -webkit-box-pack: center;*/
+        /*    justify-content: center;*/
+        /*    padding-top: 40px;*/
+        /*    padding-bottom: 40px;*/
+        /*    background-color: #f5f5f5;*/
+        /*}*/
     </style>
 </head>
-<body class="text-center bg-gray-dark">
+<body class="text-center bg-gray-dark pt-3">
 <!-- Start Preloader -->
 <div id="loading">
     <div class="element">
@@ -59,7 +64,7 @@
     </div>
 </div>
 <!-- End Preloader -->
-<div id="app">
+<div id="app" style="width: 100%; max-width: 600px; align-self: center">
 
     <div class="container">
         @include('flash::message')
