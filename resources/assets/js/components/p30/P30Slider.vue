@@ -13,9 +13,9 @@
                         <img class="w-100" src="/images/projekt30/checklisty.png">
                     </div>
                     <div class="col-sm-6 text-left">
-                        <h3>Checklisty2</h3>
-                        <p>Lorem ipsum dolor sit</p>
-                        <a href="" class="btn btn-p30-red">Link</a>
+                        <h3>Checklisty</h3>
+                        <p>Spokojnie nie pogubisz się. Przygotowaliśmy dla Ciebie checklisty.</p>
+                        <a href="/checklisty" class="btn btn-p30-red">Zobacz</a>
                     </div>
                 </div>
             </slide>
@@ -26,8 +26,8 @@
                     </div>
                     <div class="col-sm-6 text-left">
                         <h3>Darmowa porada</h3>
-                        <p>Lorem ipsum dolor sit</p>
-                        <a href="" class="btn btn-p30-red">Link</a>
+                        <p>Zarejestuj się i sprawdź jak wyglądają nasze darmowe porady.</p>
+                        <a href="/darmowe_porady" class="btn btn-p30-red">Zobacz</a>
                     </div>
                 </div>
             </slide>
@@ -38,8 +38,8 @@
                     </div>
                     <div class="col-sm-6 text-left">
                         <h3>Grupa</h3>
-                        <p>Lorem ipsum dolor sit</p>
-                        <a href="" class="btn btn-p30-red">Link</a>
+                        <p>Dołącz do 1000 firm, którym pomagamy.</p>
+                        <a href="/grupa" class="btn btn-p30-red">Zobacz</a>
                     </div>
                 </div>
             </slide>
@@ -49,9 +49,9 @@
                         <img class="w-100" src="/images/projekt30/nagrania-konfa.png">
                     </div>
                     <div class="col-sm-6 text-left">
-                        <h3>Nagrania konfa</h3>
-                        <p>Lorem ipsum dolor sit</p>
-                        <a href="" class="btn btn-p30-red">Link</a>
+                        <h3>Konferencje on-line</h3>
+                        <p>Cykliczne szkolenia on-line tylko dla osób z projektu30</p>
+                        <a href="/konferencje" class="btn btn-p30-red">Zobacz</a>
                     </div>
                 </div>
             </slide>
