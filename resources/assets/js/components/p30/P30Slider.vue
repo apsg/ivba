@@ -13,7 +13,7 @@
                         <img class="w-100" src="/images/projekt30/checklisty.png">
                     </div>
                     <div class="col-sm-6 text-left">
-                        <h3>Checklisty</h3>
+                        <h3>Checklisty2</h3>
                         <p>Lorem ipsum dolor sit</p>
                         <a href="" class="btn btn-p30-red">Link</a>
                     </div>
