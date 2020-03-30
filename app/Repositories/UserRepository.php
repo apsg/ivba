@@ -18,7 +18,8 @@ class UserRepository
         $user = User::create(array_merge([
             'password' => uniqid(),
         ], $attributes));
-        $this->resetPassword($user);
+
+        $this->resetPassword($user->fresh());
 
         return $user;
     }

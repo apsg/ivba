@@ -55,7 +55,7 @@ class PasswordReset extends Notification
                     . 'Aby to zrobić kliknij w poniższy link:')
                 ->action('Ustaw hasło', url(config('app.url') . route('password.reset', $this->token, false)))
                 ->line('Możesz też w swoim panelu zarządzania kontem dodać dane do faktury:')
-                ->action('Zobacz swoje dane', url('/account'));
+                ->line('Zobacz swoje dane: ' . url('/account'));
         }
 
         return (new MailMessage)

@@ -7,6 +7,7 @@ use App\Console\Commands\ExportUsersToExcelmailingCommand;
 use App\Console\Commands\FixAccessDays;
 use App\Console\Commands\ProlongSubscriptionsCommand;
 use App\Console\Commands\RecalculateRatingCommand;
+use App\Console\Commands\SendPasswordResetCommand;
 use App\Console\Commands\UploadFontsCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -36,6 +37,7 @@ class Kernel extends ConsoleKernel
         ClearAccountCommand::class,
         RecalculateRatingCommand::class,
         UploadFontsCommand::class,
+        SendPasswordResetCommand::class,
     ];
 
     /**
