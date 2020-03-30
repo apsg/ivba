@@ -9,6 +9,7 @@ use App\Payments\Tpay\TpayTransaction;
 use App\QuickSale;
 use App\Repositories\QuickSaleRepository;
 use App\Repositories\UserRepository;
+use Response;
 
 class QuickSalesController extends Controller
 {
@@ -78,6 +79,17 @@ class QuickSalesController extends Controller
 
         return response()->json([
             'url' => $url,
+        ]);
+    }
+
+    public function finishFree(string $hash, QuickSaleOrderRequest $request)
+    {
+        $order = $request->getUser()->getCurrentOrder()->clear();
+        $order->quick_sales()->save($request->sale());
+        $order->confirm();
+
+        return Response::json([
+            'url' => $request->sale()->redirect_url,
         ]);
     }
 }

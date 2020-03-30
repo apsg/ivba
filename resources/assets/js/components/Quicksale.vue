@@ -85,19 +85,27 @@
         </div>
 
         <div class="step" v-if="step ===3">
-            <h5><span class="badge badge-pill badge-primary">3</span> Płatność</h5>
+            <h5 v-if="!isFree"><span class="badge badge-pill badge-primary">3</span> Płatność</h5>
+            <h5 v-else><span class="badge badge-pill badge-primary">3</span> Finalizacja</h5>
             <div>
-                <p>Kliknięcie w przycisk kupuję i płacę potwierdza zamówienie oraz przenosi do wyboru metody
+                <p v-if="!isFree">Kliknięcie w przycisk kupuję i płacę potwierdza zamówienie oraz przenosi do wyboru
+                    metody
                     płatności</p>
+                <p v-if="isFree">Kliknięcie w przycisk zakończ sfinalizuje proces i aktywuje zamówione produkty.
+                    W wiadomości email otrzymasz szczegóły w jaki sposób możesz zalogować się na swoje konto.</p>
             </div>
             <div class="text-center">
                 <button
                         @click="stepBack"
                         class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Wstecz
                 </button>
-                <button
+                <button v-if="!isFree"
                         @click="createOrder"
                         class="btn btn-primary">Kupuję i płacę <i class="fa fa-chevron-right"></i>
+                </button>
+                <button v-if="isFree"
+                        @click="finishFree"
+                        class="btn btn-primary">Zakończ <i class="fa fa-chevron-right"></i>
                 </button>
             </div>
         </div>
@@ -199,7 +207,11 @@
 
             isTpayEnabled() {
                 return typeof window.tr_groups !== 'undefined'
-                    && window.tr_groups.length > 0;
+                        && window.tr_groups.length > 0;
+            },
+
+            isFree() {
+                return this.sale.price === 0;
             },
 
             groups() {
@@ -226,7 +238,7 @@
             },
 
             createOrder() {
-                axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/order', {
+                return axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/order', {
                     name: this.username,
                     email: this.email,
                     phone: this.phone,
@@ -235,14 +247,28 @@
                     city: this.city,
                     is_full_data_required: this.sale.is_full_data_required,
                 })
-                    .then(response => {
-                        console.log(response);
-                        this.order = response.data.order_id;
-                        this.step += 1;
+                        .then(response => {
+                            console.log(response);
+                            this.order = response.data.order_id;
+                            this.step += 1;
 
-                    }).catch(error => {
-                    console.log(error.response);
-                    this.errors = error.response.data.errors;
+                        }).catch(error => {
+                            console.log(error.response);
+                            this.errors = error.response.data.errors;
+                        });
+            },
+
+            finishFree() {
+                axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/finish_free', {
+                    name: this.username,
+                    email: this.email,
+                    phone: this.phone,
+                    street: this.street,
+                    postcode: this.postcode,
+                    city: this.city,
+                }).then(response => {
+                    console.log(response);
+                    window.location.href = response.data.url;
                 });
             },
 

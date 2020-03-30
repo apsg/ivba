@@ -2449,6 +2449,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Quicksale",
   props: {
@@ -2497,6 +2505,9 @@ __webpack_require__.r(__webpack_exports__);
     isTpayEnabled: function isTpayEnabled() {
       return typeof window.tr_groups !== 'undefined' && window.tr_groups.length > 0;
     },
+    isFree: function isFree() {
+      return this.sale.price === 0;
+    },
     groups: function groups() {
       return tr_groups;
     }
@@ -2518,7 +2529,7 @@ __webpack_require__.r(__webpack_exports__);
     createOrder: function createOrder() {
       var _this = this;
 
-      axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/order', {
+      return axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/order', {
         name: this.username,
         email: this.email,
         phone: this.phone,
@@ -2533,6 +2544,19 @@ __webpack_require__.r(__webpack_exports__);
       }).catch(function (error) {
         console.log(error.response);
         _this.errors = error.response.data.errors;
+      });
+    },
+    finishFree: function finishFree() {
+      axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/finish_free', {
+        name: this.username,
+        email: this.email,
+        phone: this.phone,
+        street: this.street,
+        postcode: this.postcode,
+        city: this.city
+      }).then(function (response) {
+        console.log(response);
+        window.location.href = response.data.url;
       });
     },
     prevalidate: function prevalidate() {
@@ -48702,9 +48726,41 @@ var render = function() {
       _vm._v(" "),
       _vm.step === 3
         ? _c("div", { staticClass: "step" }, [
-            _vm._m(2),
+            !_vm.isFree
+              ? _c("h5", [
+                  _c(
+                    "span",
+                    { staticClass: "badge badge-pill badge-primary" },
+                    [_vm._v("3")]
+                  ),
+                  _vm._v(" Płatność")
+                ])
+              : _c("h5", [
+                  _c(
+                    "span",
+                    { staticClass: "badge badge-pill badge-primary" },
+                    [_vm._v("3")]
+                  ),
+                  _vm._v(" Finalizacja")
+                ]),
             _vm._v(" "),
-            _vm._m(3),
+            _c("div", [
+              !_vm.isFree
+                ? _c("p", [
+                    _vm._v(
+                      "Kliknięcie w przycisk kupuję i płacę potwierdza zamówienie oraz przenosi do wyboru\n                metody\n                płatności"
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.isFree
+                ? _c("p", [
+                    _vm._v(
+                      "Kliknięcie w przycisk zakończ sfinalizuje proces i aktywuje zamówione produkty.\n                W wiadomości email otrzymasz szczegóły w jaki sposób możesz zalogować się na swoje konto."
+                    )
+                  ])
+                : _vm._e()
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "text-center" }, [
               _c(
@@ -48719,17 +48775,33 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  on: { click: _vm.createOrder }
-                },
-                [
-                  _vm._v("Kupuję i płacę "),
-                  _c("i", { staticClass: "fa fa-chevron-right" })
-                ]
-              )
+              !_vm.isFree
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      on: { click: _vm.createOrder }
+                    },
+                    [
+                      _vm._v("Kupuję i płacę "),
+                      _c("i", { staticClass: "fa fa-chevron-right" })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.isFree
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      on: { click: _vm.finishFree }
+                    },
+                    [
+                      _vm._v("Zakończ "),
+                      _c("i", { staticClass: "fa fa-chevron-right" })
+                    ]
+                  )
+                : _vm._e()
             ])
           ])
         : _vm._e(),
@@ -48738,7 +48810,7 @@ var render = function() {
         ? _c("div", { staticClass: "step" }, [
             _vm.isTpayEnabled
               ? _c("div", [
-                  _vm._m(4),
+                  _vm._m(2),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -48848,29 +48920,6 @@ var staticRenderFns = [
         _vm._v("2")
       ]),
       _vm._v(" Podaj dane do płatności")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h5", [
-      _c("span", { staticClass: "badge badge-pill badge-primary" }, [
-        _vm._v("3")
-      ]),
-      _vm._v(" Płatność")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("p", [
-        _vm._v(
-          "Kliknięcie w przycisk kupuję i płacę potwierdza zamówienie oraz przenosi do wyboru metody\n                płatności"
-        )
-      ])
     ])
   },
   function() {
@@ -49423,11 +49472,18 @@ var render = function() {
               _c("div", { staticClass: "col-sm-6 text-left" }, [
                 _c("h3", [_vm._v("Checklisty")]),
                 _vm._v(" "),
-                _c("p", [_vm._v("Spokojnie nie pogubisz się. Przygotowaliśmy dla Ciebie checklisty. ")]),
+                _c("p", [
+                  _vm._v(
+                    "Spokojnie nie pogubisz się. Przygotowaliśmy dla Ciebie checklisty."
+                  )
+                ]),
                 _vm._v(" "),
                 _c(
                   "a",
-                  { staticClass: "btn btn-p30-red", attrs: { href: "/checklisty" } },
+                  {
+                    staticClass: "btn btn-p30-red",
+                    attrs: { href: "/checklisty" }
+                  },
                   [_vm._v("Zobacz")]
                 )
               ])
@@ -49444,13 +49500,20 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 text-left" }, [
-                _c("h3", [_vm._v("Darmowe porady")]),
+                _c("h3", [_vm._v("Darmowa porada")]),
                 _vm._v(" "),
-                _c("p", [_vm._v("Zarejestuj się i sprawdź jak wyglądają nasze darmowe porady.")]),
+                _c("p", [
+                  _vm._v(
+                    "Zarejestuj się i sprawdź jak wyglądają nasze darmowe porady."
+                  )
+                ]),
                 _vm._v(" "),
                 _c(
                   "a",
-                  { staticClass: "btn btn-p30-red", attrs: { href: "/porady" } },
+                  {
+                    staticClass: "btn btn-p30-red",
+                    attrs: { href: "/darmowe_porady" }
+                  },
                   [_vm._v("Zobacz")]
                 )
               ])
@@ -49467,9 +49530,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 text-left" }, [
-                _c("h3", [_vm._v("Grupa wsparcia")]),
+                _c("h3", [_vm._v("Grupa")]),
                 _vm._v(" "),
-                _c("p", [_vm._v("Dołącz do 1000 firm, którym pomagamy. ")]),
+                _c("p", [_vm._v("Dołącz do 1000 firm, którym pomagamy.")]),
                 _vm._v(" "),
                 _c(
                   "a",
@@ -49492,11 +49555,18 @@ var render = function() {
               _c("div", { staticClass: "col-sm-6 text-left" }, [
                 _c("h3", [_vm._v("Konferencje on-line")]),
                 _vm._v(" "),
-                _c("p", [_vm._v("Cykliczne szkolenia on-line tylko dla osób z projektu30")]),
+                _c("p", [
+                  _vm._v(
+                    "Cykliczne szkolenia on-line tylko dla osób z projektu30"
+                  )
+                ]),
                 _vm._v(" "),
                 _c(
                   "a",
-                  { staticClass: "btn btn-p30-red", attrs: { href: "/konferencje" } },
+                  {
+                    staticClass: "btn btn-p30-red",
+                    attrs: { href: "/konferencje" }
+                  },
                   [_vm._v("Zobacz")]
                 )
               ])
