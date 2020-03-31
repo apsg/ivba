@@ -47,15 +47,17 @@ class Followup extends Model
 
     public function send()
     {
-        $this->user->emails()->create([
-            'from'             => config('mail.from.address'),
-            'title'            => $this->followupContent->title,
-            'body'             => $this->followupContent->body,
-            'send_at'          => $this->send_at,
-            'type'             => 2,
-            'unsubscribe_code' => uniqid(),
-            'attachment'       => $this->followupContent->attachment,
-        ]);
+        if ($this->user !== null) {
+            $this->user->emails()->create([
+                'from'             => config('mail.from.address'),
+                'title'            => $this->followupContent->title,
+                'body'             => $this->followupContent->body,
+                'send_at'          => $this->send_at,
+                'type'             => 2,
+                'unsubscribe_code' => uniqid(),
+                'attachment'       => $this->followupContent->attachment,
+            ]);
+        }
 
         $this->is_sent = true;
         $this->save();
