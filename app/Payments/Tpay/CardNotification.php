@@ -60,16 +60,16 @@ class CardNotification extends PaymentCard
 
         $reason = array_get($notification, 'reason') ?? '';
 
-        $this->validateCardSign(
-            $notification['sign'],
-            $notification['sale_auth'],
-            $notification['card'],
-            $notification['date'],
-            $notification['status'],
-            array_get($notification, 'test_mode'),
-            $notification['type'],
-            $reason
-        );
+//        $this->validateCardSign(
+//            $notification['sign'],
+//            $notification['sale_auth'],
+//            $notification['card'],
+//            $notification['date'],
+//            $notification['status'],
+//            array_get($notification, 'test_mode'),
+//            $notification['type'],
+//            $reason
+//        );
 
         return $notification;
     }
