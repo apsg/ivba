@@ -27,11 +27,6 @@ class OrderController extends Controller
         return view('cart')->with(compact('order', 'form'));
     }
 
-    /**
-     * Wygeneruj płatność dla tego zamówienia.
-     * @param Order $order [description]
-     * @return [type]        [description]
-     */
     public function pay(Order $order, Request $request)
     {
         if ($order->total() > 0) {
@@ -48,9 +43,6 @@ class OrderController extends Controller
         }
     }
 
-    /**
-     * Dodaj pełen dostęp do aktualnego zamówienia
-     */
     public function addFullAccess()
     {
         if (Auth::user()->canAddFullAccess()) {
@@ -65,10 +57,6 @@ class OrderController extends Controller
         return redirect('/cart');
     }
 
-    /**
-     * Usuń pełen dostęp z koszyka
-     * @return [type] [description]
-     */
     public function removeFullAccess()
     {
         $order = Auth::user()->getCurrentOrder();
