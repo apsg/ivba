@@ -21,7 +21,7 @@
                                 teraz zdecydowanie bardziej profesjonalne. Nie ma w Polsce drugiej takiej firmy, która w
                                 tak przyswajalny sposób potrafi przekazać wiedzę. Osobiście – bardzo polecam! Dzięki i
                                 widzimy się na kolejnej konferencji
-                            <p class="name">Łukasz Kutyłowski (Warszawa)</p>
+                            <p class="name">Łukasz Kutyłowski W-wa</p>
                         </div>
                     </div>
                 </slide>
