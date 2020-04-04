@@ -12,16 +12,12 @@
                     <div class="row">
 
                         <div class="col-md-4 text-center">
-                            <img class="image" src="/images/v2/lukasz_kutylowski.png">
+                            <img class="image" src="/images/v2/ez.png">
                         </div>
                         <div class="col-md-8 pl-3 d-flex justify-content-between flex-column pt-5">
 
-                            <p class="testimonial">Szkolenia z Excela pozwoliły mi na
-                                prowadzenie szeregu usprawnień w firmie. Pomimo ciągłej pracy na excelu, moje analizy są
-                                teraz zdecydowanie bardziej profesjonalne. Nie ma w Polsce drugiej takiej firmy, która w
-                                tak przyswajalny sposób potrafi przekazać wiedzę. Osobiście – bardzo polecam! Dzięki i
-                                widzimy się na kolejnej konferencji
-                            <p class="name">Łukasz Kutyłowski (Warszawa)</p>
+                            <p class="testimonial">Dzięki Mateuszowi i jego procesom optymalizacji nasz sklep odniósł sukces. Jesteśmy jednym z 3 największych sklepów w PL sprzedających prezenty.
+                            <p class="name">Paweł Gubrynowicz www.prezentzycia.pl</p>
                         </div>
                     </div>
                 </slide>
@@ -29,14 +25,12 @@
                     <div class="row">
 
                         <div class="col-md-4 text-center">
-                            <img class="image" src="/images/v2/damian_klekot.png">
+                            <img class="image" src="/images/v2/mateuszb.png">
                         </div>
                         <div class="col-md-8 pl-3 d-flex justify-content-between flex-column pt-5">
-                            <p class="testimonial">Środowa konferencja była pierwszą i na pewno
-                                nie ostatnią. Zdecydowanie polecam. Super atmosfera a wiedza przekazywana w bardzo
-                                przystępny sposób!
+                            <p class="testimonial">Z Mateuszem znamy się od przeszło 6 lat. Systematycznie inspiruje mnie narzędziami i schematami sprzedaży. Czy ogarnia Facebooka? Chyba jak nikt w Polsce :)
                             </p>
-                            <p class="name">Damian Klekot (Warszawa)</p>
+                            <p class="name">Mateusz Biernacki www.rekinysukcesu.pl</p>
                         </div>
                     </div>
                 </slide>
