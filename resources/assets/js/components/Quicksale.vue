@@ -211,7 +211,7 @@
             },
 
             isFree() {
-                return this.sale.price === 0;
+                return parseFloat(this.sale.price) === 0;
             },
 
             groups() {

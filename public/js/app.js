@@ -2506,7 +2506,7 @@ __webpack_require__.r(__webpack_exports__);
       return typeof window.tr_groups !== 'undefined' && window.tr_groups.length > 0;
     },
     isFree: function isFree() {
-      return this.sale.price === 0;
+      return parseFloat(this.sale.price) === 0;
     },
     groups: function groups() {
       return tr_groups;
