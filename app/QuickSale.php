@@ -24,6 +24,7 @@ use Illuminate\Support\Collection;
  *
  * @property string|null             redirect_url
  * @property string|null             file_url
+ * @property string|null             campaign
  *
  * @property Carbon                  created_at
  * @property Carbon                  updated_at
@@ -49,6 +50,7 @@ class QuickSale extends Model implements OrderableContract
         'redirect_url',
         'is_full_data_required',
         'file_url',
+        'campaign',
     ];
 
     protected $casts = [

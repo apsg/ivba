@@ -1,9 +1,18 @@
 <?php
 namespace App\Domains\Quicksales\Integrations;
 
+use App\User;
 use Getresponse\Sdk\Client\GetresponseClient;
+use Getresponse\Sdk\Client\Operation\Operation;
+use Getresponse\Sdk\Client\Operation\OperationResponse;
+use Getresponse\Sdk\Client\Operation\Pagination;
 use Getresponse\Sdk\GetresponseClientFactory;
 use Getresponse\Sdk\Operation\Campaigns\GetCampaigns\GetCampaigns;
+use Getresponse\Sdk\Operation\Campaigns\GetCampaigns\GetCampaignsSearchQuery;
+use Getresponse\Sdk\Operation\Contacts\CreateContact\CreateContact;
+use Getresponse\Sdk\Operation\Contacts\GetContacts\GetContacts;
+use Getresponse\Sdk\Operation\Model\CampaignReference;
+use Getresponse\Sdk\Operation\Model\NewContact;
 
 class GetResponseService
 {
@@ -17,6 +26,43 @@ class GetResponseService
 
     public function getCampaigns() : array
     {
-        return $this->client->call(new GetCampaigns())->getData();
+        $data = $this->getFullData((new GetCampaigns())->setQuery(new GetCampaignsSearchQuery()));
+
+        return $data;
+    }
+
+    public function addToCampaign(string $campaignId, User $user) : OperationResponse
+    {
+        $campaign = new CampaignReference($campaignId);
+        $contact = new NewContact($campaign, $user->email);
+        $contact->setName($user->full_name);
+
+        return $this->client->call(new CreateContact($contact));
+    }
+
+    public function getContacts()
+    {
+        return $this->client->call(new GetContacts());
+    }
+
+    protected function getFullData(Operation $operation) : array
+    {
+        $data = [];
+        $page = 0;
+
+        while (true) {
+            $response = $this->client->call((new GetCampaigns())
+                ->setPagination(new Pagination($page, 100)))
+                ->getData();
+
+            $data = array_merge($data, $response);
+            $page++;
+
+            if (empty($response)) {
+                break;
+            }
+        }
+
+        return $data;
     }
 }

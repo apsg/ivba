@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Domains\Quicksales\Integrations\GetResponseService;
 use App\Http\Requests\Admin\QuickSaleRequest;
 use App\QuickSale;
 use Laracsv\Export;
@@ -16,13 +17,14 @@ class AdminQuickSalesController extends Controller
         return view('admin.quicksales.index')->with(compact('quickSales'));
     }
 
-    public function create()
+    public function create(GetResponseService $service)
     {
         $courses = Course::orderBy('title')
             ->select(['id', 'title'])
             ->get();
+        $getresponseCampaigns = $service->getCampaigns();
 
-        return view('admin.quicksales.create')->with(compact('courses'));
+        return view('admin.quicksales.create')->with(compact('courses', 'getresponseCampaigns'));
     }
 
     public function store(QuickSaleRequest $request)
@@ -51,13 +53,16 @@ class AdminQuickSalesController extends Controller
         return back();
     }
 
-    public function show(QuickSale $quickSale)
+    public function show(QuickSale $quickSale, GetResponseService $service)
     {
         $courses = Course::orderBy('title')
             ->select(['id', 'title'])
             ->get();
 
-        return view('admin.quicksales.show')->with(compact('quickSale', 'courses'));
+        $getresponseCampaigns = $service->getCampaigns();
+
+        return view('admin.quicksales.show')
+            ->with(compact('quickSale', 'courses', 'getresponseCampaigns'));
     }
 
     public function downloadReport(QuickSale $quickSale)

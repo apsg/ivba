@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Domains\Quicksales\Listeners\TrySubscribeToGetresponseListener;
 use App\Events\ActiveSubscriptionExpiredEvent;
 use App\Events\FirstPaymentCorrectEvent;
 use App\Events\FullAccessGrantedEvent;
@@ -109,6 +110,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         QuickSaleConfirmedEvent::class        => [
             SendQuickSaleEmailListener::class,
+            TrySubscribeToGetresponseListener::class,
         ],
     ];
 

@@ -18,6 +18,7 @@ class QuickSaleRequest extends FormRequest
             'message_subject' => 'sometimes|nullable|string',
             'message_body'    => 'sometimes|nullable|string',
             'redirect_url'    => 'sometimes|nullable|string',
+            'campaign'    => 'sometimes|nullable|string',
         ];
     }
 
