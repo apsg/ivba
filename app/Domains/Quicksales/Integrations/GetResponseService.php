@@ -2,6 +2,7 @@
 namespace App\Domains\Quicksales\Integrations;
 
 use App\User;
+use Cache;
 use Getresponse\Sdk\Client\GetresponseClient;
 use Getresponse\Sdk\Client\Operation\Operation;
 use Getresponse\Sdk\Client\Operation\OperationResponse;
@@ -21,14 +22,18 @@ class GetResponseService
 
     public function __construct()
     {
+        if (empty(config('services.getresponse.key'))) {
+            throw new GetResponseException("Missing api key");
+        }
+
         $this->client = GetresponseClientFactory::createWithApiKey(config('services.getresponse.key'));
     }
 
     public function getCampaigns() : array
     {
-        $data = $this->getFullData((new GetCampaigns())->setQuery(new GetCampaignsSearchQuery()));
-
-        return $data;
+        return Cache::remember('getresponse_campaigns', 2, function () {
+            return $this->getFullData((new GetCampaigns())->setQuery(new GetCampaignsSearchQuery()));
+        });
     }
 
     public function addToCampaign(string $campaignId, User $user) : OperationResponse
