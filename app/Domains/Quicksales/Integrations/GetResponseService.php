@@ -41,6 +41,7 @@ class GetResponseService
         $campaign = new CampaignReference($campaignId);
         $contact = new NewContact($campaign, $user->email);
         $contact->setName($user->full_name);
+        $contact->setDayOfCycle(0);
 
         return $this->client->call(new CreateContact($contact));
     }
