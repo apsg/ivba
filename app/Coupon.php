@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Exceptions\NoCouponUsesLeftException;
+use App\Repositories\AccessRepository;
+use Auth;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -11,15 +13,16 @@ use Illuminate\Support\Carbon;
  * Class Coupon
  *
  * @package App
- * @property string                  code
- * @property int                     uses_left
- * @property int                     type
- * @property-read string             type_text
- * @property int                     $id
- * @property float                   amount
- * @property Carbon|null             created_at
- * @property Carbon|null             updated_at
- * @property-read Collection|Order[] $orders
+ * @property string                   code
+ * @property int                      uses_left
+ * @property int                      type
+ * @property-read string              type_text
+ * @property int                      $id
+ * @property float                    amount
+ * @property Carbon|null              created_at
+ * @property Carbon|null              updated_at
+ * @property-read Collection|Order[]  $orders
+ * @property-read Collection|Course[] $courses
  * @mixin \Eloquent
  */
 class Coupon extends Model
@@ -32,12 +35,19 @@ class Coupon extends Model
     const TYPE_SUBSCRIPTION_VALUE = 3;
     const TYPE_SUBSCRIPTION_PERCENT = 4;
 
+    const TYPE_COURSE_ACCESS = 5;
+
     /**
      * Zamówienia, do których użyto tego kodu
      */
     public function orders()
     {
         return $this->belongsToMany(Order::class);
+    }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class);
     }
 
     /**
@@ -132,6 +142,13 @@ class Coupon extends Model
 
         $this->uses_left -= 1;
         $this->save();
+
+        if ($this->type === static::TYPE_COURSE_ACCESS) {
+            $accessRepo = app(AccessRepository::class);
+            foreach ($this->courses as $course) {
+                $accessRepo->grant(Auth::user(), $course);
+            }
+        }
 
         return $this;
     }

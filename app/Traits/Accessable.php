@@ -2,6 +2,9 @@
 
 namespace App\Traits;
 
+use App\Access;
+use App\User;
+
 trait Accessable{
 	
 	/**
@@ -9,7 +12,7 @@ trait Accessable{
 	 * @return [type] [description]
 	 */
 	public function access(){
-		return $this->morphMany(\App\Access::class, 'accessable');
+		return $this->morphMany(Access::class, 'accessable');
 	}
 
 	/**
@@ -19,7 +22,7 @@ trait Accessable{
 	 */
 	public function hasAccess($user_id){
 
-		$user = App\User::findOrFail($user_id);
+		$user = User::findOrFail($user_id);
 
 		// Użytkownik ma pełen dostęp do wszystkiego - nic innego nas nie obchodzi
 		if($user->hasFullAccess())

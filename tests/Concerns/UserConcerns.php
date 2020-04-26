@@ -11,6 +11,13 @@ trait UserConcerns
         return factory(User::class)->create($attributes);
     }
 
+    public function createUserNoAccess(array $attributes = []) : User
+    {
+        return factory(User::class)->create(array_merge($attributes, [
+            'full_access_expires' => null,
+        ]));
+    }
+
     public function createAdmin() : User
     {
         return factory(User::class)->create([
