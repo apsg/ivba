@@ -16,7 +16,7 @@
 
                 <div class="form-group">
                     <label for="type">Typ: </label>
-                    <select name="type" id="type">
+                    <select name="type" id="type" class="form-control">
                         <option value="1" @if(isset($coupon) && $coupon->type==1) selected="selected" @endif >Złotowy
                         </option>
                         <option value="2" @if(isset($coupon) && $coupon->type==2) selected="selected" @endif >
@@ -27,6 +27,8 @@
                         </option>
                         <option value="4" @if(isset($coupon) && $coupon->type==4) selected="selected" @endif >Procentowy
                             - sybskrypcje
+                        </option>
+                        <option value="5" @if(isset($coupon) && $coupon->type==5) selected="selected" @endif >Dostęp do kursu
                         </option>
                     </select>
                 </div>

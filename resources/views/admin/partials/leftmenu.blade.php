@@ -141,7 +141,7 @@
                     <li class="@if(request()->is('admin/coupon')) active @endif"><a href="{{ url('admin/coupon') }}"><i
                                     class="fa fa-ticket"></i> wszystkie</a></li>
                     <li class="@if(request()->is('admin/coupon/new')) active @endif"><a
-                                href="{{ url('admin/coupon/new') }}"><i class="fa fa-plus"></i> Dodaj nowy</a></li>
+                                href="{{ url('admin/coupon/new') }}"><i class="fa fa-plus"></i> Dodaj nowy / Generuj</a></li>
                 </ul>
             </li>
             {{-- k. kupony --}}

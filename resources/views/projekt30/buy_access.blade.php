@@ -31,6 +31,9 @@
 
                 <hr/>
                 @include('partials.buy_access.full_access')
+
+                <hr/>
+                @include('common.partials.use_groupon_coupon')
             @endif
             <hr/>
         </div>

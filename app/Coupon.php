@@ -81,6 +81,10 @@ class Coupon extends Model
      */
     public function valueFormatted()
     {
+        if ($this->type === static::TYPE_COURSE_ACCESS) {
+            return $this->courses->pluck('title')->implode(' | ');
+        }
+
         return $this->amount . ($this->type == static::TYPE_VALUE ? ' PLN' : ' %');
     }
 
@@ -118,6 +122,10 @@ class Coupon extends Model
             return "Procentowy - subskrypcje";
         }
 
+        if ($this->type == self::TYPE_COURSE_ACCESS) {
+            return "Dostęp do kursu";
+        }
+
         return 'nieznany';
     }
 
@@ -145,8 +153,12 @@ class Coupon extends Model
 
         if ($this->type === static::TYPE_COURSE_ACCESS) {
             $accessRepo = app(AccessRepository::class);
+            /** @var User $user */
+            $user = Auth::user();
+
             foreach ($this->courses as $course) {
-                $accessRepo->grant(Auth::user(), $course);
+                $accessRepo->grant($user, $course);
+                $user->courses()->attach($course->id);
             }
         }
 

@@ -23,7 +23,9 @@ class AdminCouponsController extends Controller
      */
     public function index()
     {
-        $coupons = Coupon::all();
+        $coupons = Coupon::with('courses')
+            ->paginate(100);
+
         return view('admin.coupons')->with(compact('coupons'));
     }
 

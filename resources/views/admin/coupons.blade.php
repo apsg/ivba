@@ -10,11 +10,12 @@
 @section('content')
     <section class="content">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Wszystkie kody rabatowe</h3>
                         <div class="box-tools pull-right">
+                            {{ $coupons->links() }}
                         </div><!-- /.box-tools -->
                     </div><!-- /.box-header -->
                     <div class="box-body">
@@ -33,7 +34,7 @@
                                 <tr>
                                     <td>{{ $coupon->code }}</td>
                                     <td>{{ $coupon->type_text }}</td>
-                                    <td>{{ $coupon->valueFormatted() }}</td>
+                                    <td>{{ nl2br($coupon->valueFormatted()) }}</td>
                                     <td>{{ $coupon->uses_left }}</td>
                                     <td>
                                         <a href="{{ $coupon->editLink() }}" class="btn btn-primary"><i
@@ -49,7 +50,7 @@
                         </table>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
-                        -
+                        {{ $coupons->links() }}
                     </div><!-- box-footer -->
                 </div><!-- /.box -->
             </div>
