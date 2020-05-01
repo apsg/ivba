@@ -6,9 +6,14 @@ use App\Http\Controllers\Controller;
 
 class CouponsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => 'show']);
+    }
+
     public function show()
     {
-        return view();
+        return view('common.coupons.redeem');
     }
 
     public function use(RedeemCouponRequest $request)
@@ -21,7 +26,7 @@ class CouponsController extends Controller
 
         $request->coupon()->use();
 
-        flash('Pomyślnie aktywowano dostęp');
+        flash('Pomyślnie aktywowano dostęp. Sprawdź zakładkę "Moje kursu" oraz "Finanse".');
 
         return redirect('/account');
     }

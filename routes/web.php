@@ -42,7 +42,7 @@ Route::post('/account', AccountController::class . '@update');
 Route::post('/account/change_password', AccountController::class . '@changePassword');
 Route::patch('/user', AccountController::class . '@patch');
 
-Route::group(['prefix' => 'coupon', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'coupon'], function () {
     Route::get('/redeem', CouponsController::class . '@show');
     Route::post('/redeem', CouponsController::class . '@use');
 });
