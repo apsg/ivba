@@ -29,10 +29,12 @@
     "font-awesome": "^4.7.0",
     "jquery-migrate": "~3.0.0",
     "jquery-ui": "^1.12.1",
+    "js-file-download": "^0.4.11",
     "npm": "^6.5.0",
     "tinymce": "^4.6.3",
     "v-tooltip": "^2.0.2",
     "vue-carousel": "^0.16.2",
-    "vue-clipboard2": "^0.3.0"
+    "vue-clipboard2": "^0.3.0",
+    "vue-multiselect": "^2.1.6"
   }
 }

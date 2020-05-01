@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Course;
-use Illuminate\Http\Request;
 use App\Http\Requests\CourseRequest;
+use Illuminate\Http\Request;
 
 class AdminCoursesController extends Controller
 {
@@ -140,4 +140,8 @@ class AdminCoursesController extends Controller
         return redirect('/admin/courses');
     }
 
+    public function list()
+    {
+        return Course::all();
+    }
 }

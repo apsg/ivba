@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Coupon;
+use App\Domains\Payments\Repositories\CouponRepository;
+use App\Http\Requests\Admin\GrouponRequest;
 use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Laracsv\Export;
 
 class AdminCouponsController extends Controller
 {
@@ -95,5 +98,23 @@ class AdminCouponsController extends Controller
         $coupon->update($request->all());
 
         return back();
+    }
+
+    public function groupon(GrouponRequest $request, CouponRepository $repository)
+    {
+        $coupons = $repository->generate(
+            $request->couponType(),
+            $request->input('count', 100),
+            100,
+            1,
+            $request->input('courses', [])
+        );
+
+        (new Export())->build($coupons, [
+            'id',
+            'code',
+        ])->download('coupons.csv');
+
+        exit();
     }
 }

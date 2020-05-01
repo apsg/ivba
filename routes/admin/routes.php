@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('courses', AdminCoursesController::class . '@index');
     Route::post('courses', AdminCoursesController::class . '@store');
     Route::get('courses/new', AdminCoursesController::class . '@create');
+    Route::get('/courses/list', AdminCoursesController::class . '@list');
     Route::get('courses/{course}', AdminCoursesController::class . '@show');
     Route::patch('courses/{course}', AdminCoursesController::class . '@update');
     Route::delete('courses/{course}', AdminCoursesController::class . '@delete');
@@ -71,6 +72,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('/coupon/{coupon}/edit', AdminCouponsController::class . '@edit');
     Route::post('/coupon', AdminCouponsController::class . '@store');
     Route::patch('/coupon/{coupon}', AdminCouponsController::class . '@update');
+    Route::post('/coupons/groupon', AdminCouponsController::class . '@groupon');
 
     Route::get('/user', AdminUserController::class . '@index');
     Route::get('/user/partners', AdminUserController::class . '@partner')->name('admin.users.partners');
