@@ -47,4 +47,15 @@ class CouponRepository
 
         return $coupons;
     }
+
+    public function findByCode(string $code, bool $isSearchOnlyUsable = false) : ?Coupon
+    {
+        $query = Coupon::where('code', '=', $code);
+
+        if ($isSearchOnlyUsable) {
+            $query = $query->usable();
+        }
+
+        return $query->first();
+    }
 }

@@ -5,6 +5,7 @@ namespace App;
 use App\Exceptions\NoCouponUsesLeftException;
 use App\Repositories\AccessRepository;
 use Auth;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -23,6 +24,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null              updated_at
  * @property-read Collection|Order[]  $orders
  * @property-read Collection|Course[] $courses
+ * @method static usable() Builder|Coupon
  * @mixin \Eloquent
  */
 class Coupon extends Model
@@ -62,10 +64,14 @@ class Coupon extends Model
         if ($this->type == self::TYPE_VALUE || $this->type == self::TYPE_SUBSCRIPTION_VALUE) {
             // Kupon złotowy
             return max(0, $total - $this->amount);
-        } elseif ($this->type == self::TYPE_PERCENT || $this->type == self::TYPE_SUBSCRIPTION_PERCENT) {
+        }
+
+        if ($this->type == self::TYPE_PERCENT || $this->type == self::TYPE_SUBSCRIPTION_PERCENT) {
             // kupon procentowy
             return max(0, (100 - $this->amount) * $total / 100);
         }
+
+        return $total;
     }
 
     /**
@@ -163,5 +169,10 @@ class Coupon extends Model
         }
 
         return $this;
+    }
+
+    public function scopeUsable(Builder $query)
+    {
+        return $query->where('uses_left', '>', 0);
     }
 }
