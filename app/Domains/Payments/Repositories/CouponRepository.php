@@ -26,7 +26,7 @@ class CouponRepository
             throw new \InvalidArgumentException('Wrong type');
         }
 
-        if ($type === Coupon::TYPE_COURSE_ACCESS && empty($courses)) {
+        if ($type == Coupon::TYPE_COURSE_ACCESS && empty($courses)) {
             throw new \InvalidArgumentException('You must specify at least one course for this type of coupon');
         }
 

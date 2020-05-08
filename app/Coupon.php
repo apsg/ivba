@@ -87,7 +87,7 @@ class Coupon extends Model
      */
     public function valueFormatted()
     {
-        if ($this->type === static::TYPE_COURSE_ACCESS) {
+        if ($this->type == static::TYPE_COURSE_ACCESS) {
             return $this->courses->pluck('title')->implode(' | ');
         }
 
