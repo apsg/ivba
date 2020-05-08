@@ -157,7 +157,7 @@ class Coupon extends Model
         $this->uses_left -= 1;
         $this->save();
 
-        if ($this->type === static::TYPE_COURSE_ACCESS) {
+        if ($this->type == static::TYPE_COURSE_ACCESS) {
             $accessRepo = app(AccessRepository::class);
             /** @var User $user */
             $user = Auth::user();
