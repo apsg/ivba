@@ -10,6 +10,12 @@ class PaymentsController extends Controller
 {
     public function requestInvoice(Payment $payment)
     {
+        if (!$payment->isConfirmed()) {
+            flash('Ta płatność nie została potwierdzona, nie możemy wystawić dla niej faktury.');
+
+            return back();
+        }
+
         if (Gate::denies(GateHelper::REQUEST_INVOICE)) {
             flash('Proszę uzupełnić dane do faktury');
 

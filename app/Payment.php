@@ -118,4 +118,17 @@ class Payment extends Model implements InvoicableContract
     {
         return $this->subscription->user;
     }
+
+    public function isConfirmed()
+    {
+        if (empty($this->confirmed_at)) {
+            return false;
+        }
+
+        if (!empty($this->cancelled_at)) {
+            return false;
+        }
+
+        return true;
+    }
 }
