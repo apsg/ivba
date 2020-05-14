@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Coupon;
+use App\Helpers\GateHelper;
 use App\InvoiceRequest;
 use App\Order;
 use App\Payments\Tpay\TpayMethodSelector;
@@ -9,6 +10,7 @@ use App\Payments\Tpay\TpayTransaction;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class OrderController extends Controller
 {
@@ -102,33 +104,23 @@ class OrderController extends Controller
      * @param Coupon $coupon [description]
      * @return [type]         [description]
      */
-    public
-    function removeCoupon(
-        Order $order,
-        Coupon $coupon
-    ) {
+    public function removeCoupon(Order $order, Coupon $coupon)
+    {
         $order->coupons()->detach($coupon);
 
         return back();
     }
 
-    public
-    function removeEasyAccess(
-        Order $order
-    ) {
+    public function removeEasyAccess(Order $order)
+    {
         $order->clear();
 
         return back();
     }
 
-    public
-    function requestInvoice(
-        Order $order
-    ) {
-        /** @var User $user */
-        $user = auth()->user();
-
-        if ($user->company_name === null || $user->taxid === null || $user->address === null) {
+    public function requestInvoice(Order $order)
+    {
+        if (Gate::denies(GateHelper::REQUEST_INVOICE)) {
             flash('Proszę uzupełnić dane do faktury');
 
             return redirect(url('/account'))

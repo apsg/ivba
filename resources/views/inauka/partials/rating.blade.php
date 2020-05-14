@@ -1,4 +1,4 @@
-@if( \Gate::allows('access-course', $course) )
+@if( \Gate::allows(\App\Helpers\GateHelper::ACCESS_COURSE, $course) )
 	<h4>Twoja ocena tego kursu</h4> 
 	<p>Jak oceniasz ten kurs?</p>
 	<div class="star-rating">

@@ -1,27 +1,28 @@
 <?php
-
 namespace App\Http\Middleware;
 
+use App\Helpers\GateHelper;
 use Closure;
+use Gate;
+use Illuminate\Http\Request;
 
 class CheckCourseValidity
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  Request $request
+     * @param  \Closure                 $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-
         $course = $request->route('course');
         $lesson = $request->route('lesson');
 
         if($course){
             // Czy użytkownik ma dostęp do kursu?
-            if(\Gate::denies('access-course', $course)){
+            if (Gate::denies(GateHelper::ACCESS_COURSE, $course)) {
                 return redirect('/')->with(['msg' => 'Nie masz dostępu do tego kursu']);
             }
 
@@ -34,7 +35,7 @@ class CheckCourseValidity
                 }
 
                 // Czy użytkownik ma dostęp do lekcji?
-                if(\Gate::denies('access-lesson', $lesson)){
+                if (Gate::denies(GateHelper::ACCESS_LESSON, $lesson)) {
                     return redirect($course->learnUrl())->with(['msg' => 'Nie masz dostępu do tej lekcji']);
                 }
             }

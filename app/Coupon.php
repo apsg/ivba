@@ -39,6 +39,11 @@ class Coupon extends Model
 
     const TYPE_COURSE_ACCESS = 5;
 
+    protected $casts = [
+        'type'   => 'integer',
+        'amount' => 'float',
+    ];
+
     /**
      * Zamówienia, do których użyto tego kodu
      */

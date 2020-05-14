@@ -41,7 +41,7 @@
     {{--<div class="row">--}}
     {{--@include('partials.rating')--}}
     {{--</div>--}}
-    @if( \Gate::allows('access-course', $course) )
+    @if( \Gate::allows(\App\Helpers\GateHelper::ACCESS_COURSE, $course) )
         <course-rating course="{{ $course->slug }}" rating="{{ $course->rating->rating ?? null }}"></course-rating>
     @endif
 

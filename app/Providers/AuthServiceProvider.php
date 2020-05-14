@@ -2,6 +2,7 @@
 namespace App\Providers;
 
 use App\Course;
+use App\Helpers\GateHelper;
 use App\Lesson;
 use App\Payment;
 use App\Policies\CoursePolicy;
@@ -38,21 +39,21 @@ class AuthServiceProvider extends ServiceProvider
         /*
         Czy dany użytkownik jest adminem?
          */
-        Gate::define('admin', function ($user) {
+        Gate::define(GateHelper::ADMIN, function ($user) {
             return Auth::check() && $user->isadmin;
         });
 
         /*
         Czy dany użytkownik ma dostęp do tego kursu?
          */
-        Gate::define('access-course', function (User $user, Course $course) {
+        Gate::define(GateHelper::ACCESS_COURSE, function (User $user, Course $course) {
             return Gate::check('access', $course);
         });
 
         /*
         Czy dany użytkownik ma dostęp do tej lekcji?
          */
-        Gate::define('access-lesson', function (User $user, Lesson $lesson) {
+        Gate::define(GateHelper::ACCESS_LESSON, function (User $user, Lesson $lesson) {
             return Gate::check('access', $lesson);
         });
 
@@ -60,7 +61,7 @@ class AuthServiceProvider extends ServiceProvider
         /**
          * Czy użytkownik może podejść ponownie do testu?
          */
-        Gate::define('retake-quiz', function (User $user, Quiz $quiz) {
+        Gate::define(GateHelper::RETAKE_QUIZ, function (User $user, Quiz $quiz) {
             if ($user->cannot('access', $quiz->course)) {
                 return false;
             }
@@ -80,7 +81,7 @@ class AuthServiceProvider extends ServiceProvider
         /**
          * Czy użytkownik może wykupić pełen dostęp?
          */
-        Gate::define('can-buy-subscription', function (User $user) {
+        Gate::define(GateHelper::CAN_BUY_SUBSCRIPTION, function (User $user) {
             return (!empty($user->name) || !empty($user->company_name))
                 && !empty($user->address);
         });
@@ -88,8 +89,19 @@ class AuthServiceProvider extends ServiceProvider
         /**
          * Czy użytkownik ma wykupiony pełen dostęp lub abonament?
          */
-        Gate::define('active', function (User $user) {
+        Gate::define(GateHelper::ACTIVE, function (User $user) {
             return $user->hasFullAccess() || $user->hasActiveSubscription();
+        });
+
+        /**
+         * Czy użytkownik może wygenerować prośbę o fakturę?
+         */
+        Gate::define(GateHelper::REQUEST_INVOICE, function (User $user) {
+            if ($user->company_name === null || $user->taxid === null || $user->address === null) {
+                return false;
+            }
+
+            return true;
         });
     }
 }

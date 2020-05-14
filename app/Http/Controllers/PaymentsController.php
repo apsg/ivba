@@ -1,18 +1,16 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Helpers\GateHelper;
 use App\InvoiceRequest;
 use App\Payment;
-use App\User;
+use Gate;
 
 class PaymentsController extends Controller
 {
     public function requestInvoice(Payment $payment)
     {
-        /** @var User $user */
-        $user = auth()->user();
-
-        if ($user->first_name === null || $user->last_name === null || $user->taxid === null) {
+        if (Gate::denies(GateHelper::REQUEST_INVOICE)) {
             flash('Proszę uzupełnić dane do faktury');
 
             return redirect(url('/account'))

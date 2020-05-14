@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Helpers\GateHelper;
 use App\Lesson;
 use App\Proof;
 use App\Rating;
@@ -120,7 +121,7 @@ class LearnController extends Controller
      */
     public function rate(Course $course, Request $request)
     {
-        if (Gate::denies('access-course', $course)) {
+        if (Gate::denies(GateHelper::ACCESS_COURSE, $course)) {
             return response()->json('no access', 403);
         }
 

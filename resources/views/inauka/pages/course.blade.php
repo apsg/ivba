@@ -47,7 +47,7 @@
                             </div>
                             <div class="detail"><span>Liczba lekcji:</span> {{ $course->lessons()->count() }}</div>
                         </div>
-                        @if( Gate::allows('access-course', $course))
+                        @if( Gate::allows(\App\Helpers\GateHelper::ACCESS_COURSE, $course))
                             <div>
 
                                 <a href="{{ url('/learn/course/'.$course->slug) }}" class="btn btn-primary">Rozpocznij
