@@ -3,9 +3,9 @@
         <table class="footer" align="center" width="570" cellpadding="0" cellspacing="0">
             <tr>
                 <td class="content-cell" align="center">
-                    Pozdrawiam<br />
-                    Zespół iNauka.pl<br />
-                    ul. Zygmunta Starego 1/3<br />
+                    Pozdrawiam<br/>
+                    Zespół {{ config('app.name') }}<br/>
+                    ul. Zygmunta Starego 1/3<br/>
                     44-100 Gliwice
                 </td>
             </tr>

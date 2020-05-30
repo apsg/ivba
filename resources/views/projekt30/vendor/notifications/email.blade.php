@@ -45,7 +45,7 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-Pozdrawiam!<br>Mateusz z inauka.pl
+Pozdrawiam!<br>Mateusz z {{ config('app.name') }}
 @endif
 
 {{-- Subcopy --}}

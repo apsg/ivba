@@ -46,7 +46,7 @@ class OrderConfirmed extends Notification
         return (new MailMessage)
             ->subject('Twoje zamówienie zostało potwierdzone')
             ->greeting('Cześć!')
-            ->line('Otrzymaliśmy potwierdzenie Twojego zamówienia w systemie inauka.pl.')
+            ->line('Otrzymaliśmy potwierdzenie Twojego zamówienia w systemie ' . config('app.name'))
             ->line('Zamówienie numer ' . $this->order->id . ' z dnia ' . $this->order->updated_at
                 . ' zostało potwierdzone, a dostępy aktywowane.')
             ->line('Opis zamówienia: ' . $this->order->description)

@@ -4,20 +4,23 @@ namespace App\Helpers;
 
 
 use App\Order;
+use Auth;
+use OpenPayU_Configuration;
+use OpenPayU_Order;
 
 class Payment{
 	
 	public function __construct(){
-    	\OpenPayU_Configuration::setEnvironment(config('payu.environment')); // sandbox
+    	OpenPayU_Configuration::setEnvironment(config('payu.environment')); // sandbox
 
 	    //set POS ID and Second MD5 Key (from merchant admin panel)
-	    \OpenPayU_Configuration::setMerchantPosId(config('payu.posid'));
-	    \OpenPayU_Configuration::setSignatureKey(config('payu.key2'));
+	    OpenPayU_Configuration::setMerchantPosId(config('payu.posid'));
+	    OpenPayU_Configuration::setSignatureKey(config('payu.key2'));
 	    
 	    //set Oauth Client Id and Oauth Client Secret (from merchant admin panel)
-	    \OpenPayU_Configuration::setOauthClientId( config('payu.posid') );
-	    \OpenPayU_Configuration::setOauthClientSecret( config('payu.key1') );
-	    \OpenPayU_Configuration::setOauthTokenCache(new \OauthCacheFile(storage_path('cache')));
+	    OpenPayU_Configuration::setOauthClientId( config('payu.posid') );
+	    OpenPayU_Configuration::setOauthClientSecret( config('payu.key1') );
+	    OpenPayU_Configuration::setOauthTokenCache(new \OauthCacheFile(storage_path('cache')));
 
 	}
 
@@ -26,22 +29,22 @@ class Payment{
 	 * @return [type] [description]
 	 */
 	public function getUrl(Order $order){
-		$payu['notifyUrl'] = url( '/payu/notify' );
-	    $payu['continueUrl'] = url( 'continue?order=' . $order->id );
+        $payu['notifyUrl'] = url('/payu/notify');
+        $payu['continueUrl'] = url('continue?order=' . $order->id);
 
-	    $payu['customerIp'] = request()->ip();
-	    $payu['merchantPosId'] = \OpenPayU_Configuration::getMerchantPosId();
-	    $payu['description'] = 'Zamówienie na inauka.pl';
-	    $payu['currencyCode'] = 'PLN';
-	    $payu['totalAmount'] = 100*$order->total();
-	    $payu['extOrderId'] = $order->id . '_' . uniqid();
+        $payu['customerIp'] = request()->ip();
+        $payu['merchantPosId'] = OpenPayU_Configuration::getMerchantPosId();
+        $payu['description'] = 'Zamówienie na ' . config('app.name');
+        $payu['currencyCode'] = 'PLN';
+        $payu['totalAmount'] = 100 * $order->total();
+        $payu['extOrderId'] = $order->id . '_' . uniqid();
 
-	    $order->final_total = $order->total();
-	    $order->payu_order_id = $payu['extOrderId'];
+        $order->final_total = $order->total();
+        $order->payu_order_id = $payu['extOrderId'];
 
-	    if($order->is_full_access){
-		    $payu['products'][0]['name'] = 'Pełny dostęp do platformy iVBA '.$order->duration.' dni';
-		    $payu['products'][0]['unitPrice'] = 100*$order->price;
+        if ($order->is_full_access) {
+            $payu['products'][0]['name'] = 'Pełny dostęp do platformy iVBA ' . $order->duration . ' dni';
+            $payu['products'][0]['unitPrice'] = 100 * $order->price;
 		    $payu['products'][0]['quantity'] = 1;
 	    }else{
 	    	foreach($order->courses as $course){
@@ -59,9 +62,9 @@ class Payment{
 	    	}
 	    }
 
-	    $payu['buyer']['email'] = \Auth::user()->email;
+	    $payu['buyer']['email'] = Auth::user()->email;
 
-	    $response = \OpenPayU_Order::create($payu);
+	    $response = OpenPayU_Order::create($payu);
 	    $order->save();
 
 	    return $response->getResponse()->redirectUri;
@@ -77,9 +80,9 @@ class Payment{
 	    $payu['continueUrl'] = url( '/continue/'.$order->id );
 
 		$payu['customerIp'] = request()->ip();
-	    $payu['merchantPosId'] = \OpenPayU_Configuration::getMerchantPosId();
+	    $payu['merchantPosId'] = OpenPayU_Configuration::getMerchantPosId();
 	    // $payu['recurring'] = "STANDARD";
-	    $payu['description'] = config('ivba.subscription_description_first') . ' ' . \Auth::user()->email;
+	    $payu['description'] = config('ivba.subscription_description_first') . ' ' . Auth::user()->email;
 	    $payu['currencyCode'] = 'PLN';
 	    $payu['totalAmount'] = 100*$order->total();
 	    $payu['extOrderId'] =  $order->id . '_' . uniqid();
@@ -94,7 +97,7 @@ class Payment{
 	    	'quantity' => 1,
 	    ];
 
-	    $payu['buyer']['email'] = \Auth::user()->email;
+	    $payu['buyer']['email'] = Auth::user()->email;
 
 	    $payu['payMethods'] = [
 	    	'payMethod' => [
@@ -103,7 +106,7 @@ class Payment{
 	    	]
 	    ];
 
-	    $response = \OpenPayU_Order::create($payu);
+	    $response = OpenPayU_Order::create($payu);
 	    
 	    $order->save();
 
@@ -121,7 +124,7 @@ class Payment{
 	    $payu['continueUrl'] = url( '/continue/'.$order->id );
 
 		$payu['customerIp'] = request()->ip();
-	    $payu['merchantPosId'] = \OpenPayU_Configuration::getMerchantPosId();
+	    $payu['merchantPosId'] = OpenPayU_Configuration::getMerchantPosId();
 	    $payu['recurring'] = "STANDARD";
 	    $payu['description'] = config('ivba.subscription_description') . ' ' . $order->user->email;
 	    $payu['currencyCode'] = 'PLN';
@@ -147,7 +150,7 @@ class Payment{
 	    	]
 	    ];
 
-	    $response = \OpenPayU_Order::create($payu);
+	    $response = OpenPayU_Order::create($payu);
 	    
 	    $order->save();
 

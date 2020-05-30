@@ -3,9 +3,8 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class ReturnMailNotification extends Notification
 {
@@ -41,14 +40,14 @@ class ReturnMailNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Wróć do nas')
-                    ->greeting('Hej!')
-                    ->line('Z tej strony Mateusz z inauka.pl')
-                    ->line('Zmodernizowaliśmy się! Ponad 200 lekcji! Łatwiejszy dostęp! Więcej ćwiczeń!')
-                    ->line('Chciałbym abyś wrócił na mój portal... wiem, podnieśliśmy cenę na 79zł brutto (ale to tylko 40 groszy za jedną lekcję!). Tu możesz zobaczyć kompletny spis lekcji w PDF http://blog.iexcel.pl/wp-content/uploads/2017/09/zawartosc_platformy.pdf')
-                    ->line('Jeżeli zdecydujesz się do końca tygodnia, to roczna reaktywacja konta to tylko 29zł brutto! ')
-                    ->line('1. Wejdź i zmień swoje hasło')
-                    ->line('2. Wejdź na http://inauka.pl/buy_access (lub kliknij w poniższy przycisk) i wpisz w koszyku kod WRACAM, który obniży cenę do 29 zł brutto.')
+            ->subject('Wróć do nas')
+            ->greeting('Hej!')
+            ->line('Z tej strony Mateusz z ' . config('app.name'))
+            ->line('Zmodernizowaliśmy się! Ponad 200 lekcji! Łatwiejszy dostęp! Więcej ćwiczeń!')
+            ->line('Chciałbym abyś wrócił na mój portal... wiem, podnieśliśmy cenę na 79zł brutto (ale to tylko 40 groszy za jedną lekcję!).s')
+            ->line('Jeżeli zdecydujesz się do końca tygodnia, to roczna reaktywacja konta to tylko 29zł brutto! ')
+            ->line('1. Wejdź i zmień swoje hasło')
+            ->line('2. Wejdź na ' . url('/buy_access') . ' (lub kliknij w poniższy przycisk) i wpisz w koszyku kod WRACAM, który obniży cenę do 29 zł brutto.')
                     ->line('3. Udanej nauki!')
                     ->action('Kup pełen dostęp', url('/buy_access'));
     }

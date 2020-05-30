@@ -11,7 +11,7 @@
     @endif
 @else
     <h1>Kup pełen dostęp do strony</h1>
-    <p>W tym miejscu możesz kupić roczny dostęp do WSZYSTKICH zasobów na inauka.pl na okres 1
+    <p>W tym miejscu możesz kupić roczny dostęp do WSZYSTKICH zasobów na {{ config('app.name') }} na okres 1
         roku.</p>
     <ul style="list-style: circle;">
         <li>Podana cena jest ceną brutto i zawiera 23% VAT - brak innych opłat</li>

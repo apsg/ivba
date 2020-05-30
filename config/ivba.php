@@ -26,6 +26,6 @@ return [
     /** Duration in months */
     'subscription_duration' => 1,
 
-    'subscription_description' => 'Abonament miesięczny inauka.pl',
+    'subscription_description' => 'Abonament miesięczny ' . env('APP_NAME'),
 
 ];

@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="{{ url('images/favicon.ico') }}">
-    <title>Zaloguj się | inauka.pl</title>
+    <title>Zaloguj się | {{ config('app.name') }}</title>
     <!-- Reset CSS -->
     <link href="{{ url('/css/app.css') }}" rel="stylesheet" type="text/css">
     <!-- Font Awesome -->
@@ -35,20 +35,6 @@
             padding: 20px;
         }
 
-        /*body {*/
-        /*    display: -ms-flexbox;*/
-        /*    display: -webkit-box;*/
-        /*    display: flex;*/
-        /*    -ms-flex-align: center;*/
-        /*    -ms-flex-pack: center;*/
-        /*    -webkit-box-align: center;*/
-        /*    align-items: center;*/
-        /*    -webkit-box-pack: center;*/
-        /*    justify-content: center;*/
-        /*    padding-top: 40px;*/
-        /*    padding-bottom: 40px;*/
-        /*    background-color: #f5f5f5;*/
-        /*}*/
     </style>
 </head>
 <body class="text-center bg-gray-dark pt-3">

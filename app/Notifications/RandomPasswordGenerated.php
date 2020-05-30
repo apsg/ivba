@@ -3,9 +3,8 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class RandomPasswordGenerated extends Notification
 {
@@ -43,13 +42,13 @@ class RandomPasswordGenerated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Wygenerowano nowe hasło w systemie iExcel.pl')
-                    ->greeting('Cześć!')
-                    ->line('Wygenerowano dla Ciebie nowe hasło w systemie iExcel.pl. Pamiętaj, by zmienić to hasło zaraz po zalogowaniu.')
-                    ->line('Twoje nowe hasło:')
-                    ->line($this->password)
-                    ->action('Zaloguj się na inauka.pl', url('/login'))
-                    ->line('Dziękujemy za używanie inauka.pl');
+            ->subject('Wygenerowano nowe hasło w systemie iExcel.pl')
+            ->greeting('Cześć!')
+            ->line('Wygenerowano dla Ciebie nowe hasło w systemie' . config('app.name') . '. Pamiętaj, by zmienić to hasło zaraz po zalogowaniu.')
+            ->line('Twoje nowe hasło:')
+            ->line($this->password)
+            ->action('Zaloguj się na ' . config('app . name'), url('/login'))
+            ->line('Dziękujemy za używanie ' . config('app.name'));
     }
 
     /**
