@@ -8,9 +8,12 @@ use Getresponse\Sdk\Client\Operation\Operation;
 use Getresponse\Sdk\Client\Operation\OperationResponse;
 use Getresponse\Sdk\Client\Operation\Pagination;
 use Getresponse\Sdk\GetresponseClientFactory;
+use Getresponse\Sdk\Operation\Campaigns\Contacts\GetContacts\GetContacts as GetCampaignContacts;
+use Getresponse\Sdk\Operation\Campaigns\Contacts\GetContacts\GetContactsSearchQuery;
 use Getresponse\Sdk\Operation\Campaigns\GetCampaigns\GetCampaigns;
 use Getresponse\Sdk\Operation\Campaigns\GetCampaigns\GetCampaignsSearchQuery;
 use Getresponse\Sdk\Operation\Contacts\CreateContact\CreateContact;
+use Getresponse\Sdk\Operation\Contacts\DeleteContact\DeleteContact;
 use Getresponse\Sdk\Operation\Contacts\GetContacts\GetContacts;
 use Getresponse\Sdk\Operation\Model\CampaignReference;
 use Getresponse\Sdk\Operation\Model\NewContact;
@@ -19,6 +22,8 @@ use Illuminate\Support\Arr;
 class GetResponseService
 {
     const CACHE_REMEMBER_MINUTES = 5;
+    const ALL_LIST_KEY = 'ivba.getresponse.list_all';
+    const ACTIVE_LIST_KEY = 'ivba.getresponse.list_active';
 
     /** @var GetresponseClient */
     private $client;
@@ -52,7 +57,7 @@ class GetResponseService
         });
     }
 
-    public function getCampaignId(string $name) : array
+    public function getCampaignId(string $name) : string
     {
         return Arr::get($this->getCampaign($name), 'campaignId');
     }
@@ -65,6 +70,31 @@ class GetResponseService
         $contact->setDayOfCycle(0);
 
         return $this->client->call(new CreateContact($contact));
+    }
+
+    public function removeFromCampaign(string $campaignId, User $user)
+    {
+        if (empty($campaignId) || $user === null) {
+            return;
+        }
+
+        $contactId = $this->getContactIdFromCampaign($campaignId, $user);
+
+        if (empty($contactId)) {
+            return;
+        }
+
+        $this->client->call(new DeleteContact($contactId));
+    }
+
+    public function getContactIdFromCampaign(string $campaignId, User $user) : string
+    {
+        $query = (new GetCampaignContacts($campaignId))
+            ->setQuery((new GetContactsSearchQuery())->whereEmail($user->email));
+
+        $data = $this->getFullData($query);
+
+        return Arr::get($data, '0.contactId', '');
     }
 
     public function getContacts()

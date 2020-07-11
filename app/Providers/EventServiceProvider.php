@@ -28,6 +28,9 @@ use App\Listeners\Excelmailing\UserAccessFinishedListener;
 use App\Listeners\Excelmailing\UserAccessListener;
 use App\Listeners\Excelmailing\UserRegisteredListener;
 use App\Listeners\FollowupsListener;
+use App\Listeners\Getresponse\AddUserToGetresponseActiveList;
+use App\Listeners\Getresponse\AddUserToGetresponseAllListListener;
+use App\Listeners\Getresponse\RemoveUserFromGetresponseActiveList;
 use App\Listeners\GrantPointsForFinishedLessonListener;
 use App\Listeners\GrantPointsForPassedQuizListener;
 use App\Listeners\InvalidateCachedProgressListener;
@@ -54,15 +57,18 @@ class EventServiceProvider extends ServiceProvider
             SendEmailAfterRegistrationListener::class,
             FollowupsListener::class,
             UserRegisteredListener::class,
+            AddUserToGetresponseAllListListener::class,
         ],
         UserPaidForAccess::class              => [
             PlanUserPaidFollowups::class,
             UserAccessListener::class,
             CancelExistingSubscriptionListener::class,
+            AddUserToGetresponseActiveList::class,
         ],
         UserPaidAccessFinished::class         => [
             PlanUserExpiredFollowups::class,
             UserAccessFinishedListener::class,
+            RemoveUserFromGetresponseActiveList::class,
         ],
         OrderLeft24hAgo::class                => [
             //
@@ -73,10 +79,12 @@ class EventServiceProvider extends ServiceProvider
         SubscriptionCancelled::class          => [
             SendSubscriptionFailedEmail::class,
             SubscriptionCancelledListener::class,
+            RemoveUserFromGetresponseActiveList::class,
         ],
         SubscriptionStartedEvent::class       => [
             FollowupsListener::class,
             SubscriptionStartedListener::class,
+            AddUserToGetresponseActiveList::class,
         ],
         SubscriptionProlongedEvent::class     => [
             FollowupsListener::class,

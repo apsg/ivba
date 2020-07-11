@@ -76,4 +76,50 @@ class GetResponseServiceTest extends TestCase
         $this->assertArrayHasKey('name', $campaignData);
         $this->assertEquals($name, Arr::get($campaignData, 'name'));
     }
+
+    /** @test */
+    public function it_finds_user_added_to_list()
+    {
+        // given
+        $user = $this->createUser();
+        $campaignId = $this->service->getCampaignId('test_wszyscy');
+        $campaignId2 = $this->service->getCampaignId('test_aktywni');
+        $this->service->addToCampaign(
+            $campaignId,
+            $user
+        );
+        $this->service->addToCampaign(
+            $campaignId2,
+            $user
+        );
+
+        // when
+        $id1 = $this->service->getContactIdFromCampaign($campaignId, $user);
+        $id2 = $this->service->getContactIdFromCampaign($campaignId2, $user);
+
+        // then
+        $this->assertNotEmpty($id1);
+        $this->assertNotEmpty($id2);
+        $this->assertNotEquals($id1, $id2);
+    }
+
+    /** @test */
+    public function it_removes_user_from_list()
+    {
+        // given
+        $user = $this->createUser();
+        $campaignId = $this->service->getCampaignId('test_wszyscy');
+        $this->service->addToCampaign(
+            $campaignId,
+            $user
+        );
+        $id1 = $this->service->getContactIdFromCampaign($campaignId, $user);
+        $this->assertNotEmpty($id1);
+
+        // when
+        $this->service->removeFromCampaign($campaignId, $user);
+
+        // then
+        $this->assertEmpty($this->service->getContactIdFromCampaign($campaignId, $user));
+    }
 }
