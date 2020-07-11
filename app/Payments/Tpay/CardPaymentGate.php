@@ -18,14 +18,14 @@ class CardPaymentGate extends PaymentCard
             $this
                 ->setAmount($payment->amount)
                 ->setCurrency(985)
-                ->setOrderID((string)$payment->id)
+                ->setOrderID((string) $payment->id)
                 ->setReturnUrls(url('/tpay/success'), url('/tpay/error'))
                 ->setOneTimer(false);
 
             $transaction = $this->registerSale($user->full_name, $user->email, $payment->title);
 
             if (isset($transaction['sale_auth']) === false) {
-                throw new TException('Error generating transaction: ' . array_get($transaction,'err_desc'));
+                throw new TException('Error generating transaction: ' . array_get($transaction, 'err_desc'));
             }
 
             $transactionId = $transaction['sale_auth'];

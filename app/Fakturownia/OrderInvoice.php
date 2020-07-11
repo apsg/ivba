@@ -47,7 +47,7 @@ class OrderInvoice extends AbstractInvoice
     {
         $user = $this->item->user;
 
-        if (!empty($user->company_name)) {
+        if (! empty($user->company_name)) {
             return implode(', ', array_filter([
                 $user->company_name,
                 $user->address,
@@ -59,7 +59,7 @@ class OrderInvoice extends AbstractInvoice
 
     protected function getClientTaxId() : string
     {
-        return $this->item->user->taxid ?? "";
+        return $this->item->user->taxid ?? '';
     }
 
     protected function getPositions() : array
@@ -67,10 +67,10 @@ class OrderInvoice extends AbstractInvoice
         if ($this->item->is_full_access || $this->item->is_easy_access) {
             return [
                 [
-                    "name"              => $this->item->description,
-                    "tax"               => 23,
-                    "total_price_gross" => $this->item->total(),
-                    "quantity"          => 1,
+                    'name'              => $this->item->description,
+                    'tax'               => 23,
+                    'total_price_gross' => $this->item->total(),
+                    'quantity'          => 1,
                 ],
             ];
         }
@@ -79,10 +79,10 @@ class OrderInvoice extends AbstractInvoice
 
         foreach ($this->item->quick_sales as $quickSale) {
             $positions[] = [
-                "name"              => $quickSale->name,
-                "tax"               => 23,
-                "total_price_gross" => $quickSale->price,
-                "quantity"          => 1,
+                'name'              => $quickSale->name,
+                'tax'               => 23,
+                'total_price_gross' => $quickSale->price,
+                'quantity'          => 1,
             ];
         }
 

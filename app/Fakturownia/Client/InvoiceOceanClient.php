@@ -20,7 +20,7 @@ class InvoiceOceanClient extends InvoiceOcean
     }
 
     /**
-     * Return clients
+     * Return clients.
      *
      * @return array
      */
@@ -32,7 +32,7 @@ class InvoiceOceanClient extends InvoiceOcean
     }
 
     /**
-     * Return specific client info
+     * Return specific client info.
      *
      * @param int $client_id
      *
@@ -46,7 +46,7 @@ class InvoiceOceanClient extends InvoiceOcean
     }
 
     /**
-     * Create a client
+     * Create a client.
      *
      * @param array $client
      * @return array
@@ -65,7 +65,7 @@ class InvoiceOceanClient extends InvoiceOcean
     }
 
     /**
-     * Update a client
+     * Update a client.
      *
      * @param int   $client_id
      * @param array $client
@@ -85,7 +85,7 @@ class InvoiceOceanClient extends InvoiceOcean
     }
 
     /**
-     * Get specific invoice information
+     * Get specific invoice information.
      *
      * @param int $invoice_id
      *
@@ -100,7 +100,7 @@ class InvoiceOceanClient extends InvoiceOcean
     }
 
     /**
-     * Create an invoice
+     * Create an invoice.
      *
      * @param array $invoice
      * @return array
@@ -119,7 +119,7 @@ class InvoiceOceanClient extends InvoiceOcean
     }
 
     /**
-     * Update an invoice
+     * Update an invoice.
      *
      * @param int   $invoice_id
      * @param array $invoice
@@ -139,7 +139,7 @@ class InvoiceOceanClient extends InvoiceOcean
     }
 
     /**
-     * Delete an invoice
+     * Delete an invoice.
      *
      * @param int $invoice_id
      * @return array
@@ -153,7 +153,7 @@ class InvoiceOceanClient extends InvoiceOcean
     }
 
     /**
-     * Email an invoice
+     * Email an invoice.
      *
      * @param int $invoice_id
      * @return array

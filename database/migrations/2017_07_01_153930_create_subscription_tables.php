@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateSubscriptionTables extends Migration
 {
@@ -13,7 +13,7 @@ class CreateSubscriptionTables extends Migration
      */
     public function up()
     {
-        Schema::create('course_user', function(Blueprint $table){
+        Schema::create('course_user', function (Blueprint $table) {
             $table->increments('id');
 
             $table->unsignedInteger('course_id');
@@ -27,10 +27,9 @@ class CreateSubscriptionTables extends Migration
             $table->unique(['course_id', 'user_id']);
 
             $table->timestamps();
-
         });
 
-        Schema::create('lesson_user', function(Blueprint $table){
+        Schema::create('lesson_user', function (Blueprint $table) {
             $table->increments('id');
 
             $table->unsignedInteger('lesson_id');
@@ -44,9 +43,7 @@ class CreateSubscriptionTables extends Migration
             $table->unique(['lesson_id', 'user_id']);
 
             $table->timestamps();
-
         });
-
     }
 
     /**
@@ -56,14 +53,14 @@ class CreateSubscriptionTables extends Migration
      */
     public function down()
     {
-        Schema::table('course_user', function(Blueprint $table){
+        Schema::table('course_user', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
             $table->dropForeign(['course_id']);
         });
 
         Schema::dropIfExists('course_user');
 
-        Schema::table('lesson_user', function(Blueprint $table){
+        Schema::table('lesson_user', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
             $table->dropForeign(['lesson_id']);
         });

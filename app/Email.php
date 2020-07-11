@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Mail;
 
 /**
- * App\Email
+ * App\Email.
  *
  * @property int                  $id
  * @property string               $from
@@ -33,7 +33,6 @@ use Mail;
  */
 class Email extends Model
 {
-
     const NEWSLETTER = 1;
     const FOLLOWUP = 2;
     const SINGLE = 3;
@@ -48,7 +47,7 @@ class Email extends Model
     ];
 
     /**
-     * Do kogo możemy wysyłać? Użytkownik albo ktoś zapisany z newslettera
+     * Do kogo możemy wysyłać? Użytkownik albo ktoś zapisany z newslettera.
      * @return [type] [description]
      */
     public function to()
@@ -57,7 +56,7 @@ class Email extends Model
     }
 
     /**
-     * Email może należeć do newslettera
+     * Email może należeć do newslettera.
      * @return [type] [description]
      */
     public function newsletter()
@@ -76,7 +75,7 @@ class Email extends Model
     }
 
     /**
-     * Emaile, którym minął termin wysyłki, lecz jeszcze nie zostały wysłane
+     * Emaile, którym minął termin wysyłki, lecz jeszcze nie zostały wysłane.
      * @param  [type] $query [description]
      * @return [type]        [description]
      */
@@ -106,12 +105,11 @@ class Email extends Model
     }
 
     /**
-     * Dodaj do linków kod śledzenia kliknięć
+     * Dodaj do linków kod śledzenia kliknięć.
      * @return [type] [description]
      */
     protected function convertLinks()
     {
-
         $pattern = '/href="[a-zA-Z\d:\/\.]+/i';
         $replace = '${0}?eid=' . $this->id;
 
@@ -119,5 +117,4 @@ class Email extends Model
             'body' => preg_replace($pattern, $replace, $this->body),
         ]);
     }
-
 }

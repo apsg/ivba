@@ -57,8 +57,7 @@ class AuthServiceProvider extends ServiceProvider
             return Gate::check('access', $lesson);
         });
 
-
-        /**
+        /*
          * Czy użytkownik może podejść ponownie do testu?
          */
         Gate::define(GateHelper::RETAKE_QUIZ, function (User $user, Quiz $quiz) {
@@ -78,22 +77,22 @@ class AuthServiceProvider extends ServiceProvider
             return Carbon::parse($quiz->pivot->finished_date)->diffInDays() > 14;
         });
 
-        /**
+        /*
          * Czy użytkownik może wykupić pełen dostęp?
          */
         Gate::define(GateHelper::CAN_BUY_SUBSCRIPTION, function (User $user) {
-            return (!empty($user->name) || !empty($user->company_name))
-                && !empty($user->address);
+            return (! empty($user->name) || ! empty($user->company_name))
+                && ! empty($user->address);
         });
 
-        /**
+        /*
          * Czy użytkownik ma wykupiony pełen dostęp lub abonament?
          */
         Gate::define(GateHelper::ACTIVE, function (User $user) {
             return $user->hasFullAccess() || $user->hasActiveSubscription();
         });
 
-        /**
+        /*
          * Czy użytkownik może wygenerować prośbę o fakturę?
          */
         Gate::define(GateHelper::REQUEST_INVOICE, function (User $user) {

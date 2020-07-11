@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 /**
- * Class Subscription
+ * Class Subscription.
  *
  * @property int                             user_id
  * @property int                             coupon_id
@@ -55,8 +55,8 @@ class Subscription extends Model
     }
 
     /**
-     * Czy dana subskrypcja jest aktywna
-     * @return boolean [description]
+     * Czy dana subskrypcja jest aktywna.
+     * @return bool [description]
      */
     public function isValid()
     {

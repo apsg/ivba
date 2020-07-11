@@ -4,8 +4,7 @@ namespace App\Http\Requests\Admin;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class AccessRequest
- * @package App\Http\Requests\Admin
+ * Class AccessRequest.
  *
  * @property int duration
  */

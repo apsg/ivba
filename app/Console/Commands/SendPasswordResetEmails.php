@@ -39,12 +39,11 @@ class SendPasswordResetEmails extends Command
     {
         $c = new \App\Http\Controllers\Auth\ForgotPasswordController;
 
-
         $users = \App\User::whereNotNull('full_access_expires')->get();
 
         foreach ($users as $user) {
             $c->broker()->sendResetLink([
-                'email' => $user->email
+                'email' => $user->email,
                 ]);
         }
     }

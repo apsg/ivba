@@ -24,7 +24,7 @@ class TpayIpnRequest extends FormRequest
 
     public function isSuccess()
     {
-        return ($this->input('tr_status') === 'TRUE' && $this->input('tr_error') === 'none');
+        return $this->input('tr_status') === 'TRUE' && $this->input('tr_error') === 'none';
     }
 
     public function error()
@@ -41,7 +41,7 @@ class TpayIpnRequest extends FormRequest
      */
     public function order()
     {
-        if (!$this->isSuccess()) {
+        if (! $this->isSuccess()) {
             return null;
         }
 

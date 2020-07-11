@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class ItemmoviesRenameMovieColumn extends Migration
 {
@@ -13,7 +13,7 @@ class ItemmoviesRenameMovieColumn extends Migration
      */
     public function up()
     {
-        Schema::table('item_movies', function(Blueprint $table){
+        Schema::table('item_movies', function (Blueprint $table) {
             $table->dropColumn('movie_id');
             $table->unsignedInteger('video_id');
 
@@ -28,12 +28,11 @@ class ItemmoviesRenameMovieColumn extends Migration
      */
     public function down()
     {
-        Schema::table('item_movies', function(Blueprint $table){
+        Schema::table('item_movies', function (Blueprint $table) {
             $table->dropForeign(['video_id']);
 
             $table->dropColumn('video_id');
             $table->unsignedInteger('movie_id');
-
         });
     }
 }

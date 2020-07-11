@@ -9,6 +9,4 @@ trait OrdersConcerns
     {
         return factory(Order::class)->create($attrubutes);
     }
-
-
 }

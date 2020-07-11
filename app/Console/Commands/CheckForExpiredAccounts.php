@@ -38,10 +38,10 @@ class CheckForExpiredAccounts extends Command
     public function handle()
     {
         $last = \App\Option::get('last_account_expiry_check');
-        
-        if(!empty($last->value)){
+
+        if (! empty($last->value)) {
             $lastDate = \Carbon\Carbon::parse($last->value);
-        }else{
+        } else {
             $lastDate = \Carbon\Carbon::parse('2017-09-01');
         }
 

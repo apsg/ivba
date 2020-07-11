@@ -8,9 +8,8 @@ use Illuminate\Support\Collection;
 
 class CoursesController extends Controller
 {
-
     /**
-     * Pokaż stronę kursów
+     * Pokaż stronę kursów.
      */
     public function index()
     {
@@ -35,7 +34,7 @@ class CoursesController extends Controller
     }
 
     /**
-     * [show description]
+     * [show description].
      * @return [type] [description]
      */
     public function show(Course $course)
@@ -47,5 +46,4 @@ class CoursesController extends Controller
     {
         return redirect('/courses');
     }
-
 }

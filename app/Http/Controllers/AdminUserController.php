@@ -25,7 +25,7 @@ class AdminUserController extends Controller
     }
 
     /**
-     * Pokaż listę użytkowników
+     * Pokaż listę użytkowników.
      */
     public function index()
     {
@@ -37,7 +37,7 @@ class AdminUserController extends Controller
     }
 
     /**
-     * Usuwanie użytkownika
+     * Usuwanie użytkownika.
      */
     public function delete(User $user)
     {
@@ -79,8 +79,8 @@ class AdminUserController extends Controller
                     return null;
                 }
 
-                return "Ważna do: " . $subscription->valid_until . PHP_EOL
-                    . "Aktywna: " . ($subscription->is_active ? "Tak" : "Nie") . PHP_EOL
+                return 'Ważna do: ' . $subscription->valid_until . PHP_EOL
+                    . 'Aktywna: ' . ($subscription->is_active ? 'Tak' : 'Nie') . PHP_EOL
                     . 'Kwota: ' . $subscription->amount . ' PLN';
             })
             ->rawColumns(['options'])
@@ -88,7 +88,7 @@ class AdminUserController extends Controller
     }
 
     /**
-     * Pokaż podgląd edycji użytkownika
+     * Pokaż podgląd edycji użytkownika.
      * @param User $user [description]
      * @return [type]       [description]
      */
@@ -98,7 +98,7 @@ class AdminUserController extends Controller
     }
 
     /**
-     * Zaktualizuj użytkownika
+     * Zaktualizuj użytkownika.
      * @param User    $user [description]
      * @param Request $request [description]
      * @return [type]           [description]

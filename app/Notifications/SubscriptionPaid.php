@@ -3,9 +3,9 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class SubscriptionPaid extends Notification
 {
@@ -43,11 +43,11 @@ class SubscriptionPaid extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Przedłużono abonament w ' .config('app.name') )
+            ->subject('Przedłużono abonament w ' . config('app.name'))
             ->greeting('Cześć!')
-            ->line('Przedłużyliśmy Twój dostęp do '.config('app.name').' o kolejne '.$this->subscription->duration.' dni w ramach wykupionego przez Ciebie abonamentu.' )
-            ->line('Obciążyliśmy Twoją kartę na kwotę: '.$this->subscription->amount .' PLN')
-            ->line('Następna płatność zostanie wykonana dnia: '.$this->subscription->next_payment_at->format('Y-m-d'))
+            ->line('Przedłużyliśmy Twój dostęp do ' . config('app.name') . ' o kolejne ' . $this->subscription->duration . ' dni w ramach wykupionego przez Ciebie abonamentu.')
+            ->line('Obciążyliśmy Twoją kartę na kwotę: ' . $this->subscription->amount . ' PLN')
+            ->line('Następna płatność zostanie wykonana dnia: ' . $this->subscription->next_payment_at->format('Y-m-d'))
             ->line('Aby sprawdzić swoje dostępy, aktualny abonamen i inne dane, przejdź do swojego profilu:')
             ->action('Zaloguj się do swojego profilu', url('/account'))
             ->line('Życzymy miłej nauki!');

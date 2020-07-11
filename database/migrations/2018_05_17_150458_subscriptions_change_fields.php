@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class SubscriptionsChangeFields extends Migration
 {
@@ -20,7 +20,6 @@ class SubscriptionsChangeFields extends Migration
 
             $table->string('profileid')->after('user_id');
             $table->dateTime('valid_until')->after('profileid')->nullable();
-
         });
     }
 
@@ -32,7 +31,6 @@ class SubscriptionsChangeFields extends Migration
     public function down()
     {
         Schema::table('subscriptions', function (Blueprint $table) {
-            
             $table->dropColumn('profileid');
             $table->dropColumn('valid_until');
         });

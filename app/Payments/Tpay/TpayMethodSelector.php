@@ -8,7 +8,7 @@ class TpayMethodSelector extends PaymentBasicForms
     public function __construct()
     {
         $this->merchantSecret = config('tpay.transaction.secret');
-        $this->merchantId = (int)config('tpay.transaction.id');
+        $this->merchantId = (int) config('tpay.transaction.id');
         parent::__construct();
     }
 

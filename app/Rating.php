@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Rating
+ * App\Rating.
  *
  * @property int $id
  * @property int $user_id
@@ -34,15 +34,17 @@ class Rating extends Model
      * Użytkownik, który dodał ocenę.
      * @return [type] [description]
      */
-    public function user(){
-    	return $this->belongsTo(\App\User::class);
+    public function user()
+    {
+        return $this->belongsTo(\App\User::class);
     }
 
     /**
      * Kurs, do którego dodano ocenę.
      * @return [type] [description]
      */
-    public function course(){
-    	return $this->belongsTo(\App\Course::class);
+    public function course()
+    {
+        return $this->belongsTo(\App\Course::class);
     }
 }

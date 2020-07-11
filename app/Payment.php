@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Payment
+ * Class Payment.
  *
  * @property string              subscription_id
  * @property string              title
@@ -61,7 +61,7 @@ class Payment extends Model implements InvoicableContract
 
     public function isFirstPayment() : bool
     {
-        return !$this->is_recurrent;
+        return ! $this->is_recurrent;
     }
 
     public function scopeForUser($query, User $user)
@@ -125,7 +125,7 @@ class Payment extends Model implements InvoicableContract
             return false;
         }
 
-        if (!empty($this->cancelled_at)) {
+        if (! empty($this->cancelled_at)) {
             return false;
         }
 

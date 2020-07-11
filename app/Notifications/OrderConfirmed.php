@@ -11,7 +11,7 @@ class OrderConfirmed extends Notification
 {
     use Queueable;
 
-    /** @var Order  */
+    /** @var Order */
     public $order;
 
     /**

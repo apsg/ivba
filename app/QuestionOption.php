@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class QuestionOption
+ * Class QuestionOption.
  *
- * @package App
  * @property bool                            is_correct
  * @property-read Question                   question
  * @method Builder|QuestionOption correct()
@@ -39,7 +38,6 @@ class QuestionOption extends Model
     {
         return $this->belongsTo(Question::class);
     }
-
 
     public function scopeCorrect(Builder $query)
     {

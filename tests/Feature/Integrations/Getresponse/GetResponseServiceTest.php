@@ -59,6 +59,5 @@ class GetResponseServiceTest extends TestCase
 
         // then
         dd($result->getData());
-
     }
 }

@@ -4,7 +4,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Followup
+ * App\Followup.
  *
  * @property int $id
  * @property int $followup_content_id

@@ -23,7 +23,7 @@ class PaymentInvoice extends AbstractInvoice
     {
         $user = $this->item->subscription->user;
 
-        if (!empty($user->last_name)) {
+        if (! empty($user->last_name)) {
             return implode(', ', array_filter([
                 $user->full_name,
                 $user->address,
@@ -38,10 +38,10 @@ class PaymentInvoice extends AbstractInvoice
         $positions = [];
 
         $positions[] = [
-            "name"              => $this->item->title,
-            "tax"               => 23,
-            "total_price_gross" => $this->item->amount,
-            "quantity"          => 1,
+            'name'              => $this->item->title,
+            'tax'               => 23,
+            'total_price_gross' => $this->item->amount,
+            'quantity'          => 1,
         ];
 
         return $positions;

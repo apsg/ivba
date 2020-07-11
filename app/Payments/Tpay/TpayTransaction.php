@@ -16,7 +16,7 @@ class TpayTransaction extends TransactionApi
     public function __construct(Order $order)
     {
         $this->merchantSecret = config('tpay.transaction.secret');
-        $this->merchantId = (int)config('tpay.transaction.id');
+        $this->merchantId = (int) config('tpay.transaction.id');
         $this->trApiKey = config('tpay.transaction.api_key');
         $this->trApiPass = config('tpay.transaction.api_pass');
 
@@ -65,5 +65,4 @@ class TpayTransaction extends TransactionApi
 
 //        return 'http://53100be8.ngrok.io/tpay/ipn';
     }
-
 }

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 /**
- * App\Course
+ * App\Course.
  *
  * @property int                               $id
  * @property string                            $slug
@@ -60,24 +60,24 @@ class Course extends Model implements OrderableContract, AccessableContract
     public static $SUBSCRIPTION_LENGTH = 31;
 
     protected $fillable = [
-        "title",
-        "description",
-        "seo_title",
-        "seo_description",
-        "price",
-        "difficulty",
-        "slug",
-        "image_id",
-        "user_id",
-        "video_id",
-        "position",
-        "delay",
+        'title',
+        'description',
+        'seo_title',
+        'seo_description',
+        'price',
+        'difficulty',
+        'slug',
+        'image_id',
+        'user_id',
+        'video_id',
+        'position',
+        'delay',
     ];
 
     protected $with = ['image'];
 
     /**
-     * Po czym przeszukujemy ścieżki
+     * Po czym przeszukujemy ścieżki.
      */
     public function getRouteKeyName()
     {
@@ -85,7 +85,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Obraz przypisany do tego kursu jako okładka
+     * Obraz przypisany do tego kursu jako okładka.
      * @return [type] [description]
      */
     public function image()
@@ -94,7 +94,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Film okładkowy przypisany do tego kursu
+     * Film okładkowy przypisany do tego kursu.
      * @return [type] [description]
      */
     public function video()
@@ -118,7 +118,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Użytkownicy, którzy zapisali się na ten kurs
+     * Użytkownicy, którzy zapisali się na ten kurs.
      * @return [type] [description]
      */
     public function users()
@@ -127,7 +127,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Lista lekcji przypisanych do tego kursu
+     * Lista lekcji przypisanych do tego kursu.
      * @return [type] [description]
      */
     public function lessons()
@@ -138,7 +138,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Oceny wystawione dla tego kursu
+     * Oceny wystawione dla tego kursu.
      * @return [type] [description]
      */
     public function ratings()
@@ -156,7 +156,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Certyfikat przypisany do tego kursu
+     * Certyfikat przypisany do tego kursu.
      * @return [type] [description]
      */
     public function certificate()
@@ -165,7 +165,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Certyfikaty użytkowników, dla tego kursu
+     * Certyfikaty użytkowników, dla tego kursu.
      * @return [type] [description]
      */
     public function user_certificates()
@@ -173,9 +173,8 @@ class Course extends Model implements OrderableContract, AccessableContract
         return $this->hasMany(UserCertificate::class);
     }
 
-
     /**
-     * Lista wszystkich dostępów dla tego elementu
+     * Lista wszystkich dostępów dla tego elementu.
      * @return [type] [description]
      */
     public function access()
@@ -184,7 +183,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Sprawdź, czy dany użytkownik ma dostęp do tego elementu
+     * Sprawdź, czy dany użytkownik ma dostęp do tego elementu.
      */
     public function hasAccess(int $user_id) : bool
     {
@@ -200,7 +199,7 @@ class Course extends Model implements OrderableContract, AccessableContract
             return true;
         }
 
-        if (!$user->hasDayAccess()) {
+        if (! $user->hasDayAccess()) {
             return false;
         }
 
@@ -209,7 +208,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Zwraca certyfikat aktualnie zalogowanego użytkownika
+     * Zwraca certyfikat aktualnie zalogowanego użytkownika.
      * @return [type] [description]
      */
     public function getUserCertificateAttribute()
@@ -223,9 +222,8 @@ class Course extends Model implements OrderableContract, AccessableContract
         return null;
     }
 
-
     /**
-     * Zwraca skrót opisu kursu
+     * Zwraca skrót opisu kursu.
      */
     public function getExcerptAttribute() : string
     {
@@ -233,7 +231,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Czas trwania w minutach
+     * Czas trwania w minutach.
      */
     public function getDurationAttribute() : int
     {
@@ -241,7 +239,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Czas trwania (sformatowany)
+     * Czas trwania (sformatowany).
      */
     public function duration() : string
     {
@@ -252,7 +250,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Link do tego kursu
+     * Link do tego kursu.
      */
     public function link() : string
     {
@@ -260,7 +258,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Link do rozpoczęcia nauki tego kursu
+     * Link do rozpoczęcia nauki tego kursu.
      */
     public function learnUrl() : string
     {
@@ -268,7 +266,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Link do ekranu zakończenia kursu
+     * Link do ekranu zakończenia kursu.
      */
     public function finishedUrl() : string
     {
@@ -276,17 +274,17 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Zwraca sformatowany tekst stopnia trudności
+     * Zwraca sformatowany tekst stopnia trudności.
      */
     public function difficulty() : string
     {
         switch ($this->difficulty) {
-            case 1 :
-                return "Łatwa";
-            case 2 :
-                return "Średnia";
-            case 3 :
-                return "Trudna";
+            case 1:
+                return 'Łatwa';
+            case 2:
+                return 'Średnia';
+            case 3:
+                return 'Trudna';
         }
 
         return '';
@@ -323,7 +321,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Zwraca link do następnego nieukończonego elementu w tym kursie
+     * Zwraca link do następnego nieukończonego elementu w tym kursie.
      */
     public function next() : string
     {
@@ -331,21 +329,21 @@ class Course extends Model implements OrderableContract, AccessableContract
 
         // Czy została jakaś lekcja do ukończenia?
         foreach ($this->lessons as $lesson) {
-            if (!$user->hasFinishedLesson($lesson->id)) {
+            if (! $user->hasFinishedLesson($lesson->id)) {
                 return $lesson->learnUrl($this);
             }
         }
 
         // Czy został jakiś test do ukończenia?
         foreach ($this->quizzes as $quiz) {
-            if (!$user->hasFinishedQuiz($quiz->id)) {
+            if (! $user->hasFinishedQuiz($quiz->id)) {
                 return $quiz->learnUrl();
             }
         }
 
         // Doszliśmy tutaj, czyli nie ma nic więcej.
         // Można sprawdzić, czy kurs jest zakończony i zwrócić link.
-        if (!$user->hasFinishedCourse($this->id)) {
+        if (! $user->hasFinishedCourse($this->id)) {
             $this->finish();
         }
 
@@ -353,7 +351,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Użytkownik ukończył ten kurs
+     * Użytkownik ukończył ten kurs.
      */
     public function finish() : self
     {
@@ -363,7 +361,7 @@ class Course extends Model implements OrderableContract, AccessableContract
                 ['finished_at' => Carbon::now()]
             );
 
-        if (!empty($this->certificate)) {
+        if (! empty($this->certificate)) {
             UserCertificate::create([
                 'user_id'        => Auth::user()->id,
                 'certificate_id' => $this->certificate->id,
@@ -377,15 +375,15 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Nazwa do wyświetlania w koszyku
+     * Nazwa do wyświetlania w koszyku.
      */
     public function cartName() : string
     {
-        return "Kurs #" . $this->id . " - " . $this->title;
+        return 'Kurs #' . $this->id . ' - ' . $this->title;
     }
 
     /**
-     * Link usuwania z koszyka
+     * Link usuwania z koszyka.
      */
     public function removeLink(Order $order) : string
     {
@@ -393,7 +391,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Zwraca liczbę osób zapisanych na ten kurs
+     * Zwraca liczbę osób zapisanych na ten kurs.
      * @return [type] [description]
      */
     public function getUsersCountAttribute() : int
@@ -411,7 +409,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Zwraca ocenę dla aktualnego użytkownika
+     * Zwraca ocenę dla aktualnego użytkownika.
      */
     public function getRatingAttribute()
     {
@@ -425,15 +423,15 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Zwraca średnią wartość ocen dla tego kursu
+     * Zwraca średnią wartość ocen dla tego kursu.
      */
     public function getAvgRatingAttribute() : float
     {
-        return (float)$this->ratings()->avg('rating');
+        return (float) $this->ratings()->avg('rating');
     }
 
     /**
-     * Zwraca liczbę ocen dla tego kursu
+     * Zwraca liczbę ocen dla tego kursu.
      */
     public function getRatingsCountAttribute() : int
     {
@@ -450,7 +448,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Przelicza na nowo cumulative_delay po zmianie kolejności
+     * Przelicza na nowo cumulative_delay po zmianie kolejności.
      */
     public static function reorder() : void
     {
@@ -459,7 +457,6 @@ class Course extends Model implements OrderableContract, AccessableContract
         $sum = 0;
 
         foreach ($courses as $course) {
-
             $sum = $sum + $course->delay;
             $course->cumulative_delay = $sum;
             $course->save();
@@ -468,6 +465,6 @@ class Course extends Model implements OrderableContract, AccessableContract
 
     public function __toString()
     {
-        return "Kurs: " . $this->title;
+        return 'Kurs: ' . $this->title;
     }
 }

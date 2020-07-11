@@ -41,7 +41,6 @@ class CardNotification extends PaymentCard
         return $response;
     }
 
-
     public function notification()
     {
         //Jeżeli chcesz wyłączyć sprawdzanie adresu IP serwera Tpay, wykonaj tą komendę:

@@ -14,7 +14,7 @@ class AdminImagesController extends Controller
     }
 
     /**
-     * Zwraca listę obrazów
+     * Zwraca listę obrazów.
      * @return [type] [description]
      */
     public function index()
@@ -29,7 +29,7 @@ class AdminImagesController extends Controller
     }
 
     /**
-     * Zapisz nowy obraz - wyślij do wistii i zapisz w DB
+     * Zapisz nowy obraz - wyślij do wistii i zapisz w DB.
      * @param  Request $request [description]
      * @return [type]           [description]
      */
@@ -48,8 +48,5 @@ class AdminImagesController extends Controller
         } else {
             return back();
         }
-
     }
-
-
 }

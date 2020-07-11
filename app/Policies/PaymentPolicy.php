@@ -43,6 +43,7 @@ class PaymentPolicy
     public function pay(User $user, Payment $payment)
     {
         return true;
+
         return $user->id === $payment->subscription->user_id;
     }
 }

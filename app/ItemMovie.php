@@ -6,7 +6,7 @@ use App\Item;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\ItemMovie
+ * App\ItemMovie.
  *
  * @property int $id
  * @property string $title
@@ -26,14 +26,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ItemMovie extends Item
 {
-	public $view = 'admin.partials.item_movie';	
-    
+    public $view = 'admin.partials.item_movie';
+
     /**
-     * Obiekt wideo związany z tym elementem
+     * Obiekt wideo związany z tym elementem.
      * @return [type] [description]
      */
-	public function video(){
-		return $this->belongsTo(\App\Video::class);
-	}
-
+    public function video()
+    {
+        return $this->belongsTo(\App\Video::class);
+    }
 }

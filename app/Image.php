@@ -7,7 +7,7 @@ use Intervention\Image\Exception\NotReadableException;
 use Throwable;
 
 /**
- * App\Image
+ * App\Image.
  *
  * @property int $id
  * @property string $url
@@ -29,9 +29,9 @@ class Image extends Model
     protected $fillable = ['url', 'hash', 'filename'];
 
     /**
-     * Podaj URL do miniaturki o zadanym rozmiarze
-     * @param  integer $width [description]
-     * @param  integer $height [description]
+     * Podaj URL do miniaturki o zadanym rozmiarze.
+     * @param  int $width [description]
+     * @param  int $height [description]
      * @return [type]          [description]
      */
     public function thumb($width = 200, $height = 200)
@@ -50,9 +50,9 @@ class Image extends Model
     }
 
     /**
-     * Wygeneruj miniaturę o podanych wymiarach
-     * @param  integer $width [description]
-     * @param  integer $height [description]
+     * Wygeneruj miniaturę o podanych wymiarach.
+     * @param  int $width [description]
+     * @param  int $height [description]
      * @return [type]          [description]
      */
     public function makeThumb($width = 200, $height = 200)
@@ -62,7 +62,7 @@ class Image extends Model
         $thumb = $filename . '_' . $width . 'x' . $height . '.' . $extension;
 
         try {
-            if (!file_exists(storage_path('app/public/images/' . $thumb))) {
+            if (! file_exists(storage_path('app/public/images/' . $thumb))) {
                 $img = ImageHelper::make($this->path());
                 $img->fit($width, $height);
                 $img->save(storage_path('app/public/images/' . $thumb));
@@ -77,7 +77,7 @@ class Image extends Model
     }
 
     /**
-     * Ścieżka do pliku
+     * Ścieżka do pliku.
      * @return [type] [description]
      */
     public function path()

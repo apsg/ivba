@@ -20,7 +20,7 @@ class CertificatesController extends Controller
 
         $pdf->addPage();
 
-        $pdf->AddFont("DejaVuSans", '', 'DejaVuSans.php');
+        $pdf->AddFont('DejaVuSans', '', 'DejaVuSans.php');
 
         $pdf->SetFont('DejaVuSans', '', 12);
         $pdf->SetTextColor(0, 0, 0);
@@ -29,19 +29,19 @@ class CertificatesController extends Controller
 
         $pdf->SetXY(0, 92);
         $pdf->SetFont('DejaVuSans', '', 12);
-        $pdf->cell("0", "0", $certificate->id . '/' . $certificate->created_at->format('Y'), 0, 1, "C");
+        $pdf->cell('0', '0', $certificate->id . '/' . $certificate->created_at->format('Y'), 0, 1, 'C');
 
         $pdf->SetXY(0, 110);
         $pdf->SetFont('DejaVuSans', '', 20);
-        $pdf->cell("0", "0", $this->convert($certificate->certificate->title), 0, 1, "C");
+        $pdf->cell('0', '0', $this->convert($certificate->certificate->title), 0, 1, 'C');
 
         $pdf->SetXY(0, 140);
         $pdf->SetFont('DejaVuSans', '', 15);
-        $pdf->cell("0", "0", $this->convert($certificate->user->name), 0, 1, "C");
+        $pdf->cell('0', '0', $this->convert($certificate->user->name), 0, 1, 'C');
 
         $pdf->SetXY(95, 189);
         $pdf->SetFont('DejaVuSans', '', 15);
-        $pdf->cell("0", "0", $certificate->created_at->format("Y-m-d"), 0, 1, "C");
+        $pdf->cell('0', '0', $certificate->created_at->format('Y-m-d'), 0, 1, 'C');
 
         return $pdf->Output();
     }
@@ -51,7 +51,6 @@ class CertificatesController extends Controller
      */
     public function check(Request $request)
     {
-
         if (isset($request->number)) {
             $cert = UserCertificate::find($request->number);
 
@@ -59,11 +58,10 @@ class CertificatesController extends Controller
                 $status = 'ok';
                 $name = explode(' ', $cert->user->name);
 
-                $text = "";
+                $text = '';
                 foreach ($name as $n) {
                     $text .= $n[0] . '*** ';
                 }
-
             } else {
                 $status = 'error';
                 $text = 'Nie znaleziono certyfikatu o podanym numerze!';

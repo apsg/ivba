@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Question
+ * App\Question.
  *
  * @property int                                                                 $id
  * @property int                                                                 $quiz_id
@@ -40,7 +40,7 @@ class Question extends Model
     protected $guarded = [];
 
     /**
-     * Typy pytań, jakie możemy mieć w systemie
+     * Typy pytań, jakie możemy mieć w systemie.
      */
     // Jednokrotny wybór
     const SINGLE = 1;
@@ -50,7 +50,7 @@ class Question extends Model
     const OPEN = 3;
 
     /**
-     * Do którego testu należy to pytanie
+     * Do którego testu należy to pytanie.
      * @return [type] [description]
      */
     public function quiz()
@@ -59,7 +59,7 @@ class Question extends Model
     }
 
     /**
-     * Odpowiedzi do tego pytania
+     * Odpowiedzi do tego pytania.
      * @return [type] [description]
      */
     public function options()
@@ -68,27 +68,27 @@ class Question extends Model
     }
 
     /**
-     * Zwraca nazwę dla poszczególnych typów
+     * Zwraca nazwę dla poszczególnych typów.
      * @return [type] [description]
      */
     public function getTypeNameAttribute()
     {
         switch ($this->type) {
             case static::SINGLE:
-                return "Jednokrotny wybór";
+                return 'Jednokrotny wybór';
                 break;
             case static::MULTIPLE:
-                return "Wielokrotny wybór";
+                return 'Wielokrotny wybór';
                 break;
             case static::OPEN:
-                return "Pytanie otwarte";
+                return 'Pytanie otwarte';
                 break;
         }
     }
 
     /**
-     * Sprawdza, czy pytanie jest poprawne
-     * @return boolean [description]
+     * Sprawdza, czy pytanie jest poprawne.
+     * @return bool [description]
      */
     public function isValid() : bool
     {
@@ -102,7 +102,7 @@ class Question extends Model
                 return $this->options()->where('is_correct', true)->count() > 0;
                 break;
             case static::OPEN:
-                return !empty($this->answer);
+                return ! empty($this->answer);
                 break;
             default:
                 return false;
@@ -110,14 +110,14 @@ class Question extends Model
     }
 
     /**
-     * Sprawdza, czy podana odpowiedź jest prawidłowa
+     * Sprawdza, czy podana odpowiedź jest prawidłowa.
      */
     public function check($answer) : bool
     {
         switch ($this->type) {
             case static::SINGLE:
             {
-                $answer = (int)$answer;
+                $answer = (int) $answer;
 
                 $correct = $this->options()
                     ->correct()
@@ -129,7 +129,7 @@ class Question extends Model
             }
             case static::MULTIPLE:
             {
-                if (!is_array($answer)) {
+                if (! is_array($answer)) {
                     return false;
                 }
 
@@ -143,7 +143,7 @@ class Question extends Model
             }
             case static::OPEN:
             {
-                if (!is_string($answer)) {
+                if (! is_string($answer)) {
                     return false;
                 }
 

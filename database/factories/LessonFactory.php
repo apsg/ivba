@@ -8,11 +8,11 @@ $factory->define(Lesson::class, function (Faker $faker) {
         'slug'            => $faker->slug,
         'title'           => $faker->title,
         'description'     => $faker->paragraph,
-        "seo_title"       => "",
-        "seo_description" => "",
-        "price"           => 0,
-        "introduction"    => $faker->paragraph,
-        "duration"        => $faker->randomNumber(),
-        "user_id"         => 1,
+        'seo_title'       => '',
+        'seo_description' => '',
+        'price'           => 0,
+        'introduction'    => $faker->paragraph,
+        'duration'        => $faker->randomNumber(),
+        'user_id'         => 1,
     ];
 });

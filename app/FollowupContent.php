@@ -8,7 +8,7 @@ use Exception;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\FollowupContent
+ * App\FollowupContent.
  *
  * @property int             $id
  * @property string          $event
@@ -40,7 +40,7 @@ class FollowupContent extends Model
     protected $guarded = [];
 
     /**
-     * Zwraca zaplanowane followupy
+     * Zwraca zaplanowane followupy.
      * @return [type] [description]
      */
     public function followups()
@@ -49,7 +49,7 @@ class FollowupContent extends Model
     }
 
     /**
-     * Zwraca różnicę czasu jako obiekt DateInterval
+     * Zwraca różnicę czasu jako obiekt DateInterval.
      */
     public function getIntervalAttribute()
     {
@@ -61,7 +61,7 @@ class FollowupContent extends Model
     }
 
     /**
-     * Link Edycji tego elementu
+     * Link Edycji tego elementu.
      * @return [type] [description]
      */
     public function editLink()
@@ -69,9 +69,8 @@ class FollowupContent extends Model
         return url('/admin/followups/' . $this->id);
     }
 
-
     /**
-     * Link do usuwania elementu
+     * Link do usuwania elementu.
      * @return [type] [description]
      */
     public function deleteLink()
@@ -80,12 +79,11 @@ class FollowupContent extends Model
     }
 
     /**
-     * Link do wysyłki testowej
+     * Link do wysyłki testowej.
      * @return [type] [description]
      */
     public function testLink()
     {
         return url('/admin/followups/' . $this->id . '/test');
     }
-
 }

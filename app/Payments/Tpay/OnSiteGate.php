@@ -22,7 +22,7 @@ class OnSiteGate extends PaymentCardForms
         //Try to sale with provided card data
         $response = $this->makeCardPayment();
         //Successful payment by card not protected by 3DS
-        if (isset($response['result']) && (int)$response['result'] === 1) {
+        if (isset($response['result']) && (int) $response['result'] === 1) {
             $this->setOrderAsComplete($response);
 
             return null;

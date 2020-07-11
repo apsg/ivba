@@ -45,7 +45,6 @@ class CheckForUnpaidPaymentsCommand extends Command
             ->get();
 
         foreach ($unpaidSubscriptions as $subscription) {
-
             event(new SubscriptionAbandonedEvent($subscription));
 
             $subscription->update([

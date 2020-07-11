@@ -17,7 +17,7 @@ class AccountController extends Controller
     }
 
     /**
-     * Pokaż dane konta
+     * Pokaż dane konta.
      * @return [type] [description]
      */
     public function show(LastLessonService $service)
@@ -32,7 +32,7 @@ class AccountController extends Controller
     }
 
     /**
-     * Zaktualizuj dane użytkownika
+     * Zaktualizuj dane użytkownika.
      * @return [type] [description]
      */
     public function update(Request $request)
@@ -45,7 +45,7 @@ class AccountController extends Controller
     }
 
     /**
-     * Zmień hasło
+     * Zmień hasło.
      * @param Request $request [description]
      * @return [type]           [description]
      */
@@ -69,6 +69,4 @@ class AccountController extends Controller
 
         return back()->with(['status' => 'Zaktualizowano']);
     }
-
-
 }

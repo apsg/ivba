@@ -17,7 +17,7 @@ class QuizController extends Controller
     }
 
     /**
-     * Pokaż test
+     * Pokaż test.
      */
     public function showQuiz(Course $course, Quiz $quiz)
     {
@@ -29,7 +29,7 @@ class QuizController extends Controller
             return view('learn.quiz_finished')->with(compact('course', 'quiz'));
         }
 
-        if (!$user->hasStartedQuiz($quiz->id)) {
+        if (! $user->hasStartedQuiz($quiz->id)) {
             return view('learn.quiz_prestart')->with(compact('course', 'quiz'));
         }
 
@@ -46,7 +46,7 @@ class QuizController extends Controller
     }
 
     /**
-     * Rozpocznij test
+     * Rozpocznij test.
      */
     public function start(Course $course, Quiz $quiz)
     {
@@ -65,5 +65,4 @@ class QuizController extends Controller
 
         return redirect($quiz->url());
     }
-
 }

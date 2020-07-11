@@ -10,7 +10,6 @@ use App\Http\Controllers\QuizController;
 Route::group([
     'middleware' => 'auth',
 ], function () {
-
     Route::get('/learn/course/{course}', LearnController::class . '@showCourse');
     Route::get('/learn/course/{course}/lesson/{lesson}', LearnController::class . '@showCourse');
     Route::get('/learn/course/{course}/lesson/{lesson}/finish', LearnController::class . '@finishLesson');

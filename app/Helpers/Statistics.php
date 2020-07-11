@@ -14,7 +14,7 @@ class Statistics
     const TIME = 60; // ile minut pamiętać wyniki
 
     /**
-     * Ilu mamy zarejestrowanych użytkowników
+     * Ilu mamy zarejestrowanych użytkowników.
      */
     public static function countRegisteredUsers()
     {
@@ -24,7 +24,7 @@ class Statistics
     }
 
     /**
-     * Ilu użytkowników zarejestrowało się od początku tygodnia
+     * Ilu użytkowników zarejestrowało się od początku tygodnia.
      */
     public static function countRegisteredUsersThisWeek()
     {
@@ -36,7 +36,7 @@ class Statistics
     }
 
     /**
-     * Ilu użytkowników zarejestrowało się w zadanym przedziale
+     * Ilu użytkowników zarejestrowało się w zadanym przedziale.
      */
     public static function countRegisteredUsersInRange($start, $end)
     {
@@ -48,7 +48,7 @@ class Statistics
     }
 
     /**
-     * Ilu użytkowników ma wykupiony pełen dostęp
+     * Ilu użytkowników ma wykupiony pełen dostęp.
      */
     public static function countPaidUsers()
     {
@@ -58,7 +58,7 @@ class Statistics
     }
 
     /**
-     * Ilu użytkowników wykupiło dostęp w tym tygodniu
+     * Ilu użytkowników wykupiło dostęp w tym tygodniu.
      */
     public static function countPaidUsersThisWeek()
     {
@@ -73,7 +73,7 @@ class Statistics
     }
 
     /**
-     * Ilu użytkowników wykupiło dostęp w przedziale
+     * Ilu użytkowników wykupiło dostęp w przedziale.
      */
     public static function countPaidUsersInRange($start, $end)
     {
@@ -87,7 +87,7 @@ class Statistics
     }
 
     /**
-     * Liczba złożonych zamówień
+     * Liczba złożonych zamówień.
      */
     public static function countOrders()
     {
@@ -97,7 +97,7 @@ class Statistics
     }
 
     /**
-     * Liczba potwierdzonych zamówień
+     * Liczba potwierdzonych zamówień.
      */
     public static function countConfirmedOrders()
     {
@@ -107,7 +107,7 @@ class Statistics
     }
 
     /**
-     * Liczba złożonych zamówień w tym tygodniu
+     * Liczba złożonych zamówień w tym tygodniu.
      */
     public static function countOrdersThisWeek()
     {
@@ -119,7 +119,7 @@ class Statistics
     }
 
     /**
-     * Liczba złożonych zamówień w zadanym okresie
+     * Liczba złożonych zamówień w zadanym okresie.
      */
     public static function countOrdersInRange($start, $end)
     {
@@ -130,9 +130,8 @@ class Statistics
         });
     }
 
-
     /**
-     * Liczba potwierdzonych zamówień w tym tygodniu
+     * Liczba potwierdzonych zamówień w tym tygodniu.
      */
     public static function countConfirmedOrdersThisWeek()
     {
@@ -146,7 +145,7 @@ class Statistics
     }
 
     /**
-     * Liczba potwierdzonych zamówień w zadanym okresie
+     * Liczba potwierdzonych zamówień w zadanym okresie.
      */
     public static function countConfirmedOrdersInRange($start, $end)
     {
@@ -159,7 +158,7 @@ class Statistics
     }
 
     /**
-     * Zwraca sumę płatności
+     * Zwraca sumę płatności.
      */
     public static function sumPayments()
     {
@@ -170,7 +169,7 @@ class Statistics
     }
 
     /**
-     * Zwraca sumę płatności
+     * Zwraca sumę płatności.
      */
     public static function sumPaymentsThisWeek()
     {
@@ -183,9 +182,8 @@ class Statistics
         });
     }
 
-
     /**
-     * Zwraca sumę płatności w zadanym okresie
+     * Zwraca sumę płatności w zadanym okresie.
      */
     public static function sumPaymentsInRange($start, $end)
     {
@@ -198,7 +196,7 @@ class Statistics
     }
 
     /**
-     * Ile wysłano maili w zadanym okresie
+     * Ile wysłano maili w zadanym okresie.
      */
     public static function countEmailsSent($start, $end)
     {
@@ -210,7 +208,7 @@ class Statistics
     }
 
     /**
-     * Ile wysłano maili w zadanym okresie zostało otwartych
+     * Ile wysłano maili w zadanym okresie zostało otwartych.
      */
     public static function countEmailsOpened($start, $end)
     {
@@ -236,7 +234,7 @@ class Statistics
     }
 
     /**
-     * Ile wysłano maili w zadanym okresie zostało klikniętych
+     * Ile wysłano maili w zadanym okresie zostało klikniętych.
      */
     public static function countEmailsClicked($start, $end)
     {
@@ -262,7 +260,7 @@ class Statistics
     }
 
     /**
-     * Ile wysłano maili w zadanym okresie zostało klikniętych
+     * Ile wysłano maili w zadanym okresie zostało klikniętych.
      */
     public static function countEmailsUnsubscribed($start, $end)
     {

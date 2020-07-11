@@ -16,7 +16,7 @@ class CourseProgressService
 
         $finishedItems = $this->finished($user, $course);
 
-        return (float)($finishedItems / $totalItems);
+        return (float) ($finishedItems / $totalItems);
     }
 
     public function total(Course $course) : int

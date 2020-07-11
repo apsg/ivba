@@ -14,9 +14,8 @@ class FollowupsController extends Controller
         $this->middleware('admin');
     }
 
-
     /**
-     * Pokaż spis followupów
+     * Pokaż spis followupów.
      * @return [type] [description]
      */
     public function index()
@@ -28,7 +27,7 @@ class FollowupsController extends Controller
     }
 
     /**
-     * Pokaż widok tworzenia nowego followupa
+     * Pokaż widok tworzenia nowego followupa.
      * @return [type] [description]
      */
     public function create()
@@ -39,7 +38,7 @@ class FollowupsController extends Controller
     }
 
     /**
-     * Zapisz followup w bazie
+     * Zapisz followup w bazie.
      * @param  Request $request [description]
      * @return [type]           [description]
      */
@@ -55,13 +54,13 @@ class FollowupsController extends Controller
             'attachment' => 'file',
         ]);
 
-        $interval = "P0D";
+        $interval = 'P0D';
 
         if ($request->delay > 0) {
             if ($request->unit < 3) {
-                $interval = "PT" . $request->delay . ($request->unit == 1 ? "M" : "H");
+                $interval = 'PT' . $request->delay . ($request->unit == 1 ? 'M' : 'H');
             } else {
-                $interval = "P" . $request->delay . ($request->unit == 3 ? "H" : "W");
+                $interval = 'P' . $request->delay . ($request->unit == 3 ? 'H' : 'W');
             }
         }
 
@@ -87,7 +86,7 @@ class FollowupsController extends Controller
     }
 
     /**
-     * Pokaż okno edycji
+     * Pokaż okno edycji.
      * @param  FollowupContent $followup [description]
      * @return [type]                    [description]
      */
@@ -96,9 +95,8 @@ class FollowupsController extends Controller
         return view('admin.followups.edit')->with(compact('followup'));
     }
 
-
     /**
-     * Zaktualizuj Treść Followupu
+     * Zaktualizuj Treść Followupu.
      * @param  FollowupContent $followup [description]
      * @param  Request         $request [description]
      * @return [type]                    [description]
@@ -134,7 +132,7 @@ class FollowupsController extends Controller
     }
 
     /**
-     * Wyślij testową wiadomość do zalogowanego użytkownika
+     * Wyślij testową wiadomość do zalogowanego użytkownika.
      * @param  FollowupContent $followup [description]
      * @return [type]                    [description]
      */
@@ -156,7 +154,7 @@ class FollowupsController extends Controller
     }
 
     /**
-     * Usuń element
+     * Usuń element.
      * @param  FollowupContent $followup [description]
      * @return [type]                    [description]
      */

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCourseLessonTable extends Migration
 {
@@ -25,7 +25,6 @@ class CreateCourseLessonTable extends Migration
             $table->foreign('lesson_id')->references('id')->on('lessons')->odDelete('cascade');
 
             $table->unique(['course_id', 'lesson_id']);
-
         });
     }
 

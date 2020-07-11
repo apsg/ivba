@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 /**
- * App\MenuItem
+ * App\MenuItem.
  *
  * @property int $id
  * @property string $title
@@ -35,7 +35,7 @@ class MenuItem extends Model
     protected $fillable = ['menu_id', 'position', 'title', 'url'];
 
     /**
-     * Wygeneruj menu o określonym id
+     * Wygeneruj menu o określonym id.
      */
     public static function make(int $menuId, $order = 'desc')
     {
@@ -48,8 +48,8 @@ class MenuItem extends Model
         return $items->map(function ($item) {
             return "<a href='"
                 . (filter_var($item->url, FILTER_VALIDATE_URL) ? $item->url : url($item->url))
-                . "' " . ($item->is_new_window ? "target='_blank'>" : ">")
-                . $item->title . "</a>";
+                . "' " . ($item->is_new_window ? "target='_blank'>" : '>')
+                . $item->title . '</a>';
         })->implode('');
     }
 

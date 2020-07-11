@@ -10,7 +10,7 @@ class PaymentsController extends Controller
 {
     public function requestInvoice(Payment $payment)
     {
-        if (!$payment->isConfirmed()) {
+        if (! $payment->isConfirmed()) {
             flash('Ta płatność nie została potwierdzona, nie możemy wystawić dla niej faktury.');
 
             return back();

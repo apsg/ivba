@@ -72,7 +72,6 @@ class InvoiceTest extends TestCase
         $response->assertStatus(302)
             ->assertSessionHasNoErrors();
 
-
         $this->assertDatabaseHas('invoice_requests', [
             'invoicable_id'   => $order->id,
             'invoicable_type' => Order::class,
@@ -113,15 +112,14 @@ class InvoiceTest extends TestCase
         $this->assertNotNull($order->fresh()->invoice_id);
     }
 
-
     /** @test */
     public function it_generates_invoice_data_correctly()
     {
         // given
         $nip = 5591903793;
-        $name = "Some test business";
-        $street = "some test street";
-        $postcode = "12-234";
+        $name = 'Some test business';
+        $street = 'some test street';
+        $postcode = '12-234';
 
         $user = $this->createUser([
             'address'      => $street,

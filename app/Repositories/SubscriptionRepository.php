@@ -110,7 +110,7 @@ class SubscriptionRepository
 
     public function prolong(Subscription $subscription) : Subscription
     {
-        if (!$subscription->isActive()) {
+        if (! $subscription->isActive()) {
             throw new InvalidArgumentException("Subscription {$subscription->id} was cancelled {$subscription->cancelled_at}");
         }
 

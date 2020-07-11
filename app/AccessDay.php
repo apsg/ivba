@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class AccessDay
+ * Class AccessDay.
  *
- * @package App
  * @property int                             user_id
  * @property Carbon                          date
  * @property-read User                       user
@@ -29,7 +28,7 @@ class AccessDay extends Model
     ];
 
     /**
-     * Uzytkownik
+     * Uzytkownik.
      * @return [type] [description]
      */
     public function user()
@@ -38,7 +37,7 @@ class AccessDay extends Model
     }
 
     /**
-     * Scope: dzisiaj
+     * Scope: dzisiaj.
      * @param  [type] $query [description]
      * @return [type]        [description]
      */
@@ -48,7 +47,7 @@ class AccessDay extends Model
     }
 
     /**
-     * Scope: Poprzednie dni
+     * Scope: Poprzednie dni.
      * @param  [type] $query [description]
      * @return [type]        [description]
      */

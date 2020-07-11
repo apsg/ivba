@@ -8,8 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class App\InvoiceRequest
- * @package App
+ * Class App\InvoiceRequest.
  *
  * @property int                     id
  * @property int                     invoicable_id
@@ -96,7 +95,6 @@ class InvoiceRequest extends Model
 
     public function user() : ?User
     {
-
         if ($this->invoicable instanceof Order) {
             return $this->invoicable->user;
         }

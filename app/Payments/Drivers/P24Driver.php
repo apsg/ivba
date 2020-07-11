@@ -33,7 +33,7 @@ class P24Driver
         $this->merchantId = config('przelewy24.merchant_id');
         $this->secret = config('przelewy24.secret');
 
-        $this->soap = new SoapClient($this->baseUrl . "/external/wsdl/charge_card_service.php?wsdl");
+        $this->soap = new SoapClient($this->baseUrl . '/external/wsdl/charge_card_service.php?wsdl');
     }
 
     public function testConnection() : bool
@@ -58,13 +58,11 @@ class P24Driver
         if ($result->error->errorCode === 0) {
             return $result->result;
         } else {
-            throw new InvalidCardException("Card is not valid for recurring transactions. " . $result->error->errorMessage);
+            throw new InvalidCardException('Card is not valid for recurring transactions. ' . $result->error->errorMessage);
         }
-
     }
 
     protected function getCrc($amount)
     {
-
     }
 }

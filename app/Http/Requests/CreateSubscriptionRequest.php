@@ -20,5 +20,4 @@ class CreateSubscriptionRequest extends FormRequest
     {
         return Coupon::where('code', $this->input('code'))->first();
     }
-
 }

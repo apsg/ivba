@@ -56,20 +56,20 @@ abstract class AbstractInvoice
         $now = Carbon::now()->format('Y-m-d');
 
         $attributes = [
-            "kind"             => "vat",
-            "number"           => null,
-            "sell_date"        => $now,
-            "issue_date"       => $now,
-            "payment_to"       => $now,
-            "seller_name"      => "IT&Business Training Mateusz Grabowski",
+            'kind'             => 'vat',
+            'number'           => null,
+            'sell_date'        => $now,
+            'issue_date'       => $now,
+            'payment_to'       => $now,
+            'seller_name'      => 'IT&Business Training Mateusz Grabowski',
             'seller_street'    => 'ul. Zygmunta Starego 1/3',
             'seller_post_code' => '44-100',
             'seller_city'      => 'Gliwice',
-            "seller_tax_no"    => "631-227-39-46",
-            "buyer_name"       => $this->getClientName(),
-            "buyer_email"      => $this->item->getEmail(),
-            "buyer_tax_no"     => $this->getClientTaxId(),
-            "positions"        => $this->getPositions(),
+            'seller_tax_no'    => '631-227-39-46',
+            'buyer_name'       => $this->getClientName(),
+            'buyer_email'      => $this->item->getEmail(),
+            'buyer_tax_no'     => $this->getClientTaxId(),
+            'positions'        => $this->getPositions(),
             'paid_date'        => $this->item->getSellDateFormatted(),
             'status'           => 'paid',
         ];
@@ -77,13 +77,13 @@ abstract class AbstractInvoice
         return $attributes;
     }
 
-    protected abstract function attachInvoiceToItem($invoiceId);
+    abstract protected function attachInvoiceToItem($invoiceId);
 
-    protected abstract function getClientName() : string;
+    abstract protected function getClientName() : string;
 
-    protected abstract function getPositions() : array;
+    abstract protected function getPositions() : array;
 
-    protected abstract function getClientTaxId() : string;
+    abstract protected function getClientTaxId() : string;
 
     public function getDownloadUrl() : ?string
     {

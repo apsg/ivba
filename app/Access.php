@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Access
+ * App\Access.
  *
  * @property int         $id
  * @property int         $user_id
@@ -32,7 +32,7 @@ class Access extends Model
     ];
 
     /**
-     * Wszystkie obiekty z dostępami
+     * Wszystkie obiekty z dostępami.
      */
     public function accessable()
     {
@@ -40,7 +40,7 @@ class Access extends Model
     }
 
     /**
-     * Użytkownik, któremu przyznano ten dostęp
+     * Użytkownik, któremu przyznano ten dostęp.
      */
     public function user()
     {
@@ -48,7 +48,7 @@ class Access extends Model
     }
 
     /**
-     * Scope dla dostępów, które nie wygasły
+     * Scope dla dostępów, które nie wygasły.
      */
     public function scopeValid($query)
     {

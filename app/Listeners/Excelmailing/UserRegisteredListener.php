@@ -8,8 +8,9 @@ class UserRegisteredListener
 {
     public function handle(UserRegisteredEvent $event)
     {
-        if(app()->environment() === 'testing')
+        if (app()->environment() === 'testing') {
             return;
+        }
 
         app(IExcel::class)
             ->excelmailing()

@@ -14,7 +14,7 @@ $factory->define(Question::class, function (Faker $faker) {
     ];
 });
 
-/** @var \Faker\Factory */
+/* @var \Faker\Factory */
 $factory->defineAs(Question::class, 'single', function (Faker $faker) use ($factory) {
     $question = $factory->raw(Question::class);
 
@@ -24,7 +24,7 @@ $factory->defineAs(Question::class, 'single', function (Faker $faker) use ($fact
     ]);
 });
 
-/** @var \Faker\Factory */
+/* @var \Faker\Factory */
 $factory->defineAs(Question::class, 'multiple', function (Faker $faker) use ($factory) {
     $question = $factory->raw(Question::class);
 

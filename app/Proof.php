@@ -6,9 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Proof
+ * Class Proof.
  *
- * @package App
  * @property string      name
  * @property string|null city
  * @property string      body
@@ -25,7 +24,7 @@ class Proof extends Model
     protected $fillable = ['name', 'city', 'body', 'is_registered', 'url', 'user_id'];
 
     /**
-     * Tworzy nowy proof typu "ktoś się zarejestrował"
+     * Tworzy nowy proof typu "ktoś się zarejestrował".
      */
     public static function createRegistered(User $user)
     {
@@ -33,14 +32,14 @@ class Proof extends Model
             'name'          => static::getName($user),
             'city'          => CityFromIp::get(request()->ip()),
             'url'           => url('/register'),
-            'body'          => "Zarejestrował/a się.",
+            'body'          => 'Zarejestrował/a się.',
             'user_id'       => $user->id,
             'is_registered' => false,
         ]);
     }
 
     /**
-     * Tworzy nowy proof typu "ukończono lekcję"
+     * Tworzy nowy proof typu "ukończono lekcję".
      */
     public static function createFinishedLesson(User $user, Lesson $lesson)
     {
@@ -48,14 +47,14 @@ class Proof extends Model
             'name'          => static::getName($user),
             'city'          => CityFromIp::get(request()->ip()),
             'url'           => $lesson->previewLink(),
-            'body'          => "Ukończył/a lekcję: " . $lesson->title,
+            'body'          => 'Ukończył/a lekcję: ' . $lesson->title,
             'user_id'       => $user->id,
             'is_registered' => true,
         ]);
     }
 
     /**
-     * Tworzy nowy proof typu "ukończono lekcję"
+     * Tworzy nowy proof typu "ukończono lekcję".
      */
     public static function createFinishedCourse(User $user, Course $course)
     {
@@ -63,14 +62,14 @@ class Proof extends Model
             'name'          => static::getName($user),
             'city'          => CityFromIp::get(request()->ip()),
             'url'           => $course->link(),
-            'body'          => "Ukończył/a kurs: " . $course->title,
+            'body'          => 'Ukończył/a kurs: ' . $course->title,
             'user_id'       => $user->id,
             'is_registered' => true,
         ]);
     }
 
     /**
-     * Tworzy nowy proof typu "ukończono lekcję"
+     * Tworzy nowy proof typu "ukończono lekcję".
      */
     public static function createFinishedQuiz(User $user, Quiz $quiz)
     {
@@ -78,14 +77,14 @@ class Proof extends Model
             'name'          => static::getName($user),
             'city'          => CityFromIp::get(request()->ip()),
             'url'           => $quiz->course->link(),
-            'body'          => "Ukończył/a test: " . $quiz->name,
+            'body'          => 'Ukończył/a test: ' . $quiz->name,
             'user_id'       => $user->id,
             'is_registered' => true,
         ]);
     }
 
     /**
-     * Zwraca samo imię (pierwszy człon nazwy użytkownika)
+     * Zwraca samo imię (pierwszy człon nazwy użytkownika).
      */
     protected static function getName($user)
     {
@@ -93,7 +92,7 @@ class Proof extends Model
     }
 
     /**
-     * Następny proof dla zarejestrowanego użytkownika
+     * Następny proof dla zarejestrowanego użytkownika.
      * @param  [type] $user [description]
      * @return [type]       [description]
      */
@@ -116,7 +115,7 @@ class Proof extends Model
     }
 
     /**
-     * Następny proof dla niezarejestrowanego
+     * Następny proof dla niezarejestrowanego.
      * @param  [type] $last_proof_id [description]
      * @return [type]                [description]
      */
@@ -127,5 +126,4 @@ class Proof extends Model
             ->orderBy('id', 'asc')
             ->first();
     }
-
 }

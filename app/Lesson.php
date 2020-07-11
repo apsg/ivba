@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 /**
- * Class Lesson
+ * Class Lesson.
  *
  * @property string                      title
  * @property string                      description
@@ -48,24 +48,24 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     public static $SUBSCRIPTION_LENGTH = 31;
 
     protected $fillable = [
-        "title",
-        "description",
-        "seo_title",
-        "seo_description",
-        "price",
-        "difficulty",
-        "slug",
-        "image_id",
-        "video_id",
-        "user_id",
-        "introduction",
-        "duration",
+        'title',
+        'description',
+        'seo_title',
+        'seo_description',
+        'price',
+        'difficulty',
+        'slug',
+        'image_id',
+        'video_id',
+        'user_id',
+        'introduction',
+        'duration',
     ];
 
     protected $with = ['image'];
 
     /**
-     * Po czym przeszukujemy ścieżki
+     * Po czym przeszukujemy ścieżki.
      */
     public function getRouteKeyName()
     {
@@ -73,7 +73,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Obrazek - okładka
+     * Obrazek - okładka.
      * @return [type] [description]
      */
     public function image()
@@ -82,7 +82,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Główny film
+     * Główny film.
      * @return [type] [description]
      */
     public function video()
@@ -91,7 +91,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Kto utworzył lekcję
+     * Kto utworzył lekcję.
      * @return [type] [description]
      */
     public function user()
@@ -100,7 +100,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Lista kursów, do których przypisano tę lekcję
+     * Lista kursów, do których przypisano tę lekcję.
      * @return [type] [description]
      */
     public function courses()
@@ -109,7 +109,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Lista elementów-obrazów dodanych do tej lekcji
+     * Lista elementów-obrazów dodanych do tej lekcji.
      * @return [type] [description]
      */
     public function images()
@@ -118,7 +118,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Lista elementów-tekstów dodanych do lekcji
+     * Lista elementów-tekstów dodanych do lekcji.
      * @return [type] [description]
      */
     public function texts()
@@ -127,7 +127,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Lista elementów-plików dodanych do lekcji
+     * Lista elementów-plików dodanych do lekcji.
      * @return [type] [description]
      */
     public function files()
@@ -136,7 +136,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Lista elementów-filmów dodanych do lekcji
+     * Lista elementów-filmów dodanych do lekcji.
      * @return [type] [description]
      */
     public function videos()
@@ -155,7 +155,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Zwraca wszystkie elementy przypisane do tej lekcji
+     * Zwraca wszystkie elementy przypisane do tej lekcji.
      * @return [type] [description]
      */
     public function items()
@@ -167,7 +167,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
 
         $items = [];
         foreach ($itemsDB as $idb) {
-            $items[] = call_user_func("\\" . $idb->items_type . "::findOrFail", $idb->items_id);
+            $items[] = call_user_func('\\' . $idb->items_type . '::findOrFail', $idb->items_id);
             end($items)->position = $idb->position;
         }
 
@@ -176,7 +176,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
 
     /**
      * Jaki będzie kolejny numer pozycji elementu dodanego do tej lekcji?
-     * @return integer [pozycja]
+     * @return int [pozycja]
      */
     public function nextItemPosition()
     {
@@ -187,7 +187,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Lista lekcji oprócz lekcji już przypisanych do kursu o danym ID
+     * Lista lekcji oprócz lekcji już przypisanych do kursu o danym ID.
      * @param  [type] $query [description]
      * @param  [type] $id    [description]
      * @return [type]        [description]
@@ -205,7 +205,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     /**
      * Czy dany użytkownik ma dostęp do tej lekcji poprzez jakiś kurs?
      * @param  [type]  $user_id [description]
-     * @return boolean          [description]
+     * @return bool          [description]
      */
     public function hasCourseAccess($user_id)
     {
@@ -219,9 +219,9 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Nie ma innej opcji dostępu do pojedynczej lekcji, niż poprzez kurs
+     * Nie ma innej opcji dostępu do pojedynczej lekcji, niż poprzez kurs.
      * @param  [type]  $user_id [description]
-     * @return boolean          [description]
+     * @return bool          [description]
      */
     public function hasAccess($user_id)
     {
@@ -229,7 +229,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Link podglądu lekcji
+     * Link podglądu lekcji.
      */
     public function previewLink()
     {
@@ -237,7 +237,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Wygeneruj link do nauki tej lekcji
+     * Wygeneruj link do nauki tej lekcji.
      */
     public function url(Course $course = null)
     {
@@ -249,7 +249,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Alias
+     * Alias.
      */
     public function learnUrl(Course $course = null)
     {
@@ -257,7 +257,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Link zakończenia lekcji
+     * Link zakończenia lekcji.
      */
     public function finishUrl(Course $course = null)
     {
@@ -265,7 +265,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Link zakupu lekcji (dodania do koszyka)
+     * Link zakupu lekcji (dodania do koszyka).
      */
     public function buyUrl()
     {
@@ -279,11 +279,11 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     {
         $user = Auth::user();
 
-        if (!$user->hasStartedLesson($this->id)) {
+        if (! $user->hasStartedLesson($this->id)) {
             $this->users()->save($user);
         }
 
-        if (!$user->hasFinishedLesson($this->id)) {
+        if (! $user->hasFinishedLesson($this->id)) {
             event(new UserFinishedLessonEvent($user->id, $courseId));
             $this->users()
                 ->updateExistingPivot(
@@ -299,15 +299,15 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Nazwa do wyświetlania w koszyku
+     * Nazwa do wyświetlania w koszyku.
      */
     public function cartName() : string
     {
-        return "Lekcja #" . $this->id . " - " . $this->title;
+        return 'Lekcja #' . $this->id . ' - ' . $this->title;
     }
 
     /**
-     * Link usuwania z koszyka
+     * Link usuwania z koszyka.
      */
     public function removeLink(Order $order) : string
     {
@@ -315,18 +315,17 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Zwraca sformatowany tekst stopnia trudności
+     * Zwraca sformatowany tekst stopnia trudności.
      */
     public function difficulty()
     {
         switch ($this->difficulty) {
-            case 1 :
-                return "Łatwa";
-            case 2 :
-                return "Średnia";
-            case 3 :
-                return "Trudna";
+            case 1:
+                return 'Łatwa';
+            case 2:
+                return 'Średnia';
+            case 3:
+                return 'Trudna';
         }
     }
-
 }

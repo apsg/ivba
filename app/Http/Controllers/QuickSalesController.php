@@ -73,7 +73,7 @@ class QuickSalesController extends Controller
 
         $transaction = new TpayTransaction($order);
         $url = $transaction->createTransaction(
-            (int)$request->input('group'),
+            (int) $request->input('group'),
             $quickSale->redirect_url
         );
 

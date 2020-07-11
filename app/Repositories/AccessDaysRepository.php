@@ -22,7 +22,6 @@ class AccessDaysRepository
         $end = (clone $toDate)->endOfDay();
 
         while ($current->lte($end)) {
-
             AccessDay::firstOrCreate([
                 'user_id' => $user->id,
                 'date'    => $current->format('Y-m-d'),

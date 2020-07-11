@@ -19,7 +19,7 @@ class AdminCouponsController extends Controller
     }
 
     /**
-     * Pokaż listę kuponów
+     * Pokaż listę kuponów.
      */
     public function index()
     {
@@ -30,18 +30,19 @@ class AdminCouponsController extends Controller
     }
 
     /**
-     * Usuń kupon
+     * Usuń kupon.
      */
     public function delete(Coupon $coupon)
     {
         if (Gate::allows('admin')) {
             $coupon->delete();
         }
+
         return back();
     }
 
     /**
-     * Widok tworzenia nowego kodu rabatowego
+     * Widok tworzenia nowego kodu rabatowego.
      */
     public function create()
     {
@@ -49,7 +50,7 @@ class AdminCouponsController extends Controller
     }
 
     /**
-     * Widok edycji kuponu
+     * Widok edycji kuponu.
      */
     public function show(Coupon $coupon)
     {
@@ -57,7 +58,7 @@ class AdminCouponsController extends Controller
     }
 
     /**
-     * Widok edycji kuponu
+     * Widok edycji kuponu.
      */
     public function edit(Coupon $coupon)
     {
@@ -65,7 +66,7 @@ class AdminCouponsController extends Controller
     }
 
     /**
-     * Zapisz nowy kupon
+     * Zapisz nowy kupon.
      */
     public function store(Request $request)
     {
@@ -82,11 +83,10 @@ class AdminCouponsController extends Controller
     }
 
     /**
-     * Zaktualizuj istniejący kupon
+     * Zaktualizuj istniejący kupon.
      */
     public function update(Coupon $coupon, Request $request)
     {
-
         $this->validate($request, [
             'code'      => [
                 'required',

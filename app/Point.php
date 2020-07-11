@@ -6,9 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Point
+ * Class Point.
  *
- * @package App
  * @property int            user_id
  * @property int            points
  * @property Carbon         created_at

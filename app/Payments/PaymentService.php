@@ -10,7 +10,7 @@ class PaymentService
 {
     public function payUrl(Payment $payment)
     {
-        if (!Auth::user()->can('pay', $payment)) {
+        if (! Auth::user()->can('pay', $payment)) {
             throw  new AuthorizationException('You do not have access to process this payment');
         }
 

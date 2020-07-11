@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateLessonsTable extends Migration
 {
@@ -24,7 +24,7 @@ class CreateLessonsTable extends Migration
 
             $table->text('description');
 
-            $table->decimal('price', 6,2)->default(0);
+            $table->decimal('price', 6, 2)->default(0);
             $table->unsignedInteger('duration')->default(0);
 
             $table->string('seo_title')->nullable();

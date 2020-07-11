@@ -6,7 +6,7 @@ use App\Item;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\ItemText
+ * App\ItemText.
  *
  * @property int $id
  * @property string $title
@@ -25,6 +25,5 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ItemText extends Item
 {
-	public $view = 'admin.partials.item_text';	
-    
+    public $view = 'admin.partials.item_text';
 }

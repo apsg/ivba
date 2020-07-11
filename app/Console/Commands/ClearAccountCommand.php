@@ -6,7 +6,6 @@ use Illuminate\Console\Command;
 
 class ClearAccountCommand extends Command
 {
-
     protected $signature = 'user:clear {user}';
 
     protected $description = 'Kopiuje użytkowników do newslettera';

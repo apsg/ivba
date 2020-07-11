@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateAccessDaysTable extends Migration
 {
@@ -20,7 +20,7 @@ class CreateAccessDaysTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->date('date');
-            
+
             $table->unique(['user_id', 'date']);
 
             $table->timestamps();

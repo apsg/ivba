@@ -8,9 +8,8 @@ use Intervention\Image\Facades\Image;
 
 class EmailsController extends Controller
 {
-
     /**
-     * Wypisz użytkownika z otrzymywania wiadomości tego typu
+     * Wypisz użytkownika z otrzymywania wiadomości tego typu.
      * @param  [type] $code [description]
      * @return [type]       [description]
      */
@@ -18,7 +17,7 @@ class EmailsController extends Controller
     {
         $email = Email::where('unsubscribe_code', $code)->first();
 
-        if (empty($code) || !$email) {
+        if (empty($code) || ! $email) {
             flash('Podany kod wypisania się jest nieprawidłowy');
 
             return redirect('/');
@@ -35,13 +34,12 @@ class EmailsController extends Controller
     }
 
     /**
-     * Zwraca jednopikselowy obrazek, który oznacza określony email jako otwarty
+     * Zwraca jednopikselowy obrazek, który oznacza określony email jako otwarty.
      * @param  Email $email [description]
      * @return [type]        [description]
      */
     public function getOpenedImg(Email $email)
     {
-
         if (is_null($email->opened_at)) {
             $email->update([
                 'opened_at' => Carbon::now(),
@@ -50,5 +48,4 @@ class EmailsController extends Controller
 
         return Image::make(storage_path('app/1px.png'))->response();
     }
-
 }

@@ -20,17 +20,17 @@ class CheckCourseValidity
         $course = $request->route('course');
         $lesson = $request->route('lesson');
 
-        if($course){
+        if ($course) {
             // Czy użytkownik ma dostęp do kursu?
             if (Gate::denies(GateHelper::ACCESS_COURSE, $course)) {
                 return redirect('/')->with(['msg' => 'Nie masz dostępu do tego kursu']);
             }
 
-            if($lesson){
+            if ($lesson) {
                 // Czy ta lekcja należy do kursu?
                 $courses = $lesson->courses()->pluck('course_id')->all();
 
-                if(!in_array($course->id, $courses)){
+                if (! in_array($course->id, $courses)) {
                     return redirect($course->learnUrl());
                 }
 

@@ -5,7 +5,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\UserCertificate
+ * App\UserCertificate.
  *
  * @property int              $id
  * @property int              $user_id
@@ -23,7 +23,7 @@ class UserCertificate extends Model
     protected $guarded = [];
 
     /**
-     * Użytkownik, dla którego wystawiono ten certyfikat
+     * Użytkownik, dla którego wystawiono ten certyfikat.
      */
     public function user()
     {
@@ -31,7 +31,7 @@ class UserCertificate extends Model
     }
 
     /**
-     * Odniesienie do certyfikatu
+     * Odniesienie do certyfikatu.
      */
     public function certificate()
     {
@@ -47,7 +47,7 @@ class UserCertificate extends Model
     }
 
     /**
-     * Link pobierania tego certyfikatu
+     * Link pobierania tego certyfikatu.
      */
     public function getDownloadUrl()
     {

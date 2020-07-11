@@ -126,19 +126,19 @@ class PartnerProgramTest extends TestCase
         $partner2 = factory(User::class)->create();
 
         $user1 = factory(User::class)->create([
-            'partner_id' => $partner1->id
+            'partner_id' => $partner1->id,
         ]);
         $user2 = factory(User::class)->create([
-            'partner_id' => $partner1->id
+            'partner_id' => $partner1->id,
         ]);
         $user3 = factory(User::class)->create([
-            'partner_id' => $partner2->id
+            'partner_id' => $partner2->id,
         ]);
         $user4 = factory(User::class)->create([
-            'partner_id' => $partner2->id
+            'partner_id' => $partner2->id,
         ]);
         $user5 = factory(User::class)->create([
-            'partner_id' => $partner2->id
+            'partner_id' => $partner2->id,
         ]);
         $user5->created_at = Carbon::now()->subMonths(3);
         $user5->save();

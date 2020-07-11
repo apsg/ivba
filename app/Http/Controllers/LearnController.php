@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 
 class LearnController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -21,17 +20,17 @@ class LearnController extends Controller
     }
 
     /**
-     * Pokaż widok kursu
+     * Pokaż widok kursu.
      * @param  Course $course [description]
      * @param  Lesson $lesson [description]
      * @return [type]         [description]
      */
     public function showCourse(Course $course, Lesson $lesson, Request $request)
     {
-        if (!empty($lesson->slug) && Gate::denies('access-lesson', $lesson)) {
+        if (! empty($lesson->slug) && Gate::denies('access-lesson', $lesson)) {
             flash('Nie masz dostępu do tej lekcji')->warning();
 
-            return redirect(!is_null($course) ? $course->link() : $lesson->previewLink());
+            return redirect(! is_null($course) ? $course->link() : $lesson->previewLink());
         }
 
         // Jeśli nie wybrano lekcji - przekieruj do pierwszej.
@@ -39,7 +38,7 @@ class LearnController extends Controller
             $lesson = $course->lessons()->first();
 
             if (empty($lesson)) {
-                return back()->withErrors(["Do tego kursu nie dodano jeszcze żadnej lekcji. Poczekaj na jego uzupełnienie lub skontaktuj się z obsługą."]);
+                return back()->withErrors(['Do tego kursu nie dodano jeszcze żadnej lekcji. Poczekaj na jego uzupełnienie lub skontaktuj się z obsługą.']);
             }
 
             return redirect('learn/course/' . $course->slug . '/lesson/' . $lesson->slug);
@@ -51,7 +50,7 @@ class LearnController extends Controller
     }
 
     /**
-     * Pokaż lekcję
+     * Pokaż lekcję.
      */
     public function showLesson(Lesson $lesson)
     {
@@ -66,11 +65,11 @@ class LearnController extends Controller
      */
     protected function assignToUser(Course $course = null, Lesson $lesson = null)
     {
-        if (!empty($course) && !Auth::user()->hasStartedCourse($course->id)) {
+        if (! empty($course) && ! Auth::user()->hasStartedCourse($course->id)) {
             Auth::user()->courses()->attach($course);
         }
 
-        if (!Auth::user()->hasStartedLesson($lesson->id)) {
+        if (! Auth::user()->hasStartedLesson($lesson->id)) {
             Auth::user()->lessons()->attach($lesson, [
                 'course_id' => $course->id ?? null,
             ]);
@@ -83,13 +82,13 @@ class LearnController extends Controller
     public function finishLesson(Course $course, Lesson $lesson)
     {
         $user = Auth::user();
-        if (!$user->hasFinishedLesson($lesson->id)) {
+        if (! $user->hasFinishedLesson($lesson->id)) {
             Proof::createFinishedLesson($user, $lesson);
         }
 
         $lesson->finish($course->id);
 
-        if (!isset($course->id)) {
+        if (! isset($course->id)) {
             return back();
         }
 
@@ -97,12 +96,11 @@ class LearnController extends Controller
     }
 
     /**
-     * Pokaż ekran podsumowania kursu
+     * Pokaż ekran podsumowania kursu.
      */
     public function finishedCourse(Course $course)
     {
-
-        if (!Auth::user()->hasFinishedCourse($course->id)) {
+        if (! Auth::user()->hasFinishedCourse($course->id)) {
             return redirect($course->next());
         }
 
@@ -114,7 +112,7 @@ class LearnController extends Controller
     }
 
     /**
-     * Dodaj ocenę do kursu
+     * Dodaj ocenę do kursu.
      * @param  Course  $course [description]
      * @param  Request $request [description]
      * @return [type]           [description]
@@ -138,5 +136,4 @@ class LearnController extends Controller
 
         return ['OK'];
     }
-
 }

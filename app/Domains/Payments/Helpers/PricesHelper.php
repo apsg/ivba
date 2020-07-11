@@ -5,8 +5,7 @@ namespace App\Domains\Payments\Helpers;
 use App\Domains\Admin\Models\Setting;
 
 /**
- * Class PricesHelper
- * @package App\Domains\Payments\Helpers\PricesHelper
+ * Class PricesHelper.
  */
 class PricesHelper
 {

@@ -11,9 +11,8 @@ use Searchy;
 
 class PagesController extends Controller
 {
-
     /**
-     * Strona główna
+     * Strona główna.
      * @return [type] [description]
      */
     public function home()
@@ -32,13 +31,11 @@ class PagesController extends Controller
                 return Lesson::inRandomOrder()->take(4)->get();
             });
 
-
         $blog_items = [];
 
         $access_options = FullAccessOption::orderBy('price')->get();
 
         $is_front = true;
-
 
 //        return view('layouts.front2')->with(compact('menu'));
 
@@ -47,19 +44,18 @@ class PagesController extends Controller
     }
 
     /**
-     * Ekran powrotu z payu
+     * Ekran powrotu z payu.
      * @return [type] [description]
      */
     public function continue(Request $request)
     {
-
         $order = Order::find($request->order);
 
         return view('continue')->with(compact('order'));
     }
 
     /**
-     * Strona z zakupem pełnego dostępu
+     * Strona z zakupem pełnego dostępu.
      * @return [type] [description]
      */
     public function buyAccess()
@@ -68,7 +64,7 @@ class PagesController extends Controller
     }
 
     /**
-     * Obsługa strony z wynikami wyszukiwania
+     * Obsługa strony z wynikami wyszukiwania.
      * @param Request $request [description]
      * @return [type]           [description]
      */
@@ -95,7 +91,5 @@ class PagesController extends Controller
         $lessons = Lesson::hydrate($lessons);
 
         return view('search')->with(compact('courses', 'lessons', 's'));
-
     }
-
 }

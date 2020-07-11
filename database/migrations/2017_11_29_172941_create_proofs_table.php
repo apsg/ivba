@@ -41,7 +41,6 @@ class CreateProofsTable extends Migration
                 ->references('id')->on('proofs')
                 ->onDelete('set null');
         });
-
     }
 
     /**
@@ -51,7 +50,6 @@ class CreateProofsTable extends Migration
      */
     public function down()
     {
-
         Schema::table('users', function (Blueprint $table) {
             $table->dropForeign(['last_proof_id']);
             $table->dropColumn('last_proof_id');

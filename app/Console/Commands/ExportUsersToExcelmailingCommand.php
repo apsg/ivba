@@ -48,7 +48,6 @@ class ExportUsersToExcelmailingCommand extends Command
         $bar = $this->output->createProgressBar($users->count());
 
         foreach ($users as $user) {
-
             $bar->advance();
 
             if ($user->subscription === null && $user->full_access_expires === null) {

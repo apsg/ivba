@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Item
+ * App\Item.
  *
  * @property int $lesson_id
  * @property int $items_id
@@ -21,46 +21,49 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Item wherePosition($value)
  * @mixin \Eloquent
  */
-class Item extends Model{
+class Item extends Model
+{
+    protected $guarded = [];
 
-	protected $guarded = [];
+    public $view = 'admin.partials.item';
 
-	public $view = 'admin.partials.item';	
+    public static function boot()
+    {
+        parent::boot();
 
-	public static function boot(){
-		parent::boot();
+        /**
+         * Podczas usuwania zasobu "odłącz" go wpierw od
+         * wszystkich lekcji.
+         */
+        static::deleting(function ($model) {
+            $model->lesson()->detach();
+        });
+    }
 
-		/**
-		 * Podczas usuwania zasobu "odłącz" go wpierw od 
-		 * wszystkich lekcji.
-		 */
-		static::deleting(function($model){
-			$model->lesson()->detach();
-		});
-	}
+    /**
+     * Lekcja, do której należy ten obiekt.
+     * @return [type] [description]
+     */
+    public function lesson()
+    {
+        return $this->morphToMany(\App\Lesson::class, 'items');
+    }
 
-	/**
-	 * Lekcja, do której należy ten obiekt
-	 * @return [type] [description]
-	 */
-	public function lesson(){
-		return $this->morphToMany(\App\Lesson::class, 'items');
-	}
+    /**
+     * Slug.
+     * @return [type] [description]
+     */
+    public function slug()
+    {
+        return str_slug((new \ReflectionClass($this))->getShortName());
+    }
 
-	/**
-	 * Slug
-	 * @return [type] [description]
-	 */
-	public function slug(){
-		return str_slug((new \ReflectionClass($this))->getShortName());
-	}
-
-	/**
-	 * link usuwania
-	 * @return [type] [description]
-	 */
-	public function deleteLink(){
-		return url('/admin/'.$this->slug(). '/' . $this->id . '/delete');
-	}
-	
+    /**
+     * link usuwania.
+     * @return [type] [description]
+     */
+    public function deleteLink()
+    {
+        return url('/admin/' . $this->slug() . '/' . $this->id . '/delete');
+    }
 }

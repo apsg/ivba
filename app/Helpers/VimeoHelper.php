@@ -5,9 +5,8 @@ use Vimeo;
 
 class VimeoHelper
 {
-
     /**
-     * Wysyła wideo na vimeo i zwraca dane do stworzenia obiektu Video
+     * Wysyła wideo na vimeo i zwraca dane do stworzenia obiektu Video.
      */
     public static function uploadVideo($filePath, $name, $title = null) : array
     {
@@ -42,7 +41,7 @@ class VimeoHelper
     }
 
     /**
-     * Dla podanej szerokości zwraca typowe rozmiary miniatur z Vimeo
+     * Dla podanej szerokości zwraca typowe rozmiary miniatur z Vimeo.
      */
     public static function getThumbSize($width)
     {
@@ -70,20 +69,17 @@ class VimeoHelper
     }
 
     /**
-     * [getThumb description]
+     * [getThumb description].
      * @param  [type] $videoId [description]
      * @return [type]          [description]
      */
     public static function getThumb($videoId)
     {
-
         $data = Vimeo::request('/videos/' . $videoId);
 
         $picturesUri = $data['body']['pictures']['uri'];
         $picturesUri = explode('/', $picturesUri);
 
         return end($picturesUri);
-
     }
-
 }

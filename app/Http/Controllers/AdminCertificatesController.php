@@ -7,50 +7,56 @@ use Illuminate\Http\Request;
 
 class AdminCertificatesController extends Controller
 {
-    public function __construct(){
-    	$this->middleware('admin');
+    public function __construct()
+    {
+        $this->middleware('admin');
     }
 
     /**
-     * Pokaż spis certyfikatów
+     * Pokaż spis certyfikatów.
      * @return [type] [description]
      */
-    public function index(){
-    	$certificates = Certificate::with('course')->get();
+    public function index()
+    {
+        $certificates = Certificate::with('course')->get();
 
-    	$ids = $certificates->pluck('course_id');
+        $ids = $certificates->pluck('course_id');
 
-    	$courses = \App\Course::whereNotIn('id', $ids)->get();
+        $courses = \App\Course::whereNotIn('id', $ids)->get();
 
-    	return view('admin.certificates.index')->with(compact('certificates', 'courses'));
+        return view('admin.certificates.index')->with(compact('certificates', 'courses'));
     }
 
     /**
-     * Zapisz certyfikat w bazie
+     * Zapisz certyfikat w bazie.
      * @param  Request $requeust [description]
      * @return [type]            [description]
      */
-    public function store(Request $request){
-    	$this->validate($request, [
-    		'course_id'	=> 'required|exists:courses,id',
-    		'title'		=> 'required',
-    	]);
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'course_id'	=> 'required|exists:courses,id',
+            'title'		=> 'required',
+        ]);
 
-    	Certificate::create( $request->all() );
+        Certificate::create($request->all());
 
-    	flash('Utworzono');
-    	return back();
+        flash('Utworzono');
+
+        return back();
     }
 
     /**
-     * Usuń certyfikat
+     * Usuń certyfikat.
      * @param  Certificate $certificate [description]
      * @return [type]                   [description]
      */
-    public function delete(Certificate $certificate){
-    	$certificate->delete();
+    public function delete(Certificate $certificate)
+    {
+        $certificate->delete();
 
-    	flash('Usunięto poprawnie');
-    	return back();
+        flash('Usunięto poprawnie');
+
+        return back();
     }
 }

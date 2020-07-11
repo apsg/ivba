@@ -15,7 +15,7 @@ class AdminPagesController extends Controller
     }
 
     /**
-     * Pokaż spis stron
+     * Pokaż spis stron.
      * @param  Request $request [description]
      * @return [type]           [description]
      */
@@ -26,9 +26,8 @@ class AdminPagesController extends Controller
         return view('admin.pages')->with(compact('pages'));
     }
 
-
     /**
-     * Pokaż edycję strony
+     * Pokaż edycję strony.
      * @param  Page $page [description]
      * @return [type]       [description]
      */
@@ -38,7 +37,7 @@ class AdminPagesController extends Controller
     }
 
     /**
-     * zaktualizuj stronę
+     * zaktualizuj stronę.
      * @param  AdminPageRequest $request [description]
      * @return [type]                    [description]
      */
@@ -50,7 +49,7 @@ class AdminPagesController extends Controller
     }
 
     /**
-     * Pokaż formularz dodawania nowej strony
+     * Pokaż formularz dodawania nowej strony.
      * @return [type] [description]
      */
     public function create()
@@ -59,7 +58,7 @@ class AdminPagesController extends Controller
     }
 
     /**
-     * Utwórz nową stronę
+     * Utwórz nową stronę.
      * @param  AdminPageRequest $request [description]
      * @return [type]                    [description]
      */
@@ -69,5 +68,4 @@ class AdminPagesController extends Controller
 
         return redirect('/admin/pages/' . $page->slug);
     }
-
 }

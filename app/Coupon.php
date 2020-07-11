@@ -11,9 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 /**
- * Class Coupon
+ * Class Coupon.
  *
- * @package App
  * @property string                   code
  * @property int                      uses_left
  * @property int                      type
@@ -45,7 +44,7 @@ class Coupon extends Model
     ];
 
     /**
-     * Zamówienia, do których użyto tego kodu
+     * Zamówienia, do których użyto tego kodu.
      */
     public function orders()
     {
@@ -58,7 +57,7 @@ class Coupon extends Model
     }
 
     /**
-     * Zastosuj kupon i zwróć cenę po obniżce
+     * Zastosuj kupon i zwróć cenę po obniżce.
      */
     public function apply($total)
     {
@@ -80,7 +79,7 @@ class Coupon extends Model
     }
 
     /**
-     * Zwraca link usuwania z koszyka
+     * Zwraca link usuwania z koszyka.
      */
     public function removeLink(Order $order)
     {
@@ -88,7 +87,7 @@ class Coupon extends Model
     }
 
     /**
-     * Zwraca sformatowaną wartość kuponu
+     * Zwraca sformatowaną wartość kuponu.
      */
     public function valueFormatted()
     {
@@ -100,7 +99,7 @@ class Coupon extends Model
     }
 
     /**
-     * Zwraca link edycji kuponu
+     * Zwraca link edycji kuponu.
      */
     public function editLink()
     {
@@ -108,7 +107,7 @@ class Coupon extends Model
     }
 
     /**
-     * Zwraca link usuwania kuponu
+     * Zwraca link usuwania kuponu.
      */
     public function deleteLink()
     {
@@ -118,23 +117,23 @@ class Coupon extends Model
     public function getTypeTextAttribute()
     {
         if ($this->type == self::TYPE_VALUE) {
-            return "Złotowy";
+            return 'Złotowy';
         }
 
         if ($this->type == self::TYPE_PERCENT) {
-            return "Procentowy";
+            return 'Procentowy';
         }
 
         if ($this->type == self::TYPE_SUBSCRIPTION_VALUE) {
-            return "Złotowy - subskrypcje";
+            return 'Złotowy - subskrypcje';
         }
 
         if ($this->type == self::TYPE_SUBSCRIPTION_PERCENT) {
-            return "Procentowy - subskrypcje";
+            return 'Procentowy - subskrypcje';
         }
 
         if ($this->type == self::TYPE_COURSE_ACCESS) {
-            return "Dostęp do kursu";
+            return 'Dostęp do kursu';
         }
 
         return 'nieznany';

@@ -40,10 +40,9 @@ class DiscoverAllImages extends Command
         $w = new \App\Helpers\Wistia;
         $images = $w->showImages();
 
-        foreach($images->medias as $image){
-
+        foreach ($images->medias as $image) {
             $img = $w->client->show_media($image->hashed_id);
-            
+
             \App\Image::firstOrCreate([
                     'url'  => $img->assets[0]->url,
                     'hash' => $image->hashed_id,

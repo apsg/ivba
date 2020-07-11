@@ -15,9 +15,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Order
+ * Class Order.
  *
- * @package App
  * @property string|null                 external_payment_id
  * @property Carbon                      confirmed_at
  * @property int                         duration
@@ -48,7 +47,7 @@ class Order extends Model implements InvoicableContract
     ];
 
     /**
-     * Użytkownik, który wygenerował zamówienie
+     * Użytkownik, który wygenerował zamówienie.
      */
     public function user()
     {
@@ -56,7 +55,7 @@ class Order extends Model implements InvoicableContract
     }
 
     /**
-     * Lista kodów rabatowych dodanych do tego zamówienia
+     * Lista kodów rabatowych dodanych do tego zamówienia.
      */
     public function coupons()
     {
@@ -74,7 +73,7 @@ class Order extends Model implements InvoicableContract
     }
 
     /**
-     * Suma cen elementów (przed ewentualnymi rabatami)
+     * Suma cen elementów (przed ewentualnymi rabatami).
      */
     public function sum() : float
     {
@@ -93,7 +92,7 @@ class Order extends Model implements InvoicableContract
     }
 
     /**
-     * Suma końcowa
+     * Suma końcowa.
      */
     public function total() : float
     {
@@ -106,7 +105,7 @@ class Order extends Model implements InvoicableContract
     }
 
     /**
-     * Kwota netto
+     * Kwota netto.
      */
     public function netto() : float
     {
@@ -114,7 +113,7 @@ class Order extends Model implements InvoicableContract
     }
 
     /**
-     * Kwota podatku
+     * Kwota podatku.
      */
     public function tax() : float
     {
@@ -122,11 +121,11 @@ class Order extends Model implements InvoicableContract
     }
 
     /**
-     * Potwierdź zamówienie
+     * Potwierdź zamówienie.
      */
     public function confirm(string $externalId = null) : bool
     {
-        if (!is_null($this->confirmed_at)) {
+        if (! is_null($this->confirmed_at)) {
             return false;
         }
 
@@ -152,7 +151,7 @@ class Order extends Model implements InvoicableContract
         foreach ($this->quick_sales as $quickSale) {
             if ($quickSale->course !== null) {
                 $accessRepository->grant($this->user, $quickSale->course);
-                if (!$this->user->courses()
+                if (! $this->user->courses()
                     ->where('courses.id', '=', $quickSale->course->id)
                     ->exists()) {
                     $this->user->courses()->attach($quickSale->course);
@@ -169,8 +168,7 @@ class Order extends Model implements InvoicableContract
 
         $this->save();
 
-        if (!$this->isQuickSales()) // Powiadamiamy użytkownika
-        {
+        if (! $this->isQuickSales()) { // Powiadamiamy użytkownika
             try {
                 $this->user->notify(new OrderConfirmed($this));
             } catch (\Exception $exception) {

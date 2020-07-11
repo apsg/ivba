@@ -4,9 +4,9 @@ namespace App\Mail;
 
 use App\Email;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class NewsletterEmail extends Mailable
 {
@@ -19,7 +19,7 @@ class NewsletterEmail extends Mailable
      *
      * @return void
      */
-    public function __construct(\App\Email $email)
+    public function __construct(Email $email)
     {
         $this->email = $email;
     }

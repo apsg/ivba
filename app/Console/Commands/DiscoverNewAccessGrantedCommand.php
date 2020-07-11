@@ -27,6 +27,5 @@ class DiscoverNewAccessGrantedCommand extends Command
      */
     public function handle()
     {
-
     }
 }

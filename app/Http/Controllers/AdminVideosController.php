@@ -17,7 +17,7 @@ class AdminVideosController extends Controller
     }
 
     /**
-     * Listuj bibliotekę filmów
+     * Listuj bibliotekę filmów.
      * @return [type] [description]
      */
     public function index()
@@ -32,13 +32,12 @@ class AdminVideosController extends Controller
     }
 
     /**
-     * Zapisz nowy film - wyślij do wistii i zapisz w DB
+     * Zapisz nowy film - wyślij do wistii i zapisz w DB.
      * @param Request $request [description]
      * @return [type]           [description]
      */
     public function store(Request $request)
     {
-
         $vid = Video::upload($request->video->path(), $request->video->getClientOriginalName(),
             $request->input('title', ''));
 

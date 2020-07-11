@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 
 class AdminQuestionOptionsController extends Controller
 {
-    public function __contruct(){
-    	$this->middleware('admin');
+    public function __contruct()
+    {
+        $this->middleware('admin');
     }
 
     /**
@@ -18,31 +19,34 @@ class AdminQuestionOptionsController extends Controller
      * @param  Request  $request  [description]
      * @return [type]             [description]
      */
-    public function store(Question $question, Request $request){
-    	$this->validate($request,[
-    		'title'	=> 'required',
-    	]);
+    public function store(Question $question, Request $request)
+    {
+        $this->validate($request, [
+            'title'	=> 'required',
+        ]);
 
-    	$option = $question->options()->create( $request->all() );
+        $option = $question->options()->create($request->all());
 
-    	if( $request->ajax() )
-    		return ['html' => view('admin.quizzes.question_option')->with(compact('option'))->render() ];
+        if ($request->ajax()) {
+            return ['html' => view('admin.quizzes.question_option')->with(compact('option'))->render()];
+        }
 
-    	return back()->with(['open' => $question->id ]);
+        return back()->with(['open' => $question->id]);
     }
 
     /**
-     * Usuń tę opcję
+     * Usuń tę opcję.
      * @param  QuestionOption $option [description]
      * @return [type]                 [description]
      */
-    public function delete(QuestionOption $option, Request $request ){
+    public function delete(QuestionOption $option, Request $request)
+    {
         $option->delete();
 
-        if( $request->ajax() )
+        if ($request->ajax()) {
             return ['ok'];
+        }
 
         return back();
     }
-
 }

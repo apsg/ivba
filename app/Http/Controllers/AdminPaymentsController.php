@@ -18,7 +18,7 @@ class AdminPaymentsController extends Controller
     }
 
     /**
-     * Zwraca dane dla datatables
+     * Zwraca dane dla datatables.
      */
     public function getData(Request $request)
     {
@@ -26,14 +26,14 @@ class AdminPaymentsController extends Controller
 
         return DataTables::of($payments)
             ->addColumn('type', function (Payment $payment) {
-                return $payment->is_recurrent ? "Automatyczna" : "Pierwsza";
+                return $payment->is_recurrent ? 'Automatyczna' : 'Pierwsza';
             })
             ->addColumn('subscription', function (Payment $payment) {
                 return $payment->subscription_id;
             })
             ->addColumn('user', function (Payment $payment) {
-                return "#" . ($payment->subscription->user->id ?? null)
-                    . " | " . ($payment->subscription->user->email ?? null);
+                return '#' . ($payment->subscription->user->id ?? null)
+                    . ' | ' . ($payment->subscription->user->email ?? null);
             })
             ->addColumn('reason', function (Payment $payment) {
                 return $payment->reason;

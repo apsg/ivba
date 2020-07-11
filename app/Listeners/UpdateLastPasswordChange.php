@@ -3,8 +3,8 @@
 namespace App\Listeners;
 
 use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
 
 class UpdateLastPasswordChange
 {
@@ -25,7 +25,7 @@ class UpdateLastPasswordChange
      * @return void
      */
     public function handle(PasswordReset $event)
-    {        
+    {
         $event->user->update([
             'changed_password_at' => \Carbon\Carbon::now(),
         ]);

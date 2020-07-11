@@ -19,7 +19,6 @@ class TpayController extends Controller
 
     public function showGate()
     {
-
         $gate = (new OnSiteGate())->init();
 
         return view('tpay.gate')->with(compact('gate'));

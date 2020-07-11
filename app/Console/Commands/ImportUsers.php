@@ -37,10 +37,9 @@ class ImportUsers extends Command
      */
     public function handle()
     {
-        $file = fopen(base_path().'/users.csv' , 'r');
+        $file = fopen(base_path() . '/users.csv', 'r');
 
-        while($data = fgetcsv($file, 1000, ',')){
-
+        while ($data = fgetcsv($file, 1000, ',')) {
             $email = $data[0];
             $name = $data[1];
             $status = $data[2];
@@ -54,20 +53,19 @@ class ImportUsers extends Command
             $user = \App\User::firstOrCreate([
                     'email' => $email,
                 ]);
-            if($user) {
+            if ($user) {
                 $user->update([
                         'name'  => $name,
                     ]);
 
-                if( $status == 'active' && $type == 2 ){
+                if ($status == 'active' && $type == 2) {
                     $enddate = \Carbon\Carbon::parse($data[3]);
                     $enddate = $enddate->addMonths(3);
                     $user->update([
-                            'full_access_expires' => $enddate
+                            'full_access_expires' => $enddate,
                         ]);
                 }
             }
-
         }
     }
 }

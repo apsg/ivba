@@ -15,13 +15,12 @@ class CheckForEmailClickedLinks
      */
     public function handle($request, Closure $next)
     {
-
-        if( isset( $request->eid ) ){
+        if (isset($request->eid)) {
             $email = \App\Email::find($request->eid);
-            if($email && is_null($email->clicked_at)){
-                if( ! $request->is('unsubscribe/*') ){
+            if ($email && is_null($email->clicked_at)) {
+                if (! $request->is('unsubscribe/*')) {
                     $email->update([
-                        'clicked_at' => \Carbon\Carbon::now()
+                        'clicked_at' => \Carbon\Carbon::now(),
                     ]);
                 }
             }

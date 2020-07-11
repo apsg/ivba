@@ -56,7 +56,7 @@ class ResetPasswordController extends Controller
     }
 
     /**
-     * Komunikaty błędów
+     * Komunikaty błędów.
      * @return [type] [description]
      */
     protected function validationErrorMessages()
@@ -67,6 +67,4 @@ class ResetPasswordController extends Controller
             'password.different_password' => 'Hasło musi być inne, niż 4 ostatnie hasła',
         ];
     }
-
-
 }

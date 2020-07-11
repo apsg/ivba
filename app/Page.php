@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Page
+ * App\Page.
  *
  * @property int $id
  * @property string $slug
@@ -33,10 +33,11 @@ class Page extends Model
     protected $guarded = [];
 
     /**
-     * Po czym przeszukujemy ścieżki
+     * Po czym przeszukujemy ścieżki.
      * @return [type] [description]
      */
-    public function getRouteKeyName(){
+    public function getRouteKeyName()
+    {
         return 'slug';
     }
 }

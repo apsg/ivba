@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCouponsTable extends Migration
 {
@@ -18,13 +18,13 @@ class CreateCouponsTable extends Migration
 
             $table->string('code');
             $table->tinyInteger('type')->default(1);
-            $table->decimal('amount', 6,2);
+            $table->decimal('amount', 6, 2);
             $table->unsignedInteger('uses_left')->default(1);
 
             $table->timestamps();
         });
 
-        Schema::create('coupon_order', function(Blueprint $table){
+        Schema::create('coupon_order', function (Blueprint $table) {
             $table->unsignedInteger('coupon_id');
             $table->foreign('coupon_id')->references('id')->on('coupons')->onDelete('cascade');
             $table->unsignedInteger('order_id');

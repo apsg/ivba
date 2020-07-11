@@ -26,7 +26,7 @@ class AccessesTest extends TestCase
     /** @var Course */
     protected $course;
 
-    /**@var AccessRepository */
+    /** @var AccessRepository */
     protected $repository;
 
     protected function setUp()
@@ -98,7 +98,6 @@ class AccessesTest extends TestCase
         $this->assertTrue($courseAccess);
         $this->assertTrue($lessonAccess);
     }
-
 
     /** @test */
     public function should_not_allow_user_with_custom_expired_access_to_access_course()

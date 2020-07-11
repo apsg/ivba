@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Quiz
+ * App\Quiz.
  *
  * @property int                                                           $id
  * @property int                                                           $course_id
@@ -40,7 +40,7 @@ class Quiz extends Model
     protected $guarded = [];
 
     /**
-     * Kurs, do którego ten test jest przypisany
+     * Kurs, do którego ten test jest przypisany.
      */
     public function course()
     {
@@ -48,7 +48,7 @@ class Quiz extends Model
     }
 
     /**
-     * Pytania przypisane do tego testu
+     * Pytania przypisane do tego testu.
      */
     public function questions()
     {
@@ -57,7 +57,7 @@ class Quiz extends Model
     }
 
     /**
-     * Użytkownicy, którzy wzięli udział w tym teście
+     * Użytkownicy, którzy wzięli udział w tym teście.
      */
     public function users()
     {
@@ -66,7 +66,7 @@ class Quiz extends Model
     }
 
     /**
-     * Zwraca link do tego quizu
+     * Zwraca link do tego quizu.
      */
     public function url()
     {
@@ -80,7 +80,7 @@ class Quiz extends Model
     }
 
     /**
-     * Link rozpoczynania quizu
+     * Link rozpoczynania quizu.
      */
     public function startUrl()
     {
@@ -114,7 +114,7 @@ class Quiz extends Model
     }
 
     /**
-     * Zakończ kurs
+     * Zakończ kurs.
      */
     public function finish() : self
     {
@@ -123,7 +123,7 @@ class Quiz extends Model
         /** @var User $user */
         $user = Auth::user();
 
-        if (!$user->hasStartedQuiz($this->id)) {
+        if (! $user->hasStartedQuiz($this->id)) {
             $this->users()->save($user);
         }
 
@@ -135,7 +135,7 @@ class Quiz extends Model
 
         $isPass = $percentage >= $this->pass_threshold;
 
-        if ($isPass && !$user->hasPassedQuiz($this->id)) {
+        if ($isPass && ! $user->hasPassedQuiz($this->id)) {
             event(new UserHasPassedQuizEvent($user, $this));
         }
 
@@ -149,7 +149,7 @@ class Quiz extends Model
     }
 
     /**
-     * zwraca maksymalną liczbę punktów za ten test
+     * zwraca maksymalną liczbę punktów za ten test.
      */
     public function getMaxPointsAttribute() : int
     {
@@ -164,5 +164,4 @@ class Quiz extends Model
                 ->pivot
                 ->points ?? 0;
     }
-
 }

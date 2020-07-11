@@ -24,7 +24,7 @@ use App\Http\Controllers\TpayController;
 require __DIR__ . '/admin/routes.php';
 require __DIR__ . '/learn/routes.php';
 require __DIR__ . '/axios.php';
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('/', PagesController::class . '@home');
 
@@ -34,7 +34,6 @@ Route::get('/courses', CoursesController::class . '@index');
 Route::get('/course', CoursesController::class . '@redirect');
 Route::get('/course/{course}', CoursesController::class . '@show');
 Route::get('/course/{course}/buy', OrderController::class . '@orderCourse');
-
 
 // strony różniste
 Route::get('/account', AccountController::class . '@show');
@@ -76,7 +75,6 @@ Route::get('/email/{email}/img', EmailsController::class . '@getOpenedImg');
 Route::post('newsletter/subscribe', NewsletterSubscribersController::class . '@subscribe');
 
 Route::get('/itemfile/{file}', ItemFilesController::class . '@download');
-
 
 Route::get('/certificate/{certificate}/download', CertificatesController::class . '@download');
 Route::get('/check_cert', CertificatesController::class . '@check');

@@ -38,14 +38,13 @@ class MakeRecurringPayments extends Command
     public function handle()
     {
         $ph = new \App\Helpers\Payment;
-        
+
         $subscriptions = \App\Subscription::where('next_payment_at', '<=', \Carbon\Carbon::now()->format('Y-m-d'))
             ->where('is_active', true)
             ->whereNull('cancelled_at')
             ->get();
 
         foreach ($subscriptions as  $subscription) {
-            
             $subscription->update([
                 'tries' => $subscription->tries + 1,
             ]);
@@ -59,15 +58,14 @@ class MakeRecurringPayments extends Command
 
             $result = $ph->recurring($order);
 
-            if($result->status->statusCode == 'SUCCESS' ){
+            if ($result->status->statusCode == 'SUCCESS') {
                 $order->confirm();
-                $order->user->notify( new \App\Notifications\SubscriptionPaid($subscription->fresh()) );
-            }else{
-                if($subscription->tries > 3)
+                $order->user->notify(new \App\Notifications\SubscriptionPaid($subscription->fresh()));
+            } else {
+                if ($subscription->tries > 3) {
                     $subscription->cancel();
+                }
             }
-
         }
-
     }
 }

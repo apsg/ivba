@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class ImagesStoringInStorage extends Migration
 {
@@ -14,11 +14,9 @@ class ImagesStoringInStorage extends Migration
     public function up()
     {
         Schema::table('images', function (Blueprint $table) {
-            
             $table->string('filename');
 
             $table->dropColumn('hash');
-
         });
     }
 
@@ -30,8 +28,8 @@ class ImagesStoringInStorage extends Migration
     public function down()
     {
         Schema::table('images', function (Blueprint $table) {
-            $table->dropColumn( 'filename' );
-            $table->string( 'hash' );
+            $table->dropColumn('filename');
+            $table->string('hash');
         });
     }
 }

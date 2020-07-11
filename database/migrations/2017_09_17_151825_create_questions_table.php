@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateQuestionsTable extends Migration
 {
@@ -28,7 +28,7 @@ class CreateQuestionsTable extends Migration
 
             $table->unsignedInteger('points')->default(1);
             $table->unsignedInteger('position')->default(0);
-            
+
             $table->string('answer')->nullable();
 
             $table->timestamps();

@@ -37,6 +37,5 @@ class FixAccessDays extends Command
                     $subscription->valid_until,
                     $subscription->created_at);
         }
-
     }
 }

@@ -10,10 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 class AccessRepository
 {
     /**
-     * Przyznaj użytkownikowi dostęp do elementu na X dni
-     * @param integer $user_id [description]
+     * Przyznaj użytkownikowi dostęp do elementu na X dni.
+     * @param int $user_id [description]
      * @param model   $item [description]
-     * @param integer $days [description]
+     * @param int $days [description]
      * @return [type]          [description]
      */
     public function grant(User $user, AccessableContract $item, int $days = null) : Access

@@ -30,7 +30,6 @@ class RankingServiceTest extends TestCase
         ]);
 
         $this->rankingService = app(RankingService::class);
-
     }
 
     /** @test */

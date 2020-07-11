@@ -14,7 +14,7 @@ class AdminQuestionsController extends Controller
     }
 
     /**
-     * Dodaj nowe pytanie do testu
+     * Dodaj nowe pytanie do testu.
      * @param Quiz    $quiz [description]
      * @param Request $request [description]
      * @return [type]           [description]
@@ -38,7 +38,7 @@ class AdminQuestionsController extends Controller
     }
 
     /**
-     * Zaktualizuj dane pytania
+     * Zaktualizuj dane pytania.
      * @param Question $question [description]
      * @param Request  $request [description]
      * @return [type]             [description]
@@ -52,7 +52,7 @@ class AdminQuestionsController extends Controller
     }
 
     /**
-     * Usuwa pytanie
+     * Usuwa pytanie.
      * @param Question $question [description]
      * @return [type]             [description]
      */

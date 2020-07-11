@@ -24,14 +24,13 @@ class CourseRequest extends FormRequest
      */
     public function rules()
     {
-
         return [
             'title' => 'required',
             'description' => 'required',
             'price'     => 'required|numeric|min:0',
             'difficulty' => 'required|numeric|min:1|max:3',
             'image_id' => 'exists:images,id',
-            'slug' => 'unique:courses,slug,'.($this->route('course')->id ?? "") ,
+            'slug' => 'unique:courses,slug,' . ($this->route('course')->id ?? ''),
         ];
     }
 }

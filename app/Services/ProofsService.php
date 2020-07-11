@@ -7,10 +7,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
-
 class ProofsService
 {
-
     public function nextForUser(User $user)
     {
         if ($this->isTimeForNextProof($user->last_proof_at)) {

@@ -16,7 +16,7 @@ use Illuminate\Support\Collection;
  * @property float|null              full_price
  * @property int                     course_id
  * @property-read Course             course
- * @property boolean                 is_full_data_required
+ * @property bool                 is_full_data_required
  *
  * @property string                  message_email
  * @property string                  message_subject
@@ -32,7 +32,6 @@ use Illuminate\Support\Collection;
  * @property-read string             link
  * @property-read Collection|Order[] orders
  * @property-read Collection|Order[] confirmed_orders
- *
  */
 class QuickSale extends Model implements OrderableContract
 {

@@ -3,8 +3,8 @@
 namespace App\Listeners;
 
 use App\Events\UserPaidAccessFinished;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
 
 class PlanUserExpiredFollowups
 {
@@ -26,12 +26,12 @@ class PlanUserExpiredFollowups
      */
     public function handle(UserPaidAccessFinished $event)
     {
-        $fcs = \App\FollowupContent::where('event', $event::EVENTNAME )->get();
+        $fcs = \App\FollowupContent::where('event', $event::EVENTNAME)->get();
 
         foreach ($fcs as $fc) {
             $fc->followups()->create([
                     'user_id' => $event->user->id,
-                    'send_at' => \Carbon\Carbon::now()->add( $fc->interval ),
+                    'send_at' => \Carbon\Carbon::now()->add($fc->interval),
                 ]);
         }
     }

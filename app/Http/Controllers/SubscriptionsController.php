@@ -33,7 +33,7 @@ class SubscriptionsController extends Controller
     }
 
     /**
-     * Anuluj abonament
+     * Anuluj abonament.
      */
     public function cancel(Subscription $subscription)
     {
@@ -55,7 +55,7 @@ class SubscriptionsController extends Controller
             ], 404);
         }
 
-        if (!$request->coupon()->isSubscription()) {
+        if (! $request->coupon()->isSubscription()) {
             return response()->json(['message' => 'wrong type'], 422);
         }
 

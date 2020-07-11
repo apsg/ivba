@@ -32,7 +32,7 @@ class LessonRequest extends FormRequest
             'image_id' => 'exists:images,id',
             // 'video_id' => 'exists:videos,id',
             'duration' => 'required|numeric|min:0',
-            'slug' => 'unique:lessons,slug,'.( $this->route('lesson')->id ?? "") ,
+            'slug' => 'unique:lessons,slug,' . ($this->route('lesson')->id ?? ''),
         ];
     }
 }

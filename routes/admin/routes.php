@@ -26,7 +26,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewslettersController;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
-
     Route::get('/', HomeController::class . '@index')->name('home');
 
     Route::get('courses', AdminCoursesController::class . '@index');
@@ -175,5 +174,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::post('/set', SettingsController::class . '@set')->name('admin.settings.set');
         Route::delete('/delete', SettingsController::class . '@destroy')->name('admin.settings.delete');
     });
-
 });

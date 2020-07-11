@@ -13,7 +13,7 @@ class AdminOrdersController extends Controller
     }
 
     /**
-     * Pokaż spis zamówień
+     * Pokaż spis zamówień.
      * @return [type] [description]
      */
     public function index()
@@ -22,7 +22,7 @@ class AdminOrdersController extends Controller
     }
 
     /**
-     * Zwraca dane dla datatables
+     * Zwraca dane dla datatables.
      * @param  Request $request [description]
      * @return [type]           [description]
      */
@@ -37,7 +37,7 @@ class AdminOrdersController extends Controller
             })
             ->addColumn('items2', function ($item) {
                 if ($item->is_full_access) {
-                    return "Pałen dostęp";
+                    return 'Pałen dostęp';
                 } else {
                     return '';
                 }

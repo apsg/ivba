@@ -12,8 +12,8 @@ class MenuHelper
         return $items->map(function ($item) {
             return "<a href='"
                 . (filter_var($item->url, FILTER_VALIDATE_URL) ? $item->url : url($item->url))
-                . "' " . ($item->is_new_window ? "target='_blank'>" : ">")
-                . $item->title . "</a>";
+                . "' " . ($item->is_new_window ? "target='_blank'>" : '>')
+                . $item->title . '</a>';
         })->implode('');
     }
 }

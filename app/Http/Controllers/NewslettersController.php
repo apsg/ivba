@@ -82,7 +82,6 @@ class NewslettersController extends Controller
 
     public function patch(Newsletter $newsletter, Request $request)
     {
-
         $this->validate($request, [
             'title'      => 'required',
             'body'       => 'required',
@@ -94,7 +93,6 @@ class NewslettersController extends Controller
         $attachment = $newsletter->attachment;
 
         if ($request->attachment) {
-
             $attachment = $request->file('attachment')
                 ->storeAs('attachments', $request->attachment->getClientOriginalName());
         }

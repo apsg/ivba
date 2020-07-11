@@ -42,7 +42,6 @@ class TryToProlongSubscriptionListener
                 'subscription' => $subscription->id,
                 'valid_until'  => $subscription->valid_until,
             ]);
-
         } catch (PaymentException $exception) {
             $this->subscriptionRepository->tryFailed($event->subscription);
         } catch (TException $exception) {

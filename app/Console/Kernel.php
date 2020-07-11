@@ -65,7 +65,6 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('subscriptions:prolong')
             ->everyMinute();
-
     }
 
     /**

@@ -39,7 +39,7 @@ class CopyUsersToNewsletter extends Command
     {
         $users = \App\User::all();
 
-        foreach ($users as $user ) {
+        foreach ($users as $user) {
             \App\NewsletterSubscriber::firstOrCreate([
                 'email' => $user->email,
             ])->update([

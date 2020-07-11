@@ -8,7 +8,6 @@ class PasswordReset
     public static function send()
     {
         if (\Auth::check()) {
-
             $user = \Auth::user();
 
             app(UserRepository::class)->resetPassword($user);

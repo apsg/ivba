@@ -37,14 +37,14 @@ class ImportCoupons extends Command
      */
     public function handle()
     {
-        $f = fopen(base_path().'/kupony.csv', 'r');
+        $f = fopen(base_path() . '/kupony.csv', 'r');
 
-        while($data = fgetcsv($f)){
+        while ($data = fgetcsv($f)) {
             \App\Coupon::create([
                     'code' => $data[0],
                     'type' => \App\Coupon::TYPE_VALUE,
                     'amount' => config('app.full_access_price'),
-                    'uses_left' => 1
+                    'uses_left' => 1,
                 ]);
         }
     }

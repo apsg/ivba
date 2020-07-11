@@ -22,7 +22,7 @@ class CouponRepository
         int $uses = 1,
         array $courses = []
     ) : Collection {
-        if (!in_array($type, static::ALLOWED_TYPES)) {
+        if (! in_array($type, static::ALLOWED_TYPES)) {
             throw new \InvalidArgumentException('Wrong type');
         }
 

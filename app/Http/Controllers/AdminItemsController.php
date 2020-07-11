@@ -2,68 +2,69 @@
 
 namespace App\Http\Controllers;
 
-use App\Lesson;
-use App\ItemText;
 use App\ItemFile;
 use App\ItemImage;
 use App\ItemMovie;
+use App\ItemText;
+use App\Lesson;
 use Illuminate\Http\Request;
 
 class AdminItemsController extends Controller
 {
-    public function __construct(){
-    	$this->middleware('auth');
-    	$this->middleware('admin');
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     /**
-     * Dodaj nowy element do lekcji
+     * Dodaj nowy element do lekcji.
      * @param Lesson  $lesson  [description]
      * @param Request $request [description]
      */
-    public function add(Lesson $lesson, Request $request){
+    public function add(Lesson $lesson, Request $request)
+    {
 
         // Wstępna walidacja - pola wspólne
-		$this->validate($request, [
-				'title' => 'required',
+        $this->validate($request, [
+                'title' => 'required',
                 'type' => 'required|in:image,text,file,video',
-			]);
+            ]);
 
         // Dodawanie nowego obrazu
-    	if($request->type == 'image'){
+        if ($request->type == 'image') {
+            $this->validate($request, [
+                'image_id' => 'required|numeric|exists:images,id',
+            ]);
 
-    		$this->validate($request, [
-    			'image_id' => 'required|numeric|exists:images,id'
-    		]);
+            $image = ItemImage::create($request->only([
+                    'title',
+                    'image_id',
+                ]));
 
-    		$image = ItemImage::create($request->only([
-    				'title',
-    				'image_id',
-    			]));
+            $lesson->images()->attach($image, ['position' => $lesson->nextItemPosition()]);
 
-    		$lesson->images()->attach( $image, [ 'position' => $lesson->nextItemPosition() ] );
-
-    		return back()->with('message', 'Dodano pomyślnie');
-    	}
+            return back()->with('message', 'Dodano pomyślnie');
+        }
 
         // Dodawanie nowego obiektu tekstowego
-        if($request->type == 'text'){
+        if ($request->type == 'text') {
             $this->validate($request, [
                 'text' => 'required',
                 ]);
 
             $text = ItemText::create($request->only([
                 'title',
-                'text'
+                'text',
                 ]));
 
-            $lesson->texts()->attach( $text, [ 'position' => $lesson->nextItemPosition() ] );
+            $lesson->texts()->attach($text, ['position' => $lesson->nextItemPosition()]);
 
             return back()->with('message', 'Dodano pomyślnie');
         }
 
         //  Dodawanie nowego pliku
-        if($request->type == 'file'){
+        if ($request->type == 'file') {
             $this->validate($request, [
                 'file' => 'required|file',
                 'host' => 'required|in:1,2',
@@ -76,10 +77,10 @@ class AdminItemsController extends Controller
             $mime = $request->file('file')->getMimeType();
 
             // Wistia
-            if($request->host == 1){
+            if ($request->host == 1) {
                 $tmpPath = $request->file->store('tmp');
                 $w = new \App\Helpers\Wistia;
-                $res = $w->uploadFile( storage_path( 'app/' . $tmpPath) );
+                $res = $w->uploadFile(storage_path('app/' . $tmpPath));
 
                 $file = ItemFile::create([
                     'host' => 1,
@@ -91,15 +92,15 @@ class AdminItemsController extends Controller
                     'name' => $name,
                     'mime' => $mime,
                     ]);
-                $lesson->files()->attach( $file, ['position' => $lesson->nextItemPosition() ] );
+                $lesson->files()->attach($file, ['position' => $lesson->nextItemPosition()]);
 
-                \File::cleanDirectory( storage_path('app/tmp') );
+                \File::cleanDirectory(storage_path('app/tmp'));
 
                 return back()->with('message', 'Dodano pomyślnie');
             }
 
             // Lokalny storage
-            if($request->host == 2){
+            if ($request->host == 2) {
                 $path = $request->file->store('files');
 
                 $file = ItemFile::create([
@@ -107,22 +108,20 @@ class AdminItemsController extends Controller
                     'size' => $size,
                     'type' => $type,
                     'title' => $request->title,
-                    'path' => 'app/'.$path,
+                    'path' => 'app/' . $path,
                     'name' => $name,
                     'mime' => $mime,
                     ]);
-                $lesson->files()->attach( $file, ['position' => $lesson->nextItemPosition() ] );
+                $lesson->files()->attach($file, ['position' => $lesson->nextItemPosition()]);
+
                 return back()->with('message', 'Dodano pomyślnie');
-
             }
-
         }
 
         // Dodawanie nowego obrazu
-        if($request->type == 'video'){
-
+        if ($request->type == 'video') {
             $this->validate($request, [
-                'video_id' => 'required|numeric|exists:videos,id'
+                'video_id' => 'required|numeric|exists:videos,id',
             ]);
 
             $video = ItemMovie::create($request->only([
@@ -130,51 +129,57 @@ class AdminItemsController extends Controller
                     'video_id',
                 ]));
 
-            $lesson->videos()->attach( $video, [ 'position' => $lesson->nextItemPosition() ] );
+            $lesson->videos()->attach($video, ['position' => $lesson->nextItemPosition()]);
 
             return back()->with('message', 'Dodano pomyślnie');
         }
-
-
     }
-    
+
     /**
-     * Usuń plik
+     * Usuń plik.
      * @param  ItemFile $item [description]
      * @return [type]         [description]
      */
-    public function deleteFile(ItemFile $item){
+    public function deleteFile(ItemFile $item)
+    {
         $item->delete();
+
         return back()->with('message', 'Element usunięty');
     }
 
     /**
-     * Usuń obraz
+     * Usuń obraz.
      * @param  ItemFile $item [description]
      * @return [type]         [description]
      */
-    public function deleteImage(ItemImage $item){
+    public function deleteImage(ItemImage $item)
+    {
         $item->delete();
+
         return back()->with('message', 'Element usunięty');
     }
 
     /**
-     * Usuń film
+     * Usuń film.
      * @param  ItemFile $item [description]
      * @return [type]         [description]
      */
-    public function deleteMovie(ItemMovie $item){
+    public function deleteMovie(ItemMovie $item)
+    {
         $item->delete();
+
         return back()->with('message', 'Element usunięty');
     }
 
     /**
-     * Usuń tekst
+     * Usuń tekst.
      * @param  ItemFile $item [description]
      * @return [type]         [description]
      */
-    public function deleteText(ItemText $item){
+    public function deleteText(ItemText $item)
+    {
         $item->delete();
+
         return back()->with('message', 'Element usunięty');
     }
 }

@@ -6,7 +6,7 @@ use App\Item;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\ItemImage
+ * App\ItemImage.
  *
  * @property int $id
  * @property string $title
@@ -26,14 +26,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ItemImage extends Item
 {
-	public $view = 'admin.partials.item_image';	
+    public $view = 'admin.partials.item_image';
 
-	/**
-	 * Obraz przypięty do tego widoku
-	 * @return [type] [description]
-	 */
-	public function image(){
-		return $this->belongsTo(\App\Image::class);
-	}
-
+    /**
+     * Obraz przypięty do tego widoku.
+     * @return [type] [description]
+     */
+    public function image()
+    {
+        return $this->belongsTo(\App\Image::class);
+    }
 }

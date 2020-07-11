@@ -11,9 +11,8 @@ use Illuminate\Http\Request;
 
 class ProofsController extends Controller
 {
-
     /**
-     * Zwraca kolejny proof
+     * Zwraca kolejny proof.
      * @param  Request $request [description]
      * @return [type]           [description]
      */
@@ -27,7 +26,6 @@ class ProofsController extends Controller
             if ($this->isTimeForProof($user->last_proof_at)) {
                 $proof = Proof::getNextForUser($user);
             }
-
         } else {
             try {
                 $date = Carbon::parse($request->input('last_proof_at', '2017-01-01'));
@@ -43,7 +41,7 @@ class ProofsController extends Controller
             return [
                 'html'     => view('proofs.render')->with(compact('proof'))->render(),
                 'proof_id' => $proof->is_registered ? $request->last_proof_id : $proof->id,
-                'proof_at' => $proof->is_registered ? $request->last_proof_at : (string)Carbon::now(),
+                'proof_at' => $proof->is_registered ? $request->last_proof_at : (string) Carbon::now(),
             ];
         } else {
             return [
@@ -71,15 +69,13 @@ class ProofsController extends Controller
             ->toArray();
     }
 
-
     /**
      * Czy już czas na następny proof?
      * @param  Carbon $date [description]
-     * @return boolean              [description]
+     * @return bool              [description]
      */
     protected function isTimeForProof($date)
     {
-
         if (empty($date)) {
             return true;
         }

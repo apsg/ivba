@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class Items extends Migration
 {
@@ -13,10 +13,9 @@ class Items extends Migration
      */
     public function up()
     {
-        Schema::create('items', function(Blueprint $table){
-            
+        Schema::create('items', function (Blueprint $table) {
             $table->unsignedInteger('lesson_id');
-            
+
             $table->unsignedInteger('items_id');
             $table->string('items_type');
 
@@ -25,7 +24,6 @@ class Items extends Migration
             $table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
 
             $table->unique(['lesson_id', 'items_id', 'items_type']);
-
         });
     }
 

@@ -7,64 +7,67 @@ use Illuminate\Http\Request;
 
 class AdminMenusController extends Controller
 {
-    public function __construct(){
-    	$this->middleware('auth');
-    	$this->middleware('admin');
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     /**
-     * Pokaż listę elementów menu
+     * Pokaż listę elementów menu.
      * @return [type] [description]
      */
-    public function index(){
+    public function index()
+    {
+        $items = MenuItem::orderBy(\DB::raw('menu_id, position'))->get()->groupBy('menu_id');
 
-    	$items = MenuItem::orderBy( \DB::raw('menu_id, position') )->get()->groupBy('menu_id');
-
-    	return view('admin.menus')->with(compact('items'));
+        return view('admin.menus')->with(compact('items'));
     }
 
     /**
-     * Zapisuje nowy element w bazie danych
+     * Zapisuje nowy element w bazie danych.
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function store(Request $request){
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'url'	=> 'required',
+        ]);
 
-    	$this->validate( $request, [
-    		'title' => 'required',
-    		'url'	=> 'required',
-		] );
+        MenuItem::create($request->all());
 
-		MenuItem::create($request->all());
-
-		return back();
+        return back();
     }
 
     /**
-     * Usuwa element
+     * Usuwa element.
      * @param  MenuItem $item [description]
      * @return [type]         [description]
      */
-    public function delete(MenuItem $item){
+    public function delete(MenuItem $item)
+    {
+        if (\Gate::allows('admin')) {
+            $item->delete();
+        }
 
-    	if(\Gate::allows('admin'))
-	    	$item->delete();
-    	return back();
+        return back();
     }
 
     /**
-     * [updateOrder description]
+     * [updateOrder description].
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function updateOrder(Request $request){
-    	foreach($request->order as $item_order){
-    		\DB::table('menu_items')
-    			->where('id', $item_order['id'])
-    			->update([ 'position' => $item_order['order'] ]);
-    	}
+    public function updateOrder(Request $request)
+    {
+        foreach ($request->order as $item_order) {
+            \DB::table('menu_items')
+                ->where('id', $item_order['id'])
+                ->update(['position' => $item_order['order']]);
+        }
 
-    	return ['ok'];
+        return ['ok'];
     }
-
 }

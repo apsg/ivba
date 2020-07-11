@@ -21,7 +21,7 @@ class RankingTransformer extends TransformerAbstract
             'name'     => mb_convert_encoding($this->obfuscate($item), 'UTF-8'),
             'points'   => $item->points,
             'is_me'    => $this->isMe($item->user_id),
-            'avatar'   => "https://www.gravatar.com/avatar/" . md5($item->email),
+            'avatar'   => 'https://www.gravatar.com/avatar/' . md5($item->email),
         ];
     }
 

@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Answer
+ * App\Answer.
  *
  * @property int           $id
  * @property int           $user_id
@@ -30,7 +30,6 @@ class Answer extends Model
         'is_correct',
         'points',
     ];
-
 
     protected $casts = [
         'answer' => 'array',

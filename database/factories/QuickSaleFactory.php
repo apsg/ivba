@@ -18,5 +18,3 @@ $factory->define(QuickSale::class, function (Faker $faker) {
         'file_url'        => $faker->boolean ? $faker->url : null,
     ];
 });
-
-

@@ -68,7 +68,7 @@ class RecurrentPaymentGate extends PaymentCard
         } else {
             app(PaymentRepository::class)
                 ->rejectRecurrent($this->payment, array_get($result, 'reason'));
-            throw new PaymentException("Payment failed: " . array_get($result, 'reason'));
+            throw new PaymentException('Payment failed: ' . array_get($result, 'reason'));
         }
     }
 
@@ -77,5 +77,4 @@ class RecurrentPaymentGate extends PaymentCard
         return app(PaymentRepository::class)
             ->confirmRecurrent($this->payment);
     }
-
 }

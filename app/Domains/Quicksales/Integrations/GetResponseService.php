@@ -23,7 +23,7 @@ class GetResponseService
     public function __construct()
     {
         if (empty(config('services.getresponse.key'))) {
-            throw new GetResponseException("Missing api key");
+            throw new GetResponseException('Missing api key');
         }
 
         $this->client = GetresponseClientFactory::createWithApiKey(config('services.getresponse.key'));

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Certificate
+ * App\Certificate.
  *
  * @property int         $id
  * @property int         $course_id
@@ -33,8 +33,8 @@ class Certificate extends Model
      * Kurs, do którego przypisano ten certyfikat.
      * @return [type] [description]
      */
-    public function course(){
-    	return $this->belongsTo(Course::class);
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
     }
-
 }

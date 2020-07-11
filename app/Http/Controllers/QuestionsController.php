@@ -22,5 +22,4 @@ class QuestionsController extends Controller
 
         return back();
     }
-
 }

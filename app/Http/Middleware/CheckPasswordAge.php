@@ -20,7 +20,6 @@ class CheckPasswordAge
         if (env('APP_ENV') === 'production'
             && Auth::check()
             && Auth::user()->changed_password_at->diffInDays() >= 90) {
-
             PasswordReset::send();
 
             Auth::logout();

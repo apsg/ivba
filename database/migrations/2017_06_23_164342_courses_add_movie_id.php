@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CoursesAddMovieId extends Migration
 {
@@ -13,11 +13,10 @@ class CoursesAddMovieId extends Migration
      */
     public function up()
     {
-        Schema::table('courses', function(Blueprint $table){
+        Schema::table('courses', function (Blueprint $table) {
             $table->unsignedInteger('video_id')->nullable();
 
             $table->foreign('video_id')->references('id')->on('videos')->onDelete('SET NULL');
-
         });
     }
 
@@ -28,7 +27,7 @@ class CoursesAddMovieId extends Migration
      */
     public function down()
     {
-        Schema::table('courses', function(Blueprint $table){
+        Schema::table('courses', function (Blueprint $table) {
             $table->dropForeign(['video_id']);
             $table->dropColumn('video_id');
         });

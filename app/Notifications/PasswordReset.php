@@ -53,7 +53,8 @@ class PasswordReset extends Notification
                 ->line('Założyliśmy Ci konto na naszym portalu! Będziesz tam miał dostęp do zakupionych kursów. '
                     . 'Aby móc z niego w pełni korzystać musisz ustawić sobie hasło. '
                     . 'Aby to zrobić kliknij w poniższy link:')
-                ->action('Ustaw hasło', url(config('app.url') . route('password.reset', $this->token, false)))
+                ->action('Ustaw hasło', url(config('app.url')
+                    . route('password.reset', ['token' => $this->token], false)))
                 ->line('Możesz też w swoim panelu zarządzania kontem dodać dane do faktury:')
                 ->line('Zobacz swoje dane: ' . url('/account'));
         }
@@ -65,7 +66,8 @@ class PasswordReset extends Notification
             ->line('Ze względów bezpieczeństwa lub na Twoje życzenie uruchomiona została procedura resetu hasła. '
                 . 'Jeśli dopiero co utworzono Twoje konto, dzięki poniższemu linkowi możesz ustawić swoje hasło. '
                 . 'Aby je zresetować kliknij w poniższy link:')
-            ->action('Zresetuj hasło', url(config('app.url') . route('password.reset', $this->token, false)));
+            ->action('Zresetuj hasło',
+                url(config('app.url') . route('password.reset', ['token' => $this->token], false)));
     }
 
     /**

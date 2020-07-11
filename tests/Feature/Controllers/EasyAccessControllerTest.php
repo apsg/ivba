@@ -50,7 +50,6 @@ class EasyAccessControllerTest extends TestCase
         $response->assertSeeText('Wykup dostęp');
     }
 
-
     /**
      * @test
      * @dataProvider durations
@@ -73,8 +72,8 @@ class EasyAccessControllerTest extends TestCase
             $response->assertRedirect('/cart');
             $this->assertEquals($duration, $order->duration);
             $this->assertEquals($price, $order->price);
-            $this->assertTrue((bool)$order->is_easy_access);
-            $this->assertFalse((bool)$order->is_full_access);
+            $this->assertTrue((bool) $order->is_easy_access);
+            $this->assertFalse((bool) $order->is_full_access);
         } else {
             $response->assertRedirect('/');
             $response->assertSessionHasErrors();

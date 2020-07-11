@@ -39,9 +39,8 @@ class GenerateThumbnails extends Command
     {
         $images = \App\Image::all();
 
-        $images->each->makeThumb(200,200);
-        $images->each->makeThumb(189,209);
-        $images->each->makeThumb(360,240);
-
+        $images->each->makeThumb(200, 200);
+        $images->each->makeThumb(189, 209);
+        $images->each->makeThumb(360, 240);
     }
 }

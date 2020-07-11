@@ -8,7 +8,6 @@ class PayPalHelper
 {
     public static function getNextDate($profileid)
     {
-
         $provider = PayPal::setProvider('express_checkout');
         $details = $provider->getRecurringPaymentsProfileDetails($profileid);
 
@@ -28,7 +27,7 @@ class PayPalHelper
     }
 
     /**
-     * Pobiera status subskrypcji
+     * Pobiera status subskrypcji.
      * @param  [type] $profileid [description]
      * @return [type]            [description]
      */
@@ -45,7 +44,7 @@ class PayPalHelper
     }
 
     /**
-     * Anuluj subskrypcję
+     * Anuluj subskrypcję.
      * @param  [type] $profileid [description]
      * @return [type]            [description]
      */

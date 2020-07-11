@@ -41,10 +41,9 @@ class DiscoverAllVideos extends Command
         $w = new \App\Helpers\Wistia;
         $videos = $w->showVideos();
 
-        foreach($videos->medias as $video){
-
+        foreach ($videos->medias as $video) {
             $img = $w->client->show_media($video->hashed_id);
-            
+
             \App\Video::firstOrCreate([
                     'url'  => $img->assets[0]->url,
                     'hash' => $video->hashed_id,

@@ -23,7 +23,6 @@ class CourseController extends Controller
         return Cache::remember(ProgressHelper::cacheKey($user, $course),
             60,
             function () use ($user, $service, $course) {
-
                 $total = $service->total($course);
                 $finished = $service->finished($user, $course);
                 $progress = $service->progress($user, $course);

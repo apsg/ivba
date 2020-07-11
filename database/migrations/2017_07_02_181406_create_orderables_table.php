@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateOrderablesTable extends Migration
 {
@@ -14,7 +14,6 @@ class CreateOrderablesTable extends Migration
     public function up()
     {
         Schema::create('orderables', function (Blueprint $table) {
-            
             $table->unsignedInteger('order_id');
 
             $table->foreign('order_id')->references('id')->on('orders');
@@ -23,7 +22,6 @@ class CreateOrderablesTable extends Migration
             $table->unsignedInteger('orderable_id');
 
             $table->unique(['order_id', 'orderable_type', 'orderable_id']);
-
         });
     }
 

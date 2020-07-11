@@ -36,7 +36,7 @@ class PaymentRepository
     public function handle($paymentId, string $status = null, array $data = []) : Payment
     {
         /** @var Payment $payment */
-        $payment = Payment::findOrFail((int)$paymentId);
+        $payment = Payment::findOrFail((int) $paymentId);
 
         if ($status === static::STATUS_CORRECT) {
             if ($payment->confirmed_at === null) {

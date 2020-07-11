@@ -34,7 +34,7 @@ class OrderController extends Controller
         if ($order->total() > 0) {
             $transaction = new TpayTransaction($order);
 
-            return redirect($transaction->createTransaction((int)$request->input('group')));
+            return redirect($transaction->createTransaction((int) $request->input('group')));
         } else {
             $order->final_total = 0;
             if ($order->confirm()) {
@@ -99,7 +99,7 @@ class OrderController extends Controller
     }
 
     /**
-     * Usuń kod rabatowy z koszyka
+     * Usuń kod rabatowy z koszyka.
      * @param Order  $order [description]
      * @param Coupon $coupon [description]
      * @return [type]         [description]
