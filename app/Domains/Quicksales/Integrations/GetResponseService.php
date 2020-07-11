@@ -14,9 +14,12 @@ use Getresponse\Sdk\Operation\Contacts\CreateContact\CreateContact;
 use Getresponse\Sdk\Operation\Contacts\GetContacts\GetContacts;
 use Getresponse\Sdk\Operation\Model\CampaignReference;
 use Getresponse\Sdk\Operation\Model\NewContact;
+use Illuminate\Support\Arr;
 
 class GetResponseService
 {
+    const CACHE_REMEMBER_MINUTES = 5;
+
     /** @var GetresponseClient */
     private $client;
 
@@ -31,9 +34,27 @@ class GetResponseService
 
     public function getCampaigns() : array
     {
-        return Cache::remember('getresponse_campaigns', 2, function () {
+        return Cache::remember('getresponse_campaigns', static::CACHE_REMEMBER_MINUTES, function () {
             return $this->getFullData((new GetCampaigns())->setQuery(new GetCampaignsSearchQuery()));
         });
+    }
+
+    public function getCampaign(string $name) : array
+    {
+        return Cache::remember('getresponse_campaign_' . $name, static::CACHE_REMEMBER_MINUTES, function () use ($name) {
+            $query = (new GetCampaignsSearchQuery())->whereName($name);
+
+            return Arr::get(
+                $this->getFullData((new GetCampaigns())->setQuery($query)),
+                '0',
+                []
+            );
+        });
+    }
+
+    public function getCampaignId(string $name) : array
+    {
+        return Arr::get($this->getCampaign($name), 'campaignId');
     }
 
     public function addToCampaign(string $campaignId, User $user) : OperationResponse
@@ -57,8 +78,9 @@ class GetResponseService
         $page = 0;
 
         while (true) {
-            $response = $this->client->call((new GetCampaigns())
-                ->setPagination(new Pagination($page, 100)))
+            $response = $this->client->call(
+                $operation
+                    ->setPagination(new Pagination($page, 100)))
                 ->getData();
 
             $data = array_merge($data, $response);

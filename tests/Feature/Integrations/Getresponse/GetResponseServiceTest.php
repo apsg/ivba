@@ -3,6 +3,7 @@ namespace Tests\Feature\Integrations\Getresponse;
 
 use App\Domains\Quicksales\Integrations\GetResponseService;
 use App\User;
+use Illuminate\Support\Arr;
 use Tests\TestCase;
 
 class GetResponseServiceTest extends TestCase
@@ -26,8 +27,6 @@ class GetResponseServiceTest extends TestCase
 
         // when
         $result = $this->service->getCampaigns();
-
-        dd($result);
 
         // then
         $this->assertTrue(is_array($result));
@@ -55,9 +54,26 @@ class GetResponseServiceTest extends TestCase
         // given
 
         // when
-        $result = $this->service->getContacts();
+        $result = $this->service->getContacts()->getData();
 
         // then
-        dd($result->getData());
+        $this->assertIsArray($result);
+        $this->assertNotEmpty($result);
+    }
+
+    /** @test */
+    public function it_finds_campaign_by_its_name()
+    {
+        // given
+        $name = 'test_aktywni';
+
+        // when
+        $campaignData = $this->service->getCampaign($name);
+
+        // then
+        $this->assertNotEmpty($campaignData);
+        $this->assertArrayHasKey('campaignId', $campaignData);
+        $this->assertArrayHasKey('name', $campaignData);
+        $this->assertEquals($name, Arr::get($campaignData, 'name'));
     }
 }
