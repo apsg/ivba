@@ -29,8 +29,8 @@ return [
     'subscription_description' => 'Abonament miesięczny ' . env('APP_NAME'),
 
     'getresponse' => [
-        'list_all'    => env('GETRESPONSE_LIST_ALL', null),
-        'list_active' => env('GETRESPONSE_LIST_ACTIVE', null),
+        'list_all'    => env('GETRESPONSE_LIST_ALL', 'test_wszyscy'),
+        'list_active' => env('GETRESPONSE_LIST_ACTIVE', 'test_aktywni'),
     ],
 
 ];

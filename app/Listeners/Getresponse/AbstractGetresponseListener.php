@@ -26,7 +26,7 @@ class AbstractGetresponseListener
     public function handle($event)
     {
         $user = object_get($event, 'user');
-        if ($user === null || !($user instanceof User)) {
+        if ($user === null || ! ($user instanceof User)) {
             return;
         }
 
@@ -73,5 +73,22 @@ class AbstractGetresponseListener
                 'message' => $exception->getMessage(),
             ]);
         }
+    }
+
+    protected function retrieveUser($event) : ?User
+    {
+        $user = object_get($event, 'user');
+
+        if ($user instanceof User) {
+            return $user;
+        }
+
+        $user = object_get($event, 'subscription.user');
+
+        if ($user instanceof User) {
+            return $user;
+        }
+
+        return null;
     }
 }
