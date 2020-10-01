@@ -72,6 +72,7 @@ abstract class AbstractInvoice
             'positions'        => $this->getPositions(),
             'paid_date'        => $this->item->getSellDateFormatted(),
             'status'           => 'paid',
+            'gtu_codes'        => ['GTU_12'],
         ];
 
         return $attributes;
