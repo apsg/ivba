@@ -11,7 +11,7 @@
                 <option>Brak</option>
                 <option
                     v-for="product in products"
-                    :value="product.id">{{ product.name }}
+                    :value="product.id">({{ product.id }}) {{ product.name }}
                 </option>
             </select>
         </div>

@@ -26,7 +26,7 @@ class TrySubscribeToGetresponseListener
 
         try {
             $this->service->addToCampaign($event->quicksale->campaign, $event->user);
-        } catch (\Exception $exception) {
+        } catch (\Throwable $exception) {
             // do nothing
         }
     }
