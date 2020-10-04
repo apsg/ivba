@@ -8,7 +8,9 @@ class AddSaleToBaselinkerListener
 {
     public function handle(QuickSaleConfirmedEvent $event)
     {
-        if ($event->quicksale === null || $event->quicksale->baselinker_id === null) {
+        if ($event->quicksale === null
+            || $event->quicksale->baselinker_id === null
+            || config('baselinker.token') === null) {
             return;
         }
 
