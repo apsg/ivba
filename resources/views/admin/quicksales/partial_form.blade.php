@@ -109,7 +109,7 @@
 
         <baselinker
                 baselinker_id="{{ $quickSale->baselinker_id || null }}"
-                quicksale_id="{{ $quickSale }}">
+                quicksale_id="{{ $quickSale->id }}">
         </baselinker>
     </div>
 </div>
