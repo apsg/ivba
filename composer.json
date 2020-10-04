@@ -85,14 +85,5 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
-    },
-    "repositories": {
-        "apsg/baselinker": {
-            "type": "path",
-            "url": "/home/gacek/html/multisite/packages/Apsg/Baselinker",
-            "options": {
-                "symlink": true
-            }
-        }
     }
 }

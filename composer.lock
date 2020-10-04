@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d46b7c016f4ed97f9ebde27142d4d022",
+    "content-hash": "8524cfb29e63aaa9ffd8926a7e6b2a78",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -119,10 +119,16 @@
         {
             "name": "apsg/baselinker",
             "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/apsg/Baselinker.git",
+                "reference": "6a5a5349336be3d6d1afd642abfb1f549285943b"
+            },
             "dist": {
-                "type": "path",
-                "url": "/home/gacek/html/multisite/packages/Apsg/Baselinker",
-                "reference": "cc1781215a3c112ca763b1c7a7e7d28aab2cd4f0"
+                "type": "zip",
+                "url": "https://api.github.com/repos/apsg/Baselinker/zipball/6a5a5349336be3d6d1afd642abfb1f549285943b",
+                "reference": "6a5a5349336be3d6d1afd642abfb1f549285943b",
+                "shasum": ""
             },
             "require": {
                 "illuminate/support": "~5|~6|~7|~8"
@@ -149,31 +155,24 @@
                     "Apsg\\Baselinker\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Apsg\\Baselinker\\Tests\\": "tests"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "license"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "author name",
-                    "email": "author email",
-                    "homepage": "author homepage"
+                    "name": "Szymon Gackowski",
+                    "email": "szymon@gackowski.edu.pl",
+                    "homepage": "https://gackowski.edu.pl"
                 }
             ],
-            "description": ":package_description",
-            "homepage": "https://github.com/apsg/baselinker",
+            "description": "Baselinker Integration",
+            "homepage": "https://github.com/apsg/Baselinker",
             "keywords": [
-                "Baselinker",
-                "Laravel"
+                "baselinker",
+                "laravel"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": false
-            }
+            "time": "2020-10-04T18:35:22+00:00"
         },
         {
             "name": "apsg/multisite",
