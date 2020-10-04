@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c1e15268d8fb622ef7ccd7063d49eeba",
+    "content-hash": "d46b7c016f4ed97f9ebde27142d4d022",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -115,6 +115,65 @@
             ],
             "description": "A pure PHP server and client for the tus resumable upload protocol v1.0.0",
             "time": "2018-10-24T15:04:19+00:00"
+        },
+        {
+            "name": "apsg/baselinker",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/home/gacek/html/multisite/packages/Apsg/Baselinker",
+                "reference": "cc1781215a3c112ca763b1c7a7e7d28aab2cd4f0"
+            },
+            "require": {
+                "illuminate/support": "~5|~6|~7|~8"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.1",
+                "orchestra/testbench": "~3|~4|~5|~6",
+                "phpunit/phpunit": "~8.0|~9.0",
+                "sempro/phpunit-pretty-print": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Apsg\\Baselinker\\BaselinkerServiceProvider"
+                    ],
+                    "aliases": {
+                        "Baselinker": "Apsg\\Baselinker\\Facades\\Baselinker"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Apsg\\Baselinker\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Apsg\\Baselinker\\Tests\\": "tests"
+                }
+            },
+            "license": [
+                "license"
+            ],
+            "authors": [
+                {
+                    "name": "author name",
+                    "email": "author email",
+                    "homepage": "author homepage"
+                }
+            ],
+            "description": ":package_description",
+            "homepage": "https://github.com/apsg/baselinker",
+            "keywords": [
+                "Baselinker",
+                "Laravel"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": false
+            }
         },
         {
             "name": "apsg/multisite",
@@ -3430,12 +3489,12 @@
             "version": "v1.1.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nrk/predis.git",
+                "url": "https://github.com/predis/predis.git",
                 "reference": "111d100ee389d624036b46b35ed0c9ac59c71313"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nrk/predis/zipball/111d100ee389d624036b46b35ed0c9ac59c71313",
+                "url": "https://api.github.com/repos/predis/predis/zipball/111d100ee389d624036b46b35ed0c9ac59c71313",
                 "reference": "111d100ee389d624036b46b35ed0c9ac59c71313",
                 "shasum": ""
             },
@@ -8633,6 +8692,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "anhskohbo/no-captcha": 20,
+        "apsg/baselinker": 20,
         "apsg/multisite": 20,
         "barryvdh/laravel-ide-helper": 20,
         "getresponse/sdk-php": 20,
@@ -8649,5 +8709,6 @@
     "platform": {
         "php": ">=7.1.3"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }

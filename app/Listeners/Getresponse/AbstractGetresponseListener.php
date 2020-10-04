@@ -6,6 +6,7 @@ use App\Domains\Quicksales\Integrations\GetResponseService;
 use App\User;
 use Exception;
 use Log;
+use Symfony\Component\Debug\Exception\FatalThrowableError;
 
 class AbstractGetresponseListener
 {
@@ -26,16 +27,20 @@ class AbstractGetresponseListener
     public function handle($event)
     {
         $user = object_get($event, 'user');
-        if ($user === null || ! ($user instanceof User)) {
+        if ($user === null || !($user instanceof User)) {
             return;
         }
 
-        foreach ($this->add as $list) {
-            $this->addToList($user, $list);
-        }
+        try {
+            foreach ($this->add as $list) {
+                $this->addToList($user, $list);
+            }
 
-        foreach ($this->remove as $list) {
-            $this->removeFromList($user, $list);
+            foreach ($this->remove as $list) {
+                $this->removeFromList($user, $list);
+            }
+        } catch (FatalThrowableError $exception) {
+            // do nothing
         }
     }
 

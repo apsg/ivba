@@ -16,7 +16,7 @@ use Illuminate\Support\Collection;
  * @property float|null              full_price
  * @property int                     course_id
  * @property-read Course             course
- * @property bool                 is_full_data_required
+ * @property bool                    is_full_data_required
  *
  * @property string                  message_email
  * @property string                  message_subject
@@ -25,6 +25,7 @@ use Illuminate\Support\Collection;
  * @property string|null             redirect_url
  * @property string|null             file_url
  * @property string|null             campaign
+ * @property string|null             baselinker_id
  *
  * @property Carbon                  created_at
  * @property Carbon                  updated_at
@@ -50,6 +51,7 @@ class QuickSale extends Model implements OrderableContract
         'is_full_data_required',
         'file_url',
         'campaign',
+        'baselinker_id',
     ];
 
     protected $casts = [

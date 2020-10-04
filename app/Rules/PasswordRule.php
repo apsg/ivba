@@ -25,7 +25,7 @@ class PasswordRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        return (bool) preg_match('/^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#@\^%~\&\*\(\)\<\>\?\|\/\-\_]).*$/', $value);
+        return (bool) preg_match('/^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!$#@\^%~\&\*\(\)\<\>\?\|\/\-\_]).*$/', $value);
     }
 
     /**
@@ -35,6 +35,6 @@ class PasswordRule implements Rule
      */
     public function message()
     {
-        return 'Hasło musi składać się z minimum 8 znaków, w tym co najmniej: 1 wielkiej litery, 1 znaku specjalnego, 1 cyfry.';
+        return 'Hasło musi składać się z minimum 8 znaków, w tym co najmniej: 1 wielkiej litery, 1 znaku specjalnego, 1 cyfry.';
     }
 }

@@ -57,7 +57,7 @@ class GetResponseService
         });
     }
 
-    public function getCampaignId(string $name) : string
+    public function getCampaignId(string $name) : ?string
     {
         return Arr::get($this->getCampaign($name), 'campaignId');
     }

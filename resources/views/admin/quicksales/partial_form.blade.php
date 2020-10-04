@@ -102,6 +102,16 @@
             @endforeach
         </select>
     </div>
+    <div class="col-md-12 mb-3">
+        <h3 class="mt-2">Baselinker</h3>
+        <label>Wybierz przypięty produkt BaseLinker @if($quickSale->baselinker_id)
+                (Aktualnie {{ $quickSale->baselinker_id }})@endif</label>
+
+        <baselinker
+                baselinker_id="{{ $quickSale->baselinker_id || null }}"
+                quicksale_id="{{ $quickSale }}">
+        </baselinker>
+    </div>
 </div>
 
 @push('scripts')

@@ -1,6 +1,7 @@
 <?php
 
 use App\Domains\Admin\Controllers\SettingsController;
+use App\Domains\Quicksales\Controller\BaselinkerController;
 use App\Http\Controllers\AdminCertificatesController;
 use App\Http\Controllers\AdminCouponsController;
 use App\Http\Controllers\AdminCoursesController;
@@ -154,6 +155,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::get('/{quickSale}', AdminQuickSalesController::class . '@show');
         Route::put('/{quickSale}', AdminQuickSalesController::class . '@update')->name('admin.quicksale.update');
         Route::get('/{quickSale}/report', AdminQuickSalesController::class . '@downloadReport');
+        Route::get('/{quickSale}/baselinker_new', AdminQuickSalesController::class . '@createBaselinkerProduct');
+    });
+
+    Route::group(['prefix' => 'baselinker'], function () {
+        Route::get('/products', BaselinkerController::class . '@index');
     });
 
     Route::group(['prefix' => 'invoices'], function () {

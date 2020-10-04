@@ -6,6 +6,7 @@ use App\Course;
 use App\Domains\Quicksales\Integrations\GetResponseService;
 use App\Http\Requests\Admin\QuickSaleRequest;
 use App\QuickSale;
+use Apsg\Baselinker\Facades\Baselinker;
 use Laracsv\Export;
 
 class AdminQuickSalesController extends Controller
@@ -86,5 +87,21 @@ class AdminQuickSalesController extends Controller
         $csvExporter->download();
 
         exit();
+    }
+
+    public function createBaselinkerProduct(QuickSale $quickSale)
+    {
+        $categoryId = Baselinker::categories()->getOrCreate(config('app.name'));
+
+        $productId = Baselinker::products()->addProduct([
+            'name'         => $quickSale->name,
+            'price_brutto' => $quickSale->price,
+            'description'  => $quickSale->description,
+            'category_id'  => $categoryId,
+        ]);
+
+        return [
+            'product_id' => $productId,
+        ];
     }
 }
