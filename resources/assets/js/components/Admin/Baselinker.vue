@@ -7,11 +7,13 @@
             </div>
         </div>
         <div class="col-md-6">
-            <select @change="changeBaselinker" class="form-control">
+            <select @change="changeBaselinker" class="form-control" v-model="baselinkerId">
                 <option>Brak</option>
                 <option
                     v-for="product in products"
-                    :value="product.id">({{ product.id }}) {{ product.name }}
+                    :value="product.id"
+                >
+                    ({{ product.id }}) {{ product.name }}
                 </option>
             </select>
         </div>
@@ -23,7 +25,8 @@
         </div>
         <input type="hidden"
                name="baselinker_id"
-               :value="baselinkerId"/>
+               :value="baselinkerId"
+        />
     </div>
 </template>
 

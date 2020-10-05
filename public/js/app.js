@@ -1792,6 +1792,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Baselinker",
   props: ['quicksaleid', 'baselinkerid'],
@@ -7761,7 +7764,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47994,14 +47997,42 @@ var render = function() {
     _c("div", { staticClass: "col-md-6" }, [
       _c(
         "select",
-        { staticClass: "form-control", on: { change: _vm.changeBaselinker } },
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.baselinkerId,
+              expression: "baselinkerId"
+            }
+          ],
+          staticClass: "form-control",
+          on: {
+            change: [
+              function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.baselinkerId = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              },
+              _vm.changeBaselinker
+            ]
+          }
+        },
         [
           _c("option", [_vm._v("Brak")]),
           _vm._v(" "),
           _vm._l(_vm.products, function(product) {
             return _c("option", { domProps: { value: product.id } }, [
               _vm._v(
-                "(" +
+                "\n                (" +
                   _vm._s(product.id) +
                   ") " +
                   _vm._s(product.name) +
