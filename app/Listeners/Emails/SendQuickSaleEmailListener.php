@@ -11,9 +11,9 @@ class SendQuickSaleEmailListener
     public function handle(QuickSaleConfirmedEvent $event)
     {
         $email = Email::create([
-            'from'    => $event->quicksale->message_email ?? config('mail.from.address'),
+            'from'    => $this->getEmail($event),
             'send_at' => Carbon::now(),
-            'title'   => $event->quicksale->message_subject ?? $event->quicksale->name,
+            'title'   => $this->getSubject($event),
             'body'    => nl2br($event->quicksale->message_body),
             'type'    => Email::SINGLE,
             'to_id'   => $event->user->id,
@@ -21,5 +21,23 @@ class SendQuickSaleEmailListener
         ]);
 
         $email->send();
+    }
+
+    public function getEmail(QuickSaleConfirmedEvent $event)
+    {
+        if (empty($event->quicksale->message_email)) {
+            return config('mail.from.address');
+        }
+
+        return $event->quicksale->message_email;
+    }
+
+    public function getSubject(QuickSaleConfirmedEvent $event) : string
+    {
+        if (empty($event->quicksale->message_subject)) {
+            return $event->quicksale->name;
+        }
+
+        return $event->quicksale->message_subject;
     }
 }

@@ -1794,7 +1794,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Baselinker",
-  props: ['quicksale_id', 'baselinker_id'],
+  props: ['quicksaleid', 'baselinkerid'],
   data: function data() {
     return {
       baselinkerId: null,
@@ -1803,7 +1803,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.baselinkerId = this.baselinker_id;
+    this.baselinkerId = this.baselinkerid;
     this.flash('ok');
     this.fetchProducts();
   },

@@ -108,8 +108,9 @@
                 (Aktualnie {{ $quickSale->baselinker_id }})@endif</label>
 
         <baselinker
-                baselinker_id="{{ $quickSale->baselinker_id || null }}"
-                quicksale_id="{{ $quickSale->id }}">
+                :baselinkerid={{ $quickSale->baselinker_id }}
+                :quicksaleid={{ $quickSale->id }}
+                >
         </baselinker>
     </div>
 </div>

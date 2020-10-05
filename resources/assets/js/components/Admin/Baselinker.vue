@@ -32,8 +32,8 @@ export default {
     name: "Baselinker",
 
     props: [
-        'quicksale_id',
-        'baselinker_id'
+        'quicksaleid',
+        'baselinkerid'
     ],
 
     data() {
@@ -45,7 +45,7 @@ export default {
     },
 
     mounted() {
-        this.baselinkerId = this.baselinker_id;
+        this.baselinkerId = this.baselinkerid;
         this.flash('ok');
         this.fetchProducts();
     },

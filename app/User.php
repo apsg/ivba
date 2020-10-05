@@ -510,7 +510,7 @@ class User extends Authenticatable
     {
         $this->unsubscribed_at = Carbon::now();
         $this->emails->each->delete();
-        flash('Nie będziesz już otrzymywać powiadomień automatycznych');
+        flash('Nie będziesz już otrzymywać powiadomień automatycznych');
     }
 
     public function sendPasswordResetNotification($token)

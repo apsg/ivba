@@ -14,15 +14,23 @@ class AddSaleToBaselinkerListener
             return;
         }
 
-        Baselinker::orders()
-            ->addOrder([
-                'email'            => $event->user->email,
-                'invoice_fullname' => $event->user->full_name,
-                'quantity'         => $event->user->phone,
-                'products'         => [
-                    'product_id' => $event->quicksale->baselinker_id,
-                    'quantity'   => 1,
+        $arr = [
+            'email'            => $event->user->email,
+            'invoice_fullname' => $event->user->full_name,
+            'phone'            => $event->user->phone,
+            'products'         => [
+                [
+                    'storage'      => 'db',
+                    'storage_id'   => 0,
+                    'product_id'   => $event->quicksale->baselinker_id,
+                    'quantity'     => 1,
+                    'price_brutto' => $event->quicksale->price,
+                    'name'         => $event->quicksale->name,
                 ],
-            ]);
+            ],
+        ];
+
+        Baselinker::orders()
+            ->addOrder($arr);
     }
 }
