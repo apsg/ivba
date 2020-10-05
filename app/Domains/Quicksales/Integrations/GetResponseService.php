@@ -46,15 +46,16 @@ class GetResponseService
 
     public function getCampaign(string $name) : array
     {
-        return Cache::remember('getresponse_campaign_' . $name, static::CACHE_REMEMBER_MINUTES, function () use ($name) {
-            $query = (new GetCampaignsSearchQuery())->whereName($name);
+        return Cache::remember('getresponse_campaign_' . $name, static::CACHE_REMEMBER_MINUTES,
+            function () use ($name) {
+                $query = (new GetCampaignsSearchQuery())->whereName($name);
 
-            return Arr::get(
-                $this->getFullData((new GetCampaigns())->setQuery($query)),
-                '0',
-                []
-            );
-        });
+                return Arr::get(
+                    $this->getFullData((new GetCampaigns())->setQuery($query)),
+                    '0',
+                    []
+                );
+            });
     }
 
     public function getCampaignId(string $name) : ?string
@@ -62,8 +63,12 @@ class GetResponseService
         return Arr::get($this->getCampaign($name), 'campaignId');
     }
 
-    public function addToCampaign(string $campaignId, User $user) : OperationResponse
+    public function addToCampaign(string $campaignId = null, User $user = null) : ?OperationResponse
     {
+        if ($campaignId === null || $user === null) {
+            return null;
+        }
+
         $campaign = new CampaignReference($campaignId);
         $contact = new NewContact($campaign, $user->email);
         $contact->setName($user->full_name);

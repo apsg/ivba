@@ -54,8 +54,10 @@ class AbstractGetresponseListener
             }
 
             $campaignId = $this->service->getCampaignId($list);
-            $this->service->addToCampaign($campaignId, $user);
-        } catch (Exception $exception) {
+            if ($campaignId !== null) {
+                $this->service->addToCampaign($campaignId, $user);
+            }
+        } catch (\Throwable $exception) {
             Log::error(__CLASS__, [
                 'message' => $exception->getMessage(),
             ]);
@@ -73,7 +75,7 @@ class AbstractGetresponseListener
 
             $campaignId = $this->service->getCampaignId($list);
             $this->service->removeFromCampaign($campaignId, $user);
-        } catch (Exception $exception) {
+        } catch (\Throwable $exception) {
             Log::error(__CLASS__, [
                 'message' => $exception->getMessage(),
             ]);
