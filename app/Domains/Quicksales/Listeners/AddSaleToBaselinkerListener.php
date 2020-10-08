@@ -8,16 +8,9 @@ class AddSaleToBaselinkerListener
 {
     public function handle(QuickSaleConfirmedEvent $event)
     {
-        \Log::info(__CLASS__, [
-            'qs'   => $event->quicksale,
-            'user' => $event->user,
-        ]);
-
         if ($event->quicksale === null
             || $event->quicksale->baselinker_id === null
             || config('baselinker.token') === null) {
-            \Log::info('bail out');
-
             return;
         }
 
@@ -36,8 +29,6 @@ class AddSaleToBaselinkerListener
                 ],
             ],
         ];
-
-        \Log::info(__CLASS__, compact('arr'));
 
         Baselinker::orders()
             ->addOrder($arr);
