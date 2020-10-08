@@ -220,7 +220,7 @@
         },
 
         mounted() {
-            console.log(this.sale);
+            // console.log(this.sale);
         },
 
         methods: {

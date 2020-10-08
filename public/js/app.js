@@ -2690,8 +2690,7 @@ __webpack_require__.r(__webpack_exports__);
       return tr_groups;
     }
   },
-  mounted: function mounted() {
-    console.log(this.sale);
+  mounted: function mounted() {// console.log(this.sale);
   },
   methods: {
     stepIn: function stepIn() {
