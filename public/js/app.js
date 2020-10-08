@@ -48026,7 +48026,7 @@ var render = function() {
           }
         },
         [
-          _c("option", [_vm._v("Brak")]),
+          _c("option", { domProps: { value: null } }, [_vm._v("Brak")]),
           _vm._v(" "),
           _vm._l(_vm.products, function(product) {
             return _c("option", { domProps: { value: product.id } }, [

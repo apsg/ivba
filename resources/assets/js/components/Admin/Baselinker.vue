@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-6">
             <select @change="changeBaselinker" class="form-control" v-model="baselinkerId">
-                <option>Brak</option>
+                <option :value="null">Brak</option>
                 <option
                     v-for="product in products"
                     :value="product.id"
