@@ -5,17 +5,9 @@ use App\Access;
 use App\Interfaces\AccessableContract;
 use App\User;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
 
 class AccessRepository
 {
-    /**
-     * Przyznaj użytkownikowi dostęp do elementu na X dni.
-     * @param int $user_id [description]
-     * @param model   $item [description]
-     * @param int $days [description]
-     * @return [type]          [description]
-     */
     public function grant(User $user, AccessableContract $item, int $days = null) : Access
     {
         /** @var Access $access */
@@ -57,6 +49,11 @@ class AccessRepository
 
             return $access;
         }
+    }
+
+    public function grantFullAccess(User $user, int $days = 1)
+    {
+        $user->updateFullAccess($days);
     }
 
     public function has(User $user, AccessableContract $item)

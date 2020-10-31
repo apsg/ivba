@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Course;
+use App\Repositories\AccessRepository;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -20,6 +21,10 @@ class CoursePolicy
 
     public function access(User $user, Course $course)
     {
+        if ($course->isSpecialAccess()) {
+            return $this->specialAccess($user, $course);
+        }
+
         if ($user->hasFullAccess()) {
             return true;
         }
@@ -29,5 +34,11 @@ class CoursePolicy
         }
 
         return false;
+    }
+
+    private function specialAccess(User $user, Course $course)
+    {
+        return app(AccessRepository::class)
+            ->has($user, $course);
     }
 }

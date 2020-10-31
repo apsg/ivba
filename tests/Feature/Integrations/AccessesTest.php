@@ -8,7 +8,6 @@ use App\User;
 use Carbon\Carbon;
 use Gate;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\Concerns\CourseConcerns;
 use Tests\Concerns\UserConcerns;
 use Tests\TestCase;
@@ -18,7 +17,6 @@ class AccessesTest extends TestCase
     use CourseConcerns;
     use UserConcerns;
     use InteractsWithDatabase;
-    use DatabaseTransactions;
 
     /** @var User */
     protected $user;
@@ -125,5 +123,56 @@ class AccessesTest extends TestCase
         ]);
         $this->assertFalse($courseAccess);
         $this->assertFalse($lessonAccess);
+    }
+
+    /** @test */
+    public function normal_user_cannot_access_special_courses()
+    {
+        // given
+        $specialCourse = factory(Course::class)->create([
+            'is_special_access' => true,
+        ]);
+        $this->actingAs($this->user);
+
+        // when
+        $checkAccess = Gate::allows('access', $specialCourse);
+
+        // then
+        $this->assertFalse($checkAccess);
+    }
+
+    /** @test */
+    public function full_access_user_cannot_access_special_courses()
+    {
+        // given
+        $specialCourse = factory(Course::class)->create([
+            'is_special_access' => true,
+        ]);
+        $this->user->updateFullAccess(2);
+        $this->actingAs($this->user);
+        $this->assertTrue($this->user->hasFullAccess());
+
+        // when
+        $checkAccess = Gate::allows('access', $specialCourse);
+
+        // then
+        $this->assertFalse($checkAccess);
+    }
+
+    /** @test */
+    public function user_with_explicit_access_can_access_special_courses()
+    {
+        // given
+        $specialCourse = factory(Course::class)->create([
+            'is_special_access' => true,
+        ]);
+
+        // when
+        $this->repository->grant($this->user, $specialCourse);
+        $this->actingAs($this->user);
+        $checkAccess = Gate::allows('access', $specialCourse);
+
+        // then
+        $this->assertTrue($checkAccess);
     }
 }

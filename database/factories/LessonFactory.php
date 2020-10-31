@@ -1,6 +1,7 @@
 <?php
 
 use App\Lesson;
+use App\User;
 use Faker\Generator as Faker;
 
 $factory->define(Lesson::class, function (Faker $faker) {
@@ -13,6 +14,6 @@ $factory->define(Lesson::class, function (Faker $faker) {
         'price'           => 0,
         'introduction'    => $faker->paragraph,
         'duration'        => $faker->randomNumber(),
-        'user_id'         => 1,
+        'user_id'         => User::first()->id,
     ];
 });

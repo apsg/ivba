@@ -271,7 +271,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Zwraca użytkowników, którzy nie wypisali się z maili typu Followup.
+     * Zwraca użytkowników, którzy nie wypisali się z maili typu Followup.
      * @param  [type] $query [description]
      * @return [type]        [description]
      */
@@ -329,7 +329,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Czy dany użytkownik rozpoczął tę lekcję?
+     * Czy dany użytkownik rozpoczął tę lekcję?
      */
     public function hasStartedLesson($lesson_id)
     {
@@ -345,7 +345,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Czy użytkownik już rozpoczął ten kurs?
+     * Czy użytkownik już rozpoczął ten kurs?
      */
     public function hasStartedQuiz($quiz_id)
     {
@@ -353,7 +353,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Czy dany użytkownik zakończył tę lekcję?
+     * Czy dany użytkownik zakończył tę lekcję?
      */
     public function hasFinishedLesson($lesson_id)
     {
@@ -455,7 +455,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Aktualizuje pełen dostęp o określoną liczbę dni dostępu.
+     * Aktualizuje pełen dostęp o określoną liczbę dni dostępu.
      */
     public function updateFullAccess($days)
     {
@@ -471,7 +471,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Czy można dodać kolejny pełen dostęp do tego konta?
+     * Czy można dodać kolejny pełen dostęp do tego konta?
      */
     public function canAddFullAccess()
     {

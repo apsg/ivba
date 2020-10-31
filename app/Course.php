@@ -32,6 +32,8 @@ use Illuminate\Support\Str;
  * @property int                               $position
  * @property int                               $delay Liczba dni
  * @property int                               $cumulative_delay
+ * @property bool                              $is_special_access
+ *
  * @property-read Collection|Access[]          $access
  * @property-read Certificate                  $certificate
  * @property-read mixed                        $avg_rating
@@ -72,6 +74,7 @@ class Course extends Model implements OrderableContract, AccessableContract
         'video_id',
         'position',
         'delay',
+        'is_special_access',
     ];
 
     protected $with = ['image'];
@@ -191,7 +194,7 @@ class Course extends Model implements OrderableContract, AccessableContract
         $user = User::findOrFail($user_id);
 
         // Użytkownik ma pełen dostęp do wszystkiego - nic innego nas nie obchodzi
-        if ($user->hasFullAccess()) {
+        if (!$this->isSpecialAccess() && $user->hasFullAccess()) {
             return true;
         }
 
@@ -199,7 +202,7 @@ class Course extends Model implements OrderableContract, AccessableContract
             return true;
         }
 
-        if (! $user->hasDayAccess()) {
+        if (!$user->hasDayAccess()) {
             return false;
         }
 
@@ -209,7 +212,7 @@ class Course extends Model implements OrderableContract, AccessableContract
 
     /**
      * Zwraca certyfikat aktualnie zalogowanego użytkownika.
-     * @return [type] [description]
+     * @return Certificate|null
      */
     public function getUserCertificateAttribute()
     {
@@ -329,21 +332,21 @@ class Course extends Model implements OrderableContract, AccessableContract
 
         // Czy została jakaś lekcja do ukończenia?
         foreach ($this->lessons as $lesson) {
-            if (! $user->hasFinishedLesson($lesson->id)) {
+            if (!$user->hasFinishedLesson($lesson->id)) {
                 return $lesson->learnUrl($this);
             }
         }
 
         // Czy został jakiś test do ukończenia?
         foreach ($this->quizzes as $quiz) {
-            if (! $user->hasFinishedQuiz($quiz->id)) {
+            if (!$user->hasFinishedQuiz($quiz->id)) {
                 return $quiz->learnUrl();
             }
         }
 
         // Doszliśmy tutaj, czyli nie ma nic więcej.
         // Można sprawdzić, czy kurs jest zakończony i zwrócić link.
-        if (! $user->hasFinishedCourse($this->id)) {
+        if (!$user->hasFinishedCourse($this->id)) {
             $this->finish();
         }
 
@@ -361,7 +364,7 @@ class Course extends Model implements OrderableContract, AccessableContract
                 ['finished_at' => Carbon::now()]
             );
 
-        if (! empty($this->certificate)) {
+        if (!empty($this->certificate)) {
             UserCertificate::create([
                 'user_id'        => Auth::user()->id,
                 'certificate_id' => $this->certificate->id,
@@ -427,7 +430,7 @@ class Course extends Model implements OrderableContract, AccessableContract
      */
     public function getAvgRatingAttribute() : float
     {
-        return (float) $this->ratings()->avg('rating');
+        return (float)$this->ratings()->avg('rating');
     }
 
     /**
@@ -466,5 +469,10 @@ class Course extends Model implements OrderableContract, AccessableContract
     public function __toString()
     {
         return 'Kurs: ' . $this->title;
+    }
+
+    public function isSpecialAccess() : bool
+    {
+        return $this->is_special_access;
     }
 }
