@@ -44,7 +44,7 @@
         @if($lesson->video)
             <vimeo-video
                     src="{{ $lesson->video->embedSrc() }}"
-                    watermark="{{ asset('/images/projekt30/p30-logo.png') }}"
+                    watermark="{{ asset('/images/projekt30/watermark.png') }}"
             ></vimeo-video>
         @endif
 
