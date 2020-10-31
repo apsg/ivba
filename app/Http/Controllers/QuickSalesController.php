@@ -9,6 +9,7 @@ use App\Payments\Tpay\TpayTransaction;
 use App\QuickSale;
 use App\Repositories\QuickSaleRepository;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class QuickSalesController extends Controller
@@ -32,6 +33,7 @@ class QuickSalesController extends Controller
         $user = $userRepository->findByEmail($request->input('email', ''));
         if ($user === null) {
             $user = $userRepository->createAndSend($request->all(['name', 'email', 'phone']));
+            Auth::login($user);
         }
 
         $user->update(array_filter($request->all(['street', 'postcode', 'city'])));
@@ -73,7 +75,7 @@ class QuickSalesController extends Controller
 
         $transaction = new TpayTransaction($order);
         $url = $transaction->createTransaction(
-            (int) $request->input('group'),
+            (int)$request->input('group'),
             $quickSale->redirect_url
         );
 
