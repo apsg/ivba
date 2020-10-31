@@ -41,12 +41,11 @@
         @endif
     </h1>
     <div class="row">
-
-{{--        <div class="col-md-12 video centered">--}}
-{{--            {!! $lesson->video ? $lesson->video->embed(1000, 600) : "" !!}--}}
-{{--        </div>--}}
         @if($lesson->video)
-            <vimeo-video src="{{ $lesson->video->embedSrc() }}"></vimeo-video>
+            <vimeo-video
+                    src="{{ $lesson->video->embedSrc() }}"
+                    watermark="{{ asset('/images/projekt30/p30-logo.png') }}"
+            ></vimeo-video>
         @endif
 
         @if($lesson->files()->count() > 0)

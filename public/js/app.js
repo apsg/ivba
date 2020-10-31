@@ -3223,6 +3223,10 @@ __webpack_require__.r(__webpack_exports__);
     height: {
       type: Number,
       default: 600
+    },
+    watermark: {
+      type: String,
+      default: "/images/watermark.png"
     }
   },
   computed: {
@@ -50253,7 +50257,7 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("img", { attrs: { src: "/images/watermark.png" } })
+      _c("img", { attrs: { src: _vm.watermark } })
     ]
   )
 }
