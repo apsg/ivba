@@ -1,7 +1,7 @@
 @extends('layouts.learn')
 
 @section('title')
-    iExcel |
+    iNauka |
     @if( !empty($course) )
         {{ $course->title }}
         @if($lesson->title)

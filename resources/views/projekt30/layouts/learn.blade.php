@@ -22,7 +22,7 @@
 <div id="app">
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ url('/') }}">
-            <img src="{{ asset('/images/v2/inauka.png') }}">
+            <img src="{{ asset('/images/v2/projekt30/p30-logo.png') }}">
         </a>
 
         <ul class="navbar-nav px-3">
