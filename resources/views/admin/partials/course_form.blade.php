@@ -103,6 +103,22 @@
                                  id="video_img">
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <label>
+                            <input type="checkbox"
+                                   name="is_special_access"
+                                   class="checkbox"
+                                   value="1"
+                                   @if(!empty($course->is_special_access))
+                                    checked
+                                    @endif
+                            >
+                            Dostęp specjalny
+                        </label>
+                        <p>Dostęp specjalny oznacza, że nawet użytkownicy z pełnym dostępem nie mają dostępu do kursu.
+                            Dostęp do takiego kursu musi zostać przyznany każdorazowo per kurs per użytkownik.
+                        </p>
+                    </div>
                 </div>
             </div>
 

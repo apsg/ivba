@@ -14,7 +14,7 @@ class CoursesAddSpecialAccessField extends Migration
     public function up()
     {
         Schema::table('courses', function (Blueprint $table) {
-            $table->boolean('is_special_access')->default(false);
+            $table->boolean('is_special_access')->default(false)->nullable();
         });
     }
 
