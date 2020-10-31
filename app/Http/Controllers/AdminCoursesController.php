@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Http\Requests\Admin\Courses\ListCoursesRequest;
 use App\Http\Requests\CourseRequest;
 use Illuminate\Http\Request;
 
@@ -123,8 +124,8 @@ class AdminCoursesController extends Controller
         return redirect('/admin/courses');
     }
 
-    public function list()
+    public function list(ListCoursesRequest $request)
     {
-        return Course::all();
+        return Course::search($request->input('s'))->get();
     }
 }

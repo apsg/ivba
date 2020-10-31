@@ -26,6 +26,7 @@ import Quicksale from './components/Quicksale.vue';
 import P30Slider from "./components/p30/P30Slider";
 import Groupon from "./components/Admin/Groupon";
 import Baselinker from "./components/Admin/Baselinker";
+import Access from "./components/Admin/Access";
 
 Vue.use(VueClipboard);
 Vue.use(VueFlashMessage);
@@ -50,7 +51,8 @@ const app = new Vue({
         'quicksale': Quicksale,
         P30Slider,
         Groupon,
-        Baselinker
+        Baselinker,
+        Access
     }
 });
 

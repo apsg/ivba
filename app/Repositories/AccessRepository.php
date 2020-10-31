@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Access;
+use App\Course;
 use App\Interfaces\AccessableContract;
 use App\User;
 use Carbon\Carbon;
@@ -62,5 +63,14 @@ class AccessRepository
             ->forItem($item)
             ->valid()
             ->exists();
+    }
+
+    public function revoke(User $user, AccessableContract $item)
+    {
+        return Access::where([
+            'user_id'         => $user->id,
+            'accessable_type' => get_class($item),
+            'accessable_id'   => $item->id,
+        ])->delete();
     }
 }

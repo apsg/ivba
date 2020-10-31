@@ -2,6 +2,7 @@
 
 use App\Domains\Admin\Controllers\SettingsController;
 use App\Domains\Quicksales\Controller\BaselinkerController;
+use App\Http\Controllers\Admin\AccessController;
 use App\Http\Controllers\AdminCertificatesController;
 use App\Http\Controllers\AdminCouponsController;
 use App\Http\Controllers\AdminCoursesController;
@@ -179,5 +180,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::get('/', SettingsController::class . '@index');
         Route::post('/set', SettingsController::class . '@set')->name('admin.settings.set');
         Route::delete('/delete', SettingsController::class . '@destroy')->name('admin.settings.delete');
+    });
+
+    Route::group([
+        'prefix' => 'access',
+    ], function () {
+        Route::get('/{user}', AccessController::class . '@index')->name('admin.access.inde');
+        Route::post('/', AccessController::class . '@store')->name('admin.access.store');
+        Route::delete('/', AccessController::class . '@revoke')->name('admin.access.revoke');
+        Route::delete('/{access}', AccessController::class . '@destroy')->name('admin.access.delete');
     });
 });

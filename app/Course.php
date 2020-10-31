@@ -79,6 +79,8 @@ class Course extends Model implements OrderableContract, AccessableContract
 
     protected $with = ['image'];
 
+    protected $appends = ['label'];
+
     /**
      * Po czym przeszukujemy ścieżki.
      */
@@ -474,5 +476,22 @@ class Course extends Model implements OrderableContract, AccessableContract
     public function isSpecialAccess() : bool
     {
         return $this->is_special_access;
+    }
+
+    public function scopeSearch($query, string $search = null)
+    {
+        if (empty($search)) {
+            return $query;
+        }
+
+        return $query->where(function ($q) use ($search) {
+            $q->where('title', 'like', "%{$search}%")
+                ->orWhere('slug', 'like', "%{$search}%");
+        });
+    }
+
+    public function getLabelAttribute()
+    {
+        return $this->title;
     }
 }

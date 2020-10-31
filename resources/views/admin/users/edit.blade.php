@@ -59,6 +59,18 @@
             </div>
         </div>
         <div class="row mt-3">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header text-bold">
+                        Dostęp do kursów
+                    </div>
+                    <div class="card-body">
+                        <access :user="{{ $user->id }}"></access>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
             <div class=" col-md-4">
                 <div class="card">
                     <div class="card-header text-bold">
@@ -121,4 +133,4 @@
         </div>
 
     </section>
-@endsection	
+@endsection

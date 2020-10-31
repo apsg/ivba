@@ -10,6 +10,7 @@
 @import "~vue-flash-message/dist/vue-flash-message.min.css";
 @import "tooltip";
 @import "quicksale";
+@import "~vue-select/src/scss/vue-select.scss";
 
 .bg-gray-light {
     background-color: $color-bg-gray-light;
@@ -17,6 +18,10 @@
 
 .bg-gray-dark {
     background-color: $color-bg-gray-dark;
+}
+
+.bg-success-custom{
+    background-color: $brand-success;
 }
 
 .text-orange {
