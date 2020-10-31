@@ -473,7 +473,7 @@ class Course extends Model implements OrderableContract, AccessableContract
         return 'Kurs: ' . $this->title;
     }
 
-    public function isSpecialAccess() : bool
+    public function isSpecialAccess()
     {
         return $this->is_special_access;
     }
