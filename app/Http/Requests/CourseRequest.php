@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 
@@ -41,6 +42,10 @@ class CourseRequest extends FormRequest
         $fields = $this->all() + [
                 'is_special_access' => false,
             ];
+
+        if (!empty($fields['scheduled_at'])) {
+            $fields['scheduled_at'] = Carbon::createFromTimeString($fields['scheduled_at']);
+        }
 
         if (empty($fields['slug'])) {
             $fields['slug'] = Str::slug($this->input('title'));

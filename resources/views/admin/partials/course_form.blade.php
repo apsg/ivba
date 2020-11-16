@@ -110,13 +110,27 @@
                                    class="checkbox"
                                    value="1"
                                    @if(!empty($course->is_special_access))
-                                    checked
+                                   checked
                                     @endif
                             >
                             Dostęp specjalny
                         </label>
                         <p>Dostęp specjalny oznacza, że nawet użytkownicy z pełnym dostępem nie mają dostępu do kursu.
                             Dostęp do takiego kursu musi zostać przyznany każdorazowo per kurs per użytkownik.
+                        </p>
+                    </div>
+                    <div class="col-md-12">
+                        <label>
+                            Data startu kursu specjalnego
+                        </label>
+                        <input type="datetime-local"
+                               name="scheduled_at"
+                               value="{{  $course->scheduled_at->format('Y-m-d\TH:i') }}"
+                        >
+                        <p>
+                            Jeśli ustawisz datę startu kursu specjalnego oraz opóźnienia poszczególnych lekcji, to
+                            będą się one wyświetlać zgodnie z zaplanowanym opóźnieniem (w godzinach) w stosunku do
+                            zaplanowanej daty startu.
                         </p>
                     </div>
                 </div>
