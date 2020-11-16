@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Http\Requests\Admin\Courses\ListCoursesRequest;
+use App\Http\Requests\Admin\Courses\UpdateDelayRequest;
 use App\Http\Requests\CourseRequest;
 use Illuminate\Http\Request;
 
@@ -127,5 +128,18 @@ class AdminCoursesController extends Controller
     public function list(ListCoursesRequest $request)
     {
         return Course::search($request->input('s'))->get();
+    }
+
+    public function updateLessonDelay(Course $course, UpdateDelayRequest $request)
+    {
+        $lesson = $course->lessons()
+            ->withPivot(['delay'])
+            ->where('lesson_id', $request->input('lesson_id'))
+            ->firstOrFail();
+
+        $lesson->pivot->delay = $request->input('delay', 0);
+        $lesson->pivot->save();
+
+        return ['ok'];
     }
 }

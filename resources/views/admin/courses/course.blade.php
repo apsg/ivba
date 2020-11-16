@@ -74,10 +74,21 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Przypisane lekcje i kolejność</h3>
                     </div>
+                    <p class="ml-3">Opóźnienie liczone jest w godzinach od podanej daty rozpoczęcia kursu.</p>
                     <div class="box-body">
                         <ul class="sortable" id="lessons-assigned">
                             @foreach($course->lessons as $lesson)
-                                <li class="sortable-item" data-lesson-id="{{ $lesson->id }}">{{ $lesson->title }}</li>
+                                <li class="sortable-item d-flex justify-content-between"
+                                    data-lesson-id="{{ $lesson->id }}">
+                                    <div>{{ $lesson->title }}</div>
+                                    <div>
+                                        Opóźnienie [h]
+                                        <input type="number"
+                                               class="delay w-25" min="0" step="1" name="delay"
+                                               data-lesson-id="{{ $lesson->id }}"
+                                               value="{{ $lesson->pivot->delay }}"/>
+                                    </div>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
@@ -96,6 +107,15 @@
 
             $('#lessons-assigned').on('sortupdate', function (e, ui) {
                 updateOrder();
+            });
+
+            $('.delay').change(function (v, e) {
+                console.log(v, e);
+                $.post('{{ url('/admin/courses/'.$course->slug.'/delays') }}', {
+                    _token: '{{ csrf_token() }}',
+                    lesson_id: $(this).data('lesson-id'),
+                    delay: $(this).val()
+                });
             });
         });
 

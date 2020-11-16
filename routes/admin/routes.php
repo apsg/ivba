@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::patch('courses/{course}', AdminCoursesController::class . '@update');
     Route::delete('courses/{course}', AdminCoursesController::class . '@delete');
     Route::post('courses/{course}/lesson_order', AdminCoursesController::class . '@updateLessonOrder');
+    Route::post('courses/{course}/delays', AdminCoursesController::class . '@updateLessonDelay');
     Route::post('courses_order', AdminCoursesController::class . '@updateOrder');
 
     Route::get('/lesson', AdminLessonController::class . '@index');
