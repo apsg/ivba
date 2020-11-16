@@ -33,6 +33,7 @@ use Illuminate\Support\Str;
  * @property int                               $delay Liczba dni
  * @property int                               $cumulative_delay
  * @property bool                              $is_special_access
+ * @property Carbon|null                       $scheduled_at
  *
  * @property-read Collection|Access[]          $access
  * @property-read Certificate                  $certificate
@@ -75,6 +76,11 @@ class Course extends Model implements OrderableContract, AccessableContract
         'position',
         'delay',
         'is_special_access',
+        'scheduled_at',
+    ];
+
+    protected $casts = [
+        'scheduled_at' => 'datetime',
     ];
 
     protected $with = ['image'];
@@ -123,7 +129,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Użytkownicy, którzy zapisali się na ten kurs.
+     * Użytkownicy, którzy zapisali się na ten kurs.
      * @return [type] [description]
      */
     public function users()
@@ -138,8 +144,20 @@ class Course extends Model implements OrderableContract, AccessableContract
     public function lessons()
     {
         return $this->belongsToMany(Lesson::class)
-            ->withPivot('position')
+            ->withPivot(['position', 'delay'])
             ->orderBy('position', 'asc');
+    }
+
+    public function visibleLessons()
+    {
+        if ($this->scheduled_at === null) {
+            return $this->lessons();
+        }
+
+        $diff = $this->scheduled_at->diffInHours();
+
+        return $this->lessons()
+            ->wherePivot('delay', '<=', $diff);
     }
 
     /**
@@ -332,14 +350,14 @@ class Course extends Model implements OrderableContract, AccessableContract
     {
         $user = Auth::user();
 
-        // Czy została jakaś lekcja do ukończenia?
+        // Czy została jakaś lekcja do ukończenia?
         foreach ($this->lessons as $lesson) {
             if (!$user->hasFinishedLesson($lesson->id)) {
                 return $lesson->learnUrl($this);
             }
         }
 
-        // Czy został jakiś test do ukończenia?
+        // Czy został jakiś test do ukończenia?
         foreach ($this->quizzes as $quiz) {
             if (!$user->hasFinishedQuiz($quiz->id)) {
                 return $quiz->learnUrl();
@@ -347,7 +365,7 @@ class Course extends Model implements OrderableContract, AccessableContract
         }
 
         // Doszliśmy tutaj, czyli nie ma nic więcej.
-        // Można sprawdzić, czy kurs jest zakończony i zwrócić link.
+        // Można sprawdzić, czy kurs jest zakończony i zwrócić link.
         if (!$user->hasFinishedCourse($this->id)) {
             $this->finish();
         }
@@ -396,7 +414,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Zwraca liczbę osób zapisanych na ten kurs.
+     * Zwraca liczbę osób zapisanych na ten kurs.
      * @return [type] [description]
      */
     public function getUsersCountAttribute() : int
@@ -414,7 +432,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Zwraca ocenę dla aktualnego użytkownika.
+     * Zwraca ocenę dla aktualnego użytkownika.
      */
     public function getRatingAttribute()
     {
@@ -428,7 +446,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Zwraca średnią wartość ocen dla tego kursu.
+     * Zwraca średnią wartość ocen dla tego kursu.
      */
     public function getAvgRatingAttribute() : float
     {
@@ -436,7 +454,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     }
 
     /**
-     * Zwraca liczbę ocen dla tego kursu.
+     * Zwraca liczbę ocen dla tego kursu.
      */
     public function getRatingsCountAttribute() : int
     {
