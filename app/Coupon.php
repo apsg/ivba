@@ -105,6 +105,10 @@ class Coupon extends Model
             return $this->courses->pluck('title')->implode(' | ');
         }
 
+        if ($this->type == static::TYPE_FULL_ACCESS) {
+            return '1 rok';
+        }
+
         return $this->amount . ($this->type == static::TYPE_VALUE ? ' PLN' : ' %');
     }
 
@@ -144,6 +148,10 @@ class Coupon extends Model
 
         if ($this->type == self::TYPE_COURSE_ACCESS) {
             return 'Dostęp do kursu';
+        }
+
+        if ($this->type == self::TYPE_FULL_ACCESS) {
+            return 'Pełen dostęp';
         }
 
         return 'nieznany';

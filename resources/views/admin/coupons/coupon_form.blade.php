@@ -30,6 +30,9 @@
                         </option>
                         <option value="5" @if(isset($coupon) && $coupon->type==5) selected="selected" @endif >Dostęp do kursu
                         </option>
+                        <option value="6" @if(isset($coupon) && $coupon->type==6) selected="selected" @endif >
+                            Pełen roczny dostęp
+                        </option>
                     </select>
                 </div>
 

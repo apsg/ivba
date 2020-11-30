@@ -74,7 +74,7 @@ class AdminCouponsController extends Controller
             'code'      => 'required|unique:coupons,code',
             'amount'    => 'required|numeric|min:0',
             'uses_left' => 'required|numeric|min:0',
-            'type'      => 'required|in:1,2,3,4',
+            'type'      => 'required|in:1,2,3,4,5,6',
         ]);
 
         $coupon = Coupon::create($request->all());
@@ -94,7 +94,7 @@ class AdminCouponsController extends Controller
             ],
             'amount'    => 'required|numeric|min:0',
             'uses_left' => 'required|numeric|min:0',
-            'type'      => 'required|in:1,2,3,4',
+            'type'      => 'required|in:1,2,3,4,5,6',
         ]);
 
         $coupon->update($request->all());
