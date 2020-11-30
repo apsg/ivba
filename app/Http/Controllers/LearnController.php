@@ -35,7 +35,7 @@ class LearnController extends Controller
 
         // Jeśli nie wybrano lekcji - przekieruj do pierwszej.
         if (empty($lesson->slug)) {
-            $lesson = $course->lessons()->first();
+            $lesson = $course->visibleLessons()->first();
 
             if (empty($lesson)) {
                 return back()->withErrors(['Do tego kursu nie dodano jeszcze żadnej lekcji. Poczekaj na jego uzupełnienie lub skontaktuj się z obsługą.']);
@@ -50,7 +50,7 @@ class LearnController extends Controller
     }
 
     /**
-     * Pokaż lekcję.
+     * Pokaż lekcję.
      */
     public function showLesson(Lesson $lesson)
     {
@@ -61,7 +61,7 @@ class LearnController extends Controller
     }
 
     /**
-     * Przypisz kurs i lekcję do użytkownika.
+     * Przypisz kurs i lekcję do użytkownika.
      */
     protected function assignToUser(Course $course = null, Lesson $lesson = null)
     {
@@ -77,7 +77,7 @@ class LearnController extends Controller
     }
 
     /**
-     * Zakończ lekcję i przejdź do następnej.
+     * Zakończ lekcję i przejdź do następnej.
      */
     public function finishLesson(Course $course, Lesson $lesson)
     {
@@ -112,7 +112,7 @@ class LearnController extends Controller
     }
 
     /**
-     * Dodaj ocenę do kursu.
+     * Dodaj ocenę do kursu.
      * @param  Course  $course [description]
      * @param  Request $request [description]
      * @return [type]           [description]

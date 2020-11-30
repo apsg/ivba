@@ -319,15 +319,15 @@ class Course extends Model implements OrderableContract, AccessableContract
             return $this->learnUrl();
         }
 
-        $order = $this->lessons()
+        $order = $this->visibleLessons()
             ->where('lesson_id', $lesson_id)
             ->pluck('position')
             ->first();
 
-        $next = $this->lessons()->where('position', $order + 1)->first();
+        $next = $this->visibleLessons()->where('position', $order + 1)->first();
 
         if (is_null($next)) {
-            $lesson_ids = $this->lessons()->pluck('lesson_id')->all();
+            $lesson_ids = $this->visibleLessons()->pluck('lesson_id')->all();
 
             $next = Auth::user()
                 ->lessons()
@@ -351,7 +351,7 @@ class Course extends Model implements OrderableContract, AccessableContract
         $user = Auth::user();
 
         // Czy została jakaś lekcja do ukończenia?
-        foreach ($this->lessons as $lesson) {
+        foreach ($this->visibleLessons()->get() as $lesson) {
             if (!$user->hasFinishedLesson($lesson->id)) {
                 return $lesson->learnUrl($this);
             }

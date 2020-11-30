@@ -109,8 +109,7 @@
                 updateOrder();
             });
 
-            $('.delay').change(function (v, e) {
-                console.log(v, e);
+            $('.delay').change(function () {
                 $.post('{{ url('/admin/courses/'.$course->slug.'/delays') }}', {
                     _token: '{{ csrf_token() }}',
                     lesson_id: $(this).data('lesson-id'),
