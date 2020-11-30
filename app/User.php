@@ -19,8 +19,8 @@ use Illuminate\Notifications\Notifiable;
  * @property string                         password
  * @property-read Carbon                    full_access_expires
  * @property Carbon                         last_proof_at
- * @property int                        last_proof_id
- * @property int                        days_bought
+ * @property int                            last_proof_id
+ * @property int                            days_bought
  * @property Carbon                         expires_at
  * @property string                         card_token
  * @property Carbon                         changed_password_at
@@ -251,6 +251,12 @@ class User extends Authenticatable
             ->with('accessable');
     }
 
+    public function coupons()
+    {
+        return $this->belongsToMany(Coupon::class)
+            ->withTimestamps();
+    }
+
     /**
      * Aktywna subskrypcja tego użytkownika.
      * @return Subscription|null
@@ -382,7 +388,7 @@ class User extends Authenticatable
         $lesson_ids = Course::findOrFail($course_id)->lessons->pluck('id');
 
         foreach ($lesson_ids as $lesson_id) {
-            if (! $this->hasFinishedLesson($lesson_id)) {
+            if (!$this->hasFinishedLesson($lesson_id)) {
                 return false;
             }
         }
@@ -409,7 +415,7 @@ class User extends Authenticatable
         $quiz_ids = Quiz::where('course_id', $course_id)->get()->pluck('id');
 
         foreach ($quiz_ids as $quiz_id) {
-            if (! $this->hasFinishedQuiz($quiz_id)) {
+            if (!$this->hasFinishedQuiz($quiz_id)) {
                 return false;
             }
         }
@@ -437,7 +443,7 @@ class User extends Authenticatable
         $quiz_ids = Quiz::where('course_id', $course_id)->get()->pluck('id');
 
         foreach ($quiz_ids as $quiz_id) {
-            if (! $this->hasPassedQuiz($quiz_id)) {
+            if (!$this->hasPassedQuiz($quiz_id)) {
                 return false;
             }
         }
@@ -547,7 +553,7 @@ class User extends Authenticatable
     {
         $last = $this->lastDay();
 
-        if (! $last || $last->isPast()) {
+        if (!$last || $last->isPast()) {
             $last = Carbon::now();
             $this->days()->create([
                 'date' => $last->format('Y-m-d'),
@@ -571,7 +577,7 @@ class User extends Authenticatable
     {
         $current = clone $date;
 
-        while (! $current->isPast()) {
+        while (!$current->isPast()) {
             $this->days()->firstOrCreate([
                 'date' => $current->format('Y-m-d'),
             ]);
@@ -588,7 +594,7 @@ class User extends Authenticatable
      */
     public function hasActiveSubscription()
     {
-        return (bool) $this->currentSubscription();
+        return (bool)$this->currentSubscription();
     }
 
     /**
@@ -622,7 +628,7 @@ class User extends Authenticatable
             return null;
         }
 
-        if (! $subscription->isActive()) {
+        if (!$subscription->isActive()) {
             return null;
         }
 

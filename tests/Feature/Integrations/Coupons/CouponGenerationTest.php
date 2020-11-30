@@ -1,10 +1,10 @@
 <?php
-namespace Tests\Feature\Integrations;
+namespace Tests\Feature\Integrations\Coupons;
 
 use App\Coupon;
 use App\Domains\Payments\Repositories\CouponRepository;
-use Auth;
-use Gate;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Tests\Concerns\CourseConcerns;
 use Tests\TestCase;
 

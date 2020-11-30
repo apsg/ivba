@@ -43,7 +43,7 @@ Route::patch('/user', AccountController::class . '@patch');
 
 Route::group(['prefix' => 'coupon'], function () {
     Route::get('/redeem', CouponsController::class . '@show');
-    Route::post('/redeem', CouponsController::class . '@use');
+    Route::post('/redeem', CouponsController::class . '@use')->name('coupon.redeem');
 });
 
 Route::get('/cart', OrderController::class . '@showCart');

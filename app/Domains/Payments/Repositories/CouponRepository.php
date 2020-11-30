@@ -22,7 +22,7 @@ class CouponRepository
         int $uses = 1,
         array $courses = []
     ) : Collection {
-        if (! in_array($type, static::ALLOWED_TYPES)) {
+        if (!in_array($type, static::ALLOWED_TYPES)) {
             throw new \InvalidArgumentException('Wrong type');
         }
 
@@ -46,6 +46,15 @@ class CouponRepository
         }
 
         return $coupons;
+    }
+
+    public function generateFullAccess(int $uses = 1) : Coupon
+    {
+        return Coupon::create([
+            'code'      => strtolower(Str::random(8)),
+            'type'      => Coupon::TYPE_FULL_ACCESS,
+            'uses_left' => $uses,
+        ]);
     }
 
     public function findByCode(string $code, bool $isSearchOnlyUsable = false) : ?Coupon

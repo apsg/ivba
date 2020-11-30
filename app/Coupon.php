@@ -1,10 +1,9 @@
 <?php
-
 namespace App;
 
 use App\Exceptions\NoCouponUsesLeftException;
 use App\Repositories\AccessRepository;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -21,9 +20,13 @@ use Illuminate\Support\Carbon;
  * @property float                    amount
  * @property Carbon|null              created_at
  * @property Carbon|null              updated_at
+ *
  * @property-read Collection|Order[]  $orders
  * @property-read Collection|Course[] $courses
+ * @property-read Collection|User[]   $users
+ *
  * @method static usable() Builder|Coupon
+ *
  * @mixin \Eloquent
  */
 class Coupon extends Model
@@ -37,6 +40,7 @@ class Coupon extends Model
     const TYPE_SUBSCRIPTION_PERCENT = 4;
 
     const TYPE_COURSE_ACCESS = 5;
+    const TYPE_FULL_ACCESS = 6;
 
     protected $casts = [
         'type'   => 'integer',
@@ -54,6 +58,12 @@ class Coupon extends Model
     public function courses()
     {
         return $this->belongsToMany(Course::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)
+            ->withTimestamps();
     }
 
     /**
@@ -154,6 +164,10 @@ class Coupon extends Model
 
     public function use() : self
     {
+        if ($this->alreadyUsedBy(Auth::user())) {
+            return $this;
+        }
+
         if ($this->uses_left <= 0) {
             throw new NoCouponUsesLeftException();
         }
@@ -172,7 +186,20 @@ class Coupon extends Model
             }
         }
 
+        if ($this->type == static::TYPE_FULL_ACCESS) {
+            app(AccessRepository::class)->grantFullAccess(Auth::user(), 366);
+        }
+
+        $this->users()->attach(Auth::user()->id);
+
         return $this;
+    }
+
+    public function alreadyUsedBy(User $user) : bool
+    {
+        return $this->users()
+            ->where('id', $user->id)
+            ->exists();
     }
 
     public function scopeUsable(Builder $query)
