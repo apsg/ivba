@@ -125,7 +125,7 @@
                         </label>
                         <input type="datetime-local"
                                name="scheduled_at"
-                               value="{{ isset($course) ? $course->scheduled_at->format('Y-m-d\TH:i') : '' }}"
+                               value="{{ (isset($course) && $course->scheduled_at !== null) ? $course->scheduled_at->format('Y-m-d\TH:i') : '' }}"
                         >
                         <p>
                             Jeśli ustawisz datę startu kursu specjalnego oraz opóźnienia poszczególnych lekcji, to
