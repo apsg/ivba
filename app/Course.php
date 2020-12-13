@@ -8,6 +8,7 @@ use App\Traits\ChecksSlugs;
 use Cache;
 use Carbon\Carbon;
 use DB;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -43,9 +44,9 @@ use Illuminate\Support\Str;
  * @property-read mixed                        $rating
  * @property-read mixed                        $ratings_count
  * @property-read mixed                        $real_delay
- * @property-read \[type] $user_certificate
- * @property-read \[type] $users_count
- * @property-read \App\Image|null              $image
+ * @property-read Certificate                  $user_certificate
+ * @property-read int                          $users_count
+ * @property-read Image|null                   $image
  * @property-read Collection|Lesson[]          $lessons
  * @property-read Video                        $movie
  * @property-read Collection|Quiz[]            $quizzes
@@ -54,6 +55,9 @@ use Illuminate\Support\Str;
  * @property-read Collection|UserCertificate[] $user_certificates
  * @property-read Collection|User[]            $users
  * @property-read Video|null                   $video
+ *
+ * @method static Builder withoutSpecial()
+ *
  * @mixin \Eloquent
  */
 class Course extends Model implements OrderableContract, AccessableContract
@@ -506,6 +510,11 @@ class Course extends Model implements OrderableContract, AccessableContract
             $q->where('title', 'like', "%{$search}%")
                 ->orWhere('slug', 'like', "%{$search}%");
         });
+    }
+
+    public function scopeWithoutSpecial($query)
+    {
+        return $query->where('is_special_access', false);
     }
 
     public function getLabelAttribute()

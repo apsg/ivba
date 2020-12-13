@@ -3,7 +3,7 @@
 return [
 
     /*
-     * Na jaki email mają się wysyłać formularze kontaktowe
+     * Na jaki email mają się wysyłać formularze kontaktowe
      */
     'contact_form_recipient' => env('FORM_EMAIL', 'info@iexcel.pl'),
 

@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 class CoursesController extends Controller
 {
     /**
-     * Pokaż stronę kursów.
+     * Pokaż stronę kursów.
      */
     public function index()
     {
@@ -23,13 +23,18 @@ class CoursesController extends Controller
         $current = null;
 
         if (Auth::check() && Auth::user()->hasFullAccess()) {
-            $courses = Course::orderBy('position', 'asc')->get();
+            $courses = Course::withoutSpecial()
+                ->orderBy('position', 'asc')
+                ->get();
         } else {
             $current = Auth::user()->current_day ?? null;
-            $courses = Course::orderBy('position', 'asc')->get();
+            $courses = Course::withoutSpecial()
+                ->orderBy('position', 'asc')
+                ->get();
         }
 
-        return fractal()->collection($courses, new CoursesTransformer($current))
+        return fractal()
+            ->collection($courses, new CoursesTransformer($current))
             ->toArray();
     }
 
