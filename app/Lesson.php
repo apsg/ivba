@@ -279,11 +279,11 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     {
         $user = Auth::user();
 
-        if (! $user->hasStartedLesson($this->id)) {
+        if (!$user->hasStartedLesson($this->id)) {
             $this->users()->save($user);
         }
 
-        if (! $user->hasFinishedLesson($this->id)) {
+        if (!$user->hasFinishedLesson($this->id)) {
             event(new UserFinishedLessonEvent($user->id, $courseId));
             $this->users()
                 ->updateExistingPivot(
@@ -317,7 +317,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     /**
      * Zwraca sformatowany tekst stopnia trudności.
      */
-    public function difficulty()
+    public function difficulty() : string
     {
         switch ($this->difficulty) {
             case 1:
@@ -327,5 +327,12 @@ class Lesson extends Model implements OrderableContract, AccessableContract
             case 3:
                 return 'Trudna';
         }
+
+        return '';
+    }
+
+    public function link() : string
+    {
+        return $this->previewLink();
     }
 }

@@ -61,10 +61,16 @@
     @foreach($user->accesses as $access)
         <tr>
             <th scope="row">
-                {{ $access->accessable }}
+                <a href="{{ $access->accessable->link() }}" target="_blank">{{ $access->accessable }}</a>
             </th>
             <td>{{ $access->created_at->format('Y-m-d') }}</td>
-            <td>bezterminowo</td>
+            <td>
+                @if($access->expires_at == null)
+                    bezterminowo
+                @else
+                    {{ $access->expires_at->format('Y-m-d') }}
+                @endif
+            </td>
             <td><i class="fa fa-check"></i> Aktywny</td>
         </tr>
     @endforeach
