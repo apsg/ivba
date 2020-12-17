@@ -96,10 +96,17 @@ class Order extends Model implements InvoicableContract
      */
     public function total() : float
     {
+        if ($this->final_total != null) {
+            return $this->final_total;
+        }
+
         $total = $this->sum();
         foreach ($this->coupons as $coupon) {
             $total = $coupon->apply($total);
         }
+        $this->update([
+            'final_total' => $total,
+        ]);
 
         return $total;
     }
@@ -125,7 +132,7 @@ class Order extends Model implements InvoicableContract
      */
     public function confirm(string $externalId = null) : bool
     {
-        if (! is_null($this->confirmed_at)) {
+        if (!is_null($this->confirmed_at)) {
             return false;
         }
 
@@ -151,7 +158,7 @@ class Order extends Model implements InvoicableContract
         foreach ($this->quick_sales as $quickSale) {
             if ($quickSale->course !== null) {
                 $accessRepository->grant($this->user, $quickSale->course);
-                if (! $this->user->courses()
+                if (!$this->user->courses()
                     ->where('courses.id', '=', $quickSale->course->id)
                     ->exists()) {
                     $this->user->courses()->attach($quickSale->course);
@@ -168,7 +175,7 @@ class Order extends Model implements InvoicableContract
 
         $this->save();
 
-        if (! $this->isQuickSales()) { // Powiadamiamy użytkownika
+        if (!$this->isQuickSales()) { // Powiadamiamy użytkownika
             try {
                 $this->user->notify(new OrderConfirmed($this));
             } catch (\Exception $exception) {

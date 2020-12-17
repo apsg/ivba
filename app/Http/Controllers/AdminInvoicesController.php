@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\InvoiceRequest;
+use App\Order;
 use Illuminate\Http\Request;
 
 class AdminInvoicesController extends Controller
@@ -47,6 +48,12 @@ class AdminInvoicesController extends Controller
     public function update(InvoiceRequest $invoiceRequest, Request $request)
     {
         $invoiceRequest->user()->update($request->only('company_name', 'address', 'taxid'));
+
+        if ($invoiceRequest->invoicable instanceof Order) {
+            $invoiceRequest->invoicable->update([
+                'final_total' => $request->input('final_total'),
+            ]);
+        }
 
         flash('Zaktualizowano pomyślnie');
 

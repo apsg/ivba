@@ -42,6 +42,16 @@
                             {{ csrf_field() }}
 
                             <div class="form-group">
+                                <label>Kwota</label>
+                                <input placeholder="Wpisz swoje imię..."
+                                       type="text"
+                                       name="final_total"
+                                       required="required"
+                                       class="form-control"
+                                       value="{{ $invoiceRequest->getTotal() }}">
+                            </div>
+
+                            <div class="form-group">
                                 <label>Nazwa firmy</label>
                                 <input placeholder="Wpisz swoje imię..." type="text" name="company_name"
                                        required="required"
