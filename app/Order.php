@@ -104,9 +104,6 @@ class Order extends Model implements InvoicableContract
         foreach ($this->coupons as $coupon) {
             $total = $coupon->apply($total);
         }
-        $this->update([
-            'final_total' => $total,
-        ]);
 
         return $total;
     }
@@ -181,6 +178,10 @@ class Order extends Model implements InvoicableContract
             } catch (\Exception $exception) {
                 // do nothing
             }
+
+            $this->update([
+                'final_total' => $this->total(),
+            ]);
         }
 
         return true;
