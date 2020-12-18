@@ -81,7 +81,7 @@ class OrderInvoice extends AbstractInvoice
             $positions[] = [
                 'name'              => $quickSale->name,
                 'tax'               => 23,
-                'total_price_gross' => $quickSale->price,
+                'total_price_gross' => $this->item->total(),
                 'quantity'          => 1,
             ];
         }
