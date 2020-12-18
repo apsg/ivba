@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\InvoiceRequest;
 use App\Order;
+use App\Payment;
 use Illuminate\Http\Request;
 
 class AdminInvoicesController extends Controller
@@ -52,6 +53,12 @@ class AdminInvoicesController extends Controller
         if ($invoiceRequest->invoicable instanceof Order) {
             $invoiceRequest->invoicable->update([
                 'final_total' => $request->input('final_total'),
+            ]);
+        }
+
+        if ($invoiceRequest->invoicable instanceof Payment) {
+            $invoiceRequest->invoicable->update([
+                'amount' => $request->input('amount'),
             ]);
         }
 

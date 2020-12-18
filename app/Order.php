@@ -239,8 +239,8 @@ class Order extends Model implements InvoicableContract
 
     public function getDescription() : string
     {
-        if ($this->quick_sales()->count() > 0) {
-            return $this->quick_sales[0]->name;
+        if ($this->isQuickSales()) {
+            return $this->quick_sales->first()->name;
         }
 
         return $this->description ?? '';

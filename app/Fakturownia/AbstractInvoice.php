@@ -70,7 +70,7 @@ abstract class AbstractInvoice
             'buyer_email'      => $this->item->getEmail(),
             'buyer_tax_no'     => $this->getClientTaxId(),
             'positions'        => $this->getPositions(),
-            'paid_date'        => $this->item->getSellDateFormatted(),
+            'paid_date'        => $now,
             'status'           => 'paid',
             'gtu_codes'        => ['GTU_12'],
         ];

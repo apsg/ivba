@@ -23,7 +23,7 @@ class PaymentInvoice extends AbstractInvoice
     {
         $user = $this->item->subscription->user;
 
-        if (! empty($user->last_name)) {
+        if (!empty($user->last_name)) {
             return implode(', ', array_filter([
                 $user->full_name,
                 $user->address,
@@ -49,6 +49,6 @@ class PaymentInvoice extends AbstractInvoice
 
     protected function getClientTaxId() : string
     {
-        return $this->item->subscription->user->taxid ?? null;
+        return $this->item->subscription->user->taxid ?? '';
     }
 }
