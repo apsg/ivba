@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\Access;
 use App\Course;
 use App\Interfaces\AccessableContract;
+use App\Lesson;
 use App\User;
 use Carbon\Carbon;
 
@@ -19,6 +20,8 @@ class AccessRepository
         ])->first();
 
         if ($access === null) {
+            $this->assignToUser($user, $item);
+
             return Access::create([
                 'user_id'         => $user->id,
                 'accessable_type' => get_class($item),
@@ -72,5 +75,30 @@ class AccessRepository
             'accessable_type' => get_class($item),
             'accessable_id'   => $item->id,
         ])->delete();
+    }
+
+    protected function assignToUser(User $user, AccessableContract $item)
+    {
+        if ($item instanceof Course) {
+            $user->courses()->attach($item->id);
+        }
+
+        if ($item instanceof Lesson) {
+            $user->lessons()->attach($item->id);
+        }
+    }
+
+    public function getCourseAccessIdsForUser(User $user = null) : array
+    {
+        if ($user === null) {
+            return [];
+        }
+
+        return Access::where('user_id', $user->id)
+            ->where('accessable_type', Course::class)
+            ->select('accessable_id')
+            ->get()
+            ->pluck('accessable_id')
+            ->toArray();
     }
 }

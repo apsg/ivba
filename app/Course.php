@@ -57,6 +57,7 @@ use Illuminate\Support\Str;
  * @property-read Video|null                   $video
  *
  * @method static Builder withoutSpecial()
+ * @method static Builder withoutSpecialExcept(array $ids)
  *
  * @mixin \Eloquent
  */
@@ -515,6 +516,14 @@ class Course extends Model implements OrderableContract, AccessableContract
     public function scopeWithoutSpecial($query)
     {
         return $query->where('is_special_access', false);
+    }
+
+    public function scopeWithoutSpecialExcept($query, array $accessIds = [])
+    {
+        return $query->where(function ($q) use ($accessIds) {
+            return $q->where('is_special_access', false)
+                ->orWhereIn('id', $accessIds);
+        });
     }
 
     public function getLabelAttribute()

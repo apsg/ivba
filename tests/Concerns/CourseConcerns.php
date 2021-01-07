@@ -7,7 +7,7 @@ use App\Lesson;
 
 trait CourseConcerns
 {
-    public function createCourse($lessons = 0) : Course
+    public function createCourse(int $lessons = 0) : Course
     {
         $course = factory(Course::class)->create();
 
@@ -32,5 +32,15 @@ trait CourseConcerns
         return factory(Certificate::class)->create([
             'course_id' => $course->id,
         ]);
+    }
+
+    public function createSpecialCourse(int $lessons = 0) : Course
+    {
+        $course = $this->createCourse($lessons);
+        $course->update([
+            'is_special_access' => true,
+        ]);
+
+        return $course;
     }
 }

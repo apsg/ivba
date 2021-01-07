@@ -5,8 +5,8 @@ use App\Course;
 use App\Helpers\ProgressHelper;
 use App\Services\CourseProgressService;
 use App\User;
-use Auth;
-use Cache;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class CourseController extends Controller
 {

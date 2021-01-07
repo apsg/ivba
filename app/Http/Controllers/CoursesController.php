@@ -2,9 +2,10 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Repositories\AccessRepository;
 use App\Transformers\CoursesTransformer;
-use Auth;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class CoursesController extends Controller
 {
@@ -16,19 +17,21 @@ class CoursesController extends Controller
         return view('pages.courses');
     }
 
-    public function list()
+    public function list(AccessRepository $accessRepository)
     {
         /** @var Collection $courses */
         $courses = collect([]);
         $current = null;
 
+        $accessIds = $accessRepository->getCourseAccessIdsForUser(Auth::user());
+
         if (Auth::check() && Auth::user()->hasFullAccess()) {
-            $courses = Course::withoutSpecial()
+            $courses = Course::withoutSpecialExcept($accessIds)
                 ->orderBy('position', 'asc')
                 ->get();
         } else {
             $current = Auth::user()->current_day ?? null;
-            $courses = Course::withoutSpecial()
+            $courses = Course::withoutSpecialExcept($accessIds)
                 ->orderBy('position', 'asc')
                 ->get();
         }
