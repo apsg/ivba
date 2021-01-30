@@ -133,6 +133,22 @@
                             zaplanowanej daty startu.
                         </p>
                     </div>
+                    <div class="col-md-12">
+                        <label>
+                            <input type="checkbox"
+                                   name="is_systematic"
+                                   class="checkbox"
+                                   value="1"
+                                   @if(!empty($course->is_systematic))
+                                   checked
+                                    @endif
+                            >
+                            Kurs systematyczny
+                        </label>
+                        <p>Lekcje w kursie systtematycznym pokazywane są z opóźnieniem liczonym relatywnie od momentu
+                            rozpoczęcia kursu przez użytkownika.
+                        </p>
+                    </div>
                 </div>
             </div>
 

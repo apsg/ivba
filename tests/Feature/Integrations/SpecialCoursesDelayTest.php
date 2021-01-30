@@ -2,6 +2,7 @@
 namespace Tests\Feature\Integrations;
 
 use App\Course;
+use App\Domains\Courses\Services\CoursesService;
 use Carbon\Carbon;
 use Tests\Concerns\CourseConcerns;
 use Tests\TestCase;
@@ -24,19 +25,6 @@ class SpecialCoursesDelayTest extends TestCase
             'is_special_access' => true,
             'scheduled_at'      => Carbon::now(),
         ]);
-    }
-
-    /** @test */
-    public function it_returns_all_lessons_if_no_delays_are_set()
-    {
-        // given
-        // course
-
-        // when
-        $lessons = $this->course->visibleLessons()->get();
-
-        // then
-        $this->assertCount(3, $lessons);
     }
 
     /** @test */
@@ -78,5 +66,43 @@ class SpecialCoursesDelayTest extends TestCase
 
         // then
         $this->assertCount(2, $lessons);
+    }
+
+    /** @test */
+    public function systematic_course_is_relative_to_when_user_started_it()
+    {
+        // given
+        $course = $this->createCourse(3);
+        $course->update([
+            'is_systematic' => true,
+        ]);
+        $course->lessons[0]->pivot->delay = 1;
+        $course->lessons[0]->pivot->save();
+        $course->lessons[1]->pivot->delay = 2;
+        $course->lessons[1]->pivot->save();
+        $course->lessons[2]->pivot->delay = 3;
+        $course->lessons[2]->pivot->save();
+        $user = $this->createUser();
+        $user->courses()->attach($course->id);
+
+        // when
+        $lessons = $course->visibleLessons($user)->get();
+
+        // then
+        $this->assertCount(0, $lessons);
+
+        // when
+        Carbon::setTestNow(Carbon::now()->addHours(2));
+        $lessons = $course->visibleLessons($user)->get();
+
+        // then
+        $this->assertCount(2, $lessons);
+
+        // when
+        Carbon::setTestNow(Carbon::now()->addHours(4));
+        $lessons = $course->visibleLessons($user)->get();
+
+        // then
+        $this->assertCount(3, $lessons);
     }
 }

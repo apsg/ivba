@@ -1,6 +1,7 @@
 <?php
 namespace App;
 
+use App\Domains\Courses\Services\CoursesService;
 use App\Interfaces\AccessableContract;
 use App\Interfaces\OrderableContract;
 use App\Repositories\AccessRepository;
@@ -35,6 +36,7 @@ use Illuminate\Support\Str;
  * @property int                               $cumulative_delay
  * @property bool                              $is_special_access
  * @property Carbon|null                       $scheduled_at
+ * @property boolean                           is_systematic
  *
  * @property-read Collection|Access[]          $access
  * @property-read Certificate                  $certificate
@@ -82,6 +84,7 @@ class Course extends Model implements OrderableContract, AccessableContract
         'delay',
         'is_special_access',
         'scheduled_at',
+        'is_systematic',
     ];
 
     protected $casts = [
@@ -153,21 +156,25 @@ class Course extends Model implements OrderableContract, AccessableContract
             ->orderBy('position', 'asc');
     }
 
-    public function visibleLessons()
+    public function visibleLessons(User $user = null)
     {
-        if ($this->scheduled_at === null) {
+        if ($this->scheduled_at === null && !$this->is_systematic) {
             return $this->lessons();
         }
 
-        $diff = $this->scheduled_at->diffInHours();
+        if ($this->is_systematic) {
+            $startedAt = app(CoursesService::class)->hasStartedCourseAt($user, $this);
+            $diff = $startedAt === null ? 0 : $startedAt->diffInHours();
+        } else {
+            $diff = $this->scheduled_at->diffInHours();
+        }
 
         return $this->lessons()
-            ->wherePivot('delay', '<=', $diff);
+            ->where('delay', '<=', $diff);
     }
 
     /**
      * Oceny wystawione dla tego kursu.
-     * @return [type] [description]
      */
     public function ratings()
     {
@@ -176,7 +183,6 @@ class Course extends Model implements OrderableContract, AccessableContract
 
     /**
      * Testy przypisane do tego kursu.
-     * @return [type] [description]
      */
     public function quizzes()
     {
@@ -185,7 +191,6 @@ class Course extends Model implements OrderableContract, AccessableContract
 
     /**
      * Certyfikat przypisany do tego kursu.
-     * @return [type] [description]
      */
     public function certificate()
     {
@@ -194,7 +199,6 @@ class Course extends Model implements OrderableContract, AccessableContract
 
     /**
      * Certyfikaty użytkowników, dla tego kursu.
-     * @return [type] [description]
      */
     public function user_certificates()
     {
@@ -203,7 +207,6 @@ class Course extends Model implements OrderableContract, AccessableContract
 
     /**
      * Lista wszystkich dostępów dla tego elementu.
-     * @return [type] [description]
      */
     public function access()
     {

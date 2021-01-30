@@ -14,7 +14,7 @@
         <span>Spis lekcji</span>
     </h6>
     <ul class="nav flex-column mb-2">
-        @foreach($course->visibleLessons()->get() as $l)
+        @foreach($course->visibleLessons(Auth::user())->get() as $l)
             <li class="nav-item ">
                 <a href="{{ $l->url($course) }}"
                    class="nav-link @if(isset($lesson) && $l->id == $lesson->id) {{"active"}} @endif">

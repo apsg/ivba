@@ -7,9 +7,9 @@ use App\Helpers\GateHelper;
 use App\Lesson;
 use App\Proof;
 use App\Rating;
-use Auth;
-use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class LearnController extends Controller
 {
@@ -35,7 +35,7 @@ class LearnController extends Controller
 
         // Jeśli nie wybrano lekcji - przekieruj do pierwszej.
         if (empty($lesson->slug)) {
-            $lesson = $course->visibleLessons()->first();
+            $lesson = $course->visibleLessons(Auth::user())->first();
 
             if (empty($lesson)) {
                 return back()->withErrors(['Do tego kursu nie dodano jeszcze żadnej lekcji. Poczekaj na jego uzupełnienie lub skontaktuj się z obsługą.']);
