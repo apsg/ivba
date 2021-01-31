@@ -2,7 +2,6 @@
 namespace Tests\Feature\Integrations;
 
 use App\Course;
-use App\Domains\Courses\Services\CoursesService;
 use Carbon\Carbon;
 use Tests\Concerns\CourseConcerns;
 use Tests\TestCase;
@@ -61,7 +60,7 @@ class SpecialCoursesDelayTest extends TestCase
         $this->course->lessons[2]->pivot->save();
 
         // when
-        Carbon::setTestNow(Carbon::now()->addHours(2)->addSecond(1));
+        Carbon::setTestNow(Carbon::now()->addDays(2)->addSecond(1));
         $lessons = $this->course->visibleLessons()->get();
 
         // then
@@ -92,14 +91,14 @@ class SpecialCoursesDelayTest extends TestCase
         $this->assertCount(0, $lessons);
 
         // when
-        Carbon::setTestNow(Carbon::now()->addHours(2));
+        Carbon::setTestNow(Carbon::now()->addDays(2));
         $lessons = $course->visibleLessons($user)->get();
 
         // then
         $this->assertCount(2, $lessons);
 
         // when
-        Carbon::setTestNow(Carbon::now()->addHours(4));
+        Carbon::setTestNow(Carbon::now()->addDays(4));
         $lessons = $course->visibleLessons($user)->get();
 
         // then

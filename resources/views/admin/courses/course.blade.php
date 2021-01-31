@@ -82,7 +82,7 @@
                                     data-lesson-id="{{ $lesson->id }}">
                                     <div>{{ $lesson->title }}</div>
                                     <div>
-                                        Opóźnienie [h]
+                                        Opóźnienie [dni]
                                         <input type="number"
                                                class="delay w-25" min="0" step="1" name="delay"
                                                data-lesson-id="{{ $lesson->id }}"

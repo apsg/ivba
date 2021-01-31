@@ -164,9 +164,9 @@ class Course extends Model implements OrderableContract, AccessableContract
 
         if ($this->is_systematic) {
             $startedAt = app(CoursesService::class)->hasStartedCourseAt($user, $this);
-            $diff = $startedAt === null ? 0 : $startedAt->diffInHours();
+            $diff = $startedAt === null ? 0 : $startedAt->diffInDays();
         } else {
-            $diff = $this->scheduled_at->diffInHours();
+            $diff = $this->scheduled_at->diffInDays();
         }
 
         return $this->lessons()
