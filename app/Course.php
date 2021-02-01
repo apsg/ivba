@@ -327,7 +327,9 @@ class Course extends Model implements OrderableContract, AccessableContract
             return $this->learnUrl();
         }
 
-        $order = $this->visibleLessons()
+        $user = Auth::user();
+        
+        $order = $this->visibleLessons($user)
             ->where('lesson_id', $lesson_id)
             ->pluck('position')
             ->first();
@@ -337,7 +339,7 @@ class Course extends Model implements OrderableContract, AccessableContract
         if (is_null($next)) {
             $lesson_ids = $this->visibleLessons()->pluck('lesson_id')->all();
 
-            $next = Auth::user()
+            $next = $user
                 ->lessons()
                 ->whereIn('lesson_id', $lesson_ids)
                 ->whereNull('finished_at')
