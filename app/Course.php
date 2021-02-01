@@ -162,7 +162,7 @@ class Course extends Model implements OrderableContract, AccessableContract
             return $this->lessons();
         }
 
-        if ($this->is_systematic) {
+        if ($this->is_systematic && $user !== null) {
             $startedAt = app(CoursesService::class)->hasStartedCourseAt($user, $this);
             $diff = $startedAt === null ? 0 : $startedAt->diffInDays();
         } else {
@@ -359,7 +359,7 @@ class Course extends Model implements OrderableContract, AccessableContract
         $user = Auth::user();
 
         // Czy została jakaś lekcja do ukończenia?
-        foreach ($this->visibleLessons()->get() as $lesson) {
+        foreach ($this->visibleLessons($user)->get() as $lesson) {
             if (!$user->hasFinishedLesson($lesson->id)) {
                 return $lesson->learnUrl($this);
             }
