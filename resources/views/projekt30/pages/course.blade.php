@@ -101,32 +101,35 @@
                         <div class="tab-pane fade show active" id="curriculum" role="tabpanel"
                              aria-labelledby="curriculam-tab">
                             <div class="table-responsive">
-                                <table class="table course-table table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th>Lekcje</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($course->lessons as $lesson)
+                                @if($course->shouldShowLessonPreview())
+
+                                    <table class="table course-table table-bordered">
+                                        <thead>
                                         <tr>
-                                            <td>
-                                                <div class="table-col1">
-                                                    <div class="lecture-txt">Lekcja
-                                                        <span>{{ $lesson->pivot->position+1 }}</span>
-                                                        @if($course->shouldShowLessonPreview())
+                                            <th>Lekcje</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($course->lessons as $lesson)
+                                            <tr>
+                                                <td>
+                                                    <div class="table-col1">
+                                                        <div class="lecture-txt">Lekcja
+                                                            <span>{{ $lesson->pivot->position+1 }}</span>
                                                             <a target="_blank" href="{{ $lesson->previewLink() }}"
                                                                class="preview">Podgląd</a>
-                                                        @endif
-                                                    </div>
-                                                    {{ $lesson->title }} </div>
+                                                        </div>
+                                                        {{ $lesson->title }} </div>
 
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                @else
+                                    <p>Podgląd lekcji dla tego kursu nie jest dostępny.</p>
+                                @endif
 
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="opinions" role="tabpanel" aria-labelledby="opinions-tab">
