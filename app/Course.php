@@ -328,7 +328,7 @@ class Course extends Model implements OrderableContract, AccessableContract
         }
 
         $user = Auth::user();
-        
+
         $order = $this->visibleLessons($user)
             ->where('lesson_id', $lesson_id)
             ->pluck('position')
@@ -501,9 +501,27 @@ class Course extends Model implements OrderableContract, AccessableContract
         return 'Kurs: ' . $this->title;
     }
 
-    public function isSpecialAccess()
+    public function isSpecialAccess() : bool
     {
         return $this->is_special_access;
+    }
+
+    public function isSystematic() : bool
+    {
+        return $this->is_systematic;
+    }
+
+    public function shouldShowLessonPreview() : bool
+    {
+        if ($this->isSpecialAccess()) {
+            return false;
+        }
+
+        if ($this->isSystematic()) {
+            return false;
+        }
+
+        return true;
     }
 
     public function scopeSearch($query, string $search = null)
