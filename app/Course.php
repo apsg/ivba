@@ -166,7 +166,7 @@ class Course extends Model implements OrderableContract, AccessableContract
             $startedAt = app(CoursesService::class)->hasStartedCourseAt($user, $this);
             $diff = $startedAt === null ? 0 : $startedAt->diffInDays();
         } else {
-            $diff = $this->scheduled_at->diffInDays();
+            $diff = $this->scheduled_at->diffInDays() ?? 0;
         }
 
         return $this->lessons()
@@ -334,10 +334,10 @@ class Course extends Model implements OrderableContract, AccessableContract
             ->pluck('position')
             ->first();
 
-        $next = $this->visibleLessons()->where('position', $order + 1)->first();
+        $next = $this->visibleLessons($user)->where('position', $order + 1)->first();
 
         if (is_null($next)) {
-            $lesson_ids = $this->visibleLessons()->pluck('lesson_id')->all();
+            $lesson_ids = $this->visibleLessons($user)->pluck('lesson_id')->all();
 
             $next = $user
                 ->lessons()
