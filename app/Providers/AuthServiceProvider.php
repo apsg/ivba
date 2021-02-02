@@ -81,8 +81,8 @@ class AuthServiceProvider extends ServiceProvider
          * Czy użytkownik może wykupić pełen dostęp?
          */
         Gate::define(GateHelper::CAN_BUY_SUBSCRIPTION, function (User $user) {
-            return (! empty($user->name) || ! empty($user->company_name))
-                && ! empty($user->address);
+            return (!empty($user->name) || !empty($user->company_name))
+                && !empty($user->address);
         });
 
         /*

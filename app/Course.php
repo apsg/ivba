@@ -514,7 +514,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     public function shouldShowLessonPreview() : bool
     {
         if ($this->isSpecialAccess()) {
-            return false;
+            return true;
         }
 
         if ($this->isSystematic()) {

@@ -119,8 +119,8 @@
                                                             <a target="_blank" href="{{ $lesson->previewLink() }}"
                                                                class="preview">Podgląd</a>
                                                         </div>
-                                                        {{ $lesson->title }} </div>
-
+                                                        {{ $lesson->title }}
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach

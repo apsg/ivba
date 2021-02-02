@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Domains\Courses\Services\CoursesService;
 use App\Helpers\GateHelper;
 use App\Lesson;
 use App\Proof;
@@ -21,21 +22,21 @@ class LearnController extends Controller
 
     /**
      * Pokaż widok kursu.
-     * @param  Course $course [description]
-     * @param  Lesson $lesson [description]
+     * @param Course $course [description]
+     * @param Lesson $lesson [description]
      * @return [type]         [description]
      */
-    public function showCourse(Course $course, Lesson $lesson, Request $request)
+    public function showCourse(Course $course, Lesson $lesson, Request $request, CoursesService $coursesService)
     {
-        if (! empty($lesson->slug) && Gate::denies('access-lesson', $lesson)) {
+        if (!empty($lesson->slug) && Gate::denies('access-lesson', $lesson)) {
             flash('Nie masz dostępu do tej lekcji')->warning();
 
-            return redirect(! is_null($course) ? $course->link() : $lesson->previewLink());
+            return redirect(!is_null($course) ? $course->link() : $lesson->previewLink());
         }
 
         // Jeśli nie wybrano lekcji - przekieruj do pierwszej.
         if (empty($lesson->slug)) {
-            $lesson = $course->visibleLessons(Auth::user())->first();
+            $lesson = $course->lessons()->first();
 
             if (empty($lesson)) {
                 return back()->withErrors(['Do tego kursu nie dodano jeszcze żadnej lekcji. Poczekaj na jego uzupełnienie lub skontaktuj się z obsługą.']);
@@ -44,9 +45,12 @@ class LearnController extends Controller
             return redirect('learn/course/' . $course->slug . '/lesson/' . $lesson->slug);
         }
 
+        $canViewLesson = $coursesService->canViewLesson(Auth::user(), $course, $lesson);
+
         $this->assignToUser($course, $lesson);
 
-        return view('learn')->with(compact('course', 'lesson'));
+        return view('learn')
+            ->with(compact('course', 'lesson', 'canViewLesson'));
     }
 
     /**
@@ -65,11 +69,11 @@ class LearnController extends Controller
      */
     protected function assignToUser(Course $course = null, Lesson $lesson = null)
     {
-        if (! empty($course) && ! Auth::user()->hasStartedCourse($course->id)) {
+        if (!empty($course) && !Auth::user()->hasStartedCourse($course->id)) {
             Auth::user()->courses()->attach($course);
         }
 
-        if (! Auth::user()->hasStartedLesson($lesson->id)) {
+        if (!Auth::user()->hasStartedLesson($lesson->id)) {
             Auth::user()->lessons()->attach($lesson, [
                 'course_id' => $course->id ?? null,
             ]);
@@ -82,13 +86,13 @@ class LearnController extends Controller
     public function finishLesson(Course $course, Lesson $lesson)
     {
         $user = Auth::user();
-        if (! $user->hasFinishedLesson($lesson->id)) {
+        if (!$user->hasFinishedLesson($lesson->id)) {
             Proof::createFinishedLesson($user, $lesson);
         }
 
         $lesson->finish($course->id);
 
-        if (! isset($course->id)) {
+        if (!isset($course->id)) {
             return back();
         }
 
@@ -100,7 +104,7 @@ class LearnController extends Controller
      */
     public function finishedCourse(Course $course)
     {
-        if (! Auth::user()->hasFinishedCourse($course->id)) {
+        if (!Auth::user()->hasFinishedCourse($course->id)) {
             return redirect($course->next());
         }
 
@@ -113,8 +117,8 @@ class LearnController extends Controller
 
     /**
      * Dodaj ocenę do kursu.
-     * @param  Course  $course [description]
-     * @param  Request $request [description]
+     * @param Course  $course [description]
+     * @param Request $request [description]
      * @return [type]           [description]
      */
     public function rate(Course $course, Request $request)

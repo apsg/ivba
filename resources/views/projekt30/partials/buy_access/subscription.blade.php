@@ -31,14 +31,11 @@
             <i class="fa fa-2x fa-info"></i>
         </div>
         <div>
-            <strong>
-                W kolejnych miesiącach automatycznie pobierzemy kwotę abonamentu z Twojej karty.
-                W
-                każdej chwili możesz zrezygnować z abonamentu </strong>
-            (Moje Konto ->Anuluj subskrypcję lub
-            pisząc maila hello@config('app.name') ) Pamiętaj w ciągu 30 dni możesz zrezygnować z naszej
-            usługi. Transakcje kartą obsługuję Elavon z Tpay.com - nasza firma nie ma dostępu do
-            danych z Twojej karty.
+            <strong> W kolejnych miesiącach automatycznie pobierzemy kwotę abonamentu z Twojej karty. W każdej chwili
+                możesz zrezygnować z abonamentu </strong>
+            (Moje Konto ->Anuluj subskrypcję lub pisząc maila hello@{{ config('app.name') }} ) Pamiętaj w ciągu 30 dni
+            możesz zrezygnować z naszej usługi. Transakcje kartą obsługuję Elavon z Tpay.com - nasza firma nie ma
+            dostępu do danych z Twojej karty.
         </div>
     </div>
     <button class="btn btn-ivba"><i class="fa fa-money"></i> > Przejdź do operatora płatności

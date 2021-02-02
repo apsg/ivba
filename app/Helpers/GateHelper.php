@@ -12,6 +12,11 @@ abstract class GateHelper
     const ACCESS_LESSON = 'access-lesson';
 
     /**
+     * Views - for special courses and systematic access
+     */
+    const VIEW_LESSON = 'view-lesson';
+
+    /**
      * Actions.
      */
     const RETAKE_QUIZ = 'retake-quiz';
