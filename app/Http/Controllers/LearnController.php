@@ -61,7 +61,9 @@ class LearnController extends Controller
         $this->assignToUser(null, $lesson);
         $course = null;
 
-        return view('learn')->with(compact('lesson', 'course'));
+        return view('learn')->with(compact('lesson', 'course') + [
+                'canViewLesson' => true,
+            ]);
     }
 
     /**
