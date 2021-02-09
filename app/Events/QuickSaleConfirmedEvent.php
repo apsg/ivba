@@ -1,6 +1,7 @@
 <?php
 namespace App\Events;
 
+use App\Order;
 use App\QuickSale;
 use App\User;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -20,10 +21,14 @@ class QuickSaleConfirmedEvent
     /** @var QuickSale */
     public $quicksale;
 
-    public function __construct(User $user, QuickSale $quickSale)
+    /** @var Order|null */
+    public $order;
+
+    public function __construct(User $user, QuickSale $quickSale, Order $order = null)
     {
         $this->user = $user;
         $this->quicksale = $quickSale;
+        $this->order = $order;
     }
 
     public function broadcastOn()

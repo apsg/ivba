@@ -161,7 +161,7 @@ class Order extends Model implements InvoicableContract
                     $this->user->courses()->attach($quickSale->course);
                 }
             }
-            event(new QuickSaleConfirmedEvent($this->user, $quickSale));
+            event(new QuickSaleConfirmedEvent($this->user, $quickSale, $this));
         }
 
         // "Skasuj" wszystkie użyte kody rabatowe w tym zamówieniu

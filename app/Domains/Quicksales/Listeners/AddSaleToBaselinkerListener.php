@@ -28,6 +28,7 @@ class AddSaleToBaselinkerListener
                     'name'         => $event->quicksale->name,
                 ],
             ],
+            'date_add'         => $event->order->confirmed_at->timestamp ?? now()->timestamp,
         ];
 
         Baselinker::orders()
