@@ -2,34 +2,41 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class QuestionOption.
  *
- * @property bool                            is_correct
- * @property-read Question                   question
+ * @property int           $id
+ * @property int           $question_id
+ * @property bool          is_correct
+ * @property string        $title
+ * @property-read Question question
+ * @property Carbon|null   $created_at
+ * @property Carbon|null   $updated_at
+ *
  * @method Builder|QuestionOption correct()
- * @property int                             $id
- * @property int                             $question_id
- * @property string                          $title
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\QuestionOption newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\QuestionOption newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\QuestionOption query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\QuestionOption whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\QuestionOption whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\QuestionOption whereIsCorrect($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\QuestionOption whereQuestionId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\QuestionOption whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\QuestionOption whereUpdatedAt($value)
+ *
+ * @method static Builder|QuestionOption newModelQuery()
+ * @method static Builder|QuestionOption newQuery()
+ * @method static Builder|QuestionOption query()
+ * @method static Builder|QuestionOption whereCreatedAt($value)
+ * @method static Builder|QuestionOption whereId($value)
+ * @method static Builder|QuestionOption whereIsCorrect($value)
+ * @method static Builder|QuestionOption whereQuestionId($value)
+ * @method static Builder|QuestionOption whereTitle($value)
+ * @method static Builder|QuestionOption whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class QuestionOption extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'question_id',
+        'is_correct',
+        'title',
+    ];
 
     /**
      * Do którego pytania należy ta odpowiedź.

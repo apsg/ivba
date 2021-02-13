@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Domains\Courses\Repositories\CoursesRepository;
 use App\Http\Requests\Admin\Courses\ListCoursesRequest;
 use App\Http\Requests\Admin\Courses\UpdateDelayRequest;
 use App\Http\Requests\CourseRequest;
@@ -141,5 +142,14 @@ class AdminCoursesController extends Controller
         $lesson->pivot->save();
 
         return ['ok'];
+    }
+
+    public function duplicate(Course $course, CoursesRepository $repository)
+    {
+        $repository->duplicate($course);
+
+        flash('Zduplikowano kurs');
+
+        return back();
     }
 }

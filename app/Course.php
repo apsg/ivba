@@ -1,6 +1,7 @@
 <?php
 namespace App;
 
+use App\Domains\Courses\Models\CourseLesson;
 use App\Domains\Courses\Services\CoursesService;
 use App\Interfaces\AccessableContract;
 use App\Interfaces\OrderableContract;
@@ -152,6 +153,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     public function lessons()
     {
         return $this->belongsToMany(Lesson::class)
+            ->using(CourseLesson::class)
             ->withPivot(['position', 'delay'])
             ->orderBy('position', 'asc');
     }

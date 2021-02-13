@@ -1,43 +1,52 @@
 <?php
-
 namespace App;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * App\Question.
  *
- * @property int                                                                 $id
- * @property int                                                                 $quiz_id
- * @property int                                                                 $type
- * @property string                                                              $title
- * @property string                                                              $content
- * @property int                                                                 $points
- * @property int                                                                 $position
- * @property string|null                                                         $answer
- * @property \Illuminate\Support\Carbon|null                                     $created_at
- * @property \Illuminate\Support\Carbon|null                                     $updated_at
- * @property-read \[type] $type_name
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\QuestionOption[] $options
- * @property-read \App\Quiz                                                      $quiz
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Question newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Question newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Question query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereAnswer($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereContent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Question wherePoints($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Question wherePosition($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereQuizId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereUpdatedAt($value)
+ * @property int                              $id
+ * @property int                              $quiz_id
+ * @property int                              $type
+ * @property string                           $title
+ * @property string                           $content
+ * @property int                              $points
+ * @property int                              $position
+ * @property string|null                      $answer
+ * @property Carbon|null                      $created_at
+ * @property Carbon|null                      $updated_at
+ * @property-read Collection|QuestionOption[] $options
+ * @property-read Quiz                        $quiz
+ * @method static Builder|Question newModelQuery()
+ * @method static Builder|Question newQuery()
+ * @method static Builder|Question query()
+ * @method static Builder|Question whereAnswer($value)
+ * @method static Builder|Question whereContent($value)
+ * @method static Builder|Question whereCreatedAt($value)
+ * @method static Builder|Question whereId($value)
+ * @method static Builder|Question wherePoints($value)
+ * @method static Builder|Question wherePosition($value)
+ * @method static Builder|Question whereQuizId($value)
+ * @method static Builder|Question whereTitle($value)
+ * @method static Builder|Question whereType($value)
+ * @method static Builder|Question whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class Question extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'quiz_id',
+        'type',
+        'title',
+        'content',
+        'points',
+        'position',
+        'answer',
+    ];
 
     /**
      * Typy pytań, jakie możemy mieć w systemie.
@@ -55,7 +64,7 @@ class Question extends Model
      */
     public function quiz()
     {
-        return $this->belongsTo(\App\Quiz::class);
+        return $this->belongsTo(Quiz::class);
     }
 
     /**
@@ -64,7 +73,7 @@ class Question extends Model
      */
     public function options()
     {
-        return $this->hasMany(\App\QuestionOption::class);
+        return $this->hasMany(QuestionOption::class);
     }
 
     /**
@@ -102,7 +111,7 @@ class Question extends Model
                 return $this->options()->where('is_correct', true)->count() > 0;
                 break;
             case static::OPEN:
-                return ! empty($this->answer);
+                return !empty($this->answer);
                 break;
             default:
                 return false;
@@ -117,7 +126,7 @@ class Question extends Model
         switch ($this->type) {
             case static::SINGLE:
             {
-                $answer = (int) $answer;
+                $answer = (int)$answer;
 
                 $correct = $this->options()
                     ->correct()
@@ -129,7 +138,7 @@ class Question extends Model
             }
             case static::MULTIPLE:
             {
-                if (! is_array($answer)) {
+                if (!is_array($answer)) {
                     return false;
                 }
 
@@ -143,7 +152,7 @@ class Question extends Model
             }
             case static::OPEN:
             {
-                if (! is_string($answer)) {
+                if (!is_string($answer)) {
                     return false;
                 }
 

@@ -26,6 +26,7 @@ use App\Http\Controllers\AdminVideosController;
 use App\Http\Controllers\FollowupsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewslettersController;
+use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', HomeController::class . '@index')->name('home');
@@ -36,10 +37,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('/courses/list', AdminCoursesController::class . '@list');
     Route::get('courses/{course}', AdminCoursesController::class . '@show');
     Route::patch('courses/{course}', AdminCoursesController::class . '@update');
-    Route::delete('courses/{course}', AdminCoursesController::class . '@delete');
+    Route::delete('courses/{course}', AdminCoursesController::class . '@delete')->name('admin.course.delete');
     Route::post('courses/{course}/lesson_order', AdminCoursesController::class . '@updateLessonOrder');
     Route::post('courses/{course}/delays', AdminCoursesController::class . '@updateLessonDelay');
     Route::post('courses_order', AdminCoursesController::class . '@updateOrder');
+    Route::get('courses/{course}/duplicate', AdminCoursesController::class . '@duplicate')
+        ->name('admin.course.duplicate');
 
     Route::get('/lesson', AdminLessonController::class . '@index');
     Route::post('lesson', AdminLessonController::class . '@store');

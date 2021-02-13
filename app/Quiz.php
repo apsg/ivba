@@ -3,41 +3,48 @@
 namespace App;
 
 use App\Events\UserHasPassedQuizEvent;
-use Auth;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * App\Quiz.
  *
- * @property int                                                           $id
- * @property int                                                           $course_id
- * @property string                                                        $name
- * @property int                                                           $is_certified
- * @property int                                                           $is_random
- * @property int                                                           $pass_threshold
- * @property \Illuminate\Support\Carbon|null                               $created_at
- * @property \Illuminate\Support\Carbon|null                               $updated_at
- * @property-read \App\Course                                              $course
- * @property-read mixed                                                    $max_points
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Question[] $questions
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[]     $users
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz whereCourseId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz whereIsCertified($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz whereIsRandom($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz wherePassThreshold($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Quiz whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property int                        $id
+ * @property int                        $course_id
+ * @property string                     $name
+ * @property int                        $is_certified
+ * @property int                        $is_random
+ * @property int                        $pass_threshold
+ * @property Carbon|null                $created_at
+ * @property Carbon|null                $updated_at
+ * @property-read Course                $course
+ * @property-read mixed                 $max_points
+ * @property-read Collection|Question[] $questions
+ * @property-read Collection|User[]     $users
+ * @method static Builder|Quiz newModelQuery()
+ * @method static Builder|Quiz newQuery()
+ * @method static Builder|Quiz query()
+ * @method static Builder|Quiz whereCourseId($value)
+ * @method static Builder|Quiz whereCreatedAt($value)
+ * @method static Builder|Quiz whereId($value)
+ * @method static Builder|Quiz whereIsCertified($value)
+ * @method static Builder|Quiz whereIsRandom($value)
+ * @method static Builder|Quiz whereName($value)
+ * @method static Builder|Quiz wherePassThreshold($value)
+ * @method static Builder|Quiz whereUpdatedAt($value)
  */
 class Quiz extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'course_id',
+        'name',
+        'is_certified',
+        'is_random',
+        'pass_threshold',
+    ];
 
     /**
      * Kurs, do którego ten test jest przypisany.
@@ -123,7 +130,7 @@ class Quiz extends Model
         /** @var User $user */
         $user = Auth::user();
 
-        if (! $user->hasStartedQuiz($this->id)) {
+        if (!$user->hasStartedQuiz($this->id)) {
             $this->users()->save($user);
         }
 
@@ -135,7 +142,7 @@ class Quiz extends Model
 
         $isPass = $percentage >= $this->pass_threshold;
 
-        if ($isPass && ! $user->hasPassedQuiz($this->id)) {
+        if ($isPass && !$user->hasPassedQuiz($this->id)) {
             event(new UserHasPassedQuizEvent($user, $this));
         }
 
