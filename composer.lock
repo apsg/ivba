@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ffb5ac5dbde04304cad66bb9a909061b",
+    "content-hash": "be4bcc51670f09ddc50af28983e4e333",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -2038,12 +2038,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "6e0c87d2322172e4066530303db06ca79e9a3572"
+                "reference": "2555bf6ef6e6739e5f49f4a5d40f6264c57abd56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/6e0c87d2322172e4066530303db06ca79e9a3572",
-                "reference": "6e0c87d2322172e4066530303db06ca79e9a3572",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/2555bf6ef6e6739e5f49f4a5d40f6264c57abd56",
+                "reference": "2555bf6ef6e6739e5f49f4a5d40f6264c57abd56",
                 "shasum": ""
             },
             "require": {
@@ -2116,8 +2116,8 @@
                 "mockery/mockery": "^1.0",
                 "moontoast/math": "^1.1",
                 "orchestra/testbench-core": "3.7.*",
-                "pda/pheanstalk": "^3.0",
-                "phpunit/phpunit": "^7.0",
+                "pda/pheanstalk": "^3.0|^4.0",
+                "phpunit/phpunit": "^7.5",
                 "predis/predis": "^1.1.1",
                 "symfony/css-selector": "^4.1",
                 "symfony/dom-crawler": "^4.1",
@@ -2138,7 +2138,7 @@
                 "league/flysystem-sftp": "Required to use the Flysystem SFTP driver (^1.0).",
                 "moontoast/math": "Required to use ordered UUIDs (^1.1).",
                 "nexmo/client": "Required to use the Nexmo transport (^1.0).",
-                "pda/pheanstalk": "Required to use the beanstalk queue driver (^3.0).",
+                "pda/pheanstalk": "Required to use the beanstalk queue driver (^3.0|^4.0).",
                 "predis/predis": "Required to use the redis cache and queue drivers (^1.0).",
                 "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (^3.0).",
                 "symfony/css-selector": "Required to use some of the crawler integration testing tools (^4.1).",
@@ -2176,7 +2176,11 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-12-21T20:09:25+00:00"
+            "support": {
+                "issues": "https://github.com/laravel/framework/issues",
+                "source": "https://github.com/laravel/framework"
+            },
+            "time": "2020-04-14T14:16:19+00:00"
         },
         {
             "name": "laravel/nexmo-notification-channel",
@@ -8625,66 +8629,6 @@
                 "validate"
             ],
             "time": "2018-05-29T14:25:02+00:00"
-        },
-        {
-            "name": "yajra/laravel-disqus",
-            "version": "v1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yajra/laravel-disqus.git",
-                "reference": "1a929e1a30ad6c010684d4b4dc7447841dbb79b4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-disqus/zipball/1a929e1a30ad6c010684d4b4dc7447841dbb79b4",
-                "reference": "1a929e1a30ad6c010684d4b4dc7447841dbb79b4",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/filesystem": "5.*",
-                "illuminate/support": "5.*",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.*",
-                "scrutinizer/ocular": "~1.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Yajra\\Disqus\\DisqusServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Yajra\\Disqus\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Arjay Angeles",
-                    "email": "aqangeles@gmail.com",
-                    "homepage": "http://yajrabox.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A simple Disqus platform integration with Laravel.",
-            "homepage": "https://github.com/yajra/laravel-disqus",
-            "keywords": [
-                "disqus",
-                "laravel",
-                "yajra"
-            ],
-            "time": "2017-11-24T05:03:02+00:00"
         }
     ],
     "aliases": [],
@@ -8710,5 +8654,5 @@
         "ext-pdo": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }
