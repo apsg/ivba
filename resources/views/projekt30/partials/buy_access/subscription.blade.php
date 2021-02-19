@@ -33,7 +33,7 @@
         <div>
             <strong> W kolejnych miesiącach automatycznie pobierzemy kwotę abonamentu z Twojej karty. W każdej chwili
                 możesz zrezygnować z abonamentu </strong>
-            (Moje Konto ->Anuluj subskrypcję lub pisząc maila hello@{{ config('app.name') }} ) Pamiętaj w ciągu 30 dni
+            (Moje Konto ->Anuluj subskrypcję lub pisząc maila hello@projekt30.pl Pamiętaj w ciągu 30 dni
             możesz zrezygnować z naszej usługi. Transakcje kartą obsługuję Elavon z Tpay.com - nasza firma nie ma
             dostępu do danych z Twojej karty.
         </div>
