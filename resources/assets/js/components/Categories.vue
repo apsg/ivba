@@ -18,7 +18,7 @@
                 </a>
             </slide>
             <slide>
-                <a href="/course/arkusz-google-podstawy">
+                <a href="/course/arkusze-google-podstawy">
                     <img src="/images/v2/dysk_google.png">
                 </a>
             </slide>

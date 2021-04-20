@@ -48473,7 +48473,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("slide", [
-            _c("a", { attrs: { href: "/course/arkusz-google-podstawy" } }, [
+            _c("a", { attrs: { href: "/course/arkusze-google-podstawy" } }, [
               _c("img", { attrs: { src: "/images/v2/dysk_google.png" } })
             ])
           ]),
