@@ -48467,29 +48467,33 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("slide", [
-            _c("a", { attrs: { href: "/course/excel" } }, [
+            _c("a", { attrs: { href: "/course/excel-podstawy" } }, [
               _c("img", { attrs: { src: "/images/v2/excel_miniaturka.png" } })
             ])
           ]),
           _vm._v(" "),
           _c("slide", [
-            _c("a", { attrs: { href: "/course/narzedzia-google" } }, [
+            _c("a", { attrs: { href: "/course/arkusz-google-podstawy" } }, [
               _c("img", { attrs: { src: "/images/v2/dysk_google.png" } })
             ])
           ]),
           _vm._v(" "),
           _c("slide", [
-            _c("a", { attrs: { href: "/course/kamera" } }, [
-              _c("img", { attrs: { src: "/images/v2/kamera.png" } })
+            _c("a", { attrs: { href: "/course/jezyk-sql" } }, [
+              _c("img", { attrs: { src: "/images/v2/sql_miniaturka.png" } })
             ])
           ]),
           _vm._v(" "),
           _c("slide", [
-            _c("a", { attrs: { href: "/course/photoshop" } }, [
-              _c("img", {
-                attrs: { src: "/images/v2/photoshop_miniaturka.png" }
-              })
-            ])
+            _c(
+              "a",
+              { attrs: { href: "/course/kurs-adobe-photoshop-podstawy" } },
+              [
+                _c("img", {
+                  attrs: { src: "/images/v2/photoshop_miniaturka.png" }
+                })
+              ]
+            )
           ]),
           _vm._v(" "),
           _c("slide", [

@@ -13,22 +13,22 @@
                 </a>
             </slide>
             <slide>
-                <a href="/course/excel">
+                <a href="/course/excel-podstawy">
                     <img src="/images/v2/excel_miniaturka.png">
                 </a>
             </slide>
             <slide>
-                <a href="/course/narzedzia-google">
+                <a href="/course/arkusz-google-podstawy">
                     <img src="/images/v2/dysk_google.png">
                 </a>
             </slide>
             <slide>
-                <a href="/course/kamera">
-                    <img src="/images/v2/kamera.png">
+                <a href="/course/jezyk-sql">
+                    <img src="/images/v2/sql_miniaturka.png">
                 </a>
             </slide>
             <slide>
-                <a href="/course/photoshop">
+                <a href="/course/kurs-adobe-photoshop-podstawy">
                     <img src="/images/v2/photoshop_miniaturka.png">
                 </a>
             </slide>
