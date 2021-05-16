@@ -6,14 +6,13 @@ use App\Answer;
 use App\Course;
 use App\Proof;
 use App\Quiz;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class QuizController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('admin')->only('reset');
     }
 
     /**
