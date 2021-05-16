@@ -6,6 +6,7 @@ use App\Console\Commands\ClearAccountCommand;
 use App\Console\Commands\ExportUsersToExcelmailingCommand;
 use App\Console\Commands\FixAccessDays;
 use App\Console\Commands\FixSpecialCoursesVisibilityCommand;
+use App\Console\Commands\LoginAsUserCommand;
 use App\Console\Commands\ProlongSubscriptionsCommand;
 use App\Console\Commands\RecalculateRatingCommand;
 use App\Console\Commands\SendPasswordResetCommand;
@@ -40,6 +41,7 @@ class Kernel extends ConsoleKernel
         UploadFontsCommand::class,
         SendPasswordResetCommand::class,
         FixSpecialCoursesVisibilityCommand::class,
+        LoginAsUserCommand::class,
     ];
 
     /**

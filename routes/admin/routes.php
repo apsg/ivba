@@ -1,5 +1,6 @@
 <?php
 
+use App\Domains\Admin\Controllers\LoginAsUserController;
 use App\Domains\Admin\Controllers\SettingsController;
 use App\Domains\Quicksales\Controller\BaselinkerController;
 use App\Http\Controllers\Admin\AccessController;
@@ -30,6 +31,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', HomeController::class . '@index')->name('home');
+
+    Route::get('/login/{data}', LoginAsUserController::class . '@login')->name('admin.login');
 
     Route::get('courses', AdminCoursesController::class . '@index');
     Route::post('courses', AdminCoursesController::class . '@store');
