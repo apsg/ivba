@@ -114,6 +114,10 @@
             >
             </baselinker>
         </div>
+        <div class="col-md-12 mb-3">
+            <h3 class="mt-2">Wybierz dostępne metody płatności </h3>
+            <payment-method :methods="{{ json_encode($quickSale->payments ?? []) }}"></payment-method>
+        </div>
     @endif
 </div>
 

@@ -27,6 +27,7 @@ import P30Slider from "./components/p30/P30Slider";
 import Groupon from "./components/Admin/Groupon";
 import Baselinker from "./components/Admin/Baselinker";
 import Access from "./components/Admin/Access";
+import PaymentMethod from "./components/Admin/PaymentMethod";
 
 Vue.use(VueClipboard);
 Vue.use(VueFlashMessage);
@@ -52,7 +53,8 @@ const app = new Vue({
         P30Slider,
         Groupon,
         Baselinker,
-        Access
+        Access,
+        'payment-method': PaymentMethod
     }
 });
 
