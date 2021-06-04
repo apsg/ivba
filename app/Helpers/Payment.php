@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Helpers;
 
 use App\Order;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use OpenPayU_Configuration;
 use OpenPayU_Order;
 
@@ -25,7 +24,6 @@ class Payment
 
     /**
      * Wygeneruj link przekierowujący do płatności.
-     * @return [type] [description]
      */
     public function getUrl(Order $order)
     {
@@ -43,26 +41,14 @@ class Payment
         $order->payu_order_id = $payu['extOrderId'];
 
         if ($order->is_full_access) {
-            $payu['products'][0]['name'] = 'Pełny dostęp do platformy iVBA ' . $order->duration . ' dni';
-            $payu['products'][0]['unitPrice'] = 100 * $order->price;
-            $payu['products'][0]['quantity'] = 1;
-        } else {
-            foreach ($order->courses as $course) {
-                $item['name'] = $course->cartName();
-                $item['unitPrice'] = 100 * $course->price;
-                $item['quantity'] = 1;
-                $payu['products'][] = $item;
-            }
-
-            foreach ($order->lessons as $lesson) {
-                $item['name'] = $lesson->cartName();
-                $item['unitPrice'] = 100 * $lesson->price;
-                $item['quantity'] = 1;
-                $payu['products'][] = $item;
-            }
+            $payu['products'][] = $this->createFullAccessProduct($order);
         }
 
-        $payu['buyer']['email'] = Auth::user()->email;
+        if ($order->isQuickSales()) {
+            $payu['products'][] = $this->createQuickSalesProduct($order);
+        }
+
+        $payu['buyer']['email'] = $order->user->email;
 
         $response = OpenPayU_Order::create($payu);
         $order->save();
@@ -91,16 +77,16 @@ class Payment
         $order->payu_order_id = $payu['extOrderId'];
 
         $payu['products'][0] = [
-            'name'	=> config('ivba.subscription_description_first'),
+            'name'      => config('ivba.subscription_description_first'),
             'unitPrice' => 100 * $order->total(),
-            'quantity' => 1,
+            'quantity'  => 1,
         ];
 
         $payu['buyer']['email'] = Auth::user()->email;
 
         $payu['payMethods'] = [
             'payMethod' => [
-                'value'	=> $token,
+                'value' => $token,
                 'type'  => 'CARD_TOKEN',
             ],
         ];
@@ -114,7 +100,7 @@ class Payment
 
     /**
      * [recurring description].
-     * @param  \App\Order $order [description]
+     * @param \App\Order $order [description]
      * @return [type]            [description]
      */
     public function recurring(Order $order)
@@ -134,16 +120,16 @@ class Payment
         $order->payu_order_id = $payu['extOrderId'];
 
         $payu['products'][0] = [
-            'name'	=> config('ivba.subscription_description'),
+            'name'      => config('ivba.subscription_description'),
             'unitPrice' => 100 * $order->total(),
-            'quantity' => 1,
+            'quantity'  => 1,
         ];
 
         $payu['buyer']['email'] = $order->user->email;
 
         $payu['payMethods'] = [
             'payMethod' => [
-                'value'	=> $order->user->card_token,
+                'value' => $order->user->card_token,
                 'type'  => 'CARD_TOKEN',
             ],
         ];
@@ -162,16 +148,36 @@ class Payment
      */
     public static function sig($email, $amount)
     {
-        $str = 'PLN' 	// currency-code
-            . $email 	// customer-email
-            . 'pl'		// customer-language
-            . config('payu.posid') 	// merchant-pos-id
-            . 'true'					// recurring-payment
-            . config('app.name')		// shop-name
-            . 'true'					// store-card
-            . $amount				// total-amount
+        $str = 'PLN'    // currency-code
+            . $email    // customer-email
+            . 'pl'        // customer-language
+            . config('payu.posid')    // merchant-pos-id
+            . 'true'                    // recurring-payment
+            . config('app.name')        // shop-name
+            . 'true'                    // store-card
+            . $amount                // total-amount
             . config('payu.key2');   // MD5 - 2
 
         return hash('sha256', $str);
+    }
+
+    public function createFullAccessProduct(Order $order) : array
+    {
+        $item = [];
+        $item['name'] = 'Pełny dostęp do platformy iVBA ' . $order->duration . ' dni';
+        $item['unitPrice'] = 100 * $order->price;
+        $item['quantity'] = 1;
+
+        return $item;
+    }
+
+    public function createQuickSalesProduct(Order $order) : array
+    {
+        $item = [];
+        $item['name'] = $order->quick_sales()->first()->name;
+        $item['unitPrice'] = 100 * $order->total();
+        $item['quantity'] = 1;
+
+        return $item;
     }
 }

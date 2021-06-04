@@ -1,16 +1,17 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Helpers\Payment;
 use App\Http\Requests\Axios\QuickSaleFinishRequest;
 use App\Http\Requests\Axios\QuickSaleOrderRequest;
 use App\Http\Requests\Axios\QuickSalePrevalidateRequest;
+use App\Order;
 use App\Payments\Tpay\TpayTransaction;
 use App\QuickSale;
 use App\Repositories\QuickSaleRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
-use Response;
+use Illuminate\Http\Response;
 
 class QuickSalesController extends Controller
 {
@@ -42,8 +43,8 @@ class QuickSalesController extends Controller
         $order->quick_sales()->save($sale);
 
         return [
-            'order_id' => $order->id,
-        ];
+                'order_id' => $order->id,
+            ] + $this->generatePaymentsOptions($sale, $order);
     }
 
     public function prevalidate(QuickSalePrevalidateRequest $request)
@@ -93,5 +94,25 @@ class QuickSalesController extends Controller
         return Response::json([
             'url' => $request->sale()->redirect_url,
         ]);
+    }
+
+    private function generatePaymentsOptions(QuickSale $sale, Order $order) : array
+    {
+        $payments = [];
+
+        if (empty($sale->payments) || in_array(QuickSaleRepository::PAYMENT_TPAY, $sale->payments)) {
+            $payments[QuickSaleRepository::PAYMENT_TPAY] = [
+                'use' => true,
+            ];
+        }
+
+        if (in_array(QuickSaleRepository::PAYMENT_PAYU, $sale->payments)) {
+            $payments[QuickSaleRepository::PAYMENT_PAYU] = [
+                'use' => true,
+                'url' => (new Payment())->getUrl($order),
+            ];
+        }
+
+        return compact('payments');
     }
 }

@@ -2724,6 +2724,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Quicksale",
   props: {
@@ -2744,7 +2752,9 @@ __webpack_require__.r(__webpack_exports__);
       group: null,
       street: null,
       postcode: null,
-      city: null
+      city: null,
+      payments: [],
+      tpaySelected: false
     };
   },
   computed: {
@@ -2770,7 +2780,10 @@ __webpack_require__.r(__webpack_exports__);
       return true;
     },
     isTpayEnabled: function isTpayEnabled() {
-      return typeof window.tr_groups !== 'undefined' && window.tr_groups.length > 0;
+      return typeof window.tr_groups !== 'undefined' && window.tr_groups.length > 0 && (this.payments.length === 0 || this.payments['tpay']);
+    },
+    isPayuEnabled: function isPayuEnabled() {
+      return !!this.payments['payu'];
     },
     isFree: function isFree() {
       return parseFloat(this.sale.price) === 0;
@@ -2806,6 +2819,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         console.log(response);
         _this.order = response.data.order_id;
+        _this.payments = response.data.payments;
         _this.step += 1;
       }).catch(function (error) {
         console.log(error.response);
@@ -7761,7 +7775,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".card[data-v-0b4ced8d] {\n  min-height: 300px;\n  background-color: #fafafa;\n}\n.step[data-v-0b4ced8d] {\n  padding: 20px;\n}\n.price[data-v-0b4ced8d] {\n  font-size: 15px;\n  font-weight: bold;\n}\n.old-price[data-v-0b4ced8d] {\n  text-decoration: line-through;\n  color: #3a3a3a;\n}\n.tpay-logo[data-v-0b4ced8d] {\n  max-width: 300px;\n}\n.bank-logo[data-v-0b4ced8d] {\n  height: 50px;\n  max-width: 100%;\n}\n.group-selection[data-v-0b4ced8d] {\n  display: none;\n}\n.groups[data-v-0b4ced8d] {\n  height: 300px;\n}\n.groups .group label[data-v-0b4ced8d] {\n  border: 2px solid transparent;\n}\n.groups .group label.selected[data-v-0b4ced8d] {\n  border: 2px solid green;\n}", ""]);
+exports.push([module.i, ".card[data-v-0b4ced8d] {\n  min-height: 300px;\n  background-color: #fafafa;\n}\n.step[data-v-0b4ced8d] {\n  padding: 20px;\n}\n.price[data-v-0b4ced8d] {\n  font-size: 15px;\n  font-weight: bold;\n}\n.old-price[data-v-0b4ced8d] {\n  text-decoration: line-through;\n  color: #3a3a3a;\n}\n.tpay-logo[data-v-0b4ced8d] {\n  max-width: 300px;\n}\n.bank-logo[data-v-0b4ced8d] {\n  height: 50px;\n  max-width: 100%;\n}\n.group-selection[data-v-0b4ced8d] {\n  display: none;\n}\n.groups[data-v-0b4ced8d] {\n  height: 300px;\n}\n.groups .group label[data-v-0b4ced8d] {\n  border: 2px solid transparent;\n}\n.groups .group label.selected[data-v-0b4ced8d] {\n  border: 2px solid green;\n}\n.pointer[data-v-0b4ced8d] {\n  cursor: pointer;\n}", ""]);
 
 // exports
 
@@ -49651,7 +49665,44 @@ var render = function() {
       _vm._v(" "),
       _vm.step == 4
         ? _c("div", { staticClass: "step" }, [
-            _vm.isTpayEnabled
+            _c("div", { staticClass: "d-flex justify-content-center" }, [
+              _vm.isPayuEnabled
+                ? _c("div", { staticClass: "text-center" }, [
+                    _c(
+                      "a",
+                      {
+                        attrs: {
+                          href: _vm.payments["payu"].url,
+                          alt: "przejdź na stronę płatności"
+                        }
+                      },
+                      [_c("img", { attrs: { src: "/images/payu.png" } })]
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.isTpayEnabled
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "pointer",
+                      on: {
+                        click: function($event) {
+                          _vm.tpaySelected = !_vm.tpaySelected
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "tpay-logo",
+                        attrs: { src: "https://tpay.com/img/logo/tpaycom.png" }
+                      })
+                    ]
+                  )
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _vm.tpaySelected
               ? _c("div", [
                   _vm._m(2),
                   _vm._v(" "),
@@ -49659,44 +49710,53 @@ var render = function() {
                     "div",
                     { staticClass: "row overflow-auto groups mb-3" },
                     _vm._l(_vm.groups, function(method) {
-                      return _c("div", { staticClass: "col-md-4 group" }, [
-                        _c(
-                          "label",
-                          { class: _vm.group == method[0] ? "selected" : "" },
-                          [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.group,
-                                  expression: "group"
+                      return _c(
+                        "div",
+                        { staticClass: "col-md-4 group pointer" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              class:
+                                _vm.group == method[0]
+                                  ? "selected pointer"
+                                  : "pointer"
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.group,
+                                    expression: "group"
+                                  }
+                                ],
+                                staticClass: "group-selection",
+                                attrs: { type: "radio", name: "group" },
+                                domProps: {
+                                  value: method[0],
+                                  checked: _vm._q(_vm.group, method[0])
+                                },
+                                on: {
+                                  change: function($event) {
+                                    _vm.group = method[0]
+                                  }
                                 }
-                              ],
-                              staticClass: "group-selection",
-                              attrs: { type: "radio", name: "group" },
-                              domProps: {
-                                value: method[0],
-                                checked: _vm._q(_vm.group, method[0])
-                              },
-                              on: {
-                                change: function($event) {
-                                  _vm.group = method[0]
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("img", {
-                              staticClass: "bank-logo",
-                              attrs: { src: method[3] }
-                            }),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "text-center" }, [
-                              _vm._v(_vm._s(method[1]))
-                            ])
-                          ]
-                        )
-                      ])
+                              }),
+                              _vm._v(" "),
+                              _c("img", {
+                                staticClass: "bank-logo",
+                                attrs: { src: method[3] }
+                              }),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "text-center" }, [
+                                _vm._v(_vm._s(method[1]))
+                              ])
+                            ]
+                          )
+                        ]
+                      )
                     }),
                     0
                   )
@@ -49770,12 +49830,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "text-center" }, [
-      _c("img", {
-        staticClass: "tpay-logo",
-        attrs: { src: "https://tpay.com/img/logo/tpaycom.png" }
-      }),
-      _vm._v(" "),
-      _c("p", [_vm._v("Wybierz metodę płatności:")])
+      _c("p", [_vm._v("Wybierz metodę dla płatności Tpay:")])
     ])
   }
 ]

@@ -31,10 +31,10 @@
             </label>
             <div class="text-center">
                 <button
-                        title="Musisz zaakceptować regulamin aby przejsć dalej"
-                        @click.prevent="stepIn"
-                        :disabled="!confirmed"
-                        class="btn btn-primary">
+                    title="Musisz zaakceptować regulamin aby przejsć dalej"
+                    @click.prevent="stepIn"
+                    :disabled="!confirmed"
+                    class="btn btn-primary">
                     Dalej <i class="fa fa-chevron-right"></i>
                 </button>
             </div>
@@ -76,9 +76,9 @@
                 </div>
                 <div class="text-center">
                     <button
-                            @click="prevalidate"
-                            :disabled="!isStep2Completed"
-                            class="btn btn-primary">Dalej <i class="fa fa-chevron-right"></i>
+                        @click="prevalidate"
+                        :disabled="!isStep2Completed"
+                        class="btn btn-primary">Dalej <i class="fa fa-chevron-right"></i>
                     </button>
                 </div>
             </form>
@@ -96,8 +96,8 @@
             </div>
             <div class="text-center">
                 <button
-                        @click="stepBack"
-                        class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Wstecz
+                    @click="stepBack"
+                    class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Wstecz
                 </button>
                 <button v-if="!isFree"
                         @click="createOrder"
@@ -111,14 +111,23 @@
         </div>
 
         <div class="step" v-if="step==4">
-            <div v-if="isTpayEnabled">
-                <div class="text-center">
+            <div class="d-flex justify-content-center">
+                <div v-if="isPayuEnabled" class="text-center">
+                    <a :href="payments['payu'].url" alt="przejdź na stronę płatności">
+                        <img src="/images/payu.png">
+                    </a>
+                </div>
+                <div v-if="isTpayEnabled" @click="tpaySelected = !tpaySelected" class="pointer">
                     <img src="https://tpay.com/img/logo/tpaycom.png" class="tpay-logo">
-                    <p>Wybierz metodę płatności:</p>
+                </div>
+            </div>
+            <div v-if="tpaySelected">
+                <div class="text-center">
+                    <p>Wybierz metodę dla płatności Tpay:</p>
                 </div>
                 <div class="row overflow-auto groups mb-3">
-                    <div v-for="method in groups" class="col-md-4 group">
-                        <label :class="(group==method[0]) ? 'selected' : ''">
+                    <div v-for="method in groups" class="col-md-4 group pointer">
+                        <label :class="(group==method[0]) ? 'selected pointer' : 'pointer'">
                             <input type="radio" :value="method[0]" name="group" v-model="group"
                                    class="group-selection"/>
                             <img :src="method[3]" class="bank-logo">
@@ -129,233 +138,244 @@
             </div>
             <div class="text-center">
                 <button
-                        @click="stepBack"
-                        class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Wstecz
+                    @click="stepBack"
+                    class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Wstecz
                 </button>
                 <button
-                        :disabled="!group"
-                        @click="finish"
-                        class="btn btn-primary">Kupuję i płacę <i class="fa fa-chevron-right"></i>
+                    :disabled="!group"
+                    @click="finish"
+                    class="btn btn-primary">Kupuję i płacę <i class="fa fa-chevron-right"></i>
                 </button>
             </div>
             <div v-if="!isTpayEnabled" class="alert alert-danger">
                 Błąd systemu płatności. Spróbuj później lub skontaktuj się z nami.
             </div>
-
         </div>
     </div>
 </template>
 
 <script>
-    export default {
-        name: "Quicksale",
+export default {
+    name: "Quicksale",
 
-        props: {
-            sale: {
-                type: Object,
-                default: null,
-            },
+    props: {
+        sale: {
+            type: Object,
+            default: null,
+        },
+    },
+
+    data() {
+        return {
+            step: 1,
+            confirmed: false,
+            username: null,
+            email: null,
+            phone: null,
+            errors: [],
+            order: null,
+            group: null,
+            street: null,
+            postcode: null,
+            city: null,
+            payments: [],
+            tpaySelected: false,
+        }
+    },
+
+    computed: {
+        progress() {
+            return "width: " + (100 * this.step / 4) + "%;";
         },
 
-        data() {
-            return {
-                step: 1,
-                confirmed: false,
-                username: null,
-                email: null,
-                phone: null,
-                errors: [],
-                order: null,
-                group: null,
-                street: null,
-                postcode: null,
-                city: null,
-            }
-        },
-
-        computed: {
-            progress() {
-                return "width: " + (100 * this.step / 4) + "%;";
-            },
-
-            isStep2Completed() {
-                if (this.sale.is_full_data_required) {
-                    return this.username != null
-                        && this.email != null
-                        && this.phone != null
-                        && this.street != null
-                        && this.postcode != null
-                        && this.city != null;
-                }
-
+        isStep2Completed() {
+            if (this.sale.is_full_data_required) {
                 return this.username != null
                     && this.email != null
-                    && this.phone != null;
-            },
-
-            hasErrors() {
-                if (this.errors === null || typeof this.errors == 'undefined') {
-                    return false;
-                }
-
-                if (this.errors.length === 0) {
-                    return false;
-                }
-
-                return true;
-            },
-
-            isTpayEnabled() {
-                return typeof window.tr_groups !== 'undefined'
-                        && window.tr_groups.length > 0;
-            },
-
-            isFree() {
-                return parseFloat(this.sale.price) === 0;
-            },
-
-            groups() {
-                return tr_groups;
+                    && this.phone != null
+                    && this.street != null
+                    && this.postcode != null
+                    && this.city != null;
             }
+
+            return this.username != null
+                && this.email != null
+                && this.phone != null;
         },
 
-        mounted() {
-            // console.log(this.sale);
+        hasErrors() {
+            if (this.errors === null || typeof this.errors == 'undefined') {
+                return false;
+            }
+
+            if (this.errors.length === 0) {
+                return false;
+            }
+
+            return true;
         },
 
-        methods: {
-            stepIn() {
-                this.errors = [];
-                this.step += 1;
-            },
+        isTpayEnabled() {
+            return typeof window.tr_groups !== 'undefined'
+                && window.tr_groups.length > 0
+                && (this.payments.length === 0 || this.payments['tpay']);
+        },
 
-            stepBack() {
-                this.step -= 1;
-            },
+        isPayuEnabled() {
+            return !!this.payments['payu'];
+        },
 
-            checkStep2(e) {
-                e.preventDefault();
-            },
+        isFree() {
+            return parseFloat(this.sale.price) === 0;
+        },
 
-            createOrder() {
-                return axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/order', {
-                    name: this.username,
-                    email: this.email,
-                    phone: this.phone,
-                    street: this.street,
-                    postcode: this.postcode,
-                    city: this.city,
-                    is_full_data_required: this.sale.is_full_data_required,
-                })
-                        .then(response => {
-                            console.log(response);
-                            this.order = response.data.order_id;
-                            this.step += 1;
+        groups() {
+            return tr_groups;
+        }
+    },
 
-                        }).catch(error => {
-                            console.log(error.response);
-                            this.errors = error.response.data.errors;
-                        });
-            },
+    mounted() {
+        // console.log(this.sale);
+    },
 
-            finishFree() {
-                axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/finish_free', {
-                    name: this.username,
-                    email: this.email,
-                    phone: this.phone,
-                    street: this.street,
-                    postcode: this.postcode,
-                    city: this.city,
-                }).then(response => {
+    methods: {
+        stepIn() {
+            this.errors = [];
+            this.step += 1;
+        },
+
+        stepBack() {
+            this.step -= 1;
+        },
+
+        checkStep2(e) {
+            e.preventDefault();
+        },
+
+        createOrder() {
+            return axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/order', {
+                name: this.username,
+                email: this.email,
+                phone: this.phone,
+                street: this.street,
+                postcode: this.postcode,
+                city: this.city,
+                is_full_data_required: this.sale.is_full_data_required,
+            })
+                .then(response => {
                     console.log(response);
-                    window.location.href = response.data.url;
-                });
-            },
+                    this.order = response.data.order_id;
+                    this.payments = response.data.payments;
+                    this.step += 1;
 
-            prevalidate() {
-                axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/prevalidate', {
-                    email: this.email,
-                    name: this.username,
-                    phone: this.phone,
-                    street: this.street,
-                    postcode: this.postcode,
-                    city: this.city,
-                    is_full_data_required: this.sale.is_full_data_required,
-                }).then(response => {
-                    this.stepIn();
                 }).catch(error => {
                     console.log(error.response);
                     this.errors = error.response.data.errors;
                 });
-            },
+        },
 
-            finish() {
-                axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/finish', {
-                    email: this.email,
-                    order: this.order,
-                    group: this.group
-                })
-                    .then(response => {
-                        console.log(response);
-                        window.location.href = response.data.url;
-                    }).catch(error => {
-                    console.log(error.response);
-                    this.errors = error.response.data.errors;
-                });
-            },
+        finishFree() {
+            axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/finish_free', {
+                name: this.username,
+                email: this.email,
+                phone: this.phone,
+                street: this.street,
+                postcode: this.postcode,
+                city: this.city,
+            }).then(response => {
+                console.log(response);
+                window.location.href = response.data.url;
+            });
+        },
 
-            format(str) {
-                return str.replace('Atrybut phone', 'Numer telefonu');
-            },
-        }
+        prevalidate() {
+            axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/prevalidate', {
+                email: this.email,
+                name: this.username,
+                phone: this.phone,
+                street: this.street,
+                postcode: this.postcode,
+                city: this.city,
+                is_full_data_required: this.sale.is_full_data_required,
+            }).then(response => {
+                this.stepIn();
+            }).catch(error => {
+                console.log(error.response);
+                this.errors = error.response.data.errors;
+            });
+        },
+
+        finish() {
+            axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/finish', {
+                email: this.email,
+                order: this.order,
+                group: this.group
+            })
+                .then(response => {
+                    console.log(response);
+                    window.location.href = response.data.url;
+                }).catch(error => {
+                console.log(error.response);
+                this.errors = error.response.data.errors;
+            });
+        },
+
+        format(str) {
+            return str.replace('Atrybut phone', 'Numer telefonu');
+        },
     }
+}
 </script>
 
 <style scoped lang="scss">
-    .card {
-        min-height: 300px;
-        background-color: #fafafa;
-    }
+.card {
+    min-height: 300px;
+    background-color: #fafafa;
+}
 
-    .step {
-        padding: 20px;
-    }
+.step {
+    padding: 20px;
+}
 
-    .price {
-        font-size: 15px;
-        font-weight: bold;
-    }
+.price {
+    font-size: 15px;
+    font-weight: bold;
+}
 
-    .old-price {
-        text-decoration: line-through;
-        color: #3a3a3a;
-    }
+.old-price {
+    text-decoration: line-through;
+    color: #3a3a3a;
+}
 
-    .tpay-logo {
-        max-width: 300px;
-    }
+.tpay-logo {
+    max-width: 300px;
+}
 
-    .bank-logo {
-        height: 50px;
-        max-width: 100%;
-    }
+.bank-logo {
+    height: 50px;
+    max-width: 100%;
+}
 
-    .group-selection {
-        display: none;
-    }
+.group-selection {
+    display: none;
+}
 
-    .groups {
-        height: 300px;
+.groups {
+    height: 300px;
 
-        .group {
-            label {
-                border: 2px solid transparent;
-            }
+    .group {
+        label {
+            border: 2px solid transparent;
+        }
 
-            label.selected {
-                border: 2px solid green;
-            }
+        label.selected {
+            border: 2px solid green;
         }
     }
+}
+
+.pointer{
+    cursor: pointer;
+}
 
 </style>

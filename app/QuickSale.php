@@ -26,6 +26,7 @@ use Illuminate\Support\Collection;
  * @property string|null             file_url
  * @property string|null             campaign
  * @property string|null             baselinker_id
+ * @property array|null              payments
  *
  * @property Carbon                  created_at
  * @property Carbon                  updated_at
@@ -52,10 +53,12 @@ class QuickSale extends Model implements OrderableContract
         'file_url',
         'campaign',
         'baselinker_id',
+        'payments',
     ];
 
     protected $casts = [
         'is_full_data_required' => 'boolean',
+        'payments'              => 'array',
     ];
 
     public function orders()

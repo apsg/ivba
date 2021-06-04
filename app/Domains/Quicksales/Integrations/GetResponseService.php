@@ -2,7 +2,6 @@
 namespace App\Domains\Quicksales\Integrations;
 
 use App\User;
-use Cache;
 use Getresponse\Sdk\Client\GetresponseClient;
 use Getresponse\Sdk\Client\Operation\Operation;
 use Getresponse\Sdk\Client\Operation\OperationResponse;
@@ -18,6 +17,7 @@ use Getresponse\Sdk\Operation\Contacts\GetContacts\GetContacts;
 use Getresponse\Sdk\Operation\Model\CampaignReference;
 use Getresponse\Sdk\Operation\Model\NewContact;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Cache;
 
 class GetResponseService
 {

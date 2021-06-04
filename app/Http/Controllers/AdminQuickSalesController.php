@@ -23,6 +23,7 @@ class AdminQuickSalesController extends Controller
         $courses = Course::orderBy('title')
             ->select(['id', 'title'])
             ->get();
+
         $getresponseCampaigns = $service->getCampaigns();
 
         return view('admin.quicksales.create')->with(compact('courses', 'getresponseCampaigns'));

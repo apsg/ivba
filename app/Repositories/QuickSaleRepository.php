@@ -5,6 +5,9 @@ use App\QuickSale;
 
 class QuickSaleRepository
 {
+    const PAYMENT_TPAY = 'tpay';
+    const PAYMENT_PAYU = 'payu';
+
     public function create(array $attributes = []) : QuickSale
     {
         return QuickSale::create($attributes);
@@ -14,5 +17,13 @@ class QuickSaleRepository
     {
         return QuickSale::where('hash', '=', $hash)
             ->firstOrFail();
+    }
+
+    public function availablePayments() : array
+    {
+        return [
+            static::PAYMENT_PAYU,
+            static::PAYMENT_TPAY,
+        ];
     }
 }
