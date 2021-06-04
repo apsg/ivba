@@ -43,21 +43,22 @@ class PagesController extends Controller
             ->with(compact('courses', 'lessons', 'blog_items', 'is_front', 'access_options'));
     }
 
-    /**
-     * Ekran powrotu z payu.
-     * @return [type] [description]
-     */
     public function continue(Request $request)
     {
+        /** @var Order $order */
         $order = Order::find($request->order);
+
+        if ($order !== null && $order->isQuickSales()) {
+            $redirectUrl = $order->quick_sales->first()->redirect_url;
+
+            if (!empty($redirectUrl)) {
+                return redirect($redirectUrl);
+            }
+        }
 
         return view('continue')->with(compact('order'));
     }
 
-    /**
-     * Strona z zakupem pełnego dostępu.
-     * @return [type] [description]
-     */
     public function buyAccess()
     {
         return view('buy_access');

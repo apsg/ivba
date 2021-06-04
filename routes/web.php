@@ -15,11 +15,13 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\PayuController;
 use App\Http\Controllers\ProofsController;
 use App\Http\Controllers\QuickSalesController;
 use App\Http\Controllers\RankingController;
 use App\Http\Controllers\SubscriptionsController;
 use App\Http\Controllers\TpayController;
+use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/admin/routes.php';
 require __DIR__ . '/learn/routes.php';
@@ -27,6 +29,7 @@ require __DIR__ . '/axios.php';
 require __DIR__ . '/auth.php';
 
 Route::get('/', PagesController::class . '@home');
+Route::any('/payu/notify', PayuController::class . '@notify');
 
 Route::post('/search', PagesController::class . '@search');
 
