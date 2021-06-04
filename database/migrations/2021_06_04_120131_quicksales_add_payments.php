@@ -14,7 +14,7 @@ class QuicksalesAddPayments extends Migration
     public function up()
     {
         Schema::table('quick_sales', function (Blueprint $table) {
-            $table->json('payments')->nullable();
+            $table->text('payments')->nullable();
         });
     }
 
