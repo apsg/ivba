@@ -106,7 +106,7 @@ class QuickSalesController extends Controller
             ];
         }
 
-        if (in_array(QuickSaleRepository::PAYMENT_PAYU, $sale->payments)) {
+        if (!empty($sale->payments) && in_array(QuickSaleRepository::PAYMENT_PAYU, $sale->payments)) {
             $payments[QuickSaleRepository::PAYMENT_PAYU] = [
                 'use' => true,
                 'url' => (new Payment())->getUrl($order),
