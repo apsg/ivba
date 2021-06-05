@@ -263,11 +263,13 @@ export default {
                 is_full_data_required: this.sale.is_full_data_required,
             })
                 .then(response => {
-                    console.log(response);
                     this.order = response.data.order_id;
                     this.payments = response.data.payments;
                     this.step += 1;
 
+                    if (this.isTpayEnabled && !this.isPayuEnabled) {
+                        this.tpaySelected = true;
+                    }
                 }).catch(error => {
                     console.log(error.response);
                     this.errors = error.response.data.errors;
@@ -374,7 +376,7 @@ export default {
     }
 }
 
-.pointer{
+.pointer {
     cursor: pointer;
 }
 

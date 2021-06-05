@@ -2877,10 +2877,13 @@ __webpack_require__.r(__webpack_exports__);
         city: this.city,
         is_full_data_required: this.sale.is_full_data_required
       }).then(function (response) {
-        console.log(response);
         _this.order = response.data.order_id;
         _this.payments = response.data.payments;
         _this.step += 1;
+
+        if (_this.isTpayEnabled && !_this.isPayuEnabled) {
+          _this.tpaySelected = true;
+        }
       }).catch(function (error) {
         console.log(error.response);
         _this.errors = error.response.data.errors;
