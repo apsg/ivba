@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Payment.
  *
- * @property int                 $id
- * @property string              subscription_id
+ * @property int                 id
+ * @property int                 subscription_id
  * @property string              title
  * @property float               amount
  * @property string              external_id
@@ -21,8 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon              confirmed_at
  * @property bool                is_recurrent
  * @property string|null         cancel_reason
- * @property Carbon|null         $created_at
- * @property Carbon|null         $updated_at
+ * @property Carbon|null         created_at
+ * @property Carbon|null         updated_at
  *
  * @property-read Subscription   subscription
  * @property-read string         reason
@@ -62,7 +62,7 @@ class Payment extends Model implements InvoicableContract
 
     public function isFirstPayment() : bool
     {
-        return ! $this->is_recurrent;
+        return !$this->is_recurrent;
     }
 
     public function scopeForUser($query, User $user)
@@ -126,7 +126,7 @@ class Payment extends Model implements InvoicableContract
             return false;
         }
 
-        if (! empty($this->cancelled_at)) {
+        if (!empty($this->cancelled_at)) {
             return false;
         }
 

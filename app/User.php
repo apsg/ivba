@@ -54,16 +54,16 @@ use Illuminate\Notifications\Notifiable;
  * @property-read Collection|Email[]        $emails
  * @property-read mixed                     $current_day
  * @property-read mixed                     $remaining_days
- * @property-read \App\Proof|null           $last_proof
+ * @property-read Proof|null                $last_proof
  * @property-read Collection|Lesson[]       $lessons
  * @property-read Collection|Order[]        $orders
  * @property-read Collection|Order[]        $quick_sale_order
  * @property-read Collection|Quiz[]         $quizzes
  * @property-read Collection|Subscription[] $subscriptions
+ * @property-read Collection|Payment[]      $payments
  * @property-read Collection|Access[]       $accesses
  * @method static Builder|User followups()
  * @method static Builder|User expired()
- * @mixin \Eloquent
  */
 class User extends Authenticatable
 {
@@ -228,6 +228,13 @@ class User extends Authenticatable
     public function subscriptions()
     {
         return $this->hasMany(Subscription::class);
+    }
+
+    public function payments()
+    {
+        return $this
+            ->hasManyThrough(Payment::class, Subscription::class)
+            ->whereNotNull('confirmed_at');
     }
 
     public function points()

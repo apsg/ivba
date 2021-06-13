@@ -71,6 +71,65 @@
             </div>
         </div>
         <div class="row mt-3">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header text-bold">
+                        Historia transakcji
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th colspan="4">Zamówienia</th>
+                            </tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>Opis</th>
+                                <th>Wartość</th>
+                                <th>Data</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($user->confirmedOrders() as $order)
+                                <tr>
+                                    <td>{{ $order->id }}</td>
+                                    <td>{{ $order->getDescription() }}</td>
+                                    <td>{{ $order->total() }} PLN</td>
+                                    <td>{{ $order->confirmed_at }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        @if($user->payments->count() > 0)
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th colspan="4">Płatności subskrypcyjne</th>
+                                </tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Opis</th>
+                                    <th>Wartość</th>
+                                    <th>Data</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($user->payments as $payment)
+                                    <tr>
+                                        <td>{{ $payment->id }}</td>
+                                        <td>{{ $payment->title  }}</td>
+                                        <td>{{ $payment->amount ?? $payment->subscription->amount }} PLN</td>
+                                        <td>{{ $order->confirmed_at }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
             <div class=" col-md-4">
                 <div class="card">
                     <div class="card-header text-bold">
