@@ -11,7 +11,6 @@ use App\QuickSale;
 use App\Repositories\QuickSaleRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Response;
 
 class QuickSalesController extends Controller
 {
@@ -91,7 +90,7 @@ class QuickSalesController extends Controller
         $order->quick_sales()->save($request->sale());
         $order->confirm();
 
-        return Response::json([
+        return response()->json([
             'url' => $request->sale()->redirect_url,
         ]);
     }
