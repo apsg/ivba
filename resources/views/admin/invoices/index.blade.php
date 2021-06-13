@@ -26,6 +26,7 @@
                                 <th>Dane</th>
                                 <th>Data</th>
                                 <th>Zamówienie</th>
+                                <th>Produkty</th>
                                 <th>Kwota</th>
                                 <th>Akcje</th>
                             </tr>
@@ -41,6 +42,16 @@
                                     </td>
                                     <td>{{ $invoice->created_at }}</td>
                                     <td>{{ $invoice->getDescription() }}</td>
+                                    <td>
+                                        @if($invoice->custom_description)
+                                            <strong>Własny opis:</strong>  <br/>
+                                            {{ $invoice->custom_description }} <br/>
+                                            <hr>
+                                        @endif
+                                        @foreach($invoice->getProducts() as $product)
+                                            {{ $product }}<br/>
+                                        @endforeach
+                                    </td>
                                     <td>{{ $invoice->getTotal() }} PLN</td>
                                     <td>
                                         <a href="{{ route('admin.invoice.accept', $invoice->id) }}"

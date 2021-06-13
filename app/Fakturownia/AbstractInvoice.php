@@ -5,6 +5,7 @@ use App\Fakturownia\Client\InvoiceOceanClient;
 use App\Fakturownia\Exceptions\InvoiceException;
 use App\Interfaces\InvoicableContract;
 use Carbon\Carbon;
+use phpDocumentor\Reflection\DocBlock\Tags\Reference\Url;
 
 abstract class AbstractInvoice
 {
@@ -17,10 +18,14 @@ abstract class AbstractInvoice
     /** @var int|null */
     protected $invoiceId;
 
-    public function __construct(InvoicableContract $item)
+    /** @var string */
+    protected $customDescription;
+
+    public function __construct(InvoicableContract $item, string $customDescription = null)
     {
         $this->client = app(InvoiceOceanClient::class);
         $this->item = $item;
+        $this->customDescription = $customDescription;
     }
 
     public function generate() : int
@@ -31,8 +36,8 @@ abstract class AbstractInvoice
 
         $response = $this->client->addInvoice($this->getAttributes());
 
-        if ($response['success'] !== true || data_get($response, 'response.code') === 'error') {
-            throw new InvoiceException(array_get($response, 'response'));
+        if ($this->isInvalidResponse($response)) {
+            throw new InvoiceException(array_get($response, 'response', ''));
         }
 
         $this->invoiceId = data_get($response, 'response.id');
@@ -89,5 +94,29 @@ abstract class AbstractInvoice
     public function getDownloadUrl() : ?string
     {
         return $this->client->getInvoiceUrl($this->item->invoiceId());
+    }
+
+    public function setCustomDescription(string $customDescription = null) : self
+    {
+        $this->customDescription = $customDescription;
+
+        return $this;
+    }
+
+    protected function isInvalidResponse(array $response) : bool
+    {
+        if (!isset($response['success'])) {
+            return true;
+        }
+
+        if ($response['success'] !== true) {
+            return true;
+        }
+
+        if (data_get($response, 'response.code') === 'error') {
+            return true;
+        }
+
+        return false;
     }
 }

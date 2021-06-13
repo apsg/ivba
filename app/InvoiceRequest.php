@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int                     id
  * @property int                     invoicable_id
  * @property string                  invoicable_type
+ * @property string|null             custom_description
  * @property Carbon                  created_at
  * @property Carbon                  updated_at
  * @property Carbon|null             refused_at
@@ -37,11 +38,11 @@ class InvoiceRequest extends Model
         $invoice = null;
 
         if ($this->invoicable instanceof Order) {
-            $invoice = new OrderInvoice($this->invoicable);
+            $invoice = new OrderInvoice($this->invoicable, $this->custom_description);
         }
 
         if ($this->invoicable instanceof Payment) {
-            $invoice = new PaymentInvoice($this->invoicable);
+            $invoice = new PaymentInvoice($this->invoicable, $this->custom_description);
         }
 
         if ($invoice === null) {
@@ -104,5 +105,28 @@ class InvoiceRequest extends Model
         }
 
         return null;
+    }
+
+    public function getProducts() : array
+    {
+        if ($this->invoicable instanceof Order) {
+            if ($this->invoicable->is_easy_access) {
+                return ['Szybki dostęp'];
+            }
+
+            if ($this->invoicable->is_full_access) {
+                return ['Pełen dostęp do strony'];
+            }
+
+            return $this->invoicable->quick_sales->map(function (QuickSale $quickSale) {
+                return $quickSale->name . ' (Szybka sprzedaż)';
+            })->toArray();
+        }
+
+        if ($this->invoicable instanceof Payment) {
+            return ['Płatność w subskrypcji'];
+        }
+
+        return [];
     }
 }

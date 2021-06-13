@@ -48,6 +48,10 @@ class AdminInvoicesController extends Controller
 
     public function update(InvoiceRequest $invoiceRequest, Request $request)
     {
+        $invoiceRequest->update([
+            'custom_description' => $request->input('custom_description'),
+        ]);
+
         $invoiceRequest->user()->update($request->only('company_name', 'address', 'taxid'));
 
         if ($invoiceRequest->invoicable instanceof Order) {

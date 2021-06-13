@@ -73,6 +73,22 @@
                                        required>
                             </div>
 
+                            <div class="form-group">
+                                <label>Własny opis pozycji </label>
+                                <input placeholder="Własny opis pozycji"
+                                       type="text"
+                                       name="custom_description"
+                                       class="form-control"
+                                       value="{{ $invoiceRequest->custom_description }}">
+                                <p>
+                                    Automatyczne pozycje:
+                                    {{ $invoiceRequest->getDescription() }}
+                                    @foreach($invoiceRequest->getProducts() as $position)
+                                        <br/> {{ $position }}
+                                    @endforeach
+                                </p>
+                            </div>
+
                             <button class="btn btn-ivba"><i class="fa fa-save"></i> Zapisz i kontynuuj</button>
                         </form>
                     </div>

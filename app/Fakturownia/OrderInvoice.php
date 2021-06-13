@@ -10,11 +10,6 @@ class OrderInvoice extends AbstractInvoice
     /** @var Order */
     protected $item;
 
-    public function __construct(Order $item)
-    {
-        parent::__construct($item);
-    }
-
     public function generate() : int
     {
         if ($this->item->invoiceId() !== null) {
@@ -23,7 +18,7 @@ class OrderInvoice extends AbstractInvoice
 
         $response = $this->client->addInvoice($this->getAttributes());
 
-        if ($response['success'] !== true || data_get($response, 'response.code') === 'error') {
+        if ($this->isInvalidResponse($response)) {
             throw new InvoiceException(array_get($response, 'response', ''));
         }
 
@@ -47,7 +42,7 @@ class OrderInvoice extends AbstractInvoice
     {
         $user = $this->item->user;
 
-        if (! empty($user->company_name)) {
+        if (!empty($user->company_name)) {
             return implode(', ', array_filter([
                 $user->company_name,
                 $user->address,
@@ -67,7 +62,7 @@ class OrderInvoice extends AbstractInvoice
         if ($this->item->is_full_access || $this->item->is_easy_access) {
             return [
                 [
-                    'name'              => $this->item->description,
+                    'name'              => $this->customDescription ?? $this->item->description,
                     'tax'               => 23,
                     'total_price_gross' => $this->item->total(),
                     'quantity'          => 1,
@@ -79,7 +74,7 @@ class OrderInvoice extends AbstractInvoice
 
         foreach ($this->item->quick_sales as $quickSale) {
             $positions[] = [
-                'name'              => $quickSale->name,
+                'name'              => $this->customDescription ?? $quickSale->name,
                 'tax'               => 23,
                 'total_price_gross' => $this->item->total(),
                 'quantity'          => 1,

@@ -9,11 +9,6 @@ class PaymentInvoice extends AbstractInvoice
     /** @var Payment */
     protected $item;
 
-    public function __construct(Payment $item)
-    {
-        parent::__construct($item);
-    }
-
     protected function attachInvoiceToItem($invoiceId)
     {
         app(PaymentRepository::class)->attachInvoice($this->item, $invoiceId);

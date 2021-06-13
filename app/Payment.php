@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Payment.
  *
+ * @property int                 $id
  * @property string              subscription_id
  * @property string              title
  * @property float               amount
@@ -20,15 +21,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon              confirmed_at
  * @property bool                is_recurrent
  * @property string|null         cancel_reason
+ * @property Carbon|null         $created_at
+ * @property Carbon|null         $updated_at
+ *
  * @property-read Subscription   subscription
  * @property-read string         reason
  * @property-read InvoiceRequest invoice_request
+ *
  * @method Builder|Payment forUser(User $user)
  * @method Builder|Payment confirmed()
- * @property int                 $id
- * @property Carbon|null         $created_at
- * @property Carbon|null         $updated_at
- * @mixin \Eloquent
  */
 class Payment extends Model implements InvoicableContract
 {
