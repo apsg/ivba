@@ -13,30 +13,32 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**
  * Class Order.
  *
+ * @property int                         id
  * @property string|null                 external_payment_id
  * @property Carbon                      confirmed_at
  * @property int                         duration
- * @property-read User                   user
- * @property int                         $id
- * @property int                         $user_id
- * @property bool                        $is_full_access
+ * @property int                         user_id
+ * @property bool                        is_full_access
  * @property bool                        is_easy_access
- * @property Carbon|null                 $created_at
- * @property Carbon|null                 $updated_at
- * @property float|null                  $final_total
- * @property float|null                  $price
- * @property string|null                 $description
- * @property int|null                    $invoice_id
- * @property-read Collection|Coupon[]    $coupons
+ * @property float|null                  final_total
+ * @property float|null                  price
+ * @property string|null                 description
+ * @property int|null                    invoice_id
+ * @property Carbon|null                 created_at
+ * @property Carbon|null                 updated_at
+ *
+ * @property-read User                   user
+ * @property-read Collection|Coupon[]    coupons
  * @property-read Collection|QuickSale[] quick_sales
  * @property-read InvoiceRequest|null    invoice_request
+ *
  * @method static Builder|Order confirmed()
  * @method static Builder|Order quickSales()
- * @mixin \Eloquent
  */
 class Order extends Model implements InvoicableContract
 {
@@ -178,11 +180,11 @@ class Order extends Model implements InvoicableContract
             } catch (\Exception $exception) {
                 // do nothing
             }
-
-            $this->update([
-                'final_total' => $this->total(),
-            ]);
         }
+
+        $this->update([
+            'final_total' => $this->total(),
+        ]);
 
         return true;
     }

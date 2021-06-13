@@ -2792,6 +2792,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Quicksale",
   props: {
@@ -49962,18 +49963,20 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { disabled: !_vm.group },
-                  on: { click: _vm.finish }
-                },
-                [
-                  _vm._v("Kupuję i płacę "),
-                  _c("i", { staticClass: "fa fa-chevron-right" })
-                ]
-              )
+              _vm.group
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { disabled: !_vm.group },
+                      on: { click: _vm.finish }
+                    },
+                    [
+                      _vm._v("Kupuję i płacę "),
+                      _c("i", { staticClass: "fa fa-chevron-right" })
+                    ]
+                  )
+                : _vm._e()
             ]),
             _vm._v(" "),
             !_vm.isTpayEnabled

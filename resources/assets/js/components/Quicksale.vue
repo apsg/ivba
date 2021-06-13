@@ -142,6 +142,7 @@
                     class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Wstecz
                 </button>
                 <button
+                    v-if="group"
                     :disabled="!group"
                     @click="finish"
                     class="btn btn-primary">Kupuję i płacę <i class="fa fa-chevron-right"></i>
