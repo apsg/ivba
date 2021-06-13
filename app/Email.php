@@ -90,7 +90,7 @@ class Email extends Model
      */
     public function send()
     {
-        $this->convertLinks();
+//        $this->convertLinks();
 
         try {
             Mail::to($this->to->email)

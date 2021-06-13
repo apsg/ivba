@@ -9,7 +9,7 @@
     "type": "project",
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.1.3",
+        "php": ">=7.1",
         "anhskohbo/no-captcha": "dev-master",
         "apsg/baselinker": "dev-master",
         "apsg/multisite": "dev-master",
