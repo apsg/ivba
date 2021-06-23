@@ -119,7 +119,7 @@
                                         <td>{{ $payment->id }}</td>
                                         <td>{{ $payment->title  }}</td>
                                         <td>{{ $payment->amount ?? $payment->subscription->amount }} PLN</td>
-                                        <td>{{ $order->confirmed_at }}</td>
+                                        <td>{{ $payment->confirmed_at }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
