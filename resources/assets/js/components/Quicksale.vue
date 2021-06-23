@@ -1,6 +1,6 @@
 <template>
-    <div class="w-50 card d-flex flex-column align-content-start">
-        <div class="progress">
+    <div class="container card d-flex flex-column align-content-start">
+        <div class="row progress">
             <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
                  :style="progress"></div>
         </div>
