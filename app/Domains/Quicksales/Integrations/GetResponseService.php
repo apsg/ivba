@@ -2,6 +2,7 @@
 namespace App\Domains\Quicksales\Integrations;
 
 use App\User;
+use Carbon\Carbon;
 use Getresponse\Sdk\Client\GetresponseClient;
 use Getresponse\Sdk\Client\Operation\Operation;
 use Getresponse\Sdk\Client\Operation\OperationResponse;
@@ -14,10 +15,15 @@ use Getresponse\Sdk\Operation\Campaigns\GetCampaigns\GetCampaignsSearchQuery;
 use Getresponse\Sdk\Operation\Contacts\CreateContact\CreateContact;
 use Getresponse\Sdk\Operation\Contacts\DeleteContact\DeleteContact;
 use Getresponse\Sdk\Operation\Contacts\GetContacts\GetContacts;
+use Getresponse\Sdk\Operation\CustomFields\GetCustomFields\GetCustomFields;
 use Getresponse\Sdk\Operation\Model\CampaignReference;
+use Getresponse\Sdk\Operation\Model\CustomFieldDetail;
 use Getresponse\Sdk\Operation\Model\NewContact;
+use Getresponse\Sdk\Operation\Model\NewContactCustomFieldValue;
+use Getresponse\Sdk\Operation\Model\UpdateCustomField;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 class GetResponseService
 {
@@ -70,9 +76,7 @@ class GetResponseService
         }
 
         $campaign = new CampaignReference($campaignId);
-        $contact = new NewContact($campaign, $user->email);
-        $contact->setName($user->full_name);
-        $contact->setDayOfCycle(0);
+        $contact = $this->newContact($campaign, $user);
 
         return $this->client->call(new CreateContact($contact));
     }
@@ -127,5 +131,48 @@ class GetResponseService
         }
 
         return $data;
+    }
+
+    public function getCustomFields()
+    {
+        return $this->client->call(new GetCustomFields())->getData();
+    }
+
+    public function getPhoneFieldId() : string
+    {
+        return Cache::remember('getresponse_custom-field-phone-id', Carbon::now()->addDays(7), function () {
+            $customFields = $this->getCustomFields();
+            foreach ($customFields as $customField) {
+                if (Arr::get($customField, 'name') === 'phone') {
+                    return Arr::get($customField, 'customFieldId');
+                }
+            }
+
+            return '';
+        });
+    }
+
+    protected function sanitizePhoneNumber(string $phone) : string
+    {
+        if (Str::startsWith($phone, '+')) {
+            return $phone;
+        }
+
+        return '+48' . $phone;
+    }
+
+    protected function newContact(CampaignReference $campaign, User $user) : NewContact
+    {
+        $contact = new NewContact($campaign, $user->email);
+        $contact->setName($user->full_name);
+        $contact->setDayOfCycle(0);
+
+        if (!empty($user->phone)) {
+            $customFieldPhone = new NewContactCustomFieldValue($this->getPhoneFieldId(),
+                [$this->sanitizePhoneNumber($user->phone)]);
+            $contact->setCustomFieldValues([$customFieldPhone]);
+        }
+
+        return $contact;
     }
 }
