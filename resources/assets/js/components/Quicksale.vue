@@ -148,7 +148,7 @@
                     class="btn btn-primary">Kupuję i płacę <i class="fa fa-chevron-right"></i>
                 </button>
             </div>
-            <div v-if="!isTpayEnabled" class="alert alert-danger">
+            <div v-if="!isTpayEnabled && !isPayuEnabled && !isFree" class="alert alert-danger">
                 Błąd systemu płatności. Spróbuj później lub skontaktuj się z nami.
             </div>
         </div>
