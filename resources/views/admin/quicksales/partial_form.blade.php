@@ -49,7 +49,7 @@
     <div class="col-md-12">
         <label>Wybierz kursy przypięte do szybkiej sprzedaży</label>
 
-        @if($quickSale->course_id)
+        @if($quickSale->course_id ?? false)
             <p>
                 Kurs wybrany w starym systemie (wybierz poniżej kurs(y) aby to nadpisać): <br/>
                 {{ $quickSale->course_id }} - {{ $quickSale->course->title ?? '' }}
@@ -58,7 +58,7 @@
 
         <courses-selector
                 :courses="{{ $courses }}"
-                :initial="{{ $quickSale->courses->pluck('id') }}"
+                :initial="{{ isset($quickSale) ? $quickSale->courses->pluck('id') : '[]' }}"
         ></courses-selector>
     </div>
     <div class="col-md-12">
