@@ -28,6 +28,7 @@ import Groupon from "./components/Admin/Groupon";
 import Baselinker from "./components/Admin/Baselinker";
 import Access from "./components/Admin/Access";
 import PaymentMethod from "./components/Admin/PaymentMethod";
+import CoursesSelector from "./components/Admin/CoursesSelector";
 
 Vue.use(VueClipboard);
 Vue.use(VueFlashMessage);
@@ -54,7 +55,8 @@ const app = new Vue({
         Groupon,
         Baselinker,
         Access,
-        'payment-method': PaymentMethod
+        'payment-method': PaymentMethod,
+        'courses-selector': CoursesSelector
     }
 });
 

@@ -26,4 +26,23 @@ class QuickSaleRepository
             static::PAYMENT_TPAY,
         ];
     }
+
+    public function syncCourses(QuickSale $quickSale, $input = null)
+    {
+        if ($input === null) {
+            return;
+        }
+
+        if (is_integer($input)) {
+            $quickSale->courses()->attach($input);
+            $quickSale->update(['course_id' => null]);
+
+            return;
+        }
+
+        if (is_array($input) && count($input) > 0) {
+            $quickSale->courses()->sync($input);
+            $quickSale->update(['course_id' => null]);
+        }
+    }
 }

@@ -47,19 +47,19 @@
         </div>
     </div>
     <div class="col-md-12">
-        <label>Wybierz kurs przypięty do szybkiej sprzedaży</label>
-        <select name="course_id" class="form-control">
-            <option value="">-- brak --</option>
-            @foreach($courses as $course)
-                <option
-                        @if(isset($quickSale) && $course->id == $quickSale->course_id)
-                        selected="selected"
-                        @endif
-                        value="{{ $course->id }}">
-                    #{{$course->id}} - {{ $course->title }}
-                </option>
-            @endforeach
-        </select>
+        <label>Wybierz kursy przypięte do szybkiej sprzedaży</label>
+
+        @if($quickSale->course_id)
+            <p>
+                Kurs wybrany w starym systemie (wybierz poniżej kurs(y) aby to nadpisać): <br/>
+                {{ $quickSale->course_id }} - {{ $quickSale->course->title ?? '' }}
+            </p>
+        @endif
+
+        <courses-selector
+                :courses="{{ $courses }}"
+                :initial="{{ $quickSale->courses->pluck('id') }}"
+        ></courses-selector>
     </div>
     <div class="col-md-12">
         <div class="form-group">

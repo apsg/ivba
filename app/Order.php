@@ -2,18 +2,17 @@
 namespace App;
 
 use App\Domains\Admin\Models\Setting;
+use App\Domains\Courses\Services\CoursesService;
 use App\Events\QuickSaleConfirmedEvent;
 use App\Events\UserPaidForAccess;
 use App\Fakturownia\OrderInvoice;
 use App\Interfaces\InvoicableContract;
 use App\Notifications\OrderConfirmed;
 use App\Repositories\AccessDaysRepository;
-use App\Repositories\AccessRepository;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**
  * Class Order.
@@ -152,17 +151,19 @@ class Order extends Model implements InvoicableContract
             event(new UserPaidForAccess($this->user));
         }
 
-        $accessRepository = app(AccessRepository::class);
+        $coursesService = app(CoursesService::class);
 
         foreach ($this->quick_sales as $quickSale) {
             if ($quickSale->course !== null) {
-                $accessRepository->grant($this->user, $quickSale->course);
-                if (!$this->user->courses()
-                    ->where('courses.id', '=', $quickSale->course->id)
-                    ->exists()) {
-                    $this->user->courses()->attach($quickSale->course);
+                $coursesService->attachUserToCourse($this->user, $quickSale->course);
+            }
+
+            if ($quickSale->courses->count() > 0) {
+                foreach ($quickSale->courses as $course) {
+                    $coursesService->attachUserToCourse($this->user, $course);
                 }
             }
+
             event(new QuickSaleConfirmedEvent($this->user, $quickSale, $this));
         }
 

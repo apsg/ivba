@@ -10,6 +10,11 @@
 
 @section('content')
     <div class="container">
+        <div class="col-12 card mb-3">
+            <div class="card-body">
+                <a href="{{ $quickSale->link }}" target="_blank">{{ $quickSale->link }}</a>
+            </div>
+        </div>
         <div class="col-md-12">
             <form action="{{ route('admin.quicksale.update', ['quickSale' => $quickSale]) }}" method="post">
                 @csrf
