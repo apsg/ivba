@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Domains\Quicksales\Listeners\AddSaleToBaselinkerListener;
 use App\Domains\Quicksales\Listeners\TrySubscribeToGetresponseListener;
+use App\Domains\Quicksales\Listeners\TrySubscribeToMailerliteGroupListener;
 use App\Events\ActiveSubscriptionExpiredEvent;
 use App\Events\FirstPaymentCorrectEvent;
 use App\Events\FullAccessGrantedEvent;
@@ -121,6 +122,7 @@ class EventServiceProvider extends ServiceProvider
             SendQuickSaleEmailListener::class,
             TrySubscribeToGetresponseListener::class,
             AddSaleToBaselinkerListener::class,
+            TrySubscribeToMailerliteGroupListener::class,
         ],
     ];
 

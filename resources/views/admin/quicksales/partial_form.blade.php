@@ -102,6 +102,24 @@
             @endforeach
         </select>
     </div>
+
+    <div class="col-md-12 mb-3">
+        <h3 class="mt-2">MailerLite</h3>
+        <label>Wybierz grupę MailerLite:</label>
+        <select name="mailerlite_group_id" class="form-control">
+            <option value="">-- Brak --</option>
+            @foreach($mailerliteGroups as $group)
+                <option
+                        @if(isset($quickSale) && $quickSale->mailerlite_group_id == object_get($group, 'id') )
+                        selected="selected"
+                        @endif
+                        value="{{ object_get($group, 'id') }}">
+                    {{ object_get($group, 'name') }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+
     @if(isset($quickSale))
         <div class="col-md-12 mb-3">
             <h3 class="mt-2">Baselinker</h3>

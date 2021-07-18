@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Domains\Quicksales\Integrations\GetResponseService;
+use App\Domains\Quicksales\Integrations\MailerliteService;
 use App\Http\Requests\Admin\QuickSaleRequest;
 use App\QuickSale;
 use App\Repositories\QuickSaleRepository;
@@ -19,15 +20,17 @@ class AdminQuickSalesController extends Controller
         return view('admin.quicksales.index')->with(compact('quickSales'));
     }
 
-    public function create(GetResponseService $service)
+    public function create(GetResponseService $service, MailerliteService $mailerliteService)
     {
         $courses = Course::orderBy('title')
             ->select(['id', 'title'])
             ->get();
 
         $getresponseCampaigns = $service->getCampaigns();
+        $mailerliteGroups = $mailerliteService->getGroups();
 
-        return view('admin.quicksales.create')->with(compact('courses', 'getresponseCampaigns'));
+        return view('admin.quicksales.create')
+            ->with(compact('courses', 'getresponseCampaigns', 'mailerliteGroups'));
     }
 
     public function store(QuickSaleRequest $request, QuickSaleRepository $repository)
@@ -60,16 +63,17 @@ class AdminQuickSalesController extends Controller
         return back();
     }
 
-    public function show(QuickSale $quickSale, GetResponseService $service)
+    public function show(QuickSale $quickSale, GetResponseService $service, MailerliteService $mailerliteService)
     {
         $courses = Course::orderBy('title')
             ->select(['id', 'title'])
             ->get();
 
         $getresponseCampaigns = $service->getCampaigns();
+        $mailerliteGroups = $mailerliteService->getGroups();
 
         return view('admin.quicksales.show')
-            ->with(compact('quickSale', 'courses', 'getresponseCampaigns'));
+            ->with(compact('quickSale', 'courses', 'getresponseCampaigns', 'mailerliteGroups'));
     }
 
     public function downloadReport(QuickSale $quickSale)

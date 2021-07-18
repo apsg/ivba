@@ -43,4 +43,8 @@ return [
     'getresponse' => [
         'key' => env('GETRESPONSE_KEY'),
     ],
+
+    'mailerlite' => [
+        'key' => env('MAILERLITE_KEY'),
+    ],
 ];

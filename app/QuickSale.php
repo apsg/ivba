@@ -28,6 +28,7 @@ use Illuminate\Support\Collection;
  * @property string|null              campaign
  * @property string|null              baselinker_id
  * @property array|null               payments
+ * @property string|null              mailerlite_group_id
  *
  * @property Carbon                   created_at
  * @property Carbon                   updated_at
@@ -56,6 +57,7 @@ class QuickSale extends Model implements OrderableContract
         'campaign',
         'baselinker_id',
         'payments',
+        'mailerlite_group_id',
     ];
 
     protected $casts = [
