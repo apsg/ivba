@@ -15,6 +15,7 @@ class AnalyticsController extends Controller
             ->with([
                 'count' => $service->count(),
                 'total' => $service->total(),
+                'mean'  => $service->mean(),
                 'table' => $service->table(),
                 'start' => $request->start(),
                 'end'   => $request->end(),

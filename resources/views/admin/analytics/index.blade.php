@@ -19,6 +19,18 @@
                     </div>
                 </div>
             </div>
+            <div class="col-4 text-center">
+                <span class="text-big">{{ $count }}</span>
+                <p>Liczba zamówień</p>
+            </div>
+            <div class="col-4 text-center">
+                <span class="text-big">{{ number_format($total,2) }} PLN</span>
+                <p>Suma</p>
+            </div>
+            <div class="col-4 text-center">
+                <span class="text-big">{{ $mean }} PLN</span>
+                <p>Średnio / zamówienie</p>
+            </div>
             <div class="col-12">
                 <table id="analyticsTable">
                     <thead>

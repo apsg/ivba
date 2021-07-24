@@ -50,9 +50,3 @@ export default {
     },
 }
 </script>
-
-<style scoped>
-.big {
-    font-size: 40px;
-}
-</style>

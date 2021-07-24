@@ -22,6 +22,7 @@ class AnalyticsService
         $this->end = $end;
 
         $this->builder = Order::confirmed()
+            ->with('quick_sales')
             ->where('confirmed_at', '>=', $this->start)
             ->where('confirmed_at', '<=', $this->end);
     }
@@ -34,6 +35,15 @@ class AnalyticsService
     public function total() : float
     {
         return $this->builder->sum('final_total');
+    }
+
+    public function mean() : float
+    {
+        if ($this->count() === 0) {
+            return 0;
+        }
+
+        return number_format($this->total() / $this->count(), 2);
     }
 
     public function table() : array
