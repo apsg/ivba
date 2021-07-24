@@ -4,7 +4,6 @@ namespace App\Domains\Admin\Services;
 use App\Order;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Arr;
 
 class AnalyticsService
 {
@@ -44,7 +43,7 @@ class AnalyticsService
             ->get()
             ->mapToGroups(function (Order $order) {
                 return [
-                    $order->description => $order->final_total,
+                    $order->getDescription() => $order->final_total,
                 ];
             });
 
