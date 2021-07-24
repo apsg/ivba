@@ -1,5 +1,6 @@
 <?php
 
+use App\Domains\Admin\Controllers\AnalyticsController;
 use App\Domains\Admin\Controllers\LoginAsUserController;
 use App\Domains\Admin\Controllers\SettingsController;
 use App\Domains\Quicksales\Controller\BaselinkerController;
@@ -196,5 +197,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::post('/', AccessController::class . '@store')->name('admin.access.store');
         Route::delete('/', AccessController::class . '@revoke')->name('admin.access.revoke');
         Route::delete('/{access}', AccessController::class . '@destroy')->name('admin.access.delete');
+    });
+
+    Route::group([
+        'prefix' => 'analytics',
+    ], function () {
+        Route::get('/', AnalyticsController::class . '@index')->name('admin.analytics.index');
+        Route::get('/data', AnalyticsController::class . '@data')->name('admin.analytics.data');
     });
 });

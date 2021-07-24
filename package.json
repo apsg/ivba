@@ -26,16 +26,22 @@
   },
   "dependencies": {
     "admin-lte": "^2.3.11",
+    "chart.js": "^2.9.4",
+    "datatables.net-dt": "^1.1.0",
     "font-awesome": "^4.7.0",
     "jquery-migrate": "~3.0.0",
     "jquery-ui": "^1.12.1",
     "js-file-download": "^0.4.11",
+    "moment": "^2.29.1",
     "npm": "^6.5.0",
     "tinymce": "^4.6.3",
     "v-tooltip": "^2.0.2",
     "vue-carousel": "^0.16.2",
+    "vue-chartjs": "^3.5.1",
     "vue-clipboard2": "^0.3.0",
     "vue-multiselect": "^2.1.6",
-    "vue-select": "^3.10.8"
+    "vue-select": "^3.10.8",
+    "vue2-datepicker": "^3.9.1",
+    "vuejs-datatable": "^2.0.0-alpha.7"
   }
 }

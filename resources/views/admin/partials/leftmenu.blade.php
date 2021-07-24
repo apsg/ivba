@@ -43,7 +43,8 @@
             <li class="treeview @if(request()->is('admin/orders*')
             || request()->is('admin/payments*')
             || request()->is('admin/quicksales*')
-            || request()->is('admin/invoices*') ) active @endif">
+            || request()->is('admin/invoices*')
+            || request()->is('admin/analytics')) active @endif">
                 <a href="#">
                     <i class="fa fa-shopping-bag"></i> <span>Zamówienia</span>
                     <span class="pull-right-container">
@@ -64,6 +65,8 @@
                                 href="{{ url('admin/invoices') }}"><i class="fa fa-fighter-jet"></i> Prośby o
                             faktury</a>
                     </li>
+                    <li class="@if(request()->is('admin/analytics')) active @endif"><a href="{{ url('admin/analytics') }}"><i
+                                    class="fa fa-table"></i> Analityka sprzedaży</a></li>
                 </ul>
             </li>
             {{-- k. Zamówienia --}}

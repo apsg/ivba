@@ -1,12 +1,7 @@
 require('./bootstrap');
 
-require('jquery-ui');
-require('jquery-migrate');
-
 window.Vue = require('vue');
 
-import VueClipboard from 'vue-clipboard2';
-import VueFlashMessage from 'vue-flash-message';
 
 import Categories from './components/Categories.vue';
 import RandomLessons from './components/RandomLessons.vue';
@@ -30,7 +25,16 @@ import Access from "./components/Admin/Access";
 import PaymentMethod from "./components/Admin/PaymentMethod";
 import CoursesSelector from "./components/Admin/CoursesSelector";
 
+import {VuejsDatatableFactory} from 'vuejs-datatable';
+
+Vue.use(VuejsDatatableFactory);
+
+import VueClipboard from 'vue-clipboard2';
+
 Vue.use(VueClipboard);
+
+import VueFlashMessage from 'vue-flash-message';
+
 Vue.use(VueFlashMessage);
 Vue.use(VTooltip);
 
@@ -56,7 +60,8 @@ const app = new Vue({
         Baselinker,
         Access,
         'payment-method': PaymentMethod,
-        'courses-selector': CoursesSelector
+        'courses-selector': CoursesSelector,
+        'analytics': require('./components/Admin/Analytics').default
     }
 });
 

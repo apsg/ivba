@@ -1,4 +1,3 @@
-
 window._ = require('lodash');
 
 /**
@@ -12,7 +11,11 @@ try {
     window.Popper = require('popper.js');
 
     require('bootstrap');
-} catch (e) {}
+} catch (e) {
+}
+
+require('jquery-ui');
+require('jquery-migrate');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
