@@ -9,14 +9,26 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-6 pb-3">
+            <div class="col-4 pb-3">
                 <analytics start="{{ $start->timestamp }}" end="{{ $end->timestamp }}"></analytics>
             </div>
-            <div class="col-6 pb-3">
+            <div class="col-4 pb-3">
                 <div class="card mt-2">
                     <div class="card-header font-weight-bold">
-                        Aktualnie wybrany zakres: {{ $start->format('Y-m-d') }} - {{ $end->format('Y-m-d') }}
+                        Aktualnie wybrany zakres: <br/>
+                        {{ $start->format('Y-m-d') }} - {{ $end->format('Y-m-d') }}
                     </div>
+                </div>
+            </div>
+            <div class="col-4 pb-3">
+                <div class="card mt-2">
+                    <a href="{{ route('admin.analytics.export') . '?' . http_build_query([
+                        'start' => $start->timestamp,
+                        'end' => $end->timestamp
+                    ]) }}"
+                       class="btn btn-ivba">
+                        <i class="fa fa-save"></i> Pobierz raport
+                    </a>
                 </div>
             </div>
             <div class="col-4 text-center">

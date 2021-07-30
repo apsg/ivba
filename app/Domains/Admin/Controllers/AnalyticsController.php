@@ -4,6 +4,8 @@ namespace App\Domains\Admin\Controllers;
 use App\Domains\Admin\Requests\AnalyticsDataRequest;
 use App\Domains\Admin\Services\AnalyticsService;
 use App\Http\Controllers\Controller;
+use Debugbar;
+use Laracsv\Export;
 
 class AnalyticsController extends Controller
 {
@@ -31,5 +33,13 @@ class AnalyticsController extends Controller
             'total' => $service->total(),
             'table' => $service->table(),
         ];
+    }
+
+    public function export(AnalyticsDataRequest $request)
+    {
+        Debugbar::disable();
+        $service = new AnalyticsService($request->start(), $request->end());
+        $exporter = new Export();
+        $exporter->build(collect($service->table()), ['key', 'count', 'sum'])->download();
     }
 }

@@ -204,5 +204,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     ], function () {
         Route::get('/', AnalyticsController::class . '@index')->name('admin.analytics.index');
         Route::get('/data', AnalyticsController::class . '@data')->name('admin.analytics.data');
+        Route::get('/export', AnalyticsController::class . '@export')->name('admin.analytics.export');
     });
 });
