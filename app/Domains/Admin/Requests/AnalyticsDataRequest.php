@@ -9,8 +9,8 @@ class AnalyticsDataRequest extends FormRequest
     public function rules()
     {
         return [
-            'start' => 'required|numeric',
-            'end'   => 'required|numeric|gte:start',
+            'start' => 'numeric',
+            'end'   => 'numeric|gte:start',
         ];
     }
 
