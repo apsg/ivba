@@ -106,6 +106,7 @@ Route::group(['prefix' => 'qs'], function () {
     Route::post('/{hash}/prevalidate', QuickSalesController::class . '@prevalidate');
     Route::post('/{hash}/finish', QuickSalesController::class . '@finish');
     Route::post('/{hash}/finish_free', QuickSalesController::class . '@finishFree');
+    Route::post('/{hash}/check_coupon', QuickSalesController::class . '@checkCoupon');
 });
 
 Route::get('/payments/{payment}/request-invoice', PaymentsController::class . '@requestInvoice');

@@ -1,7 +1,9 @@
 <?php
 namespace Tests\Feature\Integrations;
 
+use App\Coupon;
 use App\Course;
+use App\Domains\Payments\Repositories\CouponRepository;
 use App\QuickSale;
 use App\User;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
@@ -96,5 +98,23 @@ class QuickSaleOrderableTest extends TestCase
         $this->actingAs($this->user)
             ->get('/account')
             ->assertSee($url);
+    }
+
+    /** @test */
+    public function it_uses_coupons_in_quick_sale_orders()
+    {
+        // given
+        $order = $this->user->getCurrentOrder();
+        /** @var Coupon $coupon */
+        $coupon = app(CouponRepository::class)->generate(Coupon::TYPE_PERCENT, 1, 10, 1)->first();
+
+        // when
+        $order->quick_sales()->save($this->quickSale);
+        $order->coupons()->save($coupon);
+        $order = $order->fresh();
+
+        // then
+        $this->assertNotEquals($this->quickSale->price, $order->total());
+        $this->assertEquals($coupon->apply($this->quickSale->price), $order->total());
     }
 }

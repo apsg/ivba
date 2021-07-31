@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use OpenPayU_Configuration;
 use OpenPayU_Order;
 
-class Payment
+class PayuPayment
 {
     public function __construct()
     {

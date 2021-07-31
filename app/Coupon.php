@@ -230,4 +230,17 @@ class Coupon extends Model
     {
         return $this->valueFormatted();
     }
+
+    public function isValidForQuickSale() : bool
+    {
+        if ($this->uses_left <= 0) {
+            return false;
+        }
+
+        if (!in_array($this->type, [static::TYPE_PERCENT, static::TYPE_VALUE])) {
+            return false;
+        }
+
+        return true;
+    }
 }

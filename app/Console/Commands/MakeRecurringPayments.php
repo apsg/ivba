@@ -37,7 +37,7 @@ class MakeRecurringPayments extends Command
      */
     public function handle()
     {
-        $ph = new \App\Helpers\Payment;
+        $ph = new \App\Helpers\PayuPayment;
 
         $subscriptions = \App\Subscription::where('next_payment_at', '<=', \Carbon\Carbon::now()->format('Y-m-d'))
             ->where('is_active', true)

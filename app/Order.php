@@ -233,6 +233,7 @@ class Order extends Model implements InvoicableContract
             'duration'       => 0,
             'description'    => '',
             'price'          => 0,
+            'final_total'    => null,
         ]);
         $this->coupons()->detach();
         $this->quick_sales()->detach();

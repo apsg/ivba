@@ -18,17 +18,41 @@
                 <div class="w-50">
                     Cena:
                     <span class="price old-price" v-if="sale.full_price">{{ sale.full_price }}</span>
-                    <span class="price">{{ sale.price }} PLN</span>
+                    <span class="price" :class="coupon.valid ? 'old-price' : ''">{{ sale.price }} PLN</span>
+                    <span class="price pl-1" v-if="coupon.valid">
+                        (rabat {{ coupon.description }})
+                        {{ coupon.newPrice }} PLN
+                    </span>
                 </div>
                 <div class="w-50">
                     <i class="fa fa-info"></i> Opis:
                     <p>{{ sale.description }}</p>
                 </div>
             </div>
-            <label>
-                <input type="checkbox" id="rules" v-model="confirmed"/>
-                Akceptuję <a :href="sale.rules_url" target="_blank">Regulamin</a>
-            </label>
+            <div class="col-auto">
+                <label class="sr-only" for="couponCodeGroup">Kupon</label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Kupon rabatowy:</div>
+                    </div>
+                    <input v-model="coupon.code"
+                           type="text"
+                           class="form-control"
+                           id="couponCodeGroup"
+                           placeholder="wpisz kod..."
+                           @change="checkCoupon"
+                    >
+                    <div class="input-group-append d-flex align-content-center p-1" v-if="coupon.valid">
+                        <span style="color: #00a65a"><i class="fa fa-check fa-2x"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto pt-3">
+                <label>
+                    <input type="checkbox" id="rules" v-model="confirmed"/>
+                    Akceptuję <a :href="sale.rules_url" target="_blank">Regulamin</a>
+                </label>
+            </div>
             <div class="text-center">
                 <button
                     title="Musisz zaakceptować regulamin aby przejsć dalej"
@@ -181,6 +205,13 @@ export default {
             city: null,
             payments: [],
             tpaySelected: false,
+            coupon: {
+                code: null,
+                id: null,
+                valid: false,
+                newPrice: null,
+                description: null
+            }
         }
     },
 
@@ -227,7 +258,8 @@ export default {
         },
 
         isFree() {
-            return parseFloat(this.sale.price) === 0;
+            return parseFloat(this.sale.price) === 0
+                || parseFloat(this.coupon.newPrice) === 0;
         },
 
         groups() {
@@ -253,8 +285,12 @@ export default {
             e.preventDefault();
         },
 
+        baseUrl() {
+            return window.baseUrl + '/qs/' + this.sale.hash;
+        },
+
         createOrder() {
-            return axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/order', {
+            return axios.post(this.baseUrl() + '/order', {
                 name: this.username,
                 email: this.email,
                 phone: this.phone,
@@ -262,6 +298,7 @@ export default {
                 postcode: this.postcode,
                 city: this.city,
                 is_full_data_required: this.sale.is_full_data_required,
+                coupon: this.coupon.id
             })
                 .then(response => {
                     this.order = response.data.order_id;
@@ -278,13 +315,14 @@ export default {
         },
 
         finishFree() {
-            axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/finish_free', {
+            axios.post(this.baseUrl() + '/finish_free', {
                 name: this.username,
                 email: this.email,
                 phone: this.phone,
                 street: this.street,
                 postcode: this.postcode,
                 city: this.city,
+                coupon: this.coupon.id
             }).then(response => {
                 console.log(response);
                 window.location.href = response.data.url;
@@ -292,7 +330,7 @@ export default {
         },
 
         prevalidate() {
-            axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/prevalidate', {
+            axios.post(this.baseUrl() + '/prevalidate', {
                 email: this.email,
                 name: this.username,
                 phone: this.phone,
@@ -300,6 +338,7 @@ export default {
                 postcode: this.postcode,
                 city: this.city,
                 is_full_data_required: this.sale.is_full_data_required,
+                coupon: this.coupon.id
             }).then(response => {
                 this.stepIn();
             }).catch(error => {
@@ -309,7 +348,7 @@ export default {
         },
 
         finish() {
-            axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/finish', {
+            axios.post(this.baseUrl() + '/finish', {
                 email: this.email,
                 order: this.order,
                 group: this.group
@@ -326,6 +365,17 @@ export default {
         format(str) {
             return str.replace('Atrybut phone', 'Numer telefonu');
         },
+
+        checkCoupon() {
+            axios.post(this.baseUrl() + '/check_coupon', {
+                code: this.coupon.code
+            }).then((data) => {
+                this.coupon.id = data.data.id;
+                this.coupon.valid = data.data.valid;
+                this.coupon.newPrice = data.data.newPrice;
+                this.coupon.description = data.data.description;
+            });
+        }
     }
 }
 </script>

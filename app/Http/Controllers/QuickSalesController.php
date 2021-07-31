@@ -1,7 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Helpers\Payment;
+use App\Domains\Quicksales\Requests\QuickSaleCouponRequest;
+use App\Helpers\PayuPayment;
 use App\Http\Requests\Axios\QuickSaleFinishRequest;
 use App\Http\Requests\Axios\QuickSaleOrderRequest;
 use App\Http\Requests\Axios\QuickSalePrevalidateRequest;
@@ -40,6 +41,10 @@ class QuickSalesController extends Controller
 
         $order = $user->getCurrentOrder()->clear();
         $order->quick_sales()->save($sale);
+
+        if ($request->couponById() !== null && $request->couponById()->isValidForQuickSale()) {
+            $order->coupons()->save($request->couponById());
+        }
 
         return [
                 'order_id' => $order->id,
@@ -108,10 +113,28 @@ class QuickSalesController extends Controller
         if (!empty($sale->payments) && in_array(QuickSaleRepository::PAYMENT_PAYU, $sale->payments)) {
             $payments[QuickSaleRepository::PAYMENT_PAYU] = [
                 'use' => true,
-                'url' => (new Payment())->getUrl($order),
+                'url' => (new PayuPayment())->getUrl($order),
             ];
         }
 
         return compact('payments');
+    }
+
+    public function checkCoupon(string $hash, QuickSaleCouponRequest $request)
+    {
+        if ($request->couponByCode() === null || !$request->couponByCode()->isValidForQuickSale()) {
+            return [
+                'id'       => null,
+                'newPrice' => null,
+                'valid'    => false,
+            ];
+        }
+
+        return [
+            'id'          => $request->couponByCode()->id,
+            'newPrice'    => $request->couponByCode()->apply($request->sale()->price),
+            'valid'       => true,
+            'description' => $request->couponByCode()->description,
+        ];
     }
 }

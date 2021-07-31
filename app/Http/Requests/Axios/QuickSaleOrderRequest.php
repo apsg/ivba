@@ -1,14 +1,15 @@
 <?php
 namespace App\Http\Requests\Axios;
 
-use App\QuickSale;
-use App\Repositories\QuickSaleRepository;
+use App\Domains\Quicksales\Requests\BaseQuickSaleRequest;
+use App\Http\Requests\HasCouponTrait;
 use App\Repositories\UserRepository;
 use App\User;
-use Illuminate\Foundation\Http\FormRequest;
 
-class QuickSaleOrderRequest extends FormRequest
+class QuickSaleOrderRequest extends BaseQuickSaleRequest
 {
+    use HasCouponTrait;
+
     public function rules()
     {
         return [
@@ -16,11 +17,6 @@ class QuickSaleOrderRequest extends FormRequest
             'phone' => 'required|string|min:9',
             'name'  => 'required|string',
         ];
-    }
-
-    public function sale() : QuickSale
-    {
-        return app(QuickSaleRepository::class)->findByHash($this->route('hash'));
     }
 
     public function getUser() : User

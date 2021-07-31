@@ -3007,6 +3007,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Quicksale",
   props: {
@@ -3029,7 +3053,14 @@ __webpack_require__.r(__webpack_exports__);
       postcode: null,
       city: null,
       payments: [],
-      tpaySelected: false
+      tpaySelected: false,
+      coupon: {
+        code: null,
+        id: null,
+        valid: false,
+        newPrice: null,
+        description: null
+      }
     };
   },
   computed: {
@@ -3061,7 +3092,7 @@ __webpack_require__.r(__webpack_exports__);
       return !!this.payments['payu'];
     },
     isFree: function isFree() {
-      return parseFloat(this.sale.price) === 0;
+      return parseFloat(this.sale.price) === 0 || parseFloat(this.coupon.newPrice) === 0;
     },
     groups: function groups() {
       return tr_groups;
@@ -3080,17 +3111,21 @@ __webpack_require__.r(__webpack_exports__);
     checkStep2: function checkStep2(e) {
       e.preventDefault();
     },
+    baseUrl: function baseUrl() {
+      return window.baseUrl + '/qs/' + this.sale.hash;
+    },
     createOrder: function createOrder() {
       var _this = this;
 
-      return axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/order', {
+      return axios.post(this.baseUrl() + '/order', {
         name: this.username,
         email: this.email,
         phone: this.phone,
         street: this.street,
         postcode: this.postcode,
         city: this.city,
-        is_full_data_required: this.sale.is_full_data_required
+        is_full_data_required: this.sale.is_full_data_required,
+        coupon: this.coupon.id
       }).then(function (response) {
         _this.order = response.data.order_id;
         _this.payments = response.data.payments;
@@ -3105,13 +3140,14 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     finishFree: function finishFree() {
-      axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/finish_free', {
+      axios.post(this.baseUrl() + '/finish_free', {
         name: this.username,
         email: this.email,
         phone: this.phone,
         street: this.street,
         postcode: this.postcode,
-        city: this.city
+        city: this.city,
+        coupon: this.coupon.id
       }).then(function (response) {
         console.log(response);
         window.location.href = response.data.url;
@@ -3120,14 +3156,15 @@ __webpack_require__.r(__webpack_exports__);
     prevalidate: function prevalidate() {
       var _this2 = this;
 
-      axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/prevalidate', {
+      axios.post(this.baseUrl() + '/prevalidate', {
         email: this.email,
         name: this.username,
         phone: this.phone,
         street: this.street,
         postcode: this.postcode,
         city: this.city,
-        is_full_data_required: this.sale.is_full_data_required
+        is_full_data_required: this.sale.is_full_data_required,
+        coupon: this.coupon.id
       }).then(function (response) {
         _this2.stepIn();
       }).catch(function (error) {
@@ -3138,7 +3175,7 @@ __webpack_require__.r(__webpack_exports__);
     finish: function finish() {
       var _this3 = this;
 
-      axios.post(window.baseUrl + '/qs/' + this.sale.hash + '/finish', {
+      axios.post(this.baseUrl() + '/finish', {
         email: this.email,
         order: this.order,
         group: this.group
@@ -3152,6 +3189,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     format: function format(str) {
       return str.replace('Atrybut phone', 'Numer telefonu');
+    },
+    checkCoupon: function checkCoupon() {
+      var _this4 = this;
+
+      axios.post(this.baseUrl() + '/check_coupon', {
+        code: this.coupon.code
+      }).then(function (data) {
+        _this4.coupon.id = data.data.id;
+        _this4.coupon.valid = data.data.valid;
+        _this4.coupon.newPrice = data.data.newPrice;
+        _this4.coupon.description = data.data.description;
+      });
     }
   }
 });
@@ -51010,9 +51059,26 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _c("span", { staticClass: "price" }, [
-                  _vm._v(_vm._s(_vm.sale.price) + " PLN")
-                ])
+                _c(
+                  "span",
+                  {
+                    staticClass: "price",
+                    class: _vm.coupon.valid ? "old-price" : ""
+                  },
+                  [_vm._v(_vm._s(_vm.sale.price) + " PLN")]
+                ),
+                _vm._v(" "),
+                _vm.coupon.valid
+                  ? _c("span", { staticClass: "price pl-1" }, [
+                      _vm._v(
+                        "\n                    (rabat " +
+                          _vm._s(_vm.coupon.description) +
+                          ")\n                    " +
+                          _vm._s(_vm.coupon.newPrice) +
+                          " PLN\n                "
+                      )
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "w-50" }, [
@@ -51022,50 +51088,102 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("label", [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.confirmed,
-                    expression: "confirmed"
-                  }
-                ],
-                attrs: { type: "checkbox", id: "rules" },
-                domProps: {
-                  checked: Array.isArray(_vm.confirmed)
-                    ? _vm._i(_vm.confirmed, null) > -1
-                    : _vm.confirmed
-                },
-                on: {
-                  change: function($event) {
-                    var $$a = _vm.confirmed,
-                      $$el = $event.target,
-                      $$c = $$el.checked ? true : false
-                    if (Array.isArray($$a)) {
-                      var $$v = null,
-                        $$i = _vm._i($$a, $$v)
-                      if ($$el.checked) {
-                        $$i < 0 && (_vm.confirmed = $$a.concat([$$v]))
-                      } else {
-                        $$i > -1 &&
-                          (_vm.confirmed = $$a
-                            .slice(0, $$i)
-                            .concat($$a.slice($$i + 1)))
+            _c("div", { staticClass: "col-auto" }, [
+              _c(
+                "label",
+                { staticClass: "sr-only", attrs: { for: "couponCodeGroup" } },
+                [_vm._v("Kupon")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mb-2" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.coupon.code,
+                      expression: "coupon.code"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "couponCodeGroup",
+                    placeholder: "wpisz kod..."
+                  },
+                  domProps: { value: _vm.coupon.code },
+                  on: {
+                    change: _vm.checkCoupon,
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
                       }
-                    } else {
-                      _vm.confirmed = $$c
+                      _vm.$set(_vm.coupon, "code", $event.target.value)
                     }
                   }
-                }
-              }),
-              _vm._v("\n            Akceptuję "),
-              _c(
-                "a",
-                { attrs: { href: _vm.sale.rules_url, target: "_blank" } },
-                [_vm._v("Regulamin")]
-              )
+                }),
+                _vm._v(" "),
+                _vm.coupon.valid
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "input-group-append d-flex align-content-center p-1"
+                      },
+                      [_vm._m(2)]
+                    )
+                  : _vm._e()
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-auto pt-3" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.confirmed,
+                      expression: "confirmed"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "rules" },
+                  domProps: {
+                    checked: Array.isArray(_vm.confirmed)
+                      ? _vm._i(_vm.confirmed, null) > -1
+                      : _vm.confirmed
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.confirmed,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.confirmed = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.confirmed = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.confirmed = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v("\n                Akceptuję "),
+                _c(
+                  "a",
+                  { attrs: { href: _vm.sale.rules_url, target: "_blank" } },
+                  [_vm._v("Regulamin")]
+                )
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "text-center" }, [
@@ -51106,7 +51224,7 @@ var render = function() {
                 }
               },
               [
-                _vm._m(1),
+                _vm._m(3),
                 _vm._v(" "),
                 _c("div", [
                   _c("div", { staticClass: "form-group" }, [
@@ -51416,7 +51534,7 @@ var render = function() {
             _vm._v(" "),
             _vm.tpaySelected
               ? _c("div", [
-                  _vm._m(2),
+                  _vm._m(4),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -51526,6 +51644,24 @@ var staticRenderFns = [
         _vm._v("1")
       ]),
       _vm._v(" Informacje o zamówieniu")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c("div", { staticClass: "input-group-text" }, [
+        _vm._v("Kupon rabatowy:")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "#00a65a" } }, [
+      _c("i", { staticClass: "fa fa-check fa-2x" })
     ])
   },
   function() {
