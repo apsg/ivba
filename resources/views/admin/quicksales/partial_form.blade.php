@@ -61,6 +61,18 @@
                 :initial="{{ isset($quickSale) ? $quickSale->courses->pluck('id') : '[]' }}"
         ></courses-selector>
     </div>
+
+    <div class="col-md-12">
+        <label>Wybierz kupony dostępne przy tej szybkiej sprzedaży:</label>
+
+        <model-selector
+                :initial="{{ isset($quickSale) ? $quickSale->coupons->pluck('id') : '[]' }}"
+                :url="'{{ route('admin.coupons.index') }}?for=qs'"
+                :label="['id', 'code', 'description']"
+                name="coupon_id"
+        ></model-selector>
+    </div>
+
     <div class="col-md-12">
         <div class="form-group">
             <label>Link załącznika:</label>

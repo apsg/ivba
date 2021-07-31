@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Course;
@@ -38,6 +37,7 @@ class AdminQuickSalesController extends Controller
         /** @var QuickSale $quickSale */
         $quickSale = QuickSale::create($request->except(['_token', 'course_id']));
         $repository->syncCourses($quickSale, $request->input('course_id'));
+        $repository->syncCoupons($quickSale, $request->input('coupon_id'));
 
         flash('Zapisano');
 
@@ -48,6 +48,7 @@ class AdminQuickSalesController extends Controller
     {
         $quickSale->update($request->getData());
         $repository->syncCourses($quickSale, $request->input('course_id'));
+        $repository->syncCoupons($quickSale, $request->input('coupon_id', []));
 
         flash('Zaktualizowano pomyślnie');
 

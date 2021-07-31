@@ -61,7 +61,8 @@ const app = new Vue({
         Access,
         'payment-method': PaymentMethod,
         'courses-selector': CoursesSelector,
-        'analytics': require('./components/Admin/Analytics').default
+        'analytics': require('./components/Admin/Analytics').default,
+        'model-selector': require('./components/Admin/ModelSelector').default
     }
 });
 

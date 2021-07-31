@@ -20,6 +20,7 @@ class QuickSaleRequest extends FormRequest
             'message_body'    => 'sometimes|nullable|string',
             'redirect_url'    => 'sometimes|nullable|string',
             'campaign'        => 'sometimes|nullable|string',
+            'coupon_id'       => 'sometimes|nullable|array',
         ];
     }
 
@@ -27,6 +28,6 @@ class QuickSaleRequest extends FormRequest
     {
         return array_merge([
             'is_full_data_required' => false,
-        ], $this->except(['_token', 'course_id']));
+        ], $this->except(['_token', 'course_id', 'coupon_id']));
     }
 }

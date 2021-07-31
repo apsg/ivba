@@ -74,7 +74,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::post('/pages', AdminPagesController::class . '@store');
     Route::patch('/pages/{page}', AdminPagesController::class . '@update');
 
-    Route::get('/coupon', AdminCouponsController::class . '@index');
+    Route::get('/coupon', AdminCouponsController::class . '@index')->name('admin.coupons.index');
     Route::get('/coupon/new', AdminCouponsController::class . '@create');
     Route::get('/coupon/{coupon}', AdminCouponsController::class . '@show');
     Route::get('/coupon/{coupon}/delete', AdminCouponsController::class . '@delete');

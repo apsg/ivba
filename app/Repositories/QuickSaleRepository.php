@@ -27,22 +27,27 @@ class QuickSaleRepository
         ];
     }
 
-    public function syncCourses(QuickSale $quickSale, $input = null)
+    public function syncCourses(QuickSale $quickSale, $courseIds = null)
     {
-        if ($input === null) {
+        if ($courseIds === null) {
             return;
         }
 
-        if (is_integer($input)) {
-            $quickSale->courses()->attach($input);
+        if (is_integer($courseIds)) {
+            $quickSale->courses()->attach($courseIds);
             $quickSale->update(['course_id' => null]);
 
             return;
         }
 
-        if (is_array($input) && count($input) > 0) {
-            $quickSale->courses()->sync($input);
+        if (is_array($courseIds) && count($courseIds) > 0) {
+            $quickSale->courses()->sync($courseIds);
             $quickSale->update(['course_id' => null]);
         }
+    }
+
+    public function syncCoupons(QuickSale $quickSale, array $couponIds = [])
+    {
+        $quickSale->coupons()->sync($couponIds);
     }
 }

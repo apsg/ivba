@@ -15,19 +15,21 @@ use Illuminate\Support\Carbon;
  * @property string                   code
  * @property int                      uses_left
  * @property int                      type
- * @property-read string              type_text
  * @property int                      $id
  * @property float                    amount
  * @property Carbon|null              created_at
  * @property Carbon|null              updated_at
+ *
+ * @property-read string              description
+ * @property-read string              type_text
  *
  * @property-read Collection|Order[]  $orders
  * @property-read Collection|Course[] $courses
  * @property-read Collection|User[]   $users
  *
  * @method static usable() Builder|Coupon
+ * @method static forQuickSale() Builder|Coupon
  *
- * @mixin \Eloquent
  */
 class Coupon extends Model
 {
@@ -45,6 +47,10 @@ class Coupon extends Model
     protected $casts = [
         'type'   => 'integer',
         'amount' => 'float',
+    ];
+
+    protected $appends = [
+        'description',
     ];
 
     /**
@@ -213,5 +219,15 @@ class Coupon extends Model
     public function scopeUsable(Builder $query)
     {
         return $query->where('uses_left', '>', 0);
+    }
+
+    public function scopeForQuickSale(Builder $builder)
+    {
+        return $builder->whereIn('type', [static::TYPE_PERCENT, static::TYPE_VALUE]);
+    }
+
+    public function getDescriptionAttribute()
+    {
+        return $this->valueFormatted();
     }
 }

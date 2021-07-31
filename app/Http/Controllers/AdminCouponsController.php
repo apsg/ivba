@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Coupon;
 use App\Domains\Payments\Repositories\CouponRepository;
 use App\Http\Requests\Admin\GrouponRequest;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Laracsv\Export;
@@ -23,8 +23,19 @@ class AdminCouponsController extends Controller
      */
     public function index()
     {
-        $coupons = Coupon::with('courses')
-            ->paginate(100);
+        $coupons = Coupon::with('courses');
+
+        if (request()->input('for') === 'qs') {
+            $coupons = $coupons
+                ->usable()
+                ->forQuickSale();
+        }
+
+        if (request()->wantsJson()) {
+            return $coupons->get();
+        }
+
+        $coupons = $coupons->paginate(100);
 
         return view('admin.coupons')->with(compact('coupons'));
     }

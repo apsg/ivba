@@ -37,6 +37,7 @@ use Illuminate\Support\Collection;
  * @property-read string              link
  * @property-read Collection|Order[]  orders
  * @property-read Collection|Order[]  confirmed_orders
+ * @property-read Collection|Coupon[] coupons
  */
 class QuickSale extends Model implements OrderableContract
 {
@@ -84,6 +85,12 @@ class QuickSale extends Model implements OrderableContract
     public function courses()
     {
         return $this->belongsToMany(Course::class)
+            ->using(CourseQuickSalePivot::class);
+    }
+
+    public function coupons()
+    {
+        return $this->belongsToMany(Coupon::class)
             ->using(CourseQuickSalePivot::class);
     }
 
