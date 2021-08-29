@@ -30,5 +30,9 @@
 
             <button class="btn btn-ivba">Zapisz</button>
         </form>
+
+        <a href="{{ route('admin.logbooks.index') }}" class="btn btn-secondary mt-3">
+            <i class="fa fa-chevron-left"></i> Wróć do listy
+        </a>
     </div>
 @endsection

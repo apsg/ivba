@@ -216,5 +216,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::post('/', LogbooksController::class . '@store')->name('admin.logbooks.store');
         Route::get('/{logbook}', LogbooksController::class . '@edit')->name('admin.logbooks.edit');
         Route::put('/{logbook}', LogbooksController::class . '@update')->name('admin.logbooks.update');
+        Route::delete('/{logbook}', LogbooksController::class . '@destroy')->name('admin.logbooks.destroy');
     });
 });

@@ -11,7 +11,9 @@ class LogbooksController extends Controller
 {
     public function index()
     {
-        return view('admin.logbooks.index');
+        $logbooks = Logbook::orderBy('title', 'asc')->get();
+
+        return view('admin.logbooks.index')->with(compact('logbooks'));
     }
 
     public function create()
@@ -41,5 +43,12 @@ class LogbooksController extends Controller
         flash('Zapisano');
 
         return back();
+    }
+
+    public function destroy(Logbook $logbook)
+    {
+        $logbook->delete();
+
+        return redirect(route('admin.logbooks.index'));
     }
 }
