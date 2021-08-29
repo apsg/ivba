@@ -3,6 +3,7 @@
 use App\Domains\Admin\Controllers\AnalyticsController;
 use App\Domains\Admin\Controllers\LoginAsUserController;
 use App\Domains\Admin\Controllers\SettingsController;
+use App\Domains\Logbooks\Controllers\Admin\LogbooksController;
 use App\Domains\Quicksales\Controller\BaselinkerController;
 use App\Http\Controllers\Admin\AccessController;
 use App\Http\Controllers\AdminCertificatesController;
@@ -35,10 +36,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 
     Route::get('/login/{data}', LoginAsUserController::class . '@login')->name('admin.login');
 
-    Route::get('courses', AdminCoursesController::class . '@index');
+    Route::get('courses', AdminCoursesController::class . '@index')->name('admin.courses.index');
     Route::post('courses', AdminCoursesController::class . '@store');
     Route::get('courses/new', AdminCoursesController::class . '@create');
-    Route::get('/courses/list', AdminCoursesController::class . '@list');
+    Route::get('/courses/list', AdminCoursesController::class . '@list')->name('admin.courses.list');
     Route::get('courses/{course}', AdminCoursesController::class . '@show');
     Route::patch('courses/{course}', AdminCoursesController::class . '@update');
     Route::delete('courses/{course}', AdminCoursesController::class . '@delete')->name('admin.course.delete');
@@ -205,5 +206,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::get('/', AnalyticsController::class . '@index')->name('admin.analytics.index');
         Route::get('/data', AnalyticsController::class . '@data')->name('admin.analytics.data');
         Route::get('/export', AnalyticsController::class . '@export')->name('admin.analytics.export');
+    });
+
+    Route::group([
+        'prefix' => 'logbooks',
+    ], function () {
+        Route::get('/', LogbooksController::class . '@index')->name('admin.logbooks.index');
+        Route::get('/new', LogbooksController::class . '@create')->name('admin.logbooks.create');
+        Route::post('/', LogbooksController::class . '@store')->name('admin.logbooks.store');
+        Route::get('/{logbook}', LogbooksController::class . '@edit')->name('admin.logbooks.edit');
+        Route::put('/{logbook}', LogbooksController::class . '@update')->name('admin.logbooks.update');
     });
 });

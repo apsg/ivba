@@ -25,6 +25,10 @@ class AdminCoursesController extends Controller
     {
         $courses = Course::all();
 
+        if (request()->wantsJson()) {
+            return $courses;
+        }
+
         return view('admin.courses')->with(compact('courses'));
     }
 

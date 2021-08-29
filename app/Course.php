@@ -3,13 +3,15 @@ namespace App;
 
 use App\Domains\Courses\Models\CourseLesson;
 use App\Domains\Courses\Services\CoursesService;
+use App\Domains\Logbooks\Models\CourseLogbookPivot;
+use App\Domains\Logbooks\Models\Logbook;
 use App\Interfaces\AccessableContract;
 use App\Interfaces\OrderableContract;
 use App\Repositories\AccessRepository;
 use App\Traits\ChecksSlugs;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -58,11 +60,11 @@ use Illuminate\Support\Str;
  * @property-read Collection|UserCertificate[] $user_certificates
  * @property-read Collection|User[]            $users
  * @property-read Video|null                   $video
+ * @property-read Collection|Logbook[]         $logbooks
  *
  * @method static Builder withoutSpecial()
  * @method static Builder withoutSpecialExcept(array $ids)
  *
- * @mixin \Eloquent
  */
 class Course extends Model implements OrderableContract, AccessableContract
 {
@@ -213,6 +215,13 @@ class Course extends Model implements OrderableContract, AccessableContract
     public function access()
     {
         return $this->morphMany(Access::class, 'accessable');
+    }
+
+    public function logbooks()
+    {
+        return $this
+            ->belongsToMany(Logbook::class)
+            ->using(CourseLogbookPivot::class);
     }
 
     /**

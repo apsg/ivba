@@ -65,7 +65,8 @@
                                 href="{{ url('admin/invoices') }}"><i class="fa fa-fighter-jet"></i> Prośby o
                             faktury</a>
                     </li>
-                    <li class="@if(request()->is('admin/analytics')) active @endif"><a href="{{ url('admin/analytics') }}"><i
+                    <li class="@if(request()->is('admin/analytics')) active @endif"><a
+                                href="{{ url('admin/analytics') }}"><i
                                     class="fa fa-table"></i> Analityka sprzedaży</a></li>
                 </ul>
             </li>
@@ -131,6 +132,22 @@
             </li>
             {{-- k. lekcje --}}
 
+            {{-- Lekcje --}}
+            <li class="treeview @if(request()->is('admin/logbooks*')) active @endif">
+                <a href="#">
+                    <i class="fa fa-file-text"></i> <span>Logbooki</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="@if(request()->is('admin/logbooks')) active @endif"><a href="{{ url('admin/logbooks') }}"><i
+                                    class="fa fa-files-o"></i> wszystkie</a></li>
+                    <li class="@if(request()->is('admin/logbooks/new')) active @endif"><a
+                                href="{{ url('admin/logbooks/new') }}"><i class="fa fa-plus"></i> Dodaj nowy</a></li>
+                </ul>
+            </li>
+            {{-- k. lekcje --}}
 
             {{-- kupony --}}
             <li class="treeview @if(request()->is('admin/coupon*')) active @endif">
@@ -144,7 +161,8 @@
                     <li class="@if(request()->is('admin/coupon')) active @endif"><a href="{{ url('admin/coupon') }}"><i
                                     class="fa fa-ticket"></i> wszystkie</a></li>
                     <li class="@if(request()->is('admin/coupon/new')) active @endif"><a
-                                href="{{ url('admin/coupon/new') }}"><i class="fa fa-plus"></i> Dodaj nowy / Generuj</a></li>
+                                href="{{ url('admin/coupon/new') }}"><i class="fa fa-plus"></i> Dodaj nowy / Generuj</a>
+                    </li>
                 </ul>
             </li>
             {{-- k. kupony --}}
