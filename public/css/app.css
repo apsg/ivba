@@ -14392,3 +14392,9 @@ footer .footer-header {
   font-size: 40px;
 }
 
+.table td.fit,
+.table th.fit {
+  white-space: nowrap;
+  width: 1%;
+}
+

@@ -275,3 +275,11 @@ footer {
 .text-big {
     font-size: 40px;
 }
+
+.table {
+    td.fit,
+    th.fit {
+        white-space: nowrap;
+        width: 1%;
+    }
+}

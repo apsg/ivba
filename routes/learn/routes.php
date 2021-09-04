@@ -31,7 +31,7 @@ Route::group([
 
         Route::get('/course/{course}/logbook/{logbook}', LogbookController::class . '@show')
             ->name('learn.course.logbook');
-        Route::post('/course/{course}/logbook/{logbook}', LogbookController::class . '@store')
+        Route::post('/course/{course}/logbook/{logbook}', LogbookController::class . '@storeEntry')
             ->name('learn.logbook.store');
     });
 

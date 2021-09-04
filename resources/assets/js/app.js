@@ -62,7 +62,8 @@ const app = new Vue({
         'payment-method': PaymentMethod,
         'courses-selector': CoursesSelector,
         'analytics': require('./components/Admin/Analytics').default,
-        'model-selector': require('./components/Admin/ModelSelector').default
+        'model-selector': require('./components/Admin/ModelSelector').default,
+        'image-preview': require('./components/ImagePreview').default
     }
 });
 

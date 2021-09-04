@@ -6,6 +6,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * @property int          id
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int          course_id
  * @property string       title
  * @property string       description
+ * @property string|null  image
  * @property Carbon       created_at
  * @property Carbon       updated_at
  *
@@ -30,6 +32,7 @@ class LogbookEntry extends Model
         'logbook_id',
         'title',
         'description',
+        'image',
     ];
 
     public function user() : BelongsTo
@@ -45,5 +48,15 @@ class LogbookEntry extends Model
     public function course() : BelongsTo
     {
         return $this->belongsTo(Course::class);
+    }
+
+    public function hasImage() : bool
+    {
+        return !empty($this->image);
+    }
+
+    public function imageUrl() : string
+    {
+        return Storage::url($this->image);
     }
 }
