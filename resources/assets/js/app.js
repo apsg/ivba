@@ -63,7 +63,10 @@ const app = new Vue({
         'courses-selector': CoursesSelector,
         'analytics': require('./components/Admin/Analytics').default,
         'model-selector': require('./components/Admin/ModelSelector').default,
-        'image-preview': require('./components/ImagePreview').default
+        'image-preview': require('./components/ImagePreview').default,
+        'logbook': require('./components/Admin/Logbook').default
     }
 });
+
+window.app = app;
 

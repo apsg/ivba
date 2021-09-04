@@ -6,6 +6,7 @@ use App\Domains\Admin\Controllers\SettingsController;
 use App\Domains\Logbooks\Controllers\Admin\LogbooksController;
 use App\Domains\Quicksales\Controller\BaselinkerController;
 use App\Http\Controllers\Admin\AccessController;
+use App\Http\Controllers\Admin\Courses\CourseUsersController;
 use App\Http\Controllers\AdminCertificatesController;
 use App\Http\Controllers\AdminCouponsController;
 use App\Http\Controllers\AdminCoursesController;
@@ -36,18 +37,23 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 
     Route::get('/login/{data}', LoginAsUserController::class . '@login')->name('admin.login');
 
-    Route::get('courses', AdminCoursesController::class . '@index')->name('admin.courses.index');
-    Route::post('courses', AdminCoursesController::class . '@store');
-    Route::get('courses/new', AdminCoursesController::class . '@create');
-    Route::get('/courses/list', AdminCoursesController::class . '@list')->name('admin.courses.list');
-    Route::get('courses/{course}', AdminCoursesController::class . '@show');
-    Route::patch('courses/{course}', AdminCoursesController::class . '@update');
-    Route::delete('courses/{course}', AdminCoursesController::class . '@delete')->name('admin.course.delete');
-    Route::post('courses/{course}/lesson_order', AdminCoursesController::class . '@updateLessonOrder');
-    Route::post('courses/{course}/delays', AdminCoursesController::class . '@updateLessonDelay');
-    Route::post('courses_order', AdminCoursesController::class . '@updateOrder');
-    Route::get('courses/{course}/duplicate', AdminCoursesController::class . '@duplicate')
-        ->name('admin.course.duplicate');
+    Route::group(['prefix' => 'courses'], function () {
+        Route::get('/', AdminCoursesController::class . '@index')->name('admin.courses.index');
+        Route::post('/', AdminCoursesController::class . '@store');
+        Route::get('/new', AdminCoursesController::class . '@create');
+        Route::get('/courses/list', AdminCoursesController::class . '@list')->name('admin.courses.list');
+        Route::get('/logbook', LogbooksController::class . '@getData')->name('admin.logbook.data');
+        Route::get('/{course}', AdminCoursesController::class . '@show')->name('admin.course.edit');
+        Route::patch('/{course}', AdminCoursesController::class . '@update');
+        Route::delete('/{course}', AdminCoursesController::class . '@delete')->name('admin.course.delete');
+        Route::post('/{course}/lesson_order', AdminCoursesController::class . '@updateLessonOrder');
+        Route::post('/{course}/delays', AdminCoursesController::class . '@updateLessonDelay');
+        Route::post('/_order', AdminCoursesController::class . '@updateOrder');
+        Route::get('/{course}/duplicate', AdminCoursesController::class . '@duplicate')
+            ->name('admin.course.duplicate');
+        Route::get('/{course}/users', CourseUsersController::class . '@index')->name('admin.course.users');
+        Route::get('/{course}/users/data', CourseUsersController::class . '@getData')->name('admin.course.users.data');
+    });
 
     Route::get('/lesson', AdminLessonController::class . '@index');
     Route::post('lesson', AdminLessonController::class . '@store');

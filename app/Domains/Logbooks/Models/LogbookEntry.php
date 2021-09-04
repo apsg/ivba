@@ -4,6 +4,7 @@ namespace App\Domains\Logbooks\Models;
 use App\Course;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Storage;
  * @property-read Logbook $logbook
  * @property-read Course  $course
  *
+ * @method static Builder forUserAndCourse(User $user, Course $course)
  */
 class LogbookEntry extends Model
 {
@@ -58,5 +60,12 @@ class LogbookEntry extends Model
     public function imageUrl() : string
     {
         return Storage::url($this->image);
+    }
+
+    public function scopeForUserAndCourse(Builder $query, User $user, Course $course)
+    {
+        return $query
+            ->where('user_id', $user->id)
+            ->where('course_id', $course->id);
     }
 }

@@ -2,6 +2,8 @@
 namespace App\Domains\Logbooks\Controllers\Admin;
 
 use App\Course;
+use App\Domains\Admin\Requests\GetLogbookDataRequest;
+use App\Domains\Logbooks\CourseActivityService;
 use App\Domains\Logbooks\Models\Logbook;
 use App\Domains\Logbooks\Requests\Admin\StoreLogbookRequest;
 use App\Domains\Logbooks\Requests\Admin\UpdateLogbookRequest;
@@ -50,5 +52,10 @@ class LogbooksController extends Controller
         $logbook->delete();
 
         return redirect(route('admin.logbooks.index'));
+    }
+
+    public function getData(GetLogbookDataRequest $request, CourseActivityService $service)
+    {
+        return $service->get($request->student(), $request->course());
     }
 }

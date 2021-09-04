@@ -16,6 +16,14 @@
     @include('admin.partials.course_errors')
 
     <section class="content">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Edycja ustawień</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.course.users', $course) }}">Przegląd uczestników</a>
+            </li>
+        </ul>
 
         <div class="box">
             <div class="box-header with-border">

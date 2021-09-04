@@ -40,6 +40,10 @@
                                             /> dni
                                         </div>
                                         <div class="pl-3 d-flex">
+                                            <a href="{{ route('admin.course.users', $course) }}"
+                                               class="btn btn-sm btn-primary mx-1">
+                                                <i class="fa fa-users"></i>
+                                            </a>
                                             <a href="{{ route('admin.course.duplicate', $course) }}"
                                                class="btn btn-sm btn-ivba mx-1"
                                                title="Duplikuj">
