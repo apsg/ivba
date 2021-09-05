@@ -6,14 +6,20 @@
         <div class="p-3">
             {{ entry.date }}
         </div>
-        <div class="p-3" v-html="entry.content">
+        <div class="p-3 flex-fill" v-html="entry.content">
+        </div>
+        <div v-if="entry.image_url">
+            <image-preview :url="entry.image_url"></image-preview>
         </div>
     </div>
 </template>
 
 <script>
+import ImagePreview from "../ImagePreview";
+
 export default {
     name: "TimelineEntry",
+    components: {ImagePreview},
     props: ['entry']
 }
 </script>
@@ -21,6 +27,6 @@ export default {
 <style lang="scss" scoped>
 .timeline-item {
     border-left: 1px black dashed;
-    background-color: rgba(100,240,123,0.1);
+    background-color: rgba(100, 240, 123, 0.1);
 }
 </style>

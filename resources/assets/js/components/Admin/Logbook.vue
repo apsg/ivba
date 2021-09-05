@@ -10,7 +10,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <timeline-entry v-for="entry in timeline" :entry="entry"></timeline-entry>
+                    <timeline-entry
+                        v-for="entry in timeline"
+                        v-bind:key="entry.timestamp"
+                        :entry="entry"></timeline-entry>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -69,7 +72,11 @@ export default {
 
             this.entries.forEach((entry) => {
                 console.log(entry);
-                this.addTimelineItem(entry.created_at, '<h5>Logbook: ' + entry.title + '</h5><p>' + entry.description + '</p>');
+                this.addTimelineItem(
+                    entry.created_at,
+                    '<h5>Logbook: ' + entry.title + '</h5><p>' + entry.description + '</p>',
+                    entry.image_url
+                );
             });
 
             this.lessons.forEach((lesson) => {
@@ -82,11 +89,12 @@ export default {
             this.sort();
         },
 
-        addTimelineItem(date, content) {
+        addTimelineItem(date, content, imageUrl) {
             this.timeline.push({
                 date: date,
                 content: content,
-                timestamp: (new Date(date)).getTime()
+                timestamp: (new Date(date)).getTime(),
+                image_url: imageUrl,
             })
         },
 

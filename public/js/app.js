@@ -2181,6 +2181,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Logbook",
@@ -2222,7 +2225,7 @@ __webpack_require__.r(__webpack_exports__);
       this.entries.forEach(function (entry) {
         console.log(entry);
 
-        _this2.addTimelineItem(entry.created_at, '<h5>Logbook: ' + entry.title + '</h5><p>' + entry.description + '</p>');
+        _this2.addTimelineItem(entry.created_at, '<h5>Logbook: ' + entry.title + '</h5><p>' + entry.description + '</p>', entry.image_url);
       });
       this.lessons.forEach(function (lesson) {
         _this2.addTimelineItem(lesson.created_at, 'Rozpoczęto lekcję ' + lesson.lesson.title);
@@ -2231,11 +2234,12 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.sort();
     },
-    addTimelineItem: function addTimelineItem(date, content) {
+    addTimelineItem: function addTimelineItem(date, content, imageUrl) {
       this.timeline.push({
         date: date,
         content: content,
-        timestamp: new Date(date).getTime()
+        timestamp: new Date(date).getTime(),
+        image_url: imageUrl
       });
     },
     sort: function sort() {
@@ -2406,6 +2410,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ImagePreview__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../ImagePreview */ "./resources/assets/js/components/ImagePreview.vue");
 //
 //
 //
@@ -2419,8 +2424,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TimelineEntry",
+  components: {
+    ImagePreview: _ImagePreview__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: ['entry']
 });
 
@@ -50437,7 +50449,10 @@ var render = function() {
               "div",
               { staticClass: "modal-body" },
               _vm._l(_vm.timeline, function(entry) {
-                return _c("timeline-entry", { attrs: { entry: entry } })
+                return _c("timeline-entry", {
+                  key: entry.timestamp,
+                  attrs: { entry: entry }
+                })
               }),
               1
             ),
@@ -50657,9 +50672,17 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", {
-        staticClass: "p-3",
+        staticClass: "p-3 flex-fill",
         domProps: { innerHTML: _vm._s(_vm.entry.content) }
-      })
+      }),
+      _vm._v(" "),
+      _vm.entry.image_url
+        ? _c(
+            "div",
+            [_c("image-preview", { attrs: { url: _vm.entry.image_url } })],
+            1
+          )
+        : _vm._e()
     ]
   )
 }

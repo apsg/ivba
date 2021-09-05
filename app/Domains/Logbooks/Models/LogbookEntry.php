@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Storage;
  * @property-read Logbook $logbook
  * @property-read Course  $course
  *
+ * @property-read string  image_url
+ *
  * @method static Builder forUserAndCourse(User $user, Course $course)
  */
 class LogbookEntry extends Model
@@ -35,6 +37,10 @@ class LogbookEntry extends Model
         'title',
         'description',
         'image',
+    ];
+
+    protected $appends = [
+        'image_url',
     ];
 
     public function user() : BelongsTo
@@ -59,7 +65,16 @@ class LogbookEntry extends Model
 
     public function imageUrl() : string
     {
-        return Storage::url($this->image);
+        if (empty($this->image)) {
+            return '';
+        }
+        
+        return url(Storage::url($this->image));
+    }
+
+    public function getImageUrlAttribute() : string
+    {
+        return $this->imageUrl();
     }
 
     public function scopeForUserAndCourse(Builder $query, User $user, Course $course)
