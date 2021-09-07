@@ -23,10 +23,11 @@ use App\Http\Controllers\SubscriptionsController;
 use App\Http\Controllers\TpayController;
 use Illuminate\Support\Facades\Route;
 
-require __DIR__ . '/admin/routes.php';
 require __DIR__ . '/learn/routes.php';
 require __DIR__ . '/axios.php';
 require __DIR__ . '/auth.php';
+
+Route::get('/admin', HomeController::class . '@index')->name('home');
 
 Route::get('/', PagesController::class . '@home');
 Route::any('/payu/notify', PayuController::class . '@notify');
