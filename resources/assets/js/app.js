@@ -64,7 +64,8 @@ const app = new Vue({
         'analytics': require('./components/Admin/Analytics').default,
         'model-selector': require('./components/Admin/ModelSelector').default,
         'image-preview': require('./components/ImagePreview').default,
-        'logbook': require('./components/Admin/Logbook').default
+        'logbook': require('./components/Admin/Logbook').default,
+        'new-logbook-entry': require('./components/NewLogbookEntry').default,
     }
 });
 

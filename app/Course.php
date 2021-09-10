@@ -522,6 +522,11 @@ class Course extends Model implements OrderableContract, AccessableContract
         return $this->is_systematic;
     }
 
+    public function hasLogbook() : bool
+    {
+        return $this->logbooks->count() > 0;
+    }
+
     public function shouldShowLessonPreview() : bool
     {
         if ($this->isSpecialAccess()) {

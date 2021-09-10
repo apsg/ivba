@@ -29,6 +29,7 @@ Route::group([
         Route::get('/lesson/{lesson}', LearnController::class . '@showLesson');
         Route::get('/lesson/{lesson}/finish', LearnController::class . '@finishLesson');
 
+        Route::get('/course/{course}/logbooks', LogbookController::class . '@index');
         Route::get('/course/{course}/logbook/{logbook}', LogbookController::class . '@show')
             ->name('learn.course.logbook');
         Route::post('/course/{course}/logbook/{logbook}', LogbookController::class . '@storeEntry')

@@ -25,9 +25,9 @@
             <img src="{{ asset('/images/projekt30/p30-logo.png') }}">
         </a>
 
-        <ul class="navbar-nav px-3">
+        <div class="navbar-nav px-3 flex-row">
             @yield('navbar')
-        </ul>
+        </div>
     </nav>
 
     <div class="container-fluid">
@@ -47,9 +47,9 @@
             </main>
         </div>
     </div>
-</div>
 
-@stack('modals')
+    @stack('modals')
+</div>
 
 <!-- Scroll to top -->
 <a href="#" class="scroll-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>

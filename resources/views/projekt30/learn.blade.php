@@ -14,12 +14,26 @@
 
 @section('navbar')
     @if($canViewLesson)
+        @if($course->hasLogbook())
+            <li class="pl-1">
+                <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-toggle="modal"
+                        data-target=".bd-example-modal-lg">
+                    Dodaj wpis w dzienniku aktywności
+                </button>
+            </li>
+        @endif
+
         @if(\Auth::user()->hasFinishedLesson($lesson->id))
             @if(!empty($course))
-                <a href="{{ $lesson->finishUrl($course) }}" class="btn btn-ivba">Oznacz lekcję jako zakończoną</a>
+                <li class="pl-1"><a href="{{ $lesson->finishUrl($course) }}" class="btn btn-ivba">Oznacz lekcję jako
+                        zakończoną</a></li>
             @endif
         @else
-            <a href="{{ $lesson->finishUrl($course) }}" class="btn btn-ivba">Oznacz lekcję jako zakończoną </a>
+            <li class="pl-1"><a href="{{ $lesson->finishUrl($course) }}" class="btn btn-ivba">Oznacz lekcję jako
+                    zakończoną </a></li>
         @endif
     @endif
 @endsection
@@ -90,10 +104,17 @@
         <hr/>
     </div>
 @endsection
-<script>
-    import VimeoVideo from "../assets/js/components/VimeoVideo";
 
-    export default {
-        components: {VimeoVideo}
-    }
-</script>
+@push('modals')
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="newLogbookEntryModal"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg bg-white">
+            <div class="modal-content">
+                <new-logbook-entry course="{{ $course->slug }}"></new-logbook-entry>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+            </div>
+        </div>
+    </div>
+@endpush

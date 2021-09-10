@@ -15,11 +15,15 @@
 
 @section('content')
     <h1 class="page-header">
-        {{ $question->title }}
+        Twój dziennik aktywności: {{ $logbook->title }}
     </h1>
     <div class="col-md-12">
-        {!! $question->content !!}
+        {!! $logbook->description !!}
     </div>
     <div class="col-md-12">
+        @include('common.logbooks.new')
+    </div>
+    <div class="col-md-12">
+        @include('common.logbooks.list')
     </div>
 @endsection

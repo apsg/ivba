@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LogbookController extends Controller
 {
+    public function index(Course $course)
+    {
+        return $course->logbooks;
+    }
+
     public function show(Course $course, Logbook $logbook, LogbookRepository $repository)
     {
         $entries = $repository->getEntries(Auth::user(), $course, $logbook);

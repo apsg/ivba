@@ -13,6 +13,11 @@
 @endsection
 
 @section('navbar')
+
+    @if($course->hasLogbook())
+        has logbook
+    @endif
+
     @if(\Auth::user()->hasFinishedLesson($lesson->id))
         @if(!empty($course))
             <a href="{{ $lesson->finishUrl($course) }}" class="btn btn-ivba">Oznacz lekcję jako zakończoną</a>
@@ -42,9 +47,6 @@
     </h1>
     <div class="row">
 
-{{--        <div class="col-md-12 video centered">--}}
-{{--            {!! $lesson->video ? $lesson->video->embed(1000, 600) : "" !!}--}}
-{{--        </div>--}}
         @if($lesson->video)
             <vimeo-video src="{{ $lesson->video->embedSrc() }}"></vimeo-video>
         @endif
@@ -78,10 +80,14 @@
         <hr/>
     </div>
 @endsection
-<script>
-    import VimeoVideo from "../assets/js/components/VimeoVideo";
 
-    export default {
-        components: {VimeoVideo}
-    }
-</script>
+@push('modals')
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <new-logbook-entry course="{{ $course->id }}"></new-logbook-entry>
+            </div>
+        </div>
+    </div>
+@endpush
