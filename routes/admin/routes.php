@@ -38,7 +38,7 @@ Route::group(['prefix' => 'courses'], function () {
     Route::get('/', AdminCoursesController::class . '@index')->name('courses.index');
     Route::post('/', AdminCoursesController::class . '@store');
     Route::get('/new', AdminCoursesController::class . '@create');
-    Route::get('/courses/list', AdminCoursesController::class . '@list')->name('courses.list');
+    Route::get('/list', AdminCoursesController::class . '@list')->name('courses.list');
     Route::get('/logbook', LogbooksController::class . '@getData')->name('logbook.data');
     Route::get('/{course}', AdminCoursesController::class . '@show')->name('course.edit');
     Route::patch('/{course}', AdminCoursesController::class . '@update');
