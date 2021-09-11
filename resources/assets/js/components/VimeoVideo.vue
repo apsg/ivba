@@ -5,7 +5,9 @@
                 :height="height"
                 frameborder="0"
                 title="Untitled"
-                webkitallowfullscreen mozallowfullscreen allowfullscreen
+                webkitallowfullscreen
+                mozallowfullscreen
+                allowfullscreen
         ></iframe>
         <img :src="watermark">
     </div>

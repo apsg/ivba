@@ -51,9 +51,9 @@ const app = new Vue({
         'progress-bar': ProgressBar,
         'price-and-coupon': PriceAndCoupon,
         Ranking,
+        'new-logbook-entry': require('./components/NewLogbookEntry').default,
         'ranking-user': RankingUser,
         'partner-link': PartnerLink,
-        'vimeo-video': VimeoVideo,
         'quicksale': Quicksale,
         P30Slider,
         Groupon,
@@ -65,7 +65,7 @@ const app = new Vue({
         'model-selector': require('./components/Admin/ModelSelector').default,
         'image-preview': require('./components/ImagePreview').default,
         'logbook': require('./components/Admin/Logbook').default,
-        'new-logbook-entry': require('./components/NewLogbookEntry').default,
+        'vimeo-video': VimeoVideo,
     }
 });
 

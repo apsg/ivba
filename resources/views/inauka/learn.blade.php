@@ -104,3 +104,9 @@
         </div>
     @endif
 @endpush
+<script>
+    import VimeoVideo from "../../assets/js/components/VimeoVideo";
+    export default {
+        components: {VimeoVideo}
+    }
+</script>
