@@ -15,7 +15,15 @@
 @section('navbar')
 
     @if(!empty($course) && $course->hasLogbook())
-        has logbook
+        <li class="pl-1">
+            <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-toggle="modal"
+                    data-target=".bd-example-modal-lg">
+                Dodaj wpis w dzienniku aktywności
+            </button>
+        </li>
     @endif
 
     @if(\Auth::user()->hasFinishedLesson($lesson->id))
@@ -87,7 +95,7 @@
              aria-hidden="true">
             <div class="modal-dialog modal-lg bg-white">
                 <div class="modal-content">
-                    <new-logbook-entry course="{{ $course->slug }}"></new-logbook-entry>
+                    <new-logbook-entry course="{{ $course->slug ?? '-' }}"></new-logbook-entry>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>

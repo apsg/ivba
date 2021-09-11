@@ -111,7 +111,7 @@
              aria-hidden="true">
             <div class="modal-dialog modal-lg bg-white">
                 <div class="modal-content">
-                    <new-logbook-entry course="{{ $course->slug }}"></new-logbook-entry>
+                    <new-logbook-entry course="{{ $course->slug ?? '-' }}"></new-logbook-entry>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
