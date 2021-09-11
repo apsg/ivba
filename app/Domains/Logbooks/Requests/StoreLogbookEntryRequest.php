@@ -46,7 +46,11 @@ class StoreLogbookEntryRequest extends FormRequest
 
     public function storeImage() : string
     {
-        return $this->file('image')->store('public/logbooks');
+        try {
+            return $this->file('image')->store('public/logbooks');
+        } catch (\Exception $exception) {
+            return '';
+        }
     }
 
     public function data() : array
