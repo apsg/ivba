@@ -22,7 +22,7 @@ class StoreLogbookEntryRequest extends FormRequest
         return [
             'title'       => 'required|string|min:3',
             'description' => 'required|string|min:3',
-            'image'       => 'nullable|file|mimes:jpg,jpeg,png,bmp,webp|max:1024',
+            'image'       => 'sometimes|nullable|file|mimes:jpg,jpeg,png,bmp,webp|max:1024',
         ];
     }
 
