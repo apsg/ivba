@@ -14,7 +14,7 @@
 
 @section('navbar')
 
-    @if($course->hasLogbook())
+    @if(!empty($course) && $course->hasLogbook())
         has logbook
     @endif
 

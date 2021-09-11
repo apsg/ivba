@@ -14,7 +14,7 @@
 
 @section('navbar')
     @if($canViewLesson)
-        @if($course->hasLogbook())
+        @if(!empty($course) && $course->hasLogbook())
             <li class="pl-1">
                 <button
                         type="button"
