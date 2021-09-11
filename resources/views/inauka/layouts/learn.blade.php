@@ -25,7 +25,7 @@
             <img src="{{ asset('/images/v2/inauka.png') }}">
         </a>
 
-        <ul class="navbar-nav px-3">
+        <ul class="navbar-nav px-3 d-flex flex-row">
             @yield('navbar')
         </ul>
     </nav>
@@ -47,9 +47,10 @@
             </main>
         </div>
     </div>
-</div>
 
-@stack('modals')
+    @stack('modals')
+
+</div>
 
 <!-- Scroll to top -->
 <a href="#" class="scroll-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>

@@ -15,7 +15,7 @@
 @section('navbar')
 
     @if(!empty($course) && $course->hasLogbook())
-        <li class="pl-1">
+        <li class="px-1">
             <button
                     type="button"
                     class="btn btn-secondary"
