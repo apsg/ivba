@@ -5,6 +5,7 @@ use App\Helpers\GateHelper;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Throwable;
 
 class StoreLogbookEntryRequest extends FormRequest
 {
@@ -48,7 +49,7 @@ class StoreLogbookEntryRequest extends FormRequest
     {
         try {
             return $this->file('image')->store('public/logbooks');
-        } catch (\Exception $exception) {
+        } catch (Throwable $exception) {
             return '';
         }
     }
