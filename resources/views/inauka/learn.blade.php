@@ -82,12 +82,17 @@
 @endsection
 
 @push('modals')
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <new-logbook-entry course="{{ $course->id }}"></new-logbook-entry>
+    @if(!empty($course))
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="newLogbookEntryModal"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg bg-white">
+                <div class="modal-content">
+                    <new-logbook-entry course="{{ $course->slug }}"></new-logbook-entry>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                </div>
             </div>
         </div>
-    </div>
+    @endif
 @endpush
