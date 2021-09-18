@@ -20,6 +20,10 @@
     background-color: $color-bg-gray-dark;
 }
 
+.bg-light-blue {
+    background-color: lighten($brand-info, 20%);
+}
+
 .bg-success-custom {
     background-color: $brand-success;
 }

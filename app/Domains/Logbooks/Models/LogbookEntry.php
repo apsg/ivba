@@ -65,6 +65,7 @@ class LogbookEntry extends Model
     public function comments() : HasMany
     {
         return $this->hasMany(LogbookComment::class)
+            ->orderBy('id')
             ->with('user');
     }
 

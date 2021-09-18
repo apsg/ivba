@@ -32,6 +32,7 @@ class LogbookRepository
         return LogbookEntry::where('user_id', $user->id)
             ->where('course_id', $course->id)
             ->where('logbook_id', $logbook->id)
+            ->with('comments')
             ->orderBy('created_at', 'desc')
             ->get();
     }
