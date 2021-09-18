@@ -3,6 +3,7 @@
 use App\Domains\Admin\Controllers\AnalyticsController;
 use App\Domains\Admin\Controllers\LoginAsUserController;
 use App\Domains\Admin\Controllers\SettingsController;
+use App\Domains\Logbooks\Controllers\Admin\LogbookCommentsController;
 use App\Domains\Logbooks\Controllers\Admin\LogbooksController;
 use App\Domains\Quicksales\Controller\BaselinkerController;
 use App\Http\Controllers\Admin\AccessController;
@@ -214,6 +215,13 @@ Route::group([
 Route::group([
     'prefix' => 'logbooks',
 ], function () {
+    Route::group([
+        'prefix' => 'comments',
+    ], function () {
+        Route::post('/', LogbookCommentsController::class . '@store');
+        Route::delete('/{comment}', LogbookCommentsController::class . '@destroy');
+    });
+
     Route::get('/', LogbooksController::class . '@index')->name('logbooks.index');
     Route::get('/new', LogbooksController::class . '@create')->name('logbooks.create');
     Route::post('/', LogbooksController::class . '@store')->name('logbooks.store');

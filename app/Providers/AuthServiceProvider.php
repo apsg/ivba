@@ -2,6 +2,8 @@
 namespace App\Providers;
 
 use App\Course;
+use App\Domains\Logbooks\Models\LogbookComment;
+use App\Domains\Logbooks\Policies\LogbookCommentPolicy;
 use App\Helpers\GateHelper;
 use App\Lesson;
 use App\Payment;
@@ -12,7 +14,7 @@ use App\Policies\UserCertificatePolicy;
 use App\Quiz;
 use App\User;
 use App\UserCertificate;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -27,6 +29,7 @@ class AuthServiceProvider extends ServiceProvider
         UserCertificate::class => UserCertificatePolicy::class,
         Course::class          => CoursePolicy::class,
         Lesson::class          => LessonPolicy::class,
+        LogbookComment::class  => LogbookCommentPolicy::class,
     ];
 
     /**

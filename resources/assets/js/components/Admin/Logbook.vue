@@ -75,7 +75,7 @@ export default {
                 this.addTimelineItem(
                     entry.created_at,
                     '<h5>Logbook: ' + entry.title + '</h5><p>' + entry.description + '</p>',
-                    entry.image_url
+                    entry
                 );
             });
 
@@ -89,13 +89,13 @@ export default {
             this.sort();
         },
 
-        addTimelineItem(date, content, imageUrl) {
+        addTimelineItem(date, content, entry = null) {
             this.timeline.push({
                 date: date,
                 content: content,
                 timestamp: (new Date(date)).getTime(),
-                image_url: imageUrl,
-            })
+                entry: entry,
+            });
         },
 
         sort() {

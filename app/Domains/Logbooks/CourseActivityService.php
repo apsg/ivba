@@ -25,6 +25,7 @@ class CourseActivityService
     protected function getEntries(User $user, Course $course) : Collection
     {
         return LogbookEntry::forUserAndCourse($user, $course)
+            ->with('comments')
             ->orderBy('created_at', 'desc')
             ->get();
     }
