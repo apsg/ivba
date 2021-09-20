@@ -46,7 +46,7 @@ export default {
 
     methods: {
         open(user, course) {
-            console.log(user, course);
+            this.resetData();
             axios.get('/admin/courses/logbook?user_id=' + user + '&course_id=' + course)
                 .then(data => {
                     console.log(data.data);
@@ -64,7 +64,6 @@ export default {
         },
 
         createTimeline() {
-
             this.addTimelineItem(this.course.created_at, "Rozpoczęto kurs");
 
             if (this.course.finished_at)
@@ -108,6 +107,14 @@ export default {
 
                 return 0;
             });
+        },
+
+        resetData() {
+            this.timeline = [];
+            this.entries = [];
+            this.lessons = [];
+            this.logbooks = [];
+            this.course = null;
         }
     }
 }
