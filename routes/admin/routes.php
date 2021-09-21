@@ -29,9 +29,11 @@ use App\Http\Controllers\AdminSubcriptionsController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminVideosController;
 use App\Http\Controllers\FollowupsController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewslettersController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', HomeController::class . '@index')->name('home');
 
 Route::get('/login/{data}', LoginAsUserController::class . '@login')->name('login');
 
