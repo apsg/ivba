@@ -34,8 +34,11 @@
           </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="@if(request()->is('admin')) active @endif"><a href="{{ url('admin') }}"><i
-                                    class="fa fa-circle-o"></i> Start</a></li>
+                    <li class="@if(request()->is('admin/stats')) active @endif">
+                        <a href="{{ url('admin/stats') }}">
+                            <i class="fa fa-circle-o"></i> Start
+                        </a>
+                    </li>
                 </ul>
             </li>
 
@@ -141,7 +144,8 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="@if(request()->is('admin/logbooks')) active @endif"><a href="{{ url('admin/logbooks') }}"><i
+                    <li class="@if(request()->is('admin/logbooks')) active @endif"><a
+                                href="{{ url('admin/logbooks') }}"><i
                                     class="fa fa-files-o"></i> wszystkie</a></li>
                     <li class="@if(request()->is('admin/logbooks/new')) active @endif"><a
                                 href="{{ url('admin/logbooks/new') }}"><i class="fa fa-plus"></i> Dodaj nowy</a></li>

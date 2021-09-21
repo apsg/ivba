@@ -33,7 +33,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewslettersController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', HomeController::class . '@index')->name('home');
+Route::get('/stats', HomeController::class . '@index')->name('home');
 
 Route::get('/login/{data}', LoginAsUserController::class . '@login')->name('login');
 

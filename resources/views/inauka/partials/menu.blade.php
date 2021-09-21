@@ -43,10 +43,10 @@
                 </a>
             </div>
         </li>
-
-        @if(Auth::user()->isadmin)
+        
+        @if(Gate::allows('admin'))
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/admin')}}"><i class="fa fa-cogs"></i>
+                <a class="nav-link" href="{{ url('/admin/stats') }}"><i class="fa fa-cogs"></i>
                     Administracja</a>
             </li>
         @endif
