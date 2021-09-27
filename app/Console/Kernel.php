@@ -68,7 +68,7 @@ class Kernel extends ConsoleKernel
             ->dailyAt('13:00');
 
         $schedule->command('subscriptions:prolong')
-            ->everyMinute();
+            ->everyFiveMinutes();
     }
 
     /**
