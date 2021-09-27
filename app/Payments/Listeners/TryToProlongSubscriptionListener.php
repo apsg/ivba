@@ -20,8 +20,14 @@ class TryToProlongSubscriptionListener
 
     public function handle(ActiveSubscriptionExpiredEvent $event)
     {
+        /** @var PaymentRepository $repository */
+        $repository = app(PaymentRepository::class);
+        if ($repository->isRecentlyProcessingPayment($event->subscription)) {
+            return;
+        }
+
         try {
-            $payment = app(PaymentRepository::class)
+            $payment = $repository
                 ->createRecurrent($event->subscription);
 
             \Log::info(__CLASS__, [

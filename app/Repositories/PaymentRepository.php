@@ -36,7 +36,7 @@ class PaymentRepository
     public function handle($paymentId, string $status = null, array $data = []) : Payment
     {
         /** @var Payment $payment */
-        $payment = Payment::findOrFail((int) $paymentId);
+        $payment = Payment::findOrFail((int)$paymentId);
 
         if ($status === static::STATUS_CORRECT) {
             if ($payment->confirmed_at === null) {
@@ -89,5 +89,12 @@ class PaymentRepository
         ]);
 
         return $payment;
+    }
+
+    public function isRecentlyProcessingPayment(Subscription $subscription) : bool
+    {
+        return Payment::where('subscription_id', $subscription->id)
+            ->where('created_at', '>', Carbon::now()->subMinutes(10))
+            ->exists();
     }
 }
