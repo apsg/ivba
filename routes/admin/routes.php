@@ -5,6 +5,7 @@ use App\Domains\Admin\Controllers\LoginAsUserController;
 use App\Domains\Admin\Controllers\SettingsController;
 use App\Domains\Logbooks\Controllers\Admin\LogbookCommentsController;
 use App\Domains\Logbooks\Controllers\Admin\LogbooksController;
+use App\Domains\Logbooks\Controllers\Admin\RecentLogbookEntriesController;
 use App\Domains\Quicksales\Controller\BaselinkerController;
 use App\Http\Controllers\Admin\AccessController;
 use App\Http\Controllers\Admin\Courses\CourseUsersController;
@@ -53,6 +54,8 @@ Route::group(['prefix' => 'courses'], function () {
         ->name('course.duplicate');
     Route::get('/{course}/users', CourseUsersController::class . '@index')->name('course.users');
     Route::get('/{course}/users/data', CourseUsersController::class . '@getData')->name('course.users.data');
+    Route::get('/{course}/logbooks', RecentLogbookEntriesController::class . '@index')->name('course.logbooks');
+    Route::get('/{course}/logbooks/data', RecentLogbookEntriesController::class . '@getData')->name('course.logbooks.data');
 });
 
 Route::get('/lesson', AdminLessonController::class . '@index');

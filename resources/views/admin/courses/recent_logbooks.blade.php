@@ -1,10 +1,10 @@
 @extends('admin.layouts.admin')
 
 @push('breadcrumbs')
-    <li class="active">Użytkownicy</li>
+    <li class="active">Logbooki</li>
 @endpush
 
-@section('pagename', 'Uczestnicy')
+@section('pagename', 'Ostatnie logbooki')
 @section('pagesubname', 'Kursu')
 
 @section('content')
@@ -14,17 +14,17 @@
                 <a class="nav-link" href="{{ route('admin.course.edit', $course) }}">Edycja ustawień</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#">Przegląd uczestników</a>
+                <a class="nav-link" href="{{ route('admin.course.users', $course) }}">Przegląd uczestników</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.course.logbooks', $course) }}">Ostatnio dodane</a>
+                <a class="nav-link active" href="{{ route('admin.course.logbooks', $course) }}">Ostatnio dodane</a>
             </li>
         </ul>
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Uczestnicy kursu</h3>
+                        <h3 class="box-title">Ostatnie wpisy w logbookach tego kursu</h3>
                         <div class="box-tools pull-right">
                         </div><!-- /.box-tools -->
                     </div><!-- /.box-header -->
@@ -34,8 +34,8 @@
                             <tr>
                                 <th>Nazwa</th>
                                 <th>Email</th>
-                                <th>Rozpoczęto</th>
-                                <th>Zakończono</th>
+                                <th>Logbook</th>
+                                <th>Dodano</th>
                                 <th>Opcje</th>
                             </tr>
                             </thead>
@@ -64,19 +64,19 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: '{{ route('admin.course.users.data', $course) }}',
+                    url: '{{ route('admin.course.logbooks.data', $course) }}',
                     'data': function (d) {
                     }
                 },
                 columns: [
-                    {data: 'name', name: 'name', searchable: true},
-                    {data: 'email', name: 'email', searchable: true},
-                    {data: 'start_at', name: 'start_at', searchable: false},
-                    {data: 'finished_at', name: 'finished_at', searchable: false},
+                    {data: 'user.name', name: 'name', searchable: true},
+                    {data: 'user.email', name: 'email', searchable: true},
+                    {data: 'logbook.title', name: 'title', searchable: false},
+                    {data: 'created_at', name: 'created_at', searchable: false},
                     {data: 'options', name: 'options', searchable: false, orderable: false},
                 ],
                 'iDisplayLength': 25,
-                'order': [[0, 'asc']],
+                'order': [[2, 'desc']],
             });
 
             $(document).on('click', '.logbook-open', function (e) {

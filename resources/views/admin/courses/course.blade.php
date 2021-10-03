@@ -23,6 +23,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.course.users', $course) }}">Przegląd uczestników</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.course.logbooks', $course) }}">Ostatnio dodane</a>
+            </li>
         </ul>
 
         <div class="box">
