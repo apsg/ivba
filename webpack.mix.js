@@ -46,7 +46,8 @@ mix.scripts([
 // ----- MULTISITE -----------------
 let domains = [
     'inauka',
-    'projekt30'
+    'projekt30',
+    'internetowisprzedawcy'
 ];
 
 for (let domain of domains) {

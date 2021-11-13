@@ -1,0 +1,79 @@
+@import "variables";
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+$color-main-red: #E7323B;
+$color-seledin-dark: #00A9A7;
+$color-blue: #00ACAA;
+$color-gray: #707071;
+
+$brand-primary: $color-main-red;
+$text-color: $color-gray;
+
+$font-main: "Poppins";
+$font-bold: "Krona One";
+
+$font-family-sans-serif: $font-main sans-serif;
+
+body {
+    font-family: $font-main;
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-bold;
+    color: $color-gray;
+}
+
+.header {
+    background-color: $color-main-red;
+    background-image: none;
+}
+
+.color-red,
+.text-red {
+    color: $color-main-red;
+}
+
+.bg-red {
+    background-color: $color-main-red;
+}
+
+.color-blue,
+.text-blue {
+    color: $color-blue;
+}
+
+.bg-blue {
+    background-color: $color-blue;
+}
+
+.header-is {
+    :before {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        background-color: $color-blue;
+    }
+}
+
+.navbar {
+    li {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    a {
+        color: $color-white;
+    }
+}
+
+footer{
+    .footer-menu {
+        font-family: $font-bold;
+    }
+}

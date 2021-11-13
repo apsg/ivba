@@ -1,0 +1,60 @@
+@import url(https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:ital,wght@0,300;
+
+0,400;0,700;1,300;1,400;1,700&display=swap);body {
+  font-family: "Poppins";
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Krona One";
+  color: #707071;
+}
+
+.header {
+  background-color: #E7323B;
+  background-image: none;
+}
+
+.color-red,
+.text-red {
+  color: #E7323B;
+}
+
+.bg-red {
+  background-color: #E7323B;
+}
+
+.color-blue,
+.text-blue {
+  color: #00ACAA;
+}
+
+.bg-blue {
+  background-color: #00ACAA;
+}
+
+.header-is :before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #00ACAA;
+}
+
+.navbar li {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.navbar a {
+  color: #ffffff;
+}
+
+footer .footer-menu {
+  font-family: "Krona One";
+}
+

@@ -12,6 +12,8 @@
 @import "quicksale";
 @import "~vue-select/src/scss/vue-select.scss";
 
+$font-main: "Lato";
+
 .bg-gray-light {
     background-color: $color-bg-gray-light;
 }
@@ -51,7 +53,7 @@
 }
 
 .login {
-    font-family: "Lato", "Raleway", sans-serif;
+    font-family: $font-main, "Raleway", sans-serif;
 }
 
 .header {
@@ -160,7 +162,7 @@ footer {
 .VueCarousel-navigation-button {
     color: #fff;
     font-size: 40px;
-    font-family: "Lato", "Raleway", sans-serif;
+    font-family: $font-main, "Raleway", sans-serif;
     font-weight: 300;
 }
 
