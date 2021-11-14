@@ -3,6 +3,17 @@
 0,400;0,700;1,300;1,400;1,700&display=swap);body.logged {
   background-color: #F5F5F5;
   min-height: 100%;
+  color: #868686;
+  font-family: "Krona One";
+}
+
+body.logged h1,
+body.logged h2,
+body.logged h3,
+body.logged h4,
+body.logged h5,
+body.logged h6 {
+  color: #262626;
 }
 
 body.logged .icon {
@@ -78,6 +89,16 @@ body.logged .account.active .icon {
   background-color: #007978;
 }
 
+.text-gray {
+  color: #707071;
+  fill: #707071;
+}
+
+.text-black {
+  color: #262626;
+  fill: #262626;
+}
+
 html {
   background-color: #3E3E3E;
 }
@@ -142,5 +163,17 @@ footer {
 
 footer .footer-menu {
   font-family: "Krona One";
+}
+
+.btn-red {
+  background-color: #E7323B;
+  color: #ffffff;
+  fill: #ffffff;
+}
+
+.btn-red:hover {
+  background-color: #ce1821;
+  color: #ffffff;
+  fill: #ffffff;
 }
 

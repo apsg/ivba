@@ -1,6 +1,17 @@
 body.logged {
     background-color: $color-gray-bg-light;
     min-height: 100%;
+    color: $color-gray-text-logged;
+    font-family: $font-bold;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: $color-black;
+    }
 
     .icon {
         fill: $color-gray;
@@ -76,7 +87,17 @@ body.logged {
 .btn-ivba {
     background-color: $color-blue;
 
-    &:hover{
+    &:hover {
         background-color: darken($color-blue, 10%);
     }
+}
+
+.text-gray {
+    color: $color-gray;
+    fill: $color-gray;
+}
+
+.text-black{
+    color: $color-black;
+    fill: $color-black;
 }

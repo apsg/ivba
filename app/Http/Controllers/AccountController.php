@@ -15,10 +15,6 @@ class AccountController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Pokaż dane konta.
-     * @return [type] [description]
-     */
     public function show(LastLessonService $service)
     {
         $user = Auth::user();
@@ -30,10 +26,14 @@ class AccountController extends Controller
         return view('account.account')->with(compact('user', 'payments', 'lastLesson'));
     }
 
-    /**
-     * Zaktualizuj dane użytkownika.
-     * @return [type] [description]
-     */
+    public function myCourses(LastLessonService $service)
+    {
+        $user = Auth::user();
+        $lastLesson = $service->get($user);
+
+        return view('account.mycourses')->with(compact('user', 'lastLesson'));
+    }
+
     public function update(Request $request)
     {
         $user = Auth::user();

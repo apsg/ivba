@@ -39,10 +39,8 @@
                 </div>
 
                 <flash-message class="fm-container"></flash-message>
-                <div class="container bg-white rounded-50 p-4">
 
                 @yield('content')
-                </div>
 
             </div>
         </div>

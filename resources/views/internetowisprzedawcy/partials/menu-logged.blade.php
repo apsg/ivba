@@ -5,7 +5,7 @@
 
     <ul class="px-0 pt-5">
         <li class="nav-item">
-            <a class="nav-link">
+            <a class="nav-link" href="{{ url('/account/mycourses') }}">
                 @include('icons.play')
                 Moje kursy
             </a>
