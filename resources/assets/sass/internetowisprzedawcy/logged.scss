@@ -1,0 +1,82 @@
+body.logged {
+    background-color: $color-gray-bg-light;
+    min-height: 100%;
+
+    .icon {
+        fill: $color-gray;
+        cursor: pointer;
+
+        &:hover,
+        &.active {
+            fill: $color-main-red;
+        }
+    }
+
+    .active {
+        .icon {
+            fill: $color-main-red;
+        }
+    }
+
+    .col-sidebar {
+        max-width: 204px;
+        height: 100%;
+        background-color: $color-white;
+
+        .nav {
+            a {
+                font-family: $font-bold;
+                color: $color-gray;
+                font-size: 16px;
+                cursor: pointer;
+
+                &:hover {
+                    color: $color-main-red;
+
+                    & * {
+                        fill: $color-main-red;
+                    }
+                }
+            }
+        }
+    }
+
+    .col-main {
+        margin-left: 204px;
+        background-image: url('/images/internetowisprzedawcy/logged_bg.png');
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+
+    }
+
+
+    .account {
+        width: 60px;
+        height: 60px;
+        display: inline-block;
+        line-height: 60px;
+
+        &:hover,
+        &.active {
+            background-color: $color-blue;
+            color: $color-white;
+
+            .icon {
+                fill: $color-white;
+            }
+        }
+    }
+}
+
+.rounded-50 {
+    border-radius: 44px;
+}
+
+.btn-ivba {
+    background-color: $color-blue;
+
+    &:hover{
+        background-color: darken($color-blue, 10%);
+    }
+}

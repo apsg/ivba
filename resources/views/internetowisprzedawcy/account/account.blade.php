@@ -1,10 +1,10 @@
-@extends('layouts.front2')
+@extends('layouts.logged')
 
 @section('title', 'Twoje konto')
 
 @section('content')
-    <section class="page content">
-        <div class="container">
+    <section class="page content px-3">
+        <div class="container-fluid bg-white rounded-50 p-4">
             <h1>Twoje konto</h1>
             <hr/>
 

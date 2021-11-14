@@ -1,6 +1,84 @@
 @import url(https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:ital,wght@0,300;
 
-0,400;0,700;1,300;1,400;1,700&display=swap);html {
+0,400;0,700;1,300;1,400;1,700&display=swap);body.logged {
+  background-color: #F5F5F5;
+  min-height: 100%;
+}
+
+body.logged .icon {
+  fill: #707071;
+  cursor: pointer;
+}
+
+body.logged .icon:hover,
+body.logged .icon.active {
+  fill: #E7323B;
+}
+
+body.logged .active .icon {
+  fill: #E7323B;
+}
+
+body.logged .col-sidebar {
+  max-width: 204px;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+body.logged .col-sidebar .nav a {
+  font-family: "Krona One";
+  color: #707071;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+body.logged .col-sidebar .nav a:hover {
+  color: #E7323B;
+}
+
+body.logged .col-sidebar .nav a:hover * {
+  fill: #E7323B;
+}
+
+body.logged .col-main {
+  margin-left: 204px;
+  background-image: url("/images/internetowisprzedawcy/logged_bg.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+body.logged .account {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  line-height: 60px;
+}
+
+body.logged .account:hover,
+body.logged .account.active {
+  background-color: #00ACAA;
+  color: #ffffff;
+}
+
+body.logged .account:hover .icon,
+body.logged .account.active .icon {
+  fill: #ffffff;
+}
+
+.rounded-50 {
+  border-radius: 44px;
+}
+
+.btn-ivba {
+  background-color: #00ACAA;
+}
+
+.btn-ivba:hover {
+  background-color: #007978;
+}
+
+html {
   background-color: #3E3E3E;
 }
 

@@ -6,6 +6,7 @@ $color-seledin-dark: #00A9A7;
 $color-blue: #00ACAA;
 $color-gray: #707071;
 $color-gray-footer: #3E3E3E;
+$color-gray-bg-light: #F5F5F5;
 
 $brand-primary: $color-main-red;
 $text-color: $color-gray;
@@ -14,6 +15,8 @@ $font-main: "Poppins";
 $font-bold: "Krona One";
 
 $font-family-sans-serif: $font-main sans-serif;
+
+@import 'internetowisprzedawcy/logged.scss';
 
 html{
     background-color: $color-gray-footer;

@@ -1,12 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Helpers\PasswordReset;
 use App\Http\Requests\UpdateUserInvoiceDataRequest;
 use App\Payment;
 use App\Services\LastLessonService;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller

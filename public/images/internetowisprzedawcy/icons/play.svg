@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   viewBox="0 0 42 42"
+   height="42"
+   width="42"
+   data-name="Component 60 – 12"
+   id="Component_60_12">
+  <metadata
+     id="metadata20">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs18" />
+  <g
+     transform="translate(0.469,0.469)"
+     data-name="MDI / motion-play-outline"
+     id="MDI_motion-play-outline">
+    <g
+       style="opacity:0;stroke-width:1"
+       stroke="rgba(0,0,0,0)"
+       transform="translate(-0.469,-0.469)"
+       id="Boundary">
+      <rect
+         style="stroke:none"
+         y="0"
+         x="0"
+         id="rect8"
+         height="42"
+         width="42" />
+      <rect
+         style="fill:none"
+         id="rect10"
+         height="41"
+         width="41"
+         y="0.5"
+         x="0.5" />
+    </g>
+    <path
+       style="fill:#929c9c"
+       transform="translate(1.422,1.422)"
+       d="m 15.687,26.809 10.266,-7.7 -10.266,-7.7 m 20.531,7.7 A 17.072,17.072 0 0 0 19.109,2 17.75,17.75 0 0 0 13.326,2.958 l 1.2,3.319 A 12.239,12.239 0 0 1 19.111,5.37 13.739,13.739 0 1 1 5.371,19.109 12.524,12.524 0 0 1 6.278,14.455 L 2.958,13.326 A 17.75,17.75 0 0 0 2,19.109 a 17.1095,17.1095 0 0 0 34.219,0 M 7.937,5.371 A 2.592,2.592 0 1 1 5.371,7.937 2.656,2.656 0 0 1 7.937,5.371 Z"
+       data-name="Path / motion-play-outline"
+       id="Path_motion-play-outline" />
+  </g>
+</svg>
