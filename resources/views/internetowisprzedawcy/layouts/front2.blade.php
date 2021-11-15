@@ -42,7 +42,7 @@
             </div>
         </nav>
         @if(Request::is('/'))
-            <p30-slider></p30-slider>
+            <internetowi-sprzedawcy-slider />
         @endif
     </header>
     <div class="container pt-5">

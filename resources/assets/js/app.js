@@ -19,6 +19,7 @@ import VTooltip from 'v-tooltip';
 import VimeoVideo from './components/VimeoVideo.vue';
 import Quicksale from './components/Quicksale.vue';
 import P30Slider from "./components/p30/P30Slider";
+import InternetowiSprzedawcySlider from "./components/internetowisprzedawcy/InternetowiSprzedawcySlider";
 import Groupon from "./components/Admin/Groupon";
 import Baselinker from "./components/Admin/Baselinker";
 import Access from "./components/Admin/Access";
@@ -56,6 +57,7 @@ const app = new Vue({
         'partner-link': PartnerLink,
         'quicksale': Quicksale,
         P30Slider,
+        InternetowiSprzedawcySlider,
         Groupon,
         Baselinker,
         Access,

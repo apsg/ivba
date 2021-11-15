@@ -177,3 +177,17 @@ footer .footer-menu {
   fill: #ffffff;
 }
 
+.VueCarousel-wrapper {
+  height: calc(100vh - 335px);
+}
+
+.VueCarousel-inner {
+  height: 100% !important;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1450px;
+  }
+}
+
