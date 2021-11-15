@@ -4,6 +4,8 @@
             :perPage="1"
             :navigationNextLabel="`>`"
             :navigationPrevLabel="`<`"
+            paginationColor="#FFFFFF8B"
+            paginationActiveColor="#FFF"
             ref="carousel"
             style="width: 100%;"
         >
