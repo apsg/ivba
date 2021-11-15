@@ -5,34 +5,20 @@
 @section('content')
     <section class="page content px-3">
         <div class="container-fluid bg-white rounded-50 p-4">
-            <h1>Twoje konto</h1>
-            <hr/>
-
-            @if(!!$lastLesson)
-                <div class="alert alert-info">
-                    Ostatnio realizowana lekcja: <strong>{{ $lastLesson['lesson'] }}</strong>
-                    w kursie: <strong>{{ $lastLesson['course'] }}</strong>.
-                    <a href="{{ $lastLesson['url'] }}" class="btn btn-ivba ml-5">Kontynuuj naukę</a>
-
-                </div>
-                <hr/>
-            @endif
+            <h4 class="text-gray">Twoje konto</h4>
+            <h1 class="mb-5">{{ $user->name }}</h1>
 
             <ul class="nav nav-tabs nav-pills nav-justified" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="ranking-tab" data-toggle="tab" href="#ranking" role="tab"
+                    <a class="nav-link active pb-3" id="ranking-tab" data-toggle="tab" href="#ranking" role="tab"
                        aria-controls="ranking" aria-selected="true">Ranking</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="courses-tab" data-toggle="tab" href="#courses" role="tab"
-                       aria-controls="courses" aria-selected="true">Kursy i dodatki</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                    <a class="nav-link pb-3" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                        aria-controls="profile" aria-selected="false">Dane</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="finance-tab" data-toggle="tab" href="#finance" role="tab"
+                    <a class="nav-link pb-3" id="finance-tab" data-toggle="tab" href="#finance" role="tab"
                        aria-controls="finance" aria-selected="false">Finanse</a>
                 </li>
             </ul>
@@ -82,9 +68,8 @@
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="row">
-                        <partner-link link="{{$user->partnerLink()}}"
-                                      count="{{ $user->refs()->count() }}"></partner-link>
                         <div class="col-md-6">
+                            <h5>Login</h5>
                             <form action="{{ url('/account') }}" method="post">
                                 {{ csrf_field() }}
                                 <fieldset disabled>
@@ -99,7 +84,8 @@
                                     <input type="text" name="name" class="form-control" id="exampleInputEmail1"
                                            aria-describedby="emailHelp" placeholder="Enter email"
                                            value="{{ $user->name }}">
-                                    <p>Ta nazwa używana jest na certyfikatach, które są wystawiane po niektórych z
+                                    <p class="font-size-10">Ta nazwa używana jest na certyfikatach, które są wystawiane
+                                        po niektórych z
                                         kursów.
                                         Najlepiej więc, by znajdowało się tu Twoje imię i nazwisko.</p>
                                 </div>
@@ -112,13 +98,15 @@
                             <form action="{{ url('/account/change_password') }}" method="POST">
                                 {{ csrf_field() }}
                                 <div class="form-group">
-                                    <p>Kliknij poniższy przycisk, aby zmienić hasło. Wyślemy do Ciebie maila, dzięki
+                                    <p class="font-size-12">Kliknij poniższy przycisk, aby zmienić hasło. Wyślemy do
+                                        Ciebie maila, dzięki
                                         któremu
                                         zmienisz swoje hasło.</p>
-                                    <p>Po kliknięciu w poniższy przycisk nastąpi automatyczne wylogowanie. Odszukaj w
+                                    <p class="font-size-12">Po kliknięciu w poniższy przycisk nastąpi automatyczne
+                                        wylogowanie. Odszukaj w
                                         swojej
                                         skrzynce naszą wiadomość i zmień hasło.</p>
-                                    <button type="submit" class="btn btn-ivba">Zmień hasło</button>
+                                    <button type="submit" class="btn btn-red">Zmień hasło</button>
                                 </div>
                             </form>
 

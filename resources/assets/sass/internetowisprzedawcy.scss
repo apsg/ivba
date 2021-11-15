@@ -46,7 +46,7 @@ h6 {
 
 .color-red,
 .text-red {
-    color: $color-main-red;
+    color: $color-main-red !important;
 }
 
 .bg-red {
@@ -56,6 +56,12 @@ h6 {
 .color-blue,
 .text-blue {
     color: $color-blue;
+}
+
+.color-gray,
+.text-gray {
+    color: $color-gray-text-logged !important;
+    fill: $color-gray-text-logged !important;
 }
 
 .bg-blue {
@@ -90,6 +96,11 @@ footer {
     }
 }
 
+.btn {
+    border-radius: 14px;
+    padding: 10px 32px;
+}
+
 .btn-red {
     background-color: $color-main-red;
     color: $color-white;
@@ -114,4 +125,15 @@ footer {
     .container {
       max-width: 1450px;
     }
+}
+.card {
+    border-radius: 28px;
+}
+
+.font-size-10 {
+    font-size: 10px;
+}
+
+.font-size-12 {
+    font-size: 12px;
 }

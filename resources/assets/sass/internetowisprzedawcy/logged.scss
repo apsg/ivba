@@ -78,6 +78,24 @@ body.logged {
             }
         }
     }
+
+    .nav-pills {
+        .nav-link {
+            color: $color-gray-text-logged;
+            font-size: 17px;
+            border: 1px solid transparent;
+            border-bottom: 4px solid transparent;
+
+            &:hover{
+                border-bottom-color: $color-gray-text-logged;
+            }
+
+            &.active {
+                background-color: inherit;
+                border-bottom-color: $color-blue;
+            }
+        }
+    }
 }
 
 .rounded-50 {
@@ -97,7 +115,7 @@ body.logged {
     fill: $color-gray;
 }
 
-.text-black{
+.text-black {
     color: $color-black;
     fill: $color-black;
 }

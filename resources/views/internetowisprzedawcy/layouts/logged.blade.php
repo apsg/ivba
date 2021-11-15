@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <flash-message class="fm-container"></flash-message>
+                @include('common.errors')
 
                 @yield('content')
 

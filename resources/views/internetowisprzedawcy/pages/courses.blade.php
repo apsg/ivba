@@ -1,4 +1,4 @@
-@extends('layouts.front2')
+@extends(Auth::check() ? 'layouts.logged' : 'layouts.front2')
 
 @section('content')
     <!-- Start Cources Section -->

@@ -57,7 +57,7 @@ const app = new Vue({
         'partner-link': PartnerLink,
         'quicksale': Quicksale,
         P30Slider,
-        InternetowiSprzedawcySlider,
+        'internetowi-sprzedawcy-slider': InternetowiSprzedawcySlider,
         Groupon,
         Baselinker,
         Access,
