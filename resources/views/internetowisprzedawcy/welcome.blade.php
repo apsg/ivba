@@ -4,7 +4,7 @@
 
 @section('content')
     <section class="container">
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-md-6">
                 <!-- old video
                 <iframe src="https://player.vimeo.com/video/311629551" width="380" height="285" -->
