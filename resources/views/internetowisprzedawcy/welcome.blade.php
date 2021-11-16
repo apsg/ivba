@@ -6,19 +6,30 @@
     <section class="container">
         <div class="row">
             <div class="col-md-6">
-                <iframe src="https://player.vimeo.com/video/311629551" width="380" height="285"
-                        class="w-100 h-100 rounded" style="border-radius: 30px !important;" frameborder="0"
-                        allow="autoplay; fullscreen" allowfullscreen></iframe>
-
-            </div>
-            <div class="col-md-6 pt-5">
-                <div class="d-flex">
-                    <h2 class="flex-grow-1 header-is">Zapraszam Cię na wspólny <span class="text-blue">projekt</span></h2>
+                <!-- old video
+                <iframe src="https://player.vimeo.com/video/311629551" width="380" height="285" -->
+                <div class="iframe-vimeo">
+                    <iframe src="https://player.vimeo.com/video/29950141?h=c6db007fe5&title=0&byline=0&portrait=0"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+                    </iframe>
                 </div>
-                <p class="">Masz problemy ze sprzedażą w Internecie? Chcesz zwiększyć zasięgi? Zoptymalizować swoje
-                    działania sprzedażowe. A może masz ciekawy pomysł? Pokażemy Ci jak sprzedaje się w Internecie.
-                    Pokaże Ci moje case-e. Poprzez wyzwania na żywo udowodnię Ci, że da się w Polsce sprzedawać spore
-                    ilości towaru. A może podbijemy świat? </p>
+                <script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+            <div class="col-md-6 pt-2">
+                <div class="d-flex">
+                    <div>
+                        <ul class="square-ul"><li></li></ul>
+                    </div>
+                    <div class="video-description">
+                        <div>
+                            <h2 class="flex-grow-1 header-is mb-0">Rozwiń sprzedaż</h2><br>
+                            <h2 class="flex-grow-1 header-is mb-0">Do <span class="text-blue">perfekcji</span></h2>
+                        </div>
+                        <p class="mt-4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
