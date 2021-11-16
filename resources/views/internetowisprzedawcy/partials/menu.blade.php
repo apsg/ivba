@@ -41,7 +41,7 @@
                 Zarejestruj</a>
         </li>
     @else
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown ml-auto">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-user"></i> {{ Auth::user()->name }}</a>
@@ -61,14 +61,13 @@
             </div>
         </li>
 
+        @include('partials.cart_link')
+
         @if(Gate::allows('admin'))
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('/admin/stats') }}"><i class="fa fa-cogs"></i>
                     Administracja</a>
             </li>
         @endif
-
-        @include('partials.cart_link')
-
     @endif
 </ul>

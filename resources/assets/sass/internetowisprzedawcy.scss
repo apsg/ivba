@@ -7,6 +7,7 @@ $color-blue: #00ACAA;
 $color-gray: #707071;
 $color-gray-footer: #3E3E3E;
 $color-gray-bg-light: #F5F5F5;
+$color-gray-bg-lighter: #FCFCFC;
 $color-gray-text-logged: #868686;
 $color-black: #262626;
 
@@ -19,6 +20,7 @@ $font-bold: "Krona One";
 $font-family-sans-serif: $font-main sans-serif;
 
 @import 'internetowisprzedawcy/logged.scss';
+@import 'internetowisprzedawcy/buyaccess.scss';
 
 html {
     background-color: $color-gray-footer;
@@ -123,9 +125,10 @@ footer {
 
 @media (min-width: 1200px) {
     .container {
-      max-width: 1450px;
+        max-width: 1450px;
     }
 }
+
 .card {
     border-radius: 28px;
 }
@@ -173,4 +176,26 @@ ul.square-ul li:before {
     p {
         font-size: 18px
     }
+}
+
+.rounded-50 {
+    border-radius: 44px;
+}
+
+.btn-ivba {
+    background-color: $color-blue;
+
+    &:hover {
+        background-color: darken($color-blue, 10%);
+    }
+}
+
+.text-gray {
+    color: $color-gray;
+    fill: $color-gray;
+}
+
+.text-black {
+    color: $color-black;
+    fill: $color-black;
 }

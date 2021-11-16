@@ -86,7 +86,7 @@ body.logged {
             border: 1px solid transparent;
             border-bottom: 4px solid transparent;
 
-            &:hover{
+            &:hover {
                 border-bottom-color: $color-gray-text-logged;
             }
 
@@ -96,26 +96,4 @@ body.logged {
             }
         }
     }
-}
-
-.rounded-50 {
-    border-radius: 44px;
-}
-
-.btn-ivba {
-    background-color: $color-blue;
-
-    &:hover {
-        background-color: darken($color-blue, 10%);
-    }
-}
-
-.text-gray {
-    color: $color-gray;
-    fill: $color-gray;
-}
-
-.text-black {
-    color: $color-black;
-    fill: $color-black;
 }

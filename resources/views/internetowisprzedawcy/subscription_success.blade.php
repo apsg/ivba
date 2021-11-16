@@ -1,4 +1,4 @@
-@extends('layouts.front2')
+@extends('layouts.logged')
 
 @section('title', 'Dziękujemy')
 

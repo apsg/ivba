@@ -1,4 +1,4 @@
-@extends('layouts.front2')
+@extends('layouts.buyaccess')
 
 @section('title', 'Kup dostęp')
 
@@ -21,15 +21,15 @@
                 <hr/>
                 @include('partials.user_details_form')
             @else
-                @if( Auth::check() && Auth::user()->full_access_expires && Auth::user()->full_access_expires->isFuture() )
-                    <p>Masz aktywny pełen dostęp - nie możesz wykupić abonamentu</p>
-                @elseif(Auth::check() && Auth::user()->hasActiveSubscription())
-                    <p>Masz już aktywny abonament</p>
-                @else
-                    @include('partials.buy_access.subscription')
-                @endif
+{{--                @if( Auth::check() && Auth::user()->full_access_expires && Auth::user()->full_access_expires->isFuture() )--}}
+{{--                    <p>Masz aktywny pełen dostęp - nie możesz wykupić abonamentu</p>--}}
+{{--                @elseif(Auth::check() && Auth::user()->hasActiveSubscription())--}}
+{{--                    <p>Masz już aktywny abonament</p>--}}
+{{--                @else--}}
+{{--                    @include('partials.buy_access.subscription')--}}
+{{--                @endif--}}
 
-                <hr/>
+{{--                <hr/>--}}
                 @include('partials.buy_access.full_access')
 
                 <hr/>

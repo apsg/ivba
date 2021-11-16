@@ -1,0 +1,9 @@
+body.buyaccess {
+    background-color: $color-gray-bg-light;
+    min-height: 100%;
+
+    .inner{
+        background-color: $color-gray-bg-lighter;
+        overflow-y: auto;
+    }
+}
