@@ -13,14 +13,13 @@
                             frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
                     </iframe>
                 </div>
-                <script src="https://player.vimeo.com/api/player.js"></script>
             </div>
             <div class="col-md-6 pt-2">
                 <div class="d-flex">
                     <div>
                         <ul class="square-ul"><li></li></ul>
                     </div>
-                    <div class="video-description">
+                    <div class="container-description">
                         <div>
                             <h2 class="flex-grow-1 header-is mb-0">Rozwiń sprzedaż</h2><br>
                             <h2 class="flex-grow-1 header-is mb-0">Do <span class="text-blue">perfekcji</span></h2>
@@ -30,6 +29,73 @@
                         </p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    <section class="container" style="padding-top: 5em">
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="d-flex">
+                    <div>
+                        <ul class="square-ul"><li></li></ul>
+                    </div>
+                    <div class="container-description">
+                        <div>
+                            <h2 class="flex-grow-1 header-is mb-0">O tym dostępie</h2><br>
+                            <h2 class="flex-grow-1 header-is mb-0">tylko raz na kwartał</h2>
+                        </div>
+                        <p class="mt-4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <img style="width: 100%" src="{{ asset('images/internetowisprzedawcy/timeline.png') }}">
+            </div>
+        </div>
+    </section>
+    <section class="container" style="padding-top: 5em">
+        <div class="row mt-5">
+            <div class="col-md-12 mb-5 d-flex align-items-center justify-content-center">
+                <div class="text-center">
+                    <h5>Co zyskasz dzięki dostępowi</h5>
+                    <p class="p-header">Co zyskasz dzięki dostępowi?</p>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="subscription-promo-card d-flex align-items-center justify-content-center">
+                    <div class="text-center p-4">
+                        <img class="m-3" src="{{ asset('images/internetowisprzedawcy/subscription-promo-1.png') }}">
+                        <h3 class="m-3">Profesjonalne<br>wideokursy</h3>
+                        <p class="m-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="subscription-promo-card d-flex align-items-center justify-content-center">
+                    <div class="text-center p-2">
+                        <img class="m-3" src="{{ asset('images/internetowisprzedawcy/subscription-promo-2.png') }}">
+                        <h3 class="m-3">Certyfikaty<br>ukończenia</h3>
+                        <p class="m-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="subscription-promo-card d-flex align-items-center justify-content-center">
+                    <div class="text-center p-2">
+                        <img class="m-3" src="{{ asset('images/internetowisprzedawcy/subscription-promo-3.png') }}">
+                        <h3 class="m-3">Aktualne<br>nowości</h3>
+                        <p class="m-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-5 d-flex align-items-center justify-content-center">
+                <button type="button" class="btn subscription-button">
+                    <span>
+                        Wykup dostęp
+                    </span>
+                </button>
             </div>
         </div>
     </section>
