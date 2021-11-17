@@ -50,21 +50,21 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <div class="col-md-6 center-justify-flex-content">
                 <img style="width: 100%" src="{{ asset('images/internetowisprzedawcy/timeline.png') }}">
             </div>
         </div>
     </section>
     <section class="container" style="padding-top: 5em">
         <div class="row mt-5">
-            <div class="col-md-12 mb-5 d-flex align-items-center justify-content-center">
+            <div class="col-md-12 mb-5 center-justify-flex-content">
                 <div class="text-center">
                     <h5>Co zyskasz dzięki dostępowi</h5>
                     <p class="p-header">Co zyskasz dzięki dostępowi?</p>
                 </div>
             </div>
             <div class="col-md-4 d-flex justify-content-center">
-                <div class="subscription-promo-card d-flex align-items-center justify-content-center">
+                <div class="subscription-promo-card center-justify-flex-content">
                     <div class="text-center p-4">
                         <img class="m-3" src="{{ asset('images/internetowisprzedawcy/subscription-promo-1.png') }}">
                         <h3 class="m-3">Profesjonalne<br>wideokursy</h3>
@@ -73,7 +73,7 @@
                 </div>
             </div>
             <div class="col-md-4 d-flex justify-content-center">
-                <div class="subscription-promo-card d-flex align-items-center justify-content-center">
+                <div class="subscription-promo-card center-justify-flex-content">
                     <div class="text-center p-2">
                         <img class="m-3" src="{{ asset('images/internetowisprzedawcy/subscription-promo-2.png') }}">
                         <h3 class="m-3">Certyfikaty<br>ukończenia</h3>
@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="col-md-4 d-flex justify-content-center">
-                <div class="subscription-promo-card d-flex align-items-center justify-content-center">
+                <div class="subscription-promo-card center-justify-flex-content">
                     <div class="text-center p-2">
                         <img class="m-3" src="{{ asset('images/internetowisprzedawcy/subscription-promo-3.png') }}">
                         <h3 class="m-3">Aktualne<br>nowości</h3>
@@ -90,12 +90,81 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 mt-5 d-flex align-items-center justify-content-center">
-                <button type="button" class="btn subscription-button">
+            <div class="col-md-12 mt-5 center-justify-flex-content">
+                <div class="text-center">
+                    <button type="button" class="btn subscription-button">
+                        <span>
+                            Wykup dostęp
+                        </span>
+                    </button>
+                    <div class="mt-2">
+                        <span class="subscription-button-description">Nie zwlekaj, możliwość zakupu przez tydzień raz na kwartał.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container" style="padding-top: 5em">
+        <div class="row mt-5">
+            <div class="col offer-promo-card">
+                <div class="offer-promo-card__title">
                     <span>
-                        Wykup dostęp
+                        Case Study 
                     </span>
-                </button>
+                </div>
+                <div class="offer-promo-card__description">
+                    <span>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                    </span>
+                </div>
+            </div>
+            <div class="col offer-promo-card offer-promo-card__with-margin">
+                <div class="offer-promo-card__title">
+                    <span>
+                        Grupa Wsparcia 
+                    </span>
+                </div>
+                <div class="offer-promo-card__description">
+                    <span>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                    </span>
+                </div>
+            </div>
+            <div class="col offer-promo-card">
+                <div class="offer-promo-card__title">
+                    <span>
+                        Checklisty 
+                    </span>
+                </div>
+                <div class="offer-promo-card__description">
+                    <span>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                    </span>
+                </div>
+            </div>
+            <div class="col offer-promo-card offer-promo-card__with-margin">
+                <div class="offer-promo-card__title">
+                    <span>
+                        Egzamin 
+                    </span>
+                </div>
+                <div class="offer-promo-card__description">
+                    <span>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                    </span>    
+                </div>
+            </div>
+            <div class="col offer-promo-card">
+                <div class="offer-promo-card__title">
+                    <span>
+                        Pytania 
+                    </span>
+                </div>
+                <div class="offer-promo-card__description">
+                    <span>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                    </span>    
+                </div>
             </div>
         </div>
     </section>
