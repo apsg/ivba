@@ -4,11 +4,14 @@
 $color-main-red: #E7323B;
 $color-seledin-dark: #00A9A7;
 $color-blue: #00ACAA;
+$color-blue-order: #45BEEE;
 $color-gray: #707071;
 $color-gray-footer: #3E3E3E;
 $color-gray-bg-light: #F5F5F5;
 $color-gray-bg-lighter: #FCFCFC;
+$color-gray-text-light: #D8D9D9;
 $color-gray-text-logged: #868686;
+$color-gray-44: #444444;
 $color-black: #262626;
 $font-color-red: #DE3A43;
 
@@ -69,6 +72,13 @@ p {
 .color-blue,
 .text-blue {
     color: $color-blue;
+    fill: $color-blue;
+}
+
+.color-blue-order,
+.text-blue-order {
+    color: $color-blue-order !important;
+    fill: $color-blue-order !important;
 }
 
 .color-gray,
@@ -76,6 +86,27 @@ p {
     color: $color-gray-text-logged !important;
     fill: $color-gray-text-logged !important;
 }
+
+.text-gray-light {
+    color: $color-gray-text-light !important;
+    fill: $color-gray-text-light !important;
+}
+
+.text-gray {
+    color: $color-gray !important;
+    fill: $color-gray !important;
+}
+
+.text-gray-44 {
+    color: $color-gray-44 !important;
+    fill: $color-gray-44 !important;
+}
+
+.text-black {
+    color: $color-black !important;
+    fill: $color-black !important;
+}
+
 
 .bg-blue {
     background-color: $color-blue;
@@ -156,7 +187,7 @@ ul.square-ul {
     list-style-type: none;
     padding-left: 0em;
 }
-  
+
 ul.square-ul li:before {
     background-color: #00A9A7;
     content: "";
@@ -171,6 +202,7 @@ ul.square-ul li:before {
 .iframe-vimeo {
     padding: 40% 0 0 0;
     position: relative;
+
     iframe {
         position: absolute;
         top: 0;
@@ -193,6 +225,7 @@ ul.square-ul li:before {
     border-color: $color-main-red;
     font-family: $font-bold;
     font-size: 25px;
+
     span {
         margin: 0 2em 0 2em;
     }

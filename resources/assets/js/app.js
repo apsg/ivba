@@ -1,7 +1,5 @@
 require('./bootstrap');
-
 window.Vue = require('vue');
-
 
 import Categories from './components/Categories.vue';
 import RandomLessons from './components/RandomLessons.vue';
@@ -25,6 +23,7 @@ import Baselinker from "./components/Admin/Baselinker";
 import Access from "./components/Admin/Access";
 import PaymentMethod from "./components/Admin/PaymentMethod";
 import CoursesSelector from "./components/Admin/CoursesSelector";
+import Order from "./components/internetowisprzedawcy/Order";
 
 import {VuejsDatatableFactory} from 'vuejs-datatable';
 
@@ -68,8 +67,8 @@ const app = new Vue({
         'image-preview': require('./components/ImagePreview').default,
         'logbook': require('./components/Admin/Logbook').default,
         'vimeo-video': VimeoVideo,
+        Order
     }
 });
 
 window.app = app;
-
