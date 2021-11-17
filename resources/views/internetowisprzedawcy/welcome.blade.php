@@ -167,6 +167,27 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6 center-justify-flex-content">
+                <div class="d-flex">
+                    <div>
+                        <ul class="square-ul"><li></li></ul>
+                    </div>
+                    <div class="container-description">
+                        <div>
+                            <h2 class="flex-grow-1 header-is mb-0">Motywacyjna</h2><br>
+                            <h2 class="flex-grow-1 header-is mb-0">gadka</h2>
+                        </div>
+                        <p class="mt-4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img class="w-100 confident-seller-img" src="{{ asset('images/internetowisprzedawcy/mati.png') }}">
+            </div>
+        </div>
     </section>
     <section class="container py-5 promo-cards">
         <div class="row">
