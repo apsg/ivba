@@ -90,7 +90,7 @@
             </div>
             <div class="col-md-12 mt-5 center-justify-flex-content">
                 <div class="text-center">
-                    <a href="/buy_access">
+                    <a href="{{ url('/buy_access') }}">
                         <button type="button" class="btn subscription-button">
                             <span>
                                 Wykup dostęp
@@ -109,7 +109,7 @@
             <div class="col offer-promo-card">
                 <div class="offer-promo-card__title">
                     <span>
-                        Case Study 
+                        Case Study
                     </span>
                 </div>
                 <div class="offer-promo-card__description">
@@ -121,7 +121,7 @@
             <div class="col offer-promo-card offer-promo-card__with-margin">
                 <div class="offer-promo-card__title">
                     <span>
-                        Grupa Wsparcia 
+                        Grupa Wsparcia
                     </span>
                 </div>
                 <div class="offer-promo-card__description">
@@ -133,7 +133,7 @@
             <div class="col offer-promo-card">
                 <div class="offer-promo-card__title">
                     <span>
-                        Checklisty 
+                        Checklisty
                     </span>
                 </div>
                 <div class="offer-promo-card__description">
@@ -145,25 +145,25 @@
             <div class="col offer-promo-card offer-promo-card__with-margin">
                 <div class="offer-promo-card__title">
                     <span>
-                        Egzamin 
+                        Egzamin
                     </span>
                 </div>
                 <div class="offer-promo-card__description">
                     <span>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                    </span>    
+                    </span>
                 </div>
             </div>
             <div class="col offer-promo-card">
                 <div class="offer-promo-card__title">
                     <span>
-                        Pytania 
+                        Pytania
                     </span>
                 </div>
                 <div class="offer-promo-card__description">
                     <span>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                    </span>    
+                    </span>
                 </div>
             </div>
         </div>
@@ -216,11 +216,11 @@
                         <p class="mt-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
                         </p>
-                        <button type="button" class="btn courses-list-button mt-4">
+                        <a href="{{ url('/courses') }}" class="btn courses-list-button mt-4">
                             <span>
                                 Zobacz spis kursów
                             </span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

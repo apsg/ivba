@@ -70,7 +70,7 @@
                     <div class="form-group">
                         <label>
                             <input type="checkbox" class="form-control rules-checkbox" v-model="rules">
-                            Akceptuję <a :href="rules_link">Regulamin</a>
+                            Akceptuję <a :href="rules_link" target="_blank">Regulamin</a>
                         </label>
                     </div>
                     <button
