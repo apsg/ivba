@@ -4,7 +4,7 @@
     <body class="buyaccess w-100 d-flex align-content-center justify-content-center">
     <div id="app" class="cover-container w-75 d-flex flex-column justify-content-center">
         <div>
-            <a href="{{ url()->previous() }}" class="text-gray">
+            <a href="{{ url('/') }}" class="text-gray">
                 <i class="fa fa-caret-left"></i> Wróć
             </a>
         </div>

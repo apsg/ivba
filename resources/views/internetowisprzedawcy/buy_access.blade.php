@@ -10,7 +10,11 @@
     <section class="page content">
         <div class="container">
 
-            <order price="{{ number_format(setting('ivba.full_access_price'),2)  }}"></order>
+            <order
+                    price="{{ number_format(setting('ivba.full_access_price'), 2) }}"
+                    rules_link="{{ setting('is.rules_link') }}"
+                    :user="{{ Auth::user() ?? "{}" }}"
+            ></order>
 
         </div>
     </section>
