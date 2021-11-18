@@ -12,6 +12,7 @@ class SettingsHelper
         'ivba.subscription_price'          => 'Cena miesięczna za abonament',
         'ivba.getresponse.list_all'        => 'Lista Getresponse-wszyscy',
         'ivba.getresponse.list_active'     => 'Lista Getresponse-aktywni',
+        'is.rules_link'                    => 'Link do regulaminu (IS)',
     ];
 
     public static function get(string $key)

@@ -5,6 +5,7 @@ $color-main-red: #E7323B;
 $color-seledin-dark: #00A9A7;
 $color-blue: #00ACAA;
 $color-blue-order: #45BEEE;
+$color-blue-order-button: #119CD4;
 $color-gray: #707071;
 $color-gray-footer: #3E3E3E;
 $color-gray-bg-light: #F5F5F5;
@@ -157,11 +158,24 @@ footer {
         fill: $color-white;
     }
 }
+
+.btn-blue {
+    background-color: $color-blue-order-button;
+    color: $color-white;
+    fill: $color-white;
+
+    &:hover {
+        background-color: darken($color-blue-order-button, 10%);
+        color: $color-white;
+        fill: $color-white;
+    }
+}
+
 .main-slider {
     .VueCarousel-wrapper {
         height: calc(100vh - 335px);
     }
-    
+
     .VueCarousel-inner {
         height: 100% !important;
     }
@@ -297,6 +311,7 @@ $description-height: 265px;
             color: $font-color-red;
             font-family: $font-bold;
         }
+
         cursor: default;
         background-color: $color-white;
         height: $title-height;
@@ -319,6 +334,7 @@ $description-height: 265px;
         span {
             font-size: 15px;
         }
+
         cursor: default;
         min-height: $description-height;
         padding: 2em;
@@ -328,8 +344,8 @@ $description-height: 265px;
         -ms-transition: all 500ms ease-in-out;
         -o-transition: all 500ms ease-in-out;
         transition: all 500ms ease-in-out;
-        background: rgb(195,195,195);
-        background: linear-gradient(180deg, rgba(195, 195, 195, 0.4) 5%, rgba(219,219,219,0.3) 45%, rgba(231,231,231,0.3) 50%, rgba(230,230,230,0.3) 100%);
+        background: rgb(195, 195, 195);
+        background: linear-gradient(180deg, rgba(195, 195, 195, 0.4) 5%, rgba(219, 219, 219, 0.3) 45%, rgba(231, 231, 231, 0.3) 50%, rgba(230, 230, 230, 0.3) 100%);
         border-bottom-left-radius: 25px;
         border-bottom-right-radius: 25px;
     }

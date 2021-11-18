@@ -229,6 +229,18 @@ footer .footer-menu {
   fill: #ffffff;
 }
 
+.btn-blue {
+  background-color: #119CD4;
+  color: #ffffff;
+  fill: #ffffff;
+}
+
+.btn-blue:hover {
+  background-color: #0d79a5;
+  color: #ffffff;
+  fill: #ffffff;
+}
+
 .main-slider .VueCarousel-wrapper {
   height: calc(100vh - 335px);
 }

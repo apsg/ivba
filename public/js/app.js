@@ -3975,75 +3975,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-carousel */ "./node_modules/vue-carousel/dist/vue-carousel.min.js");
-/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "InternetowiSprzedawcySlider",
-  components: {
-    Carousel: vue_carousel__WEBPACK_IMPORTED_MODULE_0__["Carousel"],
-    Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_0__["Slide"]
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/internetowisprzedawcy/Order.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/internetowisprzedawcy/Order.vue?vue&type=script&lang=js& ***!
@@ -4125,14 +4056,174 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Order",
-  props: ['price'],
+  props: ['price', 'rules_link', 'user'],
   data: function data() {
     return {
-      step: 3,
-      coupon: null
+      step: 1,
+      coupon: null,
+      rules: false,
+      name: '',
+      email: '',
+      phone: '',
+      token: null
     };
+  },
+  mounted: function mounted() {
+    this.token = document.head.querySelector('meta[name="csrf-token"]').content;
+
+    if (this.isLogged) {
+      this.email = this.user.email;
+      this.name = this.user.name;
+      this.phone = this.user.phone;
+    }
+  },
+  methods: {
+    next: function next() {
+      this.step = Math.min(3, this.step + 1);
+    },
+    prev: function prev() {
+      this.step = Math.max(0, this.step - 1);
+    }
+  },
+  computed: {
+    isLogged: function isLogged() {
+      if (this.user === null || this.user === '') return false;
+      return !!this.user.id;
+    }
   }
 });
 
@@ -8832,7 +8923,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".order[data-v-24606928] {\n  font-family: \"Poppins\", sans-serif;\n  font-size: 18px;\n}\n.order .progress-indicator[data-v-24606928] {\n  font-size: 15px/19px;\n}\n.order .progress-indicator > div[data-v-24606928] {\n  width: 33%;\n}\n.order .progress-indicator .indicator[data-v-24606928] {\n  font-size: 1.3em;\n}\n.order h2[data-v-24606928] {\n  font-weight: 700;\n}\n.order .w-60[data-v-24606928] {\n  width: 60%;\n}\n.order .border-bottom-gray[data-v-24606928] {\n  border-bottom: 1px solid #E2E2E2;\n}\n.order .price[data-v-24606928] {\n  color: #8AC348;\n  font-size: 33px;\n}", ""]);
+exports.push([module.i, ".order[data-v-24606928] {\n  font-family: \"Poppins\", sans-serif;\n  font-size: 18px;\n}\n.order .progress-indicator[data-v-24606928] {\n  font-size: 15px/19px;\n}\n.order .progress-indicator > div[data-v-24606928] {\n  width: 33%;\n}\n.order .progress-indicator .indicator[data-v-24606928] {\n  font-size: 1.3em;\n}\n.order h2[data-v-24606928] {\n  font-weight: 700;\n}\n.order .w-60[data-v-24606928] {\n  width: 60%;\n}\n.order .border-bottom-gray[data-v-24606928] {\n  border-bottom: 1px solid #E2E2E2;\n}\n.order .price[data-v-24606928] {\n  color: #8AC348;\n  font-size: 33px;\n}\n.order .rules-checkbox[data-v-24606928] {\n  display: inline-block;\n  width: 20px;\n  height: 20px;\n  line-height: 18px;\n}\n.order .next-button[data-v-24606928] {\n  font-size: 25px;\n  font-weight: 500;\n}\n.order .product-box[data-v-24606928] {\n  border: 1px solid #D8D9D9;\n}", ""]);
 
 // exports
 
@@ -8985,25 +9076,6 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=style&index=0&id=cd3932ea&scoped=true&lang=css&":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--9-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--9-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=style&index=0&id=cd3932ea&scoped=true&lang=css& ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.slider-image[data-v-cd3932ea] {\n    background-repeat: no-repeat;\n    background-position: center;\n    background-size: contain;\n    background-size: 85%;\n}\n.slide-text h1[data-v-cd3932ea]{\n    font-size: 54px;\n    line-height: 1.2em;\n    color: #F5FFFF;\n}\n.slide-text span[data-v-cd3932ea]{\n    font-size: 22px;\n    color: #F5FFFF;\n    font-weight: 100;\n}\n", ""]);
 
 // exports
 
@@ -42340,36 +42412,6 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=style&index=0&id=cd3932ea&scoped=true&lang=css&":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--9-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--9-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=style&index=0&id=cd3932ea&scoped=true&lang=css& ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--9-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--9-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./InternetowiSprzedawcySlider.vue?vue&type=style&index=0&id=cd3932ea&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=style&index=0&id=cd3932ea&scoped=true&lang=css&");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/p30/P30Slider.vue?vue&type=style&index=0&id=0fc7b6a5&scoped=true&lang=css&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--9-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--9-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/p30/P30Slider.vue?vue&type=style&index=0&id=0fc7b6a5&scoped=true&lang=css& ***!
@@ -53527,112 +53569,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=template&id=cd3932ea&scoped=true&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=template&id=cd3932ea&scoped=true& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container text-center d-flex pb-3 mt-3 mb-3 mx-auto" },
-    [
-      _c(
-        "carousel",
-        {
-          ref: "carousel",
-          staticStyle: { width: "100%" },
-          attrs: {
-            perPage: 1,
-            navigationNextLabel: ">",
-            navigationPrevLabel: "<",
-            paginationColor: "#FFFFFF8B",
-            paginationActiveColor: "#FFF"
-          }
-        },
-        [
-          _c("slide", [
-            _c("div", { staticClass: "row h-100" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "col-12 d-flex align-items-center slider-image",
-                  staticStyle: {
-                    "background-image":
-                      "url(/images/internetowisprzedawcy/nowa-ilustracja.png)"
-                  }
-                },
-                [
-                  _c("div", { staticClass: "slide-text text-left" }, [
-                    _c("h1", [
-                      _vm._v("Rozwiń sprzedaż"),
-                      _c("br"),
-                      _vm._v(" Do perfekcji")
-                    ]),
-                    _vm._v(" "),
-                    _c("span", [
-                      _vm._v(
-                        "Wszystkie teksty na stronach są tekstami przykładowymi"
-                      )
-                    ])
-                  ])
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("slide", [
-            _c("div", { staticClass: "row h-100" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "col-12 d-flex align-items-center slider-image",
-                  staticStyle: {
-                    "background-image":
-                      "url(/images/internetowisprzedawcy/ilustracja3d_druga.png)"
-                  }
-                },
-                [
-                  _c("div", { staticClass: "slide-text text-left" }, [
-                    _c("h1", [
-                      _vm._v("Rozwiń sprzedaż 2"),
-                      _c("br"),
-                      _vm._v(" Do perfekcji")
-                    ]),
-                    _vm._v(" "),
-                    _c("span", [
-                      _vm._v(
-                        "Wszystkie teksty na stronach są tekstami przykładowymi"
-                      )
-                    ])
-                  ])
-                ]
-              )
-            ])
-          ])
-        ],
-        1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/internetowisprzedawcy/Order.vue?vue&type=template&id=24606928&scoped=true&":
 /*!*************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/internetowisprzedawcy/Order.vue?vue&type=template&id=24606928&scoped=true& ***!
@@ -53660,7 +53596,7 @@ var render = function() {
           "div",
           {
             staticClass: "p-3 text-center text-gray-light",
-            class: _vm.step == 1 ? "active text-gray-44" : ""
+            class: _vm.step === 1 ? "active text-gray-44" : ""
           },
           [
             _vm._v("\n            Informacje "),
@@ -53673,7 +53609,7 @@ var render = function() {
           "div",
           {
             staticClass: "p-3 text-center text-gray-light",
-            class: _vm.step == 2 ? "active text-gray-44" : ""
+            class: _vm.step === 2 ? "active text-gray-44" : ""
           },
           [
             _vm._v("\n            Dane do "),
@@ -53686,7 +53622,7 @@ var render = function() {
           "div",
           {
             staticClass: "p-3 text-center text-gray-light",
-            class: _vm.step == 3 ? "active text-gray-44" : ""
+            class: _vm.step === 3 ? "active text-gray-44" : ""
           },
           [_vm._v("\n            Podsumowanie\n        ")]
         )
@@ -53725,57 +53661,356 @@ var render = function() {
           "div",
           {
             staticClass: "text-center indicator",
-            class: _vm.step == 3 ? "active text-blue-order" : "text-gray-light"
+            class: _vm.step === 3 ? "active text-blue-order" : "text-gray-light"
           },
           [_c("i", { staticClass: "fa fa-circle-o" })]
         )
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "pt-5 w-75 ml-auto mr-auto" }, [
-      _c("h2", { staticClass: "text-gray-44" }, [
-        _vm._v("Dostęp do platformy Internetowi Sprzedawcy")
-      ]),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "d-flex mt-3" }, [
-        _vm._m(1),
-        _vm._v(" "),
-        _c("div", { staticClass: "text-right" }, [
-          _c("span", { staticClass: "price" }, [_vm._v(_vm._s(_vm.price))])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "d-flex mt-3" }, [
-        _c("div", { staticClass: "w-60 pr-5 text-gray-44" }, [
-          _c("p", [_vm._v("Kupon rabatowy")]),
+    _vm.step === 1
+      ? _c("div", { staticClass: "pt-5 w-75 ml-auto mr-auto" }, [
+          _c("h2", { staticClass: "text-gray-44" }, [
+            _vm._v("Dostęp do platformy Internetowi Sprzedawcy")
+          ]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.coupon,
-                expression: "coupon"
-              }
-            ],
-            staticClass: "form-control w-50",
-            domProps: { value: _vm.coupon },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex mt-3" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-right flex-fill" }, [
+              _c("span", { staticClass: "price" }, [
+                _vm._v(_vm._s(_vm.price) + " PLN")
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex mt-3" }, [
+            _c("div", { staticClass: "w-60 pr-5 text-gray-44" }, [
+              _c("p", [_vm._v("Kupon rabatowy")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.coupon,
+                    expression: "coupon"
+                  }
+                ],
+                staticClass: "form-control w-50",
+                attrs: { placeholder: "Wpisz kod" },
+                domProps: { value: _vm.coupon },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.coupon = $event.target.value
+                  }
                 }
-                _vm.coupon = $event.target.value
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "text-right" })
-      ])
-    ])
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-right flex-grow-1" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.rules,
+                        expression: "rules"
+                      }
+                    ],
+                    staticClass: "form-control rules-checkbox",
+                    attrs: { type: "checkbox" },
+                    domProps: {
+                      checked: Array.isArray(_vm.rules)
+                        ? _vm._i(_vm.rules, null) > -1
+                        : _vm.rules
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.rules,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 && (_vm.rules = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (_vm.rules = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
+                        } else {
+                          _vm.rules = $$c
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v("\n                        Akceptuję "),
+                  _c("a", { attrs: { href: _vm.rules_link } }, [
+                    _vm._v("Regulamin")
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-lg btn-blue next-button px-5 py-3",
+                  attrs: { disabled: !_vm.rules },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.next()
+                    }
+                  }
+                },
+                [
+                  _vm._v("\n                    Dalej "),
+                  _c("i", { staticClass: "fa fa-caret-right" })
+                ]
+              )
+            ])
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.step === 2
+      ? _c("div", { staticClass: "pt-5 w-75 ml-auto mr-auto text-gray-44" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex mt-5" }, [
+            _c("div", { staticClass: "w-50 p-3" }, [
+              _c("h5", { staticClass: "text-black" }, [
+                _vm._v("Podaj dane do płatności")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Imię i nazwisko")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.name,
+                      expression: "name"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", required: "" },
+                  domProps: { value: _vm.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.name = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Email")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.email,
+                      expression: "email"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "email",
+                    disabled: _vm.isLogged,
+                    required: ""
+                  },
+                  domProps: { value: _vm.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.email = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Telefon")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.phone,
+                      expression: "phone"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", required: "" },
+                  domProps: { value: _vm.phone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.phone = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            !_vm.isLogged
+              ? _c("div", { staticClass: "w-50 p-3" }, [
+                  _c("h5", { staticClass: "text-black" }, [
+                    _vm._v("Masz już konto? Zaloguj się!")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      staticClass: "form-outer",
+                      attrs: { role: "form", method: "POST", action: "/login" }
+                    },
+                    [
+                      _c("input", {
+                        attrs: { type: "hidden", name: "_token" },
+                        domProps: { value: _vm.token }
+                      }),
+                      _vm._v(" "),
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-ivba",
+                          attrs: { type: "submit" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Zaloguj się\n                    "
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex mt-3 align-items-center" }, [
+            _c("div", { staticClass: "w-60 pr-5 text-gray-44" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "color-gray",
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.prev()
+                    }
+                  }
+                },
+                [
+                  _c("i", { staticClass: "fa fa-caret-left" }),
+                  _vm._v(" Wróć\n                ")
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-right flex-grow-1" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-lg btn-blue next-button px-5 py-3",
+                  attrs: { disabled: !_vm.rules || !_vm.email },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.next()
+                    }
+                  }
+                },
+                [
+                  _vm._v("\n                    Dalej "),
+                  _c("i", { staticClass: "fa fa-caret-right" })
+                ]
+              )
+            ])
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.step === 3
+      ? _c("div", { staticClass: "pt-5 w-75 ml-auto mr-auto text-gray-44" }, [
+          _vm._m(5),
+          _vm._v(" "),
+          _vm._m(6),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex mt-3 align-items-center" }, [
+            _c("div", { staticClass: "w-60 pr-5 text-gray-44" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "color-gray",
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.prev()
+                    }
+                  }
+                },
+                [
+                  _c("i", { staticClass: "fa fa-caret-left" }),
+                  _vm._v(" Wróć\n                ")
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-right flex-grow-1" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-lg btn-blue next-button px-5 py-3",
+                  attrs: { disabled: !_vm.rules || !_vm.email },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.next()
+                    }
+                  }
+                },
+                [
+                  _vm._v("\n                    Kupuję i płacę "),
+                  _c("i", { staticClass: "fa fa-caret-right" })
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(7)
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -53807,6 +54042,78 @@ var staticRenderFns = [
           "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n                    labore et dolore magna aliqua.\n                "
         )
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "rounded-50 product-box bg-white p-4" }, [
+      _vm._v("\n            Twoje zamówienie\n            "),
+      _c("h5", { staticClass: "text-black" }, [
+        _vm._v("Dostęp do platformy Internetowi Sprzedawcy")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("Email")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { name: "email", type: "email", required: "" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("Hasło")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { name: "password", type: "password", required: "" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "rounded-50 product-box bg-white p-4" }, [
+      _vm._v("\n            Twoje zamówienie\n            "),
+      _c("h5", { staticClass: "text-black" }, [
+        _vm._v("Dostęp do platformy Internetowi Sprzedawcy")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mt-5" }, [
+      _c("h3", { staticClass: "text-black" }, [_vm._v("Podsumowanie")]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "Kliknięcie w przycisk kupuję i płacę potwierdza zamówienie oraz przenosi do wyboru metody\n                płatności."
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mt-5 pt-5" }, [
+      _c("p", [_vm._v("Dostępne metody płatności:")]),
+      _vm._v(" "),
+      _c("img", { attrs: { src: "/images/internetowisprzedawcy/payu.png" } })
     ])
   }
 ]
@@ -72390,85 +72697,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue ***!
   \**********************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _InternetowiSprzedawcySlider_vue_vue_type_template_id_cd3932ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InternetowiSprzedawcySlider.vue?vue&type=template&id=cd3932ea&scoped=true& */ "./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=template&id=cd3932ea&scoped=true&");
-/* harmony import */ var _InternetowiSprzedawcySlider_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InternetowiSprzedawcySlider.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _InternetowiSprzedawcySlider_vue_vue_type_style_index_0_id_cd3932ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./InternetowiSprzedawcySlider.vue?vue&type=style&index=0&id=cd3932ea&scoped=true&lang=css& */ "./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=style&index=0&id=cd3932ea&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _InternetowiSprzedawcySlider_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _InternetowiSprzedawcySlider_vue_vue_type_template_id_cd3932ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _InternetowiSprzedawcySlider_vue_vue_type_template_id_cd3932ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  "cd3932ea",
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************!*\
-  !*** ./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InternetowiSprzedawcySlider_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./InternetowiSprzedawcySlider.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InternetowiSprzedawcySlider_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=style&index=0&id=cd3932ea&scoped=true&lang=css&":
-/*!*******************************************************************************************************************************************************!*\
-  !*** ./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=style&index=0&id=cd3932ea&scoped=true&lang=css& ***!
-  \*******************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_9_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_vue_loader_lib_index_js_vue_loader_options_InternetowiSprzedawcySlider_vue_vue_type_style_index_0_id_cd3932ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--9-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--9-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./InternetowiSprzedawcySlider.vue?vue&type=style&index=0&id=cd3932ea&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=style&index=0&id=cd3932ea&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_9_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_vue_loader_lib_index_js_vue_loader_options_InternetowiSprzedawcySlider_vue_vue_type_style_index_0_id_cd3932ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_9_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_vue_loader_lib_index_js_vue_loader_options_InternetowiSprzedawcySlider_vue_vue_type_style_index_0_id_cd3932ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_9_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_vue_loader_lib_index_js_vue_loader_options_InternetowiSprzedawcySlider_vue_vue_type_style_index_0_id_cd3932ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_9_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_vue_loader_lib_index_js_vue_loader_options_InternetowiSprzedawcySlider_vue_vue_type_style_index_0_id_cd3932ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_9_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_vue_loader_lib_index_js_vue_loader_options_InternetowiSprzedawcySlider_vue_vue_type_style_index_0_id_cd3932ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=template&id=cd3932ea&scoped=true&":
-/*!*****************************************************************************************************************************************!*\
-  !*** ./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=template&id=cd3932ea&scoped=true& ***!
-  \*****************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InternetowiSprzedawcySlider_vue_vue_type_template_id_cd3932ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./InternetowiSprzedawcySlider.vue?vue&type=template&id=cd3932ea&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue?vue&type=template&id=cd3932ea&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InternetowiSprzedawcySlider_vue_vue_type_template_id_cd3932ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InternetowiSprzedawcySlider_vue_vue_type_template_id_cd3932ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
+throw new Error("Module build failed (from ./node_modules/vue-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/home/gacek/html/ivba/resources/assets/js/components/internetowisprzedawcy/InternetowiSprzedawcySlider.vue'");
 
 /***/ }),
 
