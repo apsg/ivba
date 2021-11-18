@@ -21,8 +21,7 @@
                     </div>
                     <div class="container-description">
                         <div>
-                            <h2 class="flex-grow-1 header-is mb-0">Rozwiń sprzedaż</h2><br>
-                            <h2 class="flex-grow-1 header-is mb-0">Do <span class="text-blue">perfekcji</span></h2>
+                            <h2 class="flex-grow-1 header-is mb-0">Rozwiń sprzedaż <br>Do <span class="text-blue">perfekcji</span></h2>
                         </div>
                         <p class="mt-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
@@ -41,8 +40,7 @@
                     </div>
                     <div class="container-description">
                         <div>
-                            <h2 class="flex-grow-1 header-is mb-0">O tym dostępie</h2><br>
-                            <h2 class="flex-grow-1 header-is mb-0">tylko raz na kwartał</h2>
+                            <h2 class="flex-grow-1 header-is mb-0">O tym dostępie <br>tylko raz na kwartał</h2>
                         </div>
                         <p class="mt-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
@@ -175,8 +173,7 @@
                     </div>
                     <div class="container-description">
                         <div>
-                            <h2 class="flex-grow-1 header-is mb-0">Motywacyjna</h2><br>
-                            <h2 class="flex-grow-1 header-is mb-0">gadka</h2>
+                            <h2 class="flex-grow-1 header-is mb-0">Motywacyjna <br>gadka</h2>
                         </div>
                         <p class="mt-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
@@ -212,8 +209,7 @@
                     </div>
                     <div class="container-description">
                         <div>
-                            <h2 class="flex-grow-1 header-is mb-0">Specjalistyczna wiedza</h2><br>
-                            <h2 class="flex-grow-1 header-is mb-0"><span class="text-blue">praktyczne</span> przykłady</h2>
+                            <h2 class="flex-grow-1 header-is mb-0">Specjalistyczna wiedza <br><span class="text-blue">praktyczne</span> przykłady</h2>
                         </div>
                         <p class="mt-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
@@ -225,6 +221,28 @@
                         </button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    <section class="container" style="padding-top: 5em">
+        <div class="row mt-5">
+            <div class="col-md-6 center-justify-flex-content">
+                <div class="d-flex">
+                    <div>
+                        <ul class="square-ul"><li></li></ul>
+                    </div>
+                    <div class="container-description">
+                        <div>
+                            <h2 class="flex-grow-1 header-is mb-0">Różne spojrzenia na <br>sprzedaż w internecie</h2>
+                        </div>
+                        <p class="mt-4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 center-justify-flex-content">
+                <img style="width: 100%" src="{{ asset('images/internetowisprzedawcy/team-card.png') }}">
             </div>
         </div>
     </section>

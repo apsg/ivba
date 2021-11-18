@@ -216,8 +216,10 @@ ul.square-ul li:before {
 
 .container-description {
     div {
-        line-height: 0em;
-        font-size: 35px;
+        h2 {
+            line-height: 1.25em;
+            font-size: 35px;
+        }
     }
 }
 
