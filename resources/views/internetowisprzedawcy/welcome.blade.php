@@ -90,11 +90,13 @@
             </div>
             <div class="col-md-12 mt-5 center-justify-flex-content">
                 <div class="text-center">
-                    <button type="button" class="btn subscription-button">
-                        <span>
-                            Wykup dostęp
-                        </span>
-                    </button>
+                    <a href="/buy_access">
+                        <button type="button" class="btn subscription-button">
+                            <span>
+                                Wykup dostęp
+                            </span>
+                        </button>
+                    </a>
                     <div class="mt-2">
                         <span class="subscription-button-description">Nie zwlekaj, możliwość zakupu przez tydzień raz na kwartał.</span>
                     </div>
