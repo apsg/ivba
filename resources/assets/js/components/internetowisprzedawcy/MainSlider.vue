@@ -8,6 +8,7 @@
             paginationActiveColor="#FFF"
             ref="carousel"
             style="width: 100%;"
+            class="main-slider"
         >
             <slide>
                 <div class="row h-100">
@@ -29,18 +30,6 @@
                     </div>
                 </div>
             </slide>
-            <!-- <slide>
-                <div class="row h-100">
-                    <div class="col-md-6 d-flex align-items-center justify-content-center">
-                        <img class="w-100" src="/images/projekt30/grupa.png">
-                    </div>
-                    <div class="col-sm-6 d-flex align-items-center justify-content-center">
-                        <div class="text-left">
-                            <p>Spokojnie nie pogubisz się. Przygotowaliśmy dla Ciebie checklisty.</p>
-                        </div>
-                    </div>
-                </div>
-            </slide> -->
         </carousel>
     </div>
 </template>
@@ -49,13 +38,13 @@
     import {Carousel, Slide} from 'vue-carousel';
 
     export default {
-        name: "InternetowiSprzedawcySlider",
+        name: "MainSlider",
         components: {Carousel, Slide},
 
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     .slider-image {
         background-repeat: no-repeat;
         background-position: center;
@@ -63,15 +52,17 @@
         background-size: 85%;
     }
 
-    .slide-text h1{
-        font-size: 54px;
-        line-height: 1.2em;
-        color: #F5FFFF;
-    }
+    .slide-text{
+        h1 {
+            font-size: 54px;
+            line-height: 1.2em;
+            color: #F5FFFF;
+        }
+        span {
+            font-size: 22px;
+            color: #F5FFFF;
+            font-weight: 100;
+        }
 
-    .slide-text span{
-        font-size: 22px;
-        color: #F5FFFF;
-        font-weight: 100;
-    }
+    } 
 </style>

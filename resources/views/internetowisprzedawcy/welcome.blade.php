@@ -191,6 +191,17 @@
     </section>
     <section class="container py-5 promo-cards">
         <div class="row">
+            <div class="col-md-12 center-justify-flex-content">
+                <div class="text-center">
+                    <h5>Co o nas sądzą sprzedawcy</h5>
+                    <p class="p-header">Opinie o naszej platformie</p>
+                </div>
+            </div>
+        </div>
+        <opinions-slider />
+    </section>
+    <section class="container py-5 promo-cards">
+        <div class="row">
             <div class="col-md-4 text-center promo-card p-3">
                 <div class="bg-white rounded rounded-30 p-3">
                     <img src="{{ asset('images/projekt30/ikona-kursanci.png') }}">

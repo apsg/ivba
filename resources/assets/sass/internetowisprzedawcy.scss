@@ -156,13 +156,14 @@ footer {
         fill: $color-white;
     }
 }
-
-.VueCarousel-wrapper {
-    height: calc(100vh - 335px);
-}
-
-.VueCarousel-inner {
-    height: 100% !important;
+.main-slider {
+    .VueCarousel-wrapper {
+        height: calc(100vh - 335px);
+    }
+    
+    .VueCarousel-inner {
+        height: 100% !important;
+    }
 }
 
 @media (min-width: 1200px) {
