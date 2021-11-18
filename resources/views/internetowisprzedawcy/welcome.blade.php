@@ -200,6 +200,29 @@
         </div>
         <opinions-slider />
     </section>
+    <section class="container" style="padding-top: 5em">
+        <div class="row mt-5">
+            <div class="col-md-6 center-justify-flex-content">
+                <img style="width: 100%" src="{{ asset('images/internetowisprzedawcy/min-video.png') }}">
+            </div>
+            <div class="col-md-6 center-justify-flex-content">
+                <div class="d-flex">
+                    <div>
+                        <ul class="square-ul"><li></li></ul>
+                    </div>
+                    <div class="container-description">
+                        <div>
+                            <h2 class="flex-grow-1 header-is mb-0">Specjalistyczna wiedza</h2><br>
+                            <h2 class="flex-grow-1 header-is mb-0"><span class="text-blue">praktyczne</span> przykłady</h2>
+                        </div>
+                        <p class="mt-4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="container py-5 promo-cards">
         <div class="row">
             <div class="col-md-4 text-center promo-card p-3">
