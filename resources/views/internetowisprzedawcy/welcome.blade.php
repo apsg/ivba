@@ -197,7 +197,7 @@
                 </div>
             </div>
         </div>
-        <opinions-slider />
+        <opinions-slider></opinions-slider>
     </section>
     <section class="container" style="padding-top: 5em">
         <div class="row mt-5">

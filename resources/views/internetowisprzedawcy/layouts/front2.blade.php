@@ -22,7 +22,7 @@
             </div>
         </nav>
         @if(Request::is('/'))
-            <main-slider />
+        <main-slider></main-slider>
         @endif
     </header>
     <div class="container pt-5">
