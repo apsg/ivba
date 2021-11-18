@@ -14,6 +14,7 @@ $color-gray-text-logged: #868686;
 $color-gray-44: #444444;
 $color-black: #262626;
 $font-color-red: #DE3A43;
+$font-color-white: #FFFFFF;
 
 $brand-primary: $color-main-red;
 $text-color: $color-gray;
@@ -190,7 +191,7 @@ ul.square-ul {
 }
 
 ul.square-ul li:before {
-    background-color: #00A9A7;
+    background-color: $color-seledin-dark;
     content: "";
     display: inline-block;
     margin-right: 20px;
@@ -221,7 +222,7 @@ ul.square-ul li:before {
 }
 
 .subscription-button, .subscription-button:hover, .subscription-button:active, .subscription-button:visited .subscription-button:focus {
-    color: #fff;
+    color: $font-color-white;
     background-color: $color-main-red;
     border-color: $color-main-red;
     font-family: $font-bold;
@@ -343,4 +344,16 @@ $description-height: 265px;
 .confident-seller-img {
     max-height: 675px;
     max-width: 628px;
+}
+
+.courses-list-button, .courses-list-button:hover, .courses-list-button:active, .courses-list-button:visited .courses-list-button:focus {
+    color: $font-color-white;
+    background-color: $color-seledin-dark;
+    border-color: $color-seledin-dark;
+    font-family: $font-bold;
+    font-size: 19px;
+
+    span {
+        margin: 0 1em 0 1em;
+    }
 }

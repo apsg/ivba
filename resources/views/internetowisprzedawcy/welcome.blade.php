@@ -218,6 +218,11 @@
                         <p class="mt-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
                         </p>
+                        <button type="button" class="btn courses-list-button mt-4">
+                            <span>
+                                Zobacz spis kursów
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>

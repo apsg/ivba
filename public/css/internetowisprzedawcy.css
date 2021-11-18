@@ -293,7 +293,7 @@ ul.square-ul li:before {
 .subscription-button:hover,
 .subscription-button:active,
 .subscription-button:visited .subscription-button:focus {
-  color: #fff;
+  color: #FFFFFF;
   background-color: #E7323B;
   border-color: #E7323B;
   font-family: "Krona One";
@@ -408,5 +408,23 @@ ul.square-ul li:before {
 .confident-seller-img {
   max-height: 675px;
   max-width: 628px;
+}
+
+.courses-list-button,
+.courses-list-button:hover,
+.courses-list-button:active,
+.courses-list-button:visited .courses-list-button:focus {
+  color: #FFFFFF;
+  background-color: #00A9A7;
+  border-color: #00A9A7;
+  font-family: "Krona One";
+  font-size: 19px;
+}
+
+.courses-list-button span,
+.courses-list-button:hover span,
+.courses-list-button:active span,
+.courses-list-button:visited .courses-list-button:focus span {
+  margin: 0 1em 0 1em;
 }
 
