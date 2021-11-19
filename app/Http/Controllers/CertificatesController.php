@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\UserCertificate;
-use FPDI;
 use Illuminate\Http\Request;
+use setasign\Fpdi\Fpdi;
 
 class CertificatesController extends Controller
 {
@@ -16,7 +15,7 @@ class CertificatesController extends Controller
 
     public function download(UserCertificate $certificate)
     {
-        $pdf = new FPDI();
+        $pdf = new Fpdi();
 
         $pdf->addPage();
 
@@ -33,7 +32,7 @@ class CertificatesController extends Controller
 
         $pdf->SetXY(0, 110);
         $pdf->SetFont('DejaVuSans', '', 20);
-        $pdf->MultiCell('0', '0', $this->convert($certificate->certificate->title), 0, 'C');
+        $pdf->MultiCell('0', '10', $this->convert($certificate->certificate->title), 0, 'C');
 
         $pdf->SetXY(0, 140);
         $pdf->SetFont('DejaVuSans', '', 15);
@@ -73,6 +72,6 @@ class CertificatesController extends Controller
 
     protected function convert(string $string) : string
     {
-        return iconv('UTF-8', 'iso-8859-2', $string);
+        return str_replace('\n', PHP_EOL,iconv('UTF-8', 'iso-8859-2', $string));
     }
 }
