@@ -33,7 +33,7 @@ class CertificatesController extends Controller
 
         $pdf->SetXY(0, 110);
         $pdf->SetFont('DejaVuSans', '', 20);
-        $pdf->cell('0', '0', $this->convert($certificate->certificate->title), 0, 1, 'C');
+        $pdf->MultiCell('0', '0', $this->convert($certificate->certificate->title), 0, 'C');
 
         $pdf->SetXY(0, 140);
         $pdf->SetFont('DejaVuSans', '', 15);
