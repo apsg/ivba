@@ -1,5 +1,5 @@
 <div class="nav flex-column flex-nowrap w-100 overflow-auto text-white p-2 text-center">
-    <a href="{{ url('/account') }}">
+    <a href="{{ url('/') }}">
         <img src="{{ asset('/images/internetowisprzedawcy/logo_znak.png') }}">
     </a>
 

@@ -214,6 +214,10 @@ p {
   color: #FFFFFF;
 }
 
+.navbar a.dropdown-item {
+  color: #707071;
+}
+
 footer {
   background-color: #3E3E3E;
 }
