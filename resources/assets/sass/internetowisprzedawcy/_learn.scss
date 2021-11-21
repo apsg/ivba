@@ -1,0 +1,65 @@
+$color-gray-learn-sidebar: #9F9F9F;
+
+body.learn {
+
+    &.logged {
+        .col-sidebar {
+            max-width: 20%;
+        }
+
+        .col-main {
+            margin-left: 20%;
+        }
+    }
+
+    .col-sidebar {
+        .learn-sidebar {
+            color: $color-gray-learn-sidebar;
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                color: $color-gray-learn-sidebar;
+            }
+
+            .sidebar-heading {
+                font-size: 17px;
+            }
+
+            .nav {
+                a {
+                    font-family: $font-main, sans-serif;
+                    color: $color-gray-learn-sidebar;
+
+                    &:hover {
+                        color: darken($color-gray-learn-sidebar, 10%);
+                    }
+
+                    &.active {
+                        color: $color-main-red;
+
+                        &:hover {
+                            color: darken($color-main-red, 10%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .lesson-content {
+        font-family: $font-bold, sans-serif;
+
+        .course-header {
+            color: $color-gray-learn-sidebar;
+            font-size: 14px;
+        }
+
+        .lesson-header {
+            font-size: 21px;
+        }
+    }
+}

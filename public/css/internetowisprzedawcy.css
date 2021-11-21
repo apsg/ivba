@@ -105,6 +105,61 @@ body.buyaccess .inner {
   overflow-y: auto;
 }
 
+body.learn.logged .col-sidebar {
+  max-width: 20%;
+}
+
+body.learn.logged .col-main {
+  margin-left: 20%;
+}
+
+body.learn .col-sidebar .learn-sidebar {
+  color: #9F9F9F;
+}
+
+body.learn .col-sidebar .learn-sidebar h1,
+body.learn .col-sidebar .learn-sidebar h2,
+body.learn .col-sidebar .learn-sidebar h3,
+body.learn .col-sidebar .learn-sidebar h4,
+body.learn .col-sidebar .learn-sidebar h5,
+body.learn .col-sidebar .learn-sidebar h6 {
+  color: #9F9F9F;
+}
+
+body.learn .col-sidebar .learn-sidebar .sidebar-heading {
+  font-size: 17px;
+}
+
+body.learn .col-sidebar .learn-sidebar .nav a {
+  font-family: "Poppins", sans-serif;
+  color: #9F9F9F;
+}
+
+body.learn .col-sidebar .learn-sidebar .nav a:hover {
+  color: #868686;
+}
+
+body.learn .col-sidebar .learn-sidebar .nav a.active {
+  color: #E7323B;
+}
+
+body.learn .col-sidebar .learn-sidebar .nav a.active:hover {
+  color: #ce1821;
+}
+
+body.learn .lesson-content {
+  font-family: "Krona One", sans-serif;
+}
+
+body.learn .lesson-content .course-header {
+  color: #9F9F9F;
+  font-size: 14px;
+}
+
+body.learn .lesson-content .lesson-header {
+  font-size: 21px;
+}
+
 html {
   background-color: #3E3E3E;
 }
