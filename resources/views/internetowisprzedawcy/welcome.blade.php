@@ -248,6 +248,98 @@
             </div>
         </div>
     </section>
+    <section class="container" style="padding-top: 5em;">
+        <div class="row mt-5">
+            <div class="col-md-12 col-lg-6">
+                <div class="list-card list-card__negative">
+                    <div class="list-card__header">
+                        Typowa platforma <br>do nauki
+                    </div>
+                    <div class="list-card-item list-card-item__negative">
+                        <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__negative">
+                        <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__negative">
+                        <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__negative">
+                        <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__negative">
+                        <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__negative">
+                        <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__negative">
+                        <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__negative">
+                        <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-6">
+                <div class="list-card list-card__positive">
+                    <div class="list-card__header">
+                        <img src="{{ asset('images/internetowisprzedawcy/logo_color.png') }}">
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 d-flex justify-content-center">
+                <div class="access-promo-card center-justify-flex-content">
+                    <div class="access-promo-card__container text-center p-4">
+                        <div class="circle-container__outer">
+                            <div class="circle-container__inner">
+                                <img class="m-3" src="{{ asset('images/internetowisprzedawcy/logo_znak.png') }}">
+                            </div>
+                        </div>
+                        <h1 class="m-3">Dostęp do platformy<br> właśnie trwa!</h3>
+                        <p class="mb-5 mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut ero labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                        <a href="{{ url('/buy_access') }}">
+                            <button type="button" class="mb-5 btn subscription-button subscription-button-alt">
+                                <span>
+                                    Wykup dostęp
+                                </span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="container py-5 promo-cards">
         <div class="row">
             <div class="col-md-4 text-center promo-card p-3">
