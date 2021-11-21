@@ -1,4 +1,6 @@
-body.logged {
+@import url(https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:ital,wght@0,300;
+
+0,400;0,700;1,300;1,400;1,700&display=swap);@import url(https://pro.fontawesome.com/releases/v5.10.0/css/all.css);body.logged {
   background-color: #F5F5F5;
   min-height: 100%;
   color: #868686;
@@ -33,7 +35,7 @@ body.logged .active .icon {
 body.logged .col-sidebar {
   max-width: 204px;
   height: 100%;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
 }
 
 body.logged .col-sidebar .nav a {
@@ -69,12 +71,12 @@ body.logged .account {
 body.logged .account:hover,
 body.logged .account.active {
   background-color: #00ACAA;
-  color: #ffffff;
+  color: #FFFFFF;
 }
 
 body.logged .account:hover .icon,
 body.logged .account.active .icon {
-  fill: #ffffff;
+  fill: #FFFFFF;
 }
 
 body.logged .nav-pills .nav-link {
@@ -209,7 +211,7 @@ p {
 }
 
 .navbar a {
-  color: #ffffff;
+  color: #FFFFFF;
 }
 
 footer {
@@ -227,26 +229,26 @@ footer .footer-menu {
 
 .btn-red {
   background-color: #E7323B;
-  color: #ffffff;
-  fill: #ffffff;
+  color: #FFFFFF;
+  fill: #FFFFFF;
 }
 
 .btn-red:hover {
   background-color: #ce1821;
-  color: #ffffff;
-  fill: #ffffff;
+  color: #FFFFFF;
+  fill: #FFFFFF;
 }
 
 .btn-blue {
   background-color: #119CD4;
-  color: #ffffff;
-  fill: #ffffff;
+  color: #FFFFFF;
+  fill: #FFFFFF;
 }
 
 .btn-blue:hover {
   background-color: #0d79a5;
-  color: #ffffff;
-  fill: #ffffff;
+  color: #FFFFFF;
+  fill: #FFFFFF;
 }
 
 .main-slider .VueCarousel-wrapper {
@@ -327,6 +329,16 @@ ul.square-ul li:before {
   margin: 0 2em 0 2em;
 }
 
+.subscription-button-alt,
+.subscription-button-alt:hover,
+.subscription-button-alt:active,
+.subscription-button-alt:visited .subscription-button-alt:focus {
+  font-size: 18px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  height: 69px;
+}
+
 .subscription-button-description {
   color: #707071;
   font-size: 13px;
@@ -384,7 +396,7 @@ ul.square-ul li:before {
 
 .offer-promo-card__title {
   cursor: default;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
   height: 90px;
   box-shadow: 0px 0px 4px -3px #42445a;
 }
@@ -455,5 +467,109 @@ ul.square-ul li:before {
 
 .font-size-25 {
   font-size: 25px;
+}
+
+.list-card {
+  background-color: #FFFFFF;
+  margin: 25px;
+  padding: 15px;
+  border-radius: 25px;
+}
+
+.list-card__positive {
+  border: 4px solid #DE3A43;
+}
+
+.list-card__header {
+  font-family: "Krona One";
+  color: #707071;
+  font-size: 20px;
+  text-align: center;
+  margin: 1em;
+}
+
+.list-card .list-card-item {
+  font-size: 18px;
+  border-radius: 25px;
+  padding: 18px;
+  text-align: center;
+}
+
+.list-card .list-card-item__positive {
+  font-weight: 700;
+}
+
+.list-card .list-card-item__positive .fa-check-circle {
+  color: #00A9A7;
+}
+
+.list-card .list-card-item__negative {
+  color: #707071;
+}
+
+.list-card-item:nth-child(odd) {
+  background-color: #F7F7F7;
+}
+
+.access-promo-card {
+  width: 100%;
+  border-radius: 38px;
+  background-color: #FFFFFF;
+}
+
+.access-promo-card__container {
+  max-width: 725px;
+}
+
+.access-promo-card__container p {
+  color: #363636;
+}
+
+.access-promo-card img {
+  width: auto;
+  height: 31px;
+}
+
+.access-promo-card .circle-container__inner {
+  border: 1px solid #6C7678;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  display: inline-block;
+  margin-top: 32.5px;
+}
+
+.access-promo-card .circle-container__outer {
+  border: 1px solid #687b7d80;
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  display: inline-block;
+  margin-bottom: 65px;
+  margin-top: 65px;
+}
+
+.access-promo-card h1 {
+  font-size: 40px;
+  color: #161615;
+}
+
+.faq-accordion .card-header {
+  border-bottom: none;
+  background-color: transparent;
+}
+
+.faq-accordion .btn-link {
+  color: #707071;
+}
+
+.faq-accordion .btn-link:focus,
+.faq-accordion .btn-link:hover {
+  text-decoration: none;
+}
+
+.faq-accordion .card {
+  border-color: #00B2B0;
+  border-radius: 15px;
 }
 

@@ -248,6 +248,179 @@
             </div>
         </div>
     </section>
+    <section class="container" style="padding-top: 5em;">
+        <div class="row mt-5">
+            <div class="col-md-12 col-lg-6">
+                <div class="list-card list-card__negative">
+                    <div class="list-card__header">
+                        Typowa platforma <br>do nauki
+                    </div>
+                    <div class="list-card-item list-card-item__negative">
+                        <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__negative">
+                        <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__negative">
+                        <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__negative">
+                        <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__negative">
+                        <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__negative">
+                        <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__negative">
+                        <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__negative">
+                        <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-6">
+                <div class="list-card list-card__positive">
+                    <div class="list-card__header">
+                        <img src="{{ asset('images/internetowisprzedawcy/logo_color.png') }}">
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                    <div class="list-card-item list-card-item__positive">
+                        <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 d-flex justify-content-center">
+                <div class="access-promo-card center-justify-flex-content">
+                    <div class="access-promo-card__container text-center p-4">
+                        <div class="circle-container__outer">
+                            <div class="circle-container__inner">
+                                <img class="m-3" src="{{ asset('images/internetowisprzedawcy/logo_znak.png') }}">
+                            </div>
+                        </div>
+                        <h1 class="m-3">Dostęp do platformy<br> właśnie trwa!</h3>
+                        <p class="mb-5 mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut ero labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                        <a href="{{ url('/buy_access') }}">
+                            <button type="button" class="mb-5 btn subscription-button subscription-button-alt">
+                                <span>
+                                    Wykup dostęp
+                                </span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container py-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center mb-4">
+                    <h2>FAQ</h2>
+                </div>
+                <div class="faq-accordion" id="accordion">
+                    <div class="card mb-2">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Czy mogę zapłacić za platformę przelewem tradycyjnym?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                    Czy mogę zapłacić za platformę przelewem tradycyjnym?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                    Czy mogę zapłacić za platformę przelewem tradycyjnym?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="card-body">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2">
+                        <div class="card-header" id="headingFour">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                    Czy mogę zapłacić za platformę przelewem tradycyjnym?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                            <div class="card-body">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2">
+                        <div class="card-header" id="headingFive">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                    Czy mogę zapłacić za platformę przelewem tradycyjnym?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                            <div class="card-body">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="container py-5 promo-cards">
         <div class="row">
             <div class="col-md-4 text-center promo-card p-3">
