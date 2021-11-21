@@ -469,3 +469,20 @@ $outer-circle-color: #687b7d80;
         color: $color-black-text-dark;
     }
 }
+
+.faq-accordion {
+    .card-header {
+        border-bottom: none;
+        background-color: transparent;
+    }
+    .btn-link {
+        color: $color-gray;
+    }
+    .btn-link:focus, .btn-link:hover {
+        text-decoration: none;
+    }
+    .card {
+        border-color: #00B2B0;
+        border-radius: 15px;
+    }
+}
