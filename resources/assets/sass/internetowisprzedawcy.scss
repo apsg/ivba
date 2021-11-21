@@ -1,5 +1,5 @@
 @import "variables";
-@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 $color-main-red: #E7323B;
 $color-seledin-dark: #00A9A7;
@@ -23,7 +23,7 @@ $text-color: $color-gray;
 $font-main: "Poppins";
 $font-bold: "Krona One";
 
-$font-family-sans-serif: $font-main sans-serif;
+$font-family-sans-serif: $font-main, sans-serif;
 
 @import 'internetowisprzedawcy/logged.scss';
 @import 'internetowisprzedawcy/buyaccess.scss';
@@ -49,6 +49,14 @@ h6 {
 
 p {
     font-size: 18px;
+}
+
+.font-primary {
+    font-family: $font-main sans-serif;
+}
+
+.font-secondary {
+    font-family: $font-bold sans-serif;
 }
 
 .p-header {
@@ -267,6 +275,7 @@ ul.square-ul li:before {
 
 .btn-ivba {
     background-color: $color-blue;
+    font-family: $font-bold, sans-serif;
 
     &:hover {
         background-color: darken($color-blue, 10%);
@@ -374,4 +383,13 @@ $description-height: 265px;
     span {
         margin: 0 1em 0 1em;
     }
+}
+
+
+.font-size-20 {
+    font-size: 20px;
+}
+
+.font-size-25 {
+    font-size: 25px;
 }

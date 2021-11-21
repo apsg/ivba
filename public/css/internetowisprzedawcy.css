@@ -1,10 +1,7 @@
-@import url(https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:ital,wght@0,300;
-
-0,400;0,700;1,300;1,400;1,700&display=swap);body.logged {
+body.logged {
   background-color: #F5F5F5;
   min-height: 100%;
   color: #868686;
-  font-family: "Krona One";
 }
 
 body.logged h1,
@@ -127,6 +124,14 @@ h6 {
 
 p {
   font-size: 18px;
+}
+
+.font-primary {
+  font-family: "Poppins" sans-serif;
+}
+
+.font-secondary {
+  font-family: "Krona One" sans-serif;
 }
 
 .p-header {
@@ -340,6 +345,7 @@ ul.square-ul li:before {
 
 .btn-ivba {
   background-color: #00ACAA;
+  font-family: "Krona One", sans-serif;
 }
 
 .btn-ivba:hover {
@@ -441,5 +447,13 @@ ul.square-ul li:before {
 .courses-list-button:active span,
 .courses-list-button:visited .courses-list-button:focus span {
   margin: 0 1em 0 1em;
+}
+
+.font-size-20 {
+  font-size: 20px;
+}
+
+.font-size-25 {
+  font-size: 25px;
 }
 

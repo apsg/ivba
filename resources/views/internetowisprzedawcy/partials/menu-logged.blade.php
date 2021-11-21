@@ -13,7 +13,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ url('/courses') }}">
                 @include('icons.courses')
-                Moje kursy
+                Spis kursów
             </a>
         </li>
     </ul>
