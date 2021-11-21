@@ -9,15 +9,18 @@
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="{{ url('images/favicon.ico') }}">
     <title>Zaloguj się | {{ config('app.name') }}</title>
-    <!-- Reset CSS -->
-    <link href="{{ url('/css/app.css') }}" rel="stylesheet" type="text/css">
     <!-- Font Awesome -->
     <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Iconmoon -->
     <link href="assets/iconmoon/css/iconmoon.css" rel="stylesheet" type="text/css">
     <!-- Custom Style -->
-    <link href="{{ url('/css/front.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ url('/css/app.css') }}" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+          rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/inauka_custom.css') }}" rel="stylesheet">
+    <link href="{{ multisite_css() }}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -50,7 +53,7 @@
     </div>
 </div>
 <!-- End Preloader -->
-<div id="app" style="width: 100%; max-width: 600px; align-self: center">
+<div id="app" style="width: 100%; align-self: center">
 
     <div class="container">
         @include('flash::message')

@@ -426,14 +426,14 @@ $description-height: 265px;
         border-radius: 25px;
         padding: 18px;
         text-align: center;
-    
+
         &__positive {
             .fa-check-circle {
                 color: $color-seledin-dark;
             }
             font-weight: 700;
         }
-    
+
         &__negative {
             color: $color-gray;
         }
@@ -467,7 +467,7 @@ $outer-circle-color: #687b7d80;
             border: 1px solid $inner-circle-color;
             border-radius: 50%;
             width: $base-circle-size;
-            height: $base-circle-size; 
+            height: $base-circle-size;
             display: inline-block;
             margin-top: $base-circle-size / 2;
         }
@@ -476,7 +476,7 @@ $outer-circle-color: #687b7d80;
             border: 1px solid $outer-circle-color;
             border-radius: 50%;
             width: $base-circle-size * 2;
-            height: $base-circle-size * 2; 
+            height: $base-circle-size * 2;
             display: inline-block;
             margin-bottom: $base-circle-size;
             margin-top: $base-circle-size;
