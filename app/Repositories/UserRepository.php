@@ -2,8 +2,8 @@
 namespace App\Repositories;
 
 use App\User;
-use DB;
-use Password;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Password;
 
 class UserRepository
 {

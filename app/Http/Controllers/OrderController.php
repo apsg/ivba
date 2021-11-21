@@ -2,21 +2,22 @@
 namespace App\Http\Controllers;
 
 use App\Coupon;
+use App\Domains\Admin\Models\Setting;
 use App\Helpers\GateHelper;
+use App\Http\Requests\Axios\CheckCouponRequest;
 use App\InvoiceRequest;
 use App\Order;
 use App\Payments\Tpay\TpayMethodSelector;
 use App\Payments\Tpay\TpayTransaction;
-use App\User;
-use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class OrderController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('checkCoupon');
     }
 
     public function showCart(Request $request)
@@ -34,7 +35,7 @@ class OrderController extends Controller
         if ($order->total() > 0) {
             $transaction = new TpayTransaction($order);
 
-            return redirect($transaction->createTransaction((int) $request->input('group')));
+            return redirect($transaction->createTransaction((int)$request->input('group')));
         } else {
             $order->final_total = 0;
             if ($order->confirm()) {
@@ -96,6 +97,27 @@ class OrderController extends Controller
         flash('Kod rabatowy dodany');
 
         return back();
+    }
+
+    public function checkCoupon(CheckCouponRequest $request)
+    {
+        if ($request->coupon() === null) {
+            return response()->json([
+                'message' => 'Nie ma takiego kuponu',
+            ], 404);
+        }
+
+        if ($request->coupon()->uses_left === 0) {
+            return response()->json([
+                'message' => 'Ten kupon się wyczerpał',
+            ], 403);
+        }
+
+        return [
+            'price' => sprintf('%.2f',
+                $request->coupon()->apply(Setting::get('ivba.full_access_price'))
+            ),
+        ];
     }
 
     /**

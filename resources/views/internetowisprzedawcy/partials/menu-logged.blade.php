@@ -10,6 +10,12 @@
                 Moje kursy
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('/courses') }}">
+                @include('icons.courses')
+                Moje kursy
+            </a>
+        </li>
     </ul>
 
 

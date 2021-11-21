@@ -51,4 +51,9 @@ class LoginController extends Controller
 
         return $response;
     }
+
+    protected function loggedOut(Request $request)
+    {
+        return back();
+    }
 }

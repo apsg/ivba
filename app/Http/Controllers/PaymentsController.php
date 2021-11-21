@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Helpers\GateHelper;
 use App\InvoiceRequest;
 use App\Payment;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class PaymentsController extends Controller
 {

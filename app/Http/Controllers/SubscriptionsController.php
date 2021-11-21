@@ -14,7 +14,7 @@ class SubscriptionsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('checkCoupon');
     }
 
     public function create(
@@ -51,17 +51,17 @@ class SubscriptionsController extends Controller
     {
         if ($request->coupon() === null) {
             return response()->json([
-                'message' => 'Coupon not found',
+                'message' => 'Nie ma takiego kuponu',
             ], 404);
         }
 
         if (! $request->coupon()->isSubscription()) {
-            return response()->json(['message' => 'wrong type'], 422);
+            return response()->json(['message' => 'Zły typ kuponu'], 422);
         }
 
         if ($request->coupon()->uses_left === 0) {
             return response()->json([
-                'message' => 'No uses left',
+                'message' => 'Ten kupon się wyczerpał',
             ], 403);
         }
 

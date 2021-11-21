@@ -243,4 +243,17 @@ class Coupon extends Model
 
         return true;
     }
+
+    public function isValidForFullAccess() : bool
+    {
+        if ($this->isSubscription()) {
+            return false;
+        }
+
+        if ($this->type === static::TYPE_COURSE_ACCESS) {
+            return false;
+        }
+
+        return true;
+    }
 }

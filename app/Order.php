@@ -225,6 +225,16 @@ class Order extends Model implements InvoicableContract
         return $this;
     }
 
+    public function setFullAccess() : self
+    {
+        $this->update([
+            'is_full_access' => true,
+            'price'          => setting('ivba.full_access_price'),
+        ]);
+
+        return $this;
+    }
+
     public function clear() : self
     {
         $this->update([

@@ -55,16 +55,29 @@
                     </p>
                 </div>
                 <div class="text-right flex-fill">
-                    <span class="price">{{ price }} PLN</span>
+                    <span class="price" v-if="!reduced_price">{{ price }} PLN</span>
+
+                    <span class="price" v-if="reduced_price">{{ reduced_price }} PLN</span>
+                    <span class="price previous-price" v-if="reduced_price">{{ price }} PLN</span>
+
                 </div>
             </div>
             <div class="d-flex mt-3">
                 <div class="w-60 pr-5 text-gray-44">
                     <p>Kupon rabatowy</p>
-                    <input
-                        placeholder="Wpisz kod"
-                        class="form-control w-50"
-                        v-model="coupon">
+                    <div class="d-flex align-items-center">
+                        <input
+                            @keyup="checkCoupon()"
+                            placeholder="Wpisz kod"
+                            class="form-control w-50"
+                            v-model="coupon">
+                        <div class="pl-2" v-if="reduced_price">
+                            <i class="fa fa-check-circle text-green"></i>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger mt-3" v-if="coupon_error">
+                        {{ coupon_error }}
+                    </div>
                 </div>
                 <div class="text-right flex-grow-1">
                     <div class="form-group">
@@ -144,7 +157,13 @@
                             Zaloguj się
                         </button>
                     </form>
-
+                </div>
+                <div class="w-50 p-3" v-if="isLogged">
+                    <h5 class="text-black">Zalogowano jako: {{ user.name }}</h5>
+                    <form action="/logout" method="POST">
+                        <input type="hidden" name="_token" :value="token">
+                        <button class="btn btn-primary">Wyloguj</button>
+                    </form>
                 </div>
             </div>
 
@@ -187,11 +206,15 @@
                 <div class="text-right flex-grow-1">
                     <button
                         class="btn btn-lg btn-blue next-button px-5 py-3"
-                        @click.prevent="next()"
+                        @click.prevent="order()"
                         :disabled="!rules || !email">
                         Kupuję i płacę <i class="fa fa-caret-right"></i>
                     </button>
                 </div>
+            </div>
+            <div class="alert alert-danger mt-2" v-if="order_error">
+                {{ order_error }}
+                <br/>Wróć do poprzedniego kroku i zaloguj się lub popraw swoje dane.
             </div>
 
             <div class="mt-5 pt-5">
@@ -203,6 +226,8 @@
 </template>
 
 <script>
+import {debounce} from "lodash";
+
 export default {
     name: "Order",
 
@@ -217,6 +242,9 @@ export default {
             email: '',
             phone: '',
             token: null,
+            coupon_error: null,
+            reduced_price: null,
+            order_error: null
         }
     },
 
@@ -228,6 +256,12 @@ export default {
             this.name = this.user.name;
             this.phone = this.user.phone;
         }
+
+        let coupon = localStorage.getItem('coupon');
+        if (coupon) {
+            this.coupon = coupon;
+            this.checkCoupon();
+        }
     },
 
     methods: {
@@ -237,6 +271,45 @@ export default {
 
         prev() {
             this.step = Math.max(0, this.step - 1);
+        },
+
+        checkCoupon() {
+            this.resetCoupon();
+
+            axios.post('/a/order/check_coupon', {code: this.coupon})
+                .then(r => {
+                    console.log(r);
+                    this.reduced_price = r.data.price;
+                    localStorage.setItem('coupon', this.coupon);
+                })
+                .catch(r => {
+                    console.log(r.response.data.message);
+                    this.coupon_error = r.response.data.message;
+                });
+
+        },
+
+        resetCoupon() {
+            this.reduced_price = null;
+            this.coupon_error = null;
+            localStorage.removeItem('coupon');
+        },
+
+        order() {
+            this.order_error = null;
+
+            axios.post('/a/order/quick_full_access', {
+                code: this.coupon,
+                name: this.name,
+                email: this.email,
+                phone: this.phone,
+            })
+                .then(r => {
+                    location.href = r.data.payment_url;
+                })
+                .catch(r => {
+                    this.order_error = r.response.data.message;
+                });
         }
     },
 
@@ -283,6 +356,15 @@ export default {
     .price {
         color: #8AC348;
         font-size: 33px;
+
+        &.previous-price {
+            color: #444444;
+            text-decoration: line-through;
+        }
+    }
+
+    .text-green {
+        color: #8AC348;
     }
 
     .rules-checkbox {

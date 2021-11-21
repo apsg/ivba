@@ -16,10 +16,12 @@ body.logged {
     .icon {
         fill: $color-gray;
         cursor: pointer;
+        transition: .5s;
 
         &:hover,
         &.active {
             fill: $color-main-red;
+            transform: rotate(10deg);
         }
     }
 
@@ -58,9 +60,7 @@ body.logged {
         background-size: contain;
         background-position: center center;
         background-repeat: no-repeat;
-
     }
-
 
     .account {
         width: 60px;
