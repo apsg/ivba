@@ -35,7 +35,7 @@
 		    @endforeach
 		</div><!-- /.box-body -->
 		<div class="box-footer">
-		    
+
 		</div><!-- box-footer -->
 	</div><!-- /.box -->
 
@@ -49,7 +49,7 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="tab_1-1">
-            	<form action="{{ url('/admin/lesson/'.$lesson->id.'/items') }}" method="post">
+            	<form action="{{ url('/admin/lesson/'.$lesson->slug.'/items') }}" method="post">
 					{{ csrf_field() }}
 					<input type="hidden" name="type" value="video">
 					<div class="form-group">
@@ -91,11 +91,11 @@
 			</div>
 			<!-- /.tab-pane -->
 			<div class="tab-pane" id="tab_3-2">
-				
+
 				<form action="{{ url('/admin/lesson/'.$lesson->slug.'/items') }}" method="post" enctype="multipart/form-data">
 					{{ csrf_field() }}
 					<input type="hidden" name="type" value="file">
-					
+
 					<div class="form-group">
 		                <label for="new-file-title-pl">Tytuł</label>
 	                	<input name="title" type="text" class="form-control" id="new-file-title-pl" placeholder="Tytuł" required="required">
@@ -105,9 +105,9 @@
 		                <label for="new-file">Plik</label>
 	                	<input name="file" type="file" class="form-control" id="new-file" required="required">
 					</div>
-					
+
 					<input type="hidden" name="host" value="2">
-{{-- 
+{{--
 					<div class="form-group">
 						<label>Gdzie hostować przesłany plik?</label>
 						<select name="host" class="form-control">

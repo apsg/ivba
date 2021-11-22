@@ -24,8 +24,6 @@
 
 @yield('body')
 
-@stack('modals')
-
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('/js/inauka_custom.js') }}"></script>

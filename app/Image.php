@@ -2,7 +2,6 @@
 namespace App;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use ImageHelper;
 use Intervention\Image\Exception\NotReadableException;
@@ -16,15 +15,6 @@ use Throwable;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string $filename
- * @method static Builder|Image newModelQuery()
- * @method static Builder|Image newQuery()
- * @method static Builder|Image query()
- * @method static Builder|Image whereCreatedAt($value)
- * @method static Builder|Image whereFilename($value)
- * @method static Builder|Image whereId($value)
- * @method static Builder|Image whereUpdatedAt($value)
- * @method static Builder|Image whereUrl($value)
- * @mixin \Eloquent
  */
 class Image extends Model
 {

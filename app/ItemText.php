@@ -1,9 +1,7 @@
 <?php
-
 namespace App;
 
-use App\Item;
-use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 /**
  * App\ItemText.
@@ -11,19 +9,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $title
  * @property string $text
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemText newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemText newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemText query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemText whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemText whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemText whereText($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemText whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemText whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  */
 class ItemText extends Item
 {
     public $view = 'admin.partials.item_text';
+    public $type = 'text';
 }

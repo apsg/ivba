@@ -15,25 +15,13 @@
 @section('navbar')
     @if($canViewLesson)
         @if(!empty($course) && $course->hasLogbook())
-            <li class="pl-1">
-                <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-toggle="modal"
-                        data-target=".bd-example-modal-lg">
-                    Dodaj wpis w dzienniku aktywności
-                </button>
-            </li>
-        @endif
-
-        @if(\Auth::user()->hasFinishedLesson($lesson->id))
-            @if(!empty($course))
-                <li class="pl-1"><a href="{{ $lesson->finishUrl($course) }}" class="btn btn-ivba">Oznacz lekcję jako
-                        zakończoną</a></li>
-            @endif
-        @else
-            <li class="pl-1"><a href="{{ $lesson->finishUrl($course) }}" class="btn btn-ivba">Oznacz lekcję jako
-                    zakończoną </a></li>
+            <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-toggle="modal"
+                    data-target=".bd-example-modal-lg">
+                Dodaj wpis w dzienniku aktywności
+            </button>
         @endif
     @endif
 @endsection
@@ -45,61 +33,25 @@
 @endsection
 
 @section('content')
-
-    <div class="bg-white rounded-50 p-5 lesson-content">
-        @if($course)
-            <h3 class="course-header">{{ $course->title }}</h3>
-        @endif
-        <h1 class="lesson-header">
-            @if($lesson->title)
-                {{ $lesson->title }}
-            @endif
-        </h1>
-        <div class="row">
-            @if(!$canViewLesson)
-                <div class="col-md-12">
-                    <p class="alert alert-info">
-                        <strong>Nie masz jeszcze dostępu do tej lekcji</strong> - musisz trochę poczekać. Ten kurs
-                        składa
-                        się z {{ $course->lessons()->count() }} lekcji, a Ty widzisz obecnie
-                        {{ $course->visibleLessons(Auth::user())->count() }} z nich.
-                    </p>
-                </div>
-            @else
-
-                @if($lesson->video)
-                    <vimeo-video
-                            src="{{ $lesson->video->embedSrc() }}"
-                            watermark="{{ asset('/images/projekt30/watermark.png') }}"
-                    ></vimeo-video>
-                @endif
-
-                @if($lesson->files()->count() > 0)
-                    <div class="col-md-12">
-                        <hr/>
-                        <h3>Pliki do tej lekcji:</h3>
-                        <hr/>
-                        <div class="row">
-                            @foreach($lesson->files as $file)
-                                <div class="col-md-6">
-                                    <a href="{{ $file->link() }}" class="file">
-                                        <h5><i class="fa fa-file-o"></i> {{ $file->title }}</h5>
-                                        {{ $file->name }}
-                                    </a>
-                                    <a href="{{ $file->link() }}" class="btn ">
-                                        <i class="fa fa-download"></i> Pobierz ćwiczenie
-                                    </a>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
-                <div class="col-md-12">
-                    {!! $lesson->description !!}
-                </div>
-            @endif
+    <ul class="nav nav-tabs pl-5 lesson-learn-mode mb-3" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+               aria-selected="true">Ostatnia lekcja</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+               aria-selected="false">Dodatki</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            @include('learn.partials.lessoncontent')
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            @include('learn.partials.addons')
         </div>
     </div>
+
 @endsection
 
 @push('modals')

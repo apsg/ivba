@@ -31,5 +31,8 @@
                 </div>
             </div>
         </div>
+
+        @stack('modals')
+
     </div>
 @endsection

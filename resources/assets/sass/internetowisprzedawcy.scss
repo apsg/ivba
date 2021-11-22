@@ -144,7 +144,7 @@ p {
     a {
         color: $color-white;
 
-        &.dropdown-item{
+        &.dropdown-item {
             color: $color-gray;
         }
     }
@@ -168,6 +168,18 @@ footer {
     color: $color-white;
     fill: $color-white;
 
+    &-inversed {
+        background-color: darken($color-gray-bg-light, 10%);
+        color: $color-white;
+        fill: $color-white;
+
+        &:hover {
+            background-color: $color-main-red;
+            color: $color-white;
+            fill: $color-white;
+        }
+    }
+
     &:hover {
         background-color: darken($color-main-red, 10%);
         color: $color-white;
@@ -182,6 +194,18 @@ footer {
 
     &:hover {
         background-color: darken($color-blue-order-button, 10%);
+        color: $color-white;
+        fill: $color-white;
+    }
+}
+
+.btn-ivba-inversed {
+    background-color: darken($color-gray-bg-light, 10%);
+    color: $color-white;
+    fill: $color-white;
+
+    &:hover {
+        background-color: $color-blue;
         color: $color-white;
         fill: $color-white;
     }
@@ -502,6 +526,7 @@ $outer-circle-color: #687b7d80;
 
 .faq-accordion {
     font-size: 16px;
+
     .card-header {
         border-bottom: none;
         background-color: transparent;
@@ -519,7 +544,7 @@ $outer-circle-color: #687b7d80;
     .card {
         border-radius: 15px;
     }
-    
+
     .active-card {
         border-color: #00B2B0;
     }

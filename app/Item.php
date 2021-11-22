@@ -1,31 +1,24 @@
 <?php
-
 namespace App;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * App\Item.
  *
- * @property int $lesson_id
- * @property int $items_id
- * @property string $items_type
- * @property int $position
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Lesson[] $lesson
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Item newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Item newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Item query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Item whereItemsId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Item whereItemsType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Item whereLessonId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Item wherePosition($value)
- * @mixin \Eloquent
+ * @property int                      $lesson_id
+ * @property int                      $items_id
+ * @property string                   $items_type
+ * @property int                      $position
+ * @property-read Collection|Lesson[] $lesson
  */
 class Item extends Model
 {
     protected $guarded = [];
 
     public $view = 'admin.partials.item';
+    public $type = 'item';
 
     public static function boot()
     {
@@ -46,7 +39,7 @@ class Item extends Model
      */
     public function lesson()
     {
-        return $this->morphToMany(\App\Lesson::class, 'items');
+        return $this->morphToMany(Lesson::class, 'items');
     }
 
     /**

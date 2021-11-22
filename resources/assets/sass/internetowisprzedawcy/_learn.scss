@@ -62,4 +62,30 @@ body.learn {
             font-size: 21px;
         }
     }
+
+    .lesson-learn-mode.nav-tabs {
+        border-bottom: 0px;
+
+        .nav-item {
+            font-size: 23px;
+            font-family: $font-bold;
+
+            .nav-link {
+                color: #989898;
+
+                &.active {
+                    background-color: transparent;
+                    border: 0px;
+                    border-bottom: 3px solid $color-blue;
+                    color: $color-black;
+                }
+
+                &:hover {
+                    background-color: transparent;
+                    border: 0px;
+                    border-bottom: 3px solid $color-blue;
+                }
+            }
+        }
+    }
 }

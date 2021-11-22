@@ -1,47 +1,30 @@
 <?php
-
 namespace App;
 
-use App\Item;
-use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 /**
  * App\ItemFile.
  *
- * @property int $id
- * @property string $title
- * @property string $path
- * @property string $type
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int         $id
+ * @property string      $title
+ * @property string      $path
+ * @property string      $type
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property string|null $hash
- * @property int $host
+ * @property int         $host
  * @property string|null $size
- * @property string $name
- * @property string $mime
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereHash($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereHost($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereMime($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile wherePath($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereSize($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\ItemFile whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property string      $name
+ * @property string      $mime
  */
 class ItemFile extends Item
 {
     public $view = 'admin.partials.item_file';
+    public $type = 'file';
 
     /**
      * Zwraca link do pobierania zasobu.
-     * @return [type] [description]
      */
     public function link()
     {
@@ -50,34 +33,38 @@ class ItemFile extends Item
 
     /**
      * Zwraca klasę ikony dla tego pliku.
-     * @return [type] [description]
      */
     public function icon()
     {
         switch ($this->type) {
             case 'txt':
-            case 'odt':{
+            case 'odt':
+            {
                 return 'fa-file-text-o';
             }
 
             case 'doc':
-            case 'docx':{
+            case 'docx':
+            {
                 return 'fa-file-word-o';
             }
 
             case 'zip':
             case 'rar':
-            case 'gz':{
+            case 'gz':
+            {
                 return 'fa-file-zip-o';
             }
 
             case 'ods':
             case 'xls':
             case 'xlsx':
-            case 'csv':{
+            case 'csv':
+            {
                 return 'fa-file-excel-o';
             }
-            default:{
+            default:
+            {
                 return 'fa-file-o';
             }
         }

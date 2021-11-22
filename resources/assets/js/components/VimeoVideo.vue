@@ -19,7 +19,6 @@ export default {
 
     props: {
         src: {
-            type: Object,
             default: null,
         },
         width: {
