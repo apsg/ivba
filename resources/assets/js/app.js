@@ -19,6 +19,7 @@ import Quicksale from './components/Quicksale.vue';
 import P30Slider from "./components/p30/P30Slider";
 import MainSlider from "./components/internetowisprzedawcy/MainSlider";
 import OpinionsSlider from "./components/internetowisprzedawcy/OpinionsSlider";
+import FaqAccordion from "./components/internetowisprzedawcy/FaqAccordion";
 import Groupon from "./components/Admin/Groupon";
 import Baselinker from "./components/Admin/Baselinker";
 import Access from "./components/Admin/Access";
@@ -59,6 +60,7 @@ const app = new Vue({
         P30Slider,
         'main-slider': MainSlider,
         'opinions-slider': OpinionsSlider,
+        'faq-accordion': FaqAccordion,
         Groupon,
         Baselinker,
         Access,
