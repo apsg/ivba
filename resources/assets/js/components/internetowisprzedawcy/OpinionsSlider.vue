@@ -36,36 +36,41 @@
         data() {
             return {
                 slides: [
-                    {   id: 1,
+                    {   
+                        id: 1,
                         img: 'seller.png',
                         name: 'Paweł Kowalski',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         companyName: 'nazwa firmy'
                     },
-                    {   id: 2,
+                    {   
+                        id: 2,
                         img: 'seller-2.png',
                         name: 'Paweł Kowalski',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         companyName: 'story 0.1'
                     },
-                    {   id: 3,
+                    {   
+                        id: 3,
                         img: 'seller.png',
                         name: 'Paweł Kowalski',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         companyName: 'story 0.1'
                     },
-                    {   id: 4,
+                    {   
+                        id: 4,
                         img: 'seller-2.png',
                         name: 'Paweł Kowalski',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         companyName: 'story 0.1'
                     },
-                    {   id: 5,
+                    {   
+                        id: 5,
                         img: 'seller.png',
                         name: 'Paweł Kowalski',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         companyName: 'story 0.1'
-                    },
+                    }
                 ]
             }
         }
