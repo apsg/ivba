@@ -343,4 +343,5 @@
     <section class="container py-5">
         <faq-accordion></faq-accordion>
     </section>
+
 @endsection
