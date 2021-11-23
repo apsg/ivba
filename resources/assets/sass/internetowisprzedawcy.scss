@@ -14,6 +14,7 @@ $color-gray-bg-lighter: #FCFCFC;
 $color-gray-text-light: #D8D9D9;
 $color-gray-text-logged: #868686;
 $color-gray-44: #444444;
+$color-gray-bg-section-container: #FAFAFA;
 $color-black: #262626;
 $color-black-text-dark: #161615;
 $font-color-red: #DE3A43;
@@ -302,7 +303,7 @@ ul.square-ul li:before {
 }
 
 .subscription-promo-card {
-    border: 1px solid black;
+    background-color: $color-white;
     border-radius: 38px;
     width: 400px;
     height: 445px;
@@ -527,6 +528,10 @@ $outer-circle-color: #687b7d80;
 .faq-accordion {
     font-size: 16px;
 
+    &__section {
+        max-width: 1120px;
+    }
+    
     .card-header {
         border-bottom: none;
         background-color: transparent;
@@ -551,5 +556,14 @@ $outer-circle-color: #687b7d80;
 
     .fa-caret-up {
         color: #00B2B0;
+    }
+}
+
+.section-container {
+    width: 100%;
+    padding: 15px 0 15px 0;
+    background-color: $color-white;
+    &__bg-color-grey {
+        background-color: $color-gray-bg-section-container;
     }
 }
