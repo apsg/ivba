@@ -7,11 +7,14 @@
         <section class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <!-- old video
+                                        <!-- old video
                     <iframe src="https://player.vimeo.com/video/311629551" width="380" height="285" -->
                     <div class="iframe-vimeo">
+                        <img src="{{ asset('images/internetowisprzedawcy/brand-mark-1.png') }}">
                         <iframe src="https://player.vimeo.com/video/29950141?h=c6db007fe5&title=0&byline=0&portrait=0"
-                                frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+                                frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+                                
+                                >
                         </iframe>
                     </div>
                 </div>
@@ -266,6 +269,7 @@
         <section class="container" style="padding-top: 5em;">
             <div class="row mt-5">
                 <div class="col-md-12 col-lg-6">
+                    <img class="vs-logo" src="{{ asset('images/internetowisprzedawcy/vs-logo.png') }}">
                     <div class="list-card list-card__negative">
                         <div class="list-card__header">
                             Typowa platforma <br>do nauki

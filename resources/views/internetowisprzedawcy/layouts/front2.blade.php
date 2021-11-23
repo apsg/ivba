@@ -5,7 +5,7 @@
 <div @if(request()->path() != 'cart' ) id="app" @endif>
     <flash-message class="fm-container"></flash-message>
 
-    <header class="header mb-3 pt-5">
+    <header class="header pb-3 pt-5">
         <nav class="navbar navbar-expand-sm navbar-is fixed-top bg-red">
             <div class="container">
                 <a class="navbar-brand pt-4" href="{{ url('/') }}">
@@ -25,7 +25,7 @@
         <main-slider></main-slider>
         @endif
     </header>
-    <div class="container pt-5">
+    <div class="container error-container pt-5">
         @include('flash::message')
         @if ($errors->any())
             <div class="alert alert-danger mt-3">
