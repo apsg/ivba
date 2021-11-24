@@ -34,7 +34,7 @@
             </div>
         </section>
     </div>
-    <div class="section-container" id="korzysci">
+    <div class="section-container">
         <section class="container pb-5">
             <div class="row mt-5">
                 <div class="col-md-6">
@@ -58,7 +58,7 @@
             </div>
         </section>
     </div>
-    <div class="section-container section-container__bg-color-grey">
+    <div class="section-container section-container__bg-color-grey" id="korzysci">
         <section class="container pb-5">
             <div class="row mt-5">
                 <div class="col-md-12 mb-5 center-justify-flex-content">
