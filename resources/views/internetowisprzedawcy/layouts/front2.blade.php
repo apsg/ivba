@@ -8,7 +8,7 @@
     <header class="header pb-3 pt-5">
         <nav class="navbar navbar-expand-sm navbar-is fixed-top bg-red">
             <div class="container">
-                <a class="navbar-brand pt-4" href="{{ url('/') }}">
+                <a class="navbar-brand pt-2" href="{{ url('/') }}">
                     <img src="{{ asset('images/internetowisprzedawcy/logo_white.png') }}" height="50">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-inauka"
@@ -21,26 +21,26 @@
                 </div>
             </div>
         </nav>
-        @if(Request::is('/'))
-        <main-slider></main-slider>
-        @endif
-    </header>
-    <div class="container error-container pt-5">
         @include('flash::message')
         @if ($errors->any())
-            <div class="alert alert-danger mt-3">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+            <div class="container error-container pt-5">
+                <div class="alert alert-danger main-alert-container mt-3">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
         @endif
-    </div>
+        @if(Request::is('/'))
+            <main-slider></main-slider>
+        @endif
+    </header>
 
     @yield('content')
 
-    <footer class="pt-3 pb-3 mt-3 text-white">
+    <footer class="pt-5 pb-5 mt-3 text-white">
         <div class="container py-3 ">
             <div class="row align-items-center">
                 <div class="col-md-4">
@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 text-right">
-                    <p><strong>IT&Business Training Mateusz Grabowski</strong> <br/>
+                    <p><strong>IT&Business Training Mateusz Grabowski</strong><br/>
                         ul. Zygmunta Starego 1/3, 44-100 Gliwice |
                         NIP: 6312273946 |
                         REGON: 240829920

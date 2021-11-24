@@ -9,7 +9,7 @@
         <a class="nav-link" href="{{ url('/') }}/#opinie">Opinie</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('/courses') }}">Zobacz kursy</a>
+        <a class="nav-link" href="{{ url('/') }}/#zobacz-kursy">Zobacz kursy</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/') }}/#faq">FAQ</a>
@@ -33,12 +33,10 @@
     <!-- Authentication Links -->
     @if (Auth::guest())
         <li class="nav-item ml-auto">
-            <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-sign-in"></i>
-                Zaloguj</a>
+            <a class="nav-link nav-link-header nav-link-header__register" href="{{ route('register') }}">Zarejestruj</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('register') }}"><i class="fa fa-wpforms"></i>
-                Zarejestruj</a>
+            <a class="nav-link nav-link-header" href="{{ route('login') }}">Zaloguj się <i class="fa fa-sign-in"></i></a>
         </li>
     @else
         <li class="nav-item dropdown ml-auto">

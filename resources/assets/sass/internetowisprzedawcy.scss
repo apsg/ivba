@@ -35,6 +35,8 @@ $font-family-sans-serif: $font-main, sans-serif;
 
 html {
     background-color: $color-gray-footer;
+    scroll-behavior: smooth;
+    scroll-margin: 25px;
 }
 
 body {
@@ -54,6 +56,17 @@ h6 {
 
 p {
     font-size: 18px;
+}
+
+header {
+    font-family: $font-bold;
+    font-size: 13px;
+}
+
+footer {
+    p {
+        font-size: 16px;
+    }
 }
 
 .font-primary {
@@ -211,6 +224,20 @@ footer {
         fill: $color-white;
     }
 }
+
+.nav-link-header {
+    display: block;
+    padding: 0.5rem 1.5rem;    
+    &__register {
+        border: 2px solid $color-white;
+        border-radius: 15px;
+    }
+}
+
+.alert-info {
+    margin-top: 50px;
+}
+
 
 .main-slider {
     .VueCarousel-wrapper {
@@ -612,6 +639,10 @@ $outer-circle-color: #687b7d80;
     width: 100%;
     padding: 15px 0 15px 0;
     background-color: $color-white;
+    scroll-margin-top: 80px;
+    .container {
+        padding-top: 5em;
+    }
     &__bg-color-grey {
         background-color: $color-gray-bg-section-container;
     }

@@ -3,12 +3,10 @@
 @section('title', 'Internetowi Sprzedawcy')
 
 @section('content')
-    <div class="section-container">
+    <div class="section-container" id="o-platformie">
         <section class="container">
             <div class="row">
                 <div class="col-md-6">
-                                        <!-- old video
-                    <iframe src="https://player.vimeo.com/video/311629551" width="380" height="285" -->
                     <div class="iframe-vimeo">
                         <img src="{{ asset('images/internetowisprzedawcy/brand-mark-1.png') }}">
                         <iframe src="https://player.vimeo.com/video/29950141?h=c6db007fe5&title=0&byline=0&portrait=0"
@@ -36,8 +34,8 @@
             </div>
         </section>
     </div>
-    <div class="section-container">
-        <section class="container" style="padding-top: 5em">
+    <div class="section-container" id="korzysci">
+        <section class="container pb-5">
             <div class="row mt-5">
                 <div class="col-md-6">
                     <div class="d-flex">
@@ -61,7 +59,7 @@
         </section>
     </div>
     <div class="section-container section-container__bg-color-grey">
-        <section class="container pb-5" style="padding-top: 5em">
+        <section class="container pb-5">
             <div class="row mt-5">
                 <div class="col-md-12 mb-5 center-justify-flex-content">
                     <div class="text-center">
@@ -114,7 +112,7 @@
         </section>
     </div>
     <div class="section-container">
-        <section class="container" style="padding-top: 5em">
+        <section class="container">
             <div class="row mt-5">
                 <div class="col offer-promo-card">
                     <div class="offer-promo-card__title">
@@ -199,7 +197,7 @@
             </div>
         </section>
     </div>
-    <div class="section-container section-container__bg-color-grey">
+    <div class="section-container section-container__bg-color-grey" id="opinie">
         <section class="container py-5 promo-cards">
             <div class="row">
                 <div class="col-md-12 center-justify-flex-content">
@@ -212,8 +210,8 @@
             <opinions-slider></opinions-slider>
         </section>
     </div>
-    <div class="section-container">
-        <section class="container" style="padding-top: 5em">
+    <div class="section-container" id="zobacz-kursy">
+        <section class="container">
             <div class="row mt-5">
                 <div class="col-md-6 center-justify-flex-content">
                     <img style="width: 100%" src="{{ asset('images/internetowisprzedawcy/min-video.png') }}">
@@ -242,7 +240,7 @@
         </section>
     </div>
     <div class="section-container">
-        <section class="container" style="padding-top: 5em">
+        <section class="container">
             <div class="row mt-5">
                 <div class="col-md-6 center-justify-flex-content">
                     <div class="d-flex">
@@ -266,7 +264,7 @@
         </section>
     </div>
     <div class="section-container">
-        <section class="container" style="padding-top: 5em;">
+        <section class="container">
             <div class="row mt-5">
                 <div class="col-md-12 col-lg-6">
                     <img class="vs-logo" src="{{ asset('images/internetowisprzedawcy/vs-logo.png') }}">
@@ -360,7 +358,7 @@
             </div>
         </section>
     </div>
-    <div class="section-container">
+    <div class="section-container" id="faq">
         <section class="container faq-accordion__section py-5">
             <faq-accordion></faq-accordion>
         </section>
