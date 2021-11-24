@@ -263,7 +263,7 @@
             </div>
         </section>
     </div>
-    <div class="section-container">
+    <div class="section-container section-container__access-promo-container">
         <section class="container">
             <div class="row mt-5">
                 <div class="col-md-12 col-lg-6">

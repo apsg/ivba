@@ -646,6 +646,12 @@ $outer-circle-color: #687b7d80;
     &__bg-color-grey {
         background-color: $color-gray-bg-section-container;
     }
+    &__access-promo-container {
+        background-image: url(/images/internetowisprzedawcy/access-promo-card-background.png) !important;
+        background-repeat: no-repeat;
+        background-position: bottom;
+        padding-bottom: 5em;
+    }
 }
 
 .error-container {
