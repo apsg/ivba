@@ -42,6 +42,7 @@ body.logged {
                 font-size: 16px;
                 cursor: pointer;
 
+                &.active,
                 &:hover {
                     color: $color-main-red;
 

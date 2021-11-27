@@ -5,18 +5,17 @@
 
     <ul class="px-0 pt-5">
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/account/mycourses') }}">
+            <a class="nav-link @if(url('/account/mycourses') === url()->current()) active @endif"
+               href="{{ url('/account/mycourses') }}">
                 @include('icons.play')
                 Moje kursy
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/courses') }}">
+            <a class="nav-link @if(url('/courses') === url()->current()) active @endif" href="{{ url('/courses') }}">
                 @include('icons.courses')
                 Spis kursów
             </a>
         </li>
     </ul>
-
-
 </div>

@@ -45,10 +45,12 @@ body.logged .col-sidebar .nav a {
   cursor: pointer;
 }
 
+body.logged .col-sidebar .nav a.active,
 body.logged .col-sidebar .nav a:hover {
   color: #E7323B;
 }
 
+body.logged .col-sidebar .nav a.active *,
 body.logged .col-sidebar .nav a:hover * {
   fill: #E7323B;
 }
