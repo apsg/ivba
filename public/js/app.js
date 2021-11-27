@@ -4433,6 +4433,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Order",
@@ -4478,6 +4485,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.resetCoupon();
+      if (!this.coupon) return;
       axios.post('/a/order/check_coupon', {
         code: this.coupon
       }).then(function (r) {
@@ -4508,12 +4516,24 @@ __webpack_require__.r(__webpack_exports__);
       }).catch(function (r) {
         _this2.order_error = r.response.data.message;
       });
+    },
+    setStep: function setStep(step) {
+      if (![1, 2, 3].includes(step)) return;
+      if (step > 2 && !this.canGoToStep3) return;
+      if (step > 1 && !this.canGoToStep2) return;
+      this.step = step;
     }
   },
   computed: {
     isLogged: function isLogged() {
       if (this.user === null || this.user === '') return false;
       return !!this.user.id;
+    },
+    canGoToStep2: function canGoToStep2() {
+      return this.rules;
+    },
+    canGoToStep3: function canGoToStep3() {
+      return this.rules && this.email;
     }
   }
 });
@@ -54337,14 +54357,19 @@ var render = function() {
       "div",
       {
         staticClass:
-          "d-flex justify-content-center mt-2 progress-indicator align-items-end w-50 ml-auto mr-auto"
+          "d-flex justify-content-center mt-2 progress-indicator align-items-end w-50 w-100-mobile ml-auto mr-auto"
       },
       [
         _c(
           "div",
           {
             staticClass: "p-3 text-center text-gray-light",
-            class: _vm.step === 1 ? "active text-gray-44" : ""
+            class: _vm.step === 1 ? "active text-gray-44" : "",
+            on: {
+              click: function($event) {
+                _vm.setStep(1)
+              }
+            }
           },
           [
             _vm._v("\n            Informacje "),
@@ -54357,7 +54382,12 @@ var render = function() {
           "div",
           {
             staticClass: "p-3 text-center text-gray-light",
-            class: _vm.step === 2 ? "active text-gray-44" : ""
+            class: _vm.step === 2 ? "active text-gray-44" : "",
+            on: {
+              click: function($event) {
+                _vm.setStep(2)
+              }
+            }
           },
           [
             _vm._v("\n            Dane do "),
@@ -54370,7 +54400,12 @@ var render = function() {
           "div",
           {
             staticClass: "p-3 text-center text-gray-light",
-            class: _vm.step === 3 ? "active text-gray-44" : ""
+            class: _vm.step === 3 ? "active text-gray-44" : "",
+            on: {
+              click: function($event) {
+                _vm.setStep(3)
+              }
+            }
           },
           [_vm._v("\n            Podsumowanie\n        ")]
         )
@@ -54384,24 +54419,22 @@ var render = function() {
           "d-flex justify-content-center progress-indicator align-items-start w-50 ml-auto mr-auto"
       },
       [
-        _c("div", { staticClass: "text-center text-blue-order indicator" }, [
-          _vm.step === 1
-            ? _c("i", { staticClass: "fa fa-circle-o" })
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.step > 1 ? _c("i", { staticClass: "fa fa-circle" }) : _vm._e()
-        ]),
-        _vm._v(" "),
         _c(
           "div",
           {
-            staticClass: "text-center indicator",
-            class: _vm.step > 1 ? "active text-blue-order" : "text-gray-light"
+            staticClass: "text-center text-blue-order indicator",
+            on: {
+              click: function($event) {
+                _vm.setStep(1)
+              }
+            }
           },
           [
-            _vm.step > 2
-              ? _c("i", { staticClass: "fa fa-circle" })
-              : _c("i", { staticClass: "fa fa-circle-o" })
+            _vm.step === 1
+              ? _c("i", { staticClass: "far fa-circle" })
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.step > 1 ? _c("i", { staticClass: "fas fa-circle" }) : _vm._e()
           ]
         ),
         _vm._v(" "),
@@ -54409,9 +54442,33 @@ var render = function() {
           "div",
           {
             staticClass: "text-center indicator",
-            class: _vm.step === 3 ? "active text-blue-order" : "text-gray-light"
+            class: _vm.step > 1 ? "active text-blue-order" : "text-gray-light",
+            on: {
+              click: function($event) {
+                _vm.setStep(2)
+              }
+            }
           },
-          [_c("i", { staticClass: "fa fa-circle-o" })]
+          [
+            _vm.step > 2
+              ? _c("i", { staticClass: "fas fa-circle" })
+              : _c("i", { staticClass: "far fa-circle" })
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "text-center indicator",
+            class:
+              _vm.step === 3 ? "active text-blue-order" : "text-gray-light",
+            on: {
+              click: function($event) {
+                _vm.setStep(3)
+              }
+            }
+          },
+          [_c("i", { staticClass: "far fa-circle" })]
         )
       ]
     ),
@@ -54550,7 +54607,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-lg btn-blue next-button px-5 py-3",
-                  attrs: { disabled: !_vm.rules },
+                  attrs: { disabled: !_vm.canGoToStep2 },
                   on: {
                     click: function($event) {
                       $event.preventDefault()
@@ -54746,7 +54803,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-lg btn-blue next-button px-5 py-3",
-                  attrs: { disabled: !_vm.rules || !_vm.email },
+                  attrs: { disabled: !_vm.canGoToStep3 },
                   on: {
                     click: function($event) {
                       $event.preventDefault()
@@ -54796,7 +54853,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-lg btn-blue next-button px-5 py-3",
-                  attrs: { disabled: !_vm.rules || !_vm.email },
+                  attrs: { disabled: !_vm.canGoToStep3 },
                   on: {
                     click: function($event) {
                       $event.preventDefault()

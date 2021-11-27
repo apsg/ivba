@@ -227,7 +227,8 @@ footer {
 
 .nav-link-header {
     display: block;
-    padding: 0.5rem 1.5rem;    
+    padding: 0.5rem 1.5rem;
+
     &__register {
         border: 2px solid $color-white;
         border-radius: 15px;
@@ -507,6 +508,10 @@ $description-height: 265px;
         left: 0%;
         top: -6px;
     }
+
+    .w-100-mobile {
+        width: 100% !important;
+    }
 }
 
 .list-card {
@@ -607,7 +612,7 @@ $outer-circle-color: #687b7d80;
     &__section {
         max-width: 1120px;
     }
-    
+
     .card-header {
         border-bottom: none;
         background-color: transparent;
@@ -640,12 +645,15 @@ $outer-circle-color: #687b7d80;
     padding: 15px 0 15px 0;
     background-color: $color-white;
     scroll-margin-top: 80px;
+
     .container {
         padding-top: 5em;
     }
+
     &__bg-color-grey {
         background-color: $color-gray-bg-section-container;
     }
+
     &__access-promo-container {
         background-image: url(/images/internetowisprzedawcy/access-promo-card-background.png) !important;
         background-repeat: no-repeat;

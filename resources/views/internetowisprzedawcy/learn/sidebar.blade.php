@@ -42,7 +42,7 @@
                 @foreach($course->quizzes as $quiz)
                     <li class="nav-item">
                         <a href="{{ $quiz->url($course) }}"
-                           class="nav-link @if(isset($lesson) && $l->id == $lesson->id) {{"active"}} @endif">
+                           class="nav-link @if($quiz->url($course) === url()->current()) {{"active"}} @endif">
                             @if(\Auth::user()->hasFinishedQuiz($quiz->id))
                                 <i class="fa fa-check-square-o"></i>
                             @endif

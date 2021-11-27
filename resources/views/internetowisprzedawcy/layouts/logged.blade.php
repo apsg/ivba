@@ -17,8 +17,14 @@
                         <div class="top-navbar">
                             @yield('navbar')
                         </div>
-                        <div class="">
-                            <a href="{{ url('/account') }}" class="account text-center">
+                        <div class="d-flex">
+                            <form action="{{ url("/logout") }}" method="POST">
+                                @csrf
+                                <button class="account text-gray border-0" title="Wyloguj się">
+                                    <i class="fas fa-2x fa-sign-out-alt"></i>
+                                </button>
+                            </form>
+                            <a href="{{ url('/account') }}" class="account text-center mx-2" title="Moje konto">
                                 @include('icons.account')
                             </a>
                         </div>

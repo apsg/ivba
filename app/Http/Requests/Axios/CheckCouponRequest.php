@@ -6,6 +6,9 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CheckCouponRequest extends FormRequest
 {
+    /** @var Coupon|null */
+    protected $couponModel;
+
     public function rules()
     {
         return [
@@ -18,7 +21,11 @@ class CheckCouponRequest extends FormRequest
      */
     public function coupon()
     {
-        return Coupon::where('code', $this->input('code'))
-            ->first();
+        if ($this->couponModel === null) {
+            $this->couponModel = Coupon::where('code', $this->input('code'))
+                ->first();
+        }
+
+        return $this->couponModel;
     }
 }

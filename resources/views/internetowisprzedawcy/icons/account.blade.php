@@ -1,8 +1,8 @@
 <div class="d-inline-block">
     <svg class="icon"
-         width="50"
-         height="50"
-         viewBox="0 0 50 50"
+         width="45"
+         height="45"
+         viewBox="0 0 45 45"
          fill="none"
          xmlns="http://www.w3.org/2000/svg">
         <path id="Path_account-circle-outline" data-name="Path / account-circle-outline"

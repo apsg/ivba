@@ -1,17 +1,21 @@
 <template>
     <div class="w-100 h-100 d-flex flex-column order">
-        <div class="d-flex justify-content-center mt-2 progress-indicator align-items-end w-50 ml-auto mr-auto">
+        <div
+            class="d-flex justify-content-center mt-2 progress-indicator align-items-end w-50 w-100-mobile ml-auto mr-auto">
             <div
+                @click="setStep(1)"
                 class="p-3 text-center text-gray-light"
                 :class="step === 1 ? 'active text-gray-44' : ''">
                 Informacje <br/>o zamówieniu
             </div>
             <div
+                @click="setStep(2)"
                 class="p-3 text-center text-gray-light"
                 :class="step === 2 ? 'active text-gray-44' : ''">
                 Dane do <br/>płatności
             </div>
             <div
+                @click="setStep(3)"
                 class="p-3 text-center text-gray-light"
                 :class="step === 3 ? 'active text-gray-44' : ''">
                 Podsumowanie
@@ -19,20 +23,23 @@
         </div>
         <div class="d-flex justify-content-center progress-indicator align-items-start w-50 ml-auto mr-auto">
             <div
+                @click="setStep(1)"
                 class="text-center text-blue-order indicator">
-                <i class="fa fa-circle-o" v-if="step === 1"></i>
-                <i class="fa fa-circle" v-if="step > 1"></i>
+                <i class="far fa-circle" v-if="step === 1"></i>
+                <i class="fas fa-circle" v-if="step > 1"></i>
             </div>
             <div
+                @click="setStep(2)"
                 class="text-center indicator"
                 :class="step > 1 ? 'active text-blue-order' : 'text-gray-light'">
-                <i class="fa fa-circle" v-if="step > 2"></i>
-                <i class="fa fa-circle-o" v-else></i>
+                <i class="fas fa-circle" v-if="step > 2"></i>
+                <i class="far fa-circle" v-else></i>
             </div>
             <div
+                @click="setStep(3)"
                 class="text-center indicator"
                 :class="step === 3 ? 'active text-blue-order' : 'text-gray-light'">
-                <i class="fa fa-circle-o"></i>
+                <i class="far fa-circle"></i>
             </div>
         </div>
 
@@ -89,7 +96,7 @@
                     <button
                         class="btn btn-lg btn-blue next-button px-5 py-3"
                         @click.prevent="next()"
-                        :disabled="!rules">
+                        :disabled="!canGoToStep2">
                         Dalej <i class="fa fa-caret-right"></i>
                     </button>
                 </div>
@@ -177,7 +184,7 @@
                     <button
                         class="btn btn-lg btn-blue next-button px-5 py-3"
                         @click.prevent="next()"
-                        :disabled="!rules || !email">
+                        :disabled="!canGoToStep3">
                         Dalej <i class="fa fa-caret-right"></i>
                     </button>
                 </div>
@@ -207,7 +214,7 @@
                     <button
                         class="btn btn-lg btn-blue next-button px-5 py-3"
                         @click.prevent="order()"
-                        :disabled="!rules || !email">
+                        :disabled="!canGoToStep3">
                         Kupuję i płacę <i class="fa fa-caret-right"></i>
                     </button>
                 </div>
@@ -276,6 +283,9 @@ export default {
         checkCoupon() {
             this.resetCoupon();
 
+            if (!this.coupon)
+                return;
+
             axios.post('/a/order/check_coupon', {code: this.coupon})
                 .then(r => {
                     console.log(r);
@@ -310,6 +320,19 @@ export default {
                 .catch(r => {
                     this.order_error = r.response.data.message;
                 });
+        },
+
+        setStep(step) {
+            if (![1, 2, 3].includes(step))
+                return;
+
+            if (step > 2 && !this.canGoToStep3)
+                return;
+
+            if (step > 1 && !this.canGoToStep2)
+                return;
+
+            this.step = step;
         }
     },
 
@@ -319,6 +342,14 @@ export default {
                 return false;
 
             return !!this.user.id;
+        },
+
+        canGoToStep2() {
+            return this.rules;
+        },
+
+        canGoToStep3() {
+            return this.rules && this.email
         }
     }
 }

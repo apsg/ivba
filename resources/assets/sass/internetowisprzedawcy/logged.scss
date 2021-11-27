@@ -67,10 +67,12 @@ body.logged {
         display: inline-block;
         line-height: 60px;
 
+        cursor: pointer;
+
         &:hover,
         &.active {
             background-color: $color-blue;
-            color: $color-white;
+            color: $color-white !important;
 
             .icon {
                 fill: $color-white;
