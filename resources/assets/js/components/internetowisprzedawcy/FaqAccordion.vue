@@ -10,9 +10,7 @@
                         <h5 class="mb-0">
                             <button v-on:click="setCollapsedId(card.id)" class="w-100 btn btn-link" data-toggle="collapse" v-bind:data-target="'#collapse' + card.id" aria-expanded="true" v-bind:aria-controls="'collapse' + card.id">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span>
-                                        {{ card.title }}
-                                    </span>
+                                    <span>{{ card.title }}</span>
                                     <i class="fa fa-2x"  v-bind:class="[collapsedId === card.id ? 'fa-caret-up' : 'fa-caret-down']"></i>
                                 </div>
                             </button>

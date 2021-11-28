@@ -2,14 +2,15 @@
     <div class="container text-center d-flex pb-3 mt-3 mb-3 mx-auto">
         <carousel
             :loop="true"
-            :perPageCustom="[[576, 1], [992, 2], [1340, 3]]"
+            :perPage="1"
+            :perPageCustom="[[992, 2], [1340, 3]]"
             :paginationEnabled="false"
             ref="carousel"
             style="width: 100%;"
         >
             <slide v-for="slide in slides" :key="slide.id">
                 <div>
-                    <img v-bind:src="'/images/internetowisprzedawcy/' + slide.img">
+                    <img style="max-width: 100%" v-bind:src="'/images/internetowisprzedawcy/' + slide.img">
                 </div>
                 <div class="p-5">
                     <div class="p-2">
