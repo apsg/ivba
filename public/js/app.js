@@ -4557,6 +4557,10 @@ __webpack_require__.r(__webpack_exports__);
       this.coupon_error = null;
       this.order_error = null;
       this.order_error_list = [];
+    },
+    validEmail: function validEmail(email) {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
     }
   },
   computed: {
@@ -4568,7 +4572,7 @@ __webpack_require__.r(__webpack_exports__);
       return this.rules;
     },
     canGoToStep3: function canGoToStep3() {
-      return this.rules && this.email;
+      return this.rules && this.email && this.validEmail(this.email);
     },
     isFree: function isFree() {
       return this.reduced_price !== null && parseFloat(this.reduced_price) === 0.0;
