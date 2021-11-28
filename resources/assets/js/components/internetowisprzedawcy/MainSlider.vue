@@ -52,6 +52,12 @@
         background-size: 85%;
     }
 
+    @media (max-width: 1200px) {
+        .slider-image {
+            background-size: 110%;
+        }
+    }
+
     .slide-text{
         h1 {
             font-size: 54px;
