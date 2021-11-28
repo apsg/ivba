@@ -234,10 +234,13 @@ footer {
     }
 }
 
-.alert-info {
+.alert-container {
     margin-top: 50px;
+    &__error {
+        max-width: 100%;
+        padding: 0;
+    }
 }
-
 
 .main-slider {
     .VueCarousel-wrapper {
@@ -704,8 +707,4 @@ $outer-circle-color: #687b7d80;
         background-position: top;
         padding-bottom: 5em;
     }
-}
-
-.error-container {
-    background-color: $color-white;
 }

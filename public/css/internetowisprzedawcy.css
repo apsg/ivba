@@ -384,8 +384,13 @@ footer .footer-menu {
   border-radius: 15px;
 }
 
-.alert-info {
+.alert-container {
   margin-top: 50px;
+}
+
+.alert-container__error {
+  max-width: 100%;
+  padding: 0;
 }
 
 .main-slider .VueCarousel-wrapper {
@@ -845,9 +850,5 @@ ul.square-ul li:before {
   background-repeat: no-repeat;
   background-position: top;
   padding-bottom: 5em;
-}
-
-.error-container {
-  background-color: #FFFFFF;
 }
 

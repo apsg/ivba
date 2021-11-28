@@ -21,16 +21,18 @@
                 </div>
             </div>
         </nav>
-        @include('flash::message')
-        @if ($errors->any())
-            <div class="container error-container pt-5">
-                <div class="alert alert-danger main-alert-container mt-3">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
+        @if((session()->has('_flash') && !empty(session()->get('_flash.old'))) || $errors->any())
+            <div class="container alert-container">
+                @include('flash::message')
+                @if ($errors->any())
+                    <div class="container alert-container__error">
+                        <div class="alert alert-danger main-alert-container mt-3">
+                            @foreach ($errors->all() as $error)
+                                {{ $error }}
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
             </div>
         @endif
         @if(Request::is('/'))
