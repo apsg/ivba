@@ -1,6 +1,5 @@
 @import "variables";
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
-@import url('https://pro.fontawesome.com/releases/v5.10.0/css/all.css');
 
 $color-main-red: #E7323B;
 $color-seledin-dark: #00A9A7;
@@ -330,7 +329,7 @@ ul.square-ul li:before {
     font-size: 25px;
 
     span {
-        margin: 0 2em 0 2em;
+        margin: 0 1.5em 0 1.5em;
     }
 }
 
@@ -540,7 +539,7 @@ $description-height: 265px;
         text-align: center;
 
         &__positive {
-            .fa-check-circle {
+            .fa-check-circle-o {
                 color: $color-seledin-dark;
             }
 
@@ -567,6 +566,14 @@ $outer-circle-color: #687b7d80;
     background-color: $color-white;
 
     &__container {
+        &--brand-logo-img {
+            position: absolute;
+            left: 76%;
+            top: 203px;
+            z-index: 0;
+            height: 485px !important;
+        }
+
         max-width: 725px;
 
         p {
@@ -605,6 +612,27 @@ $outer-circle-color: #687b7d80;
         color: $color-black-text-dark;
     }
 }
+
+@media (max-width: 1200px) {
+    .access-promo-card__container--brand-logo-img {
+        top: 322px;
+        height: 365px !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .access-promo-card__container--brand-logo-img {
+        top: 424px;
+        height: 263px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .access-promo-card__container--brand-logo-img {
+        display: none;
+    }
+}
+
 
 .faq-accordion {
     font-size: 16px;
@@ -658,6 +686,13 @@ $outer-circle-color: #687b7d80;
         background-image: url(/images/internetowisprzedawcy/access-promo-card-background.png) !important;
         background-repeat: no-repeat;
         background-position: bottom;
+        padding-bottom: 5em;
+    }
+
+    &__offer-promo-container {
+        background-image: url(/images/internetowisprzedawcy/offer-promo-card-background.png) !important;
+        background-repeat: no-repeat;
+        background-position: top;
         padding-bottom: 5em;
     }
 }

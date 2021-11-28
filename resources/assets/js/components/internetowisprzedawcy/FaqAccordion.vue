@@ -13,12 +13,12 @@
                                     <span>
                                         {{ card.title }}
                                     </span>
-                                    <i class="fas fa-2x"  v-bind:class="[collapsedId === card.id ? 'fa-caret-up' : 'fa-caret-down']"></i>
+                                    <i class="fa fa-2x"  v-bind:class="[collapsedId === card.id ? 'fa-caret-up' : 'fa-caret-down']"></i>
                                 </div>
                             </button>
                         </h5>
                     </div>
-                    <div v-bind:id="'collapse' + card.id" class="collapse" v-bind:aria-labelledby="'heading' + card.id" data-parent="#accordion">
+                    <div v-bind:id="'collapse' + card.id" class="collapse" style="transition-duration: 100ms;" v-bind:aria-labelledby="'heading' + card.id" data-parent="#accordion">
                         <div class="card-body">
                             {{ card.description }}
                         </div>
@@ -73,5 +73,5 @@
 </script>
 
 <style scoped>
-    
+
 </style>

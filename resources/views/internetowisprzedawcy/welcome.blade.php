@@ -111,7 +111,7 @@
             </div>
         </section>
     </div>
-    <div class="section-container">
+    <div class="section-container section-container__offer-promo-container">
         <section class="container">
             <div class="row mt-5">
                 <div class="col offer-promo-card">
@@ -273,28 +273,28 @@
                             Typowa platforma <br>do nauki
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="far fa-times-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                     </div>
                 </div>
@@ -304,31 +304,31 @@
                             <img src="{{ asset('images/internetowisprzedawcy/logo_color.png') }}">
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="far fa-check-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         </div>
                     </div>
                 </div>
@@ -338,6 +338,7 @@
                 <div class="col-12 d-flex justify-content-center">
                     <div class="access-promo-card center-justify-flex-content">
                         <div class="access-promo-card__container text-center p-4">
+                            <img class="access-promo-card__container--brand-logo-img" src="{{ asset('images/internetowisprzedawcy/brand-mark-2.png') }}">
                             <div class="circle-container__outer">
                                 <div class="circle-container__inner">
                                     <img class="m-3" src="{{ asset('images/internetowisprzedawcy/logo_znak.png') }}">
