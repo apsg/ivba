@@ -21,7 +21,7 @@
                             <form action="{{ url("/logout") }}" method="POST">
                                 @csrf
                                 <button class="account text-gray border-0" title="Wyloguj się">
-                                    <i class="fas fa-2x fa-sign-out-alt"></i>
+                                    <i class="fa fa-2x fa-sign-out"></i>
                                 </button>
                             </form>
                             <a href="{{ url('/account') }}" class="account text-center mx-2" title="Moje konto">

@@ -25,21 +25,21 @@
             <div
                 @click="setStep(1)"
                 class="text-center text-blue-order indicator">
-                <i class="far fa-circle" v-if="step === 1"></i>
-                <i class="fas fa-circle" v-if="step > 1"></i>
+                <i class="fa fa-circle-o" v-if="step === 1"></i>
+                <i class="fa fa-circle" v-if="step > 1"></i>
             </div>
             <div
                 @click="setStep(2)"
                 class="text-center indicator"
                 :class="step > 1 ? 'active text-blue-order' : 'text-gray-light'">
-                <i class="fas fa-circle" v-if="step > 2"></i>
-                <i class="far fa-circle" v-else></i>
+                <i class="fa fa-circle" v-if="step > 2"></i>
+                <i class="fa fa-circle-o" v-else></i>
             </div>
             <div
                 @click="setStep(3)"
                 class="text-center indicator"
                 :class="step === 3 ? 'active text-blue-order' : 'text-gray-light'">
-                <i class="far fa-circle"></i>
+                <i class="fa fa-circle-o"></i>
             </div>
         </div>
 
