@@ -4,7 +4,6 @@ namespace App\Domains\Payments\Controllers;
 use App\Domains\Payments\Requests\QuickFullAccessRequest;
 use App\Helpers\PayuPayment;
 use App\Http\Controllers\Controller;
-use App\Order;
 
 class QuickFullAccessOrderController extends Controller
 {
@@ -20,8 +19,15 @@ class QuickFullAccessOrderController extends Controller
             $order->coupons()->attach($request->coupon());
         }
 
+        if ($order->total() == 0) {
+            $order->confirm();
+            flash("Twoje zamówienie zostało potwierdzone! Zaloguj się na swoje konto by skorzystać z dostępu do strony. Instrukcję znajdziesz w swojej skrzynce mailowej.");
+
+            return ['url' => url('/continue?order=' . $order->id)];
+        }
+
         return [
-            'payment_url' => (new PayuPayment())->getUrl($order),
+            'url' => (new PayuPayment())->getUrl($order),
         ];
     }
 }

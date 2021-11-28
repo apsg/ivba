@@ -107,7 +107,7 @@ class OrderController extends Controller
             ], 404);
         }
 
-        if ($request->coupon()->uses_left === 0) {
+        if ($request->coupon()->uses_left < 1) {
             return response()->json([
                 'message' => 'Ten kupon się wyczerpał',
             ], 403);

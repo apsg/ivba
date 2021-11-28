@@ -4203,8 +4203,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -4439,7 +4437,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Order",
   props: ['price', 'rules_link', 'user'],
@@ -4454,7 +4480,9 @@ __webpack_require__.r(__webpack_exports__);
       token: null,
       coupon_error: null,
       reduced_price: null,
-      order_error: null
+      order_error: null,
+      order_error_list: [],
+      processing: false
     };
   },
   mounted: function mounted() {
@@ -4504,16 +4532,19 @@ __webpack_require__.r(__webpack_exports__);
     order: function order() {
       var _this2 = this;
 
-      this.order_error = null;
+      this.clearErrors();
+      this.processing = true;
       axios.post('/a/order/quick_full_access', {
         code: this.coupon,
         name: this.name,
         email: this.email,
         phone: this.phone
       }).then(function (r) {
-        location.href = r.data.payment_url;
+        _this2.processing = false; //location.href = r.data.url;
       }).catch(function (r) {
+        _this2.processing = false;
         _this2.order_error = r.response.data.message;
+        _this2.order_error_list = r.response.data.errors;
       });
     },
     setStep: function setStep(step) {
@@ -4521,6 +4552,11 @@ __webpack_require__.r(__webpack_exports__);
       if (step > 2 && !this.canGoToStep3) return;
       if (step > 1 && !this.canGoToStep2) return;
       this.step = step;
+    },
+    clearErrors: function clearErrors() {
+      this.coupon_error = null;
+      this.order_error = null;
+      this.order_error_list = [];
     }
   },
   computed: {
@@ -4533,6 +4569,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     canGoToStep3: function canGoToStep3() {
       return this.rules && this.email;
+    },
+    isFree: function isFree() {
+      return this.reduced_price !== null && parseFloat(this.reduced_price) === 0.0;
     }
   }
 });
@@ -9290,7 +9329,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".order[data-v-24606928] {\n  font-family: \"Poppins\", sans-serif;\n  font-size: 18px;\n}\n.order .progress-indicator[data-v-24606928] {\n  font-size: 15px/19px;\n}\n.order .progress-indicator > div[data-v-24606928] {\n  width: 33%;\n}\n.order .progress-indicator .indicator[data-v-24606928] {\n  font-size: 1.3em;\n}\n.order h2[data-v-24606928] {\n  font-weight: 700;\n}\n.order .w-60[data-v-24606928] {\n  width: 60%;\n}\n.order .border-bottom-gray[data-v-24606928] {\n  border-bottom: 1px solid #E2E2E2;\n}\n.order .price[data-v-24606928] {\n  color: #8AC348;\n  font-size: 33px;\n}\n.order .price.previous-price[data-v-24606928] {\n  color: #444444;\n  text-decoration: line-through;\n}\n.order .text-green[data-v-24606928] {\n  color: #8AC348;\n}\n.order .rules-checkbox[data-v-24606928] {\n  display: inline-block;\n  width: 20px;\n  height: 20px;\n  line-height: 18px;\n}\n.order .next-button[data-v-24606928] {\n  font-size: 25px;\n  font-weight: 500;\n}\n.order .product-box[data-v-24606928] {\n  border: 1px solid #D8D9D9;\n}", ""]);
+exports.push([module.i, ".order[data-v-24606928] {\n  font-family: \"Poppins\", sans-serif;\n  font-size: 18px;\n}\n.order .progress-indicator[data-v-24606928] {\n  font-size: 15px/19px;\n}\n.order .progress-indicator > div[data-v-24606928] {\n  width: 33%;\n}\n.order .progress-indicator .indicator[data-v-24606928] {\n  font-size: 1.3em;\n}\n.order h2[data-v-24606928] {\n  font-weight: 700;\n}\n.order .w-60[data-v-24606928] {\n  width: 60%;\n}\n.order .border-bottom-gray[data-v-24606928] {\n  border-bottom: 1px solid #E2E2E2;\n}\n.order .price[data-v-24606928] {\n  color: #8AC348;\n  font-size: 33px;\n}\n.order .price.previous-price[data-v-24606928] {\n  color: #444444;\n  text-decoration: line-through;\n}\n.order .text-green[data-v-24606928] {\n  color: #8AC348;\n}\n.order .rules-checkbox[data-v-24606928] {\n  display: inline-block;\n  width: 20px;\n  height: 20px;\n  line-height: 18px;\n}\n.order .next-button[data-v-24606928] {\n  font-size: 25px;\n  font-weight: 500;\n}\n.order .product-box[data-v-24606928] {\n  border: 1px solid #D8D9D9;\n}\n.order hr[data-v-24606928] {\n  border-width: 2px;\n}\n.order hr.blue[data-v-24606928] {\n  border-color: #45BEEE;\n}\n.order hr.transparent[data-v-24606928] {\n  border-color: transparent;\n}", ""]);
 
 // exports
 
@@ -54418,7 +54457,8 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "text-center text-blue-order indicator",
+            staticClass:
+              "text-center text-blue-order indicator d-flex justify-content-between",
             on: {
               click: function($event) {
                 _vm.setStep(1)
@@ -54426,18 +54466,26 @@ var render = function() {
             }
           },
           [
-            _vm.step === 1
-              ? _c("i", { staticClass: "fa fa-circle-o" })
-              : _vm._e(),
+            _vm._m(0),
             _vm._v(" "),
-            _vm.step > 1 ? _c("i", { staticClass: "fa fa-circle" }) : _vm._e()
+            _c("div", { staticClass: "px-2" }, [
+              _vm.step === 1
+                ? _c("i", { staticClass: "fa fa-circle-o" })
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.step > 1 ? _c("i", { staticClass: "fa fa-circle" }) : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex-grow-1" }, [
+              _c("hr", { class: _vm.step > 1 ? "blue" : "" })
+            ])
           ]
         ),
         _vm._v(" "),
         _c(
           "div",
           {
-            staticClass: "text-center indicator",
+            staticClass: "text-center indicator d-flex justify-content-between",
             class: _vm.step > 1 ? "active text-blue-order" : "text-gray-light",
             on: {
               click: function($event) {
@@ -54446,16 +54494,26 @@ var render = function() {
             }
           },
           [
-            _vm.step > 2
-              ? _c("i", { staticClass: "fa fa-circle" })
-              : _c("i", { staticClass: "fa fa-circle-o" })
+            _c("div", { staticClass: "flex-grow-1" }, [
+              _c("hr", { class: _vm.step > 1 ? "blue" : "" })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "px-2" }, [
+              _vm.step > 2
+                ? _c("i", { staticClass: "fa fa-circle" })
+                : _c("i", { staticClass: "fa fa-circle-o" })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex-grow-1" }, [
+              _c("hr", { class: _vm.step > 2 ? "blue" : "" })
+            ])
           ]
         ),
         _vm._v(" "),
         _c(
           "div",
           {
-            staticClass: "text-center indicator",
+            staticClass: "text-center indicator d-flex justify-content-between",
             class:
               _vm.step === 3 ? "active text-blue-order" : "text-gray-light",
             on: {
@@ -54464,7 +54522,15 @@ var render = function() {
               }
             }
           },
-          [_c("i", { staticClass: "fa fa-circle-o" })]
+          [
+            _c("div", { staticClass: "flex-grow-1" }, [
+              _c("hr", { class: _vm.step > 2 ? "blue" : "" })
+            ]),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._m(2)
+          ]
         )
       ]
     ),
@@ -54475,10 +54541,10 @@ var render = function() {
             _vm._v("Dostęp do platformy Internetowi Sprzedawcy")
           ]),
           _vm._v(" "),
-          _vm._m(0),
+          _vm._m(3),
           _vm._v(" "),
           _c("div", { staticClass: "d-flex mt-3" }, [
-            _vm._m(1),
+            _vm._m(4),
             _vm._v(" "),
             _c("div", { staticClass: "text-right flex-fill" }, [
               !_vm.reduced_price
@@ -54623,7 +54689,7 @@ var render = function() {
     _vm._v(" "),
     _vm.step === 2
       ? _c("div", { staticClass: "pt-5 w-75 ml-auto mr-auto text-gray-44" }, [
-          _vm._m(2),
+          _vm._m(5),
           _vm._v(" "),
           _c("div", { staticClass: "d-flex mt-5" }, [
             _c("div", { staticClass: "w-50 p-3" }, [
@@ -54732,9 +54798,9 @@ var render = function() {
                         domProps: { value: _vm.token }
                       }),
                       _vm._v(" "),
-                      _vm._m(3),
+                      _vm._m(6),
                       _vm._v(" "),
-                      _vm._m(4),
+                      _vm._m(7),
                       _vm._v(" "),
                       _c(
                         "button",
@@ -54819,70 +54885,137 @@ var render = function() {
     _vm._v(" "),
     _vm.step === 3
       ? _c("div", { staticClass: "pt-5 w-75 ml-auto mr-auto text-gray-44" }, [
-          _vm._m(5),
+          _vm._m(8),
           _vm._v(" "),
-          _vm._m(6),
+          _vm._m(9),
           _vm._v(" "),
-          _c("div", { staticClass: "d-flex mt-3 align-items-center" }, [
-            _c("div", { staticClass: "w-60 pr-5 text-gray-44" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "color-gray",
-                  attrs: { href: "#" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.prev()
+          _c(
+            "div",
+            {
+              staticClass:
+                "d-flex mt-3 align-items-center justify-content-between w-100"
+            },
+            [
+              _c("div", { staticClass: "pr-5 text-gray-44" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "color-gray",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        _vm.prev()
+                      }
                     }
-                  }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-caret-left" }),
-                  _vm._v(" Wróć\n                ")
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "text-right flex-grow-1" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-lg btn-blue next-button px-5 py-3",
-                  attrs: { disabled: !_vm.canGoToStep3 },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.order()
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-caret-left" }),
+                    _vm._v(" Wróć\n                ")
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-right " }, [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "btn btn-lg btn-blue next-button px-5 py-3 d-flex align-items-center",
+                    attrs: { disabled: !_vm.canGoToStep3 || _vm.processing },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        _vm.order()
+                      }
                     }
-                  }
-                },
-                [
-                  _vm._v("\n                    Kupuję i płacę "),
-                  _c("i", { staticClass: "fa fa-caret-right" })
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _vm.order_error
-            ? _c("div", { staticClass: "alert alert-danger mt-2" }, [
-                _vm._v(
-                  "\n            " + _vm._s(_vm.order_error) + "\n            "
-                ),
-                _c("br"),
-                _vm._v(
-                  "Wróć do poprzedniego kroku i zaloguj się lub popraw swoje dane.\n        "
+                  },
+                  [
+                    _vm.isFree
+                      ? _c("span", [_vm._v("Potwierdzam zamówienie")])
+                      : _c("span", [
+                          _vm._v("Kupuję i płacę "),
+                          _c("i", { staticClass: "fa fa-caret-right" })
+                        ]),
+                    _vm._v(" "),
+                    _vm.processing
+                      ? _c("i", {
+                          staticClass: "fa fa-spinner fa-spin",
+                          attrs: { "aria-hidden": "true" }
+                        })
+                      : _vm._e()
+                  ]
                 )
               ])
+            ]
+          ),
+          _vm._v(" "),
+          _vm.order_error
+            ? _c(
+                "div",
+                { staticClass: "alert alert-danger mt-2" },
+                [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.order_error) +
+                      "\n            "
+                  ),
+                  _c("br"),
+                  _vm._v(
+                    "Wróć do poprzedniego kroku i zaloguj się lub popraw swoje dane:\n            "
+                  ),
+                  _vm._l(_vm.order_error_list, function(error) {
+                    return _c("div", [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(error[0] || error) +
+                          "\n            "
+                      )
+                    ])
+                  })
+                ],
+                2
+              )
             : _vm._e(),
           _vm._v(" "),
-          _vm._m(7)
+          !_vm.isFree
+            ? _c("div", { staticClass: "mt-5 pt-5" }, [
+                _c("p", [_vm._v("Dostępne metody płatności:")]),
+                _vm._v(" "),
+                _c("img", {
+                  attrs: { src: "/images/internetowisprzedawcy/payu.png" }
+                })
+              ])
+            : _vm._e()
         ])
       : _vm._e()
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex-grow-1" }, [
+      _c("hr", { staticClass: "transparent" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "px-2" }, [
+      _c("i", { staticClass: "fa fa-circle-o" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex-grow-1" }, [
+      _c("hr", { staticClass: "transparent" })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -54973,16 +55106,6 @@ var staticRenderFns = [
           "Kliknięcie w przycisk kupuję i płacę potwierdza zamówienie oraz przenosi do wyboru metody\n                płatności."
         )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mt-5 pt-5" }, [
-      _c("p", [_vm._v("Dostępne metody płatności:")]),
-      _vm._v(" "),
-      _c("img", { attrs: { src: "/images/internetowisprzedawcy/payu.png" } })
     ])
   }
 ]

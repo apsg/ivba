@@ -81,7 +81,7 @@ class GetResponseService
         return $this->client->call(new CreateContact($contact));
     }
 
-    public function removeFromCampaign(string $campaignId, User $user)
+    public function removeFromCampaign(string $campaignId = null, User $user = null)
     {
         if (empty($campaignId) || $user === null) {
             return;
@@ -96,8 +96,12 @@ class GetResponseService
         $this->client->call(new DeleteContact($contactId));
     }
 
-    public function getContactIdFromCampaign(string $campaignId, User $user) : string
+    public function getContactIdFromCampaign(string $campaignId = null, User $user = null) : string
     {
+        if (empty($campaignId) || $user === null) {
+            return '';
+        }
+
         $query = (new GetCampaignContacts($campaignId))
             ->setQuery((new GetContactsSearchQuery())->whereEmail($user->email));
 

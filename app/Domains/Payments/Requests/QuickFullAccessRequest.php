@@ -39,7 +39,7 @@ class QuickFullAccessRequest extends FormRequest
         $repository = app(UserRepository::class);
 
         if ($this->user() !== null) {
-            $attributes = array_filter($this->only(['phone', 'name']));
+            $attributes = $this->only(['phone', 'name']);
             $this->user()->update($attributes);
 
             return $this->user();

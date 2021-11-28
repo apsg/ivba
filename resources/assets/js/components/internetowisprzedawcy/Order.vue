@@ -24,22 +24,46 @@
         <div class="d-flex justify-content-center progress-indicator align-items-start w-50 ml-auto mr-auto">
             <div
                 @click="setStep(1)"
-                class="text-center text-blue-order indicator">
-                <i class="fa fa-circle-o" v-if="step === 1"></i>
-                <i class="fa fa-circle" v-if="step > 1"></i>
+                class="text-center text-blue-order indicator d-flex justify-content-between">
+                <div class="flex-grow-1">
+                    <hr class="transparent"/>
+                </div>
+                <div class="px-2">
+                    <i class="fa fa-circle-o" v-if="step === 1"></i>
+                    <i class="fa fa-circle" v-if="step > 1"></i>
+                </div>
+                <div class="flex-grow-1">
+                    <hr :class="step > 1 ? 'blue' : ''"/>
+                </div>
             </div>
             <div
                 @click="setStep(2)"
-                class="text-center indicator"
+                class="text-center indicator d-flex justify-content-between"
                 :class="step > 1 ? 'active text-blue-order' : 'text-gray-light'">
-                <i class="fa fa-circle" v-if="step > 2"></i>
-                <i class="fa fa-circle-o" v-else></i>
+                <div class="flex-grow-1">
+                    <hr :class="step > 1 ? 'blue' : ''"/>
+                </div>
+                <div class="px-2">
+                    <i class="fa fa-circle" v-if="step > 2"></i>
+                    <i class="fa fa-circle-o" v-else></i>
+                </div>
+                <div class="flex-grow-1">
+                    <hr :class="step > 2 ? 'blue' : ''"/>
+                </div>
             </div>
             <div
                 @click="setStep(3)"
-                class="text-center indicator"
+                class="text-center indicator d-flex justify-content-between"
                 :class="step === 3 ? 'active text-blue-order' : 'text-gray-light'">
-                <i class="fa fa-circle-o"></i>
+                <div class="flex-grow-1">
+                    <hr :class="step > 2 ? 'blue' : ''"/>
+                </div>
+                <div class="px-2">
+                    <i class="fa fa-circle-o"></i>
+                </div>
+                <div class="flex-grow-1">
+                    <hr class="transparent"/>
+                </div>
             </div>
         </div>
 
@@ -204,27 +228,32 @@
                     płatności.</p>
             </div>
 
-            <div class="d-flex mt-3 align-items-center">
-                <div class="w-60 pr-5 text-gray-44">
+            <div class="d-flex mt-3 align-items-center justify-content-between w-100">
+                <div class="pr-5 text-gray-44">
                     <a href="#" @click.prevent="prev()" class="color-gray">
                         <i class="fa fa-caret-left"></i> Wróć
                     </a>
                 </div>
-                <div class="text-right flex-grow-1">
+                <div class="text-right ">
                     <button
-                        class="btn btn-lg btn-blue next-button px-5 py-3"
+                        class="btn btn-lg btn-blue next-button px-5 py-3 d-flex align-items-center"
                         @click.prevent="order()"
-                        :disabled="!canGoToStep3">
-                        Kupuję i płacę <i class="fa fa-caret-right"></i>
+                        :disabled="!canGoToStep3 || processing">
+                        <span v-if="isFree">Potwierdzam zamówienie</span>
+                        <span v-else>Kupuję i płacę <i class="fa fa-caret-right"></i></span>
+                        <i class="fa fa-spinner fa-spin" aria-hidden="true" v-if="processing"></i>
                     </button>
                 </div>
             </div>
             <div class="alert alert-danger mt-2" v-if="order_error">
                 {{ order_error }}
-                <br/>Wróć do poprzedniego kroku i zaloguj się lub popraw swoje dane.
+                <br/>Wróć do poprzedniego kroku i zaloguj się lub popraw swoje dane:
+                <div v-for="error in order_error_list">
+                    {{ error[0] || error }}
+                </div>
             </div>
 
-            <div class="mt-5 pt-5">
+            <div class="mt-5 pt-5" v-if="!isFree">
                 <p>Dostępne metody płatności:</p>
                 <img src="/images/internetowisprzedawcy/payu.png"/>
             </div>
@@ -233,8 +262,6 @@
 </template>
 
 <script>
-import {debounce} from "lodash";
-
 export default {
     name: "Order",
 
@@ -251,7 +278,9 @@ export default {
             token: null,
             coupon_error: null,
             reduced_price: null,
-            order_error: null
+            order_error: null,
+            order_error_list: [],
+            processing: false
         }
     },
 
@@ -306,7 +335,8 @@ export default {
         },
 
         order() {
-            this.order_error = null;
+            this.clearErrors();
+            this.processing = true;
 
             axios.post('/a/order/quick_full_access', {
                 code: this.coupon,
@@ -315,10 +345,13 @@ export default {
                 phone: this.phone,
             })
                 .then(r => {
-                    location.href = r.data.payment_url;
+                    this.processing = false;
+                    //location.href = r.data.url;
                 })
                 .catch(r => {
+                    this.processing = false;
                     this.order_error = r.response.data.message;
+                    this.order_error_list = r.response.data.errors;
                 });
         },
 
@@ -333,6 +366,12 @@ export default {
                 return;
 
             this.step = step;
+        },
+
+        clearErrors() {
+            this.coupon_error = null;
+            this.order_error = null;
+            this.order_error_list = [];
         }
     },
 
@@ -350,6 +389,10 @@ export default {
 
         canGoToStep3() {
             return this.rules && this.email
+        },
+
+        isFree() {
+            return this.reduced_price !== null && parseFloat(this.reduced_price) === 0.0;
         }
     }
 }
@@ -412,6 +455,18 @@ export default {
 
     .product-box {
         border: 1px solid #D8D9D9;
+    }
+
+    hr {
+        border-width: 2px;
+
+        &.blue {
+            border-color: #45BEEE;
+        }
+
+        &.transparent {
+            border-color: transparent;
+        }
     }
 }
 </style>

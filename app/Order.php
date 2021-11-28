@@ -167,6 +167,8 @@ class Order extends Model implements InvoicableContract
             event(new QuickSaleConfirmedEvent($this->user, $quickSale, $this));
         }
 
+        $finalTotal = $this->total();
+
         // "Skasuj" wszystkie użyte kody rabatowe w tym zamówieniu
         foreach ($this->coupons as $coupon) {
             $coupon->uses_left -= 1;
@@ -184,7 +186,7 @@ class Order extends Model implements InvoicableContract
         }
 
         $this->update([
-            'final_total' => $this->total(),
+            'final_total' => $finalTotal,
         ]);
 
         return true;
