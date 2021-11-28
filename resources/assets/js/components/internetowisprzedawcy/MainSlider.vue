@@ -68,6 +68,7 @@
             font-size: 22px;
             color: #F5FFFF;
             font-weight: 100;
+            font-family: 'Poppins';
         }
 
     } 

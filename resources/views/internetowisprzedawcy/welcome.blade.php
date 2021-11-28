@@ -67,7 +67,7 @@
                         <p class="p-header">Co zyskasz dzięki dostępowi?</p>
                     </div>
                 </div>
-                <div class="col-md-4 d-flex justify-content-center">
+                <div class="col-md-4 pt-1 pb-1 d-flex justify-content-center">
                     <div class="subscription-promo-card center-justify-flex-content">
                         <div class="text-center p-4">
                             <img class="m-3" src="{{ asset('images/internetowisprzedawcy/subscription-promo-1.png') }}">
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 d-flex justify-content-center">
+                <div class="col-md-4 pt-1 pb-1 d-flex justify-content-center">
                     <div class="subscription-promo-card center-justify-flex-content">
                         <div class="text-center p-2">
                             <img class="m-3" src="{{ asset('images/internetowisprzedawcy/subscription-promo-2.png') }}">
@@ -85,7 +85,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 d-flex justify-content-center">
+                <div class="col-md-4 pt-1 pb-1 d-flex justify-content-center">
                     <div class="subscription-promo-card center-justify-flex-content">
                         <div class="text-center p-2">
                             <img class="m-3" src="{{ asset('images/internetowisprzedawcy/subscription-promo-3.png') }}">

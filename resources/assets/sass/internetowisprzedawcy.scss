@@ -405,6 +405,7 @@ $description-height: 265px;
         }
 
         cursor: default;
+        text-align: center;
         background-color: $color-white;
         height: $title-height;
         -webkit-box-shadow: 0px 0px 4px -3px rgba(66, 68, 90, 1);
@@ -445,6 +446,7 @@ $description-height: 265px;
 
 @media (max-width: 1200px) {
     .offer-promo-card {
+        height: auto;
         &__with-margin {
             margin-top: 0;
         }
@@ -489,7 +491,7 @@ $description-height: 265px;
     .vs-logo {
         height: 153px;
         left: 0%;
-        top: -37px;
+        top: -55px;
     }
 }
 
@@ -497,7 +499,7 @@ $description-height: 265px;
     .vs-logo {
         height: 125px;
         left: -3%;
-        top: -13px;
+        top: -40px;
     }
 }
 
@@ -505,7 +507,7 @@ $description-height: 265px;
     .vs-logo {
         height: 105px;
         left: 0%;
-        top: -6px;
+        top: -25px;
     }
 
     .w-100-mobile {
@@ -636,6 +638,8 @@ $outer-circle-color: #687b7d80;
 
 .faq-accordion {
     font-size: 16px;
+    font-family: $font-main !important;
+    color: $color-gray;
 
     &__section {
         max-width: 1120px;
@@ -647,7 +651,9 @@ $outer-circle-color: #687b7d80;
     }
 
     .btn-link {
+        font-size: 16px;
         color: $color-gray;
+        font-family: $font-main !important;
         padding: 0;
     }
 
@@ -661,6 +667,9 @@ $outer-circle-color: #687b7d80;
 
     .active-card {
         border-color: #00B2B0;
+        span {
+            font-weight: 600;
+        }
     }
 
     .fa-caret-up {
