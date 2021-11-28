@@ -112,7 +112,9 @@ Route::group(['prefix' => 'qs'], function () {
 Route::get('/payments/{payment}/request-invoice', PaymentsController::class . '@requestInvoice');
 
 Route::get('/test', function () {
-    return storage_path();
+    flash('test flash message');
+
+    return redirect('/')->withErrors(['abc' => 'def']);
 });
 
 // To musi być na samym końcu, by nie blokowało innych ścieżek
