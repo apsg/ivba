@@ -3,7 +3,7 @@
 @section('title', $page->title)
 
 @section('content')
-    <section class="page content">
+    <section class="page content mt-5">
         <div class="container">
             <h1>{{ $page->title }}</h1>
             {!! $page->content !!}

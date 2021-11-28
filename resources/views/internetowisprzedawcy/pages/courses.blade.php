@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Start Cources Section -->
-    <section class="our-cources sub padding-lg">
+    <section class="our-cources sub padding-lg mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-sm-8">
