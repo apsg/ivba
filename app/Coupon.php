@@ -209,8 +209,12 @@ class Coupon extends Model
         return $this;
     }
 
-    public function alreadyUsedBy(User $user) : bool
+    public function alreadyUsedBy(User $user = null) : bool
     {
+        if ($user === null) {
+            return false;
+        }
+
         return $this->users()
             ->where('id', $user->id)
             ->exists();
