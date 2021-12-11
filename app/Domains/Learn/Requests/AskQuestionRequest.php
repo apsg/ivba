@@ -1,6 +1,8 @@
 <?php
 namespace App\Domains\Learn\Requests;
 
+use App\Course;
+use App\Lesson;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AskQuestionRequest extends FormRequest
@@ -12,5 +14,17 @@ class AskQuestionRequest extends FormRequest
             'course'  => 'sometimes|integer',
             'lesson'  => 'sometimes|integer',
         ];
+    }
+
+    /** @return Course|null */
+    public function course()
+    {
+        return Course::find($this->input('course'));
+    }
+
+    /** @return Lesson|null */
+    public function lesson()
+    {
+        return Lesson::find($this->input('lesson'));
     }
 }

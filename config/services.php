@@ -47,4 +47,8 @@ return [
     'mailerlite' => [
         'key' => env('MAILERLITE_KEY'),
     ],
+
+    'freshdesk' => [
+        'email'  => env('FRESHDESK_SUPPORT_MAIL', 'support@tmg.freshdesk.com'),
+    ],
 ];
