@@ -189,6 +189,35 @@ body.learn .lesson-learn-mode.nav-tabs .nav-item .nav-link:hover {
   border-bottom: 3px solid #00ACAA;
 }
 
+body.learn .question-button {
+  cursor: pointer;
+  position: fixed;
+  z-index: 1000;
+  right: 20px;
+  bottom: 50px;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  padding: 5px;
+  border-width: 0;
+  background-color: #ffffff;
+  stroke: #d9d9d9;
+  fill: #d9d9d9;
+  color: #d9d9d9;
+}
+
+body.learn .question-button:hover {
+  background-color: #00A9A7;
+  stroke: #ffffff;
+  fill: #ffffff;
+  color: #ffffff;
+}
+
+body.learn .question-button:focus {
+  border-width: 0;
+  outline: 0;
+}
+
 html {
   background-color: #3E3E3E;
   scroll-behavior: smooth;
@@ -344,6 +373,19 @@ footer .footer-menu {
   fill: #FFFFFF;
 }
 
+.btn-red-outline {
+  font-weight: 700;
+  border-width: 2px;
+  background-color: white;
+  border-color: #E7323B;
+  color: #E7323B;
+}
+
+.btn-red-outline:hover {
+  background-color: #E7323B;
+  color: white;
+}
+
 .btn-red:hover {
   background-color: #ce1821;
   color: #FFFFFF;
@@ -417,6 +459,10 @@ footer .footer-menu {
 
 .font-size-12 {
   font-size: 12px;
+}
+
+.font-size-16 {
+  font-size: 16px;
 }
 
 ul.square-ul {

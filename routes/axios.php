@@ -1,5 +1,6 @@
 <?php
 
+use App\Domains\Learn\Controllers\QuestionsController;
 use App\Domains\Payments\Controllers\QuickFullAccessOrderController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\LessonsController;
@@ -15,4 +16,6 @@ Route::group(['prefix' => 'a'], function () {
 
     Route::post('/order/check_coupon', OrderController::class . '@checkCoupon');
     Route::post('/order/quick_full_access', QuickFullAccessOrderController::class . '@order');
+
+    Route::post('/question', QuestionsController::class . '@ask');
 });

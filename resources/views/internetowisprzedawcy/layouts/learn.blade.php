@@ -2,3 +2,5 @@
 
 @push('bodyclass', 'learn')
 
+@push('modal')
+@endpush

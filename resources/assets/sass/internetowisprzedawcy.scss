@@ -193,6 +193,19 @@ footer {
         }
     }
 
+    &-outline {
+        font-weight: 700;
+        border-width: 2px;
+        background-color: white;
+        border-color: $color-main-red;
+        color: $color-main-red;
+
+        &:hover {
+            background-color: $color-main-red;
+            color: white;
+        }
+    }
+
     &:hover {
         background-color: darken($color-main-red, 10%);
         color: $color-white;
@@ -236,6 +249,7 @@ footer {
 
 .alert-container {
     margin-top: 50px;
+
     &__error {
         max-width: 100%;
         padding: 0;
@@ -268,6 +282,10 @@ footer {
 
 .font-size-12 {
     font-size: 12px;
+}
+
+.font-size-16 {
+    font-size: 16px;
 }
 
 ul.square-ul {
@@ -450,6 +468,7 @@ $description-height: 265px;
 @media (max-width: 1200px) {
     .offer-promo-card {
         height: auto;
+
         &__with-margin {
             margin-top: 0;
         }
@@ -670,6 +689,7 @@ $outer-circle-color: #687b7d80;
 
     .active-card {
         border-color: #00B2B0;
+
         span {
             font-weight: 600;
         }
