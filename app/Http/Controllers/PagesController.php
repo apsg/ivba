@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Domains\Admin\Models\Setting;
 use App\FullAccessOption;
 use App\Lesson;
 use App\Order;
@@ -61,6 +62,10 @@ class PagesController extends Controller
 
     public function buyAccess()
     {
+        if (Setting::get('is.disable_buy')) {
+            return view('buy_disabled');
+        }
+
         return view('buy_access');
     }
 

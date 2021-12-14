@@ -13,10 +13,20 @@ class SettingsHelper
         'ivba.getresponse.list_all'        => 'Lista Getresponse-wszyscy',
         'ivba.getresponse.list_active'     => 'Lista Getresponse-aktywni',
         'is.rules_link'                    => 'Link do regulaminu (IS)',
+        'is.disable_buy'                   => 'Wyłącz możliwość kupna dostępu',
+    ];
+
+    const BOOL = [
+        'is.disable_buy',
     ];
 
     public static function get(string $key)
     {
         return Setting::get($key);
+    }
+
+    public static function isBool(string $key) : bool
+    {
+        return in_array($key, self::BOOL);
     }
 }

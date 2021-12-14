@@ -13,7 +13,10 @@ class SettingsController extends Controller
         $list = SettingsHelper::LIST;
         $settings = Setting::getAll(array_keys($list));
 
-        return view('admin.settings.index')->with(compact('list', 'settings'));
+        return view('admin.settings.index')
+            ->with(compact('list', 'settings') + [
+                    'bool' => SettingsHelper::BOOL,
+                ]);
     }
 
     public function set(SetSettingRequest $request)
