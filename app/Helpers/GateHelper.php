@@ -23,4 +23,6 @@ abstract class GateHelper
     const REQUEST_INVOICE = 'request-invoice';
     const CAN_BUY_SUBSCRIPTION = 'can-buy-subscription';
     const ACTIVE = 'active';
+
+    const BUY_ENABLED = 'buy-enabled';
 }

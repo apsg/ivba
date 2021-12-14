@@ -11,22 +11,27 @@
                         <img src="{{ asset('images/internetowisprzedawcy/brand-mark-1.png') }}">
                         <iframe src="https://player.vimeo.com/video/29950141?h=c6db007fe5&title=0&byline=0&portrait=0"
                                 frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
-                                
-                                >
+
+                        >
                         </iframe>
                     </div>
                 </div>
                 <div class="col-md-6 pt-2">
                     <div class="d-flex">
                         <div>
-                            <ul class="square-ul"><li></li></ul>
+                            <ul class="square-ul">
+                                <li></li>
+                            </ul>
                         </div>
                         <div class="container-description">
                             <div>
-                                <h2 class="flex-grow-1 header-is mb-0">Rozwiń sprzedaż <br>Do <span class="text-blue">perfekcji</span></h2>
+                                <h2 class="flex-grow-1 header-is mb-0">Rozwiń sprzedaż <br>Do <span class="text-blue">perfekcji</span>
+                                </h2>
                             </div>
                             <p class="mt-4">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
                             </p>
                         </div>
                     </div>
@@ -40,14 +45,18 @@
                 <div class="col-md-6">
                     <div class="d-flex">
                         <div>
-                            <ul class="square-ul"><li></li></ul>
+                            <ul class="square-ul">
+                                <li></li>
+                            </ul>
                         </div>
                         <div class="container-description">
                             <div>
                                 <h2 class="flex-grow-1 header-is mb-0">O tym dostępie <br>tylko raz na kwartał</h2>
                             </div>
                             <p class="mt-4">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
                             </p>
                         </div>
                     </div>
@@ -96,10 +105,15 @@
                 </div>
                 <div class="col-md-12 mt-5 center-justify-flex-content">
                     <div class="text-center mt-5">
+
                         <a href="{{ url('/buy_access') }}">
                             <button type="button" class="btn subscription-button">
                                 <span>
-                                    Wykup dostęp
+                                    @if(!setting('is.disable_buy'))
+                                        Wykup dostęp
+                                    @else
+                                        Zapisz się
+                                    @endif
                                 </span>
                             </button>
                         </a>
@@ -179,14 +193,18 @@
                 <div class="col-md-6 center-justify-flex-content">
                     <div class="d-flex">
                         <div>
-                            <ul class="square-ul"><li></li></ul>
+                            <ul class="square-ul">
+                                <li></li>
+                            </ul>
                         </div>
                         <div class="container-description">
                             <div>
                                 <h2 class="flex-grow-1 header-is mb-0">Motywacyjna <br>gadka</h2>
                             </div>
                             <p class="mt-4">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
                             </p>
                         </div>
                     </div>
@@ -219,14 +237,18 @@
                 <div class="col-md-6 center-justify-flex-content">
                     <div class="d-flex">
                         <div>
-                            <ul class="square-ul"><li></li></ul>
+                            <ul class="square-ul">
+                                <li></li>
+                            </ul>
                         </div>
                         <div class="container-description">
                             <div>
-                                <h2 class="flex-grow-1 header-is mb-0">Specjalistyczna wiedza <br><span class="text-blue">praktyczne</span> przykłady</h2>
+                                <h2 class="flex-grow-1 header-is mb-0">Specjalistyczna wiedza <br><span
+                                            class="text-blue">praktyczne</span> przykłady</h2>
                             </div>
                             <p class="mt-4">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
                             </p>
                             <a href="{{ url('/courses') }}" class="btn courses-list-button mt-4">
                                 <span>
@@ -245,14 +267,18 @@
                 <div class="col-md-6 center-justify-flex-content">
                     <div class="d-flex">
                         <div>
-                            <ul class="square-ul"><li></li></ul>
+                            <ul class="square-ul">
+                                <li></li>
+                            </ul>
                         </div>
                         <div class="container-description">
                             <div>
-                                <h2 class="flex-grow-1 header-is mb-0">Różne spojrzenia na <br>sprzedaż w internecie</h2>
+                                <h2 class="flex-grow-1 header-is mb-0">Różne spojrzenia na <br>sprzedaż w internecie
+                                </h2>
                             </div>
                             <p class="mt-4">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.
                             </p>
                         </div>
                     </div>
@@ -273,28 +299,36 @@
                             Typowa platforma <br>do nauki
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                     </div>
                 </div>
@@ -304,55 +338,71 @@
                             <img src="{{ asset('images/internetowisprzedawcy/logo_color.png') }}">
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <div class="row mt-5">
                 <div class="col-12 d-flex justify-content-center">
                     <div class="access-promo-card center-justify-flex-content">
                         <div class="access-promo-card__container text-center p-4">
-                            <img class="access-promo-card__container--brand-logo-img" src="{{ asset('images/internetowisprzedawcy/brand-mark-2.png') }}">
+                            <img class="access-promo-card__container--brand-logo-img"
+                                 src="{{ asset('images/internetowisprzedawcy/brand-mark-2.png') }}">
                             <div class="circle-container__outer">
                                 <div class="circle-container__inner">
                                     <img class="m-3" src="{{ asset('images/internetowisprzedawcy/logo_znak.png') }}">
                                 </div>
                             </div>
                             <h1 class="m-3">Dostęp do platformy<br> właśnie trwa!</h3>
-                            <p class="mb-5 mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut ero labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                            <a href="{{ url('/buy_access') }}">
-                                <button type="button" class="mb-5 btn subscription-button subscription-button-alt">
+                                <p class="mb-5 mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                    eiusmod tempor incididunt ut ero labore et dolore magna aliqua. Ut enim ad minim
+                                    veniam, quis nostrud exercitation ullamco.</p>
+                                <a href="{{ url('/buy_access') }}">
+                                    <button type="button" class="mb-5 btn subscription-button subscription-button-alt">
                                     <span>
-                                        Wykup dostęp
+                                        @if(!setting('is.disable_buy'))
+                                            Wykup dostęp
+                                        @else
+                                            Zapisz się
+                                        @endif
                                     </span>
-                                </button>
-                            </a>
+                                    </button>
+                                </a>
                         </div>
                     </div>
                 </div>

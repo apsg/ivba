@@ -33,10 +33,17 @@
     <!-- Authentication Links -->
     @if (Auth::guest())
         <li class="nav-item ml-auto">
-            <a class="nav-link nav-link-header nav-link-header__register" href="{{ route('buy_access') }}">Wykup dostęp</a>
+            <a class="nav-link nav-link-header nav-link-header__register" href="{{ route('buy_access') }}">
+                @if(!setting('is.disable_buy'))
+                    Wykup dostęp
+                @else
+                    Zapisz się
+                @endif
+            </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link-header" href="{{ route('login') }}">Zaloguj się <i class="fa fa-sign-in"></i></a>
+            <a class="nav-link nav-link-header" href="{{ route('login') }}">Zaloguj się <i
+                        class="fa fa-sign-in"></i></a>
         </li>
     @else
         <li class="nav-item dropdown ml-auto">

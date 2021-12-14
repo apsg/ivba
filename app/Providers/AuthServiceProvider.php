@@ -2,6 +2,7 @@
 namespace App\Providers;
 
 use App\Course;
+use App\Domains\Admin\Helpers\SettingsHelper;
 use App\Domains\Logbooks\Models\LogbookComment;
 use App\Domains\Logbooks\Policies\LogbookCommentPolicy;
 use App\Helpers\GateHelper;
@@ -104,6 +105,10 @@ class AuthServiceProvider extends ServiceProvider
             }
 
             return true;
+        });
+
+        Gate::define(GateHelper::BUY_ENABLED, function () {
+            return !SettingsHelper::get('is.disable_buy');
         });
     }
 }
