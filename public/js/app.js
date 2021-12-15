@@ -9566,7 +9566,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.pointer[data-v-42416a80] {\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.pointer[data-v-42416a80] {\r\n    cursor: pointer;\n}\r\n", ""]);
 
 // exports
 
@@ -54486,7 +54486,7 @@ var render = function() {
           return _c("slide", { key: slide.id }, [
             _c("div", [
               _c("img", {
-                staticStyle: { "max-width": "100%" },
+                staticStyle: { "max-width": "90%" },
                 attrs: { src: "/images/internetowisprzedawcy/" + slide.img }
               })
             ]),
@@ -74569,11 +74569,11 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/gacek/html/ivba/resources/assets/js/app.js */"./resources/assets/js/app.js");
-__webpack_require__(/*! /home/gacek/html/ivba/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
-__webpack_require__(/*! /home/gacek/html/ivba/resources/assets/sass/inauka.scss */"./resources/assets/sass/inauka.scss");
-__webpack_require__(/*! /home/gacek/html/ivba/resources/assets/sass/projekt30.scss */"./resources/assets/sass/projekt30.scss");
-module.exports = __webpack_require__(/*! /home/gacek/html/ivba/resources/assets/sass/internetowisprzedawcy.scss */"./resources/assets/sass/internetowisprzedawcy.scss");
+__webpack_require__(/*! F:\xaamp_php74\htdocs\ivba\resources\assets\js\app.js */"./resources/assets/js/app.js");
+__webpack_require__(/*! F:\xaamp_php74\htdocs\ivba\resources\assets\sass\app.scss */"./resources/assets/sass/app.scss");
+__webpack_require__(/*! F:\xaamp_php74\htdocs\ivba\resources\assets\sass\inauka.scss */"./resources/assets/sass/inauka.scss");
+__webpack_require__(/*! F:\xaamp_php74\htdocs\ivba\resources\assets\sass\projekt30.scss */"./resources/assets/sass/projekt30.scss");
+module.exports = __webpack_require__(/*! F:\xaamp_php74\htdocs\ivba\resources\assets\sass\internetowisprzedawcy.scss */"./resources/assets/sass/internetowisprzedawcy.scss");
 
 
 /***/ })
