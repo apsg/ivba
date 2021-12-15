@@ -42,7 +42,7 @@
 
     @yield('content')
 
-    <footer class="pt-5 pb-5 mt-3 text-white">
+    <footer class="pt-5 pb-5 pl-5 pr-5 mt-3 text-white">
         <div class="container py-3 ">
             <div class="row align-items-center">
                 <div class="col-md-4">
