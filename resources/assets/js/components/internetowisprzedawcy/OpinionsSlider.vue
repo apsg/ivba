@@ -10,7 +10,7 @@
         >
             <slide v-for="slide in slides" :key="slide.id">
                 <div>
-                    <img style="max-width: 100%" v-bind:src="'/images/internetowisprzedawcy/' + slide.img">
+                    <img style="max-width: 90%" v-bind:src="'/images/internetowisprzedawcy/' + slide.img">
                 </div>
                 <div class="p-5">
                     <div class="p-2">

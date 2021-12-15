@@ -215,7 +215,7 @@
             </div>
         </section>
     </div>
-    <div class="section-container section-container__bg-color-grey" id="opinie">
+    <div class="section-container section-container__bg-color-grey section-container__opinions-container" id="opinie">
         <section class="container py-5 promo-cards">
             <div class="row">
                 <div class="col-md-12 center-justify-flex-content">
@@ -293,7 +293,7 @@
         <section class="container">
             <div class="row mt-5">
                 <div class="col-md-12 col-lg-6">
-                    <img class="vs-logo" src="{{ asset('images/internetowisprzedawcy/vs-logo.png') }}">
+                    <!-- <img class="vs-logo" src="{{ asset('images/internetowisprzedawcy/vs-logo.png') }}"> -->
                     <div class="list-card list-card__negative">
                         <div class="list-card__header">
                             Typowa platforma <br>do nauki
@@ -336,10 +336,6 @@
                     <div class="list-card list-card__positive">
                         <div class="list-card__header">
                             <img src="{{ asset('images/internetowisprzedawcy/logo_color.png') }}">
-                        </div>
-                        <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
                         </div>
                         <div class="list-card-item list-card-item__positive">
                             <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
