@@ -23,13 +23,13 @@ body.logged .icon {
 
 body.logged .icon:hover,
 body.logged .icon.active {
-  fill: #E7323B;
+  fill: #FB0030;
   -webkit-transform: rotate(10deg);
           transform: rotate(10deg);
 }
 
 body.logged .active .icon {
-  fill: #E7323B;
+  fill: #FB0030;
 }
 
 body.logged .col-sidebar {
@@ -47,12 +47,12 @@ body.logged .col-sidebar .nav a {
 
 body.logged .col-sidebar .nav a.active,
 body.logged .col-sidebar .nav a:hover {
-  color: #E7323B;
+  color: #FB0030;
 }
 
 body.logged .col-sidebar .nav a.active *,
 body.logged .col-sidebar .nav a:hover * {
-  fill: #E7323B;
+  fill: #FB0030;
 }
 
 body.logged .col-main {
@@ -143,11 +143,11 @@ body.learn .col-sidebar .learn-sidebar .nav a:hover {
 }
 
 body.learn .col-sidebar .learn-sidebar .nav a.active {
-  color: #E7323B;
+  color: #FB0030;
 }
 
 body.learn .col-sidebar .learn-sidebar .nav a.active:hover {
-  color: #ce1821;
+  color: #c80026;
 }
 
 body.learn .lesson-content {
@@ -267,17 +267,17 @@ footer p {
 }
 
 .header {
-  background-color: #E7323B;
+  background-color: #FB0030;
   background-image: none;
 }
 
 .color-red,
 .text-red {
-  color: #E7323B !important;
+  color: #FB0030 !important;
 }
 
 .bg-red {
-  background-color: #E7323B;
+  background-color: #FB0030;
 }
 
 .color-blue,
@@ -356,7 +356,7 @@ footer .footer-menu {
 }
 
 .btn-red {
-  background-color: #E7323B;
+  background-color: #FB0030;
   color: #FFFFFF;
   fill: #FFFFFF;
 }
@@ -368,7 +368,7 @@ footer .footer-menu {
 }
 
 .btn-red-inversed:hover {
-  background-color: #E7323B;
+  background-color: #FB0030;
   color: #FFFFFF;
   fill: #FFFFFF;
 }
@@ -377,17 +377,17 @@ footer .footer-menu {
   font-weight: 700;
   border-width: 2px;
   background-color: white;
-  border-color: #E7323B;
-  color: #E7323B;
+  border-color: #FB0030;
+  color: #FB0030;
 }
 
 .btn-red-outline:hover {
-  background-color: #E7323B;
+  background-color: #FB0030;
   color: white;
 }
 
 .btn-red:hover {
-  background-color: #ce1821;
+  background-color: #c80026;
   color: #FFFFFF;
   fill: #FFFFFF;
 }
@@ -530,8 +530,8 @@ ul.square-ul li:before {
 .subscription-button:active,
 .subscription-button:visited .subscription-button:focus {
   color: #FFFFFF;
-  background-color: #E7323B;
-  border-color: #E7323B;
+  background-color: #FB0030;
+  border-color: #FB0030;
   font-family: "Krona One";
   font-size: 25px;
 }
