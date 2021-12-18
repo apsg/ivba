@@ -2,14 +2,11 @@
 namespace App\Http\Controllers;
 
 use App\Course;
-use App\Domains\Admin\Models\Setting;
 use App\FullAccessOption;
-use App\Helpers\GateHelper;
 use App\Lesson;
 use App\Order;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Cache;
 use TomLingham\Searchy\Facades\Searchy;
 
 class PagesController extends Controller

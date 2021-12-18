@@ -34,30 +34,30 @@
             return {
                 collapsedId: null,
                 cards: [
-                    {   
+                    {
                         id: 1,
-                        title: 'Czy mogę zapłacić za platformę przelewem tradycyjnym?',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                        title: 'Czy dostęp do platformy jest dożywotni?',
+                        description: 'Dostęp do platformy dodajemy na min. 4 lata od zakupu.',
                     },
-                    {   
+                    {
                         id: 2,
-                        title: 'Czy mogę zapłacić za platformę przelewem tradycyjnym?',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                        title: 'Czy otrzymam fakturę za dostęp do platformy? ',
+                        description: 'Jasne, wystarczy, że w kokpicie uzupełnisz dane do faktury.',
                     },
-                    {   
+                    {
                         id: 3,
-                        title: 'Czy mogę zapłacić za platformę przelewem tradycyjnym?',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                        title: 'W jaki sposób mogę zapłacić za dostęp do platformy?',
+                        description: 'TUTAJ dostępne możliwości zapłaty + co z przelewem tradycyjnym // TODO dodać link',
                     },
-                    {   
+                    {
                         id: 4,
-                        title: 'Czy mogę zapłacić za platformę przelewem tradycyjnym?',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                        title: 'Platforma nie spełniła moich oczekiwań, czy mogę dokonać zwrotu?',
+                        description: 'Tak, jeśli po zakupie stwierdzisz, że materiały nie spełniły Twoich oczekiwań wystarczy, że do nas napiszesz na maila: // TODO dodać maila',
                     },
-                    {   
+                    {
                         id: 5,
-                        title: 'Czy mogę zapłacić za platformę przelewem tradycyjnym?',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                        title: 'Nie jestem zdecydowany/a gdzie mogę otrzymać więcej informacji?',
+                        description: 'Możesz napisać do nas na adres: tutaj mail lub zadzwonić pod numer: 11111111 // TODO i zapytać o dodatkowe informacje o platformie Internetowi Sprzedawcy',
                     },
                 ]
             }
