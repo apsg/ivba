@@ -12,20 +12,37 @@
         >
             <slide>
                 <div class="row h-100">
-                    <div class="col-12 d-flex align-items-center slider-image" style="background-image: url(/images/internetowisprzedawcy/nowa-ilustracja.png)">
+                    <div class="col-12 d-flex align-items-center slider-image"
+                         style="background-image: url(/images/internetowisprzedawcy/nowa-ilustracja.png)">
                         <div class="slide-text text-left">
-                            <h1>Rozwiń sprzedaż<br> Do perfekcji</h1>
-                            <span>Wszystkie teksty na stronach są tekstami przykładowymi</span>
+                            <h1>Dedykowane<br> materiały<br> biznesowe</h1>
+                            <span>Szeroki zakres wiedzy niezbędnej do sprzedaży w Internecie.</span>
                         </div>
                     </div>
                 </div>
             </slide>
             <slide>
                 <div class="row h-100">
-                    <div class="col-12 d-flex align-items-center slider-image" style="background-image: url(/images/internetowisprzedawcy/ilustracja3d_druga.png)">
+                    <div class="col-12 d-flex align-items-center slider-image"
+                         style="background-image: url(/images/internetowisprzedawcy/ilustracja3d_druga.png)">
                         <div class="slide-text text-left">
-                            <h1>Rozwiń sprzedaż 2<br> Do perfekcji</h1>
-                            <span>Wszystkie teksty na stronach są tekstami przykładowymi</span>
+                            <h1>Społeczność<br> praktyków<br> sprzedaży</h1>
+                            <span>
+                                Dołącz do nas, aby rozwijać swoją firmę, ucząc się i pracując z najlepszymi.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </slide>
+            <slide>
+                <div class="row h-100">
+                    <div class="col-12 d-flex align-items-center slider-image"
+                         style="background-image: url(/images/internetowisprzedawcy/nowa-ilustracja.png)">
+                        <div class="slide-text text-left">
+                            <h1>Naucz się <br>prowadzić<br> produktywny<br> biznes</h1>
+                            <span>
+                                Konsultuj na bieżąco swoje rozwiązania i otwieraj się na klienta.
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -35,41 +52,42 @@
 </template>
 
 <script>
-    import {Carousel, Slide} from 'vue-carousel';
+import {Carousel, Slide} from 'vue-carousel';
 
-    export default {
-        name: "MainSlider",
-        components: {Carousel, Slide},
+export default {
+    name: "MainSlider",
+    components: {Carousel, Slide},
 
-    }
+}
 </script>
 
 <style lang="scss" scoped>
+.slider-image {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-size: 85%;
+}
+
+@media (max-width: 1200px) {
     .slider-image {
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        background-size: 85%;
+        background-size: 110%;
+    }
+}
+
+.slide-text {
+    h1 {
+        font-size: 54px;
+        line-height: 1.2em;
+        color: #F5FFFF;
     }
 
-    @media (max-width: 1200px) {
-        .slider-image {
-            background-size: 110%;
-        }
+    span {
+        font-size: 22px;
+        color: #F5FFFF;
+        font-weight: 100;
+        font-family: 'Poppins';
     }
 
-    .slide-text{
-        h1 {
-            font-size: 54px;
-            line-height: 1.2em;
-            color: #F5FFFF;
-        }
-        span {
-            font-size: 22px;
-            color: #F5FFFF;
-            font-weight: 100;
-            font-family: 'Poppins';
-        }
-
-    } 
+}
 </style>
