@@ -25,13 +25,15 @@
                         </div>
                         <div class="container-description">
                             <div>
-                                <h2 class="flex-grow-1 header-is mb-0">Rozwiń sprzedaż <br>Do <span class="text-blue">perfekcji</span>
+                                <h2 class="flex-grow-1 header-is mb-0">
+                                    Mechanizmy, które <br>
+                                    zwiększą Twoją <span class="text-blue">sprzedaż</span>
                                 </h2>
                             </div>
                             <p class="mt-4">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
+                                Internetowi Sprzedawcy to platforma pozwalająca na zdobycie nowych umiejętności
+                                wymaganych przez rynek E-Commerce. Oprócz wiedzy przygotowanej przez ekspertów
+                                otrzymujesz konsultacje, wsparcie oraz dostęp do nowości rynkowych.
                             </p>
                         </div>
                     </div>
@@ -51,12 +53,12 @@
                         </div>
                         <div class="container-description">
                             <div>
-                                <h2 class="flex-grow-1 header-is mb-0">O tym dostępie <br>tylko raz na kwartał</h2>
+                                <h2 class="flex-grow-1 header-is mb-0">Ekskluzywny <br>dostęp</h2>
                             </div>
                             <p class="mt-4">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
+                                Dostęp do stale aktualizowanej platformy jest ściśle limitowany, ponieważ chcemy
+                                zapewnić jakość działania jej materiałów oraz troskę o społeczność. Tylko 4 razy w roku
+                                otwieramy możliwość przystąpienia do programu.
                             </p>
                         </div>
                     </div>
@@ -80,7 +82,7 @@
                     <div class="subscription-promo-card center-justify-flex-content">
                         <div class="text-center p-4">
                             <img class="m-3" src="{{ asset('images/internetowisprzedawcy/subscription-promo-1.png') }}">
-                            <h3 class="m-3">Profesjonalne<br>wideokursy</h3>
+                            <h3 class="m-3">Profesjonalne<br>materiały</h3>
                             <p class="m-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
                         </div>
                     </div>
@@ -90,7 +92,9 @@
                         <div class="text-center p-2">
                             <img class="m-3" src="{{ asset('images/internetowisprzedawcy/subscription-promo-2.png') }}">
                             <h3 class="m-3">Certyfikaty<br>ukończenia</h3>
-                            <p class="m-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+                            <p class="m-3">
+                                Wszystkie kursy posiadają egzaminy sprawdzające i certyfikaty ukończenia.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -99,7 +103,10 @@
                         <div class="text-center p-2">
                             <img class="m-3" src="{{ asset('images/internetowisprzedawcy/subscription-promo-3.png') }}">
                             <h3 class="m-3">Aktualne<br>nowości</h3>
-                            <p class="m-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+                            <p class="m-3">
+                                Główny element platformy to aktualizowany na bieżąco blog o najlepszych rozwiązaniach
+                                rynkowych.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -136,7 +143,7 @@
                     </div>
                     <div class="offer-promo-card__description">
                         <span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                            Otrzymasz dostęp do analizy wdrożonych rozwiązań biznesowych, zobaczysz konfigurację kampanii reklamowych, przychody i zyski ze sprzedaży oraz dowiesz się jak wszystko zostało zaplanowane w czasie.
                         </span>
                     </div>
                 </div>
@@ -148,7 +155,7 @@
                     </div>
                     <div class="offer-promo-card__description">
                         <span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                            Zaprosimy Cię na platformę Discord gdzie wraz z trenerami i innymi członkami społeczności będziesz mógł/mogła wymieniać się doświadczeniem, zadawać pytania i konsultować się na żywo.
                         </span>
                     </div>
                 </div>
@@ -160,7 +167,7 @@
                     </div>
                     <div class="offer-promo-card__description">
                         <span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                            Każdy kurs, oprócz lekcji wideo i ćwiczeń posiadać będzie checklistę która pomoże Ci uporządkować wszystkie przekazane materiały oraz zorganizować plan pracy
                         </span>
                     </div>
                 </div>
@@ -172,7 +179,7 @@
                     </div>
                     <div class="offer-promo-card__description">
                         <span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                            Przetestujesz swoją wiedzę! Po przerobieniu materiałów będziesz miał możliwość zdawania egzaminu, którego pozytywny wynik uprawnia do uzyskania certyfikatu.
                         </span>
                     </div>
                 </div>
@@ -184,7 +191,7 @@
                     </div>
                     <div class="offer-promo-card__description">
                         <span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                            Nie wiesz o co chodzi w lekcji lub zastanawiasz się nad swoim rozwiązaniem? Zadaj pytanie! Do każdej lekcji dodaliśmy możliwość kontaktu.
                         </span>
                     </div>
                 </div>
@@ -199,12 +206,21 @@
                         </div>
                         <div class="container-description">
                             <div>
-                                <h2 class="flex-grow-1 header-is mb-0">Motywacyjna <br>gadka</h2>
+                                <h2 class="flex-grow-1 header-is mb-0">
+                                    Brakowało mi takiego rozwiązania w Internecie
+                                </h2>
                             </div>
                             <p class="mt-4">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.
+                                Internetowi Sprzedawcy to moja odpowiedź na potrzeby właścicieli sklepów internetowych
+                                oraz stacjonarnych którzy chcą wkroczyć na rynek e-commerce. <br/>
+                                Celem platformy jest nie tylko nauka technik sprzedaży on-line, ale także wymiana
+                                doświadczeniami pomiędzy członkami oraz możliwość kontaktu z ekspertami. <br/>
+                                To miejsce które zastąpi Ci żmudne badanie i analizę rynku ponieważ będziesz informowany
+                                na bieżąco o skutecznych rozwiązaniach oraz narzędziach które zrewolucjonizują Twój
+                                biznes.
+                            </p>
+                            <p>
+                                Mateusz Grabowski autor platformy InternetowiSprzedawcy.pl
                             </p>
                         </div>
                     </div>
@@ -243,12 +259,13 @@
                         </div>
                         <div class="container-description">
                             <div>
-                                <h2 class="flex-grow-1 header-is mb-0">Specjalistyczna wiedza <br><span
+                                <h2 class="flex-grow-1 header-is mb-0">Ekspercka wiedza <br><span
                                             class="text-blue">praktyczne</span> przykłady</h2>
                             </div>
                             <p class="mt-4">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+                                Każde szkolenie jest przygotowane pod wymagania rynkowe, oparte na istniejących
+                                biznesach rozwiązania które wyjaśnimy jak możesz wprowadzić w swoim sklepie. Dostępne
+                                materiały możesz zobaczyć klikając w przycisk poniżej.
                             </p>
                             <a href="{{ url('/courses') }}" class="btn courses-list-button mt-4">
                                 <span>
@@ -277,8 +294,8 @@
                                 </h2>
                             </div>
                             <p class="mt-4">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.
+                                Do tworzenia platformy zaprosiliśmy ekspertów wielu dziedzin rynku e-commerce, którzy na
+                                podstawie swojego doświadczenia przygotowali materiały szkoleniowe.
                             </p>
                         </div>
                     </div>
@@ -293,7 +310,7 @@
         <section class="container">
             <div class="row mt-5">
                 <div class="col-md-12 col-lg-6">
-                    <!-- <img class="vs-logo" src="{{ asset('images/internetowisprzedawcy/vs-logo.png') }}"> -->
+                <!-- <img class="vs-logo" src="{{ asset('images/internetowisprzedawcy/vs-logo.png') }}"> -->
                     <div class="list-card list-card__negative">
                         <div class="list-card__header">
                             Typowa platforma <br>do nauki
@@ -384,21 +401,33 @@
                                     <img class="m-3" src="{{ asset('images/internetowisprzedawcy/logo_znak.png') }}">
                                 </div>
                             </div>
-                            <h1 class="m-3">Dostęp do platformy<br> właśnie trwa!</h3>
-                                <p class="mb-5 mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                    eiusmod tempor incididunt ut ero labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco.</p>
+                            @if(!setting('is.disable_buy'))
+                                <h1 class="m-3">Dostęp do platformy<br> właśnie trwa!</h1>
+                                <p class="mb-5 mt-3">
+                                    Dołącz do społeczności Internetowych Sprzedawców, możliwość dostępu niebawem
+                                    wygaśnie.
+                                </p>
                                 <a href="{{ url('/buy_access') }}">
                                     <button type="button" class="mb-5 btn subscription-button subscription-button-alt">
                                     <span>
-                                        @if(!setting('is.disable_buy'))
-                                            Wykup dostęp
-                                        @else
-                                            Zapisz się
-                                        @endif
+                                        Wykup dostęp
                                     </span>
                                     </button>
                                 </a>
+                            @else
+                                <h1 class="m-3">Możliwość dołączenia<br> chwilowo niedostępna.</h1>
+                                <p class="mb-5 mt-3">
+                                    Zapisz się na listę oczekujących, aby otrzymać powiadomienie o kolejnym naborze do
+                                    platformy.
+                                </p>
+                                <a href="{{ url('/buy_access') }}">
+                                    <button type="button" class="mb-5 btn subscription-button subscription-button-alt">
+                                    <span>
+                                        Zapisz się
+                                    </span>
+                                    </button>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
