@@ -17,9 +17,7 @@
                         </h5>
                     </div>
                     <div v-bind:id="'collapse' + card.id" class="collapse" style="transition-duration: 100ms;" v-bind:aria-labelledby="'heading' + card.id" data-parent="#accordion">
-                        <div class="card-body">
-                            {{ card.description }}
-                        </div>
+                        <div class="card-body" v-html="card.description"></div>
                     </div>
                 </div>
             </div>
@@ -30,6 +28,7 @@
 <script>
     export default {
         name: "FaqAccordion",
+        props:   ["email", "phone"],
         data() {
             return {
                 collapsedId: null,
@@ -47,17 +46,17 @@
                     {
                         id: 3,
                         title: 'W jaki sposób mogę zapłacić za dostęp do platformy?',
-                        description: 'TUTAJ dostępne możliwości zapłaty + co z przelewem tradycyjnym // TODO dodać link',
+                        description: '<a href="buy_access">TUTAJ</a> dostępne możliwości zapłaty + co z przelewem tradycyjnym // TODO dodać link',
                     },
                     {
                         id: 4,
                         title: 'Platforma nie spełniła moich oczekiwań, czy mogę dokonać zwrotu?',
-                        description: 'Tak, jeśli po zakupie stwierdzisz, że materiały nie spełniły Twoich oczekiwań wystarczy, że do nas napiszesz na maila: // TODO dodać maila',
+                        description: `Tak, jeśli po zakupie stwierdzisz, że materiały nie spełniły Twoich oczekiwań wystarczy, że do nas napiszesz na maila: ${this.email} // TODO dodać maila`,
                     },
                     {
                         id: 5,
                         title: 'Nie jestem zdecydowany/a gdzie mogę otrzymać więcej informacji?',
-                        description: 'Możesz napisać do nas na adres: tutaj mail lub zadzwonić pod numer: 11111111 // TODO i zapytać o dodatkowe informacje o platformie Internetowi Sprzedawcy',
+                        description: `Możesz napisać do nas na adres: ${this.email} lub zadzwonić pod numer: ${this.phone} // TODO dodać nr tel i email i zapytać o dodatkowe informacje o platformie Internetowi Sprzedawcy`,
                     },
                 ]
             }

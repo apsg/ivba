@@ -436,7 +436,10 @@
     </div>
     <div class="section-container" id="faq">
         <section class="container faq-accordion__section py-5">
-            <faq-accordion></faq-accordion>
+            <faq-accordion
+                :email="'test@test.com'"
+                :phone="'123 456 789'">
+            </faq-accordion>
         </section>
     </div>
 
