@@ -265,6 +265,11 @@ footer {
     .VueCarousel-inner {
         height: 100% !important;
     }
+
+    .VueCarousel-pagination {
+        position: absolute;
+        bottom: 5%;
+    }
 }
 
 @media (max-width: 1500px) {

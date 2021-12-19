@@ -1,9 +1,7 @@
 <template>
-    <div class="container text-center d-flex pb-3 mt-3 mb-3 mx-auto">
+    <div class="container slider-container text-center d-flex mx-auto">
         <carousel
             :perPage="1"
-            :navigationNextLabel="`>`"
-            :navigationPrevLabel="`<`"
             paginationColor="#FFFFFF8B"
             paginationActiveColor="#FFF"
             ref="carousel"
@@ -64,18 +62,41 @@ export default {
 <style lang="scss" scoped>
 .slider-image {
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: right;
     background-size: contain;
-    background-size: 85%;
+    background-size: 95%;
 }
 
-@media (max-width: 1200px) {
+.slider-container {
+    margin-top: 5em;
+}
+
+@media (max-height: 950px) {
     .slider-image {
-        background-size: 110%;
+        background-size: 80%;
+    }
+}
+
+@media (max-height: 845px) {
+    .slider-image {
+        background-size: 70%;
+    }
+}
+
+@media (max-height: 780px) {
+    .slider-image {
+        background-size: 60%;
+    }
+}
+
+@media (max-height: 728px) {
+    .slider-image {
+        background-size: 50%;
     }
 }
 
 .slide-text {
+    padding-left: 5em;
     h1 {
         font-size: 54px;
         line-height: 1.2em;
@@ -89,5 +110,29 @@ export default {
         font-family: 'Poppins';
     }
 
+}
+
+@media (max-width: 767px) {
+    .slider-image {
+        background-image: url() !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .slider-container {
+        margin-top: 0;
+    }
+    .slide-text {
+        padding-left: 0;
+    }
+    .VueCarousel-slide {
+        width: 100% !important;
+        h1 {
+            font-size: 40px;
+        }
+        span {
+            font-size: 14px;
+        };
+    }
 }
 </style>
