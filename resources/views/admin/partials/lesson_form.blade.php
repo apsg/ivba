@@ -1,4 +1,4 @@
-<div class="row">			
+<div class="row">
 {{ csrf_field() }}
 	<div class="col-md-8">
 		<div class="box box-primary">
@@ -20,8 +20,6 @@
                   	<label>Treść </label>
                   	<textarea name="description" class="tinymce" rows="3" placeholder="wpisz ...">{!! old('description') ?? $lesson->description ?? "" !!}</textarea>
                 </div>
-
-
                 <div class="form-group">
                   	<label for="seo-titlePL">Tytuł SEO </label>
                   	<input name="seo_title" type="text" class="form-control" id="seo-titlePL" placeholder="wpisz..." value="{{ old('seo_title') ?? $lesson->seo_title ?? "" }}">
@@ -116,7 +114,7 @@
                 window.media_src_input = "#"+field_name;
                 $("#medialibrary").fadeIn(100);
                 loadImages();
-          },    
+          },
           plugins: [
                 "advlist autolink lists link image charmap print preview anchor",
                 "searchreplace visualblocks code fullscreen",

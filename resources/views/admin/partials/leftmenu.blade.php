@@ -226,6 +226,23 @@
             </li>
             {{-- k. newslettery --}}
 
+            {{-- Aktualności --}}
+            <li class="treeview @if(request()->is('admin/post*')) active @endif">
+                <a href="#">
+                    <i class="fa fa-file-text"></i> <span>Aktualności</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="@if(request()->is('admin/posts')) active @endif"><a href="{{ url('admin/posts') }}"><i
+                                    class="fa fa-files-o"></i> wszystkie</a></li>
+                    <li class="@if(request()->is('admin/posts/new')) active @endif"><a
+                                href="{{ url('admin/posts/new') }}"><i class="fa fa-plus"></i> Dodaj nową</a></li>
+                </ul>
+            </li>
+            {{-- k. lekcje --}}
+
             {{-- Menu --}}
             <li class="@if(request()->is('admin/menu')) active @endif"><a href="{{ url('admin/menu') }}"><i
                             class="fa fa-bars text-aqua"></i> <span>Menu</span></a></li>
