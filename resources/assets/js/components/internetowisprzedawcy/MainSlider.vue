@@ -119,6 +119,12 @@ export default {
     .slider-image {
         background-image: url() !important;
     }
+
+    .slide-text {
+         h1 {
+            margin-top: 0; 
+         }
+    }
 }
 
 @media (max-width: 767px) {
