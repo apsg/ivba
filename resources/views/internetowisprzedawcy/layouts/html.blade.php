@@ -10,7 +10,7 @@
 
     <title>@yield('title') {{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}"/>
+    <link rel="shortcut icon" href="{{ asset('images/internetowisprzedawcy/logo-favicon.png') }}"/>
 
     <!-- Styles -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
