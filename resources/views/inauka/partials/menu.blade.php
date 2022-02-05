@@ -43,7 +43,7 @@
                 </a>
             </div>
         </li>
-        
+
         @if(Gate::allows('admin'))
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('/admin/stats') }}"><i class="fa fa-cogs"></i>

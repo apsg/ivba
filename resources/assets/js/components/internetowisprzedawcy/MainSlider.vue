@@ -98,6 +98,9 @@ export default {
 .slide-text {
     padding-left: 5em;
     h1 {
+        // margin poniżej jest niestety dlatego że grafiki na sliderze maja u dołu cień i trzeba sztucznie podnieść tekst żeby był na środku
+        // nie mają jak przerobić tej grafiki i musi tak zostać
+        margin-top: -120px;
         font-size: 54px;
         line-height: 1.2em;
         color: #F5FFFF;
@@ -115,6 +118,12 @@ export default {
 @media (max-width: 767px) {
     .slider-image {
         background-image: url() !important;
+    }
+
+    .slide-text {
+         h1 {
+            margin-top: 0; 
+         }
     }
 }
 

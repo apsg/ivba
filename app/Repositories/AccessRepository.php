@@ -79,11 +79,11 @@ class AccessRepository
 
     protected function assignToUser(User $user, AccessableContract $item)
     {
-        if ($item instanceof Course && !$user->courses()->where('id', $item->id)->exists()) {
+        if ($item instanceof Course && !$user->courses()->where('courses.id', $item->id)->exists()) {
             $user->courses()->attach($item->id);
         }
 
-        if ($item instanceof Lesson && !$user->lessons()->where('id', $item->id)->exists()) {
+        if ($item instanceof Lesson && !$user->lessons()->where('lessons.id', $item->id)->exists()) {
             $user->lessons()->attach($item->id);
         }
     }
