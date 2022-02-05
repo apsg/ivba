@@ -172,20 +172,23 @@
                         Inne akcje
                     </div>
                     <div class="card-body">
-                        <a href="{{ route('admin.users.send_password', compact('user')) }}" class="btn btn-info">
+                        <a href="{{ route('admin.users.send_password', compact('user')) }}" class="mt-2 btn btn-info">
                             <i class="fa fa-envelope-o"></i> Wyślij losowe hasło
                         </a><br/>
                         @if ($user->subscription !== null && $user->subscription->is_active)
-                            <a href="{{ $user->subscription->cancelLink() }}" class="btn btn-secondary confirm">
+                            <a href="{{ $user->subscription->cancelLink() }}" class="mt-2 btn btn-secondary confirm">
                                 <i class="fa fa-times"></i> Anuluj subskrypcję
                             </a><br/>
                         @endif
                         @if($user->hasFullAccess())
                             <a href="{{ route('admin.users.cancel_full_access', compact('user')) }}"
-                               class="btn btn-danger confirm">
+                               class="mt-2 btn btn-danger confirm">
                                 <i class="fa fa-times"></i> Anuluj natychmiast pełen dostęp
                             </a>
                         @endif
+                        <a href="{{ route('admin.users.reset_quizzes', compact('user')) }}" class="mt-2 btn btn-secondary">
+                            Zresetuj czas oczekiwania na powtórkę testów
+                        </a>
                     </div>
                 </div>
             </div>

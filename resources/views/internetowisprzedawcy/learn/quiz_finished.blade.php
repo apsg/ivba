@@ -30,7 +30,7 @@
                 <a class="btn btn-ivba" href="{{ $quiz->resetLink() }}">Podejdź ponownie do testu</a>
             @else
                 <p>Możesz kolejny raz podejść do testu
-                    dnia: {{ \Carbon\Carbon::parse( $quiz->pivot->finished_date)->addDays(14) }}
+                    dnia: {{ \Carbon\Carbon::parse( $quiz->pivot->finished_date)->addDays(\App\Quiz::RETAKE_QUIZ_IN_DAYS) }}
                 </p>
             @endif
 

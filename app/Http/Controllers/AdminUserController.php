@@ -9,9 +9,9 @@ use App\Services\PartnerProgramService;
 use App\Services\RankingService;
 use App\User;
 use Carbon\Carbon;
-use DataTables;
-use Gate;
-use Hash;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Laracsv\Export;
@@ -51,17 +51,6 @@ class AdminUserController extends Controller
         return back();
     }
 
-    public function sendPassword(User $user)
-    {
-        $password = str_random(8);
-
-        $user->password = Hash::make($password);
-        $user->save();
-
-        $user->notify(new RandomPasswordGenerated($password));
-
-        return back();
-    }
 
     public function getData(Request $request)
     {
@@ -117,55 +106,6 @@ class AdminUserController extends Controller
         $user->update($request->only(['name', 'email']));
 
         flash('Zaktualizowano pomyślnie');
-
-        return back();
-    }
-
-    public function grantFullAccess(User $user, AccessRequest $request)
-    {
-        if ($user->full_access_expires === null || $user->full_access_expires->isPast()) {
-            $user->update([
-                'full_access_expires' => Carbon::now()->addMonths($request->duration),
-            ]);
-
-            event(new FullAccessGrantedEvent($user));
-        } else {
-            $user->update([
-                'full_access_expires' => $user->full_access_expires->addMonths($request->duration),
-            ]);
-        }
-
-        flash('Przyznano lub przedłużono pełen dostęp');
-
-        return back();
-    }
-
-    public function grantSubscriptionAccess(User $user, AccessRequest $request, SubscriptionRepository $repository)
-    {
-        if ($user->hasFullAccess()) {
-            flash('Nie można uruchomić subskrupcji użytkownikowi, który posiada aktywny pełen dostęp.');
-
-            return back();
-        }
-
-        $subscription = $user->subscription ?? $repository->create($user);
-
-        $days = Carbon::parse($subscription->valid_until)->addMonths($request->duration)->diffInDays();
-
-        $repository->grantAccessDays($subscription, $days);
-
-        flash('Przyznano dostęp subskrypcyjny');
-
-        return back();
-    }
-
-    public function cancelFullAccess(User $user)
-    {
-        $user->update([
-            'full_access_expires' => null,
-        ]);
-
-        flash('Anulowano');
 
         return back();
     }

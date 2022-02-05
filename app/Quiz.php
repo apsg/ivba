@@ -38,6 +38,8 @@ use Illuminate\Support\Facades\Auth;
  */
 class Quiz extends Model
 {
+    const RETAKE_QUIZ_IN_DAYS = 14;
+
     protected $fillable = [
         'course_id',
         'name',

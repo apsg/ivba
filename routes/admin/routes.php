@@ -3,6 +3,7 @@
 use App\Domains\Admin\Controllers\AnalyticsController;
 use App\Domains\Admin\Controllers\LoginAsUserController;
 use App\Domains\Admin\Controllers\SettingsController;
+use App\Domains\Admin\Controllers\UserActionsController;
 use App\Domains\Logbooks\Controllers\Admin\LogbookCommentsController;
 use App\Domains\Logbooks\Controllers\Admin\LogbooksController;
 use App\Domains\Logbooks\Controllers\Admin\RecentLogbookEntriesController;
@@ -95,24 +96,31 @@ Route::post('/coupon', AdminCouponsController::class . '@store');
 Route::patch('/coupon/{coupon}', AdminCouponsController::class . '@update');
 Route::post('/coupons/groupon', AdminCouponsController::class . '@groupon');
 
-Route::get('/user', AdminUserController::class . '@index');
 Route::get('/user/partners', AdminUserController::class . '@partner')->name('users.partners');
 Route::get('/user/ranking/{type}', AdminUserController::class . '@ranking');
-
 Route::get('/users/data', AdminUserController::class . '@getData');
-Route::get('/user/{user}', AdminUserController::class . '@edit');
-Route::patch('/user/{user}', AdminUserController::class . '@patch');
-Route::get('/user/{user}/delete', AdminUserController::class . '@delete')->name('users.delete');
-Route::get('/user/{user}/send_password', AdminUserController::class . '@sendPassword')
-    ->name('users.send_password');
-Route::post('/user/{user}/grant_full_access', AdminUserController::class . '@grantFullAccess')
-    ->name('users.full_access');
-Route::post('/user/{user}/grant_subscription_access', AdminUserController::class . '@grantSubscriptionAccess')
-    ->name('users.subscription_access');
-Route::get('/user/{user}/cancel_full_access', AdminUserController::class . '@cancelFullAccess')
-    ->name('users.cancel_full_access');
 Route::get('/users/expired_report', AdminUserController::class . '@expiredReport')
     ->name('users.expired_report');
+
+Route::prefix('user')
+    ->name('users.')
+    ->group(function () {
+        Route::get('/', AdminUserController::class . '@index')->name('index');
+        Route::get('/{user}', AdminUserController::class . '@edit')->name('edit');
+        Route::patch('/{user}', AdminUserController::class . '@patch')->name('update');
+        Route::get('/{user}/delete', AdminUserController::class . '@delete')
+            ->name('delete');
+        Route::get('/{user}/send_password', UserActionsController::class . '@sendPassword')
+            ->name('send_password');
+        Route::post('/{user}/grant_full_access', UserActionsController::class . '@grantFullAccess')
+            ->name('full_access');
+        Route::post('/{user}/grant_subscription_access', UserActionsController::class . '@grantSubscriptionAccess')
+            ->name('subscription_access');
+        Route::get('/{user}/cancel_full_access', UserActionsController::class . '@cancelFullAccess')
+            ->name('cancel_full_access');
+        Route::get('/{user}/reset_quizzes', UserActionsController::class . '@resetQuizzes')
+            ->name('reset_quizzes');
+    });
 
 Route::get('/menu', AdminMenusController::class . '@index');
 Route::post('/menu', AdminMenusController::class . '@store');

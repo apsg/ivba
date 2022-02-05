@@ -78,7 +78,7 @@ class AuthServiceProvider extends ServiceProvider
                 return true;
             }
 
-            return Carbon::parse($quiz->pivot->finished_date)->diffInDays() > 14;
+            return Carbon::parse($quiz->pivot->finished_date)->diffInDays() > Quiz::RETAKE_QUIZ_IN_DAYS;
         });
 
         /*
