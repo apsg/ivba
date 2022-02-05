@@ -16,7 +16,7 @@
     @include('admin.partials.course_errors')
 
     <section class="content">
-        <form action="{{ url('admin/posts') }}" method="post">
+        <form action="{{ url('admin/posts/'.$post->id) }}" method="post">
             @include('admin.posts._form')
         </form>
     </section>

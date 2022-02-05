@@ -19,8 +19,9 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->text('excerpt');
+            $table->string('slug');
 
-            $table->unsignedInteger('image_id');
+            $table->unsignedInteger('image_id')->nullable();
             $table->foreign('image_id')
                 ->references('id')
                 ->on('images');
