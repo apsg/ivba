@@ -72,6 +72,8 @@ class UserActionsController extends Controller
 
         $user->notify(new RandomPasswordGenerated($password));
 
+        flash('Hasło wysłane');
+
         return back();
     }
 
