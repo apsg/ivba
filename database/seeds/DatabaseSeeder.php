@@ -14,9 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $user = factory(User::class)->create([
-            'isadmin' => true,
-        ]);
+        $user = User::where('isadmin', true)->first();
 
         factory(Course::class, 10)->create([
             'user_id' => $user->id,
