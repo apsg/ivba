@@ -10,6 +10,7 @@ use App\Console\Commands\LoginAsUserCommand;
 use App\Console\Commands\ProlongSubscriptionsCommand;
 use App\Console\Commands\RecalculateRatingCommand;
 use App\Console\Commands\SendPasswordResetCommand;
+use App\Console\Commands\TestServicesCommand;
 use App\Console\Commands\UploadFontsCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -42,6 +43,7 @@ class Kernel extends ConsoleKernel
         SendPasswordResetCommand::class,
         FixSpecialCoursesVisibilityCommand::class,
         LoginAsUserCommand::class,
+        TestServicesCommand::class,
     ];
 
     /**

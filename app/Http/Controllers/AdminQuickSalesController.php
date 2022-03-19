@@ -19,17 +19,16 @@ class AdminQuickSalesController extends Controller
         return view('admin.quicksales.index')->with(compact('quickSales'));
     }
 
-    public function create(GetResponseService $service, MailerliteService $mailerliteService)
+    public function create(MailerliteService $mailerliteService)
     {
         $courses = Course::orderBy('title')
             ->select(['id', 'title'])
             ->get();
 
-        $getresponseCampaigns = $service->getCampaigns();
         $mailerliteGroups = $mailerliteService->getGroups();
 
         return view('admin.quicksales.create')
-            ->with(compact('courses', 'getresponseCampaigns', 'mailerliteGroups'));
+            ->with(compact('courses', 'mailerliteGroups'));
     }
 
     public function store(QuickSaleRequest $request, QuickSaleRepository $repository)
@@ -37,7 +36,7 @@ class AdminQuickSalesController extends Controller
         /** @var QuickSale $quickSale */
         $quickSale = QuickSale::create($request->except(['_token', 'course_id']));
         $repository->syncCourses($quickSale, $request->input('course_id'));
-        $repository->syncCoupons($quickSale, $request->input('coupon_id'));
+        $repository->syncCoupons($quickSale, $request->input('coupon_id', []));
 
         flash('Zapisano');
 
@@ -64,17 +63,16 @@ class AdminQuickSalesController extends Controller
         return back();
     }
 
-    public function show(QuickSale $quickSale, GetResponseService $service, MailerliteService $mailerliteService)
+    public function show(QuickSale $quickSale, MailerliteService $mailerliteService)
     {
         $courses = Course::orderBy('title')
             ->select(['id', 'title'])
             ->get();
 
-        $getresponseCampaigns = $service->getCampaigns();
         $mailerliteGroups = $mailerliteService->getGroups();
 
         return view('admin.quicksales.show')
-            ->with(compact('quickSale', 'courses', 'getresponseCampaigns', 'mailerliteGroups'));
+            ->with(compact('quickSale', 'courses', 'mailerliteGroups'));
     }
 
     public function downloadReport(QuickSale $quickSale)

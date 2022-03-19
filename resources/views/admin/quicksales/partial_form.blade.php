@@ -98,22 +98,6 @@
                       class="tinymce">{{ old('message_body') ?? $quickSale->message_body ?? '' }}</textarea>
         </div>
     </div>
-    <div class="col-md-12 mb-3">
-        <h3 class="mt-2">Getresponse</h3>
-        <label>Wybierz listę lub kampanię GetResponse:</label>
-        <select name="campaign" class="form-control">
-            <option value="">-- Brak --</option>
-            @foreach($getresponseCampaigns as $campaign)
-                <option
-                        @if(isset($quickSale) && $quickSale->campaign == array_get($campaign, 'campaignId') )
-                        selected="selected"
-                        @endif
-                        value="{{ array_get($campaign, 'campaignId') }}">
-                    {{ array_get($campaign, 'name') }}
-                </option>
-            @endforeach
-        </select>
-    </div>
 
     <div class="col-md-12 mb-3">
         <h3 class="mt-2">MailerLite</h3>
