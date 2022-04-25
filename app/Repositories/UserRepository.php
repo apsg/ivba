@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 
 class UserRepository
@@ -20,7 +21,7 @@ class UserRepository
                 'name' => '',
             ],
             [
-                'password' => uniqid(),
+                'password' => Hash::make(uniqid()),
             ],
             array_filter($attributes)
         ));
@@ -43,5 +44,17 @@ class UserRepository
         ]);
 
         return true;
+    }
+
+    public function findByEmailOrCreate(string $email) : User
+    {
+        $user = $this->findByEmail($email);
+        if ($user !== null) {
+            return $user;
+        }
+
+        return $this->createAndSend([
+            'email' => $email,
+        ]);
     }
 }

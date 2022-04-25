@@ -1,6 +1,8 @@
 <?php
 
 use App\Domains\Api\Controllers\CoursesController;
+use App\Domains\Api\Controllers\ExternalAccessController;
+use App\Domains\Microservice\AuthorizeMicroserviceMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +22,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/courses', CoursesController::class . '@index')->name('api.courses.index');
+
+Route::group([
+    'middleware' => [AuthorizeMicroserviceMiddleware::class],
+], function () {
+    Route::post('/access', ExternalAccessController::class . '@grant');
+});

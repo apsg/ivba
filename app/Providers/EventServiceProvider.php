@@ -1,6 +1,8 @@
 <?php
 namespace App\Providers;
 
+use App\Domains\Api\Events\CourseAccessGrantedEvent;
+use App\Domains\Api\Listeners\SendAccessInfoEmailListener;
 use App\Domains\Quicksales\Listeners\AddSaleToBaselinkerListener;
 use App\Domains\Quicksales\Listeners\TrySubscribeToMailerliteGroupListener;
 use App\Events\ActiveSubscriptionExpiredEvent;
@@ -112,6 +114,9 @@ class EventServiceProvider extends ServiceProvider
             SendQuickSaleEmailListener::class,
             AddSaleToBaselinkerListener::class,
             TrySubscribeToMailerliteGroupListener::class,
+        ],
+        CourseAccessGrantedEvent::class       => [
+            SendAccessInfoEmailListener::class
         ],
     ];
 

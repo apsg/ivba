@@ -25,17 +25,21 @@
 
                     @foreach( $user->courses as $course )
                         <div class="d-flex align-items-center justify-content-between mb-2">
-                            <div><img src="{{ $course->image->thumb(132, 75) }}"/></div>
+                            <div>
+                                @if($course->image)
+                                    <img src="{{ $course->image->thumb(132, 75) }}"/>
+                                @endif
+                            </div>
                             <div class="flex-fill px-2">Kurs {{ $course->title }}</div>
                             <div class="px-2">
                                 <progress-bar slug="{{ $course->slug }}"></progress-bar>
                             </div>
                             <div class="px-2">
-{{--                                @if(Gate::allows('access', $course))--}}
-                                    <a class="btn btn-red" href="{{ $course->learnUrl() }}">Przejdź do kursu</a>
-{{--                                @else--}}
-{{--                                    Dostęp wygasł--}}
-{{--                                @endif--}}
+                                {{--                                @if(Gate::allows('access', $course))--}}
+                                <a class="btn btn-red" href="{{ $course->learnUrl() }}">Przejdź do kursu</a>
+                                {{--                                @else--}}
+                                {{--                                    Dostęp wygasł--}}
+                                {{--                                @endif--}}
                             </div>
                             <div class="px-2">
                                 @if( !empty($course->user_certificate) )

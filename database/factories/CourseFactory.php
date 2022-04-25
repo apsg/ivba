@@ -9,7 +9,7 @@ $factory->define(App\Course::class, function (Faker $faker) {
         'title'       => $faker->sentence,
         'description' => $faker->paragraph,
         'slug'        => $faker->slug,
-        'user_id'     => User::first()->id,
+        'user_id'     => factory(User::class),
         'position'    => Course::max('position') + 1,
         'delay'       => rand(0, 10),
         'difficulty'  => rand(1, 3),
