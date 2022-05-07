@@ -37,7 +37,7 @@ return [
 
     'fakturownia' => [
         'url'   => env('FAKTUROWNIA_URL', 'https://tmgfv.fakturownia.pl'),
-        'token' => env('FAKTUROWNIA_TOKEN', '4LKI41aAgCU8lzjdiVB7/tmgfv'),
+        'token' => env('FAKTUROWNIA_TOKEN'),
     ],
 
     'getresponse' => [
