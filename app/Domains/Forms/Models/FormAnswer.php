@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\View\View;
 
 /**
  * @property int            id
@@ -53,8 +54,13 @@ class FormAnswer extends Model
         return $this->belongsTo(Form::class);
     }
 
-    public function formatAnswersAsTable()
+    public function formatAnswersAsTable() : View
     {
         return view('common.forms.answers.table', ['answer' => $this]);
+    }
+
+    public function formatAnswersAsParagraph() : View
+    {
+        return view('common.forms.answers.paragraph', ['answer' => $this]);
     }
 }

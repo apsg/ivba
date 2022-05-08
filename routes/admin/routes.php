@@ -4,6 +4,8 @@ use App\Domains\Admin\Controllers\AnalyticsController;
 use App\Domains\Admin\Controllers\LoginAsUserController;
 use App\Domains\Admin\Controllers\SettingsController;
 use App\Domains\Admin\Controllers\UserActionsController;
+use App\Domains\Forms\Controllers\Admin\FormAnswersController;
+use App\Domains\Forms\Controllers\Admin\FormsController;
 use App\Domains\Logbooks\Controllers\Admin\LogbookCommentsController;
 use App\Domains\Logbooks\Controllers\Admin\LogbooksController;
 use App\Domains\Logbooks\Controllers\Admin\RecentLogbookEntriesController;
@@ -254,4 +256,17 @@ Route::group([
     Route::get('/{post}', AdminPostsController::class . '@edit')->name('posts.edit');
     Route::post('/{post}', AdminPostsController::class . '@update')->name('posts.update');
     Route::post('/{post}/toggle', AdminPostsController::class . '@togglePublish')->name('posts.toggle');
+});
+
+Route::group(['prefix' => 'forms'], function () {
+    Route::get('/', FormsController::class . '@index')->name('forms.index');
+    Route::post('/', FormsController::class . '@store')->name('forms.store');
+    Route::get('/new', FormsController::class . '@create')->name('forms.create');
+    Route::get('/{form}', FormsController::class . '@view')->name('forms.view');
+    Route::delete('/{form}', FormsController::class . '@destroy')->name('forms.destroy');
+    Route::get('/{form}/answers', FormAnswersController::class . '@index')->name('forms.answers.index');
+});
+
+Route::group(['prefix' => '/form-answers'], function () {
+    Route::post('/{answer}', FormAnswersController::class . '@comment')->name('forms.answers.comment');
 });

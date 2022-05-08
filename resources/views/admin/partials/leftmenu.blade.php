@@ -135,7 +135,7 @@
             </li>
             {{-- k. lekcje --}}
 
-            {{-- Lekcje --}}
+            {{-- logbooki --}}
             <li class="treeview @if(request()->is('admin/logbooks*')) active @endif">
                 <a href="#">
                     <i class="fa fa-file-text"></i> <span>Logbooki</span>
@@ -151,7 +151,23 @@
                                 href="{{ url('admin/logbooks/new') }}"><i class="fa fa-plus"></i> Dodaj nowy</a></li>
                 </ul>
             </li>
-            {{-- k. lekcje --}}
+            {{-- k. logbooki --}}
+
+            <li class="treeview @if(request()->is('admin/forms*')) active @endif">
+                <a href="#">
+                    <i class="fa fa-tasks"></i> <span>Formularze</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="@if(request()->is('admin/forms')) active @endif"><a
+                                href="{{ url('admin/forms') }}"><i
+                                    class="fa fa-files-o"></i> wszystkie</a></li>
+                    <li class="@if(request()->is('admin/forms/new')) active @endif"><a
+                                href="{{ url('admin/forms/new') }}"><i class="fa fa-plus"></i> Dodaj nowy</a></li>
+                </ul>
+            </li>
 
             {{-- kupony --}}
             <li class="treeview @if(request()->is('admin/coupon*')) active @endif">

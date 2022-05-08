@@ -27,6 +27,7 @@ import PaymentMethod from "./components/Admin/PaymentMethod";
 import CoursesSelector from "./components/Admin/CoursesSelector";
 import Order from "./components/internetowisprzedawcy/Order";
 import QuestionForm from "./components/internetowisprzedawcy/QuestionForm";
+import FormAnswers from "./components/Admin/FormAnswers";
 
 import {VuejsDatatableFactory} from 'vuejs-datatable';
 
@@ -73,7 +74,8 @@ const app = new Vue({
         'logbook': require('./components/Admin/Logbook').default,
         'vimeo-video': VimeoVideo,
         Order,
-        'question-form': QuestionForm
+        'question-form': QuestionForm,
+        'form-answers': FormAnswers
     }
 });
 
