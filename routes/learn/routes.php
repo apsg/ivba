@@ -1,5 +1,6 @@
 <?php
 
+use App\Domains\Forms\Controllers\FormsController;
 use App\Domains\Logbooks\Controllers\LogbookController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LearnController;
@@ -34,6 +35,9 @@ Route::group([
             ->name('learn.course.logbook');
         Route::post('/course/{course}/logbook/{logbook}', LogbookController::class . '@storeEntry')
             ->name('learn.logbook.store');
+
+        Route::get('/course/{course}/form/{form}', FormsController::class . '@show')->name('learn.course.form');
+        Route::post('/course/{course}/form/{form}', FormsController::class . '@store')->name('learn.course.form.store');
     });
 
     Route::get('/lesson/{lesson}', LessonsController::class . '@show');
