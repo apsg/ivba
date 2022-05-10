@@ -28,7 +28,7 @@ class CreateFormAnswersTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->json('answers');
+            $table->text('answers');
 
             $table->unsignedInteger('commenter_id')->nullable();
             $table->foreign('commenter_id')
