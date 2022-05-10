@@ -26,6 +26,7 @@ class Form extends Model
     const FIELD_URL = 'url';
     const FIELD_NUMBER = 'number';
     const FIELD_TEXT = 'text';
+    const FIELD_WEEK = 'week';
 
     protected $fillable = [
         'course_id',

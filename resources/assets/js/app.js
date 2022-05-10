@@ -28,6 +28,7 @@ import CoursesSelector from "./components/Admin/CoursesSelector";
 import Order from "./components/internetowisprzedawcy/Order";
 import QuestionForm from "./components/internetowisprzedawcy/QuestionForm";
 import FormAnswers from "./components/Admin/FormAnswers";
+import WeekSelector from "./components/WeekSelector";
 
 import {VuejsDatatableFactory} from 'vuejs-datatable';
 
@@ -75,7 +76,8 @@ const app = new Vue({
         'vimeo-video': VimeoVideo,
         Order,
         'question-form': QuestionForm,
-        'form-answers': FormAnswers
+        'form-answers': FormAnswers,
+        'week-selector': WeekSelector,
     }
 });
 

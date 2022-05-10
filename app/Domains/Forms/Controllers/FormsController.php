@@ -25,6 +25,8 @@ class FormsController extends Controller
         StoreFormAnswerRequest $request,
         FormAnswersRepository $repository
     ) {
+        dd($request->all(), $request->validated());
+
         $repository->store($form, Auth::user(), $request->validated());
 
         flash('Odpowiedź zapisana');

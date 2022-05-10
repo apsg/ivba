@@ -65,4 +65,25 @@ return [
             ],
         ],
     ],
+    'weeks'    => [
+        'name'   => 'Raport sprzedaży',
+        'fields' => [
+            'w1' => [
+                'name' => 'Tydzień',
+                'type' => Form::FIELD_WEEK,
+            ],
+            'w2' => [
+                'name' => 'Wydatki na reklamę',
+                'type' => Form::FIELD_NUMBER,
+            ],
+            'w3' => [
+                'name' => 'Sprzedaż',
+                'type' => Form::FIELD_NUMBER,
+            ],
+            'w4' => [
+                'name' => 'Zysk',
+                'type' => Form::FIELD_NUMBER,
+            ],
+        ],
+    ],
 ];
