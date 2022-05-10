@@ -2109,15 +2109,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "FormAnswerComment",
   props: ['answer'],
   data: function data() {
     return {
       comment: '',
-      isSaved: false
+      isSaved: false,
+      shouldShowEdit: true
     };
+  },
+  mounted: function mounted() {
+    this.comment = this.answer.comment;
+
+    if (this.comment.length > 0) {
+      this.shouldShowEdit = false;
+    }
   },
   methods: {
     save: function save() {
@@ -2127,8 +2134,11 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/admin/form-answers/".concat(this.answer.id), {
         comment: this.comment
       }).then(function (r) {
-        _this.isSaved = true;
+        _this.shouldShowEdit = false;
       });
+    },
+    showEdit: function showEdit() {
+      this.shouldShowEdit = true;
     }
   }
 });
@@ -51848,13 +51858,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.answer.comment || _vm.isSaved
-      ? _c("div", [
-          !_vm.isSaved
-            ? _c("p", [_vm._v(_vm._s(_vm.answer.comment))])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.isSaved ? _c("p", [_vm._v(_vm._s(_vm.comment))]) : _vm._e(),
+    !_vm.shouldShowEdit
+      ? _c("div", { on: { click: _vm.showEdit } }, [
+          _c("p", [_vm._v(_vm._s(this.comment))]),
           _vm._v(" "),
           _vm.answer.commenter
             ? _c("div", [
@@ -51870,7 +51876,7 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    !_vm.answer.comment && !this.isSaved
+    _vm.shouldShowEdit
       ? _c("div", [
           _c("textarea", {
             directives: [

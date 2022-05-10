@@ -23,6 +23,10 @@ use Illuminate\Support\Collection;
  */
 class Form extends Model
 {
+    const FIELD_URL = 'url';
+    const FIELD_NUMBER = 'number';
+    const FIELD_TEXT = 'text';
+
     protected $fillable = [
         'course_id',
         'type',
@@ -51,5 +55,10 @@ class Form extends Model
     public function textForKey(string $key) : string
     {
         return config("forms.{$this->type}.fields.{$key}.name", '');
+    }
+
+    public function isUrl(string $key) : bool
+    {
+        return config("forms.{$this->type}.fields.{$key}.type", '') === static::FIELD_URL;
     }
 }

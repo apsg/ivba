@@ -59,8 +59,8 @@ class FormAnswer extends Model
         return view('common.forms.answers.table', ['answer' => $this]);
     }
 
-    public function formatAnswersAsParagraph() : View
+    public function formatAnswersAsParagraph(bool $makeLinksClickable = false) : View
     {
-        return view('common.forms.answers.paragraph', ['answer' => $this]);
+        return view('common.forms.answers.paragraph', ['answer' => $this, 'linksClickable' => $makeLinksClickable]);
     }
 }

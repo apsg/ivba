@@ -11,7 +11,7 @@ class FormAnswerTransformer extends TransformerAbstract
         return [
             'id'           => $answer->id,
             'user'         => $answer->user->name . ' (' . $answer->user->email . ')',
-            'answer'       => $answer->formatAnswersAsParagraph()->render(),
+            'answer'       => $answer->formatAnswersAsParagraph(true)->render(),
             'commenter'    => $answer->commenter ? ($answer->commenter->name . ' (' . $answer->commenter->email . ')') : '',
             'commented_at' => $answer->commented_at ? $answer->commented_at->format('Y-m-d H:i') : null,
             'comment'      => $answer->comment,
