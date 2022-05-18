@@ -86,4 +86,54 @@ return [
             ],
         ],
     ],
+    'reklama'  => [
+        'name'   => 'Reklamy konkurencji',
+        'fields' => [
+            'rk1' => [
+                'name' => 'Adres reklamy 1',
+                'type' => Form::FIELD_URL,
+            ],
+            'rk2' => [
+                'name' => 'Adres reklamy 2',
+                'type' => Form::FIELD_URL,
+            ],
+            'rk3' => [
+                'name' => 'Adres reklamy 3',
+                'type' => Form::FIELD_URL,
+            ],
+            'rk4' => [
+                'name' => 'Adres reklamy 4',
+                'type' => Form::FIELD_URL,
+            ],
+            'rk5' => [
+                'name' => 'Adres reklamy 5',
+                'type' => Form::FIELD_URL,
+            ],
+        ],
+    ],
+    'sklepy'   => [
+        'name'   => 'Szukanie konkurencyjnych sklepów',
+        'fields' => [
+            'sk1' => [
+                'name' => 'Adres sklepu 1',
+                'type' => Form::FIELD_URL,
+            ],
+            'sk2' => [
+                'name' => 'Adres sklepu 2',
+                'type' => Form::FIELD_URL,
+            ],
+            'sk3' => [
+                'name' => 'Adres sklepu 3',
+                'type' => Form::FIELD_URL,
+            ],
+            'sk4' => [
+                'name' => 'Adres sklepu 4',
+                'type' => Form::FIELD_URL,
+            ],
+            'sk5' => [
+                'name' => 'Adres sklepu 5',
+                'type' => Form::FIELD_URL,
+            ],
+        ],
+    ],
 ];
