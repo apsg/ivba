@@ -17,10 +17,13 @@ class CreateInvoiceRequestsTable extends Migration
             $table->increments('id');
 
             $table->unsignedInteger('order_id')->unique();
-            $table->foreign('order_id')
-                ->references('id')
-                ->on('orders')
-                ->onDelete('cascade');
+
+            if (config('database.default') !== 'sqlite') {
+                $table->foreign('order_id')
+                    ->references('id')
+                    ->on('orders')
+                    ->onDelete('cascade');
+            }
 
             $table->dateTime('refused_at')->nullable();
 
