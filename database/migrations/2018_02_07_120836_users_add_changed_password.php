@@ -9,7 +9,7 @@ class UsersAddChangedPassword extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dateTime('changed_password_at');
+            $table->dateTime('changed_password_at')->nullable();
         });
     }
 
