@@ -20,6 +20,9 @@ class OrdersChangeExternalFields extends Migration
                 $table->dropColumn('payu_order_id');
                 $table->string('external_payment_id')->nullable();
             }
+        });
+
+        Schema::table('orders', function (Blueprint $table) {
             $table->dropColumn('payu_refid');
         });
     }
