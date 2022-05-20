@@ -6,28 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 class SubscriptionsChangeFields extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::table('subscriptions', function (Blueprint $table) {
-            // $table->dropColumn('amount');
-            // $table->dropColumn('duration');
-            // $table->dropColumn('next_payment_at');
-
-            $table->string('profileid')->after('user_id');
+            $table->string('profileid')->after('user_id')->nullable();
             $table->dateTime('valid_until')->after('profileid')->nullable();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('subscriptions', function (Blueprint $table) {
