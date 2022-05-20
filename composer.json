@@ -28,8 +28,8 @@
         "sentry/sentry-laravel": "^2.7",
         "setasign/fpdf": "^1.8.4",
         "setasign/fpdi": "^2",
-        "spatie/laravel-cookie-consent": "dev-master",
-        "spatie/laravel-fractal": "dev-master",
+        "spatie/laravel-cookie-consent": "^2.11",
+        "spatie/laravel-fractal": "^5.6",
         "srmklive/paypal": "~1.0",
         "tom-lingham/searchy": "^3.0",
         "tpay-com/tpay-php": "dev-master",
@@ -87,6 +87,9 @@
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
     }
 }
