@@ -10,42 +10,42 @@ on:
       - master
 
 jobs:
-#  laravel-tests:
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Copy .env
-#        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-#      - name: Setup PHP
-#        uses: shivammathur/setup-php@v2
-#        with:
-#          php-version: 7.2
-#          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
-#          coverage: none
-#      - name: Install Dependencies
-#        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs
-#      - name: Generate key
-#        run: php artisan key:generate
-#      - name: Directory Permissions
-#        run: chmod -R 777 storage bootstrap/cache
-#      - name: Create Database
-#        run: |
-#          mkdir -p database
-#          touch database/database.sqlite
-#      - name: Run migrations
-#        env:
-#          DB_CONNECTION: sqlite
-#          DB_DATABASE: database/database.sqlite
-#        run: php artisan migrate --force
-#      - name: Execute tests (Unit and Feature tests) via PHPUnit
-#        env:
-#          DB_CONNECTION: sqlite
-#          DB_DATABASE: database/database.sqlite
-#        run: vendor/bin/phpunit
+  #  laravel-tests:
+  #    runs-on: ubuntu-latest
+  #
+  #    steps:
+  #      - uses: actions/checkout@v2
+  #      - name: Copy .env
+  #        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+  #      - name: Setup PHP
+  #        uses: shivammathur/setup-php@v2
+  #        with:
+  #          php-version: 7.2
+  #          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
+  #          coverage: none
+  #      - name: Install Dependencies
+  #        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs
+  #      - name: Generate key
+  #        run: php artisan key:generate
+  #      - name: Directory Permissions
+  #        run: chmod -R 777 storage bootstrap/cache
+  #      - name: Create Database
+  #        run: |
+  #          mkdir -p database
+  #          touch database/database.sqlite
+  #      - name: Run migrations
+  #        env:
+  #          DB_CONNECTION: sqlite
+  #          DB_DATABASE: database/database.sqlite
+  #        run: php artisan migrate --force
+  #      - name: Execute tests (Unit and Feature tests) via PHPUnit
+  #        env:
+  #          DB_CONNECTION: sqlite
+  #          DB_DATABASE: database/database.sqlite
+  #        run: vendor/bin/phpunit
 
-  build:
-#    needs: [ laravel-tests ]
+  deploy:
+    #    needs: [ laravel-tests ]
     runs-on: ubuntu-latest
 
     steps:
@@ -71,7 +71,7 @@ jobs:
             cd ${{ secrets.TARGET_INAUKA }}
             ln -s public public_html
             ln -s public private_html
-            composer install --ignore-platform-reqs
+#            composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs
             php74 artisan migrate --force
             php74 artisan cache:clear
             php74 artisan view:cache
@@ -99,7 +99,7 @@ jobs:
             cd ${{ secrets.TARGET_PROJEKT30 }}
             ln -s public public_html
             ln -s public private_html
-            composer install --ignore-platform-reqs
+#            composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs
             php74 artisan migrate --force
             php74 artisan cache:clear
             php74 artisan view:cache
@@ -127,7 +127,7 @@ jobs:
             cd ${{ secrets.TARGET_IS }}
             ln -s public public_html
             ln -s public private_html
-            composer install --ignore-platform-reqs
+#            composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs
             php74 artisan migrate --force
             php74 artisan cache:clear
             php74 artisan view:cache
