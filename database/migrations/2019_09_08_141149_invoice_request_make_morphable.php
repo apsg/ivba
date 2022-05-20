@@ -6,28 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 class InvoiceRequestMakeMorphable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::table('invoice_requests', function (Blueprint $table) {
             $table->dropForeign(['order_id']);
 
-            $table->renameColumn('order_id', 'invoicable_id');
-            $table->string('invoicable_type')->default('App\\Order');
+            try {
+                $table->renameColumn('order_id', 'invoicable_id');
+            } catch (BadMethodCallException $exception) {
+                $table->dropColumn('order_id');
+                $table->unsignedInteger('invoicable_id')->nullable();
+            }
 
+            $table->string('invoicable_type')->default('App\\Order');
             $table->unique(['invoicable_id', 'invoicable_type']);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('invoice_requests', function (Blueprint $table) {
