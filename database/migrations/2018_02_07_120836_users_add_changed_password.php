@@ -6,23 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 class UsersAddChangedPassword extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dateTime('changed_password_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime('changed_password_at');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
