@@ -17,8 +17,8 @@ class ItemFilesAddFields extends Migration
             $table->string('hash')->nullable();
             $table->unsignedInteger('host')->default(0);
             $table->string('size')->nullable();
-            $table->string('name');
-            $table->string('mime');
+            $table->string('name')->nullable();
+            $table->string('mime')->nullable();
         });
     }
 
