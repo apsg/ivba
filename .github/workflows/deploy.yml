@@ -15,13 +15,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: php-actions/composer@v6
-        with:
-          php_version: "7.2"
-          version: 2
-          args: --ignore-platform-reqs
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Generate key
         run: php artisan key:generate
       - name: Directory Permissions
