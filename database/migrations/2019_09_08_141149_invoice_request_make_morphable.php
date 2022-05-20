@@ -9,7 +9,7 @@ class InvoiceRequestMakeMorphable extends Migration
     public function up()
     {
         Schema::table('invoice_requests', function (Blueprint $table) {
-            if (config('database.default') !== 'sqlite') {
+            if (env('DB_CONNECTION') !== 'sqlite') {
                 $table->dropForeign(['order_id']);
             }
 

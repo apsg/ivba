@@ -18,7 +18,7 @@ class CreateInvoiceRequestsTable extends Migration
 
             $table->unsignedInteger('order_id')->unique();
 
-            if (config('database.default') !== 'sqlite') {
+            if (env('DB_CONNECTION') !== 'sqlite') {
                 $table->foreign('order_id')
                     ->references('id')
                     ->on('orders')
