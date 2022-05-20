@@ -14,7 +14,12 @@ class OrdersChangeExternalFields extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->renameColumn('payu_order_id', 'external_payment_id');
+            try {
+                $table->renameColumn('payu_order_id', 'external_payment_id');
+            } catch (BadMethodCallException $exception) {
+                $table->dropColumn('payu_order_id');
+                $table->string('external_payment_id')->nullable();
+            }
             $table->dropColumn('payu_refid');
         });
     }
