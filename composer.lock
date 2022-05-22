@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c7d799aae0279f0f4edc51f5a062de6",
+    "content-hash": "4c3c8a3c5304f966df9db7fe8b4b486d",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -904,16 +904,16 @@
         },
         {
             "name": "doctrine/cache",
-            "version": "2.1.x-dev",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "3ea6f500a1648e543df28dce21b466f00f3e09cd"
+                "reference": "ccc37d458899aa4ef0f6b4fb99be5fc0be667b54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/3ea6f500a1648e543df28dce21b466f00f3e09cd",
-                "reference": "3ea6f500a1648e543df28dce21b466f00f3e09cd",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/ccc37d458899aa4ef0f6b4fb99be5fc0be667b54",
+                "reference": "ccc37d458899aa4ef0f6b4fb99be5fc0be667b54",
                 "shasum": ""
             },
             "require": {
@@ -978,7 +978,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/cache/issues",
-                "source": "https://github.com/doctrine/cache/tree/2.1.x"
+                "source": "https://github.com/doctrine/cache/tree/2.2.x"
             },
             "funding": [
                 {
@@ -994,7 +994,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-05-17T18:39:48+00:00"
+            "time": "2022-05-20T20:50:17+00:00"
         },
         {
             "name": "doctrine/dbal",
@@ -2106,16 +2106,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.7.1",
+            "version": "2.8.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "744ebba495319501b873a4e48787759c72e3fb8c"
+                "reference": "46d3a9f82c1bb9fa23b2272f3d640a01fbe9bd2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/744ebba495319501b873a4e48787759c72e3fb8c",
-                "reference": "744ebba495319501b873a4e48787759c72e3fb8c",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/46d3a9f82c1bb9fa23b2272f3d640a01fbe9bd2b",
+                "reference": "46d3a9f82c1bb9fa23b2272f3d640a01fbe9bd2b",
                 "shasum": ""
             },
             "require": {
@@ -2158,8 +2158,8 @@
             "authors": [
                 {
                     "name": "Oliver Vogel",
-                    "email": "oliver@olivervogel.com",
-                    "homepage": "http://olivervogel.com/"
+                    "email": "oliver@intervention.io",
+                    "homepage": "https://intervention.io/"
                 }
             ],
             "description": "Image handling and manipulation library with support for Laravel integration",
@@ -2174,11 +2174,11 @@
             ],
             "support": {
                 "issues": "https://github.com/Intervention/image/issues",
-                "source": "https://github.com/Intervention/image/tree/2.7.1"
+                "source": "https://github.com/Intervention/image/tree/2.8.0"
             },
             "funding": [
                 {
-                    "url": "https://www.paypal.me/interventionphp",
+                    "url": "https://paypal.me/interventionio",
                     "type": "custom"
                 },
                 {
@@ -2186,7 +2186,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-12-16T16:49:26+00:00"
+            "time": "2022-05-21T17:42:36+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -5889,21 +5889,23 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "6.1.x-dev",
+            "version": "5.4.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "05c40f02f621609404b8820ff8bc39acb46e19cf"
+                "reference": "b0a190285cd95cb019237851205b8140ef6e368e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/05c40f02f621609404b8820ff8bc39acb46e19cf",
-                "reference": "05c40f02f621609404b8820ff8bc39acb46e19cf",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/b0a190285cd95cb019237851205b8140ef6e368e",
+                "reference": "b0a190285cd95cb019237851205b8140ef6e368e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1"
+                "php": ">=7.2.5",
+                "symfony/polyfill-php80": "^1.16"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -5934,7 +5936,7 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/css-selector/tree/6.1"
+                "source": "https://github.com/symfony/css-selector/tree/v5.4.3"
             },
             "funding": [
                 {
@@ -5950,7 +5952,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-02-25T11:15:52+00:00"
+            "time": "2022-01-02T09:53:40+00:00"
         },
         {
             "name": "symfony/debug",
@@ -6452,12 +6454,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client.git",
-                "reference": "1576b3e2ced4c687457a0e93ba8ab4420b2419be"
+                "reference": "dc0b15e42b762c040761c1eb9ce86a55d47cf672"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client/zipball/1576b3e2ced4c687457a0e93ba8ab4420b2419be",
-                "reference": "1576b3e2ced4c687457a0e93ba8ab4420b2419be",
+                "url": "https://api.github.com/repos/symfony/http-client/zipball/dc0b15e42b762c040761c1eb9ce86a55d47cf672",
+                "reference": "dc0b15e42b762c040761c1eb9ce86a55d47cf672",
                 "shasum": ""
             },
             "require": {
@@ -6532,7 +6534,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-05-17T15:07:29+00:00"
+            "time": "2022-05-21T08:57:05+00:00"
         },
         {
             "name": "symfony/http-client-contracts",
@@ -8178,12 +8180,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "9589e3bebd28c88ce9b1e3566c10bdf12bd5be5a"
+                "reference": "742aab50ad097bcb62d91fccb613f66b8047d2ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/9589e3bebd28c88ce9b1e3566c10bdf12bd5be5a",
-                "reference": "9589e3bebd28c88ce9b1e3566c10bdf12bd5be5a",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/742aab50ad097bcb62d91fccb613f66b8047d2ca",
+                "reference": "742aab50ad097bcb62d91fccb613f66b8047d2ca",
                 "shasum": ""
             },
             "require": {
@@ -8259,7 +8261,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-05-17T07:25:31+00:00"
+            "time": "2022-05-21T10:00:54+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -10338,29 +10340,25 @@
         },
         {
             "name": "psr/cache",
-            "version": "dev-master",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/cache.git",
-                "reference": "0a7c67d0d1c8167b342eb74339d6f961663826ce"
+                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/cache/zipball/0a7c67d0d1c8167b342eb74339d6f961663826ce",
-                "reference": "0a7c67d0d1c8167b342eb74339d6f961663826ce",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8",
+                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0.0"
+                "php": ">=5.3.0"
             },
-            "suggest": {
-                "fig/cache-util": "Provides some useful PSR-6 utilities"
-            },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -10375,7 +10373,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
+                    "homepage": "http://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for caching libraries",
@@ -10387,7 +10385,7 @@
             "support": {
                 "source": "https://github.com/php-fig/cache/tree/master"
             },
-            "time": "2021-02-24T03:25:37+00:00"
+            "time": "2016-08-06T20:24:11+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -11369,7 +11367,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1",
+        "php": ">=7.2",
         "ext-pdo": "*"
     },
     "platform-dev": [],

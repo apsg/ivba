@@ -9,7 +9,7 @@
     "type": "project",
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.2",
         "ext-pdo": "*",
         "anhskohbo/no-captcha": "dev-master",
         "apsg/baselinker": "dev-master",
