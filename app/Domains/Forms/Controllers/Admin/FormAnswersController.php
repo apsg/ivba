@@ -13,8 +13,14 @@ class FormAnswersController extends Controller
 {
     public function index(Form $form)
     {
+        $answers = $form
+            ->answers()
+            ->with('user', 'commenter')
+            ->orderByRaw('isnull(comment) desc, id desc')
+            ->get();
+
         return fractal(
-            $form->answers()->with('user', 'commenter')->orderBy('id', 'desc')->get(),
+            $answers,
             new FormAnswerTransformer(),
             new ArraySerializer()
         );
