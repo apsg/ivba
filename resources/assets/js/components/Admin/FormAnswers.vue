@@ -13,10 +13,10 @@
             <tr v-for="answer in answers">
                 <td>{{ answer.created_at }}</td>
                 <td>{{ answer.user }}</td>
-                <td>
+                <td class="dont-break-out">
                     <answer :answer="answer"></answer>
                 </td>
-                <td>
+                <td class="dont-break-out">
                     <comment :answer="answer"></comment>
                 </td>
             </tr>

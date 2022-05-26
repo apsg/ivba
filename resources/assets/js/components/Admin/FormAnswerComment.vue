@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="comment">
         <div v-if="!shouldShowEdit" @click="showEdit">
             <p>{{ this.comment }}</p>
             <div v-if="answer.commenter">
@@ -53,5 +53,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.comment{
+    min-width: 200px;
+}
 </style>
