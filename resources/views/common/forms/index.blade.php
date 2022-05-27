@@ -11,7 +11,7 @@
     @foreach($answers as $answer)
         <tr>
             <td>{{ $answer->created_at }}</td>
-            <td>{!! $answer->formatAnswersAsTable() !!}</td>
+            <td class="dont-break-out">{!! $answer->formatAnswersAsTable() !!}</td>
             <td>{{ $answer->comment ?? 'brak' }}</td>
         </tr>
     @endforeach
