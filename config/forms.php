@@ -136,4 +136,22 @@ return [
             ],
         ],
     ],
+    'adres'    => [
+        'name'   => 'Podaj adres Twojego sklepu Internetowego',
+        'fields' => [
+            'ad1' => [
+                'name' => 'Adres WWW',
+                'type' => Form::FIELD_URL,
+            ],
+        ],
+    ],
+    'produkt'  => [
+        'name'   => 'Podaj bezpośredni link do produktu, który chcesz sprzedawać.',
+        'fields' => [
+            'pb1' => [
+                'name' => 'Adres WWW',
+                'type' => Form::FIELD_URL,
+            ],
+        ],
+    ],
 ];
