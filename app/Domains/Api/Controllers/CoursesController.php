@@ -11,7 +11,7 @@ class CoursesController extends Controller
     {
         return fractal()
             ->collection(
-                Course::all(['id', 'title']),
+                Course::orderBy('title')->select(['id', 'title'])->get(),
                 new CoursesTransformer()
             );
     }
