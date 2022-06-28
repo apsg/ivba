@@ -57,6 +57,9 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
 
+        $schedule->command('subscriptions:prolong')
+            ->everyFiveMinutes();
+
         $schedule->command('iexcel:followups')
             ->everyMinute();
 
@@ -68,9 +71,6 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('iexcel:orders')
             ->dailyAt('13:00');
-
-        $schedule->command('subscriptions:prolong')
-            ->everyFiveMinutes();
     }
 
     /**
