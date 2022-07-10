@@ -100,37 +100,7 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="curriculum" role="tabpanel"
                              aria-labelledby="curriculam-tab">
-                            <div class="table-responsive">
-                                @if($course->shouldShowLessonPreview())
-
-                                    <table class="table course-table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th>Lekcje</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($course->lessons as $lesson)
-                                            <tr>
-                                                <td>
-                                                    <div class="table-col1">
-                                                        <div class="lecture-txt">Lekcja
-                                                            <span>{{ $lesson->pivot->position+1 }}</span>
-                                                            <a target="_blank" href="{{ $lesson->previewLink() }}"
-                                                               class="preview">Podgląd</a>
-                                                        </div>
-                                                        {{ $lesson->title }} </div>
-
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                @else
-                                    <p>Podgląd lekcji dla tego kursu nie jest dostępny.</p>
-                                @endif
-
-                            </div>
+                            @include('common.courses.lessons_list')
                         </div>
                         <div class="tab-pane fade" id="opinions" role="tabpanel" aria-labelledby="opinions-tab">
                             <div class="table-responsive">

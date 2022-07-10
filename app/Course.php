@@ -10,6 +10,7 @@ use App\Interfaces\AccessableContract;
 use App\Interfaces\OrderableContract;
 use App\Repositories\AccessRepository;
 use App\Traits\ChecksSlugs;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -234,7 +235,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     /**
      * Sprawdź, czy dany użytkownik ma dostęp do tego elementu.
      */
-    public function hasAccess(int $user_id) : bool
+    public function hasAccess(int $user_id): bool
     {
         /** @var User $user */
         $user = User::findOrFail($user_id);
@@ -274,7 +275,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     /**
      * Zwraca skrót opisu kursu.
      */
-    public function getExcerptAttribute() : string
+    public function getExcerptAttribute(): string
     {
         return Str::limit(html_entity_decode(strip_tags($this->description)), 120);
     }
@@ -282,7 +283,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     /**
      * Czas trwania w minutach.
      */
-    public function getDurationAttribute() : int
+    public function getDurationAttribute(): int
     {
         return $this->lessons->sum('duration');
     }
@@ -290,7 +291,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     /**
      * Czas trwania (sformatowany).
      */
-    public function duration() : string
+    public function duration(): string
     {
         $h = floor($this->duration / 60);
         $m = $this->duration - $h * 60;
@@ -301,7 +302,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     /**
      * Link do tego kursu.
      */
-    public function link() : string
+    public function link(): string
     {
         return url('/course/' . $this->slug);
     }
@@ -309,7 +310,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     /**
      * Link do rozpoczęcia nauki tego kursu.
      */
-    public function learnUrl() : string
+    public function learnUrl(): string
     {
         return url('/learn/course/' . $this->slug);
     }
@@ -317,7 +318,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     /**
      * Link do ekranu zakończenia kursu.
      */
-    public function finishedUrl() : string
+    public function finishedUrl(): string
     {
         return url('/learn/course/' . $this->slug . '/finished');
     }
@@ -325,7 +326,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     /**
      * Zwraca sformatowany tekst stopnia trudności.
      */
-    public function difficulty() : string
+    public function difficulty(): string
     {
         switch ($this->difficulty) {
             case 1:
@@ -339,7 +340,7 @@ class Course extends Model implements OrderableContract, AccessableContract
         return '';
     }
 
-    public function nextLessonLink($lesson_id = null) : string
+    public function nextLessonLink($lesson_id = null): string
     {
         if (empty($lesson_id)) {
             return $this->learnUrl();
@@ -374,7 +375,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     /**
      * Zwraca link do następnego nieukończonego elementu w tym kursie.
      */
-    public function next() : string
+    public function next(): string
     {
         $user = Auth::user();
 
@@ -404,7 +405,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     /**
      * Użytkownik ukończył ten kurs.
      */
-    public function finish() : self
+    public function finish(): self
     {
         $this->users()
             ->updateExistingPivot(
@@ -428,7 +429,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     /**
      * Nazwa do wyświetlania w koszyku.
      */
-    public function cartName() : string
+    public function cartName(): string
     {
         return 'Kurs #' . $this->id . ' - ' . $this->title;
     }
@@ -436,7 +437,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     /**
      * Link usuwania z koszyka.
      */
-    public function removeLink(Order $order) : string
+    public function removeLink(Order $order): string
     {
         return url('/order/' . $order->id . '/course/' . $this->id . '/remove');
     }
@@ -445,7 +446,7 @@ class Course extends Model implements OrderableContract, AccessableContract
      * Zwraca liczbę osób zapisanych na ten kurs.
      * @return [type] [description]
      */
-    public function getUsersCountAttribute() : int
+    public function getUsersCountAttribute(): int
     {
         $course_id = $this->id;
 
@@ -476,20 +477,20 @@ class Course extends Model implements OrderableContract, AccessableContract
     /**
      * Zwraca średnią wartość ocen dla tego kursu.
      */
-    public function getAvgRatingAttribute() : float
+    public function getAvgRatingAttribute(): float
     {
-        return (float)$this->ratings()->avg('rating');
+        return (float) $this->ratings()->avg('rating');
     }
 
     /**
      * Zwraca liczbę ocen dla tego kursu.
      */
-    public function getRatingsCountAttribute() : int
+    public function getRatingsCountAttribute(): int
     {
         return $this->ratings()->count();
     }
 
-    public function getRealDelayAttribute() : int
+    public function getRealDelayAttribute(): int
     {
         if (Auth::check()) {
             return max(0, $this->cumulative_delay - Auth::user()->current_day);
@@ -501,7 +502,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     /**
      * Przelicza na nowo cumulative_delay po zmianie kolejności.
      */
-    public static function reorder() : void
+    public static function reorder(): void
     {
         $courses = static::query()->orderBy('position', 'asc')->get();
 
@@ -519,22 +520,22 @@ class Course extends Model implements OrderableContract, AccessableContract
         return 'Kurs: ' . $this->title;
     }
 
-    public function isSpecialAccess() : bool
+    public function isSpecialAccess(): bool
     {
         return $this->is_special_access;
     }
 
-    public function isSystematic() : bool
+    public function isSystematic(): bool
     {
         return $this->is_systematic;
     }
 
-    public function hasLogbook() : bool
+    public function hasLogbook(): bool
     {
         return $this->logbooks->count() > 0;
     }
 
-    public function shouldShowLessonPreview() : bool
+    public function shouldShowLessonPreview(): bool
     {
         if ($this->isSpecialAccess()) {
             return true;

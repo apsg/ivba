@@ -88,10 +88,6 @@
                                 <a class="nav-link" id="opinions-tab" data-toggle="tab" href="#opinions" role="tab"
                                    aria-controls="opinions" aria-selected="false"><i class="fa fa-star"></i> Opinie</a>
                             </li>
-                            {{--<li class="nav-item">--}}
-                            {{--<a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab"--}}
-                            {{--aria-controls="comments" aria-selected="false"><i class="fa fa-comments"></i> Komentarze</a>--}}
-                            {{--</li>--}}
                             <li class="nav-item">
                                 <a class="nav-link" id="comments-tab" data-toggle="tab" href="#teachers" role="tab"
                                    aria-controls="teachers" aria-selected="false"><i class="fa fa-graduation-cap"></i>
@@ -101,37 +97,7 @@
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="curriculum" role="tabpanel"
                                  aria-labelledby="curriculam-tab">
-                                <div class="table-responsive">
-                                    @if($course->shouldShowLessonPreview())
-
-                                        <table class="table course-table table-bordered">
-                                            <thead>
-                                            <tr>
-                                                <th>Lekcje</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($course->lessons as $lesson)
-                                                <tr>
-                                                    <td>
-                                                        <div class="table-col1">
-                                                            <div class="lecture-txt">Lekcja
-                                                                <span>{{ $lesson->pivot->position+1 }}</span>
-                                                                <a target="_blank" href="{{ $lesson->previewLink() }}"
-                                                                   class="preview">Podgląd</a>
-                                                            </div>
-                                                            {{ $lesson->title }} </div>
-
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
-                                    @else
-                                        <p>Podgląd lekcji dla tego kursu nie jest dostępny.</p>
-                                    @endif
-
-                                </div>
+                                @include('common.courses.lessons_list')
                             </div>
                             <div class="tab-pane fade" id="opinions" role="tabpanel" aria-labelledby="opinions-tab">
                                 <div class="table-responsive">
