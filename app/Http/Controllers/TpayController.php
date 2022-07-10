@@ -7,7 +7,7 @@ use App\Payments\Tpay\OnSiteGate;
 use App\Payments\Tpay\TransactionNotification;
 use App\Repositories\PaymentRepository;
 use Illuminate\Http\Request;
-use Log;
+use Illuminate\Support\Facades\Log;
 use tpayLibs\src\_class_tpay\Utilities\TException;
 
 class TpayController extends Controller
@@ -73,7 +73,7 @@ class TpayController extends Controller
 
     public function ipn(TpayIpnRequest $request)
     {
-        \Log::info('ipn', $request->all());
+        Log::info('ipn', $request->all());
 
         if ($request->isSuccess()) {
             $order = $request->order();
