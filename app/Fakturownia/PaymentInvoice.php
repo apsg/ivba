@@ -18,6 +18,13 @@ class PaymentInvoice extends AbstractInvoice
     {
         $user = $this->item->subscription->user;
 
+        if (!empty($user->company_name)) {
+            return implode(', ', array_filter([
+                $user->company_name,
+                $user->address,
+            ]));
+        }
+
         if (!empty($user->last_name)) {
             return implode(', ', array_filter([
                 $user->full_name,
