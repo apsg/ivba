@@ -154,4 +154,22 @@ return [
             ],
         ],
     ],
+    'pytanie'  => [
+        'name'   => 'Zadaj pytanie.',
+        'fields' => [
+            'pb1' => [
+                'name' => 'Pytanie',
+                'type' => Form::FIELD_TEXT,
+            ],
+        ],
+    ],
+    'problem'  => [
+        'name'   => 'Zgłoś problem.',
+        'fields' => [
+            'pb1' => [
+                'name' => 'Problem',
+                'type' => Form::FIELD_TEXT,
+            ],
+        ],
+    ],
 ];
