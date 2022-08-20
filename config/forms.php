@@ -157,7 +157,7 @@ return [
     'pytanie'  => [
         'name'   => 'Zadaj pytanie.',
         'fields' => [
-            'pb1' => [
+            'pyt1' => [
                 'name' => 'Pytanie',
                 'type' => Form::FIELD_TEXT,
             ],
@@ -166,7 +166,7 @@ return [
     'problem'  => [
         'name'   => 'Zgłoś problem.',
         'fields' => [
-            'pb1' => [
+            'pro1' => [
                 'name' => 'Problem',
                 'type' => Form::FIELD_TEXT,
             ],
