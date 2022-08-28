@@ -1,5 +1,6 @@
 <?php
 
+use App\Domains\Payments\Providers\StripeServiceProvider;
 use Gacek\IExcel\IExcelServiceProvider;
 
 return [
@@ -188,6 +189,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ViewComposerServiceProvider::class,
+
+        StripeServiceProvider::class,
     ],
 
     /*

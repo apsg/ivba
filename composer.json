@@ -9,7 +9,7 @@
     "type": "project",
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.4",
         "ext-pdo": "*",
         "anhskohbo/no-captcha": "dev-master",
         "apsg/baselinker": "dev-master",
@@ -31,6 +31,7 @@
         "spatie/laravel-cookie-consent": "^2.11",
         "spatie/laravel-fractal": "^5.6",
         "srmklive/paypal": "~1.0",
+        "stripe/stripe-php": "^9.4",
         "tom-lingham/searchy": "^3.0",
         "tpay-com/tpay-php": "dev-master",
         "usmanhalalit/laracsv": "dev-master",

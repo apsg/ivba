@@ -38,7 +38,7 @@ Route::get('/course/{course}', CoursesController::class . '@show');
 Route::get('/course/{course}/buy', OrderController::class . '@orderCourse');
 
 // strony różniste
-Route::get('/account', AccountController::class . '@show');
+Route::get('/account', AccountController::class . '@show')->name('account.show');
 Route::get('/account/mycourses', AccountController::class . '@myCourses')->name('account.mycourses');
 Route::post('/account', AccountController::class . '@update');
 Route::post('/account/change_password', AccountController::class . '@changePassword');
