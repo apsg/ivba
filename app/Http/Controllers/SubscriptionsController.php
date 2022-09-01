@@ -8,7 +8,7 @@ use App\Payments\PaymentService;
 use App\Repositories\PaymentRepository;
 use App\Repositories\SubscriptionRepository;
 use App\Subscription;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class SubscriptionsController extends Controller
 {
@@ -24,9 +24,7 @@ class SubscriptionsController extends Controller
         PaymentService $paymentService
     ) {
         $subscription = $subscriptionRepository->create(Auth::user(), $request->coupon());
-
         $payment = $paymentRepository->createFirst($subscription);
-
         $url = $paymentService->payUrl($payment);
 
         return redirect($url);

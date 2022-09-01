@@ -1,6 +1,7 @@
 <?php
 
 use App\Domains\Payments\Controllers\CouponsController;
+use App\Domains\Payments\Controllers\StripeIpnController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\ContactFormController;
@@ -38,7 +39,7 @@ Route::get('/course/{course}', CoursesController::class . '@show');
 Route::get('/course/{course}/buy', OrderController::class . '@orderCourse');
 
 // strony różniste
-Route::get('/account', AccountController::class . '@show');
+Route::get('/account', AccountController::class . '@show')->name('account.show');
 Route::get('/account/mycourses', AccountController::class . '@myCourses')->name('account.mycourses');
 Route::post('/account', AccountController::class . '@update');
 Route::post('/account/change_password', AccountController::class . '@changePassword');
@@ -113,3 +114,5 @@ Route::get('/payments/{payment}/request-invoice', PaymentsController::class . '@
 
 // To musi być na samym końcu, by nie blokowało innych ścieżek
 Route::get('/{page}/{subpage?}', PageController::class . '@show');
+
+Route::any('/stripe/ipn', StripeIpnController::class)->name('stripe.ipn');

@@ -3,30 +3,35 @@ namespace App;
 
 use App\Repositories\SubscriptionRepository;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 /**
  * Class Subscription.
  *
- * @property int                             user_id
- * @property int                             coupon_id
- * @property string                          profileid
- * @property bool                            is_active
- * @property Carbon                          cancelled_at
- * @property int                             tries
- * @property float                           amount
- * @property-read Carbon                     valid_until
- * @property-read User                       user
- * @property-read Coupon                     coupon
- * @property-read Collection|Payment[]       payments
- * @method-static Builder|Subscription active()
- * @property int                             $id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null                     $token
- * @property-read mixed                      $final_total
- * @mixin \Eloquent
+ * @property int                       $id
+ * @property Carbon|null               $created_at
+ * @property Carbon|null               $updated_at
+ * @property string|null               $token
+ * @property int                       user_id
+ * @property int                       coupon_id
+ * @property string                    profileid
+ * @property bool                      is_active
+ * @property Carbon                    cancelled_at
+ * @property int                       tries
+ * @property float                     amount
+ * @property string|null               stripe_plan_id
+ * @property string|null               stripe_subscription_id
+ *
+ * @property-read Carbon               valid_until
+ * @property-read User                 user
+ * @property-read Coupon               coupon
+ * @property-read Collection|Payment[] payments
+ * @property-read mixed                $final_total
+
+ * @method static Builder|Subscription active()
+ * @method static Builder|Subscription notStripe()
  */
 class Subscription extends Model
 {
@@ -78,6 +83,11 @@ class Subscription extends Model
     public function scopeActive($query)
     {
         $query->where('is_active', '=', true);
+    }
+
+    public function scopeNotStripe(Builder $query)
+    {
+        return $query->whereNull('stripe_plan_id');
     }
 
     public function cancelLink()
