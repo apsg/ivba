@@ -17,5 +17,6 @@ class VerifyCsrfToken extends BaseVerifier
         '/tpay/success',
         '/tpay/ipn',
         '/order/*/pay',
+        '/stripe/ipn',
     ];
 }

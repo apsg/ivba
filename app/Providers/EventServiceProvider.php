@@ -3,6 +3,7 @@ namespace App\Providers;
 
 use App\Domains\Api\Events\CourseAccessGrantedEvent;
 use App\Domains\Api\Listeners\SendAccessInfoEmailListener;
+use App\Domains\Payments\Listeners\CancelSubscriptionInStripeListener;
 use App\Domains\Quicksales\Listeners\AddSaleToBaselinkerListener;
 use App\Domains\Quicksales\Listeners\TrySubscribeToMailerliteGroupListener;
 use App\Events\ActiveSubscriptionExpiredEvent;
@@ -75,6 +76,7 @@ class EventServiceProvider extends ServiceProvider
         SubscriptionCancelled::class          => [
             SendSubscriptionFailedEmail::class,
             SubscriptionCancelledListener::class,
+            CancelSubscriptionInStripeListener::class,
         ],
         SubscriptionStartedEvent::class       => [
             FollowupsListener::class,
@@ -116,7 +118,7 @@ class EventServiceProvider extends ServiceProvider
             TrySubscribeToMailerliteGroupListener::class,
         ],
         CourseAccessGrantedEvent::class       => [
-            SendAccessInfoEmailListener::class
+            SendAccessInfoEmailListener::class,
         ],
     ];
 

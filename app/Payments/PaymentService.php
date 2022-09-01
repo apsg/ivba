@@ -34,4 +34,14 @@ class PaymentService
             }
         }
     }
+
+    public static function isDriverStripe(): bool
+    {
+        return config('subscriptions.provider') === static::DRIVER_STRIPE;
+    }
+
+    public static function isDriverTpay(): bool
+    {
+        return config('subscriptions.provider') === static::DRIVER_TPAY;
+    }
 }

@@ -8,7 +8,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr v-if="first_duration > 0">
                 <td>Pierwsza płatność w abonamencie ({{ first_duration }} dni dostępu)</td>
                 <td>{{ first_price }} PLN</td>
             </tr>

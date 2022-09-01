@@ -3,6 +3,7 @@ namespace App\Payments\Drivers;
 
 use App\Payment;
 use App\Payments\StripeHelper;
+use App\Subscription;
 use Stripe\Checkout\Session;
 use Stripe\StripeClient;
 
@@ -47,22 +48,11 @@ class StripeDriver
     protected function createPlan(Payment $payment): string
     {
         $plan = $this->client->plans->create([
-            'tiers'          => [
-                [
-                    'up_to'       => 1,
-                    'unit_amount' => StripeHelper::priceToCents($payment->amount),
-                ],
-                [
-                    'up_to'       => 'inf',
-                    'unit_amount' => StripeHelper::priceToCents($payment->subscription->amount),
-                ],
-            ],
-            'billing_scheme' => 'tiered',
-            'tiers_mode'     => 'graduated',
-            'currency'       => 'PLN',
-            'interval'       => 'month',
-            'product'        => config('stripe.subscription_product'),
-            'metadata'       => [
+            'amount'   => StripeHelper::priceToCents($payment->subscription->amount),
+            'currency' => 'PLN',
+            'interval' => 'month',
+            'product'  => config('stripe.subscription_product'),
+            'metadata' => [
                 'user_id'    => $payment->getUser()->id,
                 'payment_id' => $payment->id,
                 'user_email' => $payment->getEmail(),
@@ -74,5 +64,14 @@ class StripeDriver
         ]);
 
         return object_get($plan, 'id');
+    }
+
+    public function cancelSubscription(Subscription $subscription): void
+    {
+        if (empty($subscription->stripe_subscription_id)) {
+            return;
+        }
+
+        $this->client->subscriptions->cancel($subscription->stripe_subscription_id);
     }
 }

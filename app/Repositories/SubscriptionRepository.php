@@ -2,10 +2,12 @@
 namespace App\Repositories;
 
 use App\Coupon;
+use App\Domains\Payments\Dtos\Stripe\InvoiceDto;
 use App\Events\SubscriptionCancelled;
 use App\Events\SubscriptionProlongedEvent;
 use App\Events\SubscriptionStartedEvent;
 use App\Payments\Exceptions\PaymentException;
+use App\Payments\Exceptions\UnknownSubscriptionException;
 use App\Subscription;
 use App\User;
 use Carbon\Carbon;
@@ -21,11 +23,8 @@ class SubscriptionRepository
         $this->daysRepository = app(AccessDaysRepository::class);
     }
 
-    public function create(User $user, Coupon $coupon = null) : Subscription
+    public function create(User $user, Coupon $coupon = null): Subscription
     {
-//        if ($user->hasActiveSubscription()) {
-//            return $user->currentSubscription();
-//        }
         $this->cancelAllSubscriptions($user);
 
         $amount = setting('ivba.subscription_price');
@@ -42,7 +41,7 @@ class SubscriptionRepository
         return $subscription;
     }
 
-    public function cancel(Subscription $subscription) : Subscription
+    public function cancel(Subscription $subscription): Subscription
     {
         $subscription->update([
             'cancelled_at' => Carbon::now(),
@@ -58,7 +57,7 @@ class SubscriptionRepository
     /**
      * @return Collection|Subscription[]
      */
-    public function cancelAllSubscriptions(User $user) : Collection
+    public function cancelAllSubscriptions(User $user): Collection
     {
         $user->subscriptions()->update([
             'cancelled_at' => Carbon::now(),
@@ -73,16 +72,28 @@ class SubscriptionRepository
         return $user->subscriptions;
     }
 
-    public function makeActive(Subscription $subscription, $token = null) : Subscription
-    {
-        if (empty($token)) {
-            throw new PaymentException('Missing card token');
+    public function makeActive(
+        Subscription $subscription,
+        string $token = null,
+        string $stripeSubscriptionId = null
+    ): Subscription {
+        if (empty($token) && empty($stripeSubscriptionId)) {
+            throw new PaymentException('Missing card token or stripe subscription');
+        }
+
+        $validUntil = Carbon::now();
+
+        if (!empty($token)) {
+            $validUntil = $validUntil->addDays(setting('ivba.subscription_duration_first'));
+        } elseif (!empty($stripeSubscriptionId)) {
+            $validUntil = $validUntil->addMonth();
         }
 
         $subscription->update([
-            'is_active'   => true,
-            'token'       => $token,
-            'valid_until' => Carbon::now()->addDays(setting('ivba.subscription_duration_first')),
+            'is_active'              => true,
+            'token'                  => $token,
+            'valid_until'            => $validUntil,
+            'stripe_subscription_id' => $stripeSubscriptionId,
         ]);
 
         if ($subscription->coupon !== null) {
@@ -108,9 +119,9 @@ class SubscriptionRepository
         return $subscription;
     }
 
-    public function prolong(Subscription $subscription) : Subscription
+    public function prolong(Subscription $subscription): Subscription
     {
-        if (! $subscription->isActive()) {
+        if (!$subscription->isActive()) {
             throw new InvalidArgumentException("Subscription {$subscription->id} was cancelled {$subscription->cancelled_at}");
         }
 
@@ -141,5 +152,33 @@ class SubscriptionRepository
         }
 
         return $this->cancel($subscription);
+    }
+
+    public function activateOrProlongFromStripe(InvoiceDto $invoiceDto): Subscription
+    {
+        /** @var Subscription $subscription */
+        $subscription = Subscription::where('stripe_plan_id', $invoiceDto->getPlanId())->first();
+
+        if ($subscription === null) {
+            throw new UnknownSubscriptionException($invoiceDto->getPlanId());
+        }
+
+        $subscription->update([
+            'is_active'              => true,
+            'stripe_subscription_id' => $invoiceDto->getSubscriptionId(),
+            'valid_until'            => $invoiceDto->getPeriodEnd(),
+        ]);
+
+        $this->daysRepository->sync($subscription->user, $subscription->valid_until);
+
+        $subscription->payments()->create([
+            'title'        => config('ivba.subscription_description'),
+            'amount'       => $invoiceDto->getAmount(),
+            'external_id'  => $invoiceDto->getInvoiceId(),
+            'confirmed_at' => Carbon::now(),
+            'is_recurrent' => true,
+        ]);
+
+        return $subscription;
     }
 }
