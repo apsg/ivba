@@ -99,6 +99,7 @@ jobs:
             cd ${{ secrets.TARGET_PROJEKT30 }}
             ln -s public public_html
             ln -s public private_html
+            php74 composer.phar install
             php74 artisan migrate --force
             php74 artisan cache:clear
             php74 artisan view:cache
@@ -126,6 +127,7 @@ jobs:
             cd ${{ secrets.TARGET_IS }}
             ln -s public public_html
             ln -s public private_html
+            php74 composer.phar install
             php74 artisan migrate --force
             php74 artisan cache:clear
             php74 artisan view:cache
