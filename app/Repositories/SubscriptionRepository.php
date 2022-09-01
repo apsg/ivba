@@ -13,6 +13,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
+use function Symfony\Component\VarDumper\Dumper\esc;
 
 class SubscriptionRepository
 {
@@ -74,10 +75,9 @@ class SubscriptionRepository
 
     public function makeActive(
         Subscription $subscription,
-        string $token = null,
-        string $stripeSubscriptionId = null
+        string $token = null
     ): Subscription {
-        if (empty($token) && empty($stripeSubscriptionId)) {
+        if (empty($token)) {
             throw new PaymentException('Missing card token or stripe subscription');
         }
 
@@ -85,15 +85,12 @@ class SubscriptionRepository
 
         if (!empty($token)) {
             $validUntil = $validUntil->addDays(setting('ivba.subscription_duration_first'));
-        } elseif (!empty($stripeSubscriptionId)) {
-            $validUntil = $validUntil->addMonth();
         }
 
         $subscription->update([
-            'is_active'              => true,
-            'token'                  => $token,
-            'valid_until'            => $validUntil,
-            'stripe_subscription_id' => $stripeSubscriptionId,
+            'is_active'   => true,
+            'token'       => $token,
+            'valid_until' => $validUntil,
         ]);
 
         if ($subscription->coupon !== null) {
@@ -163,6 +160,8 @@ class SubscriptionRepository
             throw new UnknownSubscriptionException($invoiceDto->getPlanId());
         }
 
+        $isFirstPayment = !$subscription->isActive();
+
         $subscription->update([
             'is_active'              => true,
             'stripe_subscription_id' => $invoiceDto->getSubscriptionId(),
@@ -178,6 +177,12 @@ class SubscriptionRepository
             'confirmed_at' => Carbon::now(),
             'is_recurrent' => true,
         ]);
+
+        if ($isFirstPayment === true) {
+            event(new SubscriptionStartedEvent($subscription));
+        } else {
+            event(new SubscriptionProlongedEvent($subscription));
+        }
 
         return $subscription;
     }

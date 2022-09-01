@@ -3,6 +3,7 @@ namespace App;
 
 use App\Repositories\SubscriptionRepository;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
@@ -27,8 +28,10 @@ use Illuminate\Support\Collection;
  * @property-read User                 user
  * @property-read Coupon               coupon
  * @property-read Collection|Payment[] payments
- * @method-static Builder|Subscription active()
  * @property-read mixed                $final_total
+
+ * @method static Builder|Subscription active()
+ * @method static Builder|Subscription notStripe()
  */
 class Subscription extends Model
 {
@@ -80,6 +83,11 @@ class Subscription extends Model
     public function scopeActive($query)
     {
         $query->where('is_active', '=', true);
+    }
+
+    public function scopeNotStripe(Builder $query)
+    {
+        return $query->whereNull('stripe_plan_id');
     }
 
     public function cancelLink()
