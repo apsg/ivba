@@ -1,6 +1,6 @@
 @extends('layouts.front2')
 
-@section('title', 'Kup dostęp xxx')
+@section('title', 'Kup dostęp')
 
 @php
     Session::put('url.intended', URL::full());
