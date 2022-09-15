@@ -3,7 +3,7 @@
 use App\Domains\Forms\Models\Form;
 
 return [
-    'report'   => [
+    'report'               => [
         'name'   => 'Raport z kampanii',
         'fields' => [
             'r1' => [
@@ -44,7 +44,7 @@ return [
             ],
         ],
     ],
-    'products' => [
+    'products'             => [
         'name'   => 'Wybór produktów',
         'fields' => [
             'p1' => [
@@ -65,7 +65,7 @@ return [
             ],
         ],
     ],
-    'weeks'    => [
+    'weeks'                => [
         'name'   => 'Raport sprzedaży',
         'fields' => [
             'w1' => [
@@ -86,7 +86,7 @@ return [
             ],
         ],
     ],
-    'reklama'  => [
+    'reklama'              => [
         'name'   => 'Reklamy konkurencji',
         'fields' => [
             'rk1' => [
@@ -111,7 +111,7 @@ return [
             ],
         ],
     ],
-    'sklepy'   => [
+    'sklepy'               => [
         'name'   => 'Szukanie konkurencyjnych sklepów',
         'fields' => [
             'sk1' => [
@@ -136,7 +136,7 @@ return [
             ],
         ],
     ],
-    'adres'    => [
+    'adres'                => [
         'name'   => 'Podaj adres Twojego sklepu Internetowego',
         'fields' => [
             'ad1' => [
@@ -145,7 +145,7 @@ return [
             ],
         ],
     ],
-    'produkt'  => [
+    'produkt'              => [
         'name'   => 'Podaj bezpośredni link do produktu, który chcesz sprzedawać.',
         'fields' => [
             'pb1' => [
@@ -154,7 +154,7 @@ return [
             ],
         ],
     ],
-    'pytanie'  => [
+    'pytanie'              => [
         'name'   => 'Zadaj pytanie.',
         'fields' => [
             'pyt1' => [
@@ -163,7 +163,7 @@ return [
             ],
         ],
     ],
-    'problem'  => [
+    'problem'              => [
         'name'   => 'Zgłoś problem.',
         'fields' => [
             'pro1' => [
@@ -172,4 +172,56 @@ return [
             ],
         ],
     ],
+    'produkty_aliexpress'  => [
+        'name'   => 'Trzy produkty z Aliexpressu z potencjałem',
+        'fields' => [
+            'ali1' => [
+                'name' => 'Link 1',
+                'type' => Form::FIELD_URL,
+            ],
+            'ali2' => [
+                'name' => 'Link 2',
+                'type' => Form::FIELD_URL,
+            ],
+            'ali3' => [
+                'name' => 'Link 3',
+                'type' => Form::FIELD_URL,
+            ],
+        ],
+    ],
+    'produkty_allegro'     => [
+        'name'   => 'Trzy produkty z Allegro z potencjałem',
+        'fields' => [
+            'alle1' => [
+                'name' => 'Link 1',
+                'type' => Form::FIELD_URL,
+            ],
+            'alle2' => [
+                'name' => 'Link 2',
+                'type' => Form::FIELD_URL,
+            ],
+            'alle3' => [
+                'name' => 'Link 3',
+                'type' => Form::FIELD_URL,
+            ],
+        ],
+    ],
+    'produkty_konkurencja' => [
+        'name'   => 'Trzy produkty konkurencji z potencjałem',
+        'fields' => [
+            'konk1' => [
+                'name' => 'Link 1',
+                'type' => Form::FIELD_URL,
+            ],
+            'konk2' => [
+                'name' => 'Link 2',
+                'type' => Form::FIELD_URL,
+            ],
+            'konk3' => [
+                'name' => 'Link 3',
+                'type' => Form::FIELD_URL,
+            ],
+        ],
+    ],
+
 ];
