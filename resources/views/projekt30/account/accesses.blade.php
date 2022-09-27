@@ -33,8 +33,8 @@
                 {{ $subscription->valid_until }}
             </td>
             <td>
-                @if(!$subscription->is_active)
-                    <i class="fa fa-minus-circle text-danger"></i>Anulowana lub niepotwierdzona
+                @if($subscription->isPending())
+                    <i class="fa fa-refresh text-info mr-3"></i> Oczekujemy na potwierdzenie z Twojego banku
                 @else
                     @if($subscription->cancelled_at)
                         <i class="fa fa-minus-circle text-danger"></i> Zakończono - anulowana

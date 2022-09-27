@@ -29,7 +29,6 @@ use Illuminate\Support\Collection;
  * @property-read Coupon               coupon
  * @property-read Collection|Payment[] payments
  * @property-read mixed                $final_total
-
  * @method static Builder|Subscription active()
  * @method static Builder|Subscription notStripe()
  */
@@ -59,25 +58,38 @@ class Subscription extends Model
         return $this->hasMany(Payment::class)->orderBy('created_at');
     }
 
-    /**
-     * Czy dana subskrypcja jest aktywna.
-     * @return bool [description]
-     */
-    public function isValid()
+    public function isValid(): bool
     {
         return $this->valid_until->isFuture();
     }
 
-    public function isActive()
+    public function isActive(): bool
     {
         return $this->is_active;
     }
 
-    public function cancel()
+    public function cancel(): Subscription
     {
         app(SubscriptionRepository::class)->cancel($this);
 
         return $this;
+    }
+
+    public function isPending(): bool
+    {
+        if ($this->is_active) {
+            return false;
+        }
+
+        if ($this->valid_until !== null) {
+            return false;
+        }
+
+        if ($this->cancelled_at !== null) {
+            return false;
+        }
+
+        return true;
     }
 
     public function scopeActive($query)
@@ -85,7 +97,7 @@ class Subscription extends Model
         $query->where('is_active', '=', true);
     }
 
-    public function scopeNotStripe(Builder $query)
+    public function scopeNotStripe(Builder $query): Builder
     {
         return $query->whereNull('stripe_plan_id');
     }
