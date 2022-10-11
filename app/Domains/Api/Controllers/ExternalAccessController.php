@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\AccessRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 
 class ExternalAccessController extends Controller
 {
@@ -18,6 +19,8 @@ class ExternalAccessController extends Controller
         CoursesService $coursesService,
         AccessRepository $accessRepository
     ) {
+        Log::info(__CLASS__, $request->all());
+
         $user = $userRepository->findByEmailOrCreate($request->input('email'));
 
         if ($request->isFullAccess()) {
