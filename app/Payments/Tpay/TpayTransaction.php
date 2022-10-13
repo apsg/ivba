@@ -2,6 +2,7 @@
 namespace App\Payments\Tpay;
 
 use App\Order;
+use Illuminate\Support\Arr;
 use tpayLibs\src\_class_tpay\TransactionApi;
 use tpayLibs\src\_class_tpay\Utilities\TException;
 
@@ -41,10 +42,9 @@ class TpayTransaction extends TransactionApi
         ];
 
         try {
-            $res = $this->create($config);
-            $this->trId = $res['title'];
+            $response = $this->create($config);
 
-            return 'https://secure.tpay.com/?gtitle=' . $this->trId;
+            return Arr::get($response, 'url');
         } catch (TException $e) {
             \Log::info('Transaction creation problem', [
                 'order'   => $this->order,
