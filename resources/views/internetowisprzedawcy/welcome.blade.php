@@ -9,9 +9,8 @@
                 <div class="col-md-6">
                     <div class="iframe-vimeo">
                         <img src="{{ asset('images/internetowisprzedawcy/brand-mark-1.png') }}">
-                        <iframe src="https://player.vimeo.com/video/29950141?h=c6db007fe5&title=0&byline=0&portrait=0"
+                        <iframe src="https://player.vimeo.com/video/764209544?h=c6db007fe5&title=0&byline=0&portrait=0"
                                 frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
-
                         >
                         </iframe>
                     </div>
@@ -82,8 +81,8 @@
                     <div class="subscription-promo-card center-justify-flex-content">
                         <div class="text-center p-4">
                             <img class="m-3" src="{{ asset('images/internetowisprzedawcy/subscription-promo-1.png') }}">
-                            <h3 class="m-3">Profesjonalne<br>materiały</h3>
-                            <p class="m-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+                            <h3 class="m-3">Sprawdzona<br>wiedza</h3>
+                            <p class="m-3">Praktyczne materiały na podstawie doświadczeń prowadzących</p>
                         </div>
                     </div>
                 </div>
@@ -310,42 +309,25 @@
         <section class="container">
             <div class="row mt-5">
                 <div class="col-md-12 col-lg-6">
-                <!-- <img class="vs-logo" src="{{ asset('images/internetowisprzedawcy/vs-logo.png') }}"> -->
+                    <!-- <img class="vs-logo" src="{{ asset('images/internetowisprzedawcy/vs-logo.png') }}"> -->
                     <div class="list-card list-card__negative">
                         <div class="list-card__header">
                             Typowa platforma <br>do nauki
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
+                            <i class="fa fa-times-circle-o"></i> Treść wideo
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
+                            <i class="fa fa-times-circle-o"></i> Kontakt pośredni
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
+                            <i class="fa fa-times-circle-o"></i> Automatyczne raporty bez badania
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
+                            <i class="fa fa-times-circle-o"></i> Rzadkie aktualizacje
                         </div>
                         <div class="list-card-item list-card-item__negative">
-                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
-                        </div>
-                        <div class="list-card-item list-card-item__negative">
-                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
-                        </div>
-                        <div class="list-card-item list-card-item__negative">
-                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
-                        </div>
-                        <div class="list-card-item list-card-item__negative">
-                            <i class="fa fa-times-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
+                            <i class="fa fa-times-circle-o"></i> Checklisty
                         </div>
                     </div>
                 </div>
@@ -355,36 +337,52 @@
                             <img src="{{ asset('images/internetowisprzedawcy/logo_color.png') }}">
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
+                            <i class="fa fa-check-circle-o"></i>
+                            Treść wideo + case study
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
+                            <i class="fa fa-check-circle-o"></i>
+                            Kontakt bezpośredni z autorem
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
+                            <i class="fa fa-check-circle-o"></i>
+                            Cykliczne raporty z możliwością nadzoru
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
+                            <i class="fa fa-check-circle-o"></i>
+                            Miesięczne aktualizacje kursów
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
+                            <i class="fa fa-check-circle-o"></i>
+                            Checklisty + procesy
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
+                            <i class="fa fa-check-circle-o"></i>
+                            Działanie w clusterach
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
+                            <i class="fa fa-check-circle-o"></i>
+                            Cykliczne wyzwania
                         </div>
                         <div class="list-card-item list-card-item__positive">
-                            <i class="fa fa-check-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit,
+                            <i class="fa fa-check-circle-o"></i>
+                            Schematy sprzedaży
+                        </div>
+                        <div class="list-card-item list-card-item__positive">
+                            <i class="fa fa-check-circle-o"></i>
+                            Spotkania na żywo
+                        </div>
+                        <div class="list-card-item list-card-item__positive">
+                            <i class="fa fa-check-circle-o"></i>
+                            Aktualności + powiadomienia
+                        </div>
+                        <div class="list-card-item list-card-item__positive">
+                            <i class="fa fa-check-circle-o"></i>
+                            Segmentacja - sprzedawcy produktów i usług
+                        </div>
+                        <div class="list-card-item list-card-item__positive">
+                            <i class="fa fa-check-circle-o"></i>
+                            100% praktyków
                         </div>
                     </div>
                 </div>
@@ -437,8 +435,8 @@
     <div class="section-container" id="faq">
         <section class="container faq-accordion__section py-5">
             <faq-accordion
-                :email="'test@test.com'"
-                :phone="'123 456 789'">
+                    :email="'info@internetowisprzedawcy.pl'"
+                    :phone="'508 091 752'">
             </faq-accordion>
         </section>
     </div>

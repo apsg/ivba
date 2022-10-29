@@ -53,6 +53,7 @@ Route::group(['prefix' => 'coupon'], function () {
 Route::get('/cart', OrderController::class . '@showCart');
 Route::get('/continue', PagesController::class . '@continue');
 Route::get('/buy_access', PagesController::class . '@buyAccess')->name('buy_access');
+Route::view('/buy_access2', 'buy_access2')->name('buy_access2');
 Route::get('/cart/add_full_access', OrderController::class . '@addFullAccess');
 Route::get('/cart/remove_full_access', OrderController::class . '@removeFullAccess');
 Route::get('/cart/add_subscription', OrderController::class . '@addSubscription');

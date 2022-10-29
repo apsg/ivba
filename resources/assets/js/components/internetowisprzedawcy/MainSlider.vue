@@ -37,7 +37,7 @@
                     <div class="col-12 d-flex align-items-center slider-image"
                          style="background-image: url(/images/internetowisprzedawcy/nowa-ilustracja.png)">
                         <div class="slide-text text-left">
-                            <h1>Naucz się <br>prowadzić<br> produktywny<br> biznes</h1>
+                            <h1>Prowadź<br /> produktywny<br> biznes</h1>
                             <span>
                                 Konsultuj na bieżąco swoje rozwiązania i otwieraj się na klienta.
                             </span>
@@ -122,7 +122,7 @@ export default {
 
     .slide-text {
          h1 {
-            margin-top: 0; 
+            margin-top: 0;
          }
     }
 }

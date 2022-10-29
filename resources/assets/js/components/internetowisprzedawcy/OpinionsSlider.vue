@@ -29,70 +29,56 @@
 </template>
 
 <script>
-    import {Carousel, Slide} from 'vue-carousel';
+import {Carousel, Slide} from 'vue-carousel';
 
-    export default {
-        name: "OpinionsSlider",
-        components: {Carousel, Slide},
-        data() {
-            return {
-                slides: [
-                    {   
-                        id: 1,
-                        img: 'seller.png',
-                        name: 'Paweł Kowalski',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                        companyName: 'nazwa firmy'
-                    },
-                    {   
-                        id: 2,
-                        img: 'seller-2.png',
-                        name: 'Paweł Kowalski',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                        companyName: 'story 0.1'
-                    },
-                    {   
-                        id: 3,
-                        img: 'seller.png',
-                        name: 'Paweł Kowalski',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                        companyName: 'story 0.1'
-                    },
-                    {   
-                        id: 4,
-                        img: 'seller-2.png',
-                        name: 'Paweł Kowalski',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                        companyName: 'story 0.1'
-                    },
-                    {   
-                        id: 5,
-                        img: 'seller.png',
-                        name: 'Paweł Kowalski',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                        companyName: 'story 0.1'
-                    }
-                ]
-            }
+export default {
+    name: "OpinionsSlider",
+    components: {Carousel, Slide},
+    data() {
+        return {
+            slides: [
+                {
+                    id: 1,
+                    img: 'seller-1.png',
+                    name: 'Paweł Gubrynowicz',
+                    description: 'Dzięki Mateuszowi i jego procesom optymalizacji nasz sklep odniósł sukces. Jesteśmy jednym z 3 największych sklepów w PL sprzedających prezenty.',
+                    companyName: 'www.prezentyzycia.pl'
+                },
+                {
+                    id: 2,
+                    img: 'seller-2.png',
+                    name: 'Mateusz Biernacki',
+                    description: 'Z Mateuszem znamy się od przeszło 6 lat. Systematycznie inspiruje mnie narzędziami i schematami sprzedaży. Czy ogarnia Facebooka? Chyba jak nikt w Polsce :)',
+                    companyName: 'www.rekinysukcesu.pl'
+                },
+                {
+                    id: 3,
+                    img: 'seller-3.png',
+                    name: 'Barbara Żukowska',
+                    description: 'Systematycznie biorę udział w szkoleniach organizowanych przez Mateusza. Mogę to podsumować tylko tak: Trudne zagadnienia tłumaczy w bardzo prosty sposób.',
+                    companyName: 'Gliwice'
+                }
+            ]
         }
-
     }
+
+}
 </script>
 
 <style lang="scss" scoped>
-    .seller-card {
-        &__name{
-            font-size: 21px;
-        }
-        
-        &__description{
-            font-size: 14px;
-        }
-
-        &__company-name{
-            font-weight: 700;
-            font-size: 10px;
-            text-transform: uppercase;
-        }
+.seller-card {
+    &__name {
+        font-size: 21px;
     }
+
+    &__description {
+        font-size: 14px;
+    }
+
+    &__company-name {
+        font-weight: 700;
+        font-size: 10px;
+        text-transform: uppercase;
+    }
+}
 </style>

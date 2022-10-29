@@ -46,17 +46,17 @@
                     {
                         id: 3,
                         title: 'W jaki sposób mogę zapłacić za dostęp do platformy?',
-                        description: '<a href="buy_access">TUTAJ</a> dostępne możliwości zapłaty + co z przelewem tradycyjnym // TODO dodać link',
+                        description: `<a href="buy_access">TUTAJ</a> dostępne możliwości zapłaty. Jeśli masz jakieś pytania śmiało pisz na ${this.email}`,
                     },
                     {
                         id: 4,
                         title: 'Platforma nie spełniła moich oczekiwań, czy mogę dokonać zwrotu?',
-                        description: `Tak, jeśli po zakupie stwierdzisz, że materiały nie spełniły Twoich oczekiwań wystarczy, że do nas napiszesz na maila: ${this.email} // TODO dodać maila`,
+                        description: `Tak, jeśli po zakupie stwierdzisz, że materiały nie spełniły Twoich oczekiwań wystarczy, że do nas napiszesz na maila: ${this.email}`,
                     },
                     {
                         id: 5,
                         title: 'Nie jestem zdecydowany/a gdzie mogę otrzymać więcej informacji?',
-                        description: `Możesz napisać do nas na adres: ${this.email} lub zadzwonić pod numer: ${this.phone} // TODO dodać nr tel i email i zapytać o dodatkowe informacje o platformie Internetowi Sprzedawcy`,
+                        description: `Możesz napisać do nas na adres: ${this.email} lub zadzwonić pod numer: ${this.phone}`,
                     },
                 ]
             }
