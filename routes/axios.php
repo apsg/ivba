@@ -2,6 +2,7 @@
 
 use App\Domains\Learn\Controllers\QuestionsController;
 use App\Domains\Payments\Controllers\QuickFullAccessOrderController;
+use App\Domains\Payments\Controllers\QuickSubscriptionController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\LessonsController;
 use App\Http\Controllers\OrderController;
@@ -16,6 +17,7 @@ Route::group(['prefix' => 'a'], function () {
 
     Route::post('/order/check_coupon', OrderController::class . '@checkCoupon');
     Route::post('/order/quick_full_access', QuickFullAccessOrderController::class . '@order');
+    Route::post('/order/quick_subscription', QuickSubscriptionController::class . '@create');
 
     Route::post('/question', QuestionsController::class . '@ask');
 });

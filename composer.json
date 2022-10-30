@@ -39,6 +39,7 @@
         "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest",
         "barryvdh/laravel-debugbar": "^3.2@dev",
         "ergebnis/php-cs-fixer-config": "^2.2",
         "filp/whoops": "~2.0",

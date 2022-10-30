@@ -11,7 +11,7 @@
         <div class="container">
 
             <order
-                    price="{{ number_format(setting('ivba.full_access_price'), 2) }}"
+                    price="{{ number_format(setting('ivba.subscription_price'), 2) }}"
                     rules_link="{{ setting('is.rules_link') }}"
                     :user="{{ Auth::user() ?? "{}" }}"
             ></order>

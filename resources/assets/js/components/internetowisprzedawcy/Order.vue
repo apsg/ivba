@@ -81,8 +81,8 @@
             <div class="d-flex mt-3">
                 <div class="w-60 pr-5 text-gray-44">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
+                        Abonament miesięczny w serwisie Internetowi Sprzedawcy. Opłata pobierana automatycznie co
+                        miesiąc z Twojej karty.
                     </p>
                 </div>
                 <div class="text-right flex-fill">
@@ -219,7 +219,7 @@
         <div class="pt-5 w-75 ml-auto mr-auto text-gray-44" v-if="step === 3">
             <div class="rounded-50 product-box bg-white p-4">
                 Twoje zamówienie
-                <h5 class="text-black">Dostęp do platformy Internetowi Sprzedawcy</h5>
+                <h5 class="text-black">Miesięczny abonament na platformie Internetowi Sprzedawcy</h5>
             </div>
 
             <div class="mt-5">
@@ -338,7 +338,7 @@ export default {
             this.clearErrors();
             this.processing = true;
 
-            axios.post('/a/order/quick_full_access', {
+            axios.post('/a/order/quick_subscription', {
                 code: this.coupon,
                 name: this.name,
                 email: this.email,
@@ -346,7 +346,7 @@ export default {
             })
                 .then(r => {
                     this.processing = false;
-                    //location.href = r.data.url;
+                    location.href = r.data.url;
                 })
                 .catch(r => {
                     this.processing = false;

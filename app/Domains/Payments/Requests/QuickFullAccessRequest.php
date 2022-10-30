@@ -9,21 +9,20 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class QuickFullAccessRequest extends FormRequest
 {
-    /** @var Coupon|null */
-    protected $coupon;
+    protected ?Coupon $coupon = null;
 
-    public function rules() : array
+    public function rules(): array
     {
         return [
             'email' => 'required|string|email',
-            'code'  => 'sometimes|string',
+            'code'  => 'nullable|string',
         ];
     }
 
     /**
      * @return Coupon|null
      */
-    public function coupon()
+    public function coupon(): ?Coupon
     {
         if ($this->coupon === null && $this->input('code')) {
             $this->coupon = Coupon::where('code', $this->input('code'))
@@ -34,7 +33,7 @@ class QuickFullAccessRequest extends FormRequest
         return $this->coupon;
     }
 
-    public function resolveUser() : User
+    public function resolveUser(): User
     {
         $repository = app(UserRepository::class);
 
