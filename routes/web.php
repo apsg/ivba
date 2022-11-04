@@ -2,6 +2,7 @@
 
 use App\Domains\Payments\Controllers\CouponsController;
 use App\Domains\Payments\Controllers\StripeIpnController;
+use App\Domains\Posts\Controllers\PostsController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\ContactFormController;
@@ -109,6 +110,15 @@ Route::group(['prefix' => 'qs'], function () {
     Route::post('/{hash}/finish', QuickSalesController::class . '@finish');
     Route::post('/{hash}/finish_free', QuickSalesController::class . '@finishFree');
     Route::post('/{hash}/check_coupon', QuickSalesController::class . '@checkCoupon');
+});
+
+Route::group([
+    'prefix'     => 'posts',
+    'as'         => 'posts.',
+    'middleware' => 'auth',
+], function () {
+    Route::get('/', PostsController::class . '@index')->name('index');
+    Route::get('/{slug}', PostsController::class . '@show')->name('show');
 });
 
 Route::get('/payments/{payment}/request-invoice', PaymentsController::class . '@requestInvoice');

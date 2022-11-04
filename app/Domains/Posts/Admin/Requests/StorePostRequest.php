@@ -5,12 +5,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StorePostRequest extends FormRequest
 {
-    public function rules() : array
+    public function rules(): array
     {
         return [
             'title' => 'required|string',
             'body'  => 'required|string',
-            'slug'  => 'string',
+            'slug'  => 'string|unique:posts,slug',
         ];
     }
 }

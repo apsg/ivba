@@ -12,6 +12,10 @@ body.logged {
         color: $color-black;
     }
 
+    .underline-blue {
+        border-bottom: 2px solid $color-blue;
+    }
+
     .icon {
         fill: $color-gray;
         cursor: pointer;
