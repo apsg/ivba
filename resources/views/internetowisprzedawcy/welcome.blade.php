@@ -9,8 +9,8 @@
                 <div class="col-md-6">
                 <vimeo-video-modal
                     image="{{ asset('images/internetowisprzedawcy/brand-mark-1.png') }}"
-                    video-src="https://player.vimeo.com/video/764209544?h=c6db007fe5&title=0&byline=0&portrait=0"
-                />
+                    video-src="https://player.vimeo.com/video/764209544?h=c6db007fe5&title=0&byline=0&portrait=0">
+                <vimeo-video-modal/>
                 </div>
                 <div class="col-md-6 pt-2">
                     <div class="d-flex">
