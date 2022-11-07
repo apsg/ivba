@@ -11,7 +11,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 col-md-push-5 left-block">
-                        <h2>{{ $course->title }}</h2>
+                        <h2 style="margin-top: 1rem">{{ $course->title }}</h2>
 
                         {!! $course->description !!}
 

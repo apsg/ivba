@@ -9,7 +9,7 @@
         <nav class="navbar navbar-expand-sm navbar-is fixed-top bg-red">
             <div class="container">
                 <a class="navbar-brand pt-2" href="{{ url('/') }}">
-                    <img src="{{ asset('images/internetowisprzedawcy/logo_white.png') }}" height="50">
+                    <img src="{{ asset('images/internetowisprzedawcy/logo_white.svg') }}" height="50" width="186">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-inauka"
                         aria-controls="navbar-inauka" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +47,7 @@
             <div class="row align-items-center">
                 <div class="col-md-4">
                     <a href="{{url('/')}}" class="py-3">
-                        <img src="{{ asset('/images/internetowisprzedawcy/logo_white.png') }}">
+                        <img src="{{ asset('/images/internetowisprzedawcy/logo_white.svg') }}" heigth="70" width="260">
                     </a>
                 </div>
                 <div class="col-md-4">

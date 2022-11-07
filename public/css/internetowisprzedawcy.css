@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:ital,wght@0,300;
 
-0,400;0,700;1,300;1,400;1,700&display=swap);body.logged {
+0,400;0,700;1,300;1,400;1,700&display=swap);@charset "UTF-8";
+body.logged {
   background-color: #F5F5F5;
   min-height: 100%;
   color: #868686;
@@ -482,6 +483,10 @@ footer .footer-menu {
   font-size: 12px;
 }
 
+.font-size-14 {
+  font-size: 14px !important;
+}
+
 .font-size-16 {
   font-size: 16px;
 }
@@ -505,6 +510,7 @@ ul.square-ul li:before {
 .iframe-vimeo {
   padding: 40% 0 0 0;
   position: relative;
+  cursor: pointer;
 }
 
 .iframe-vimeo img {
@@ -943,5 +949,20 @@ ul.square-ul li:before {
 .page-item.active .page-link {
   background-color: #00ACAA;
   border-color: #00ACAA;
+}
+
+a.mark-after:after {
+  content: "\2022";
+  color: #00A9A7;
+  margin: 0 10px;
+}
+
+body.learn .col-sidebar .learn-sidebar h6 {
+  color: #777777;
+}
+
+body.learn .lesson-content .lesson-description {
+  font-family: Poppins;
+  font-size: 16px;
 }
 

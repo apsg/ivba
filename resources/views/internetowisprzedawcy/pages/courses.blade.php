@@ -10,7 +10,7 @@
                 </div>
             </div>
 
-            <courses></courses>
+            <courses :ivba="true"></courses>
 
         </div>
 

@@ -1,7 +1,7 @@
 <div class="learn-sidebar">
     <div class="text-center">
         <a href="{{ url('/') }}">
-            <img src="{{ asset('/images/internetowisprzedawcy/logo_znak.png') }}">
+            <img width="43" height="71" src="{{ asset('/images/internetowisprzedawcy/logo_znak.svg') }}">
         </a>
     </div>
 
@@ -21,7 +21,7 @@
             @foreach($course->visibleLessons(Auth::user())->get() as $l)
                 <li class="nav-item ">
                     <a href="{{ $l->url($course) }}"
-                       class="nav-link @if(isset($lesson) && $l->id == $lesson->id) {{"active"}} @endif">
+                       class="nav-link @if(isset($lesson) && $l->id == $lesson->id) {{"active"}} @endif" font-size-14>
                         @if(\Auth::user()->hasFinishedLesson($l->id))
                             <i class="fa fa-check-square"></i>
                         @endif

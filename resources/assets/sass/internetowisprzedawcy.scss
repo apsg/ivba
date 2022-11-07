@@ -306,6 +306,10 @@ footer {
     font-size: 12px;
 }
 
+.font-size-14 {
+    font-size: 14px !important;
+}
+
 .font-size-16 {
     font-size: 16px;
 }
@@ -329,6 +333,7 @@ ul.square-ul li:before {
 .iframe-vimeo {
     padding: 40% 0 0 0;
     position: relative;
+    cursor: pointer;
 
     img {
         position: absolute;
@@ -781,4 +786,19 @@ $outer-circle-color: #687b7d80;
         background-color: $color-blue;
         border-color: $color-blue;
     }
+}
+
+a.mark-after:after {
+    content: "•";
+    color: #00A9A7;
+    margin:0 10px;
+}
+
+body.learn .col-sidebar .learn-sidebar h6 {
+    color: #777777;
+}
+
+body.learn .lesson-content .lesson-description {
+    font-family: Poppins;
+    font-size: 16px;
 }

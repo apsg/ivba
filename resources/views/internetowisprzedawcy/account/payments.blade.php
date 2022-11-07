@@ -1,4 +1,4 @@
-<h3>Twoje Płatności</h3>
+<h5>Twoje Płatności</h5>
 <table class="table">
     <thead>
     <tr>

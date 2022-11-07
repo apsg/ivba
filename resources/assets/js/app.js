@@ -15,6 +15,7 @@ import RankingUser from './components/RankingUser.vue';
 import PartnerLink from './components/PartnerLink.vue';
 import VTooltip from 'v-tooltip';
 import VimeoVideo from './components/VimeoVideo.vue';
+import VimeoVideoModal from './components/VimeoVideoModal.vue';
 import Quicksale from './components/Quicksale.vue';
 import P30Slider from "./components/p30/P30Slider";
 import MainSlider from "./components/internetowisprzedawcy/MainSlider";
@@ -74,6 +75,7 @@ const app = new Vue({
         'image-preview': require('./components/ImagePreview').default,
         'logbook': require('./components/Admin/Logbook').default,
         'vimeo-video': VimeoVideo,
+        'vimeo-video-modal': VimeoVideoModal,
         Order,
         'question-form': QuestionForm,
         'form-answers': FormAnswers,

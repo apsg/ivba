@@ -1,19 +1,21 @@
 <ul class="nav navbar-nav">
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/') }}/#o-platformie">O platformie</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/') }}/#korzysci">Korzyści</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/') }}/#opinie">Opinie</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/') }}/#zobacz-kursy">Zobacz kursy</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/') }}/#faq">FAQ</a>
-    </li>
+    @if (Auth::guest())
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('/') }}/#o-platformie">O platformie</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('/') }}/#korzysci">Korzyści</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('/') }}/#opinie">Opinie</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('/') }}/#zobacz-kursy">Zobacz kursy</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('/') }}/#faq">FAQ</a>
+        </li>
+    @endif
 
     @foreach($menu as $item)
 
@@ -48,7 +50,27 @@
                         class="fa fa-sign-in"></i></a>
         </li>
     @else
-        <li class="nav-item dropdown ml-auto">
+        @if(Auth::user()->hasActiveSubscription() || Auth::user()->hasFullAccess())
+            <li class="nav-item ml-auto">
+                <a class="nav-link" href="{{ url('/buy_access') }}">
+                    Przedłuż dostęp
+                </a>
+            </li>
+            <li class="nav-item">
+                <a  style="background-color: #00A9A7; border-color: #00A9A7;"
+                    class="nav-link nav-link-header nav-link-header__register"
+                    href="{{ url('/account/mycourses') }}">
+                    Zobacz materiały
+                </a>
+            </li>
+        @else
+            <li class="nav-item ml-auto">
+                <a class="nav-link nav-link-header__register" href="{{ url('/buy_access') }}">
+                    Wykup dostęp
+                </a>
+            </li>
+        @endif
+        <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-user"></i> {{ Auth::user()->name }}</a>

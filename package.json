@@ -25,6 +25,7 @@
     "vue-template-compiler": "^2.5.21"
   },
   "dependencies": {
+    "@vimeo/player": "^2.18.0",
     "admin-lte": "^2.3.11",
     "chart.js": "^2.9.4",
     "datatables.net-dt": "^1.1.0",

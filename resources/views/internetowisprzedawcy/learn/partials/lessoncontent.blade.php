@@ -39,7 +39,7 @@
             @if($lesson->video)
                 <vimeo-video
                         src="{{ $lesson->video->embedSrc() }}"
-                        watermark="{{ asset('/images/projekt30/watermark.png') }}"
+                        watermark="{{ asset('images/internetowisprzedawcy/logo_white.svg') }}"
                 ></vimeo-video>
             @endif
 
@@ -59,7 +59,7 @@
                     @endforeach
                 </div>
             @endif
-            <div class="col-md-12">
+            <div class="col-md-12 lesson-description">
                 <hr/>
                 {!! $lesson->description !!}
             </div>

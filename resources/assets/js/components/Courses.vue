@@ -4,11 +4,12 @@
             <div class="row">
 
                 <div class="col-md-4" v-for="course in courses" :key="course.id">
-                    <div class="card mb-4 box-shadow">
-                        <img class="card-img-top" :src="course.img" alt="Card image cap">
+                    <div :class="{ 'ivba-card': ivba }" class="card mb-4 box-shadow">
+                        <img :class="{ 'ivba-img': ivba }" class="card-img-top" :src="course.img" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">{{ course.title }}</h5>
-                            <p class="card-text" v-html="course.excerpt"></p>
+                            <h5 :class="{ 'ivba-h5': ivba }" class="card-title">{{ course.title }}</h5>
+                            <p v-if="ivba" class="ivba-p card-text" v-html="$options.filters.truncate(course.excerpt, 80, '...')"></p>
+                            <p v-else class="card-text" v-html="course.excerpt"></p>
                             <a v-if="course.wait == 0" :href="course.url" class="btn btn-ivba">Rozpocznij kurs</a>
                             <span v-else class="border py-2 px-3"><i class="fa fa-clock-o"></i> Uzyskasz dostęp za {{ course.wait }} dni</span>
                         </div>
@@ -23,11 +24,22 @@
 <script>
     export default {
         name: "Courses",
-
+        props: {
+            ivba: Boolean
+        },
         data() {
             return {
                 courses: [],
             }
+        },
+        filters: {
+            truncate: function (text, length, suffix) {
+                if (text.length > length) {
+                    return text.substring(0, length) + suffix;
+                } else {
+                    return text;
+                }
+            },
         },
 
         mounted() {
@@ -37,5 +49,21 @@
 </script>
 
 <style scoped lang="scss">
+    .ivba-card {
+        border-top-right-radius: 0px;
+        border-top-left-radius: 0px;
+    }
 
+    .ivba-img {
+        border-top-right-radius: 0px;
+        border-top-left-radius: 0px;
+    }
+
+    .ivba-h5 {
+        font-size: 1rem;
+    }
+
+    .ivba-p {
+        font-size: 16px;
+    }
 </style>

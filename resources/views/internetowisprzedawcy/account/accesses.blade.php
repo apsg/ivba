@@ -1,4 +1,4 @@
-<h3>Twoje dostępy i subskrypcje</h3>
+<h5>Twoje dostępy i subskrypcje</h5>
 <table class="table">
     <thead>
     <tr>

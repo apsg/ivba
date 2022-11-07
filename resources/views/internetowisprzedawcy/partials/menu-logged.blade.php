@@ -1,6 +1,6 @@
 <div class="nav flex-column flex-nowrap w-100 overflow-auto text-white p-2 text-center">
     <a href="{{ url('/') }}">
-        <img src="{{ asset('/images/internetowisprzedawcy/logo_znak.png') }}">
+        <img width="43" height="71" src="{{ asset('/images/internetowisprzedawcy/logo_znak.svg') }}">
     </a>
 
     <ul class="nav flex-column mb-2 mt-3">

@@ -7,13 +7,10 @@
         <section class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="iframe-vimeo">
-                        <img src="{{ asset('images/internetowisprzedawcy/brand-mark-1.png') }}">
-                        <iframe src="https://player.vimeo.com/video/764209544?h=c6db007fe5&title=0&byline=0&portrait=0"
-                                frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
-                        >
-                        </iframe>
-                    </div>
+                <vimeo-video-modal
+                    image="{{ asset('images/internetowisprzedawcy/brand-mark-1.png') }}"
+                    video-src="https://player.vimeo.com/video/764209544?h=c6db007fe5&title=0&byline=0&portrait=0"
+                />
                 </div>
                 <div class="col-md-6 pt-2">
                     <div class="d-flex">
@@ -396,7 +393,7 @@
                                  src="{{ asset('images/internetowisprzedawcy/brand-mark-2.png') }}">
                             <div class="circle-container__outer">
                                 <div class="circle-container__inner">
-                                    <img class="m-3" src="{{ asset('images/internetowisprzedawcy/logo_znak.png') }}">
+                                    <img width="43" height="71" class="m-3" src="{{ asset('images/internetowisprzedawcy/logo_znak.svg') }}">
                                 </div>
                             </div>
                             @if(!setting('is.disable_buy'))
