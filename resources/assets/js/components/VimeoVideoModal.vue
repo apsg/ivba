@@ -1,9 +1,6 @@
 <template>
     <div class="iframe-vimeo" @click="toggleModal()">
         <img :src="image">
-        <iframe style="pointer-events: none;" :src="videoSrc"
-                frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
-        </iframe>
         <button ref="modalButton" hidden type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"></button>
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div style="max-width: 1200px;" class="modal-dialog modal-dialog-centered" role="document">
