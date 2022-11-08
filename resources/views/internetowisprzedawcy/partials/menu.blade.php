@@ -31,10 +31,10 @@
     @endforeach
 </ul>
 <ul class="ml-auto nav navbar-collapse">
-
-    @if(Auth::guest() || !Auth::user()->hasFullAccess() || !Auth::user()->hasActiveSubscription())
+    <!-- Authentication Links -->
+    @if (Auth::guest())
         <li class="nav-item ml-auto">
-            <a class="nav-link nav-link-header nav-link-header__register" href="{{ route('buy_access') }}">
+            <a class="nav-link nav-link-header__register" href="{{ url('/buy_access') }}">
                 @if(!setting('is.disable_buy'))
                     Wykup dostęp
                 @else
@@ -42,12 +42,11 @@
                 @endif
             </a>
         </li>
-    @endif
-    <!-- Authentication Links -->
-    @if (Auth::guest())
         <li class="nav-item">
-            <a class="nav-link nav-link-header" href="{{ route('login') }}">Zaloguj się <i
-                        class="fa fa-sign-in"></i></a>
+            <a class="nav-link nav-link-header" href="{{ route('login') }}">
+                Zaloguj się
+                <i class="fa fa-sign-in"></i>
+            </a>
         </li>
     @else
         @if(Auth::user()->hasActiveSubscription() || Auth::user()->hasFullAccess())
@@ -66,7 +65,11 @@
         @else
             <li class="nav-item ml-auto">
                 <a class="nav-link nav-link-header__register" href="{{ url('/buy_access') }}">
-                    Wykup dostęp
+                    @if(!setting('is.disable_buy'))
+                        Wykup dostęp
+                    @else
+                        Zapisz się
+                    @endif
                 </a>
             </li>
         @endif
