@@ -20,8 +20,8 @@
                         <div class="d-flex">
                             <form action="{{ url("/logout") }}" method="POST">
                                 @csrf
-                                <a style="width: auto; height: auto;" class="account text-center" title="Wyloguj się">
-                                    <button style="border: none; background-color: transparent; color: transparent;">
+                                <a class="logout text-center" title="Wyloguj się">
+                                    <button>
                                         @include('icons.logout')
                                     </button>
                                 </a >

@@ -1,4 +1,4 @@
-<h3>Twoje dodatki</h3>
+<h4>Twoje dodatki</h4>
 <table class="table">
     <thead>
     <tr>

@@ -10,10 +10,10 @@
                 <div class="bg-white rounded-50 px-5 py-4 d-flex justify-content-between align-content-center align-items-center">
                     <div class="text-gray">
                         Kurs <strong>{{ $lastLesson['course'] }}</strong>.
-                        <h3 class="text-black">{{ $lastLesson['lesson'] }}</h3>
+                        <h4 class="text-black">{{ $lastLesson['lesson'] }}</h4>
                     </div>
                     <div class="">
-                        <a href="{{ $lastLesson['url'] }}" class="btn btn-lg btn-ivba ml-5">
+                        <a href="{{ $lastLesson['url'] }}" class="btn btn-lg btn-ivba ml-5" style="font-size: 1rem">
                             Wróć do lekcji <i class="fa fa-caret-right"></i>
                         </a>
                     </div>
@@ -27,7 +27,7 @@
                         <div class="d-flex align-items-center justify-content-between mb-2">
                             <div>
                                 @if($course->image)
-                                    <img src="{{ $course->image->thumb(132, 75) }}"/>
+                                    <img style="border-radius: 8px" src="{{ $course->image->thumb(132, 75) }}"/>
                                 @endif
                             </div>
                             <div class="flex-fill px-2">Kurs {{ $course->title }}</div>
