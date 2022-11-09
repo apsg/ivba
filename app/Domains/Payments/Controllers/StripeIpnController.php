@@ -4,6 +4,7 @@ namespace App\Domains\Payments\Controllers;
 use App\Domains\Payments\Dtos\Stripe\InvoiceDto;
 use App\Domains\Payments\Requests\Stripe\StripeIpnRequest;
 use App\Http\Controllers\Controller;
+use App\Payments\Exceptions\UnknownSubscriptionException;
 use App\Repositories\SubscriptionRepository;
 use Illuminate\Support\Facades\Log;
 
@@ -27,7 +28,13 @@ class StripeIpnController extends Controller
             'invoice'      => $invoiceDto->getInvoiceId(),
         ]);
 
-        app(SubscriptionRepository::class)->activateOrProlongFromStripe($invoiceDto);
+        try {
+            app(SubscriptionRepository::class)->activateOrProlongFromStripe($invoiceDto);
+        } catch (UnknownSubscriptionException $exception) {
+            Log::error(UnknownSubscriptionException::class, [
+                'message' => $exception->getMessage(),
+            ]);
+        }
 
         return response('ok', 200);
     }
