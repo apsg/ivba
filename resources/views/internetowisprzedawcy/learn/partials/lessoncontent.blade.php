@@ -39,7 +39,8 @@
             @if($lesson->video)
                 <vimeo-video
                         src="{{ $lesson->video->embedSrc() }}"
-                        watermark="{{ asset('images/internetowisprzedawcy/logo_white.svg') }}"
+                        watermark="{{ asset('images/internetowisprzedawcy/watermark.png') }}"
+                        watermarkStyle="bottom: 34px; right: -6px;"
                 ></vimeo-video>
             @endif
 

@@ -783,7 +783,13 @@ body.learn .col-sidebar .learn-sidebar h6 {
     color: #777777;
 }
 
-body.learn .lesson-content .lesson-description {
-    font-family: Poppins;
-    font-size: 16px;
+.lessons-ul {
+    overflow-y: auto;
+    max-height: calc(100vh - 210px)
+}
+
+.enquire-wrapper {
+    .course-img {
+        border-radius: 25px;
+    }
 }

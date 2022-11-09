@@ -22,7 +22,7 @@
                                 @if($course->video()->exists())
                                     {!! $course->video->embed(450, 300) !!}
                                 @elseif($course->image)
-                                    <img src="{{ $course->image->url }}" class="img-responsive" alt="">
+                                    <img src="{{ $course->image->url }}" class="img-responsive course-img" alt="course-img">
                                 @endif
                             </figure>
 

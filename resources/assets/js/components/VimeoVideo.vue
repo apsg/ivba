@@ -9,7 +9,7 @@
                 mozallowfullscreen
                 allowfullscreen
         ></iframe>
-        <img :src="watermark">
+        <img :src="watermark" :style="watermarkStyle">
     </div>
 </template>
 
@@ -32,7 +32,11 @@ export default {
         watermark: {
             type: String,
             default: "/images/watermark.png"
-        }
+        },
+        watermarkStyle: {
+            type: String,
+            default: ""
+        },
     },
 
     computed: {
