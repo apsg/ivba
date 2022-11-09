@@ -20,12 +20,13 @@ class QuestionsController extends Controller
             return response();
         }
 
-        Mail::send(new FreshdeskSupportMail(
-            Auth::user(),
-            $request->input('message'),
-            $request->course(),
-            $request->lesson()
-        ));
+        Mail::to(config('services.freshdesk.email'))
+            ->send(new FreshdeskSupportMail(
+                Auth::user(),
+                $request->input('message'),
+                $request->course(),
+                $request->lesson()
+            ));
 
         return response([], 200);
     }
