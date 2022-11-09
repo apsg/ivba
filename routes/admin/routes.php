@@ -249,13 +249,15 @@ Route::group([
 
 Route::group([
     'prefix' => 'posts',
+    'as'     => 'posts.',
 ], function () {
-    Route::get('/', AdminPostsController::class . '@index')->name('posts.index');
-    Route::post('/', AdminPostsController::class . '@store')->name('posts.store');
-    Route::get('/new', AdminPostsController::class . '@create')->name('posts.create');
-    Route::get('/{post}', AdminPostsController::class . '@edit')->name('posts.edit');
-    Route::post('/{post}', AdminPostsController::class . '@update')->name('posts.update');
-    Route::post('/{post}/toggle', AdminPostsController::class . '@togglePublish')->name('posts.toggle');
+    Route::get('/', AdminPostsController::class . '@index')->name('index');
+    Route::post('/', AdminPostsController::class . '@store')->name('store');
+    Route::get('/new', AdminPostsController::class . '@create')->name('create');
+    Route::get('/{post}', AdminPostsController::class . '@edit')->name('edit');
+    Route::post('/{post}', AdminPostsController::class . '@update')->name('update');
+    Route::delete('/{post}', AdminPostsController::class . '@destroy')->name('delete');
+    Route::post('/{post}/toggle', AdminPostsController::class . '@togglePublish')->name('toggle');
 });
 
 Route::group(['prefix' => 'forms'], function () {

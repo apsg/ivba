@@ -29,7 +29,6 @@
             </div>
 
             <div class="box-footer">
-
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-save"></i> Zapisz</button>
                 </div>

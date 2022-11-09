@@ -19,6 +19,14 @@
         <form action="{{ url('admin/posts/'.$post->id) }}" method="post">
             @include('admin.posts._form')
         </form>
+
+        <div class="col-md-12">
+            <form action="{{ route('admin.posts.delete', $post) }}" method="post">
+                @csrf
+                @method('delete')
+                <button class="btn btn-warning">Usuń wpis</button>
+            </form>
+        </div>
     </section>
 
 @endsection
