@@ -40,7 +40,7 @@
                 <vimeo-video
                         src="{{ $lesson->video->embedSrc() }}"
                         watermark="{{ asset('images/internetowisprzedawcy/watermark.png') }}"
-                        watermarkStyle="bottom: 34px; right: -6px;"
+                        watermarkStyle="bottom: 24px; right: -16px;"
                 ></vimeo-video>
             @endif
 
