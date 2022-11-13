@@ -47,7 +47,8 @@ use Illuminate\Notifications\Notifiable;
  * @property int                            $isadmin
  * @property string|null                    $phone
  * @property string|null                    $deleted_at
- * @property-read int                       total_points
+ * @property bool                           $has_seen_posts
+ * @property-read int                       $total_points
  * @property-read Collection|Answer[]       $answers
  * @property-read Collection|Course[]       $courses
  * @property-read Collection|AccessDay[]    $days
@@ -99,6 +100,7 @@ class User extends Authenticatable
         'postcode',
         'city',
         'company_name',
+        'has_seen_posts',
     ];
 
     /**
@@ -309,7 +311,7 @@ class User extends Authenticatable
      * Zwraca aktywne zamówienie lub tworzy nowe.
      * @return Order [description]
      */
-    public function getCurrentOrder() : Order
+    public function getCurrentOrder(): Order
     {
         if ($order = $this->orders()
             ->whereNull('confirmed_at')
@@ -601,13 +603,13 @@ class User extends Authenticatable
      */
     public function hasActiveSubscription()
     {
-        return (bool)$this->currentSubscription();
+        return (bool) $this->currentSubscription();
     }
 
     /**
      * Czy użytkownik ma dostęp tego dnia.
      */
-    public function hasDayAccess($date = null) : bool
+    public function hasDayAccess($date = null): bool
     {
         $day = Carbon::parse($date);
 
@@ -647,7 +649,7 @@ class User extends Authenticatable
         return url('/p/' . $this->partner_uniqid);
     }
 
-    public function getPartnerUniqidAttribute() : string
+    public function getPartnerUniqidAttribute(): string
     {
         if (empty($this->partner_key)) {
             $this->update([

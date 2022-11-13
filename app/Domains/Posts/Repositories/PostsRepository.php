@@ -1,6 +1,7 @@
 <?php
 namespace App\Domains\Posts\Repositories;
 
+use App\Domains\Posts\Actions\ClearPostDisplaysAction;
 use App\Domains\Posts\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -18,6 +19,10 @@ class PostsRepository
         $attributes['published_at'] = Carbon::now();
         $attributes['excerpt'] = Str::words(strip_tags($attributes['body']));
 
-        return Post::create($attributes);
+        $post = Post::create($attributes);
+
+        (new ClearPostDisplaysAction())->execute();
+
+        return $post;
     }
 }

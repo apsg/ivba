@@ -28,6 +28,11 @@
                                    class="btn btn-sm btn-ivba mt-2">
                                     Zobacz <i class="fa fa-caret-right"></i>
                                 </a>
+                                @if($post->displayed_at)
+                                    <span class="ml-5">Wyświetlono {{ $post->displayed_at }}</span>
+                                @else
+                                    <span class="ml-5 color-blue">Niewyświetlony materiał</span>
+                                @endif
                             </div>
                         </div>
                     @endforeach
