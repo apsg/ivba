@@ -9,11 +9,8 @@
                     <h2>Czego się chcesz dzisiaj nauczyć?</h2>
                 </div>
             </div>
-
             <courses :ivba="true"></courses>
-
         </div>
-
     </section>
     <!-- End Cources Section -->
 @endsection

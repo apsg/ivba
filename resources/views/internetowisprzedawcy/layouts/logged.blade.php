@@ -18,17 +18,31 @@
                             @yield('navbar')
                         </div>
                         <div class="d-flex">
-                            <form action="{{ url("/logout") }}" method="POST">
-                                @csrf
-                                <a class="logout text-center" title="Wyloguj się">
-                                    <button>
-                                        @include('icons.logout')
-                                    </button>
-                                </a >
-                            </form>
                             <a href="{{ url('/account') }}" class="account text-center mx-2" title="Moje konto">
-                                @include('icons.account')
+                                @include('icons.notification')
                             </a>
+                            <div class="btn-group account-menu">
+                                <button class="account-menu__main-button" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="account text-center" title="Moje konto">
+                                        @include('icons.account')
+                                    </a>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <button class="dropdown-item text-center p-2" type="button">
+                                        <a href="{{ url('/account') }}">Mój profil</a>
+                                    </button>
+                                    <hr>
+                                    <form action="{{ url("/logout") }}" method="POST">
+                                        @csrf
+                                        <button class="dropdown-item text-center p-2" type="submit">
+                                            <a>
+                                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                                Wyloguj
+                                            </a>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

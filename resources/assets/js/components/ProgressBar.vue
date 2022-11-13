@@ -20,6 +20,10 @@
                 type: String,
                 default: '',
             },
+            color: {
+                type: String,
+                default: '',
+            },
         },
 
         data() {

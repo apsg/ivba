@@ -83,6 +83,33 @@ body.logged {
                 fill: $color-white;
             }
         }
+
+    }
+
+    .account-menu {
+        color: $color-gray;
+        outline: none !important;
+        &__main-button {
+            padding: 0;
+            border: none;
+            background-color: transparent;
+            color: transparent;
+            outline: none !important;
+        }
+        hr {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 1rem;
+            margin-left: 1rem;
+            width: 80%;
+        }
+        button {
+            cursor: pointer;
+        }
+        a {
+            color: $color-gray;
+            text-decoration: none;
+        }
     }
 
     .logout {
@@ -93,6 +120,9 @@ body.logged {
             background-color: transparent;
             color: transparent;
             outline: none;
+        }
+        button:focus {
+            box-shadow: none;
         }
         &:hover,
         &.active {

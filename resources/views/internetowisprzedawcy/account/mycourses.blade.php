@@ -24,7 +24,7 @@
                 <div class="" id="courses" role="tabpanel" aria-labelledby="courses-tab">
 
                     @foreach( $user->courses as $course )
-                        <div class="d-flex align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
                             <div>
                                 @if($course->image)
                                     <img style="border-radius: 8px" src="{{ $course->image->thumb(132, 75) }}"/>
@@ -32,7 +32,7 @@
                             </div>
                             <div class="flex-fill px-2">Kurs {{ $course->title }}</div>
                             <div class="px-2">
-                                <progress-bar slug="{{ $course->slug }}"></progress-bar>
+                                <progress-bar slug="{{ $course->slug }}" color="#4da9a9"></progress-bar>
                             </div>
                             <div class="px-2">
                                 {{--                                @if(Gate::allows('access', $course))--}}

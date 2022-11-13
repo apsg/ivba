@@ -6,10 +6,12 @@
                 <div class="col-md-4" v-for="course in courses" :key="course.id">
                     <div :class="{ 'ivba-card': ivba }" class="card mb-4 box-shadow">
                         <img :class="{ 'ivba-img': ivba }" class="card-img-top" :src="course.img" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 :class="{ 'ivba-h5': ivba }" class="card-title">{{ course.title }}</h5>
-                            <p v-if="ivba" class="ivba-p card-text" v-html="$options.filters.truncate(course.excerpt, 80, '...')"></p>
-                            <p v-else class="card-text" v-html="course.excerpt"></p>
+                        <div :class="{ 'ivba-card-body': ivba }" class="card-body">
+                            <div :class="{ 'ivba-card-element': ivba }">
+                                <h5 :class="{ 'ivba-h5': ivba }" class="card-title">{{ course.title }}</h5>
+                                <p v-if="ivba" class="ivba-p card-text pb-3" v-html="$options.filters.truncate(course.excerpt, 80, '...')"></p>
+                                <p v-else class="card-text pb-3" v-html="course.excerpt"></p>
+                            </div>
                             <a v-if="course.wait == 0" :href="course.url" class="btn btn-ivba">Rozpocznij kurs</a>
                             <span v-else class="border py-2 px-3"><i class="fa fa-clock-o"></i> Uzyskasz dostęp za {{ course.wait }} dni</span>
                         </div>
@@ -67,4 +69,13 @@
     .ivba-p {
         font-size: 16px;
     }
+
+    .ivba-card-body {
+        min-height: 210px;
+    }
+
+    .ivba-card-element {
+        min-height: 125px;
+    }
+
 </style>

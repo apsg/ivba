@@ -1,5 +1,5 @@
 <div class="learn-sidebar">
-    <div class="text-center">
+    <div class="pl-3 pb-3">
         <a href="{{ url('/') }}">
             <img width="43" height="71" src="{{ asset('/images/internetowisprzedawcy/logo_znak.svg') }}">
         </a>
