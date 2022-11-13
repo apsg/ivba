@@ -22,7 +22,8 @@
                                 @if($course->video()->exists())
                                     {!! $course->video->embed(450, 300) !!}
                                 @elseif($course->image)
-                                    <img src="{{ $course->image->url }}" class="img-responsive course-img" alt="course-img">
+                                    <img src="{{ $course->image->url }}" class="img-responsive course-img"
+                                         alt="course-img">
                                 @endif
                             </figure>
 
@@ -129,14 +130,18 @@
                             <div class="tab-pane fade" id="teachers" role="tabpanel" aria-labelledby="teachers-tab">
                                 <div class="row">
                                     <div class="col-md-4" style="text-align: center;">
-                                        <img src="{{ url('images/mati2.png') }}" alt="">
+                                        <img src="{{ url('images/mati3.png') }}" alt="">
                                     </div>
                                     <div class="col-md-8">
                                         <h3>Mateusz Grabowski</h3>
-                                        <p>Wykładowca i trener informatyki. ﻿﻿10 lat doświadczenia w prowadzeniu szkoleń
-                                            dla
-                                            biznesu. Twórca największego portalu do nauki Excela - www.iExcel.pl . Autor
-                                            kanału na youtube w całości poświęconego Excelowi. </p>
+                                        <p>współtwórca jednej z największych platform do sprzedaży w modelu
+                                            dropshippingowym – TakeDrop.pl. Z branżą e-commerce związany od 2001 r.
+                                            Prowadził kampanie reklamowe dla czołowych w Polsce sklepów. Twórca jednego
+                                            z popularniejszych kanałów na YouTube poświęconego tematyce dropshippingu.
+                                            Wieloletni wykładowca i człowiek z pasją do sportów ekstremalnych.
+                                            Pięciokrotnie startował w zawodach Red Bull 111 MegaWatt, pasjonat sportów
+                                            lotniczych. Jak można mieć czas i pieniądze na wszystkie pasję? Działając w
+                                            dropshippingu! </p>
 
                                         <p><strong>Od Mateusza:</strong><br/>
                                             Mam nadzieję, że uda Ci się wydospodarować czas i spotkamy się na szkoleniu.

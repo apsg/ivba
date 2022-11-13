@@ -36,7 +36,7 @@
                     {
                         id: 1,
                         title: 'Czy dostęp do platformy jest dożywotni?',
-                        description: 'Dostęp do platformy dodajemy na min. 4 lata od zakupu.',
+                        description: 'Dostęp do platformy jest w modelu miesięcznym lub rocznym.',
                     },
                     {
                         id: 2,
@@ -56,7 +56,7 @@
                     {
                         id: 5,
                         title: 'Nie jestem zdecydowany/a gdzie mogę otrzymać więcej informacji?',
-                        description: `Możesz napisać do nas na adres: ${this.email} lub zadzwonić pod numer: ${this.phone}`,
+                        description: `Możesz napisać do nas na adres: ${this.email}.`,
                     },
                 ]
             }
