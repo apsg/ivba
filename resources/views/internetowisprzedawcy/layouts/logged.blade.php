@@ -18,7 +18,7 @@
                             @yield('navbar')
                         </div>
                         <div class="d-flex">
-                            <a href="{{ url('/account') }}" class="account text-center mx-2" title="Moje konto">
+                            <a href="{{ url('/posts') }}" class="account text-center mx-2" title="Aktualności">
                                 @include('icons.notification')
                             </a>
                             <div class="btn-group account-menu">
