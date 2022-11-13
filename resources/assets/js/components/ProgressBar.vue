@@ -4,10 +4,11 @@
                 v-if="progress"
                 :value="finished"
                 :max="total"
+                :style="color ? `accent-color: ${color}` : ''"
         ></progress>
         <a v-if="progress" v-tooltip="'Postęp: '+ finished +'/'+total+' ('+ p +'%)'">{{ p }}%</a>
 
-        <progress v-if="!progress"></progress>
+        <progress v-if="!progress" :style="color ? `accent-color: ${color}` : ''"></progress>
     </div>
 </template>
 
@@ -56,5 +57,6 @@
 </script>
 
 <style scoped lang="scss">
-
+/* For Chrome or Safari */
+     
 </style>
