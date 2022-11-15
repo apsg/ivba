@@ -1,14 +1,17 @@
 <template>
     <div>
-        <progress
-                v-if="progress"
-                :value="finished"
-                :max="total"
-                :style="color ? `accent-color: ${color}` : ''"
-        ></progress>
+        <div class="progress-container" :style="`--width: ${p}%; --background: ${color}`">
+            <progress
+                    v-if="progress"
+                    :value="finished"
+                    :max="total"
+            ></progress>
+        </div>
         <a v-if="progress" v-tooltip="'Postęp: '+ finished +'/'+total+' ('+ p +'%)'">{{ p }}%</a>
 
-        <progress v-if="!progress" :style="color ? `accent-color: ${color}` : ''"></progress>
+        <div class="progress-container" :style="`--width: ${p}%; --background: ${color}`">
+            <progress v-if="!progress"></progress>
+        </div>
     </div>
 </template>
 
@@ -23,7 +26,7 @@
             },
             color: {
                 type: String,
-                default: '',
+                default: '#007bff',
             },
         },
 
@@ -58,5 +61,25 @@
 
 <style scoped lang="scss">
 /* For Chrome or Safari */
-     
+    progress {
+        opacity: 0;
+    }
+    .progress-container {
+        margin-bottom: 1.5px;   
+        position: relative;
+        display: inline-block;
+        background: #eee;
+        height: 7px;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .progress-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: var(--width);
+        background: var(--background);
+    }
 </style>

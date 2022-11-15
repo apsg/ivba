@@ -44,7 +44,7 @@
                                 <th scope="row">{{ $course->title }}</th>
                                 <td>{{ $course->pivot->created_at }}</td>
                                 <td>
-                                    <progress-bar slug="{{ $course->slug }}" color="#009795"></progress-bar>
+                                    <progress-bar slug="{{ $course->slug }}" color="#00acaa"></progress-bar>
                                 </td>
                                 <td>
                                     @if(Gate::allows('access', $course))

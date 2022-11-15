@@ -32,7 +32,7 @@
                             </div>
                             <div class="flex-fill px-2">Kurs {{ $course->title }}</div>
                             <div class="px-2">
-                                <progress-bar slug="{{ $course->slug }}" color="#009795"></progress-bar>
+                                <progress-bar slug="{{ $course->slug }}" color="#00acaa"></progress-bar>
                             </div>
                             <div class="px-2">
                                 {{--                                @if(Gate::allows('access', $course))--}}
