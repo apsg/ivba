@@ -799,3 +799,18 @@ body.learn .col-sidebar .learn-sidebar h6 {
         font-size: 16px !important;
     }
 }
+
+.notification-mark {
+    &__container {
+        position: relative;
+    }
+    &__dot {
+        height: 12px;
+        width: 12px;
+        border-radius: 100%;
+        background: red;
+        position: absolute;
+        right: 17px;
+        top: 7px;
+    }
+}

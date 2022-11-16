@@ -18,9 +18,14 @@
                             @yield('navbar')
                         </div>
                         <div class="d-flex">
+                        <div class="notification-mark__container">
                             <a href="{{ url('/posts') }}" class="account text-center mx-2" title="Aktualności">
                                 @include('icons.notification')
                             </a>
+                            @if(!Auth::user()->has_seen_posts)
+                                <div class="notification-mark__dot"></div>
+                            @endif
+                        </div>
                             <div class="btn-group account-menu">
                                 <button class="account-menu__main-button" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <a class="account text-center" title="Moje konto">
