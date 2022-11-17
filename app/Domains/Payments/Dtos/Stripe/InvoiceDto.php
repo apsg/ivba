@@ -26,6 +26,11 @@ class InvoiceDto
         return Arr::get($this->data, 'lines.data.0.plan.id');
     }
 
+    public function getPlanAmount(): float
+    {
+        return StripeHelper::centsToPrice(Arr::get($this->data, 'lines.data.0.plan.amount', 0));
+    }
+
     public function isPaid(): bool
     {
         return Arr::get($this->data, 'paid', false);
@@ -50,5 +55,20 @@ class InvoiceDto
     public function getAmount(): float
     {
         return StripeHelper::centsToPrice(Arr::get($this->data, 'amount_paid', 0));
+    }
+
+    public function getProductId(): ?string
+    {
+        return Arr::get($this->data, 'lines.data.0.plan.product');
+    }
+
+    public function getEmail(): ?string
+    {
+        return Arr::get($this->data, 'customer_email');
+    }
+
+    public function getName(): ?string
+    {
+        return Arr::get($this->data, 'customer_name');
     }
 }

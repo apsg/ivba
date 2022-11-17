@@ -12,8 +12,8 @@ use App\Subscription;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use InvalidArgumentException;
-use function Symfony\Component\VarDumper\Dumper\esc;
 
 class SubscriptionRepository
 {
@@ -33,13 +33,11 @@ class SubscriptionRepository
             $amount = $coupon->apply($amount);
         }
 
-        $subscription = Subscription::create([
+        return Subscription::create([
             'user_id'   => $user->id,
             'coupon_id' => $coupon->id ?? null,
             'amount'    => $amount,
         ]);
-
-        return $subscription;
     }
 
     public function cancel(Subscription $subscription): Subscription
@@ -154,10 +152,12 @@ class SubscriptionRepository
     public function activateOrProlongFromStripe(InvoiceDto $invoiceDto): Subscription
     {
         /** @var Subscription $subscription */
-        $subscription = Subscription::where('stripe_plan_id', $invoiceDto->getPlanId())->first();
+        $subscription = Subscription::where('stripe_subscription_id', $invoiceDto->getSubscriptionId())->first();
 
         if ($subscription === null) {
-            throw new UnknownSubscriptionException($invoiceDto->getPlanId());
+            Log::info('Unknown subscription');
+
+            throw new UnknownSubscriptionException($invoiceDto->getSubscriptionId());
         }
 
         $isFirstPayment = !$subscription->isActive();
@@ -170,13 +170,15 @@ class SubscriptionRepository
 
         $this->daysRepository->sync($subscription->user, $subscription->valid_until);
 
-        $subscription->payments()->create([
-            'title'        => config('ivba.subscription_description'),
-            'amount'       => $invoiceDto->getAmount(),
-            'external_id'  => $invoiceDto->getInvoiceId(),
-            'confirmed_at' => Carbon::now(),
-            'is_recurrent' => true,
-        ]);
+        if ($invoiceDto->getAmount() > 0) {
+            $subscription->payments()->create([
+                'title'        => config('ivba.subscription_description'),
+                'amount'       => $invoiceDto->getAmount(),
+                'external_id'  => $invoiceDto->getInvoiceId(),
+                'confirmed_at' => Carbon::now(),
+                'is_recurrent' => true,
+            ]);
+        }
 
         if ($isFirstPayment === true) {
             event(new SubscriptionStartedEvent($subscription));

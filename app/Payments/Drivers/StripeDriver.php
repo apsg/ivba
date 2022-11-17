@@ -5,6 +5,8 @@ use App\Payment;
 use App\Payments\StripeHelper;
 use App\Subscription;
 use Stripe\Checkout\Session;
+use Stripe\PaymentIntent;
+use Stripe\PaymentLink;
 use Stripe\StripeClient;
 
 class StripeDriver
@@ -73,5 +75,20 @@ class StripeDriver
         }
 
         $this->client->subscriptions->cancel($subscription->stripe_subscription_id);
+    }
+
+    public function getIntent(string $intentId): PaymentIntent
+    {
+        return $this->client->paymentIntents->retrieve($intentId);
+    }
+
+    public function getSession(string $paymentId)
+    {
+        return $this->client->checkout->sessions->retrieve($paymentId)->line_items;
+    }
+
+    public function getPaymentLink(string $id): PaymentLink
+    {
+        return $this->client->paymentLinks->retrieve($id);
     }
 }
