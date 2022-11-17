@@ -17,7 +17,7 @@ class StripeIpnRequest extends FormRequest
 
     public function isInvoicePaid(): bool
     {
-        return $this->input('type') === static::TYPE_INVOICE_SUCCEEDED;
+        return $this->input('type') === static::TYPE_INVOICE_PAID;
     }
 
     public function isPaymentIntentSucceeded(): bool
