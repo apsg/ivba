@@ -122,8 +122,8 @@ Route::group([
 });
 
 Route::get('/payments/{payment}/request-invoice', PaymentsController::class . '@requestInvoice');
+Route::any('/stripe/ipn', StripeIpnController::class)->name('stripe.ipn');
 
 // To musi być na samym końcu, by nie blokowało innych ścieżek
 Route::get('/{page}/{subpage?}', PageController::class . '@show');
 
-Route::any('/stripe/ipn', StripeIpnController::class)->name('stripe.ipn');

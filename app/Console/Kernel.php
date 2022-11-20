@@ -5,6 +5,7 @@ namespace App\Console;
 use App\Console\Commands\ClearAccountCommand;
 use App\Console\Commands\ExportUsersToExcelmailingCommand;
 use App\Console\Commands\FixAccessDays;
+use App\Console\Commands\FixFullAccessCommand;
 use App\Console\Commands\FixSpecialCoursesVisibilityCommand;
 use App\Console\Commands\LoginAsUserCommand;
 use App\Console\Commands\ProlongSubscriptionsCommand;
@@ -44,6 +45,7 @@ class Kernel extends ConsoleKernel
         FixSpecialCoursesVisibilityCommand::class,
         LoginAsUserCommand::class,
         TestServicesCommand::class,
+        FixFullAccessCommand::class,
     ];
 
     /**
