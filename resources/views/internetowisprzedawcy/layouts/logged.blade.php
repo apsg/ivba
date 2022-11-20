@@ -18,14 +18,14 @@
                             @yield('navbar')
                         </div>
                         <div class="d-flex">
-                        <div class="notification-mark__container">
-                            <a href="{{ url('/posts') }}" class="account text-center mx-2" title="Aktualności">
-                                @include('icons.notification')
-                            </a>
-                            @if(!Auth::user()->has_seen_posts)
-                                <div class="notification-mark__dot"></div>
-                            @endif
-                        </div>
+                            <div class="notification-mark__container">
+                                <a href="{{ url('/posts') }}" class="account text-center mx-2" title="Aktualności">
+                                    @include('icons.notification')
+                                </a>
+                                @if(!Auth::user()->has_seen_posts)
+                                    <div class="notification-mark__dot"></div>
+                                @endif
+                            </div>
                             <div class="btn-group account-menu">
                                 <button class="account-menu__main-button" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <a class="account text-center" title="Moje konto">
@@ -62,3 +62,30 @@
 
     </div>
 @endsection
+
+@push('scripts')
+<!-- <script type="text/javascript">
+	$(document).ready(function(){
+        let isDropDownTouched = false;
+        $('body').on('mouseover', '.account-menu', function(e) { 
+            console.log('mouseover')
+            $(this).dropdown('show');
+        });
+        $('body').on('mouseleave', '.account-menu', function(e) {
+            setTimeout(() => {
+                if (!isDropDownTouched) {
+                    $(this).dropdown('hide');
+                }
+            }, 100);
+        });
+        $('body').on('mouseover', '.dropdown-menu', function(e) { 
+            isDropDownTouched = true;
+            $(this).dropdown('hide');
+        });
+        $('body').on('mouseleave', '.dropdown-menu', function(e) { 
+            isDropDownTouched = false;
+            $(this).dropdown('hide');
+        });
+	});
+</script> -->
+@endpush

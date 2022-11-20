@@ -50,7 +50,7 @@
                                 <div class="detail"><span>Liczba lekcji:</span> {{ $course->lessons()->count() }}</div>
                             </div>
                             @if( Gate::allows(\App\Helpers\GateHelper::ACCESS_COURSE, $course))
-                                <div>
+                                <div style="padding: 1.4rem">
 
                                     <a href="{{ url('/learn/course/'.$course->slug) }}" class="btn btn-primary">Rozpocznij
                                         kurs
@@ -128,9 +128,9 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="teachers" role="tabpanel" aria-labelledby="teachers-tab">
-                                <div class="row">
+                                <div class="row pt-3">
                                     <div class="col-md-4" style="text-align: center;">
-                                        <img src="{{ url('images/mati3.png') }}" alt="">
+                                        <img src="{{ url('images/mati-is.png') }}" alt="" style="width: 100%; max-width: 300px; height: auto;">
                                     </div>
                                     <div class="col-md-8">
                                         <h3>Mateusz Grabowski</h3>
@@ -140,14 +140,7 @@
                                             z popularniejszych kanałów na YouTube poświęconego tematyce dropshippingu.
                                             Wieloletni wykładowca i człowiek z pasją do sportów ekstremalnych.
                                             Pięciokrotnie startował w zawodach Red Bull 111 MegaWatt, pasjonat sportów
-                                            lotniczych. Jak można mieć czas i pieniądze na wszystkie pasję? Działając w
-                                            dropshippingu! </p>
-
-                                        <p><strong>Od Mateusza:</strong><br/>
-                                            Mam nadzieję, że uda Ci się wydospodarować czas i spotkamy się na szkoleniu.
-                                            Pamiętaj, z nauką Excela jest jak z podróżą: Podróż tysiąca mil zaczyna się
-                                            od
-                                            pierwszego kroku. </p>
+                                            lotniczych.</p>
                                     </div>
                                 </div>
                             </div>

@@ -11,7 +11,7 @@
     <tbody>
     @if( !is_null(\Auth::user()->full_access_expires) )
         <tr>
-            <th scope="row">Pełen dostęp do platformy iNauka</th>
+            <th scope="row">Pełen dostęp do platformy Internetowi Sprzedawcy</th>
             <td>-</td>
             <td>{{ $user->full_access_expires }}</td>
             <td>
