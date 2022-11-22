@@ -1,5 +1,5 @@
 <div>
-    <h3>Dodaj nowy wpis</h3>
+    <h3 class="font-primary">Dodaj nowy wpis</h3>
 
     <form action="{{ route('learn.course.form.store', compact('form', 'course')) }}" method="post">
         @csrf

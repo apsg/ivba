@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-    <h1 class="page-header border-bottom">
+    <h1 class="page-header border-bottom pl-3">
         {{ $form->name }}
     </h1>
     <div class="col-md-12">
