@@ -1,6 +1,7 @@
 <template>
     <div class="iframe-vimeo" @click="toggleModal()">
-        <img :src="image">
+        <img v-if="image" :src="image">
+        <button v-if="buttonText" class="btn btn-ivba video-button">{{ buttonText }}</button>
         <button ref="modalButton" hidden type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"></button>
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div style="max-width: 1200px;" class="modal-dialog modal-dialog-centered" role="document">
@@ -48,6 +49,10 @@
             image: {
                 type: String,
                 default: null,
+            },
+            buttonText: {
+                type: String,
+                default: null,
             }
         },
     }
@@ -63,5 +68,9 @@
         font-weight: normal;
         color:#fff;
         opacity:1;
+    }
+    .video-button {
+        font-size: 18px;
+        padding: 10px 20px;
     }
 </style>
