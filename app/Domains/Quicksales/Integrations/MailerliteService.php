@@ -19,15 +19,33 @@ class MailerliteService
         $this->sdk = new MailerLite(config('services.mailerlite.key'));
     }
 
-    public function getGroups() : array
+    public function getGroups()
     {
         return Cache::remember('mailerlite_groups', static::CACHE_REMEMBER_MINUTES, function () {
-            return $this
+            return $this->getGroupsRawLoop();
+        });
+    }
+
+    public function getGroupsRawLoop(): array
+    {
+        $results = [];
+        $offset = 0;
+        $shouldRepeat = true;
+
+        while ($shouldRepeat === true) {
+            $items = $this
                 ->sdk
                 ->groups()
-                ->get()
-                ->toArray();
-        });
+                ->limit(100)
+                ->offset($offset)
+                ->get();
+
+            array_push($results, ...$items->toArray());
+            $offset += 100;
+            $shouldRepeat = $items->count() === 100;
+        }
+
+        return $results;
     }
 
     public function addUserToGroup(User $user, string $groupId)
