@@ -15,8 +15,9 @@ Route::group([
 ], function () {
     Route::group([
         'prefix' => 'learn',
+        'as'     => 'learn.',
     ], function () {
-        Route::get('/course/{course}', LearnController::class . '@showCourse');
+        Route::get('/course/{course}', LearnController::class . '@showCourse')->name('index');
         Route::get('/course/{course}/lesson/{lesson}', LearnController::class . '@showCourse');
         Route::get('/course/{course}/lesson/{lesson}/finish', LearnController::class . '@finishLesson');
         Route::get('/course/{course}/finished', LearnController::class . '@finishedCourse');
@@ -36,8 +37,8 @@ Route::group([
         Route::post('/course/{course}/logbook/{logbook}', LogbookController::class . '@storeEntry')
             ->name('learn.logbook.store');
 
-        Route::get('/course/{course}/form/{form}', FormsController::class . '@show')->name('learn.course.form');
-        Route::post('/course/{course}/form/{form}', FormsController::class . '@store')->name('learn.course.form.store');
+        Route::get('/course/{course}/form/{form}', FormsController::class . '@show')->name('course.form');
+        Route::post('/course/{course}/form/{form}', FormsController::class . '@store')->name('course.form.store');
     });
 
     Route::get('/lesson/{lesson}', LessonsController::class . '@show');

@@ -3,6 +3,7 @@ namespace App;
 
 use App\Events\UserRegisteredEvent;
 use App\Notifications\PasswordReset;
+use App\Services\CourseProgressService;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -354,9 +355,14 @@ class User extends Authenticatable
     /**
      * Czy dany użytkownik rozpoczął ten kurs?
      */
-    public function hasStartedCourse($course_id)
+    public function hasStartedCourse(int $course_id): bool
     {
         return $this->courses()->where('course_id', $course_id)->exists();
+    }
+
+    public function hasStartedCourseBySlug(string $slug): bool
+    {
+        return $this->courses()->where('slug', $slug)->exists();
     }
 
     /**
@@ -671,5 +677,15 @@ class User extends Authenticatable
                     $query->where('cancelled_at', '<', Carbon::now());
                 });
         });
+    }
+
+    public function getProgress(string $courseSlug): float
+    {
+        $course = Course::where('slug', $courseSlug)->first();
+        if ($course === null) {
+            return 0.0;
+        }
+
+        return app(CourseProgressService::class)->progress($this, $course);
     }
 }

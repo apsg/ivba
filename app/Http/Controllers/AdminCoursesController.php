@@ -17,10 +17,6 @@ class AdminCoursesController extends Controller
         $this->middleware('admin');
     }
 
-    /**
-     * Listuj wszystkie kursy.
-     * @return [type] [description]
-     */
     public function index()
     {
         $courses = Course::all();
@@ -32,20 +28,11 @@ class AdminCoursesController extends Controller
         return view('admin.courses')->with(compact('courses'));
     }
 
-    /**
-     * Formularz dodawania nowego kursu.
-     * @return [type] [description]
-     */
     public function create()
     {
         return view('admin.courses.new');
     }
 
-    /**
-     * Dodaj nowy kurs do bazy.
-     * @param CourseRequest $request [description]
-     * @return [type]                 [description]
-     */
     public function store(CourseRequest $request)
     {
         $course = Course::create($request->fields() + [
@@ -59,35 +46,20 @@ class AdminCoursesController extends Controller
         return redirect('/admin/courses/' . $course->slug)->with('message', 'Kurs dodany!');
     }
 
-    /**
-     * Pokaż szczegóły danego kursu.
-     * @param Course $course [description]
-     * @return [type]         [description]
-     */
     public function show(Course $course)
     {
         return view('admin.courses.course')->with(compact('course'));
     }
 
-    /**
-     * Zaktualizuj dane kursu.
-     * @param Course        $course [description]
-     * @param CourseRequest $request [description]
-     * @return [type]                 [description]
-     */
     public function update(Course $course, CourseRequest $request)
     {
         $course->update($request->fields());
 
-        return back()->with('message', 'Kurs zapisany!');
+        flash('Kurs zapisany');
+
+        return redirect(route('admin.course.edit', $course->slug));
     }
 
-    /**
-     * Zsynchronizuj dodane lekcje do kursu.
-     * @param Course  $course [description]
-     * @param Request $request [description]
-     * @return [type]           [description]
-     */
     public function updateLessonOrder(Course $course, Request $request)
     {
         $position = [];
@@ -103,11 +75,6 @@ class AdminCoursesController extends Controller
         return ['OK'];
     }
 
-    /**
-     * Aktualizuje kolejność kursów.
-     * @param Request $request [description]
-     * @return [type]           [description]
-     */
     public function updateOrder(Request $request)
     {
         if (!empty($request->order)) {

@@ -22,7 +22,7 @@
             @foreach($course->visibleLessons(Auth::user())->get() as $l)
                 <li class="nav-item ">
                     <a href="{{ $l->url($course) }}"
-                       class="nav-link @if(isset($lesson) && $l->id == $lesson->id) {{"active"}} @endif" font-size-14>
+                       class="nav-link @if(isset($lesson) && $l->id == $lesson->id) {{"active"}} @endif font-size-14">
                         @if(\Auth::user()->hasFinishedLesson($l->id))
                             <i class="fa fa-check-square"></i>
                         @endif
@@ -54,9 +54,9 @@
             </ul>
         @endif
         @include('common.logbooks.sidebar_logbook')
-    
+
         @include('common.forms.sidebar')
-    
+
         @if(\Auth::user()->hasFinishedCourse($course->id))
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1">
                 <span>Zakończ</span>

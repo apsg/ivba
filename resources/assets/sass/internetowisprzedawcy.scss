@@ -12,7 +12,7 @@ $color-gray-light: #D9D9D9;
 $color-gray-footer: #3E3E3E;
 $color-gray-bg-light: #F5F5F5;
 $color-gray-bg-lighter: #FCFCFC;
-$color-gray-text-light: #D8D9D9;    
+$color-gray-text-light: #D8D9D9;
 $color-gray-text-logged: #868686;
 $color-gray-44: #444444;
 $color-gray-bg-section-container: #FAFAFA;
@@ -215,6 +215,16 @@ footer {
     }
 }
 
+.btn-gray {
+    background-color: $color-gray-bg-light;
+    color: $color-main-red;
+    fill: $color-white;
+
+    &:hover {
+        background-color: darken($color-gray-bg-light, 10%);
+    }
+}
+
 .btn-blue {
     background-color: $color-blue-order-button;
     color: $color-white;
@@ -337,6 +347,7 @@ ul.square-ul li:before {
 
 .iframe-vimeo {
     cursor: pointer;
+
     img {
         width: 100%;
     }
@@ -402,6 +413,7 @@ ul.square-ul li:before {
         background-color: darken($color-blue, 10%);
     }
 }
+
 .btn-secondary-ivba {
     color: $color-blue;
     background-color: transparent;
@@ -790,7 +802,7 @@ $outer-circle-color: #687b7d80;
 a.mark-after:after {
     content: "•";
     color: #00A9A7;
-    margin:0 10px;
+    margin: 0 10px;
 }
 
 body.learn .col-sidebar .learn-sidebar h6 {
@@ -818,6 +830,7 @@ body.learn .col-sidebar .learn-sidebar h6 {
     &__container {
         position: relative;
     }
+
     &__dot {
         height: 12px;
         width: 12px;
@@ -826,5 +839,42 @@ body.learn .col-sidebar .learn-sidebar h6 {
         position: absolute;
         right: 17px;
         top: 7px;
+    }
+}
+
+.square {
+    width: 100%;
+    padding-top: 100% !important;
+    position: relative;
+
+    &__inner {
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+    }
+
+    & .circle-border {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border: 2px solid $color-main-red;
+        border-radius: 50%;
+
+        &__inner {
+            border: 1px solid $color-main-red;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        &__inner_double {
+            width: 100%;
+            height: 100%;
+            border-color: $color-main-red;
+            border-style: double;
+            border-radius: 50%;
+        }
     }
 }

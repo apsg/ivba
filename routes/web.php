@@ -1,5 +1,6 @@
 <?php
 
+use App\Domains\Paths\Cotrollers\PathsController;
 use App\Domains\Payments\Controllers\CouponsController;
 use App\Domains\Payments\Controllers\StripeIpnController;
 use App\Domains\Posts\Controllers\PostsController;
@@ -38,6 +39,8 @@ Route::get('/courses', CoursesController::class . '@index');
 Route::get('/course', CoursesController::class . '@redirect');
 Route::get('/course/{course}', CoursesController::class . '@show');
 Route::get('/course/{course}/buy', OrderController::class . '@orderCourse');
+
+Route::get('/paths', PathsController::class . '@index')->name('paths.index');
 
 // strony różniste
 Route::get('/account', AccountController::class . '@show')->name('account.show');
