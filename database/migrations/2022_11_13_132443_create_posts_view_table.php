@@ -21,7 +21,7 @@ class CreatePostsViewTable extends Migration
             $table->foreign('post_id')
                 ->references('id')
                 ->on('posts')
-                ->cascadeOnDelete();
+                ->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -1,11 +1,10 @@
 <?php
-
 namespace App;
 
 use App\Mail\StandardEmail;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * App\Email.
@@ -28,8 +27,7 @@ use Mail;
  * @property Carbon|null          $clicked_at
  * @property Carbon|null          $unsubscribed_at
  * @property-read Newsletter|null $newsletter
- * @property-read Model|\Eloquent $to
- * @mixin \Eloquent
+ * @property-read Model           $to
  */
 class Email extends Model
 {
@@ -48,7 +46,6 @@ class Email extends Model
 
     /**
      * Do kogo możemy wysyłać? Użytkownik albo ktoś zapisany z newslettera.
-     * @return [type] [description]
      */
     public function to()
     {
@@ -57,7 +54,6 @@ class Email extends Model
 
     /**
      * Email może należeć do newslettera.
-     * @return [type] [description]
      */
     public function newsletter()
     {
@@ -66,8 +62,6 @@ class Email extends Model
 
     /**
      * Zaplanowane emaile.
-     * @param  [type] $query [description]
-     * @return [type]        [description]
      */
     public function scopePlanned($query)
     {
@@ -76,8 +70,6 @@ class Email extends Model
 
     /**
      * Emaile, którym minął termin wysyłki, lecz jeszcze nie zostały wysłane.
-     * @param  [type] $query [description]
-     * @return [type]        [description]
      */
     public function scopeDue($query)
     {
@@ -85,12 +77,13 @@ class Email extends Model
             ->where('is_sent', 'false');
     }
 
-    /**
-     * Wyślij email.
-     */
-    public function send()
+    public function send(): ?Email
     {
-//        $this->convertLinks();
+        if ($this->to === null) {
+            $this->delete();
+
+            return null;
+        }
 
         try {
             Mail::to($this->to->email)
@@ -106,7 +99,6 @@ class Email extends Model
 
     /**
      * Dodaj do linków kod śledzenia kliknięć.
-     * @return [type] [description]
      */
     protected function convertLinks()
     {
