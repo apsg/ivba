@@ -1,6 +1,7 @@
 <?php
 namespace App;
 
+use App\Domains\Admin\Helpers\SettingsHelper;
 use App\Domains\Courses\Models\CourseLesson;
 use App\Domains\Courses\Services\CoursesService;
 use App\Domains\Forms\Models\Form;
@@ -10,14 +11,13 @@ use App\Interfaces\AccessableContract;
 use App\Interfaces\OrderableContract;
 use App\Repositories\AccessRepository;
 use App\Traits\ChecksSlugs;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 /**
@@ -67,13 +67,12 @@ use Illuminate\Support\Str;
  *
  * @method static Builder withoutSpecial()
  * @method static Builder withoutSpecialExcept(array $ids)
+ * @method static Builder withoutPaths()
  *
  */
 class Course extends Model implements OrderableContract, AccessableContract
 {
     use ChecksSlugs;
-
-    public static $SUBSCRIPTION_LENGTH = 31;
 
     protected $fillable = [
         'title',
@@ -571,6 +570,15 @@ class Course extends Model implements OrderableContract, AccessableContract
             return $q->where('is_special_access', false)
                 ->orWhereIn('id', $accessIds);
         });
+    }
+
+    public function scopeWithoutPaths(Builder $query): Builder
+    {
+        return $query->whereNotIn('slug', [
+            setting(SettingsHelper::PATH_SIMPLE),
+            setting(SettingsHelper::PATH_MEDIUM),
+            setting(SettingsHelper::PATH_HARD),
+        ]);
     }
 
     public function getLabelAttribute()

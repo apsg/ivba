@@ -5,6 +5,10 @@ use App\Domains\Admin\Models\Setting;
 
 class SettingsHelper
 {
+    const PATH_SIMPLE = 'is.path_simple';
+    const PATH_MEDIUM = 'is.path_medium';
+    const PATH_HARD = 'is.path_hard';
+
     const LIST = [
         'ivba.full_access_price'           => 'Cena za pełen dostęp',
         'ivba.subscription_price_first'    => 'Cena pierwszej płatności w abonamencie',
@@ -14,9 +18,9 @@ class SettingsHelper
         'ivba.getresponse.list_active'     => 'Lista Getresponse-aktywni',
         'is.rules_link'                    => 'Link do regulaminu (IS)',
         'is.disable_buy'                   => 'Wyłącz możliwość kupna dostępu',
-        'is.path_simple'                   => 'Slug kursu dla ścieżki początkującej',
-        'is.path_medium'                   => 'Slug kursu dla ścieżki średniej',
-        'is.path_hard'                     => 'Slug kursu dla ścieżki eksperckiej',
+        self::PATH_SIMPLE                  => 'Slug kursu dla ścieżki początkującej',
+        self::PATH_MEDIUM                  => 'Slug kursu dla ścieżki średniej',
+        self::PATH_HARD                    => 'Slug kursu dla ścieżki eksperckiej',
     ];
 
     const BOOL = [
