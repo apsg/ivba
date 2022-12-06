@@ -109,7 +109,7 @@
                 <div class="col-md-12 mt-5 center-justify-flex-content">
                     <div class="text-center mt-5">
 
-                        <a href="{{ url('/buy_access') }}">
+                        <a href="https://buy.stripe.com/3cs4k66kIapt21q7ss">
                             <button type="button" class="btn subscription-button">
                                 <span>
                                     @if(!setting('is.disable_buy'))

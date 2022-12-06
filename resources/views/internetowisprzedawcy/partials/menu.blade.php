@@ -34,12 +34,15 @@
     <!-- Authentication Links -->
     @if (Auth::guest())
         <li class="nav-item ml-auto">
-            <a class="nav-link nav-link-header__register" href="{{ url('/buy_access') }}">
-                @if(!setting('is.disable_buy'))
-                    Wykup dostęp
-                @else
-                    Zapisz się
-                @endif
+            {{--            <a class="nav-link nav-link-header__register" href="{{ url('/buy_access') }}">--}}
+            {{--                @if(!setting('is.disable_buy'))--}}
+            {{--                    Wykup dostęp--}}
+            {{--                @else--}}
+            {{--                    Zapisz się--}}
+            {{--                @endif--}}
+            {{--            </a>--}}
+            <a class="nav-link nav-link-header__register" href="https://buy.stripe.com/3cs4k66kIapt21q7ss">
+                Wykup dostęp
             </a>
         </li>
         <li class="nav-item">
@@ -56,9 +59,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a  style="background-color: #00A9A7; border-color: #00A9A7;"
-                    class="nav-link nav-link-header nav-link-header__register"
-                    href="{{ url('/account/mycourses') }}">
+                <a style="background-color: #00A9A7; border-color: #00A9A7;"
+                   class="nav-link nav-link-header nav-link-header__register"
+                   href="{{ url('/account/mycourses') }}">
                     Zobacz materiały
                 </a>
             </li>
