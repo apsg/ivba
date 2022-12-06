@@ -402,7 +402,7 @@
                                     Dołącz do społeczności Internetowych Sprzedawców, możliwość dostępu niebawem
                                     wygaśnie.
                                 </p>
-                                <a href="{{ url('/buy_access') }}">
+                                <a href="https://buy.stripe.com/3cs4k66kIapt21q7ss">
                                     <button type="button" class="mb-5 btn subscription-button subscription-button-alt">
                                     <span>
                                         Wykup dostęp
