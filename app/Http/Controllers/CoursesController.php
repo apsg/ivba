@@ -25,15 +25,17 @@ class CoursesController extends Controller
 
         $accessIds = $accessRepository->getCourseAccessIdsForUser(Auth::user());
 
-        $courses = Course::withoutSpecialExcept($accessIds)
-            ->withoutPaths()
-            ->orderBy('position', 'asc')
-            ->get();
-
         if (Auth::check() && Auth::user()->hasFullAccess()) {
-            //
+            $courses = Course::withoutSpecialExcept($accessIds)
+                ->withoutPaths()
+                ->orderBy('position', 'asc')
+                ->get();
         } else {
             $current = Auth::user()->current_day ?? null;
+            $courses = Course::withoutSpecialExcept($accessIds)
+                ->withoutPaths()
+                ->orderBy('position', 'asc')
+                ->get();
         }
 
         return fractal()
