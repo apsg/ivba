@@ -574,11 +574,17 @@ class Course extends Model implements OrderableContract, AccessableContract
 
     public function scopeWithoutPaths(Builder $query): Builder
     {
-        return $query->whereNotIn('slug', [
+        $pathSlugs = array_filter([
             setting(SettingsHelper::PATH_SIMPLE),
             setting(SettingsHelper::PATH_MEDIUM),
             setting(SettingsHelper::PATH_HARD),
         ]);
+
+        if (empty($pathSlugs)) {
+            return $query;
+        }
+
+        return $query->whereNotIn('slug', $pathSlugs);
     }
 
     public function getLabelAttribute()
