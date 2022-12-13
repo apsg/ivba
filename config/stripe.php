@@ -9,8 +9,10 @@ return [
             'prod_MooRtPaHwZoSub', // test
         ],
         'subscription' => [
-            'prod_MjardqCx01poGx', // Production
-            'prod_MooSFl3WjyXRuU', // test
+            'prod_MjardqCx01poGx', // Production IS
+            'prod_MooSFl3WjyXRuU', // test IS
+            'prod_MwytfH8LrIVPK0', // Prod iNauka
+            'prod_MyXueF7WD386Kn', // Test iNauka
         ],
     ],
 ];
