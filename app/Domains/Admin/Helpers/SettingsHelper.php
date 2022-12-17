@@ -2,12 +2,15 @@
 namespace App\Domains\Admin\Helpers;
 
 use App\Domains\Admin\Models\Setting;
+use App\Domains\Admin\Services\MailerliteDataSource;
+use App\Domains\Admin\Services\SettingsSelectDataSource;
 
 class SettingsHelper
 {
     const PATH_SIMPLE = 'is.path_simple';
     const PATH_MEDIUM = 'is.path_medium';
     const PATH_HARD = 'is.path_hard';
+    const STRIPE_MAILERLITE = 'stripe.mailerlite';
 
     const LIST = [
         'ivba.full_access_price'           => 'Cena za pełen dostęp',
@@ -21,10 +24,15 @@ class SettingsHelper
         self::PATH_SIMPLE                  => 'Slug kursu dla ścieżki początkującej',
         self::PATH_MEDIUM                  => 'Slug kursu dla ścieżki średniej',
         self::PATH_HARD                    => 'Slug kursu dla ścieżki eksperckiej',
+        self::STRIPE_MAILERLITE            => 'Grupa Mailerlite (ID) dla automatycznych subskrypcji stripe',
     ];
 
     const BOOL = [
         'is.disable_buy',
+    ];
+
+    const SELECT = [
+        self::STRIPE_MAILERLITE => MailerliteDataSource::class,
     ];
 
     public static function get(string $key)
@@ -35,5 +43,18 @@ class SettingsHelper
     public static function isBool(string $key): bool
     {
         return in_array($key, self::BOOL);
+    }
+
+    public static function isSelect(string $key): bool
+    {
+        return array_key_exists($key, static::SELECT);
+    }
+
+    public static function getSelectItems(string $key): array
+    {
+        /** @var SettingsSelectDataSource $provider */
+        $provider = app(static::SELECT[$key]);
+
+        return $provider->toArray();
     }
 }

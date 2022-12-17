@@ -19,6 +19,20 @@
                             {{ $description }}
                         </label>
                     </div>
+                @elseif(\App\Domains\Admin\Helpers\SettingsHelper::isSelect($key))
+                    <div class="form-group">
+                        <select name="value" class="form-control">
+                            <option value="">--</option>
+                            @foreach(\App\Domains\Admin\Helpers\SettingsHelper::getSelectItems($key) as $value => $name)
+                                <option
+                                        value="{{ $value }}"
+                                        @if($value == $settings[$key]) selected @endif
+                                >
+                                    {{ $name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
                 @else
                     <input type="text"
                            name="value"

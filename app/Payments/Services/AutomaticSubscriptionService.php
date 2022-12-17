@@ -2,6 +2,7 @@
 namespace App\Payments\Services;
 
 use App\Domains\Payments\Dtos\Stripe\InvoiceDto;
+use App\Events\AutomaticSubscriptionStartedEvent;
 use App\Repositories\SubscriptionRepository;
 use App\Repositories\UserRepository;
 use App\Subscription;
@@ -46,6 +47,8 @@ class AutomaticSubscriptionService
         ]);
 
         $this->subscriptionRepository->activateOrProlongFromStripe($dto);
+
+        event(new AutomaticSubscriptionStartedEvent($subscription));
 
         return $subscription;
     }

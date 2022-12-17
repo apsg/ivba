@@ -7,6 +7,7 @@ use App\Domains\Payments\Listeners\CancelSubscriptionInStripeListener;
 use App\Domains\Quicksales\Listeners\AddSaleToBaselinkerListener;
 use App\Domains\Quicksales\Listeners\TrySubscribeToMailerliteGroupListener;
 use App\Events\ActiveSubscriptionExpiredEvent;
+use App\Events\AutomaticSubscriptionStartedEvent;
 use App\Events\FirstPaymentCorrectEvent;
 use App\Events\FullAccessGrantedEvent;
 use App\Events\NewAccessGrantedEvent;
@@ -52,72 +53,75 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        UserRegisteredEvent::class            => [
+        UserRegisteredEvent::class               => [
             PlanUserRegisteredFollowups::class,
             SendEmailAfterRegistrationListener::class,
             FollowupsListener::class,
             UserRegisteredListener::class,
         ],
-        UserPaidForAccess::class              => [
+        UserPaidForAccess::class                 => [
             PlanUserPaidFollowups::class,
             UserAccessListener::class,
             CancelExistingSubscriptionListener::class,
         ],
-        UserPaidAccessFinished::class         => [
+        UserPaidAccessFinished::class            => [
             PlanUserExpiredFollowups::class,
             UserAccessFinishedListener::class,
         ],
-        OrderLeft24hAgo::class                => [
+        OrderLeft24hAgo::class                   => [
             //
         ],
-        OrderLeft72hAgo::class                => [
+        OrderLeft72hAgo::class                   => [
             //
         ],
-        SubscriptionCancelled::class          => [
+        SubscriptionCancelled::class             => [
             SendSubscriptionFailedEmail::class,
             SubscriptionCancelledListener::class,
             CancelSubscriptionInStripeListener::class,
         ],
-        SubscriptionStartedEvent::class       => [
+        SubscriptionStartedEvent::class          => [
             FollowupsListener::class,
             SubscriptionStartedListener::class,
         ],
-        SubscriptionProlongedEvent::class     => [
+        AutomaticSubscriptionStartedEvent::class => [
+
+        ],
+        SubscriptionProlongedEvent::class        => [
             FollowupsListener::class,
         ],
-        ActiveSubscriptionExpiredEvent::class => [
+        ActiveSubscriptionExpiredEvent::class    => [
             TryToProlongSubscriptionListener::class,
         ],
-        SubscriptionPaymentFailedEvent::class => [
+        SubscriptionPaymentFailedEvent::class    => [
             FollowupsListener::class,
         ],
-        PasswordReset::class                  => [
+        PasswordReset::class                     => [
             UpdateLastPasswordChange::class,
         ],
-        FirstPaymentCorrectEvent::class       => [
+        FirstPaymentCorrectEvent::class          => [
             StartSubscriptionAfterFirstPaymentListener::class,
             FollowupsListener::class,
         ],
-        NewAccessGrantedEvent::class          => [
+        NewAccessGrantedEvent::class             => [
             FollowupsListener::class,
         ],
-        FullAccessGrantedEvent::class         => [
+        FullAccessGrantedEvent::class            => [
             UserAccessListener::class,
         ],
-        UserFinishedLessonEvent::class        => [
+        UserFinishedLessonEvent::class           => [
             GrantPointsForFinishedLessonListener::class,
             InvalidateCachedProgressListener::class,
         ],
-        UserHasPassedQuizEvent::class         => [
+        UserHasPassedQuizEvent::class            => [
             GrantPointsForPassedQuizListener::class,
             InvalidateCachedProgressListener::class,
         ],
-        QuickSaleConfirmedEvent::class        => [
+        QuickSaleConfirmedEvent::class           => [
             SendQuickSaleEmailListener::class,
             AddSaleToBaselinkerListener::class,
             TrySubscribeToMailerliteGroupListener::class,
         ],
-        CourseAccessGrantedEvent::class       => [
+        CourseAccessGrantedEvent::class          => [
             SendAccessInfoEmailListener::class,
         ],
     ];
