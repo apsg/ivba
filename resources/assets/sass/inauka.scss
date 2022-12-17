@@ -1,0 +1,40 @@
+$color-main-red: #FB0030;
+$color-white: #FFFFFF;
+$color-gray-bg-light: #F5F5F5;
+
+.btn-red {
+    background-color: $color-main-red;
+    color: $color-white;
+    fill: $color-white;
+
+    &-inversed {
+        background-color: darken($color-gray-bg-light, 10%);
+        color: $color-white;
+        fill: $color-white;
+
+        &:hover {
+            background-color: $color-main-red;
+            color: $color-white;
+            fill: $color-white;
+        }
+    }
+
+    &-outline {
+        font-weight: 700;
+        border-width: 2px;
+        background-color: white;
+        border-color: $color-main-red;
+        color: $color-main-red;
+
+        &:hover {
+            background-color: $color-main-red;
+            color: white;
+        }
+    }
+
+    &:hover {
+        background-color: darken($color-main-red, 10%);
+        color: $color-white;
+        fill: $color-white;
+    }
+}

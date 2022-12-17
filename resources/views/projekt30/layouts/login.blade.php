@@ -18,6 +18,7 @@
     <!-- Custom Style -->
     <link href="{{ url('/css/front.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ url('/css/app.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ multisite_css() }}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
