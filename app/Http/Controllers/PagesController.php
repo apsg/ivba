@@ -7,6 +7,7 @@ use App\Lesson;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 use TomLingham\Searchy\Facades\Searchy;
 
 class PagesController extends Controller
@@ -36,8 +37,6 @@ class PagesController extends Controller
         $access_options = FullAccessOption::orderBy('price')->get();
 
         $is_front = true;
-
-//        return view('layouts.front2')->with(compact('menu'));
 
         return view('welcome')
             ->with(compact('courses', 'lessons', 'blog_items', 'is_front', 'access_options'));

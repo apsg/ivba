@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Certificate;
@@ -12,10 +11,6 @@ class AdminCertificatesController extends Controller
         $this->middleware('admin');
     }
 
-    /**
-     * Pokaż spis certyfikatów.
-     * @return [type] [description]
-     */
     public function index()
     {
         $certificates = Certificate::with('course')->get();
@@ -27,11 +22,6 @@ class AdminCertificatesController extends Controller
         return view('admin.certificates.index')->with(compact('certificates', 'courses'));
     }
 
-    /**
-     * Zapisz certyfikat w bazie.
-     * @param  Request $requeust [description]
-     * @return [type]            [description]
-     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -46,11 +36,6 @@ class AdminCertificatesController extends Controller
         return back();
     }
 
-    /**
-     * Usuń certyfikat.
-     * @param  Certificate $certificate [description]
-     * @return [type]                   [description]
-     */
     public function delete(Certificate $certificate)
     {
         $certificate->delete();

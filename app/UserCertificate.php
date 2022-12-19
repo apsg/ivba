@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read Certificate $certificate
  * @property-read Course      $course
  * @property-read User        $user
- * @mixin \Eloquent
  */
 class UserCertificate extends Model
 {

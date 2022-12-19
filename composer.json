@@ -13,6 +13,7 @@
         "ext-pdo": "*",
         "anhskohbo/no-captcha": "dev-master",
         "apsg/baselinker": "dev-master",
+        "apsg/certificate": "*",
         "apsg/multisite": "dev-master",
         "barryvdh/laravel-ide-helper": "^2.5@dev",
         "doctrine/dbal": "^2.5",
@@ -39,7 +40,6 @@
         "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-latest",
         "barryvdh/laravel-debugbar": "^3.2@dev",
         "ergebnis/php-cs-fixer-config": "^2.2",
         "filp/whoops": "~2.0",
