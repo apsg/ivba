@@ -14,18 +14,21 @@ class SubscribeUserToMailerliteGroupListener
         $user = $event->subscription->user;
 
         if ($user === null) {
+            Log::error('MAILERLITE - NO USER', );
             return;
         }
 
         $groupId = setting(SettingsHelper::STRIPE_MAILERLITE);
 
         if (empty($groupId)) {
+            Log::error('MAILERLITE - NO GROUP');
             return;
         }
 
         /** @var MailerliteService|null $service */
         $service = app(MailerliteService::class);
         if ($service === null) {
+            Log::error('MAILERLITE - NO SERVICE');
             return;
         }
 

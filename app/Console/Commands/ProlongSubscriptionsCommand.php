@@ -14,8 +14,6 @@ class ProlongSubscriptionsCommand extends Command
 
     public function handle()
     {
-        Log::info('Trying to prolong subscriptions');
-
         $subscriptions = Subscription::active()
             ->notStripe()
             ->where('valid_until', '<', Carbon::now())
@@ -23,7 +21,9 @@ class ProlongSubscriptionsCommand extends Command
 
         $count = $subscriptions->count();
 
-        Log::info("Prolonging {$count} subscriptions");
+        if ($count > 0) {
+            Log::info("Prolonging {$count} subscriptions");
+        }
 
         foreach ($subscriptions as $subscription) {
             event(new ActiveSubscriptionExpiredEvent($subscription));
