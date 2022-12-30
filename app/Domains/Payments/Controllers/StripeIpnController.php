@@ -3,9 +3,9 @@ namespace App\Domains\Payments\Controllers;
 
 use App\Domains\Payments\Dtos\Stripe\InvoiceDto;
 use App\Domains\Payments\Requests\Stripe\StripeIpnRequest;
+use App\Domains\Payments\Services\AutomaticSubscriptionService;
 use App\Http\Controllers\Controller;
 use App\Payments\Exceptions\UnknownSubscriptionException;
-use App\Payments\Services\AutomaticSubscriptionService;
 use App\Repositories\SubscriptionRepository;
 use Illuminate\Support\Facades\Log;
 

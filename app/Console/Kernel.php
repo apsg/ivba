@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Console;
 
 use App\Console\Commands\ClearAccountCommand;
@@ -13,19 +12,13 @@ use App\Console\Commands\RecalculateRatingCommand;
 use App\Console\Commands\SendPasswordResetCommand;
 use App\Console\Commands\TestServicesCommand;
 use App\Console\Commands\UploadFontsCommand;
+use App\Domains\Integrations\Mailerlite\Commands\AddStripeSubscriptionsToMailerliteCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
-    /**
-     * The Artisan commands provided by your application.
-     *
-     * @var array
-     */
     protected $commands = [
-        // \App\Console\Commands\DiscoverAllImages::class,
-        // \App\Console\Commands\DiscoverAllVideos::class,
         Commands\GenerateThumbnails::class,
         Commands\SendPlannedEmails::class,
         Commands\ImportUsers::class,
@@ -46,19 +39,11 @@ class Kernel extends ConsoleKernel
         LoginAsUserCommand::class,
         TestServicesCommand::class,
         FixFullAccessCommand::class,
+        AddStripeSubscriptionsToMailerliteCommand::class,
     ];
 
-    /**
-     * Define the application's command schedule.
-     *
-     * @param \Illuminate\Console\Scheduling\Schedule $schedule
-     * @return void
-     */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
-
         $schedule->command('subscriptions:prolong')
             ->everyFiveMinutes();
 
@@ -75,11 +60,6 @@ class Kernel extends ConsoleKernel
             ->dailyAt('13:00');
     }
 
-    /**
-     * Register the Closure based commands for the application.
-     *
-     * @return void
-     */
     protected function commands()
     {
         require base_path('routes/console.php');

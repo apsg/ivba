@@ -11,6 +11,8 @@ class SubscribeUserToMailerliteGroupListener
 {
     public function handle(AutomaticSubscriptionStartedEvent $event): void
     {
+        Log::info('Automatic subscription event - handle mailerlite');
+
         $user = $event->subscription->user;
 
         if ($user === null) {

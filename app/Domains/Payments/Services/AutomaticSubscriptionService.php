@@ -1,11 +1,13 @@
 <?php
-namespace App\Payments\Services;
+namespace App\Domains\Payments\Services;
 
 use App\Domains\Payments\Dtos\Stripe\InvoiceDto;
 use App\Events\AutomaticSubscriptionStartedEvent;
 use App\Repositories\SubscriptionRepository;
 use App\Repositories\UserRepository;
 use App\Subscription;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Log;
 
 class AutomaticSubscriptionService
@@ -48,6 +50,7 @@ class AutomaticSubscriptionService
 
         $this->subscriptionRepository->activateOrProlongFromStripe($dto);
 
+        Log::info('Automatic subscription event');
         event(new AutomaticSubscriptionStartedEvent($subscription));
 
         return $subscription;
@@ -56,5 +59,10 @@ class AutomaticSubscriptionService
     protected function isAutomaticSubscriptionPayment(InvoiceDto $dto): bool
     {
         return in_array($dto->getProductId(), config('stripe.automatic.subscription'));
+    }
+
+    public function findAutomaticSubscriptions(Carbon $fromDate = null): Builder
+    {
+
     }
 }
