@@ -58,6 +58,9 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('iexcel:orders')
             ->dailyAt('13:00');
+
+        $schedule->command('mailerlite:add')
+            ->dailyAt('3:45');
     }
 
     protected function commands()
