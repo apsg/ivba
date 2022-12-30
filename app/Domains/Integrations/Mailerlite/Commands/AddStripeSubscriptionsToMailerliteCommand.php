@@ -24,6 +24,7 @@ class AddStripeSubscriptionsToMailerliteCommand extends Command
 
         /** @var Subscription $subscription */
         foreach ($subscriptions as $subscription) {
+            $this->info("Adding {$subscription->user->email}");
             $mailerlite->addUserToGroup($subscription->user, $group);
         }
     }
