@@ -1,13 +1,12 @@
 <?php
 namespace App\Domains\Payments\Services;
 
+use App\Domains\Admin\Helpers\SettingsHelper;
 use App\Domains\Payments\Dtos\Stripe\InvoiceDto;
-use App\Events\AutomaticSubscriptionStartedEvent;
+use App\Domains\Quicksales\Integrations\MailerliteService;
 use App\Repositories\SubscriptionRepository;
 use App\Repositories\UserRepository;
 use App\Subscription;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Log;
 
 class AutomaticSubscriptionService
@@ -50,8 +49,13 @@ class AutomaticSubscriptionService
 
         $this->subscriptionRepository->activateOrProlongFromStripe($dto);
 
-        Log::info('Automatic subscription event');
-        event(new AutomaticSubscriptionStartedEvent($subscription));
+//        event(new AutomaticSubscriptionStartedEvent($subscription));
+
+        try {
+            app(MailerliteService::class)->addUserToGroup($user, setting(SettingsHelper::STRIPE_MAILERLITE));
+        } catch (\Exception $exception) {
+            Log::error('MAILERLITE EXCEPTION ' . $exception->getMessage());
+        }
 
         return $subscription;
     }
@@ -59,10 +63,5 @@ class AutomaticSubscriptionService
     protected function isAutomaticSubscriptionPayment(InvoiceDto $dto): bool
     {
         return in_array($dto->getProductId(), config('stripe.automatic.subscription'));
-    }
-
-    public function findAutomaticSubscriptions(Carbon $fromDate = null): Builder
-    {
-
     }
 }
