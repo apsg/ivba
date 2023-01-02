@@ -18,29 +18,28 @@
     <link href="{{ multisite_css() }}" rel="stylesheet">
 </head>
 <body>
-<div @if(request()->path() != 'cart' ) id="app" @endif>
+<div @if(request()->path() != 'cart') id="app" @endif>
     <flash-message class="fm-container"></flash-message>
 
-    <header class="header mb-3">
-        <nav class="navbar navbar-expand-sm navbar-orange">
-            <div class="container">
-                <a class="navbar-brand pt-4" href="{{ url('/') }}">
-                    <img src="{{ asset('images/projekt30/p30-logo.png') }}">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-inauka"
-                        aria-controls="navbar-inauka" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars fa-2x text-white"></i>
-                </button>
+    @if(!request()->is('/') || !\Illuminate\Support\Facades\Auth::guest())
+        <header class="header mb-3">
+            <nav class="navbar navbar-expand-sm navbar-orange">
+                <div class="container">
+                    <a class="navbar-brand pt-4" href="{{ url('/') }}">
+                        <img src="{{ asset('images/projekt30/p30-logo.png') }}">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-inauka"
+                            aria-controls="navbar-inauka" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars fa-2x text-white"></i>
+                    </button>
 
-                <div class="collapse navbar-collapse" id="navbar-inauka">
-                    @include('partials.menu')
+                    <div class="collapse navbar-collapse" id="navbar-inauka">
+                        @include('partials.menu')
+                    </div>
                 </div>
-            </div>
-        </nav>
-        @if(Request::is('/'))
-            <p30-slider></p30-slider>
-        @endif
-    </header>
+            </nav>
+        </header>
+    @endif
     <div class="container">
         @include('flash::message')
         @if ($errors->any())
@@ -56,16 +55,9 @@
 
     @yield('content')
 
+    @if(!request()->is('/'))
+
     <footer class="pt-3 pb-3 mt-3 text-white">
-        {{--        <div class="container py-3">--}}
-        {{--            <div class="row">--}}
-        {{--                <div class="col-md-12 text-center">--}}
-        {{--                    <a href="https://facebook.com/wideokursy/" target="_blank">--}}
-        {{--                        <img src="{{ asset('/images/v2/f_ikona.png') }}"/>--}}
-        {{--                    </a>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
         <div class="container py-3 ">
             <div class="row">
                 <div class="col-md-4">
@@ -75,22 +67,6 @@
                     <p>&copy; {{ Carbon\Carbon::now()->year }} ITBT</p>
                 </div>
                 <div class="col-md-4">
-                    <div class="row mb-3">
-                        <div class="col-md-3 text-right">
-                            <h3 class="footer-header">Informacje</h3>
-                        </div>
-                        <div class="col-md-9 footer-menu">
-                            {!! App\MenuItem::make(2, 'asc') !!}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 text-right">
-                            <h3 class="footer-header">Wsparcie</h3>
-                        </div>
-                        <div class="col-md-9 footer-menu">
-                            {!! App\MenuItem::make(3, 'asc') !!}
-                        </div>
-                    </div>
                 </div>
                 <div class="col-md-4 text-center">
                     <p><strong>IT&Business Training Mateusz Grabowski</strong> <br/>
@@ -103,9 +79,7 @@
         </div>
     </footer>
 
-    @guest
-        <proofs></proofs>
-    @endguest
+    @endif
 
     @auth
         @if($lastLesson !== null)
