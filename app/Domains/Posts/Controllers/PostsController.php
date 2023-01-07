@@ -35,6 +35,12 @@ class PostsController extends Controller
     {
         $post = $postsService->getPostBySlug($slug);
 
+        if (empty($post)) {
+            flash('Taki wpis nie istnieje');
+
+            return redirect(route('posts.index'));
+        }
+
         (new PostDisplayAction())->execute(Auth::user(), $post);
 
         return view('posts.show')->with(compact('post'));
