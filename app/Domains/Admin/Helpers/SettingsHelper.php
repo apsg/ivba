@@ -11,6 +11,7 @@ class SettingsHelper
     const PATH_MEDIUM = 'is.path_medium';
     const PATH_HARD = 'is.path_hard';
     const STRIPE_MAILERLITE = 'stripe.mailerlite';
+    const POSTS_SOURCE = 'posts.source';
 
     const LIST = [
         'ivba.full_access_price'           => 'Cena za pełen dostęp',
@@ -25,6 +26,7 @@ class SettingsHelper
         self::PATH_MEDIUM                  => 'Slug kursu dla ścieżki średniej',
         self::PATH_HARD                    => 'Slug kursu dla ścieżki eksperckiej',
         self::STRIPE_MAILERLITE            => 'Grupa Mailerlite (ID) dla automatycznych subskrypcji stripe',
+        self::POSTS_SOURCE                 => 'Źródło danych dla aktualności',
     ];
 
     const BOOL = [

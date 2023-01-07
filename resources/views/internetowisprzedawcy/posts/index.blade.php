@@ -1,3 +1,7 @@
+@php
+    use Carbon\Carbon;
+    use Illuminate\Support\Arr;
+@endphp
 @extends('layouts.logged')
 
 @section('title', 'Aktualności')
@@ -17,19 +21,23 @@
 
                 <div class="row">
                     @foreach($posts as $post)
-                        <div class="col-12 my-3">
-                            <div class="bg-gray-light p-3">
+                        <div class="bg-gray-light p-3 d-flex col-md-12">
+                            <div>
+                                <img src="{{ Arr::get($post, '_embedded.wp:featuredmedia.0.media_details.sizes.thumbnail.source_url') }}"
+                                     class="mr-3 rounded rounded-20">
+                            </div>
+                            <div class="flex-fill">
                                 <div class="d-flex justify-content-between">
-                                    <h6>{{ $post->title }}</h6>
-                                    <div><i>{{ $post->published_at->diffForHumans() }}</i></div>
+                                    <h6>{{ Arr::get($post, 'title.rendered') }}</h6>
+                                    <div><i>{{ Carbon::parse(Arr::get($post, 'date'))->diffForHumans() }}</i></div>
                                 </div>
-                                <div>{{ $post->excerpt }}</div>
-                                <a href="{{ route('posts.show', $post->slug) }}"
+                                <div>{!! Arr::get($post, 'excerpt.rendered') !!}</div>
+                                <a href="{{ route('posts.show', ['slug' => Arr::get($post, 'slug')]) }}"
                                    class="btn btn-sm btn-ivba mt-2">
                                     Zobacz <i class="fa fa-caret-right"></i>
                                 </a>
-                                @if($post->displayed_at)
-                                    <span class="ml-5">Wyświetlono {{ $post->displayed_at }}</span>
+                                @if($post['displayed_at'])
+                                    <span class="ml-5">Wyświetlono {{ Arr::get($post, 'displayed_at') }}</span>
                                 @else
                                     <span class="ml-5 color-blue">Niewyświetlony materiał</span>
                                 @endif
@@ -39,7 +47,7 @@
                 </div>
 
                 <div class="d-flex justify-content-center mt-5">
-                    {{ $posts->links() }}
+                    {{--                    {{ $posts->links() }}--}}
                 </div>
             </div>
         </section>

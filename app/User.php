@@ -1,12 +1,14 @@
 <?php
 namespace App;
 
+use App\Domains\Posts\Models\PostDisplay;
 use App\Events\UserRegisteredEvent;
 use App\Notifications\PasswordReset;
 use App\Services\CourseProgressService;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -64,6 +66,7 @@ use Illuminate\Notifications\Notifiable;
  * @property-read Collection|Subscription[] $subscriptions
  * @property-read Collection|Payment[]      $payments
  * @property-read Collection|Access[]       $accesses
+ * @property-read Collection|PostDisplay[]  $post_displays
  * @method static Builder|User followups()
  * @method static Builder|User expired()
  */
@@ -265,6 +268,11 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Coupon::class)
             ->withTimestamps();
+    }
+
+    public function post_displays(): HasMany
+    {
+        return $this->hasMany(PostDisplay::class);
     }
 
     /**
