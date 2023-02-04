@@ -6,41 +6,70 @@ return [
     'report'               => [
         'name'   => 'Raport z kampanii',
         'fields' => [
-            'r1' => [
+            'r0'  => [
+                'name'   => 'Kampania reklamowa nr:',
+                'type'   => Form::FIELD_SELECT,
+                'values' => range(1, 20),
+            ],
+            'r1'  => [
                 'name' => 'Miejsce reklamowania się',
                 'type' => Form::FIELD_TEXT,
             ],
-            'r2' => [
+            'r2'  => [
                 'name' => 'Nazwa produktu',
                 'type' => Form::FIELD_TEXT,
             ],
-            'r3' => [
+            'r3'  => [
                 'name' => 'Wydany budżet',
                 'type' => Form::FIELD_NUMBER,
             ],
-            'r4' => [
+            'r4'  => [
                 'name' => 'Średni CPM',
                 'type' => Form::FIELD_NUMBER,
             ],
-            'r5' => [
+            'r5'  => [
                 'name' => 'Średni CPC',
                 'type' => Form::FIELD_NUMBER,
             ],
-            'r6' => [
+            'r6'  => [
                 'name' => 'Koszt dodania do koszyka',
                 'type' => Form::FIELD_NUMBER,
             ],
-            'r7' => [
+            'r7'  => [
                 'name' => 'Koszt dokonania sprzedaży',
                 'type' => Form::FIELD_NUMBER,
             ],
-            'r8' => [
+            'r8'  => [
                 'name' => 'Link do produktu w sklepie',
                 'type' => Form::FIELD_URL,
             ],
-            'r9' => [
+            'r9'  => [
                 'name' => 'Link do kampanii',
                 'type' => Form::FIELD_URL,
+            ],
+            'r10' => [
+                'name' => 'CTR',
+                'type' => Form::FIELD_NUMBER,
+            ],
+            'r11' => [
+                'name' => 'Liczba dodań do koszyka',
+                'type' => Form::FIELD_NUMBER,
+            ],
+            'r12' => [
+                'name' => 'Liczba zakupów',
+                'type' => Form::FIELD_NUMBER,
+            ],
+            'r13' => [
+                'name' => 'Bilans',
+                'type' => Form::FIELD_NUMBER,
+            ],
+            'r14' => [
+                'name' => 'Jakie błędy popełniłaś/eś?',
+                'type' => Form::FIELD_TEXT,
+            ],
+            'r15' => [
+                'name' => 'Wnioski',
+                'type' => Form::FIELD_TEXT,
             ],
         ],
     ],

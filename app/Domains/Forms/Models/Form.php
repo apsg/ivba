@@ -27,18 +27,19 @@ class Form extends Model
     const FIELD_NUMBER = 'number';
     const FIELD_TEXT = 'text';
     const FIELD_WEEK = 'week';
+    const FIELD_SELECT = 'select';
 
     protected $fillable = [
         'course_id',
         'type',
     ];
 
-    public function course() : BelongsTo
+    public function course(): BelongsTo
     {
         return $this->belongsTo(Course::class);
     }
 
-    public function answers() : HasMany
+    public function answers(): HasMany
     {
         return $this->hasMany(FormAnswer::class);
     }
@@ -48,17 +49,17 @@ class Form extends Model
         return config("forms.{$this->type}.fields");
     }
 
-    public function getNameAttribute() : string
+    public function getNameAttribute(): string
     {
         return config("forms.{$this->type}.name");
     }
 
-    public function textForKey(string $key) : string
+    public function textForKey(string $key): string
     {
         return config("forms.{$this->type}.fields.{$key}.name", '');
     }
 
-    public function isUrl(string $key) : bool
+    public function isUrl(string $key): bool
     {
         return config("forms.{$this->type}.fields.{$key}.type", '') === static::FIELD_URL;
     }

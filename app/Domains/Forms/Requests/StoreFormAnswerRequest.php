@@ -13,14 +13,15 @@ class StoreFormAnswerRequest extends FormRequest
         Form::FIELD_NUMBER => 'required|numeric|min:0',
         Form::FIELD_URL    => 'required|string|url',
         Form::FIELD_WEEK   => 'required|numeric|min:1|max:54',
+        Form::FIELD_SELECT => 'required',
     ];
 
-    public function authorize() : bool
+    public function authorize(): bool
     {
         return Gate::allows(GateHelper::ACCESS_COURSE, $this->route('course'));
     }
 
-    public function rules() : array
+    public function rules(): array
     {
         return collect($this->route('form')->fields)
                 ->map(function (array $field) {
