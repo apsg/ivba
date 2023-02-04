@@ -23,6 +23,10 @@ return [
                 'name' => 'Wydany budżet',
                 'type' => Form::FIELD_NUMBER,
             ],
+            'r10' => [
+                'name' => 'CTR',
+                'type' => Form::FIELD_NUMBER,
+            ],
             'r4'  => [
                 'name' => 'Średni CPM',
                 'type' => Form::FIELD_NUMBER,
@@ -39,18 +43,6 @@ return [
                 'name' => 'Koszt dokonania sprzedaży',
                 'type' => Form::FIELD_NUMBER,
             ],
-            'r8'  => [
-                'name' => 'Link do produktu w sklepie',
-                'type' => Form::FIELD_URL,
-            ],
-            'r9'  => [
-                'name' => 'Link do kampanii',
-                'type' => Form::FIELD_URL,
-            ],
-            'r10' => [
-                'name' => 'CTR',
-                'type' => Form::FIELD_NUMBER,
-            ],
             'r11' => [
                 'name' => 'Liczba dodań do koszyka',
                 'type' => Form::FIELD_NUMBER,
@@ -62,6 +54,14 @@ return [
             'r13' => [
                 'name' => 'Bilans',
                 'type' => Form::FIELD_NUMBER,
+            ],
+            'r8'  => [
+                'name' => 'Link do produktu w sklepie',
+                'type' => Form::FIELD_URL,
+            ],
+            'r9'  => [
+                'name' => 'Link do kampanii',
+                'type' => Form::FIELD_URL,
             ],
             'r14' => [
                 'name' => 'Jakie błędy popełniłaś/eś?',
