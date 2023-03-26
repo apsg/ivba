@@ -11,7 +11,9 @@
     <title>@yield('title') {{ config('app.name', 'Laravel') }}</title>
 
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}"/>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/inauka_custom.css') }}" rel="stylesheet">
@@ -25,7 +27,7 @@
         <nav class="navbar navbar-expand-sm navbar-orange bg-orange">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('images/v2/inauka.png') }}">
+                    <img src="{{ asset('images/logo-inauka.png') }}" style="height: 70px">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-inauka"
                         aria-controls="navbar-inauka" aria-expanded="false" aria-label="Toggle navigation">

@@ -2,6 +2,14 @@ $color-main-red: #FB0030;
 $color-white: #FFFFFF;
 $color-gray-bg-light: #F5F5F5;
 
+body{
+    font-family: "Sora", "Lato", sans-serif;
+}
+
+.card{
+    border: 0px;
+}
+
 .btn-red {
     background-color: $color-main-red;
     color: $color-white;
