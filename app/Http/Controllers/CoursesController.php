@@ -39,7 +39,7 @@ class CoursesController extends Controller
         }
 
         return fractal()
-            ->collection($courses, new CoursesTransformer($current))
+            ->collection($courses, new CoursesTransformer($current, Auth::user()))
             ->toArray();
     }
 

@@ -3,7 +3,10 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-4" v-for="course in courses" :key="course.id">
+                <div class="col-md-4" v-for="course in courses" :key="course.id" style="position: relative;">
+                    <div v-if="course.finished" class="finished p-1 rounded rounded-50 text-bold">
+                        <i class="fa fa-check-square-o"></i> Ukończono
+                    </div>
                     <div :class="{ 'ivba-card': ivba }" class="card mb-4 box-shadow">
                         <img :class="{ 'ivba-img': ivba }" class="card-img-top" :src="course.img" alt="Card image cap">
                         <div :class="{ 'ivba-card-body': ivba }" class="card-body">
@@ -76,6 +79,15 @@
 
     .ivba-card-element {
         min-height: 125px;
+    }
+
+    .finished{
+        position: absolute;
+        z-index: 100;
+        background-color:#70d069;
+        color:#fff;
+        right: 0;
+        top: -10px;
     }
 
 </style>
