@@ -19,7 +19,7 @@ class AdminCoursesController extends Controller
 
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::orderBy('position')->get();
 
         if (request()->wantsJson()) {
             return $courses;

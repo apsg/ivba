@@ -41,6 +41,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/stats', HomeController::class . '@index')->name('home');
 
 Route::get('/login/{data}', LoginAsUserController::class . '@login')->name('login');
+Route::post('/courses_order', AdminCoursesController::class . '@updateOrder');
 
 Route::group(['prefix' => 'courses'], function () {
     Route::get('/', AdminCoursesController::class . '@index')->name('courses.index');
@@ -53,7 +54,6 @@ Route::group(['prefix' => 'courses'], function () {
     Route::delete('/{course}', AdminCoursesController::class . '@delete')->name('course.delete');
     Route::post('/{course}/lesson_order', AdminCoursesController::class . '@updateLessonOrder');
     Route::post('/{course}/delays', AdminCoursesController::class . '@updateLessonDelay');
-    Route::post('/_order', AdminCoursesController::class . '@updateOrder');
     Route::get('/{course}/duplicate', AdminCoursesController::class . '@duplicate')
         ->name('course.duplicate');
     Route::get('/{course}/users', CourseUsersController::class . '@index')->name('course.users');
