@@ -46,6 +46,10 @@ class CoursesTransformer extends TransformerAbstract
 
     protected function isFinished(Course $course): bool
     {
+        if ($this->user === null) {
+            return false;
+        }
+
         return $this->user->hasFinishedCourse($course->id);
     }
 }
