@@ -33,9 +33,9 @@ Route::group([
 
         Route::get('/course/{course}/logbooks', LogbookController::class . '@index');
         Route::get('/course/{course}/logbook/{logbook}', LogbookController::class . '@show')
-            ->name('learn.course.logbook');
+            ->name('course.logbook');
         Route::post('/course/{course}/logbook/{logbook}', LogbookController::class . '@storeEntry')
-            ->name('learn.logbook.store');
+            ->name('logbook.store');
 
         Route::get('/course/{course}/form/{form}', FormsController::class . '@show')->name('course.form');
         Route::post('/course/{course}/form/{form}', FormsController::class . '@store')->name('course.form.store');
