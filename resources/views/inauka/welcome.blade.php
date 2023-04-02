@@ -15,47 +15,47 @@
     <section class="container py-5 promo-cards">
         <div class="row">
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/1_kursanci6k.png') }}">
+                <img src="{{ asset('images/v2/1_kursanci.svg') }}" style="height: 70px">
                 <h3>Kursanci</h3>
                 <p>Już ponad 5000 osób korzysta z naszej platformy do nauki.</p>
             </div>
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/2_certyfikat.png') }}">
+                <img src="{{ asset('images/v2/2_certyfikaty.svg') }}" style="height: 70px">
                 <h3>Certyfikaty</h3>
                 <p> Zdobądź certyfikat z wybranego kursu lub specjalizacji.</p>
             </div>
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/3_grupa wsparcia.png') }}">
+                <img src="{{ asset('images/v2/3_grupawsparcia.svg') }}" style="height: 70px">
                 <h3> Grupa wsparcia</h3>
                 <p> Dołącz do naszej grupy wsparcia i wymieniaj wiedzą z innymi osobami</p>
             </div>
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/4_tempo.png') }}">
+                <img src="{{ asset('images/v2/4_wygoda.svg') }}" style="height: 70px">
                 <h3> Wygoda</h3>
                 <p>Ucz się gdzie chcesz i kiedy chcesz we własnym tempie.</p>
             </div>
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/5_update.png') }}">
+                <img src="{{ asset('images/v2/5_aktualizacje.svg') }}" style="height: 70px">
                 <h3>Aktualizacje</h3>
                 <p>Kursy aktualizujemy. Raz w miesiącu dodajemy nowy kurs.</p>
             </div>
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/6_lekcje.png') }}">
+                <img src="{{ asset('images/v2/6_lekcje.svg') }}" style="height: 70px">
                 <h3>Lekcje</h3>
                 <p>Na naszym portalu znajdziesz ponad 300 lekcji, a ich liczba stale rośnie.</p>
             </div>
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/7_ambasadorzy.png') }}">
+                <img src="{{ asset('images/v2/7_ambasadorzy.svg') }}" style="height: 70px">
                 <h3>Ambasadorzy</h3>
                 <p>Poznaj naszych ambasadorów, do których możesz zwrócić się po pomoc.</p>
             </div>
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/8_webinary.png') }}">
+                <img src="{{ asset('images/v2/8_webinaria.svg') }}" style="height: 70px">
                 <h3>Webinary</h3>
                 <p>Cykliczne, zamknięte szkolenia on-line na wyciągnięcie ręki.</p>
             </div>
             <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/9_zwrot.png') }}">
+                <img src="{{ asset('images/v2/9_zwrot.svg') }}" style="height: 70px">
                 <h3>Zwrot</h3>
                 <p>Masz 30 dni na rezygnację z naszej platformy.</p>
             </div>
