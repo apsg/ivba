@@ -51,7 +51,7 @@
             </div>
             <div class="col-md-4 text-center promo-card">
                 <img src="{{ asset('images/v2/8_webinaria.svg') }}" style="height: 70px">
-                <h3>Webinary</h3>
+                <h3>Webinaria</h3>
                 <p>Cykliczne, zamknięte szkolenia on-line na wyciągnięcie ręki.</p>
             </div>
             <div class="col-md-4 text-center promo-card">

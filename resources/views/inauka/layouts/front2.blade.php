@@ -34,7 +34,7 @@
         <nav class="navbar navbar-expand-sm navbar-orange bg-orange">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('images/logo-inauka.png') }}" style="height: 70px">
+                    <img src="{{ asset('images/v2/logo_inauka_white.png') }}" style="height: 70px">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-inauka"
                         aria-controls="navbar-inauka" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,13 +47,22 @@
             </div>
         </nav>
         @if(Request::is('/'))
-            <div class="container pb-3 promo">
+            <div class="container pb-3 promo" style="min-height: 400px">
                 <h1 class="mt-5 mb-5">
-                    Czego się dziś nauczysz?
-                    <span class="badge ml-3"><a class="text-white text-sm font-weight-light" href="{{ url('/spis') }}">(spis kursów)</a> </span>
+                    Kursy dla każdego
                 </h1>
+                <p class="text-white" style="font-size: 18px">
+                    Wyróżnij się dzięki wiedzy zdobytej <br />na iNauka - planuj i ucz się w swoim tempie</p>
+
+                <div>
+                    @guest()
+                        <a href="{{ route('register') }}" class="btn btn-white">Zarejestruj się</a>
+                    @endguest
+                    <a href="{{ route('courses') }}" class="btn btn-transparent">Spis kursów</a>
+                </div>
+
             </div>
-            <categories></categories>
+{{--            <categories></categories>--}}
         @endif
     </header>
     <div class="container">
@@ -85,7 +94,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <a href="{{url('/')}}" class="py-3">
-                        <img src="{{ asset('/images/v2/logo_stopka.png') }}">
+                        <img src="{{ asset('/images/v2/logo_inauka_white.png') }}" height="70">
                     </a>
                     <p>&copy; {{ Carbon\Carbon::now()->year }} ITBT</p>
                 </div>

@@ -1,13 +1,32 @@
 $color-main-red: #FB0030;
 $color-white: #FFFFFF;
 $color-gray-bg-light: #F5F5F5;
+$color-orange: #ff7631;
 
-body{
+body {
     font-family: "Sora", "Lato", sans-serif;
 }
 
-.card{
+.card {
     border: 0px;
+}
+
+.btn-white {
+    background-color: $color-white;
+    color: $color-orange;
+    fill: $color-orange;
+    font-weight: 700;
+
+    &:hover {
+        -webkit-box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.5);
+        box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.5);
+    }
+}
+
+.btn-transparent {
+    background-color: transparent;
+    color: $color-white;
 }
 
 .btn-red {
