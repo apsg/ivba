@@ -6,6 +6,7 @@ use App\Domains\Payments\Dtos\Stripe\InvoiceDto;
 use App\Events\SubscriptionCancelled;
 use App\Events\SubscriptionProlongedEvent;
 use App\Events\SubscriptionStartedEvent;
+use App\Payments\Drivers\StripeDriver;
 use App\Payments\Exceptions\PaymentException;
 use App\Payments\Exceptions\UnknownSubscriptionException;
 use App\Subscription;

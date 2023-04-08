@@ -17,12 +17,6 @@ class SendSubscriptionFailedEmail
         //
     }
 
-    /**
-     * Handle the event.
-     *
-     * @param SubscriptionPaymentFailed $event
-     * @return void
-     */
     public function handle(SubscriptionCancelled $event)
     {
         $event->subscription->load('user');

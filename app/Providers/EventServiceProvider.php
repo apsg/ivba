@@ -75,9 +75,10 @@ class EventServiceProvider extends ServiceProvider
             //
         ],
         SubscriptionCancelled::class             => [
+            CancelSubscriptionInStripeListener::class,
+
             SendSubscriptionFailedEmail::class,
             SubscriptionCancelledListener::class,
-            CancelSubscriptionInStripeListener::class,
         ],
         SubscriptionStartedEvent::class          => [
             FollowupsListener::class,
