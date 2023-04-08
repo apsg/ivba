@@ -17,7 +17,7 @@ class SendInformationAboutCancelledSubscriptionListener
         }
 
 //        try {
-            Mail::to(['mateusz.gr@gmail.com'])
+            Mail::to(['hello@inauka.pl'])
                 ->send(new UserCancelledSubscriptionMail($event->subscription));
 //        } catch (Throwable $exception) {
 //            Log::error(__CLASS__, [
