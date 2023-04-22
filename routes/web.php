@@ -30,7 +30,7 @@ require __DIR__ . '/learn/routes.php';
 require __DIR__ . '/axios.php';
 require __DIR__ . '/auth.php';
 
-Route::get('/', PagesController::class . '@home');
+Route::get('/', PagesController::class . '@home')->name('home');
 Route::any('/payu/notify', PayuController::class . '@notify');
 
 Route::post('/search', PagesController::class . '@search');

@@ -30,7 +30,7 @@
 <div @if(request()->path() != 'cart' ) id="app" @endif>
     <flash-message class="fm-container"></flash-message>
 
-    <header class="header mb-3">
+    <header class="header mb-3 @if(\Illuminate\Support\Facades\Request::is('/')) home @endif">
         <nav class="navbar navbar-expand-sm navbar-orange bg-orange">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

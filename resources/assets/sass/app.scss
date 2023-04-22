@@ -58,8 +58,12 @@ $font-main: "Lato";
 
 .header {
     background-color: $color-bg-orabge-dark;
-    background-image: url("/images/v2/baner.webp");
+    background-image: none;
     background-size: cover;
+
+    &.home {
+        background-image: url("/images/v2/baner.webp");
+    }
 
     .promo {
         h1 {
