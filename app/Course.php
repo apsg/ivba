@@ -594,6 +594,11 @@ class Course extends Model implements OrderableContract, AccessableContract
         return $query->whereNotIn('slug', $pathSlugs);
     }
 
+    public function scopeWithoutGroups(Builder $query): Builder
+    {
+        return $query->whereNull('group_id');
+    }
+
     public function getLabelAttribute()
     {
         return $this->title;
