@@ -22,43 +22,7 @@
                     <div class="box-body">
                         <ul class="sortable" id="courses">
                             @forelse($courses as $course)
-                                <li class="sortable-item" data-course_id="{{ $course->id }}">
-                                    <div class="d-flex">
-                                        <div class="flex-grow-1">
-                                            <a href="{{ url('/admin/courses/'.$course->slug) }}">
-                                                {{ $course->title }}
-                                            </a>
-                                        </div>
-                                        <div class="pl-2">
-                                            opóźnienie:
-                                            <input type="number" min="0" max="1000" name="delay"
-                                                   value="{{ $course->delay }}"
-                                                   class="editable"
-                                                   data-model="Course"
-                                                   data-id="{{ $course->id }}"
-                                                   data-col="delay"
-                                            /> dni
-                                        </div>
-                                        <div class="pl-3 d-flex">
-                                            <a href="{{ route('admin.course.users', $course) }}"
-                                               class="btn btn-sm btn-primary mx-1">
-                                                <i class="fa fa-users"></i>
-                                            </a>
-                                            <a href="{{ route('admin.course.duplicate', $course) }}"
-                                               class="btn btn-sm btn-ivba mx-1"
-                                               title="Duplikuj">
-                                                <i class="fa fa-copy"></i>
-                                            </a>
-                                            <form method="post" action="{{ route('admin.course.delete', $course) }}">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </li>
+                                @include('admin.courses.partials.card')
                             @empty
                                 <p>Brak Kursów. Dodaj jakiś.</p>
                                 <a href="{{ url('admin/courses/new') }}" class="btn btn-primary">Dodaj kurs</a>
@@ -106,7 +70,7 @@
                                     >
                                         @csrf
                                         @method('delete')
-                                        <button class="btn btn-secondary btn-sm">
+                                        <button class="btn btn-danger btn-sm">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
@@ -114,6 +78,11 @@
                             </div><!-- /.box-tools -->
                         </div><!-- /.box-header -->
                         <div class="box-body">
+                            <ul class="sortable groups" id="group{{ $group->id }}" data-group_id="{{ $group->id }}">
+                                @foreach($group->courses as $course)
+                                    @include('admin.courses.partials.card')
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
                 @endforeach
@@ -125,16 +94,39 @@
 @push('scripts')
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.sortable').sortable({}).disableSelection();
+            $('.sortable').sortable({
+                connectWith: '.sortable'
+            }).disableSelection();
 
             $('#courses').on('sortupdate', function (e, ui) {
                 updateOrder();
+            });
+
+            $('.groups').on('sortupdate', function (e, ui) {
+                console.log(e.target);
+                console.log($(e.target).children());
+
+                let groupId = $(e.target).data('group_id');
+                let order = [];
+                $(e.target).children().each(function (id, item) {
+                    order.push({
+                        course_id: $(item).data('course_id'),
+                        position: id
+                    })
+                });
+
+                console.log(order);
+
+                $.post('{{ route('admin.groups.courses') }}', {
+                    _token: '{{ csrf_token() }}',
+                    order: order,
+                    group: groupId,
+                })
             });
         });
 
         /**
          * Aktualizuje dane na podstawie kolejności elementów w spisie lekcji przypisanych
-         * @return {[type]} [description]
          */
         function updateOrder() {
 

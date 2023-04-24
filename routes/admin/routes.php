@@ -68,6 +68,7 @@ Route::prefix('groups')
     ->name('groups.')
     ->group(function () {
         Route::post('/', CourseGroupsController::class . '@store')->name('store');
+        Route::post('/updateOrder', CourseGroupsController::class . '@updateOrder')->name('courses');
         Route::delete('/{group}', CourseGroupsController::class . '@destroy')->name('destroy');
         Route::get('/{group}/up', CourseGroupsController::class . '@up')->name('up');
         Route::get('/{group}/down', CourseGroupsController::class . '@down')->name('down');

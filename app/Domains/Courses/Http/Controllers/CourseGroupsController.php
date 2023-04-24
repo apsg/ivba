@@ -2,6 +2,7 @@
 namespace App\Domains\Courses\Http\Controllers;
 
 use App\Domains\Courses\Http\Requests\StoreGroupRequest;
+use App\Domains\Courses\Http\Requests\UpdateGroupOrderRequest;
 use App\Domains\Courses\Models\Group;
 use App\Domains\Courses\Repositories\GroupsRepository;
 use App\Http\Controllers\Controller;
@@ -35,5 +36,12 @@ class CourseGroupsController extends Controller
         $repository->down($group);
 
         return back();
+    }
+
+    public function updateOrder(UpdateGroupOrderRequest $request, GroupsRepository $repository)
+    {
+        $repository->updateOrder($request->group(), $request->input('order', []));
+
+        return ['ok'];
     }
 }

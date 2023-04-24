@@ -1,7 +1,9 @@
 <?php
 namespace App\Domains\Courses\Repositories;
 
+use App\Course;
 use App\Domains\Courses\Models\Group;
+use Illuminate\Support\Arr;
 
 class GroupsRepository
 {
@@ -13,7 +15,7 @@ class GroupsRepository
         ]);
     }
 
-    public function up(Group $group)
+    public function up(Group $group): void
     {
         /** @var Group $before */
         $before = Group::where('order', '<', $group->order)
@@ -34,7 +36,7 @@ class GroupsRepository
         ]);
     }
 
-    public function down(Group $group)
+    public function down(Group $group): void
     {
 
         /** @var Group $after */
@@ -50,7 +52,22 @@ class GroupsRepository
             'order' => $group->order,
         ]);
         $group->update([
-            'order' => $group->order +1,
+            'order' => $group->order + 1,
         ]);
+    }
+
+    public function updateOrder(Group $group, array $order = []): void
+    {
+        foreach ($order as $item) {
+            $course = Course::find(Arr::get($item, 'course_id'));
+            if ($course === null) {
+                continue;
+            }
+
+            $course->update([
+                'group_id' => $group->id,
+                'position' => Arr::get($item, 'position', 0),
+            ]);
+        }
     }
 }

@@ -46,6 +46,7 @@ use Illuminate\Support\Str;
  * @property bool                              is_special_access
  * @property Carbon|null                       scheduled_at
  * @property boolean                           is_systematic
+ * @property int|null                          group_id
  *
  * @property-read Collection|Access[]          access
  * @property-read Certificate                  certificate
@@ -95,6 +96,7 @@ class Course extends Model implements OrderableContract, AccessableContract
         'is_special_access',
         'scheduled_at',
         'is_systematic',
+        'group_id',
     ];
 
     protected $casts = [

@@ -20,8 +20,8 @@ class AdminCoursesController extends Controller
 
     public function index()
     {
-        $courses = Course::orderBy('position')->get();
-        $groups = Group::orderBy('order')->get();
+        $courses = Course::whereNull('group_id')->orderBy('position')->get();
+        $groups = Group::with('courses')->orderBy('order')->get();
 
         if (request()->wantsJson()) {
             return $courses;
@@ -82,7 +82,10 @@ class AdminCoursesController extends Controller
         if (!empty($request->order)) {
             foreach ($request->order as $order) {
                 Course::findOrFail($order['course_id'])
-                    ->update(['position' => $order['position']]);
+                    ->update([
+                        'position' => $order['position'],
+                        'group_id' => null,
+                    ]);
             }
         }
 

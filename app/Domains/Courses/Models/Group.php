@@ -25,6 +25,7 @@ class Group extends Model
 
     public function courses(): HasMany
     {
-        return $this->hasMany(Course::class);
+        return $this->hasMany(Course::class)
+            ->orderBy('position');
     }
 }
