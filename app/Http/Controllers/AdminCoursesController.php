@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Domains\Courses\Models\Group;
 use App\Domains\Courses\Repositories\CoursesRepository;
 use App\Http\Requests\Admin\Courses\ListCoursesRequest;
 use App\Http\Requests\Admin\Courses\UpdateDelayRequest;
@@ -20,12 +21,13 @@ class AdminCoursesController extends Controller
     public function index()
     {
         $courses = Course::orderBy('position')->get();
+        $groups = Group::orderBy('order')->get();
 
         if (request()->wantsJson()) {
             return $courses;
         }
 
-        return view('admin.courses')->with(compact('courses'));
+        return view('admin.courses')->with(compact('courses', 'groups'));
     }
 
     public function create()

@@ -4,6 +4,7 @@ use App\Domains\Admin\Controllers\AnalyticsController;
 use App\Domains\Admin\Controllers\LoginAsUserController;
 use App\Domains\Admin\Controllers\SettingsController;
 use App\Domains\Admin\Controllers\UserActionsController;
+use App\Domains\Courses\Http\Controllers\CourseGroupsController;
 use App\Domains\Forms\Controllers\Admin\FormAnswersController;
 use App\Domains\Forms\Controllers\Admin\FormsController;
 use App\Domains\Logbooks\Controllers\Admin\LogbookCommentsController;
@@ -62,6 +63,15 @@ Route::group(['prefix' => 'courses'], function () {
     Route::get('/{course}/logbooks/data',
         RecentLogbookEntriesController::class . '@getData')->name('course.logbooks.data');
 });
+
+Route::prefix('groups')
+    ->name('groups.')
+    ->group(function () {
+        Route::post('/', CourseGroupsController::class . '@store')->name('store');
+        Route::delete('/{group}', CourseGroupsController::class . '@destroy')->name('destroy');
+        Route::get('/{group}/up', CourseGroupsController::class . '@up')->name('up');
+        Route::get('/{group}/down', CourseGroupsController::class . '@down')->name('down');
+    });
 
 Route::get('/lesson', AdminLessonController::class . '@index');
 Route::post('lesson', AdminLessonController::class . '@store');

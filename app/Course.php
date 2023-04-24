@@ -3,6 +3,7 @@ namespace App;
 
 use App\Domains\Admin\Helpers\SettingsHelper;
 use App\Domains\Courses\Models\CourseLesson;
+use App\Domains\Courses\Models\Group;
 use App\Domains\Courses\Services\CoursesService;
 use App\Domains\Forms\Models\Form;
 use App\Domains\Logbooks\Models\CourseLogbookPivot;
@@ -15,6 +16,9 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -64,6 +68,7 @@ use Illuminate\Support\Str;
  * @property-read Video|null                   video
  * @property-read Collection|Logbook[]         logbooks
  * @property-read Collection|Form[]            forms
+ * @property-read Group|null                   group
  *
  * @method static Builder withoutSpecial()
  * @method static Builder withoutSpecialExcept(array $ids)
@@ -110,51 +115,46 @@ class Course extends Model implements OrderableContract, AccessableContract
 
     /**
      * Obraz przypisany do tego kursu jako okładka.
-     * @return [type] [description]
      */
-    public function image()
+    public function image(): BelongsTo
     {
         return $this->belongsTo(Image::class);
     }
 
     /**
      * Film okładkowy przypisany do tego kursu.
-     * @return [type] [description]
      */
-    public function video()
+    public function video(): BelongsTo
     {
         return $this->belongsTo(Video::class);
     }
 
     /* alias */
-    public function movie()
+    public function movie(): BelongsTo
     {
         return $this->belongsTo(Video::class);
     }
 
     /**
      * Kto utworzył dany kurs?
-     * @return [type] [description]
      */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
     /**
      * Użytkownicy, którzy zapisali się na ten kurs.
-     * @return [type] [description]
      */
-    public function users()
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
     }
 
     /**
      * Lista lekcji przypisanych do tego kursu.
-     * @return [type] [description]
      */
-    public function lessons()
+    public function lessons(): BelongsToMany
     {
         return $this->belongsToMany(Lesson::class)
             ->using(CourseLesson::class)
@@ -162,9 +162,14 @@ class Course extends Model implements OrderableContract, AccessableContract
             ->orderBy('position', 'asc');
     }
 
-    public function forms()
+    public function forms(): HasMany
     {
         return $this->hasMany(Form::class);
+    }
+
+    public function group(): BelongsTo
+    {
+        return $this->belongsTo(Group::class);
     }
 
     public function visibleLessons(User $user = null)
