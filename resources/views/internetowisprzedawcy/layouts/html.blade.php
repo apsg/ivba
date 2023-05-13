@@ -28,6 +28,7 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('/js/inauka_custom.js') }}"></script>
 <script src="{{ multisite_js() }}"></script>
+<script type="text/javascript" src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>
 <script type="text/javascript">
     window.baseUrl = '{{ url('/') }}';
 </script>

@@ -2,8 +2,8 @@
 namespace App;
 
 use App\Helpers\VimeoHelper;
-use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * App\Video.
@@ -14,6 +14,7 @@ use Carbon\Carbon;
  * @property string      $url
  * @property string      $thumb
  * @property string|null $embed
+ * @property string|null $cloudflare_uid
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
@@ -89,7 +90,7 @@ class Video extends Model
         ], $this->embed);
     }
 
-    public function embedSrc() : string
+    public function embedSrc(): string
     {
         $result = '';
         preg_match('/src=["\']+(.*?)["\']+/i', $this->embed, $result);
@@ -99,5 +100,10 @@ class Video extends Model
         }
 
         return '';
+    }
+
+    public function hasCloudflare(): bool
+    {
+        return !empty($this->cloudflare_uid);
     }
 }

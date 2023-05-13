@@ -57,6 +57,8 @@
 
         @if($lesson->video)
             <vimeo-video src="{{ $lesson->video->embedSrc() }}"></vimeo-video>
+
+            @include('common.courses.cloudflare_player')
         @endif
 
         @if($lesson->files()->count() > 0)
@@ -105,8 +107,9 @@
     @endif
 @endpush
 <script>
-    import VimeoVideo from "../../assets/js/components/VimeoVideo";
-    export default {
-        components: {VimeoVideo}
-    }
+  import VimeoVideo from "../../assets/js/components/VimeoVideo";
+
+  export default {
+    components: {VimeoVideo}
+  }
 </script>

@@ -70,6 +70,7 @@
 <script type="text/javascript" src="{{ url('assets/magnific-popup/js/magnific-popup.min.js') }}"></script>
 <!-- Owl Carousal JS -->
 <script type="text/javascript" src="{{ url('assets/owl-carousel/js/owl.carousel.min.js') }}"></script>
+<script type="text/javascript" src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>
 
 <script type="text/javascript" src="{{ url('/js/front.js') }}"></script>
 <script src="{{ multisite_js() }}"></script>

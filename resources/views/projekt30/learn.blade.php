@@ -73,6 +73,7 @@
                         src="{{ $lesson->video->embedSrc() }}"
                         watermark="{{ asset('/images/projekt30/watermark.png') }}"
                 ></vimeo-video>
+                @include('common.courses.cloudflare_player')
             @endif
 
             @if($lesson->files()->count() > 0)
