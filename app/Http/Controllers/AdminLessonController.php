@@ -1,10 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LessonRequest;
 use App\Lesson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminLessonController extends Controller
 {
@@ -14,10 +14,6 @@ class AdminLessonController extends Controller
         $this->middleware('admin');
     }
 
-    /**
-     * Listuj wszystkie kursy.
-     * @return [type] [description]
-     */
     public function index()
     {
         $lessons = Lesson::all();
@@ -25,20 +21,11 @@ class AdminLessonController extends Controller
         return view('admin.lessons')->with(compact('lessons'));
     }
 
-    /**
-     * Formularz dodawania nowego kursu.
-     * @return [type] [description]
-     */
     public function create()
     {
         return view('admin.lessons.new');
     }
 
-    /**
-     * Dodaj nową lekcję do bazy danych.
-     * @param  LessonRequest $request [description]
-     * @return [type]                 [description]
-     */
     public function store(LessonRequest $request)
     {
         $fields = $request->all();
@@ -54,22 +41,11 @@ class AdminLessonController extends Controller
         return redirect('/admin/lesson/' . $lesson->slug)->with('message', 'Lekcja dodana!');
     }
 
-    /**
-     * Pokaż stronę edycji lekcji.
-     * @param  Lesson $lesson [description]
-     * @return [type]         [description]
-     */
     public function show(Lesson $lesson)
     {
         return view('admin.lessons.lesson')->with(compact('lesson'));
     }
 
-    /**
-     * Zaktualizuj dane lekcji.
-     * @param  Lesson        $lesson  [description]
-     * @param  LessonRequest $request [description]
-     * @return [type]                 [description]
-     */
     public function update(Lesson $lesson, LessonRequest $request)
     {
         $fields = $request->all();
@@ -80,19 +56,22 @@ class AdminLessonController extends Controller
 
         $lesson->update($fields);
 
+        if ($lesson->video !== null && !empty($request->input('cloudflare_uid'))) {
+            $lesson->video->update([
+                'cloudflare_uid' => $request->input('cloudflare_uid'),
+            ]);
+        }
+
         return back()->with('message', 'Lekcja zapisana!');
     }
 
     /**
      * Zaktualizuj kolejność elementów przypisanych do lekcji.
-     * @param  Lesson  $lesson  [description]
-     * @param  Request $request [description]
-     * @return [type]           [description]
      */
     public function updateItemsOrder(Lesson $lesson, Request $request)
     {
         foreach ($request->order as $item) {
-            \DB::table('items')
+            DB::table('items')
                 ->where('lesson_id', $lesson->id)
                 ->where('items_id', $item['id'])
                 ->where('items_type', $item['class'])
