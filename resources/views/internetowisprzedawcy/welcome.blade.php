@@ -7,10 +7,10 @@
         <section class="container">
             <div class="row">
                 <div class="col-md-6">
-                <vimeo-video-modal
-                    image="{{ asset('images/internetowisprzedawcy/ytt.png') }}"
-                    video-src="https://player.vimeo.com/video/764209544?h=c6db007fe5&title=0&byline=0&portrait=0">
-                </vimeo-video-modal>
+                    <vimeo-video-modal
+                            image="{{ asset('images/internetowisprzedawcy/ytt.png') }}"
+                            video-src="https://customer-gnl8urc1wq6n6cqi.cloudflarestream.com/f7ea67384a1c9cf0324259ffcc52f43d/iframe?poster=https%3A%2F%2Fcustomer-gnl8urc1wq6n6cqi.cloudflarestream.com%2Ff7ea67384a1c9cf0324259ffcc52f43d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600">
+                    </vimeo-video-modal>
                 </div>
                 <div class="col-md-6 pt-2">
                     <div class="d-flex">
@@ -393,7 +393,8 @@
                                  src="{{ asset('images/internetowisprzedawcy/brand-mark-2.png') }}">
                             <div class="circle-container__outer">
                                 <div class="circle-container__inner">
-                                    <img width="43" height="71" class="m-3" src="{{ asset('images/internetowisprzedawcy/logo_znak.svg') }}">
+                                    <img width="43" height="71" class="m-3"
+                                         src="{{ asset('images/internetowisprzedawcy/logo_znak.svg') }}">
                                 </div>
                             </div>
                             @if(!setting('is.disable_buy'))
