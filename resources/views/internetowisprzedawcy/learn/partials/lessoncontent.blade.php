@@ -37,11 +37,11 @@
         @else
 
             @if($lesson->video)
-                <vimeo-video
-                        src="{{ $lesson->video->embedSrc() }}"
-                        watermark="{{ asset('images/internetowisprzedawcy/watermark.png') }}"
-                        watermark-style="bottom: 24px; right: -16px;"
-                ></vimeo-video>
+{{--                <vimeo-video--}}
+{{--                        src="{{ $lesson->video->embedSrc() }}"--}}
+{{--                        watermark="{{ asset('images/internetowisprzedawcy/watermark.png') }}"--}}
+{{--                        watermark-style="bottom: 24px; right: -16px;"--}}
+{{--                ></vimeo-video>--}}
                 @include('common.courses.cloudflare_player')
             @endif
 

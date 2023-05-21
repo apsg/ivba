@@ -56,7 +56,7 @@
     <div class="row">
 
         @if($lesson->video)
-            <vimeo-video src="{{ $lesson->video->embedSrc() }}"></vimeo-video>
+{{--            <vimeo-video src="{{ $lesson->video->embedSrc() }}"></vimeo-video>--}}
 
             @include('common.courses.cloudflare_player')
         @endif
