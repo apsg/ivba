@@ -69,10 +69,6 @@
         @else
 
             @if($lesson->video)
-                <vimeo-video
-                        src="{{ $lesson->video->embedSrc() }}"
-                        watermark="{{ asset('/images/projekt30/watermark.png') }}"
-                ></vimeo-video>
                 @include('common.courses.cloudflare_player')
             @endif
 
