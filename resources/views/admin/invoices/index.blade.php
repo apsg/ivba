@@ -26,6 +26,7 @@
                                 <th>Dane</th>
                                 <th>Data</th>
                                 <th>Zamówienie</th>
+                                <th>Zamówienie</th>
                                 <th>Produkty</th>
                                 <th>Kwota</th>
                                 <th>Akcje</th>
@@ -41,6 +42,7 @@
                                         NIP: {{ $invoice->invoicable->getUser()->taxid }}<br>
                                     </td>
                                     <td>{{ $invoice->created_at }}</td>
+                                    <td>{{ $invoice->getIdentifier() }}</td>
                                     <td>{{ $invoice->getDescription() }}</td>
                                     <td>
                                         @if($invoice->custom_description)

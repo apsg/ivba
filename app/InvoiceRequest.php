@@ -1,4 +1,5 @@
 <?php
+
 namespace App;
 
 use App\Fakturownia\OrderInvoice;
@@ -10,13 +11,13 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class App\InvoiceRequest.
  *
- * @property int                     id
- * @property int                     invoicable_id
- * @property string                  invoicable_type
- * @property string|null             custom_description
- * @property Carbon                  created_at
- * @property Carbon                  updated_at
- * @property Carbon|null             refused_at
+ * @property int id
+ * @property int invoicable_id
+ * @property string invoicable_type
+ * @property string|null custom_description
+ * @property Carbon created_at
+ * @property Carbon updated_at
+ * @property Carbon|null refused_at
  *
  * @property-read InvoicableContract invoicable
  */
@@ -59,7 +60,7 @@ class InvoiceRequest extends Model
         return $invoiceId;
     }
 
-    public function reject() : self
+    public function reject(): self
     {
         $this->update([
             'refused_at' => Carbon::now(),
@@ -68,7 +69,7 @@ class InvoiceRequest extends Model
         return $this;
     }
 
-    public function getDescription() : string
+    public function getDescription(): string
     {
         if ($this->invoicable instanceof Order) {
             return $this->invoicable->description;
@@ -81,7 +82,7 @@ class InvoiceRequest extends Model
         return '';
     }
 
-    public function getTotal() : string
+    public function getTotal(): string
     {
         if ($this->invoicable instanceof Order) {
             return $this->invoicable->total();
@@ -94,7 +95,7 @@ class InvoiceRequest extends Model
         return '';
     }
 
-    public function user() : ?User
+    public function user(): ?User
     {
         if ($this->invoicable instanceof Order) {
             return $this->invoicable->user;
@@ -107,7 +108,7 @@ class InvoiceRequest extends Model
         return null;
     }
 
-    public function getProducts() : array
+    public function getProducts(): array
     {
         if ($this->invoicable instanceof Order) {
             if ($this->invoicable->is_easy_access) {
@@ -128,5 +129,18 @@ class InvoiceRequest extends Model
         }
 
         return [];
+    }
+
+    public function getIdentifier(): string
+    {
+        if ($this->invoicable_type === Order::class) {
+            return "Zamówienie #{$this->invoicable_id}";
+        }
+
+        if ($this->invoicable_type === Payment::class) {
+            return "Płatność subskrypcyjna #{$this->invoicable_id}";
+        }
+
+        return "";
     }
 }
