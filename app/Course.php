@@ -176,6 +176,10 @@ class Course extends Model implements OrderableContract, AccessableContract
 
     public function visibleLessons(User $user = null)
     {
+        if ($this->isSpecialAccess()){
+            return $this->lessons()->where('id', '<',0);
+        }
+
         if ($this->scheduled_at === null && !$this->is_systematic) {
             return $this->lessons();
         }
@@ -544,7 +548,7 @@ class Course extends Model implements OrderableContract, AccessableContract
     public function shouldShowLessonPreview(): bool
     {
         if ($this->isSpecialAccess()) {
-            return true;
+            return false;
         }
 
         if ($this->isSystematic()) {
