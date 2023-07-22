@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Domains\Integrations\Cloudflare\Cloudflare;
 use App\Helpers\VimeoHelper;
 use App\Http\Requests\Admin\ImportVideoRequest;
 use App\Video;
@@ -44,11 +45,12 @@ class AdminVideosController extends Controller
         return $vid;
     }
 
-    public function import(ImportVideoRequest $request)
+    public function import(ImportVideoRequest $request, Cloudflare $cloudflare)
     {
-        $data = VimeoHelper::import(
-            '/videos/' . $request->hash(),
-            $request->input('name'));
+        $data = $cloudflare->import(
+            $request->input('cloudflare_id'),
+            $request->input('name')
+        );
 
         Video::create($data);
 

@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * App\Video.
  *
- * @property int         $id
- * @property string      $filename
- * @property string      $hash
- * @property string      $url
- * @property string      $thumb
+ * @property int $id
+ * @property string $filename
+ * @property string $hash
+ * @property string $url
+ * @property string $thumb
  * @property string|null $embed
  * @property string|null $cloudflare_uid
  * @property Carbon|null $created_at
@@ -36,14 +36,11 @@ class Video extends Model
 
     /**
      * Zwróć link do miniatury o podanych wymiarach.
-     * @param int $width szerokość
-     * @param int $height wysokość
-     * @return [string]          url do pliku
      */
     public function thumb($width = 200, $height = 200)
     {
-        if (empty($this->thumb)) {
-            $this->getThumbId();
+        if (filter_var($this->thumb, FILTER_VALIDATE_URL)) {
+            return $this->thumb . "?width={$width}&height={$height}";
         }
 
         $size = VimeoHelper::getThumbSize($width);

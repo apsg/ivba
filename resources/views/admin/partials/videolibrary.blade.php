@@ -74,9 +74,9 @@
                                                        placeholder="Podaj nazwę..." required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="import-url">Link do filmu:</label>
-                                                <input name="url" type="url" class="form-control" id="import-url"
-                                                       placeholder="http://vimeo.com/{id-pliku}" required>
+                                                <label for="import-url">Cloudflare ID:</label>
+                                                <input name="cloudflare_id" type="text" class="form-control" id="import-url"
+                                                       placeholder="Cloudflare ID" required>
                                             </div>
 
                                             <button class="btn btn-primary">Importuj</button>
@@ -151,7 +151,7 @@
                 $.post($("#import-video-form").attr('action'), {
                     _token: '{{ csrf_token() }}',
                     name: $("#import-name").val(),
-                    url: $("#import-url").val(),
+                    cloudflare_id: $("#import-url").val(),
                 }).done(function (data) {
                     loadVideos();
                     $("#tab-list-button").tab('show');
@@ -221,7 +221,7 @@
         });
 
         function thumbUrl(thumb) {
-            return 'https://i.vimeocdn.com/video/' + thumb + '_200x150.jpg?r=pad';
+            return thumb;
         }
 
         function loadVideos() {
