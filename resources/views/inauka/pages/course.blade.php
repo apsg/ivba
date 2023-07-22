@@ -87,10 +87,6 @@
                             <a class="nav-link" id="opinions-tab" data-toggle="tab" href="#opinions" role="tab"
                                aria-controls="opinions" aria-selected="false"><i class="fa fa-star"></i> Opinie</a>
                         </li>
-                        {{--<li class="nav-item">--}}
-                        {{--<a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab"--}}
-                        {{--aria-controls="comments" aria-selected="false"><i class="fa fa-comments"></i> Komentarze</a>--}}
-                        {{--</li>--}}
                         <li class="nav-item">
                             <a class="nav-link" id="comments-tab" data-toggle="tab" href="#teachers" role="tab"
                                aria-controls="teachers" aria-selected="false"><i class="fa fa-graduation-cap"></i>
