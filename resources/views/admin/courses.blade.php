@@ -76,6 +76,9 @@
                                     </form>
                                 </div>
                             </div><!-- /.box-tools -->
+                            <div>
+                                {{ route('courses.index.group', $group) }}
+                            </div>
                         </div><!-- /.box-header -->
                         <div class="box-body">
                             <ul class="sortable groups" id="group{{ $group->id }}" data-group_id="{{ $group->id }}">

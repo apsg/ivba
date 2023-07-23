@@ -18,7 +18,7 @@
                     :ivba="ivba"
                 ></CourseCard>
             </div>
-            <div class="row">
+            <div class="row" v-if="courses.length > 0">
                 <div class="col-md-12 d-flex my-5" v-if="groups.length > 0">
                     <div class="flex-grow-1">
                         <hr/>
@@ -45,7 +45,12 @@ export default {
     name: "Courses",
     components: {CourseCard},
     props: {
-        ivba: Boolean
+        ivba: Boolean,
+        group:{
+          type: Number,
+          required: false,
+          default: null,
+        }
     },
     data() {
         return {
@@ -64,7 +69,11 @@ export default {
     },
 
     mounted() {
-        axios.get('/a/courses').then(data => {
+        axios.get('/a/courses',{
+          params: {
+            group: this.group
+          }
+        }).then(data => {
             this.courses = data.data.courses;
             this.groups = data.data.groups;
         });

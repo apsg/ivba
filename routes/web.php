@@ -36,6 +36,7 @@ Route::any('/payu/notify', PayuController::class . '@notify');
 Route::post('/search', PagesController::class . '@search');
 
 Route::get('/courses', CoursesController::class . '@index')->name('courses');
+Route::get('/courses/{group}', CoursesController::class . '@index')->name('courses.index.group');
 Route::get('/course', CoursesController::class . '@redirect');
 Route::get('/course/{course}', CoursesController::class . '@show');
 Route::get('/course/{course}/buy', OrderController::class . '@orderCourse');

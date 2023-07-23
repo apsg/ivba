@@ -10,7 +10,7 @@
                 </div>
             </div>
 
-            <courses></courses>
+            <courses :group="{{ $group->id ?? 'null' }}"></courses>
 
         </div>
 
