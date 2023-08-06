@@ -6,7 +6,7 @@ use Barryvdh\LaravelIdeHelper\Eloquent;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @property int                     id
@@ -23,9 +23,8 @@ class Group extends Model
 {
     protected $guarded = [];
 
-    public function courses(): HasMany
+    public function courses(): BelongsToMany
     {
-        return $this->hasMany(Course::class)
-            ->orderBy('position');
+        return $this->belongsToMany(Course::class)->orderBy('order');
     }
 }

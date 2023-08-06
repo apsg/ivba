@@ -69,7 +69,7 @@ use Illuminate\Support\Str;
  * @property-read Video|null video
  * @property-read Collection|Logbook[] logbooks
  * @property-read Collection|Form[] forms
- * @property-read Group|null group
+ * @property-read Group[] groups
  *
  * @method static Builder withoutSpecial()
  * @method static Builder withoutSpecialExcept(array $ids)
@@ -159,9 +159,9 @@ class Course extends Model implements OrderableContract, AccessableContract
     public function lessons(): BelongsToMany
     {
         return $this->belongsToMany(Lesson::class)
-                    ->using(CourseLesson::class)
-                    ->withPivot(['position', 'delay'])
-                    ->orderBy('position', 'asc');
+            ->using(CourseLesson::class)
+            ->withPivot(['position', 'delay'])
+            ->orderBy('position', 'asc');
     }
 
     public function forms(): HasMany
@@ -169,9 +169,9 @@ class Course extends Model implements OrderableContract, AccessableContract
         return $this->hasMany(Form::class);
     }
 
-    public function group(): BelongsTo
+    public function groups(): BelongsToMany
     {
-        return $this->belongsTo(Group::class);
+        return $this->belongsToMany(Group::class)->orderBy('order');
     }
 
     public function visibleLessons(User $user = null)
@@ -196,7 +196,7 @@ class Course extends Model implements OrderableContract, AccessableContract
         }
 
         return $this->lessons()
-                    ->where('delay', '<=', $diff);
+            ->where('delay', '<=', $diff);
     }
 
     /**
@@ -279,8 +279,8 @@ class Course extends Model implements OrderableContract, AccessableContract
     {
         if (Auth::check()) {
             return $this->user_certificates()
-                        ->where('user_id', Auth::user()->id)
-                        ->first();
+                ->where('user_id', Auth::user()->id)
+                ->first();
         }
 
         return null;
@@ -363,9 +363,9 @@ class Course extends Model implements OrderableContract, AccessableContract
         $user = Auth::user();
 
         $order = $this->visibleLessons($user)
-                      ->where('lesson_id', $lesson_id)
-                      ->pluck('position')
-                      ->first();
+            ->where('lesson_id', $lesson_id)
+            ->pluck('position')
+            ->first();
 
         $next = $this->visibleLessons($user)->where('position', $order + 1)->first();
 
@@ -422,17 +422,17 @@ class Course extends Model implements OrderableContract, AccessableContract
     public function finish(): self
     {
         $this->users()
-             ->updateExistingPivot(
-                 Auth::user()->id,
-                 ['finished_at' => Carbon::now()]
-             );
+            ->updateExistingPivot(
+                Auth::user()->id,
+                ['finished_at' => Carbon::now()]
+            );
 
         if (!empty($this->certificate)) {
             UserCertificate::create([
-                'user_id'        => Auth::user()->id,
-                'certificate_id' => $this->certificate->id,
-                'course_id'      => $this->id,
-            ]);
+                                        'user_id'        => Auth::user()->id,
+                                        'certificate_id' => $this->certificate->id,
+                                        'course_id'      => $this->id,
+                                    ]);
         }
 
         Proof::createFinishedCourse(Auth::user(), $this);
@@ -465,11 +465,11 @@ class Course extends Model implements OrderableContract, AccessableContract
         $course_id = $this->id;
 
         return Cache::remember('course_users_count_' . $this->id,
-            60 * 12,
+                               60 * 12,
             function () use ($course_id) {
                 return DB::table('course_user')
-                         ->where('course_id', $course_id)
-                         ->count();
+                    ->where('course_id', $course_id)
+                    ->count();
             }
         );
     }
@@ -481,8 +481,8 @@ class Course extends Model implements OrderableContract, AccessableContract
     {
         if (Auth::check()) {
             return Rating::where('user_id', Auth::user()->id)
-                         ->where('course_id', $this->id)
-                         ->first();
+                ->where('course_id', $this->id)
+                ->first();
         } else {
             return null;
         }
@@ -570,7 +570,7 @@ class Course extends Model implements OrderableContract, AccessableContract
 
         return $query->where(function ($q) use ($search) {
             $q->where('title', 'like', "%{$search}%")
-              ->orWhere('slug', 'like', "%{$search}%");
+                ->orWhere('slug', 'like', "%{$search}%");
         });
     }
 
@@ -583,17 +583,17 @@ class Course extends Model implements OrderableContract, AccessableContract
     {
         return $query->where(function ($q) use ($accessIds) {
             return $q->where('is_special_access', false)
-                     ->orWhereIn('id', $accessIds);
+                ->orWhereIn('id', $accessIds);
         });
     }
 
     public function scopeWithoutPaths(Builder $query): Builder
     {
         $pathSlugs = array_filter([
-            setting(SettingsHelper::PATH_SIMPLE),
-            setting(SettingsHelper::PATH_MEDIUM),
-            setting(SettingsHelper::PATH_HARD),
-        ]);
+                                      setting(SettingsHelper::PATH_SIMPLE),
+                                      setting(SettingsHelper::PATH_MEDIUM),
+                                      setting(SettingsHelper::PATH_HARD),
+                                  ]);
 
         if (empty($pathSlugs)) {
             return $query;
@@ -604,7 +604,7 @@ class Course extends Model implements OrderableContract, AccessableContract
 
     public function scopeWithoutGroups(Builder $query): Builder
     {
-        return $query->whereNull('group_id');
+        return $query->whereDoesntHave('groups');
     }
 
     public function getLabelAttribute()

@@ -98,16 +98,17 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('.sortable').sortable({
-                connectWith: '.sortable'
+                connectWith: '.sortable',
+                helper: 'clone'
             }).disableSelection();
+
+            $('#courses').sortable('option', 'helper', 'clone');
 
             $('#courses').on('sortupdate', function (e, ui) {
                 updateOrder();
             });
 
             $('.groups').on('sortupdate', function (e, ui) {
-                console.log(e.target);
-                console.log($(e.target).children());
 
                 let groupId = $(e.target).data('group_id');
                 let order = [];
@@ -118,13 +119,13 @@
                     })
                 });
 
-                console.log(order);
-
                 $.post('{{ route('admin.groups.courses') }}', {
                     _token: '{{ csrf_token() }}',
                     order: order,
                     group: groupId,
-                })
+                }).then(() => {
+                    location.reload();
+                });
             });
         });
 
@@ -146,7 +147,6 @@
                 .done(function (r) {
 
                 });
-
         }
 
     </script>

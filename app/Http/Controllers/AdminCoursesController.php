@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Course;
@@ -20,7 +19,7 @@ class AdminCoursesController extends Controller
 
     public function index()
     {
-        $courses = Course::whereNull('group_id')->orderBy('position')->get();
+        $courses = Course::orderBy('position')->get();
         $groups = Group::with('courses')->orderBy('order')->get();
 
         if (request()->wantsJson()) {
