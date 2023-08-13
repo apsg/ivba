@@ -1,19 +1,33 @@
 <ul class="nav navbar-nav ml-auto">
 
     @foreach($menu as $item)
-
         @if($item->url != '/buy_access'
         || Auth::guest()
         || !Auth::user()->hasFullAccess()
         || !Auth::user()->hasActiveSubscription())
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url($item->url) }}"
-                   @if($item->is_new_window) target="_blank" @endif>{{ $item->title }}</a>
+            <li class="nav-item @if($item->isDropdown()) dropdown @endif">
+                <a class="@if($item->isDropdown()) dropdown-toggle @endif nav-link"
+                   href="@if($item->isDropdown())#@else {{ url($item->url) }} @endif"
+                   @if($item->is_new_window) target="_blank" @endif
+                        data-toggle="dropdown"
+                >
+                    {{ $item->title }}
+                </a>
+                @if($item->isDropdown())
+                    <div class="dropdown-menu">
+                        @foreach($item->children as $child)
+                            <a href="{{ url($child->url) }}"
+                               class="dropdown-item">
+                                {{ $child->title }}
+                            </a>
+                        @endforeach
+                    </div>
+                @endif
             </li>
         @endif
     @endforeach
 
-<!-- Authentication Links -->
+    <!-- Authentication Links -->
     @if (Auth::guest())
         <li class="nav-item">
             <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-sign-in"></i>

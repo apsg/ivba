@@ -1,9 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Domains\Admin\MenuRepository;
 use App\MenuItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminMenusController extends Controller
 {
@@ -13,27 +14,21 @@ class AdminMenusController extends Controller
         $this->middleware('admin');
     }
 
-    /**
-     * Pokaż listę elementów menu.
-     * @return [type] [description]
-     */
     public function index()
     {
-        $items = MenuItem::orderBy(\DB::raw('menu_id, position'))->get()->groupBy('menu_id');
+        $items = MenuItem::topLevel()
+            ->orderBy(\DB::raw('menu_id, position'))
+            ->get()
+            ->groupBy('menu_id');
 
         return view('admin.menus')->with(compact('items'));
     }
 
-    /**
-     * Zapisuje nowy element w bazie danych.
-     * @param  Request $request [description]
-     * @return [type]           [description]
-     */
     public function store(Request $request)
     {
         $this->validate($request, [
             'title' => 'required',
-            'url'	=> 'required',
+            'url'   => 'required',
         ]);
 
         MenuItem::create($request->all());
@@ -41,11 +36,6 @@ class AdminMenusController extends Controller
         return back();
     }
 
-    /**
-     * Usuwa element.
-     * @param  MenuItem $item [description]
-     * @return [type]         [description]
-     */
     public function delete(MenuItem $item)
     {
         if (\Gate::allows('admin')) {
@@ -55,17 +45,22 @@ class AdminMenusController extends Controller
         return back();
     }
 
-    /**
-     * [updateOrder description].
-     * @param  Request $request [description]
-     * @return [type]           [description]
-     */
-    public function updateOrder(Request $request)
+    public function updateOrder(Request $request, MenuRepository $repository)
     {
         foreach ($request->order as $item_order) {
-            \DB::table('menu_items')
-                ->where('id', $item_order['id'])
-                ->update(['position' => $item_order['order']]);
+            $repository->update($item_order['id'], $item_order['order']);
+
+            if (!isset($item_order['children'])) {
+                continue;
+            }
+
+            foreach ($item_order['children'] as $child) {
+                $repository->update(
+                    $child['id'],
+                    $child['order'],
+                    $item_order['id']
+                );
+            }
         }
 
         return ['ok'];

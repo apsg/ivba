@@ -15,301 +15,318 @@
 $font-main: "Lato";
 
 .bg-gray-light {
-    background-color: $color-bg-gray-light;
+  background-color: $color-bg-gray-light;
 }
 
 .bg-gray-dark {
-    background-color: $color-bg-gray-dark;
+  background-color: $color-bg-gray-dark;
 }
 
 .bg-light-blue {
-    background-color: lighten($brand-info, 20%);
+  background-color: lighten($brand-info, 20%);
 }
 
 .bg-success-custom {
-    background-color: $brand-success;
+  background-color: $brand-success;
 }
 
 .text-orange {
-    color: $color-orange !important;
+  color: $color-orange !important;
 }
 
 .section-header {
-    color: $color-orange;
-    font-size: 20px;
-    padding: 10px 0;
-    text-transform: uppercase;
-    font-weight: 700;
+  color: $color-orange;
+  font-size: 20px;
+  padding: 10px 0;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .btn-ivba {
-    background-color: $color-orange;
-    color: $color-white !important;
+  background-color: $color-orange;
+  color: $color-white !important;
 
-    &:hover {
-        background-color: darken($color-orange, 10%);
-        color: $color-white !important;
-    }
+  &:hover {
+    background-color: darken($color-orange, 10%);
+    color: $color-white !important;
+  }
 }
 
 .login {
-    font-family: $font-main, "Raleway", sans-serif;
+  font-family: $font-main, "Raleway", sans-serif;
 }
 
 .header {
-    background-color: $color-bg-orabge-dark;
-    background-image: none;
-    background-size: cover;
+  background-color: $color-bg-orabge-dark;
+  background-image: none;
+  background-size: cover;
 
-    &.home {
-        background-image: url("/images/v2/baner.webp");
-    }
+  &.home {
+    background-image: url("/images/v2/baner.webp");
+  }
 
-    .promo {
-        h1 {
-            color: $color-white;
-            font-weight: 900;
-            font-size: 44px;
-        }
+  .promo {
+    h1 {
+      color: $color-white;
+      font-weight: 900;
+      font-size: 44px;
     }
+  }
 }
 
 .navbar-orange {
-    background-color: transparent;
+  background-color: transparent;
 
-    .navbar-brand {
-        color: $color-white;
-    }
+  .navbar-brand {
+    color: $color-white;
+  }
 
-    .navbar-nav > li > a {
-        color: $color-white;
-        font-weight: 700;
-    }
+  .navbar-nav > li > a {
+    color: $color-white;
+    font-weight: 700;
+  }
 }
 
 footer {
-    background-color: $color-black;
+  background-color: $color-black;
 
-    a {
-        color: $color-white;
-        font-size: $font-size-base;
-        font-weight: 400;
-        padding-right: 5px;
-        padding-left: 5px;
-    }
+  a {
+    color: $color-white;
+    font-size: $font-size-base;
+    font-weight: 400;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
 
-    .footer-header {
-        font-size: $font-size-base;
-        font-weight: 700;
-        margin-bottom: 0;
-        text-transform: uppercase;
-    }
+  .footer-header {
+    font-size: $font-size-base;
+    font-weight: 700;
+    margin-bottom: 0;
+    text-transform: uppercase;
+  }
 }
 
 .promo-cards {
-    .promo-card {
-        font-weight: 400;
+  .promo-card {
+    font-weight: 400;
 
-        h3 {
-            color: $color-orange;
-            font-size: 20px;
-            padding: 10px 0;
-            text-transform: uppercase;
-        }
-
-        p {
-            color: $color-gray;
-        }
+    h3 {
+      color: $color-orange;
+      font-size: 20px;
+      padding: 10px 0;
+      text-transform: uppercase;
     }
+
+    p {
+      color: $color-gray;
+    }
+  }
 }
 
 .content {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .form-signin {
-    width: 100%;
-    max-width: 70%;
-    padding: 15px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 70%;
+  padding: 15px;
+  margin: 0 auto;
 
-    .checkbox {
-        font-weight: 400;
-    }
+  .checkbox {
+    font-weight: 400;
+  }
 
-    .form-control {
-        position: relative;
-        box-sizing: border-box;
-        height: auto;
-        padding: 10px;
-        font-size: 16px;
-    }
+  .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
 
-    .form-control:focus {
-        z-index: 2;
-    }
+  .form-control:focus {
+    z-index: 2;
+  }
 
-    input[type="email"] {
-        margin-bottom: -1px;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-    }
+  input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 
-    input[type="password"] {
-        margin-bottom: 10px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
+  input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 }
 
 
 .VueCarousel-navigation-button {
-    color: #fff;
-    font-size: 40px;
-    font-family: $font-main, "Raleway", sans-serif;
-    font-weight: 300;
+  color: #fff;
+  font-size: 40px;
+  font-family: $font-main, "Raleway", sans-serif;
+  font-weight: 300;
 }
 
 .learn {
 
-    .sidebar {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 100; /* Behind the navbar */
-        padding: 0;
-        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-    }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100; /* Behind the navbar */
+    padding: 0;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  }
 
-    .sidebar-sticky {
-        position: -webkit-sticky;
-        position: sticky;
-        top: 90px; /* Height of navbar */
-        height: calc(100vh - 90px);
-        padding-top: .5rem;
-        overflow-x: hidden;
-        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    }
+  .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 90px; /* Height of navbar */
+    height: calc(100vh - 90px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  }
 
-    .sidebar .nav-link {
-        font-weight: 500;
-        color: #333;
-    }
+  .sidebar .nav-link {
+    font-weight: 500;
+    color: #333;
+  }
 
-    .sidebar .nav-link .feather {
-        margin-right: 4px;
-        color: #999;
-    }
+  .sidebar .nav-link .feather {
+    margin-right: 4px;
+    color: #999;
+  }
 
-    .sidebar .nav-link.active {
-        color: $color-orange;
-    }
+  .sidebar .nav-link.active {
+    color: $color-orange;
+  }
 
-    .sidebar .nav-link:hover .feather,
-    .sidebar .nav-link.active .feather {
-        color: inherit;
-    }
+  .sidebar .nav-link:hover .feather,
+  .sidebar .nav-link.active .feather {
+    color: inherit;
+  }
 
-    .sidebar-heading {
-        font-size: .75rem;
-        text-transform: uppercase;
-    }
+  .sidebar-heading {
+    font-size: .75rem;
+    text-transform: uppercase;
+  }
 
-    /*
-     * Navbar
-     */
+  /*
+   * Navbar
+   */
 
-    .navbar .form-control {
-        padding: .75rem 1rem;
-        border-width: 0;
-        border-radius: 0;
-    }
+  .navbar .form-control {
+    padding: .75rem 1rem;
+    border-width: 0;
+    border-radius: 0;
+  }
 
-    .form-control-dark {
-        color: #fff;
-        background-color: rgba(255, 255, 255, .1);
-        border-color: rgba(255, 255, 255, .1);
-    }
+  .form-control-dark {
+    color: #fff;
+    background-color: rgba(255, 255, 255, .1);
+    border-color: rgba(255, 255, 255, .1);
+  }
 
-    .form-control-dark:focus {
-        border-color: transparent;
-        box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
-    }
+  .form-control-dark:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+  }
 
-    /*
-     * Utilities
-     */
+  /*
+   * Utilities
+   */
 
-    .border-top {
-        border-top: 1px solid #e5e5e5;
-    }
+  .border-top {
+    border-top: 1px solid #e5e5e5;
+  }
 
-    .border-bottom {
-        border-bottom: 1px solid #e5e5e5;
-    }
+  .border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+  }
 
 }
 
 .fade-enter-active, .fade-leave-active {
-    transition: opacity 1s;
+  transition: opacity 1s;
 }
 
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
 {
-    opacity: 0;
+  opacity: 0;
 }
 
 .enquire-wrapper {
 
-    img {
-        max-width: 100%;
-    }
+  img {
+    max-width: 100%;
+  }
 }
 
 .fm-container {
-    position: absolute;
-    top: 100px;
-    right: 0;
-    width: 300px;
-    max-width: 100%;
-    z-index: 1000;
+  position: absolute;
+  top: 100px;
+  right: 0;
+  width: 300px;
+  max-width: 100%;
+  z-index: 1000;
 }
 
 @media screen and (min-width: 1024px) {
-    .register-inner {
-        width: 900px;
-    }
+  .register-inner {
+    width: 900px;
+  }
 }
 
 .text-big {
-    font-size: 40px;
+  font-size: 40px;
 }
 
 .table {
-    td.fit,
-    th.fit {
-        white-space: nowrap;
-        width: 1%;
-    }
+  td.fit,
+  th.fit {
+    white-space: nowrap;
+    width: 1%;
+  }
 }
 
 .dont-break-out {
 
-    /* These are technically the same, but use both */
-    overflow-wrap: break-word;
-    word-wrap: break-word;
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 
-    -ms-word-break: break-all;
-    /* This is the dangerous one in WebKit, as it breaks things wherever */
-    word-break: break-all;
-    /* Instead use this non-standard one: */
-    word-break: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
 
-    /* Adds a hyphen where the word breaks, if supported (No Blink) */
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 
 }
+
+.menu_items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  * li.menu-highlight {
+    border: 1px dashed red !important;
+    background: #f5f5f5;
+  }
+
+  * ul {
+    margin-left: 20px;
+    width: 100%;
+  }
+}
+

@@ -2,8 +2,10 @@
 namespace App;
 
 use App\Helpers\MenuHelper;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 
 /**
@@ -15,16 +17,25 @@ use Illuminate\Support\Collection;
  * @property int $is_new_window
  * @property int $menu_id
  * @property int $position
+ * @property int| null parent_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ *
+ * @property-read MenuItem[] children
+ *
+ * @method static Builder topLevel()
  */
 class MenuItem extends Model
 {
-    protected $fillable = ['menu_id', 'position', 'title', 'url'];
+    protected $fillable = ['menu_id', 'position', 'title', 'url', 'parent_id'];
 
-    /**
-     * Wygeneruj menu o określonym id.
-     */
+    public function children(): HasMany
+    {
+        return $this
+            ->hasMany(MenuItem::class, 'parent_id')
+            ->orderBy('position');
+    }
+
     public static function make(int $menuId, $order = 'desc')
     {
         return MenuHelper::make($menuId, $order);
@@ -41,10 +52,22 @@ class MenuItem extends Model
         })->implode('');
     }
 
-    public static function getMenu(int $menuId, string $order = 'asc') : Collection
+    public static function getMenu(int $menuId, string $order = 'asc'): Collection
     {
-        return static::where('menu_id', '=', $menuId)
+        return static::topLevel()
+            ->where('menu_id', '=', $menuId)
             ->orderBy('position', $order)
+            ->with('children')
             ->get();
+    }
+
+    public function scopeTopLevel(Builder $builder): Builder
+    {
+        return $builder->whereNull('parent_id');
+    }
+
+    public function isDropdown(): bool
+    {
+        return $this->children->count() > 0;
     }
 }
