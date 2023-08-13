@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\InvoiceRequest;
@@ -49,21 +48,21 @@ class AdminInvoicesController extends Controller
     public function update(InvoiceRequest $invoiceRequest, Request $request)
     {
         $invoiceRequest->update([
-            'custom_description' => $request->input('custom_description'),
-        ]);
+                                    'custom_description' => $request->input('custom_description'),
+                                ]);
 
         $invoiceRequest->user()->update($request->only('company_name', 'address', 'taxid'));
 
         if ($invoiceRequest->invoicable instanceof Order) {
             $invoiceRequest->invoicable->update([
-                'final_total' => $request->input('final_total'),
-            ]);
+                                                    'final_total' => $request->input('final_total'),
+                                                ]);
         }
 
         if ($invoiceRequest->invoicable instanceof Payment) {
             $invoiceRequest->invoicable->update([
-                'amount' => $request->input('amount'),
-            ]);
+                                                    'amount' => $request->input('amount'),
+                                                ]);
         }
 
         flash('Zaktualizowano pomyślnie');

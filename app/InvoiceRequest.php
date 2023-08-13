@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use App\Fakturownia\OrderInvoice;
@@ -63,8 +62,8 @@ class InvoiceRequest extends Model
     public function reject(): self
     {
         $this->update([
-            'refused_at' => Carbon::now(),
-        ]);
+                          'refused_at' => Carbon::now(),
+                      ]);
 
         return $this;
     }

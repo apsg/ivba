@@ -97,7 +97,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Nazwa użytkownika</label>
                                     <input type="text" name="name" class="form-control" id="exampleInputEmail1"
-                                           aria-describedby="emailHelp" placeholder="Enter email"
+                                           aria-describedby="emailHelp" placeholder="Imię i nazwisko"
                                            value="{{ $user->name }}">
                                     <p>Ta nazwa używana jest na certyfikatach, które są wystawiane po niektórych z
                                         kursów.
