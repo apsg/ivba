@@ -5,15 +5,14 @@
         || Auth::guest()
         || !Auth::user()->hasFullAccess()
         || !Auth::user()->hasActiveSubscription())
-            <li class="nav-item @if($item->isDropdown()) dropdown @endif">
-                <a class="@if($item->isDropdown()) dropdown-toggle @endif nav-link"
-                   href="@if($item->isDropdown())#@else {{ url($item->url) }} @endif"
-                   @if($item->is_new_window) target="_blank" @endif
-                        data-toggle="dropdown"
-                >
-                    {{ $item->title }}
-                </a>
-                @if($item->isDropdown())
+            @if($item->isDropdown())
+                <li class="nav-item dropdown">
+                    <a class="dropdown-toggle nav-link"
+                       href="#"
+                       data-toggle="dropdown"
+                    >
+                        {{ $item->title }}
+                    </a>
                     <div class="dropdown-menu">
                         @foreach($item->children as $child)
                             <a href="{{ url($child->url) }}"
@@ -22,8 +21,17 @@
                             </a>
                         @endforeach
                     </div>
-                @endif
-            </li>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="{{ url($item->url) }}"
+                       @if($item->is_new_window) target="_blank" @endif
+                    >
+                        {{ $item->title }}
+                    </a>
+                </li>
+            @endif
         @endif
     @endforeach
 
