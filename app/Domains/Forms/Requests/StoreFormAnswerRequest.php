@@ -10,7 +10,7 @@ class StoreFormAnswerRequest extends FormRequest
 {
     const RULES = [
         Form::FIELD_TEXT   => 'required|string',
-        Form::FIELD_NUMBER => 'required|numeric|min:0',
+        Form::FIELD_NUMBER => 'required|numeric',
         Form::FIELD_URL    => 'required|string|url',
         Form::FIELD_WEEK   => 'required|numeric|min:1|max:54',
         Form::FIELD_SELECT => 'required',

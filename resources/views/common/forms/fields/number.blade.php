@@ -1,7 +1,6 @@
 @component('common.forms.fields._base', compact('field', 'key'))
     <input
             type="number"
-            min="0"
             step="0.01"
             class="form-control"
             required
