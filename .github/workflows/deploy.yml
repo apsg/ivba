@@ -136,7 +136,7 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.1.6
         env:
           SSH_PRIVATE_KEY: ${{ secrets.KEY_TECH }}
-          ARGS: "-rltgoDzvO"
+          ARGS: "-rlgoDzvc -i"
           SOURCE: "/"
           REMOTE_HOST: ${{ vars.HOST_TECH }}
           REMOTE_USER: ${{ vars.USER_TECH }}
