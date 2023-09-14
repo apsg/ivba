@@ -138,19 +138,19 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.KEY_TECH }}
           ARGS: "-rltgoDzvO"
           SOURCE: "/"
-          REMOTE_HOST: ${{ env.HOST_TECH }}
-          REMOTE_USER: ${{ env.USER_TECH }}
-          TARGET: ${{ env.TARGET_TECH }}
+          REMOTE_HOST: ${{ vars.HOST_TECH }}
+          REMOTE_USER: ${{ vars.USER_TECH }}
+          TARGET: ${{ vars.TARGET_TECH }}
           EXCLUDE: "/node_modules/, /.idea/, /.git/, /vendor/, /.github/"
       - name: Creating .env file should go here
         run: echo "Creating env file..."
       - name: Composer and migrations
         uses: JimCronqvist/action-ssh@master
         with:
-          hosts: ${{ env.USER_TECH }}@${{ env.HOST_TECH }}
-          privateKey: ${{ env.KEY }}
+          hosts: ${{ vars.USER_TECH }}@${{ vars.HOST_TECH }}
+          privateKey: ${{ secrets.KEY_TECH }}
           command: |
-            cd ${{ env.TARGET_TECH }}
+            cd ${{ vars.TARGET_TECH }}
             ln -s public public_html
             ln -s public private_html
             php74 composer.phar install
