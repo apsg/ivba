@@ -47,7 +47,8 @@ mix.scripts([
 let domains = [
     'inauka',
     'projekt30',
-    'internetowisprzedawcy'
+    'internetowisprzedawcy',
+    'techniczni'
 ];
 
 for (let domain of domains) {

@@ -3,108 +3,85 @@
 @section('title', 'Wideo kursy i konferencje  z Excel, Power BI, Photoshop, Prezentacji.')
 
 @section('content')
-    <section class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-orange text-center my-3">Jak działa platforma?</h2>
-                <div style="position: relative; padding-top: 56.25%;">
-                    <iframe src="https://customer-gnl8urc1wq6n6cqi.cloudflarestream.com/319e1b61311d6de43a5eea5279d2591d/iframe?poster=https%3A%2F%2Fcustomer-gnl8urc1wq6n6cqi.cloudflarestream.com%2F319e1b61311d6de43a5eea5279d2591d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"
-                            style="border: none;
-                            position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
-                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-                            allowfullscreen="true"></iframe>
+    <div class="video-wrapper">
+        <video playsinline autoplay muted loop poster="cake.jpg">
+            <source src="/images/techniczni/www-background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- This will be positioned on top of our video background -->
+        <div class="video-overlay w-100 h-100">
+            <div class="d-flex container flex-column justify-content-center h-100">
+                <div class="d-flex">
+                    <div class="promo-video">
+                        <video controls playsinline>
+                            <source src="/images/techniczni/testowy-film.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="p-5 side-text d-flex flex-column" style="width: 40%">
+                        <p class="font-green">
+                            Kursy z Excela i IT
+                        </p>
+                        <h1 class="font-weight-700 font-size-80">
+                            Jak się uczyć?
+                        </h1>
+                        <p class="font-size-22">
+                            Oferujemy naukę nowoczesnymi metodami, Przygotowane materiały pomogą Ci utrwalić i
+                            wykorzystać
+                            jak najwięcej wiedzy.
+                        </p>
+                        <div>
+                            <a href="{{ url('register') }}" class="btn btn-green px-3 py-2 font-size-18">
+                                Wypróbuj za darmo
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-    <section class="container py-5 promo-cards">
+    </div>
+    <section class="container-lg py-5 promo-cards">
         <div class="row">
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/1_kursanci.svg') }}" style="height: 70px">
-                <h3>Kursanci</h3>
-                <p>Już ponad 5000 osób korzysta z naszej platformy do nauki.</p>
-            </div>
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/2_certyfikaty.svg') }}" style="height: 70px">
-                <h3>Certyfikaty</h3>
-                <p> Zdobądź certyfikat z wybranego kursu lub specjalizacji.</p>
-            </div>
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/3_grupawsparcia.svg') }}" style="height: 70px">
-                <h3> Grupa wsparcia</h3>
-                <p> Dołącz do naszej grupy wsparcia i wymieniaj wiedzą z innymi osobami</p>
-            </div>
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/4_wygoda.svg') }}" style="height: 70px">
-                <h3> Wygoda</h3>
-                <p>Ucz się gdzie chcesz i kiedy chcesz we własnym tempie.</p>
-            </div>
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/5_aktualizacje.svg') }}" style="height: 70px">
-                <h3>Aktualizacje</h3>
-                <p>Kursy aktualizujemy. Raz w miesiącu dodajemy nowy kurs.</p>
-            </div>
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/6_lekcje.svg') }}" style="height: 70px">
-                <h3>Lekcje</h3>
-                <p>Na naszym portalu znajdziesz ponad 300 lekcji, a ich liczba stale rośnie.</p>
-            </div>
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/7_ambasadorzy.svg') }}" style="height: 70px">
-                <h3>Ambasadorzy</h3>
-                <p>Poznaj naszych ambasadorów, do których możesz zwrócić się po pomoc.</p>
-            </div>
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/8_webinaria.svg') }}" style="height: 70px">
-                <h3>Webinaria</h3>
-                <p>Cykliczne, zamknięte szkolenia on-line na wyciągnięcie ręki.</p>
-            </div>
-            <div class="col-md-4 text-center promo-card">
-                <img src="{{ asset('images/v2/9_zwrot.svg') }}" style="height: 70px">
-                <h3>Zwrot</h3>
-                <p>Masz 30 dni na rezygnację z naszej platformy.</p>
-            </div>
-        </div>
-    </section>
-
-    {{--<section class="bg-gray-dark random-lessons row">--}}
-    {{--<random-lessons num="4"></random-lessons>--}}
-    {{--</section>--}}
-
-    <testimonials></testimonials>
-
-    <section class="contact-form">
-        <div class="container mt-5 mb-5">
-            <div class="row justify-content-md-center">
-                <form method="post" action="{{ url('contact_form') }}" class=" col-md-6">
-                    {{ csrf_field() }}
-
-                    <h3 class="section-header">Skontakuj się z nami</h3>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="name" required placeholder="Imię">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail1" name="email"
-                               aria-describedby="emailHelp"
-                               placeholder="Email" required>
-                        <small id="emailHelp" class="form-text text-muted">Nigdy nie udostępnimy Twojego adresu email
-                            nikomu bez Twojej zgody.
-                        </small>
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" name="message"
-                                  rows="3" placeholder="Wiadomość" required></textarea>
+            <div class="col-md-4 techniczni-card ">
+                <div class="border-green p-3">
+                    <div class="card-thumb">
+                        <img src="{{ asset('/images/techniczni/glowna1.png') }}" class="w-100" />
+                        <img src="{{ asset('/images/techniczni/icona1.svg') }}" class="icon">
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            {!! NoCaptcha::display() !!}
-                        </div>
-                        <div class="col-md-6 text-right">
-                            <button type="submit" class="mt-2 btn btn-ivba rounded-pill">Wyślij</button>
-                        </div>
+                    <h3>Kursy online</h3>
+
+                    <p>Najwięcej nauczysz się podczas konsultacji, wpadnij na comiesięczne spotkanie on-line.</p>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 techniczni-card ">
+                <div class="border-green p-3">
+                    <div class="card-thumb">
+                        <img src="{{ asset('/images/techniczni/glowna-2.png') }}" class="w-100" />
+                        <img src="{{ asset('/images/techniczni/icona2.svg') }}" class="icon">
                     </div>
-                </form>
+
+                    <h3>Kursy online</h3>
+
+                    <p>Najwięcej nauczysz się podczas konsultacji, wpadnij na comiesięczne spotkanie on-line.</p>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 techniczni-card ">
+                <div class="border-green p-3">
+                    <div class="card-thumb">
+                        <img src="{{ asset('/images/techniczni/glowna-3.png') }}" class="w-100" />
+                        <img src="{{ asset('/images/techniczni/icona3.svg') }}" class="icon">
+                    </div>
+
+                    <h3>Kursy online</h3>
+
+                    <p>Najwięcej nauczysz się podczas konsultacji, wpadnij na comiesięczne spotkanie on-line.</p>
+
+                </div>
             </div>
         </div>
     </section>

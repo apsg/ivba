@@ -20,7 +20,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/inauka_custom.css') }}" rel="stylesheet">
@@ -31,10 +32,10 @@
     <flash-message class="fm-container"></flash-message>
 
     <header class="header mb-3 @if(\Illuminate\Support\Facades\Request::is('/')) home @endif">
-        <nav class="navbar navbar-expand-sm navbar-orange bg-orange">
-            <div class="container">
+        <nav class="navbar navbar-expand-sm ">
+            <div class="container-xl">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('images/v2/logo_inauka_white.png') }}" style="height: 70px">
+                    <img src="{{ asset('images/techniczni/logo_glowne.svg') }}" style="height: 70px">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-inauka"
                         aria-controls="navbar-inauka" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,25 +48,10 @@
             </div>
         </nav>
         @if(Request::is('/'))
-            <div class="container pb-3 promo" style="min-height: 400px">
-                <h1 class="mt-5 mb-5">
-                    Kursy dla każdego
-                </h1>
-                <p class="text-white" style="font-size: 18px">
-                    Wyróżnij się dzięki wiedzy zdobytej <br />na iNauka - planuj i ucz się w swoim tempie</p>
 
-                <div>
-                    @guest()
-                        <a href="{{ route('register') }}" class="btn btn-white">Zarejestruj się</a>
-                    @endguest
-                    <a href="{{ route('courses') }}" class="btn btn-transparent">Spis kursów</a>
-                </div>
-
-            </div>
-{{--            <categories></categories>--}}
         @endif
     </header>
-    <div class="container">
+    <div class="container-xl">
         @include('flash::message')
         @if ($errors->any())
             <div class="alert alert-danger mt-3">
@@ -80,56 +66,29 @@
 
     @yield('content')
 
-    <footer class="pt-3 pb-3 mt-3 text-white">
-        <div class="container py-3">
+    <footer class="pt-5 pb-3 mt-3 text-white">
+        <div class="container-xl py-3 ">
             <div class="row">
-                <div class="col-md-12 text-center">
-                    <a href="https://facebook.com/wideokursy/" target="_blank">
-                        <img src="{{ asset('/images/v2/f_ikona.png') }}"/>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="container py-3 ">
-            <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <a href="{{url('/')}}" class="py-3">
-                        <img src="{{ asset('/images/v2/logo_inauka_white.png') }}" height="70">
+                        <img src="{{ asset('/images/techniczni/logo_stopka.svg') }}" height="70">
                     </a>
-                    <p>&copy; {{ Carbon\Carbon::now()->year }} ITBT</p>
-                </div>
-                <div class="col-md-8">
-                    <div class="row mb-3">
-                        <div class="col-md-3 text-right">
-                            <h3 class="footer-header">Informacje</h3>
-                        </div>
-                        <div class="col-md-9 footer-menu">
-                            {!! App\MenuItem::make(2, 'asc') !!}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 text-right">
-                            <h3 class="footer-header">Wsparcie</h3>
-                        </div>
-                        <div class="col-md-9 footer-menu">
-                            {!! App\MenuItem::make(3, 'asc') !!}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 text-center">
                     <p><strong>IT&Business Training Mateusz Grabowski</strong> <br/>
                         ul. Zygmunta Starego 1/3, 44-100 Gliwice |
                         NIP: 6312273946 |
                         REGON: 240829920
                     </p>
                 </div>
+                <div class="col-md-6">
+                    <div>
+                        <div class="footer-menu alignright">
+                            {!! App\MenuItem::make(3, 'asc') !!}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
-
-    @guest
-        <proofs></proofs>
-    @endguest
 
     @auth
         @if($lastLesson !== null)

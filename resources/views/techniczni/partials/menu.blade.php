@@ -6,7 +6,7 @@
         || !Auth::user()->hasFullAccess()
         || !Auth::user()->hasActiveSubscription())
             @if($item->isDropdown())
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown py-1 px-2">
                     <a class="dropdown-toggle nav-link"
                        href="#"
                        data-toggle="dropdown"
@@ -23,7 +23,7 @@
                     </div>
                 </li>
             @else
-                <li class="nav-item">
+                <li class="nav-item py-1 px-2">
                     <a class="nav-link"
                        href="{{ url($item->url) }}"
                        @if($item->is_new_window) target="_blank" @endif
@@ -37,11 +37,11 @@
 
     <!-- Authentication Links -->
     @if (Auth::guest())
-        <li class="nav-item">
+        <li class="nav-item py-1 px-2">
             <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-sign-in"></i>
                 Zaloguj</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item nav-green-border px-3 py-1 ml-2">
             <a class="nav-link" href="{{ route('register') }}"><i class="fa fa-wpforms"></i>
                 Zarejestruj</a>
         </li>

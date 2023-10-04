@@ -1,0 +1,140 @@
+@import 'variables';
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;600;700&display=swap');
+
+
+
+$font-main: "Manrope";
+$font-bold: "Manrope";
+
+$color-dark: #0A1B35;
+$color-green: #11CC05;
+$color-black-footer: #070707;
+
+body {
+    background-color: #ffffff;
+    font-family: $font-main;
+}
+
+.header.home{
+    background-color: #fff;
+    background-image: none;
+
+    & .nav-item {
+        a {
+            color: $color-dark;
+            font-size: 18px;
+        }
+    }
+
+    & .nav-green-border{
+        border: 1px solid $color-green;
+        border-radius: 15px;
+    }
+}
+
+.font-green {
+    color: $color-green;
+}
+
+.border-green {
+    border: 2px solid $color-green;
+    border-radius: 20px;
+}
+
+.font-size-22 {
+    font-size: 22px;
+}
+
+.font-size-80 {
+    font-size: 80px;
+}
+
+.font-weight-700 {
+    font-weight: 700;
+}
+
+.btn-green {
+    background-color: $color-green;
+    color: $color-white !important;
+    font-weight: 700;
+    border-radius: 10px;
+
+    &:hover {
+        background-color: darken($color-green, 10%);
+        color: $color-white !important;
+    }
+}
+
+.video-wrapper {
+    width: 100%;
+    height: calc(100vh - 200px);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > video {
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.video-overlay {
+    position: relative;
+    color: $color-dark;
+
+    & .side-text {
+        text-align: left;
+    }
+}
+
+.promo-video {
+    width: 60%;
+    height: auto;
+    position: relative;
+
+    & > video {
+
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+}
+
+.techniczni-card {
+    color: $color-dark;
+
+    .card-thumb {
+        position: relative;
+
+        .icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+    }
+
+    h3 {
+        font-weight: 600;
+        font-size: 38px;
+        margin-top: 30px;
+    }
+
+    p {
+        font-size: 18px;
+    }
+}
+
+footer {
+    border-top: 5px solid $color-green;
+    background-color: $color-black-footer;
+    padding-top: 40px;
+}
