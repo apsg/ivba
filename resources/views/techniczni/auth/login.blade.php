@@ -1,10 +1,14 @@
 @extends('layouts.login')
 
 @section('content')
-    <div class="login-logo"><a href="{{ url('/') }}"><img src="{{ url('/images/v2/inauka.png') }}"
-                                                          class="img-responsive" alt=""></a></div>
+    <div class="login-logo">
+        <a href="{{ url('/') }}">
+            <img src="{{ url('/images/techniczni/logo_glowne.svg') }}"
+                 class="img-responsive" alt="">
+        </a>
+    </div>
     <div class="head-block my-3">
-        <h1>LOGOWANIE</h1>
+        <h3>LOGOWANIE</h3>
     </div>
     <div class="cnt-block">
 
@@ -12,7 +16,7 @@
             {{ csrf_field() }}
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
-                       required autofocus placeholder="adres email">
+                       required autofocus placeholder="adres email" style="min-width: 400px">
 
                 @if ($errors->has('email'))
                     <span class="help-block">
@@ -32,15 +36,16 @@
             </div>
 
             <div class="button-outer">
-                <button class="btn btn-ivba">Zaloguj <span class="icon-more-icon"></span></button>
+                <button class="btn btn-green px-4 py-2">Zaloguj</button>
                 <br/>
                 <a href="{{ route('password.request') }}" class="forgot text-secondary"><i
                             class="fa fa-question-circle-o"></i> Zapomniane hasło?
                 </a>
                 <hr/>
                 <div class="or hidden-xs">Nie masz konta?</div>
-                <a href="{{ url('/register') }}" class="btn btn-primary register">Zarejestruj <span
-                            class="icon-more-icon"></span></a>
+                <a href="{{ url('/register') }}" class="btn btn-green-outline register px-4 py-2">
+                    Zarejestruj
+                </a>
             </div>
         </form>
     </div>

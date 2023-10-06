@@ -10,11 +10,11 @@
 
     <title>@yield('title') {{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/favicon/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
-    <link rel="manifest" href="{{ asset('images/favicon/site.webmanifest') }}">
-    <link rel="mask-icon" href="{{ asset('images/favicon/safari-pinned-tab.svg" color="#ff7631') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/techniczni/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/techniczni/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/techniczni/fav/favicon-16x16.png">
+    <link rel="manifest" href="/images/techniczni/fav/site.webmanifest">
+
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 

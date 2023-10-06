@@ -1,8 +1,6 @@
 @import 'variables';
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;600;700&display=swap');
 
-
-
 $font-main: "Manrope";
 $font-bold: "Manrope";
 
@@ -10,11 +8,24 @@ $color-dark: #0A1B35;
 $color-green: #11CC05;
 $color-black-footer: #070707;
 
+$layout-breakpoint-small: 960px;
+
+html{
+    background-color: #FAFAFA;
+}
+
 body {
     background-color: #ffffff;
     font-family: $font-main;
 }
 
+@media (min-width: 1500px) {
+    .container-xl{
+        max-width: 1350px;
+    }
+}
+
+.header,
 .header.home{
     background-color: #fff;
     background-image: none;
@@ -22,7 +33,7 @@ body {
     & .nav-item {
         a {
             color: $color-dark;
-            font-size: 18px;
+            font-size: 16px;
         }
     }
 
@@ -45,6 +56,10 @@ body {
     font-size: 22px;
 }
 
+.font-size-60 {
+    font-size: 60px;
+}
+
 .font-size-80 {
     font-size: 80px;
 }
@@ -53,6 +68,7 @@ body {
     font-weight: 700;
 }
 
+.btn-ivba,
 .btn-green {
     background-color: $color-green;
     color: $color-white !important;
@@ -64,6 +80,19 @@ body {
         color: $color-white !important;
     }
 }
+
+.btn-green-outline {
+    background-color: white;
+    color: $color-green !important;
+    font-weight: 700;
+    border-radius: 10px;
+    border-color: $color-green;
+
+    &:hover {
+        color: darken($color-green, 10%) !important;
+    }
+}
+
 
 .video-wrapper {
     width: 100%;
@@ -109,6 +138,10 @@ body {
     }
 }
 
+.w-40p {
+    width: 40%;
+}
+
 .techniczni-card {
     color: $color-dark;
 
@@ -124,7 +157,7 @@ body {
 
     h3 {
         font-weight: 600;
-        font-size: 38px;
+        font-size: 28px;
         margin-top: 30px;
     }
 

@@ -12,17 +12,17 @@
         <!-- This will be positioned on top of our video background -->
         <div class="video-overlay w-100 h-100">
             <div class="d-flex container flex-column justify-content-center h-100">
-                <div class="d-flex">
+                <div class="d-flex ">
                     <div class="promo-video">
                         <video controls playsinline>
                             <source src="/images/techniczni/testowy-film.mp4" type="video/mp4">
                         </video>
                     </div>
-                    <div class="p-5 side-text d-flex flex-column" style="width: 40%">
+                    <div class="p-5 side-text d-flex flex-column w-40p ">
                         <p class="font-green">
                             Kursy z Excela i IT
                         </p>
-                        <h1 class="font-weight-700 font-size-80">
+                        <h1 class="font-weight-700 font-size-60">
                             Jak się uczyć?
                         </h1>
                         <p class="font-size-22">
@@ -42,7 +42,7 @@
     </div>
     <section class="container-lg py-5 promo-cards">
         <div class="row">
-            <div class="col-md-4 techniczni-card ">
+            <div class="col-md-4 techniczni-card px-4">
                 <div class="border-green p-3">
                     <div class="card-thumb">
                         <img src="{{ asset('/images/techniczni/glowna1.png') }}" class="w-100" />
@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 techniczni-card ">
+            <div class="col-md-4 techniczni-card px-4">
                 <div class="border-green p-3">
                     <div class="card-thumb">
                         <img src="{{ asset('/images/techniczni/glowna-2.png') }}" class="w-100" />
@@ -70,7 +70,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 techniczni-card ">
+            <div class="col-md-4 techniczni-card px-4">
                 <div class="border-green p-3">
                     <div class="card-thumb">
                         <img src="{{ asset('/images/techniczni/glowna-3.png') }}" class="w-100" />

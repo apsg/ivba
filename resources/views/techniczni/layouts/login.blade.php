@@ -7,8 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0; maximum-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ url('images/favicon.ico') }}">
-    <title>Zaloguj się | inauka.pl</title>
+
+
+    <title>Zaloguj się | {{ config('app.name') }}</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/techniczni/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/techniczni/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/techniczni/fav/favicon-16x16.png">
+    <link rel="manifest" href="/images/techniczni/fav/site.webmanifest">
+
+
     <!-- Reset CSS -->
     <link href="{{ url('/css/app.css') }}" rel="stylesheet" type="text/css">
     <!-- Font Awesome -->
@@ -18,6 +26,8 @@
     <!-- Custom Style -->
     <link href="{{ url('/css/front.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ url('/css/app.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ multisite_css() }}" rel="stylesheet">
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -28,6 +38,7 @@
         html,
         body {
             height: 100%;
+            font-family: "Manrope";
         }
 
         body {
