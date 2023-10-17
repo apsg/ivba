@@ -39,7 +39,7 @@
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-inauka"
                         aria-controls="navbar-inauka" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars fa-2x text-white"></i>
+                    <i class="fa fa-bars fa-2x"></i>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbar-inauka">
@@ -73,10 +73,10 @@
                     <a href="{{url('/')}}" class="py-3">
                         <img src="{{ asset('/images/techniczni/logo_stopka.svg') }}" height="70">
                     </a>
-                    <p><strong>IT&Business Training Mateusz Grabowski</strong> <br/>
-                        ul. Zygmunta Starego 1/3, 44-100 Gliwice |
-                        NIP: 6312273946 |
-                        REGON: 240829920
+                    <p><strong>Edukacja Informatyczna sp z o.o.</strong>,
+                        ul. Rynek 2, 43-190 Mikołów,
+                        NIP: 635-186-70-12, REGON: 52612289400000, KRS: 0001052917
+
                     </p>
                 </div>
                 <div class="col-md-6">
