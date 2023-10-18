@@ -252,5 +252,22 @@ return [
             ],
         ],
     ],
+    'akceptacja_reklamy'   => [
+        'name'   => 'Akceptacja reklamy',
+        'fields' => [
+            'rekl1' => [
+                'name' => 'Bezpośredni link do promowanego produktu w Twoim sklepie',
+                'type' => Form::FIELD_URL,
+            ],
+            'rekl2' => [
+                'name' => 'Link 1 do filmu reklamującego (YouTube, Vimeo, etc)',
+                'type' => Form::FIELD_URL,
+            ],
+            'rekl3' => [
+                'name' => 'Link 2 do filmu reklamującego (YouTube, Vimeo, etc)',
+                'type' => Form::FIELD_URL,
+            ],
+        ],
+    ],
 
 ];
