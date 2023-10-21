@@ -10,7 +10,7 @@ $color-black-footer: #070707;
 
 $layout-breakpoint-small: 960px;
 
-html{
+html {
     background-color: #FAFAFA;
 }
 
@@ -20,13 +20,13 @@ body {
 }
 
 @media (min-width: 1500px) {
-    .container-xl{
+    .container-xl {
         max-width: 1350px;
     }
 }
 
 .header,
-.header.home{
+.header.home {
     background-color: #fff;
     background-image: none;
 
@@ -37,7 +37,7 @@ body {
         }
     }
 
-    & .nav-green-border{
+    & .nav-green-border {
         border: 1px solid $color-green;
         border-radius: 15px;
     }
@@ -50,6 +50,10 @@ body {
 .border-green {
     border: 2px solid $color-green;
     border-radius: 20px;
+}
+
+.font-size-16{
+    font-size: 16px;
 }
 
 .font-size-22 {
@@ -96,7 +100,7 @@ body {
 
 .video-wrapper {
     width: 100%;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 10px);
     position: relative;
     overflow: hidden;
     text-align: center;
@@ -142,11 +146,31 @@ body {
     width: 40%;
 }
 
+.album {
+    &.bg-light {
+        background-color: transparent !important;
+    }
+
+    .card {
+        border-radius: 20px;
+
+        .card-img-top{
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
+        }
+    }
+}
+
+
 .techniczni-card {
     color: $color-dark;
 
     .card-thumb {
         position: relative;
+
+        .card-main-img {
+            border-radius: 20px;
+        }
 
         .icon {
             position: absolute;
@@ -174,14 +198,36 @@ footer {
 
 
 @-webkit-keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
+[data-inviewport=fadeIn]
+{
+    opacity: 0;
+
+    &.is-inViewport{
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
+        -webkit-animation-duration: 2s;
+        animation-duration: 2s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+}
+
 
 .fadeIn {
     -webkit-animation-name: fadeIn;
@@ -203,3 +249,4 @@ footer {
 .delay4 {
     animation-delay: 4s;
 }
+

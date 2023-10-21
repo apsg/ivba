@@ -8,7 +8,7 @@
         </a>
     </div>
     <div class="head-block my-3">
-        <h3>LOGOWANIE</h3>
+        <h3>Logowanie</h3>
     </div>
     <div class="cnt-block">
 

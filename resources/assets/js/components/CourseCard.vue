@@ -1,5 +1,5 @@
 <template>
-    <div class="col-md-4" style="position: relative;">
+    <div :class="cc ? cc : 'col-md-4'" style="position: relative;">
         <div v-if="course.finished" class="finished p-1 rounded rounded-50 text-bold">
             <i class="fa fa-check-square-o"></i> Ukończono
         </div>
@@ -23,7 +23,7 @@
 export default {
     name: "CourseCard",
 
-    props: ['course','ivba'],
+    props: ['course','ivba', 'cc'],
 
     filters: {
         truncate: function (text, length, suffix) {

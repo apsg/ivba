@@ -24,7 +24,7 @@
     <!-- Iconmoon -->
     <link href="assets/iconmoon/css/iconmoon.css" rel="stylesheet" type="text/css">
     <!-- Custom Style -->
-    <link href="{{ url('/css/front.css') }}" rel="stylesheet" type="text/css">
+{{--    <link href="{{ url('/css/front.css') }}" rel="stylesheet" type="text/css">--}}
     <link href="{{ url('/css/app.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ multisite_css() }}" rel="stylesheet">
 

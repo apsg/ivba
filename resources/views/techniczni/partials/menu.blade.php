@@ -38,25 +38,29 @@
     <!-- Authentication Links -->
     @if (Auth::guest())
         <li class="nav-item py-1 px-2">
-            <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-sign-in"></i>
+            <a class="nav-link" href="{{ route('login') }}">
+                <span class="material-symbols-outlined font-size-16">login</span>
                 Zaloguj</a>
         </li>
         <li class="nav-item nav-green-border px-3 py-1 ml-2">
-            <a class="nav-link" href="{{ route('register') }}"><i class="fa fa-wpforms"></i>
+            <a class="nav-link" href="{{ route('register') }}">
+                <span class="material-symbols-outlined font-size-16">app_registration</span>
                 Zarejestruj</a>
         </li>
     @else
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-user"></i> {{ Auth::user()->name }}</a>
+                <span class="material-symbols-outlined font-size-16">person</span> {{ Auth::user()->name }}</a>
             <div class="dropdown-menu" aria-labelledby="dropdown">
-                <a href="{{ url('account') }}" class="dropdown-item"><i class="fa fa-user"></i> Moje
-                    konto</a>
+                <a href="{{ url('account') }}" class="dropdown-item">
+                    <span class="material-symbols-outlined font-size-16">person</span>
+                    Moje konto
+                </a>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                    <i class="fa fa-sign-out"></i>
+                    <span class="material-symbols-outlined font-size-16">logout</span>
                     Wyloguj
                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                           style="display: none;">

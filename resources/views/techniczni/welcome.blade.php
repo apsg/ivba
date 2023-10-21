@@ -41,10 +41,10 @@
     </div>
     <section class="container-lg py-5 promo-cards">
         <div class="row">
-            <div class="col-md-4 techniczni-card px-4 fadeIn">
+            <div class="col-md-4 techniczni-card px-4" data-inviewport="fadeIn">
                 <div class="border-green p-3">
                     <div class="card-thumb">
-                        <img src="{{ asset('/images/techniczni/glowna1.png') }}" class="w-100 " />
+                        <img src="{{ asset('/images/techniczni/glowna1.png') }}" class="w-100 card-main-img " />
                         <img src="{{ asset('/images/techniczni/icona1.svg') }}" class="icon">
                     </div>
 
@@ -55,10 +55,10 @@
                 </div>
             </div>
 
-            <div class="col-md-4 techniczni-card px-4 fadeIn delay1">
+            <div class="col-md-4 techniczni-card px-4 delay1" data-inviewport="fadeIn">
                 <div class="border-green p-3">
                     <div class="card-thumb">
-                        <img src="{{ asset('/images/techniczni/glowna-2.png') }}" class="w-100" />
+                        <img src="{{ asset('/images/techniczni/glowna-2.png') }}" class="w-100 card-main-img" />
                         <img src="{{ asset('/images/techniczni/icona2.svg') }}" class="icon">
                     </div>
 
@@ -69,10 +69,10 @@
                 </div>
             </div>
 
-            <div class="col-md-4 techniczni-card px-4 fadeIn delay2">
+            <div class="col-md-4 techniczni-card px-4 delay2" data-inviewport="fadeIn">
                 <div class="border-green p-3">
                     <div class="card-thumb">
-                        <img src="{{ asset('/images/techniczni/glowna-3.png') }}" class="w-100" />
+                        <img src="{{ asset('/images/techniczni/glowna-3.png') }}" class="w-100 card-main-img" />
                         <img src="{{ asset('/images/techniczni/icona3.svg') }}" class="icon">
                     </div>
 
