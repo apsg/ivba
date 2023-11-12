@@ -17,8 +17,9 @@ class QuickSalesController extends Controller
 {
     public function show(string $hash, QuickSaleRepository $repository)
     {
-        $sale = $repository->findByHash($hash)
-            ->only(['id', 'price', 'full_price', 'name', 'description', 'rules_url', 'hash', 'is_full_data_required']);
+        $sale = $repository
+            ->findByHash($hash)
+            ->only(['id', 'price', 'full_price', 'name', 'description', 'rules_url', 'hash', 'is_full_data_required', 'has_coupons']);
 
         return view('quicksale')->with(compact('sale'));
     }

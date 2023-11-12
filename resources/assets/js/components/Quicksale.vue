@@ -29,7 +29,7 @@
                     <p>{{ sale.description }}</p>
                 </div>
             </div>
-            <div class="col-auto">
+            <div class="col-auto" v-if="sale.has_coupons">
                 <label class="sr-only" for="couponCodeGroup">Kupon</label>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">

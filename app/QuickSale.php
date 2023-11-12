@@ -1,6 +1,7 @@
 <?php
 namespace App;
 
+use App\Domains\Quicksales\Models\CouponQuickSalePivot;
 use App\Domains\Quicksales\Models\CourseQuickSalePivot;
 use App\Interfaces\OrderableContract;
 use Carbon\Carbon;
@@ -91,15 +92,15 @@ class QuickSale extends Model implements OrderableContract
     public function coupons()
     {
         return $this->belongsToMany(Coupon::class)
-            ->using(CourseQuickSalePivot::class);
+            ->using(CouponQuickSalePivot::class);
     }
 
-    public function cartName() : string
+    public function cartName(): string
     {
         return $this->name;
     }
 
-    public function removeLink(Order $order) : string
+    public function removeLink(Order $order): string
     {
         return ''; // We do not need it for this type of orderables
     }
@@ -107,5 +108,10 @@ class QuickSale extends Model implements OrderableContract
     public function getLinkAttribute()
     {
         return url('/qs/' . $this->hash);
+    }
+
+    public function getHasCouponsAttribute(): bool
+    {
+        return $this->coupons->count() > 0;
     }
 }
