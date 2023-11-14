@@ -13,9 +13,14 @@
             <div class="d-flex container flex-column justify-content-center h-100 fadeIn">
                 <div class="d-flex ">
                     <div class="promo-video">
-                        <video controls playsinline>
-                            <source src="/images/techniczni/testowy-film.mp4" type="video/mp4">
-                        </video>
+                        <div style="position: relative; padding-top: 56.25%;">
+                            <iframe
+                                    src="https://customer-gnl8urc1wq6n6cqi.cloudflarestream.com/00d6dbf54d502585b25276c0a07d63d0/iframe"
+                                    style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
+                                    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                                    allowfullscreen="true"
+                            ></iframe>
+                        </div>
                     </div>
                     <div class="p-5 side-text d-flex flex-column w-40p ">
                         <p class="font-green">
