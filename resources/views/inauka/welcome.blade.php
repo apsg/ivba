@@ -8,11 +8,12 @@
             <div class="col-md-12">
                 <h2 class="text-orange text-center my-3">Jak działa platforma?</h2>
                 <div style="position: relative; padding-top: 56.25%;">
-                    <iframe src="https://customer-gnl8urc1wq6n6cqi.cloudflarestream.com/319e1b61311d6de43a5eea5279d2591d/iframe?poster=https%3A%2F%2Fcustomer-gnl8urc1wq6n6cqi.cloudflarestream.com%2F319e1b61311d6de43a5eea5279d2591d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"
-                            style="border: none;
-                            position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
+                    <iframe
+                            src="https://customer-gnl8urc1wq6n6cqi.cloudflarestream.com/319e1b61311d6de43a5eea5279d2591d/iframe?poster=https%3A%2F%2Fmegasobota.pl%2Fwp-content%2Fuploads%2F2023%2F11%2Finauka-thumbnail.png"
+                            style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
                             allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-                            allowfullscreen="true"></iframe>
+                            allowfullscreen="true"
+                    ></iframe>
                 </div>
             </div>
         </div>
