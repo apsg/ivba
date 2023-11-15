@@ -67,10 +67,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-12 pl-5">
+            <div class="no-captcha" style="margin: 0 auto;">
                 {!! NoCaptcha::display() !!}
             </div>
-
             <div class="button-outer col-md-12">
                 <input type="checkbox" name="rules" id="regulamin" style="width:auto; height: auto;">
                 <label for="regulamin">Akceptuję <a target="_blank" href="{{ url('regulamin') }}">Regulamin

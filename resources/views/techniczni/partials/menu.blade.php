@@ -38,14 +38,16 @@
     <!-- Authentication Links -->
     @if (Auth::guest())
         <li class="nav-item py-1 px-2">
-            <a class="nav-link" href="{{ route('login') }}">
-                <span class="material-symbols-outlined font-size-16">login</span>
-                Zaloguj</a>
+            <a class="nav-link d-flex align-items-center justify-content-center" href="{{ route('login') }}">
+                <span class="material-symbols-outlined font-size-18" style="margin-bottom: 2px">login</span>
+                Zaloguj
+            </a>
         </li>
         <li class="nav-item nav-green-border px-3 py-1 ml-2">
-            <a class="nav-link" href="{{ route('register') }}">
-                <span class="material-symbols-outlined font-size-16">app_registration</span>
-                Zarejestruj</a>
+            <a class="nav-link d-flex align-items-center justify-content-center" href="{{ route('register') }}">
+                <span class="material-symbols-outlined font-size-18">app_registration</span>
+                Zarejestruj
+            </a>
         </li>
     @else
         <li class="nav-item dropdown">
