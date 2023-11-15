@@ -56,6 +56,10 @@ body {
     font-size: 16px;
 }
 
+.font-size-18{
+    font-size: 18px;
+}
+
 .font-size-22 {
     font-size: 22px;
 }
@@ -248,5 +252,14 @@ footer {
 
 .delay4 {
     animation-delay: 4s;
+}
+
+@media (max-width: 576px) {
+    .welcome-container {
+        justify-content: normal !important;
+        & .side-text {
+            margin-top: 3em;
+        }
+    }
 }
 
