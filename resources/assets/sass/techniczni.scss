@@ -254,12 +254,6 @@ footer {
     animation-delay: 4s;
 }
 
-.guest-button {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-}
-
 @media (max-width: 576px) {
     .welcome-container {
         justify-content: normal !important;
