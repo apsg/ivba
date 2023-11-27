@@ -1,7 +1,7 @@
 @extends('layouts.learn')
 
 @section('title')
-    iNauka |
+    {{ config('app.name') }} |
     @if( !empty($course) )
         {{ $course->title }}
         @if($lesson->title)

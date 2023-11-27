@@ -52,7 +52,7 @@ body {
     border-radius: 20px;
 }
 
-.font-size-16{
+.font-size-16 {
     font-size: 16px;
 }
 
@@ -154,7 +154,7 @@ body {
     .card {
         border-radius: 20px;
 
-        .card-img-top{
+        .card-img-top {
             border-top-left-radius: 18px;
             border-top-right-radius: 18px;
         }
@@ -214,11 +214,11 @@ footer {
         opacity: 1;
     }
 }
-[data-inviewport=fadeIn]
-{
+
+[data-inviewport=fadeIn] {
     opacity: 0;
 
-    &.is-inViewport{
+    &.is-inViewport {
         -webkit-animation-name: fadeIn;
         animation-name: fadeIn;
         -webkit-animation-duration: 2s;
@@ -250,3 +250,10 @@ footer {
     animation-delay: 4s;
 }
 
+.learn {
+    .sidebar {
+        .nav-link.active {
+            color: $color-green;
+        }
+    }
+}

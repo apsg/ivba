@@ -6,7 +6,8 @@
             <div class="register-inner">
                 <div class="login-logo">
                     <a href="{{ url('/') }}">
-                        <img src="images/v2/inauka.png" class="img-responsive" alt="">
+                        <img src="{{ url('/images/techniczni/logo_glowne.svg') }}"
+                             class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="head-block">
