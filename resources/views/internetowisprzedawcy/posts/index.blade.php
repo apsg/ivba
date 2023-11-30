@@ -9,9 +9,8 @@
 @section('seo_description', 'Aktualności')
 
 @section('content')
-    <!-- Start Course Description -->
     <div class="pb-5">
-        <section class="about p-3 rounded-50 padding-lg bg-white  ">
+        <section class="about p-3 rounded-50 padding-lg bg-white posts">
             <div class="container inner">
                 <div class="row underline-blue  mb-3">
                     <div class="col-12 left-block mt-3">
@@ -44,10 +43,6 @@
                             </div>
                         </div>
                     @endforeach
-                </div>
-
-                <div class="d-flex justify-content-center mt-5">
-                    {{--                    {{ $posts->links() }}--}}
                 </div>
             </div>
         </section>

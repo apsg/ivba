@@ -303,6 +303,20 @@ footer {
     .container {
         max-width: 1450px;
     }
+
+    .posts .container{
+        max-width: 1200px;
+    }
+}
+
+.posts {
+    h6 {
+        font-size: 1.2rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
 }
 
 .card {

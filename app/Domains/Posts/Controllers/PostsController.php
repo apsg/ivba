@@ -23,7 +23,6 @@ class PostsController extends Controller
         $posts = $postsService->fetch();
         $postDisplays = $postsService->getDisplaysForUser(Auth::user());
 
-
         return view('posts.index')->with([
             'posts' => fractal($posts, new WordpressPostTransformer($postDisplays))
                 ->serializeWith(ArraySerializer::class)
