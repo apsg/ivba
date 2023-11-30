@@ -1,16 +1,21 @@
 {
-    "/js/app.js": "/js/app.js?id=88648d8447b6bc37363b",
-    "/css/app.css": "/css/app.css?id=e97b48405d9862680569",
+    "/js/app.js": "/js/app.js?id=04f395a2797ab2e529ea",
+    "/css/app.css": "/css/app.css?id=6a9b07d5c3fb8d9a627a",
     "/css/inauka.css": "/css/inauka.css?id=264a28a9c95d1d2ff07d",
     "/css/projekt30.css": "/css/projekt30.css?id=999e3cdd3623e6680a98",
+<<<<<<< HEAD
     "/css/internetowisprzedawcy.css": "/css/internetowisprzedawcy.css?id=f8a21fd170d37c678acd",
     "/css/techniczni.css": "/css/techniczni.css?id=ab0c0efb927bd6b17a52",
+=======
+    "/css/internetowisprzedawcy.css": "/css/internetowisprzedawcy.css?id=5c72445776fc755ce903",
+    "/css/techniczni.css": "/css/techniczni.css?id=e6922030f496ac6662a5",
+>>>>>>> master
     "/js/inauka.js": "/js/inauka.js?id=b665c528f5d36c0f187a",
     "/js/internetowisprzedawcy.js": "/js/internetowisprzedawcy.js?id=3f162ec17e94974bf862",
     "/js/projekt30.js": "/js/projekt30.js?id=8f1b6c27de4748cf54e6",
     "/js/techniczni.js": "/js/techniczni.js?id=2c92923278277c68ff08",
-    "/css/all.css": "/css/all.css?id=0909e27b870bde24aaca",
-    "/js/all.js": "/js/all.js?id=1619266b9bbf33c5fe2c",
-    "/css/front.css": "/css/front.css?id=ad93d11f9b56f1c14d37",
-    "/js/front.js": "/js/front.js?id=1e8e9873c434fc1ca687"
+    "/css/all.css": "/css/all.css?id=2a43b6a6b56928b35bd9",
+    "/js/all.js": "/js/all.js?id=da82e34af5ef8b165ada",
+    "/css/front.css": "/css/front.css?id=4cbacc26e91c94f1ed78",
+    "/js/front.js": "/js/front.js?id=c0ecaeded8c31a8050b3"
 }
