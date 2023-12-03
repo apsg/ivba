@@ -3,7 +3,7 @@
         <img width="43" height="71" src="{{ asset('/images/internetowisprzedawcy/logo_znak.svg') }}">
     </a>
 
-    <ul class="px-0 pt-5">
+    <ul class="px-0 pt-5 sm-hidden">
         <li class="nav-item">
             <a class="nav-link @if(url('/account/mycourses') === url()->current()) active @endif"
                href="{{ url('/account/mycourses') }}">

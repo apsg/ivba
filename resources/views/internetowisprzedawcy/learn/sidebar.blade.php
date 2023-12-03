@@ -14,7 +14,7 @@
         </li>
     </ul>
     @if(!empty($course))
-    <div class="sidebar-container">
+    <div class="sidebar-container sm-hidden">
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1">
             <span>Spis lekcji</span>
         </h6>

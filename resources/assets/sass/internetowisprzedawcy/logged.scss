@@ -83,6 +83,7 @@ body.logged {
                 fill: $color-white;
             }
         }
+
         svg {
             fill: $color-gray-light;
             width: 65px;
@@ -93,6 +94,7 @@ body.logged {
     .account-menu {
         color: $color-gray;
         outline: none !important;
+
         &__main-button {
             padding: 0;
             border: none;
@@ -100,6 +102,7 @@ body.logged {
             color: transparent;
             outline: none !important;
         }
+
         hr {
             margin-top: 0;
             margin-bottom: 0;
@@ -107,9 +110,11 @@ body.logged {
             margin-left: 1rem;
             width: 80%;
         }
+
         button {
             cursor: pointer;
         }
+
         a {
             color: $color-gray;
             text-decoration: none;
@@ -119,15 +124,18 @@ body.logged {
     .logout {
         width: auto;
         height: auto;
+
         button {
             border: none;
             background-color: transparent;
             color: transparent;
             outline: none;
         }
+
         button:focus {
             box-shadow: none;
         }
+
         &:hover,
         &.active {
             background-color: $color-main-red;
@@ -152,3 +160,29 @@ body.logged {
         }
     }
 }
+
+.post-single{
+    img{
+        max-width: 100%;
+        aspect-ratio: auto !important;
+        height: auto !important;
+    }
+}
+
+@media (max-width: 960px) {
+    body.logged {
+        .col-sidebar {
+            display: block;
+        }
+
+        .col-main {
+            margin-left: 0px;
+            z-index: 1;
+        }
+
+        .sm-hidden{
+            display: none;
+        }
+    }
+}
+

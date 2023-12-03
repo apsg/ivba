@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="pb-5">
-        <section class="about p-3 rounded-50 padding-lg bg-white posts">
+        <section class="about p-1 p-sm-3 rounded-50 padding-lg bg-white posts">
             <div class="container inner">
                 <div class="row underline-blue  mb-3">
                     <div class="col-12 left-block mt-3">
@@ -20,7 +20,7 @@
 
                 <div class="row">
                     @foreach($posts as $post)
-                        <div class="bg-gray-light p-3 d-flex col-md-12">
+                        <div class="bg-gray-light py-2 p-0 p-sm-3 d-flex col-md-12 flex-column flex-md-row">
                             <div>
                                 <img src="{{ Arr::get($post, '_embedded.wp:featuredmedia.0.media_details.sizes.thumbnail.source_url') }}"
                                      class="mr-3 rounded rounded-20">

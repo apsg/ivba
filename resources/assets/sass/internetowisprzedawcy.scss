@@ -30,6 +30,9 @@ $font-bold: "Krona One";
 
 $font-family-sans-serif: $font-main, sans-serif;
 
+$layout-breakpoint-small: 960px;
+
+
 @import 'internetowisprzedawcy/logged.scss';
 @import 'internetowisprzedawcy/buyaccess.scss';
 @import 'internetowisprzedawcy/learn.scss';
@@ -304,7 +307,7 @@ footer {
         max-width: 1450px;
     }
 
-    .posts .container{
+    .posts .container {
         max-width: 1200px;
     }
 }

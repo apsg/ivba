@@ -24,7 +24,7 @@
                 <div class="" id="courses" role="tabpanel" aria-labelledby="courses-tab">
 
                     @foreach( $user->courses as $course )
-                        <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between mb-5">
                             <div>
                                 @if($course->image)
                                     <img style="border-radius: 8px" src="{{ $course->image->thumb(132, 75) }}"/>

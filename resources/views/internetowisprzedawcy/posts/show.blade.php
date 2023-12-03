@@ -8,7 +8,7 @@
 @section('content')
     <!-- Start Course Description -->
     <div class="pb-5">
-        <section class="about p-3 rounded-50 padding-lg bg-white posts">
+        <section class="about p-3 rounded-50 padding-lg bg-white posts post-single">
             <div class="container inner">
                 <a href="{{ route('posts.index') }}" class="color-gray">
                     <i class="fa fa-caret-left"></i> Wróć do aktualności

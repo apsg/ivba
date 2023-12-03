@@ -12,7 +12,7 @@
                 <div class="col-sidebar px-1 position-fixed w-100 pt-5" id="sticky-sidebar">
                     @yield('sidebar')
                 </div>
-                <div class="col-main pt-5 px-3 w-100" id="main">
+                <div class="col-main pt-5 px-0 px-sm-3 w-100" id="main">
                     <div class="d-flex justify-content-between">
                         <div class="top-navbar">
                             @yield('navbar')
@@ -64,28 +64,4 @@
 @endsection
 
 @push('scripts')
-<!-- <script type="text/javascript">
-	$(document).ready(function(){
-        let isDropDownTouched = false;
-        $('body').on('mouseover', '.account-menu', function(e) { 
-            console.log('mouseover')
-            $(this).dropdown('show');
-        });
-        $('body').on('mouseleave', '.account-menu', function(e) {
-            setTimeout(() => {
-                if (!isDropDownTouched) {
-                    $(this).dropdown('hide');
-                }
-            }, 100);
-        });
-        $('body').on('mouseover', '.dropdown-menu', function(e) { 
-            isDropDownTouched = true;
-            $(this).dropdown('hide');
-        });
-        $('body').on('mouseleave', '.dropdown-menu', function(e) { 
-            isDropDownTouched = false;
-            $(this).dropdown('hide');
-        });
-	});
-</script> -->
 @endpush
