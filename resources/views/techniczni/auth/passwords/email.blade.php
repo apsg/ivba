@@ -6,7 +6,7 @@
         <div class="inner">
             <div class="regiter-inner">
                 <div class="login-logo"><a class="mb-4 logo" href="{{ url('/') }}">
-                        <img src="{{ url('/images/v2/inauka.png') }}" class="img-responsive" alt="">
+                        <img src="{{ url('/images/techniczni/logo_glowne.svg') }}" class="img-responsive" alt="">
                     </a></div>
                 <div class="head-block">
                     <h1>Wyślij email z nowym hasłem</h1>
