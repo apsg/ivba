@@ -34,12 +34,16 @@ class FreshdeskSupportMail extends Mailable
      */
     public $lesson;
 
-    public function __construct(User $user, string $message, Course $course = null, Lesson $lesson = null)
+    /** @var string|null  */
+    public $phone;
+
+    public function __construct(User $user, string $message, Course $course = null, Lesson $lesson = null, string $phone = null)
     {
         $this->user = $user;
         $this->body = $message;
         $this->course = $course;
         $this->lesson = $lesson;
+        $this->phone = $phone;
     }
 
     /**

@@ -25,4 +25,7 @@ abstract class GateHelper
     const ACTIVE = 'active';
 
     const BUY_ENABLED = 'buy-enabled';
+
+
+    const ASK_QUESTIONS = 'ask-questions';
 }

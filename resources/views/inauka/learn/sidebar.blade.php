@@ -9,6 +9,36 @@
         </a>
     </li>
 </ul>
+
+<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+    <span>Wsparcie</span>
+</h6>
+<ul class="nav flex-column mb-2">
+    <li class="nav-item p-3">
+        @can(App\Helpers\GateHelper::ASK_QUESTIONS)
+            <button type="button" class="btn btn-ivba question-button text-center" data-toggle="modal"
+                    data-target="#askQuestionModal" id="askQuestionButton">
+                Potrzebuję pomocy!
+            </button>
+        @else
+            <button type="button" class="btn btn-secondary" disabled>
+                Niebawem dostępne
+            </button>
+        @endcan
+    </li>
+</ul>
+
+<tooltip-info>
+    <div class="font-size-12 px-3">
+        <i class="fa fa-info-circle"></i>
+        Szczegóły korzystania
+    </div>
+
+    <template slot="text">
+        Jedno wykorzystanie na tydzień! Opisz swój problem, a my skontaktujemy się z Tobą priorytetowo. Przycisk odnawia się co 7 dni od startu, niewykorzystane okazje przepadają. Wykorzystanie pobiera się po wysłaniu wiadomości
+    </template>
+</tooltip-info>
+
 @if(!empty($course))
     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
         <span>Spis lekcji</span>
@@ -22,7 +52,9 @@
                         <i class="fa fa-check-square-o"></i>
                     @endif
                     {{ $l->title }} ({{ $l->duration }} min.)
-                    @if(isset($lesson) && $l->id == $lesson->id) <i class="fa fa-chevron-right pull-right"></i> @endif
+                    @if(isset($lesson) && $l->id == $lesson->id)
+                        <i class="fa fa-chevron-right pull-right"></i>
+                    @endif
                 </a>
             </li>
         @endforeach
@@ -68,3 +100,18 @@
         </h6>
     @endif
 @endif
+
+@push('modals')
+    <!-- Modal -->
+    <div class="modal fade" id="askQuestionModal" tabindex="-1" role="dialog"
+         aria-labelledby="askQuestionModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <question-form
+                    :course="{{json_encode($course)}}"
+                    :lesson="{{json_encode($lesson)}}"
+                    :show-phone="true"
+                    icon="/images/logo-inauka.png"
+            ></question-form>
+        </div>
+    </div>
+@endpush

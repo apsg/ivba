@@ -82,6 +82,7 @@
             <question-form
                     :course="{{json_encode($course)}}"
                     :lesson="{{json_encode($lesson)}}"
+                    icon="/images/internetowisprzedawcy/logo.png"
             ></question-form>
         </div>
     </div>

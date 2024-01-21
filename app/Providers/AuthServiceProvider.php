@@ -3,6 +3,7 @@ namespace App\Providers;
 
 use App\Course;
 use App\Domains\Admin\Helpers\SettingsHelper;
+use App\Domains\Learn\QuestionsService;
 use App\Domains\Logbooks\Models\LogbookComment;
 use App\Domains\Logbooks\Policies\LogbookCommentPolicy;
 use App\Helpers\GateHelper;
@@ -109,6 +110,11 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define(GateHelper::BUY_ENABLED, function () {
             return !SettingsHelper::get('is.disable_buy');
+        });
+
+        Gate::define(GateHelper::ASK_QUESTIONS, function (User $user) {
+            /** @var QuestionsService */
+            return app(QuestionsService::class)->hasLimit($user);
         });
     }
 }

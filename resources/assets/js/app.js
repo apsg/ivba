@@ -1,3 +1,4 @@
+
 require('./bootstrap');
 window.Vue = require('vue');
 
@@ -30,6 +31,7 @@ import Order from "./components/internetowisprzedawcy/Order";
 import QuestionForm from "./components/internetowisprzedawcy/QuestionForm";
 import FormAnswers from "./components/Admin/FormAnswers";
 import WeekSelector from "./components/WeekSelector";
+import TooltipInfo from "./components/TooltipInfo.vue";
 
 import {VuejsDatatableFactory} from 'vuejs-datatable';
 
@@ -80,6 +82,7 @@ const app = new Vue({
         'question-form': QuestionForm,
         'form-answers': FormAnswers,
         'week-selector': WeekSelector,
+        'tooltip-info': TooltipInfo,
     }
 });
 

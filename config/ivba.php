@@ -33,4 +33,9 @@ return [
         'list_active' => env('GETRESPONSE_LIST_ACTIVE', 'test_aktywni'),
     ],
 
+    'questions' => [
+        'uses'          => 1,
+        'cooldown_days' => 7,
+    ],
+
 ];
