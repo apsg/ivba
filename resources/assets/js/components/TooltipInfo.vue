@@ -15,7 +15,7 @@ export default {
 
   data() {
     return {
-      expand: true
+      expand: false
     }
   },
 

@@ -13,7 +13,7 @@
 
       <h5 class="font-size-12 text-gray">Jesteś tutaj:</h5>
       <h6 class="text-bold text-black" v-if="course.id">Kurs: {{ course.title }}</h6>
-      <h6 class="text-bold text-black mb-5" v-if="lesson.id">Lekcja: {{ lesson.title }}</h6>
+      <h6 class="text-bold text-black mb-5" v-if="lesson">Lekcja: {{ lesson.title }}</h6>
 
       <div class="alert alert-danger mb-1" v-if="error">
         Wpisz swoją wiadomość.

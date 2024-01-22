@@ -72,17 +72,3 @@
     @endif
 @endif
 
-@push('modals')
-    <!-- Modal -->
-    <div class="modal fade" id="askQuestionModal" tabindex="-1" role="dialog"
-         aria-labelledby="askQuestionModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <question-form
-                    :course="{{json_encode($course)}}"
-                    :lesson="{{json_encode($lesson)}}"
-                    :show-phone="true"
-                    icon="/images/logo-inauka.png"
-            ></question-form>
-        </div>
-    </div>
-@endpush
