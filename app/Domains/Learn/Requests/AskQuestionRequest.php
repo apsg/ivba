@@ -12,7 +12,7 @@ class AskQuestionRequest extends FormRequest
         return [
             'message' => 'required|string',
             'course'  => 'sometimes|integer',
-            'lesson'  => 'sometimes|integer',
+            'lesson'  => 'nullable|sometimes|integer',
             'phone'   => 'nullable|sometimes|string',
         ];
     }

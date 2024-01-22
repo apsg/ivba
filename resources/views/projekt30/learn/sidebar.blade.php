@@ -110,7 +110,6 @@
                     :course="{{json_encode($course)}}"
                     :lesson="{{json_encode($lesson ?? null)}}"
                     :show-phone="true"
-                    icon="/images/logo-inauka.png"
             ></question-form>
         </div>
     </div>

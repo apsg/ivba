@@ -94,7 +94,7 @@ export default {
 
       axios.post('/a/question', {
         course: this.course.id,
-        lesson: this.lesson.id,
+        lesson: this.lesson ? this.lesson.id : null,
         message: this.message,
         phone: this.phone,
       }).then(r => {
