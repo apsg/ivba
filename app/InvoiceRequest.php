@@ -68,7 +68,7 @@ class InvoiceRequest extends Model
         return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         if ($this->invoicable instanceof Order) {
             return $this->invoicable->description;
