@@ -23,7 +23,10 @@ class ExternalAccessController extends Controller
 
         $user = $userRepository->findByEmailOrCreate($request->input('email'));
 
-        if ($request->isFullAccess()) {
+        if ($request->isLifetimeAccess()) {
+            $accessRepository->grantFullAccess($user, 25*365);
+            event(new FullAccessGrantedEvent($user));
+        } elseif ($request->isFullAccess()) {
             $accessRepository->grantFullAccess($user, 365);
             event(new FullAccessGrantedEvent($user));
         } else {

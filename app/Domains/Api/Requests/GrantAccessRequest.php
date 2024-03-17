@@ -12,6 +12,7 @@ class GrantAccessRequest extends FormRequest
             'email'          => 'required|email',
             'course_id'      => 'required_without:is_full_access|integer|exists:courses,id',
             'is_full_access' => 'required_without:course_id|boolean',
+            'is_lifetime_access' => 'sometimes|nullable|boolean',
         ];
     }
 
@@ -27,5 +28,14 @@ class GrantAccessRequest extends FormRequest
         }
 
         return $this->input('is_full_access');
+    }
+
+    public function isLifetimeAccess(): bool
+    {
+        if (empty($this->input('is_lifetime_access'))) {
+            return false;
+        }
+
+        return $this->input('is_lifetime_access');
     }
 }
