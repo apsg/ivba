@@ -40,6 +40,7 @@ use App\Listeners\PlanUserExpiredFollowups;
 use App\Listeners\PlanUserPaidFollowups;
 use App\Listeners\PlanUserRegisteredFollowups;
 use App\Listeners\SendSubscriptionFailedEmail;
+use App\Listeners\SubscribeUserToMailerliteListener;
 use App\Listeners\UpdateLastPasswordChange;
 use App\Payments\Listeners\StartSubscriptionAfterFirstPaymentListener;
 use App\Payments\Listeners\TryToProlongSubscriptionListener;
@@ -59,6 +60,7 @@ class EventServiceProvider extends ServiceProvider
             SendEmailAfterRegistrationListener::class,
             FollowupsListener::class,
             UserRegisteredListener::class,
+            SubscribeUserToMailerliteListener::class,
         ],
         UserPaidForAccess::class                 => [
             PlanUserPaidFollowups::class,

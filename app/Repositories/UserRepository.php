@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use App\Events\UserRegisteredEvent;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
