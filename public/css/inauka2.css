@@ -1,3 +1,239 @@
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(/fonts/vendor/material-icons/iconmaterial-icons.woff2?53436aca8627a49f4deaaa44dc9e3c05) format("woff2"), url(/fonts/vendor/material-icons/iconmaterial-icons.woff?3e1afe59fa075c9e04c436606b77f640) format("woff");
+}
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: "liga";
+          font-feature-settings: "liga";
+}
+
+@font-face {
+  font-family: "Material Icons Outlined";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(/fonts/vendor/material-icons/iconmaterial-icons-outlined.woff2?0ba49c096a77b67734434cebcaf2e14d) format("woff2"), url(/fonts/vendor/material-icons/iconmaterial-icons-outlined.woff?0e4321a7c0dda51d72a669ac5892fc39) format("woff");
+}
+.material-icons-outlined {
+  font-family: "Material Icons Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: "liga";
+          font-feature-settings: "liga";
+}
+
+@font-face {
+  font-family: "Material Icons Round";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(/fonts/vendor/material-icons/iconmaterial-icons-round.woff2?121a59d703f74d7fc4a1bf64580966ed) format("woff2"), url(/fonts/vendor/material-icons/iconmaterial-icons-round.woff?9f309e9eab67445742ec147a3e37364f) format("woff");
+}
+.material-icons-round {
+  font-family: "Material Icons Round";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: "liga";
+          font-feature-settings: "liga";
+}
+
+@font-face {
+  font-family: "Material Icons Sharp";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(/fonts/vendor/material-icons/iconmaterial-icons-sharp.woff2?4f203ef2d5bc0198ed17648f0642ff96) format("woff2"), url(/fonts/vendor/material-icons/iconmaterial-icons-sharp.woff?6efac2316204505e0e8882b391df7d13) format("woff");
+}
+.material-icons-sharp {
+  font-family: "Material Icons Sharp";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: "liga";
+          font-feature-settings: "liga";
+}
+
+@font-face {
+  font-family: "Material Icons Two Tone";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(/fonts/vendor/material-icons/iconmaterial-icons-two-tone.woff2?e2c22f8cedcd54788de212b3bbea8e55) format("woff2"), url(/fonts/vendor/material-icons/iconmaterial-icons-two-tone.woff?87a93d696c7bd838f060276647a0146b) format("woff");
+}
+.material-icons-two-tone {
+  font-family: "Material Icons Two Tone";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: "liga";
+          font-feature-settings: "liga";
+}
+.h1-headline {
+  font-family: "Sora", sans-serif;
+  font-size: 96px;
+}
+
+@media (max-width: 767px) {
+  .h1-headline {
+    font-size: 40px;
+  }
+}
+
+.h2-headline {
+  font-family: "Sora", sans-serif;
+  font-size: 60px;
+}
+
+@media (max-width: 767px) {
+  .h2-headline {
+    font-size: 32px;
+  }
+}
+
+.h3-headline {
+  font-family: "Sora", sans-serif;
+  font-size: 48px;
+}
+
+@media (max-width: 767px) {
+  .h3-headline {
+    font-size: 28px;
+  }
+}
+
+.h4-headline {
+  font-family: "Sora", sans-serif;
+  font-size: 34px;
+}
+
+@media (max-width: 767px) {
+  .h4-headline {
+    font-size: 24px;
+  }
+}
+
+.h5-headline {
+  font-family: "Sora", sans-serif;
+  font-size: 24px;
+}
+
+@media (max-width: 767px) {
+  .h5-headline {
+    font-size: 20px;
+  }
+}
+
+.h6-headline {
+  font-family: "Sora", sans-serif;
+  font-size: 20px;
+}
+
+@media (max-width: 767px) {
+  .h6-headline {
+    font-size: 18px;
+  }
+}
+
+.subtitle-1 {
+  font-family: "Sora", sans-serif;
+  font-size: 16px;
+}
+
+.subtitle-2 {
+  font-family: "Sora", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.body-1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+.body-2 {
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+}
+
+.font-button {
+  font-family: "Sora", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.caption {
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  letter-spacing: -0.36px;
+}
+
+.overline {
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;

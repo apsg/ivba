@@ -1,3 +1,10 @@
+
+$media-breakpoint-mobile: 640px;
+$media-breakpoint-tablet: 767px;
+$media-breakpoint-desktop: 1024px;
+
 @import "inauka2/colors";
+@import "inauka2/typography";
 @import "inauka2/layout";
+@import '~material-icons/iconfont/material-icons.css';
 

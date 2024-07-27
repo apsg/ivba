@@ -1,0 +1,14 @@
+$color-graphite: #161615;
+$color-coral: #FF6841;
+$color-white: #ffffff;
+$color-white-box: #f7f7f7;
+$color-white-faded: #fafafa;
+$color-red: #FD5429;
+$color-red-darker: #D94924;
+$color-blue: #1F94F8;
+$color-azure: #48CBEA;
+
+@mixin background-gradient {
+    background: transparent linear-gradient(90deg, var(--cta-czerwień) 0%, #F99140 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(90deg, #FD5429 0%, #F99140 100%) 0% 0% no-repeat padding-box;
+}

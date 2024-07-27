@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "npm run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "npm run development -- --watch",
+    "watch": "export NODE_OPTIONS=--openssl-legacy-provider && npm run development -- --watch",
     "watch-poll": "npm run watch -- --watch-poll",
     "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "npm run production",
@@ -33,6 +33,7 @@
     "jquery-migrate": "~3.0.0",
     "jquery-ui": "^1.12.1",
     "js-file-download": "^0.4.11",
+    "material-icons": "^1.13.12",
     "moment": "^2.29.1",
     "npm": "^6.5.0",
     "tinymce": "^4.6.3",
