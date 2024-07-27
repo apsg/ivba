@@ -15,7 +15,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sora:wght@100..800&display=swap"
+          rel="stylesheet">
 
     <!-- Favicons -->
     <meta name="theme-color" content="#712cf9">
@@ -39,48 +40,50 @@
     </symbol>
 </svg>
 
-<header data-bs-theme="dark">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Carousel</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+<div id="app">
+    <header data-bs-theme="dark">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Carousel</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
 
-<main id="app">
-    @yield('content')
+    <main>
+        @yield('content')
 
-    <!-- FOOTER -->
-    <footer class="container">
-        <p class="float-end"><a href="#">Back to top</a></p>
-        <p>&copy; 2017–2024 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-    </footer>
-</main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-<script src="{{ multisite_js() }}"></script>
+        <!-- FOOTER -->
+        <footer class="container">
+            <p class="float-end"><a href="#">Back to top</a></p>
+            <p>&copy; 2017–2024 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        </footer>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+    <script src="{{ multisite_js() }}"></script>
+</div>
 
 </body>
 </html>

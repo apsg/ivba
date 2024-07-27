@@ -1264,7 +1264,7 @@ var modifierPhases = [beforeRead, read, afterRead, beforeMain, main, afterMain, 
 /*!**************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/index.js ***!
   \**************************************************/
-/*! exports provided: top, bottom, right, left, auto, basePlacements, start, end, clippingParents, viewport, popper, reference, variationPlacements, placements, beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite, modifierPhases, applyStyles, arrow, computeStyles, eventListeners, flip, hide, offset, popperOffsets, preventOverflow, popperGenerator, detectOverflow, createPopperBase, createPopper, createPopperLite */
+/*! exports provided: popperGenerator, detectOverflow, createPopperBase, createPopper, createPopperLite, top, bottom, right, left, auto, basePlacements, start, end, clippingParents, viewport, popper, reference, variationPlacements, placements, beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite, modifierPhases, applyStyles, arrow, computeStyles, eventListeners, flip, hide, offset, popperOffsets, preventOverflow */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

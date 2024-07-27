@@ -1,4 +1,3 @@
-
 $media-breakpoint-mobile: 640px;
 $media-breakpoint-tablet: 767px;
 $media-breakpoint-desktop: 1024px;
@@ -8,3 +7,15 @@ $media-breakpoint-desktop: 1024px;
 @import "inauka2/layout";
 @import '~material-icons/iconfont/material-icons.css';
 
+body {
+    @include body-1;
+}
+
+.navbar {
+    font-family: $font-sora;
+    font-size: 20px;
+}
+
+.bg-dark{
+    background-color: $color-graphite !important;
+}
