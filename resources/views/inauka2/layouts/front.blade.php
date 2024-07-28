@@ -41,6 +41,8 @@
 </svg>
 
 <div id="app">
+    @include('inauka2.components.free-access-banner')
+
     <header data-bs-theme="dark">
         <div class="fixed-top">
             @include('layouts._cta')

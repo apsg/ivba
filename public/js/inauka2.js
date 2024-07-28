@@ -12487,7 +12487,7 @@ window.app = app;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/ivba/resources/assets/js/inauka2.js */"./resources/assets/js/inauka2.js");
+module.exports = __webpack_require__(/*! /Users/pawelcebernik/ivba/resources/assets/js/inauka2.js */"./resources/assets/js/inauka2.js");
 
 
 /***/ })

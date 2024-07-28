@@ -104,7 +104,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/ivba/resources/assets/js/projekt30.js */"./resources/assets/js/projekt30.js");
+module.exports = __webpack_require__(/*! /Users/pawelcebernik/ivba/resources/assets/js/projekt30.js */"./resources/assets/js/projekt30.js");
 
 
 /***/ })
