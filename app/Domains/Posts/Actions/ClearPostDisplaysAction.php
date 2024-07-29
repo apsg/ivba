@@ -7,7 +7,7 @@ class ClearPostDisplaysAction
 {
     public function execute()
     {
-        User::update([
+        User::query()->update([
             'has_seen_posts' => false,
         ]);
     }

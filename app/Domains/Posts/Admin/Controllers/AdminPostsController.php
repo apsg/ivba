@@ -24,7 +24,12 @@ class AdminPostsController extends Controller
 
     public function store(StorePostRequest $request, PostsRepository $repository): RedirectResponse
     {
-        $post = $repository->create($request->only('title', 'body', 'slug'));
+        $post = $repository->create(
+            $request->input('title'),
+            $request->input('body'),
+            $request->input('cta_url'),
+            $request->input('image_id'),
+        );
 
         return redirect(route('admin.posts.edit', $post));
     }
@@ -36,14 +41,9 @@ class AdminPostsController extends Controller
 
     public function update(Post $post, StorePostRequest $request): RedirectResponse
     {
-        $post->update($request->only('title', 'body', 'slug'));
+        $post->update($request->only('title', 'body', 'image_id', 'cta_url'));
 
         return back();
-    }
-
-    public function togglePublish(Post $post)
-    {
-
     }
 
     public function destroy(Post $post)
