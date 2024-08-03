@@ -63,6 +63,7 @@ Route::group(['prefix' => 'courses'], function () {
     Route::get('/{course}/logbooks', RecentLogbookEntriesController::class . '@index')->name('course.logbooks');
     Route::get('/{course}/logbooks/data',
         RecentLogbookEntriesController::class . '@getData')->name('course.logbooks.data');
+    Route::post('/{course}/tags', TagsController::class . '@sync')->name('course.tags.sync');
 });
 
 Route::prefix('groups')

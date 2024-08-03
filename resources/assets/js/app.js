@@ -1,4 +1,3 @@
-
 require('./bootstrap');
 window.Vue = require('vue');
 
@@ -32,6 +31,7 @@ import QuestionForm from "./components/internetowisprzedawcy/QuestionForm";
 import FormAnswers from "./components/Admin/FormAnswers";
 import WeekSelector from "./components/WeekSelector";
 import TooltipInfo from "./components/TooltipInfo.vue";
+import TagsSelector from "./components/Admin/TagsSelector.vue";
 
 import {VuejsDatatableFactory} from 'vuejs-datatable';
 
@@ -72,6 +72,7 @@ const app = new Vue({
         Access,
         'payment-method': PaymentMethod,
         'courses-selector': CoursesSelector,
+        'tags-selector': TagsSelector,
         'analytics': require('./components/Admin/Analytics').default,
         'model-selector': require('./components/Admin/ModelSelector').default,
         'image-preview': require('./components/ImagePreview').default,

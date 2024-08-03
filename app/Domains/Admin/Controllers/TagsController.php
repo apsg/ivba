@@ -1,6 +1,7 @@
 <?php
 namespace App\Domains\Admin\Controllers;
 
+use App\Course;
 use App\Domains\Admin\Requests\StoreTagRequest;
 use App\Domains\Courses\Models\Tag;
 use App\Domains\Courses\Repositories\TagsRepository;
@@ -46,5 +47,12 @@ class TagsController extends Controller
         $tag->delete();
 
         return back();
+    }
+
+    public function sync(Course $course)
+    {
+        $course->tags()->sync(request()->input('tags', []));
+
+        return ['success' => true];
     }
 }
