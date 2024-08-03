@@ -40,4 +40,11 @@ class TagsController extends Controller
 
         return back();
     }
+
+    public function destroy(Tag $tag)
+    {
+        $tag->delete();
+
+        return back();
+    }
 }

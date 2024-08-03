@@ -38,15 +38,29 @@
                                 <tr>
                                     <td>
                                         <div class="row">
-                                            <div class="col-md-2 p-3">
-                                        <span class="p-3 text-center font-weight-bold rounded"
-                                              style="background-color: {{ $tag->color }}; color: {{ $tag->text_color }}">
-                                            {{ $tag->name }}
-                                        </span>
+                                            <div class="col-md-1 p-3">
+                                                <span class="p-3 text-center font-weight-bold rounded"
+                                                      style="background-color: {{ $tag->color }}; color: {{ $tag->text_color }}">
+                                                    {{ $tag->name }}
+                                                </span>
                                             </div>
                                             <div class="col-md-10">
                                                 <form action="{{ route('admin.tags.update', $tag)}}" method="post">
                                                     @include('admin.tags._form')
+                                                </form>
+                                            </div>
+                                            <div class="col-md-1">
+
+                                                <form action="{{ route('admin.tags.destroy', $tag) }}"
+                                                      method="post"
+                                                >
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button type="submit"
+                                                            class="btn btn-secondary">
+                                                        <i class="fa fa-trash"></i>
+                                                        Usuń
+                                                    </button>
                                                 </form>
                                             </div>
                                         </div>

@@ -292,4 +292,5 @@ Route::group([
     Route::get('/', TagsController::class . '@index')->name('index');
     Route::post('/', TagsController::class . '@store')->name('store');
     Route::post('/{tag}', TagsController::class . '@update')->name('update');
+    Route::delete('/{tag}', TagsController::class . '@destroy')->name('destroy');
 });

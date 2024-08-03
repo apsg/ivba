@@ -21,7 +21,7 @@
         </label>
     </div>
     <div class="col-md-4">
-        <label>Ukryty:
+        <label>Ukryta:
             <input type="checkbox"
                    name="is_hidden"
                    value="1"
