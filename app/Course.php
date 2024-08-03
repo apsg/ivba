@@ -34,6 +34,8 @@ use Illuminate\Support\Str;
  * @property string                            title
  * @property string                            description
  * @property float                             price
+ * @property float|null                        price_full
+ * @property string|null                       payment_link
  * @property string|null                       seo_title
  * @property string|null                       seo_description
  * @property int|null                          image_id
@@ -88,6 +90,8 @@ class Course extends Model implements OrderableContract, AccessableContract
         'seo_title',
         'seo_description',
         'price',
+        'price_full',
+        'payment_link',
         'difficulty',
         'slug',
         'image_id',

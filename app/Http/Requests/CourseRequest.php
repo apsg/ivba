@@ -30,6 +30,8 @@ class CourseRequest extends FormRequest
             'title'             => 'required',
             'description'       => 'required',
             'price'             => 'required|numeric|min:0',
+            'price_full'        => 'required|numeric|min:0',
+            'payment_link'      => 'nullable|url',
             'difficulty'        => 'required|numeric|min:1|max:3',
             'image_id'          => 'exists:images,id',
             'slug'              => 'unique:courses,slug,' . ($this->route('course')->id ?? ''),
@@ -37,7 +39,7 @@ class CourseRequest extends FormRequest
         ];
     }
 
-    public function fields() : array
+    public function fields(): array
     {
         $fields = $this->all() + [
                 'is_special_access' => false,
