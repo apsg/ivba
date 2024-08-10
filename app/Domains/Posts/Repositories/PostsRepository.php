@@ -4,22 +4,19 @@ namespace App\Domains\Posts\Repositories;
 use App\Domains\Posts\Actions\ClearPostDisplaysAction;
 use App\Domains\Posts\Models\Post;
 use Carbon\Carbon;
-use Illuminate\Support\Str;
 
 class PostsRepository
 {
-    public function create(array $attributes): Post
+    public function create(string $title, string $body, string $ctaUrl = null, int $imageId = null): Post
     {
-        if (isset($attributes['slug'])) {
-            $attributes['slug'] = Str::slug($attributes['slug']);
-        } else {
-            $attributes['slug'] = Str::slug($attributes['title']);
-        }
-
         $attributes['published_at'] = Carbon::now();
-        $attributes['excerpt'] = Str::words(strip_tags($attributes['body']));
 
-        $post = Post::create($attributes);
+        $post = Post::create([
+            'title'    => $title,
+            'body'     => $body,
+            'cta_url'  => $ctaUrl,
+            'image_id' => $imageId,
+        ]);
 
         (new ClearPostDisplaysAction())->execute();
 

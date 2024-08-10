@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Domains\Courses\Models\Group;
+use App\Domains\Courses\Models\Tag;
 use App\Domains\Courses\Repositories\CoursesRepository;
 use App\Http\Requests\Admin\Courses\ListCoursesRequest;
 use App\Http\Requests\Admin\Courses\UpdateDelayRequest;
@@ -49,7 +50,9 @@ class AdminCoursesController extends Controller
 
     public function show(Course $course)
     {
-        return view('admin.courses.course')->with(compact('course'));
+        $tags = Tag::query()->orderBy('name')->get();
+
+        return view('admin.courses.course')->with(compact('course', 'tags'));
     }
 
     public function update(Course $course, CourseRequest $request)

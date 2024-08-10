@@ -22,9 +22,22 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Slug</label>
-                    <input name="slug" type="text" class="form-control" placeholder="Wpisz ..."
-                           value="{{ old('slug') ?? $post->slug ?? "" }}">
+                    <label>CTA link</label>
+                    <input name="cta_url" type="text" class="form-control" placeholder="Wpisz ..."
+                           value="{{ old('cta_url') ?? $post->cta_url ?? "" }}">
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label>Wybierz obraz</label>
+                <input type="hidden" name="image_id" id="image_id"
+                       value="{{ old('image_id') ?? $post->image_id ?? "" }}">
+                <button type="button" class="addmedia btn btn-default form-control" data-for-id="#image_id"
+                        data-for-src="#image_img">Wybierz obraz
+                </button>
+                <div class="image-selector">
+                    <img src="{{ isset($post) && $post->image()->exists() ? $post->image->url : "" }}"
+                         id="image_img">
                 </div>
             </div>
 

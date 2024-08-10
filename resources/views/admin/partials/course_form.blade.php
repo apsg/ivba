@@ -49,10 +49,27 @@
                         <div class="form-group">
                             <label for="price">Cena</label>
                             <div class="input-group">
-                                <span class="input-group-addon">PLN</span>
+                                <span class="input-group-addon">PLN </span>
                                 <input id="price" name="price" type="number" min="0" step="0.01" max="999999"
                                        class="form-control" value="{{ $course->price ?? 0 }}">
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="price_full">Cena przed obniżką</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">PLN </span>
+                                <input id="price_full" name="price_full" type="number" min="0" step="0.01" max="999999"
+                                       class="form-control" value="{{ $course->price_full ?? 0 }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Link płatności</label>
+                            <input name="payment_link" type="text" class="form-control" placeholder="Wpisz ..."
+                                   value="{{ $course->payment_link ?? "" }}">
                         </div>
                     </div>
                     <div class="col-md-12">

@@ -80,7 +80,6 @@
 
             </div>
             <div class="col-md-6">
-
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h3 class="box-title">Przypisane lekcje i kolejność</h3>
@@ -102,6 +101,21 @@
                                 </li>
                             @endforeach
                         </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Tagi</h3>
+                    </div>
+                    <div class="box-body">
+
+                        <tags-selector
+                                course_id="{{ $course->slug }}"
+                                :tags="{{ $tags }}"
+                                :initial="{{ $course->tags->pluck('id') }}">
+                        </tags-selector>
                     </div>
                 </div>
             </div>

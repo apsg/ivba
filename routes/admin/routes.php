@@ -3,6 +3,7 @@
 use App\Domains\Admin\Controllers\AnalyticsController;
 use App\Domains\Admin\Controllers\LoginAsUserController;
 use App\Domains\Admin\Controllers\SettingsController;
+use App\Domains\Admin\Controllers\TagsController;
 use App\Domains\Admin\Controllers\UserActionsController;
 use App\Domains\Courses\Http\Controllers\CourseGroupsController;
 use App\Domains\Forms\Controllers\Admin\FormAnswersController;
@@ -62,6 +63,7 @@ Route::group(['prefix' => 'courses'], function () {
     Route::get('/{course}/logbooks', RecentLogbookEntriesController::class . '@index')->name('course.logbooks');
     Route::get('/{course}/logbooks/data',
         RecentLogbookEntriesController::class . '@getData')->name('course.logbooks.data');
+    Route::post('/{course}/tags', TagsController::class . '@sync')->name('course.tags.sync');
 });
 
 Route::prefix('groups')
@@ -282,4 +284,14 @@ Route::group(['prefix' => 'forms'], function () {
 
 Route::group(['prefix' => '/form-answers'], function () {
     Route::post('/{answer}', FormAnswersController::class . '@comment')->name('forms.answers.comment');
+});
+
+Route::group([
+    'prefix' => 'tags',
+    'as'     => 'tags.',
+], function () {
+    Route::get('/', TagsController::class . '@index')->name('index');
+    Route::post('/', TagsController::class . '@store')->name('store');
+    Route::post('/{tag}', TagsController::class . '@update')->name('update');
+    Route::delete('/{tag}', TagsController::class . '@destroy')->name('destroy');
 });

@@ -4,6 +4,7 @@ namespace App;
 use App\Domains\Admin\Helpers\SettingsHelper;
 use App\Domains\Courses\Models\CourseLesson;
 use App\Domains\Courses\Models\Group;
+use App\Domains\Courses\Models\Tag;
 use App\Domains\Courses\Services\CoursesService;
 use App\Domains\Forms\Models\Form;
 use App\Domains\Logbooks\Models\CourseLogbookPivot;
@@ -27,49 +28,52 @@ use Illuminate\Support\Str;
 /**
  * App\Course.
  *
- * @property int id
- * @property string slug
- * @property int user_id
- * @property string title
- * @property string description
- * @property float price
- * @property string|null seo_title
- * @property string|null seo_description
- * @property int|null image_id
- * @property int difficulty
- * @property Carbon|null created_at
- * @property Carbon|null updated_at
- * @property int|null video_id
- * @property int position
- * @property int delay Liczba dni
- * @property int cumulative_delay
- * @property bool is_special_access
- * @property Carbon|null scheduled_at
- * @property boolean is_systematic
- * @property int|null group_id
+ * @property int                               id
+ * @property string                            slug
+ * @property int                               user_id
+ * @property string                            title
+ * @property string                            description
+ * @property float                             price
+ * @property float|null                        price_full
+ * @property string|null                       payment_link
+ * @property string|null                       seo_title
+ * @property string|null                       seo_description
+ * @property int|null                          image_id
+ * @property int                               difficulty
+ * @property Carbon|null                       created_at
+ * @property Carbon|null                       updated_at
+ * @property int|null                          video_id
+ * @property int                               position
+ * @property int                               delay Liczba dni
+ * @property int                               cumulative_delay
+ * @property bool                              is_special_access
+ * @property Carbon|null                       scheduled_at
+ * @property boolean                           is_systematic
+ * @property int|null                          group_id
  *
- * @property-read Collection|Access[] access
- * @property-read Certificate certificate
- * @property-read mixed avg_rating
- * @property-read mixed duration
- * @property-read mixed excerpt
- * @property-read mixed rating
- * @property-read mixed ratings_count
- * @property-read mixed real_delay
- * @property-read Certificate user_certificate
- * @property-read int users_count
- * @property-read Image|null image
- * @property-read Collection|Lesson[] lessons
- * @property-read Video movie
- * @property-read Collection|Quiz[] quizzes
- * @property-read Collection|Rating[] ratings
- * @property-read User user
+ * @property-read Collection|Access[]          access
+ * @property-read Certificate                  certificate
+ * @property-read mixed                        avg_rating
+ * @property-read mixed                        duration
+ * @property-read mixed                        excerpt
+ * @property-read mixed                        rating
+ * @property-read mixed                        ratings_count
+ * @property-read mixed                        real_delay
+ * @property-read Certificate                  user_certificate
+ * @property-read int                          users_count
+ * @property-read Image|null                   image
+ * @property-read Collection|Lesson[]          lessons
+ * @property-read Video                        movie
+ * @property-read Collection|Quiz[]            quizzes
+ * @property-read Collection|Rating[]          ratings
+ * @property-read User                         user
  * @property-read Collection|UserCertificate[] user_certificates
- * @property-read Collection|User[] users
- * @property-read Video|null video
- * @property-read Collection|Logbook[] logbooks
- * @property-read Collection|Form[] forms
- * @property-read Group[] groups
+ * @property-read Collection|User[]            users
+ * @property-read Video|null                   video
+ * @property-read Collection|Logbook[]         logbooks
+ * @property-read Collection|Form[]            forms
+ * @property-read Group[]                      groups
+ * @property-read Tag[]                        tags
  *
  * @method static Builder withoutSpecial()
  * @method static Builder withoutSpecialExcept(array $ids)
@@ -86,6 +90,8 @@ class Course extends Model implements OrderableContract, AccessableContract
         'seo_title',
         'seo_description',
         'price',
+        'price_full',
+        'payment_link',
         'difficulty',
         'slug',
         'image_id',
@@ -172,6 +178,11 @@ class Course extends Model implements OrderableContract, AccessableContract
     public function groups(): BelongsToMany
     {
         return $this->belongsToMany(Group::class)->orderBy('order');
+    }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class);
     }
 
     public function visibleLessons(User $user = null)
@@ -429,10 +440,10 @@ class Course extends Model implements OrderableContract, AccessableContract
 
         if (!empty($this->certificate)) {
             UserCertificate::create([
-                                        'user_id'        => Auth::user()->id,
-                                        'certificate_id' => $this->certificate->id,
-                                        'course_id'      => $this->id,
-                                    ]);
+                'user_id'        => Auth::user()->id,
+                'certificate_id' => $this->certificate->id,
+                'course_id'      => $this->id,
+            ]);
         }
 
         Proof::createFinishedCourse(Auth::user(), $this);
@@ -465,7 +476,7 @@ class Course extends Model implements OrderableContract, AccessableContract
         $course_id = $this->id;
 
         return Cache::remember('course_users_count_' . $this->id,
-                               60 * 12,
+            60 * 12,
             function () use ($course_id) {
                 return DB::table('course_user')
                     ->where('course_id', $course_id)
@@ -493,7 +504,7 @@ class Course extends Model implements OrderableContract, AccessableContract
      */
     public function getAvgRatingAttribute(): float
     {
-        return (float)$this->ratings()->avg('rating');
+        return (float) $this->ratings()->avg('rating');
     }
 
     /**
@@ -590,10 +601,10 @@ class Course extends Model implements OrderableContract, AccessableContract
     public function scopeWithoutPaths(Builder $query): Builder
     {
         $pathSlugs = array_filter([
-                                      setting(SettingsHelper::PATH_SIMPLE),
-                                      setting(SettingsHelper::PATH_MEDIUM),
-                                      setting(SettingsHelper::PATH_HARD),
-                                  ]);
+            setting(SettingsHelper::PATH_SIMPLE),
+            setting(SettingsHelper::PATH_MEDIUM),
+            setting(SettingsHelper::PATH_HARD),
+        ]);
 
         if (empty($pathSlugs)) {
             return $query;

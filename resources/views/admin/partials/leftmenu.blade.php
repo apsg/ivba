@@ -93,7 +93,7 @@
             {{-- k. Strony --}}
 
             {{-- Kursy --}}
-            <li class="treeview @if(request()->is('admin/courses*') || request()->is('admin/quizzes*')|| request()->is('admin/certificates*')) active @endif">
+            <li class="treeview @if(request()->is('admin/courses*') || request()->is('admin/quizzes*') || request()->is('admin/certificates*') || request()->is('admin/tags*')) active @endif">
                 <a href="#">
                     <i class="fa fa-institution"></i> <span>Kursy</span>
                     <span class="pull-right-container">
@@ -105,12 +105,13 @@
                                 href="{{ url('admin/courses') }}"><i class="fa fa-files-o"></i> wszystkie</a></li>
                     <li class="@if(request()->is('admin/courses/new')) active @endif"><a
                                 href="{{ url('admin/courses/new') }}"><i class="fa fa-plus"></i> Dodaj nowy</a></li>
-                </ul>
-                <ul class="treeview-menu">
                     <li class="@if(request()->is('admin/quizzes')) active @endif"><a
                                 href="{{ url('admin/quizzes') }}"><i class="fa fa-tasks"></i> Testy</a></li>
                     <li class="@if(request()->is('admin/certificates')) active @endif"><a
                                 href="{{ url('admin/certificates') }}"><i class="fa fa-graduation-cap"></i> Certyfikaty</a>
+                    </li>
+                    <li class="@if(request()->is('admin/tags')) active @endif"><a
+                                href="{{ url('admin/tags') }}"><i class="fa fa-tags"></i> Etykiety</a>
                     </li>
                 </ul>
 
