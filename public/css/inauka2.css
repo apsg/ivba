@@ -127,6 +127,22 @@
   -webkit-font-feature-settings: "liga";
           font-feature-settings: "liga";
 }
+.bg-red {
+  background-color: #FD5429;
+}
+
+.color-red {
+  color: #FD5429;
+}
+
+.font-sora {
+  font-family: "Sora", sans-serif;
+}
+
+.font-roboto {
+  font-family: "Roboto", sans-serif;
+}
+
 .h1-headline {
   font-family: "Sora", sans-serif;
   font-size: 96px;
@@ -411,5 +427,31 @@ body {
 
 .bg-dark {
   background-color: #161615 !important;
+}
+
+.btn-white {
+  background-color: #ffffff;
+  color: #FD5429;
+}
+
+.btn-white:hover {
+  color: #D94924;
+}
+
+.cta {
+  display: flex;
+  width: 100%;
+}
+
+.cta .cta-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 767px) {
+  .cta .cta-inner {
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 

@@ -1,6 +1,14 @@
 $font-sora: "Sora", sans-serif;
 $font-roboto: "Roboto", sans-serif;
 
+.font-sora {
+    font-family: $font-sora;
+}
+
+.font-roboto {
+    font-family: $font-roboto;
+}
+
 @mixin h1-headline {
     font-family: $font-sora;
     font-size: 96px;

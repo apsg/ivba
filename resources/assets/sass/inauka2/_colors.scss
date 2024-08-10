@@ -12,3 +12,11 @@ $color-azure: #48CBEA;
     background: transparent linear-gradient(90deg, var(--cta-czerwień) 0%, #F99140 100%) 0% 0% no-repeat padding-box;
     background: transparent linear-gradient(90deg, #FD5429 0%, #F99140 100%) 0% 0% no-repeat padding-box;
 }
+
+.bg-red {
+    background-color: $color-red;
+}
+
+.color-red {
+    color: $color-red;
+}

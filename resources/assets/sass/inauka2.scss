@@ -16,6 +16,32 @@ body {
     font-size: 20px;
 }
 
-.bg-dark{
+.bg-dark {
     background-color: $color-graphite !important;
+}
+
+.btn-white {
+    background-color: $color-white;
+    color: $color-red;
+
+    &:hover {
+        color: $color-red-darker;
+    }
+}
+
+
+.cta {
+    display: flex;
+    width: 100%;
+
+    .cta-inner {
+        display: flex;
+        flex-direction: column;
+
+
+        @media (min-width: $media-breakpoint-tablet) {
+            flex-direction: row;
+            justify-content: center;
+        }
+    }
 }
