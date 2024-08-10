@@ -455,3 +455,8 @@ body {
   }
 }
 
+.cta .cta_button {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+

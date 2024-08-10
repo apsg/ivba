@@ -12,6 +12,10 @@ class SettingsHelper
     const PATH_HARD = 'is.path_hard';
     const STRIPE_MAILERLITE = 'stripe.mailerlite';
     const POSTS_SOURCE = 'posts.source';
+    const CTA_TEXT = 'cta.text';
+    const CTA_BUTTON = 'cta.button';
+    const CTA_LINK = 'cta.link';
+    const CTA_SECONDARY = 'cta.secondary';
 
     const LIST = [
         'ivba.full_access_price'           => 'Cena za pełen dostęp',
@@ -27,6 +31,11 @@ class SettingsHelper
         self::PATH_HARD                    => 'Slug kursu dla ścieżki eksperckiej',
         self::STRIPE_MAILERLITE            => 'Grupa Mailerlite (ID) dla automatycznych subskrypcji stripe',
         self::POSTS_SOURCE                 => 'Źródło danych dla aktualności',
+
+        self::CTA_TEXT      => 'CTA: tekst górny',
+        self::CTA_BUTTON    => 'CTA: tekst przycisku',
+        self::CTA_LINK      => 'CTA: link',
+        self::CTA_SECONDARY => 'CTA: tekst dolny',
     ];
 
     const BOOL = [
