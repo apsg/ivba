@@ -45,15 +45,67 @@
         <div class="fixed-top">
             @include('layouts._cta')
 
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark color-white">
                 <div class="container">
-                    <a class="navbar-brand" href="#">Carousel</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarCollapse"
-                            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <a class="navbar-brand subtitle-2" style="font-weight: 900"
+                       href="{{ url('/') }}">
+                        <img src="{{ url('/images/inauka2/logo.svg') }}" height="40"/>
+                        iNauka.pl
+                    </a>
+
+                    <div class="d-flex align-items-center account-menu">
+                        @auth
+                            <div class="dropdown dropdown-account">
+                                <button class="btn btn-secondary dropdown-toggle" type="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"
+                                        style="max-width: 200px;"
+                                >
+                                    <img src="{{ url('/images/inauka2/account.svg') }}" height="32"/>
+                                    {{ Auth::user()->name }}
+                                    <img src="{{ url('/images/inauka2/down.svg') }}"/>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('account.show') }}">Konto</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('account.mycourses') }}">Moje kursy</a>
+                                    </li>
+                                    <li>
+                                        <form action="{{ route('logout') }}" method="post">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item">
+                                                Wyloguj
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="#" class="px-3">
+                                <img src="{{ url('/images/inauka2/bell.svg') }}"/>
+                            </a>
+                        @endauth
+                        @guest()
+                            <div class="nav-item">
+                            <a
+                                    href="{{ url('/login') }}"
+                                    class="nav-link"
+                            >Zaloguj</a>
+                            </div>
+                        @endguest
+
+                        <button class="navbar-toggler color-red"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#navbarCollapse"
+                                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                 fill="currentColor">
+                                <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+                            </svg>
+                        </button>
+                    </div>
+
                     <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div>&nbsp;</div>
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -65,10 +117,6 @@
                                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                             </li>
                         </ul>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
                     </div>
                 </div>
             </nav>

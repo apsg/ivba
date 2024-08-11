@@ -425,6 +425,48 @@ body {
   font-size: 20px;
 }
 
+.navbar .navbar-toggler {
+  border: 0px;
+}
+
+.navbar .navbar-toggler:focus {
+  border: 0px;
+  box-shadow: none;
+}
+
+.navbar .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar .account-menu {
+  flex-grow: 1;
+  justify-content: end;
+}
+
+.navbar .dropdown-account .dropdown-toggle {
+  font-family: "Sora", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #ffffff;
+  color: #161615;
+}
+
+.navbar .dropdown-account .dropdown-toggle::after {
+  display: none;
+}
+
+.navbar .dropdown-account .dropdown-menu {
+  background-color: #ffffff;
+}
+
+.navbar .dropdown-account .dropdown-menu .dropdown-item {
+  color: #161615;
+}
+
+.navbar .dropdown-account .dropdown-menu .dropdown-item:hover {
+  background-color: #fafafa;
+}
+
 .bg-dark {
   background-color: #161615 !important;
 }
