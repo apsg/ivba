@@ -6,9 +6,11 @@ $media-breakpoint-desktop: 1024px;
 @import "inauka2/typography";
 @import "inauka2/layout";
 @import '~material-icons/iconfont/material-icons.css';
+@import "inauka2/icons";
 
 body {
     @include body-1;
+    padding-top: 0;
 }
 
 .navbar {
@@ -94,4 +96,11 @@ body {
         text-decoration: none;
         text-transform: uppercase;
     }
+}
+
+.btn-coral {
+    @include font-button;
+    background-color: $color-coral;
+    color: $color-white;
+    text-transform: uppercase;
 }

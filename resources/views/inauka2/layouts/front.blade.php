@@ -41,17 +41,15 @@
 </svg>
 
 <div id="app">
-    @include('inauka2.components.free-access-banner')
-
     <header data-bs-theme="dark">
-        <div class="fixed-top">
+        <div class="">
             @include('layouts._cta')
 
             <nav class="navbar navbar-expand-md navbar-dark bg-dark color-white">
                 <div class="container">
                     <a class="navbar-brand subtitle-2" style="font-weight: 900"
                        href="{{ url('/') }}">
-                        <img src="{{ url('/images/inauka2/logo.svg') }}" height="40"/>
+                        <img src="{{ url('/images/inauka2/logo.svg') }}" height="60"/>
                         iNauka.pl
                     </a>
 
@@ -63,7 +61,7 @@
                                         aria-expanded="false"
                                         style="max-width: 200px;"
                                 >
-                                    <img src="{{ url('/images/inauka2/account.svg') }}" height="32"/>
+                                    <img src="{{ url('/images/inauka2/account.svg') }}" height="64"/>
                                     {{ Auth::user()->name }}
                                     <img src="{{ url('/images/inauka2/down.svg') }}"/>
                                 </button>
@@ -85,14 +83,6 @@
                                 <img src="{{ url('/images/inauka2/bell.svg') }}"/>
                             </a>
                         @endauth
-                        @guest()
-                            <div class="nav-item">
-                            <a
-                                    href="{{ url('/login') }}"
-                                    class="nav-link"
-                            >Zaloguj</a>
-                            </div>
-                        @endguest
 
                         <button class="navbar-toggler color-red"
                                 type="button"
@@ -110,15 +100,46 @@
                         <div>&nbsp;</div>
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                <a class="nav-link active" aria-current="page" href="#">Kursy</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Cennik
+                                </a>
+                                <ul class="dropdown-menu mb-3" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    O nas
+                                </a>
+                                <ul class="dropdown-menu mb-3" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
                             </li>
+                            @guest()
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">Zaloguj</a>
+                                </li>
+                                <li class="nav-item">
+                                    <div class="d-flex align-items-center">
+                                        <i class="icon-arrow-right white mx-2 mx-md-0"></i>
+                                        <a class="nav-link" href="{{ route('register') }}">Zarejestruj</a>
+                                    </div>
+                                </li>
+                            @endguest
                         </ul>
+                        <div>
+                            @include('layouts._carousel-nav')
+                        </div>
+
                     </div>
                 </div>
             </nav>

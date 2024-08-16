@@ -127,6 +127,22 @@
   -webkit-font-feature-settings: "liga";
           font-feature-settings: "liga";
 }
+.bg-red {
+  background-color: #FD5429;
+}
+
+.color-red {
+  color: #FD5429;
+}
+
+.font-sora {
+  font-family: "Sora", sans-serif;
+}
+
+.font-roboto {
+  font-family: "Roboto", sans-serif;
+}
+
 .h1-headline {
   font-family: "Sora", sans-serif;
   font-size: 96px;
@@ -326,6 +342,12 @@ body {
   margin-bottom: 4rem;
 }
 
+@media (min-width: 767px) {
+  .carousel.nav {
+    display: none !important;
+  }
+}
+
 /* Since positioning the image, we need to help out the caption */
 
 .carousel-caption {
@@ -337,6 +359,62 @@ body {
 
 .carousel-item {
   height: 32rem;
+}
+
+.carousel-item.nav {
+  height: 28rem;
+}
+
+.carousel-item.nav h1 {
+  color: white;
+  margin-top: 16px;
+}
+
+.carousel .carousel-control-next-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='72' height='72' viewBox='0 0 72 72'%3E%3Cdefs%3E%3CclipPath id='clip-path'%3E%3Crect id='Rectangle_388' data-name='Rectangle 388' width='11.754' height='21.324' fill='%23fff'/%3E%3C/clipPath%3E%3CclipPath id='clip-path-2'%3E%3Crect id='Rectangle_389' data-name='Rectangle 389' width='33.893' height='23.673' transform='translate(0 0)' fill='none'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg id='Group_632' data-name='Group 632' transform='translate(-163 -411)'%3E%3Cg id='Group_625' data-name='Group 625' transform='translate(8840 6782) rotate(180)' opacity='0.8'%3E%3Cg id='Group_623' data-name='Group 623' transform='translate(8634.97 6323.895)'%3E%3Cg id='Group_622' data-name='Group 622' clip-path='url(%23clip-path)'%3E%3Cpath id='Path_4158' data-name='Path 4158' d='M.311,11.442,9.88,21.008A1.074,1.074,0,1,0,11.4,19.49L2.587,10.683,11.4,1.876A1.075,1.075,0,1,0,9.879.357L.31,9.923a1.084,1.084,0,0,0,0,1.519' transform='translate(0 0)' fill='%23fff'/%3E%3C/g%3E%3C/g%3E%3Cg id='Ellipse_22' data-name='Ellipse 22' transform='translate(8605 6299)' fill='none' stroke='%23fff' stroke-width='1'%3E%3Ccircle cx='36' cy='36' r='36' stroke='none'/%3E%3Ccircle cx='36' cy='36' r='35.5' fill='none'/%3E%3C/g%3E%3C/g%3E%3Cg id='Group_628' data-name='Group 628' transform='translate(199 411)'%3E%3Cg id='Group_627' data-name='Group 627' clip-path='url(%23clip-path-2)'%3E%3Cpath id='Path_4159' data-name='Path 4159' d='M32.965,23.3A35.512,35.512,0,0,0,0,1' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A") !important;
+  width: 72px !important;
+  height: 72px !important;
+  z-index: 10;
+}
+
+.carousel .carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='60' height='60' viewBox='0 0 60 60'%3E%3Cdefs%3E%3CclipPath id='clip-path'%3E%3Crect id='Rectangle_388' data-name='Rectangle 388' width='11.754' height='21.324' transform='translate(0 0)' fill='%23fff'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg id='Group_631' data-name='Group 631' transform='translate(-83 -417)'%3E%3Cg id='Group_624' data-name='Group 624' transform='translate(-8522 -5882)' opacity='0.8'%3E%3Cg id='Group_623' data-name='Group 623' transform='translate(8629 6318)'%3E%3Cg id='Group_622' data-name='Group 622' clip-path='url(%23clip-path)'%3E%3Cpath id='Path_4158' data-name='Path 4158' d='M.311,11.442,9.88,21.008A1.074,1.074,0,1,0,11.4,19.49L2.587,10.683,11.4,1.876A1.075,1.075,0,1,0,9.879.357L.31,9.923a1.084,1.084,0,0,0,0,1.519' fill='%23fff'/%3E%3C/g%3E%3C/g%3E%3Cg id='Ellipse_22' data-name='Ellipse 22' transform='translate(8605 6299)' fill='none' stroke='%23fff' stroke-width='1'%3E%3Ccircle cx='30' cy='30' r='30' stroke='none'/%3E%3Ccircle cx='30' cy='30' r='29.5' fill='none'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A") !important;
+  width: 60px !important;
+  height: 60px !important;
+  z-index: 10;
+}
+
+.carousel .carousel-indicators button {
+  width: 10px;
+  height: 10px;
+  background-color: white !important;
+}
+
+.carousel .carousel-indicators button.active {
+  background-color: #FF6841 !important;
+}
+
+.carousel-control-prev {
+  right: 160px !important;
+  left: unset !important;
+  -webkit-transform: translateY(-10%);
+          transform: translateY(-10%);
+}
+
+.carousel-control-next {
+  right: 60px;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  top: unset;
+  bottom: 60px;
+  width: unset !important;
+}
+
+.carousel-caption {
+  right: unset !important;
+  left: unset !important;
 }
 
 /* MARKETING CONTENT
@@ -399,9 +477,80 @@ body {
   }
 }
 
+/* CUSTOMIZE FREE ACCESS BANNER
+-------------------------------------------------- */
+
+.margin-banner {
+  margin-right: 40px;
+}
+
+.btn.btn-white {
+  font-family: "Sora", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: #ffffff;
+  color: #FF6841;
+}
+
+.banner-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.banner-container .exit {
+  position: absolute;
+  right: 46px;
+}
+
+.bg-red {
+  background-color: #FD5429;
+}
+
+.color-red {
+  color: #FD5429;
+}
+
+.icon-exit {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg id='Group_566' data-name='Group 566' transform='translate(-1874 -20)'%3E%3Cpath id='close_24dp_5F6368_FILL0_wght400_GRAD0_opsz24' d='M202.4-736l-2.4-2.4,9.6-9.6-9.6-9.6,2.4-2.4,9.6,9.6,9.6-9.6,2.4,2.4-9.6,9.6,9.6,9.6-2.4,2.4-9.6-9.6Z' transform='translate(1682 788)' fill='%23fff' opacity='0.402'/%3E%3Crect id='Rectangle_372' data-name='Rectangle 372' width='40' height='40' transform='translate(1874 20)' fill='none'/%3E%3C/g%3E%3C/svg%3E%0A") !important;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg id='Group_566' data-name='Group 566' transform='translate(-1874 -20)'%3E%3Cpath id='close_24dp_5F6368_FILL0_wght400_GRAD0_opsz24' d='M202.4-736l-2.4-2.4,9.6-9.6-9.6-9.6,2.4-2.4,9.6,9.6,9.6-9.6,2.4,2.4-9.6,9.6,9.6,9.6-2.4,2.4-9.6-9.6Z' transform='translate(1682 788)' fill='%23fff' opacity='0.402'/%3E%3Crect id='Rectangle_372' data-name='Rectangle 372' width='40' height='40' transform='translate(1874 20)' fill='none'/%3E%3C/g%3E%3C/svg%3E%0A") !important;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: white;
+  display: inline-block;
+}
+
+.icon-arrow-right {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cg id='Group_585' data-name='Group 585' transform='translate(-191 -252)'%3E%3Crect id='Rectangle_366' data-name='Rectangle 366' width='40' height='40' transform='translate(191 252)' fill='none'/%3E%3Cpath id='Path_4140' data-name='Path 4140' d='M4.6,0,0,.017,4.041,10.11.085,20,4.7,19.983,8.656,10.11Z' transform='translate(206.672 262)' fill='%23fff'/%3E%3C/g%3E%3C/svg%3E");
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cg id='Group_585' data-name='Group 585' transform='translate(-191 -252)'%3E%3Crect id='Rectangle_366' data-name='Rectangle 366' width='40' height='40' transform='translate(191 252)' fill='none'/%3E%3Cpath id='Path_4140' data-name='Path 4140' d='M4.6,0,0,.017,4.041,10.11.085,20,4.7,19.983,8.656,10.11Z' transform='translate(206.672 262)' fill='%23fff'/%3E%3C/g%3E%3C/svg%3E");
+  width: 20px !important;
+  height: 20px !important;
+  display: inline-block !important;
+}
+
+.icon-arrow-right.white {
+  background-color: #ffffff;
+}
+
+.icon-arrow-right.coral {
+  background-color: #FF6841;
+}
+
+.icon-next-slide {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 72 72'%3E%3Cdefs%3E%3CclipPath id='clip-path'%3E%3Crect id='Rectangle_388' data-name='Rectangle 388' width='11.754' height='21.324' fill='%23fff'/%3E%3C/clipPath%3E%3CclipPath id='clip-path-2'%3E%3Crect id='Rectangle_389' data-name='Rectangle 389' width='33.893' height='23.673' transform='translate(0 0)' fill='none'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg id='Group_632' data-name='Group 632' transform='translate(-163 -411)'%3E%3Cg id='Group_625' data-name='Group 625' transform='translate(8840 6782) rotate(180)' opacity='0.8'%3E%3Cg id='Group_623' data-name='Group 623' transform='translate(8634.97 6323.895)'%3E%3Cg id='Group_622' data-name='Group 622' clip-path='url(%23clip-path)'%3E%3Cpath id='Path_4158' data-name='Path 4158' d='M.311,11.442,9.88,21.008A1.074,1.074,0,1,0,11.4,19.49L2.587,10.683,11.4,1.876A1.075,1.075,0,1,0,9.879.357L.31,9.923a1.084,1.084,0,0,0,0,1.519' transform='translate(0 0)' fill='%23fff'/%3E%3C/g%3E%3C/g%3E%3Cg id='Ellipse_22' data-name='Ellipse 22' transform='translate(8605 6299)' fill='none' stroke='%23fff' stroke-width='1'%3E%3Ccircle cx='36' cy='36' r='36' stroke='none'/%3E%3Ccircle cx='36' cy='36' r='35.5' fill='none'/%3E%3C/g%3E%3C/g%3E%3Cg id='Group_628' data-name='Group 628' transform='translate(199 411)'%3E%3Cg id='Group_627' data-name='Group 627' clip-path='url(%23clip-path-2)'%3E%3Cpath id='Path_4159' data-name='Path 4159' d='M32.965,23.3A35.512,35.512,0,0,0,0,1' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 72 72'%3E%3Cdefs%3E%3CclipPath id='clip-path'%3E%3Crect id='Rectangle_388' data-name='Rectangle 388' width='11.754' height='21.324' fill='%23fff'/%3E%3C/clipPath%3E%3CclipPath id='clip-path-2'%3E%3Crect id='Rectangle_389' data-name='Rectangle 389' width='33.893' height='23.673' transform='translate(0 0)' fill='none'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg id='Group_632' data-name='Group 632' transform='translate(-163 -411)'%3E%3Cg id='Group_625' data-name='Group 625' transform='translate(8840 6782) rotate(180)' opacity='0.8'%3E%3Cg id='Group_623' data-name='Group 623' transform='translate(8634.97 6323.895)'%3E%3Cg id='Group_622' data-name='Group 622' clip-path='url(%23clip-path)'%3E%3Cpath id='Path_4158' data-name='Path 4158' d='M.311,11.442,9.88,21.008A1.074,1.074,0,1,0,11.4,19.49L2.587,10.683,11.4,1.876A1.075,1.075,0,1,0,9.879.357L.31,9.923a1.084,1.084,0,0,0,0,1.519' transform='translate(0 0)' fill='%23fff'/%3E%3C/g%3E%3C/g%3E%3Cg id='Ellipse_22' data-name='Ellipse 22' transform='translate(8605 6299)' fill='none' stroke='%23fff' stroke-width='1'%3E%3Ccircle cx='36' cy='36' r='36' stroke='none'/%3E%3Ccircle cx='36' cy='36' r='35.5' fill='none'/%3E%3C/g%3E%3C/g%3E%3Cg id='Group_628' data-name='Group 628' transform='translate(199 411)'%3E%3Cg id='Group_627' data-name='Group 627' clip-path='url(%23clip-path-2)'%3E%3Cpath id='Path_4159' data-name='Path 4159' d='M32.965,23.3A35.512,35.512,0,0,0,0,1' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+  width: 72px;
+  height: 72px;
+  display: inline-block;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
+  padding-top: 0;
 }
 
 .navbar {
@@ -409,7 +558,90 @@ body {
   font-size: 20px;
 }
 
+.navbar .navbar-toggler {
+  border: 0px;
+}
+
+.navbar .navbar-toggler:focus {
+  border: 0px;
+  box-shadow: none;
+}
+
+.navbar .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar .account-menu {
+  flex-grow: 1;
+  justify-content: end;
+}
+
+.navbar .dropdown-account .dropdown-toggle {
+  font-family: "Sora", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #ffffff;
+  color: #161615;
+}
+
+.navbar .dropdown-account .dropdown-toggle::after {
+  display: none;
+}
+
+.navbar .dropdown-account .dropdown-menu {
+  background-color: #ffffff;
+}
+
+.navbar .dropdown-account .dropdown-menu .dropdown-item {
+  color: #161615;
+}
+
+.navbar .dropdown-account .dropdown-menu .dropdown-item:hover {
+  background-color: #fafafa;
+}
+
 .bg-dark {
   background-color: #161615 !important;
+}
+
+.btn-white {
+  background-color: #ffffff;
+  color: #FD5429;
+}
+
+.btn-white:hover {
+  color: #D94924;
+}
+
+.cta {
+  display: flex;
+  width: 100%;
+}
+
+.cta .cta-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 767px) {
+  .cta .cta-inner {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.cta .cta_button {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.btn-coral {
+  font-family: "Sora", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: #FF6841;
+  color: #ffffff;
+  text-transform: uppercase;
 }
 
