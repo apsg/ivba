@@ -61,7 +61,7 @@
                                         aria-expanded="false"
                                         style="max-width: 200px;"
                                 >
-                                    <img src="{{ url('/images/inauka2/account.svg') }}" height="64"/>
+                                    <img src="{{ url('/images/inauka2/account.svg') }}" height="40"/>
                                     {{ Auth::user()->name }}
                                     <img src="{{ url('/images/inauka2/down.svg') }}"/>
                                 </button>
