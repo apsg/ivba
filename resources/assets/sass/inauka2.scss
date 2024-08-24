@@ -7,11 +7,22 @@ $media-breakpoint-desktop: 1024px;
 @import "inauka2/layout";
 @import '~material-icons/iconfont/material-icons.css';
 @import "inauka2/icons";
+@import "inauka2/courses";
 
 body {
     @include body-1;
     padding-top: 0;
 }
+
+a{
+    text-decoration: none;
+    color: $color-graphite;
+
+    &:hover{
+        color: lighten($color-graphite, 10%);
+    }
+}
+
 
 .navbar {
     font-family: $font-sora;
