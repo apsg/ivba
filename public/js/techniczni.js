@@ -117,7 +117,7 @@ document.querySelectorAll('[data-inviewport]').forEach(function (el) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/ivba/resources/assets/js/techniczni.js */"./resources/assets/js/techniczni.js");
+module.exports = __webpack_require__(/*! /Users/pawelcebernik/ivba/resources/assets/js/techniczni.js */"./resources/assets/js/techniczni.js");
 
 
 /***/ })

@@ -136,10 +136,6 @@
                                 </li>
                             @endguest
                         </ul>
-                        <div>
-                            @include('layouts._carousel-nav')
-                        </div>
-
                     </div>
                 </div>
             </nav>

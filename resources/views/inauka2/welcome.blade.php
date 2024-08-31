@@ -4,64 +4,159 @@
 
 @section('content')
 
+    @include('layouts._carousel-nav')
 
-    <div class="h1-headline">TEST</div>
+    <!-- Learn online courses -->
+    <div class="container-fluid learn-online-container">
+        <div class="">
+            <img class="" src="{{ url('/images/inauka2/orange-big-arrow.svg') }}" alt=""/>
+        </div>
+        <div class="container">
+            <div class="d-flex justify-content-start align-items-center flex-column flex-md-row px-3 px-md-5 gap-4 gap-md-5">
+                <div class="order-0 order-md-1">
+                    <img class="w-100 mb-5" style="max-height: 232px" src="{{ url('/images/inauka2/illustracja_kursy.png') }}"/>
+                </div>
+                <div class="order-1 order-md-0">
+                    <h2 class="mb-3">Ucz się online na kursach dostosowanych do Twoich potrzeb.</h2>
+                    <p>Znajdź kursy na iNauka, które pomogą Ci rozwinąć umiejętności w wybranej dziedzinie. Dołącz do naszej społeczności i zdobywaj certyfikaty uznawane przez pracodawców.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
-    <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)"/>
-                </svg>
-                <div class="container">
-                    <div class="carousel-caption text-start">
-                        <h1>Zdobądź wiedzę, którą potrzebujesz</h1>
-                        <p class="opacity-75">Przeglądaj setki lekcji na iNauka i wybierz ten, który najbardziej Ci odpowiada.
-                            Ucz się we własnym tempie i zdobywaj certyfikaty.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+    <!-- Search courses -->
+    <div class="container-fluid px-5">
+        <div class="row align-items-center">
+            <div class="d-none d-md-block col-0 col-md-3">
+                <div class="dropdown">
+                    <div class="d-flex align-items-center">
+                        <img class="me-4" src="{{ url('/images/inauka2/sorting-icon.svg') }}" alt="sort icon"/>
+                        <span class="dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
+                            Sortuj
+                        </span>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)"/>
-                </svg>
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>Another example headline.</h1>
-                        <p>Some representative placeholder content for the second slide of the carousel.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+            <div class="col-12 col-md-3 px-5 px-lg-0 justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="input-group bg-light p-2 w-100">
+                        <input type="text" class="form-control border-0" placeholder="Wyszukaj kurs" aria-label="Wyszukaj kurs" aria-describedby="search-text">
+                        <span class="input-group-text border-0" id="basic-addon2">
+                            <i class="icon-search" style="scale: 0.8" aria-hidden="true"></i>
+                        </span>
                     </div>
                 </div>
+        </div>
+            <div class="d-none d-md-block col-0 col-md-6">
+                <div class="d-flex flex-row justify-content-end align-items-center gap-2">
+                    <div style="max-width: 150px;">
+                        <img class="w-100 h-auto" src="{{ url('/images/inauka2/programs-icons.png') }}" alt="programs icons"/>
+                    </div>
+
+                    <a class="d-inline-flex align-items-center btn cta_button font-button btn-coral-lg" href="#">
+                        <i class="icon-arrow-right white"></i>
+                        ODBLOKUJ PEŁNY DOSTĘP
+                    </a>
+                </div>
             </div>
-            <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)"/>
-                </svg>
-                <div class="container">
-                    <div class="carousel-caption text-end">
-                        <h1>One more for good measure.</h1>
-                        <p>Some representative placeholder content for the third slide of this carousel.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="d-flex flex-row gap-4 flex-nowrap scroll-x">
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                    <button class="filter-item">Excel na początek</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid px-5">
+
+        </div>
+
+        {{--Course Card Items--}}
+        <div class="row mt-5">
+            <div class="col-12 col-md-4 col-lg-3">
+                <div class="d-flex flex-row justify-content-between mb-3">
+                    {{--Bestseller etc--}}
+                    <div class="d-flex flex-row flex-wrap gap-2">
+                        <button class="btn btn-coral">Bestseller</button>
+                        <button class="btn btn-coral">Bestseller</button>
+                    </div>
+                    {{--Rating--}}
+                    <div class="d-flex flex-row gap-2">
+                        <span class="subtitle-2">4.3</span>
+                    </div>
+                </div>
+                <div class="card border-0">
+                    <img src="{{ url('/images/inauka2/courses/excel-basics.svg') }}" alt="programs icons"/>
+                    <div class="card-body">
+                        <div class="d-flex flex-row align-items-center mb-2">
+                            <span class="overline color-graphite-light">EKSPERT INAUKA.PL</span>
+                            <i class="icon-verified" style="scale: 50%"></i>
+                        </div>
+                        <h5 class="card-title">Excel podstawowy</h5>
+                        <div class="d-flex flex-row flex-wrap gap-3 mb-3">
+                            <div class="d-flex flex-row flex-nowrap align-items-center gap-2">
+                                <div class="course-item-background">
+                                    <i class="icon-play"></i>
+                                </div>
+                                <span class="caption">12 materiałów</span>
+                            </div>
+                            <div class="d-flex flex-row flex-nowrap align-items-center gap-2">
+                                <div class="course-item-background">
+                                    <i class="icon-time"></i>
+                                </div>
+                                <span class="caption">2 godzin 30 minut</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="body-2 color-graphite-light">
+                                Poznaj od zupełnych podstaw narzędzie pozwalające na edytowanie arkuszy kalkulacyjnych czyli MS Excel! Wprowad…
+                            </p>
+                            <p class="text-price">Cena: 169.00 zł</p>
+                            <button class="d-flex btn btn-blue align-items-center justify-content-center w-100 py-3 mb-1" href="#">
+                                <i class="icon-arrow-right white"></i>
+                                <span class="subtitle-1">KUP ZA 99 ZŁ</span>
+                            </button>
+                            <p class="body-2 color-graphite-light">Najniższa cena w ciągu 30 dni przed obniżką:</p>
+                        </div>
+                        <div class="d-flex flex-row flex-wrap gap-2">
+                            <div class="course-tag">Microsoft Excel</div>
+                            <div class="course-tag">Arkusze Kalkulacyjne</div>
+                            <div class="course-tag">Funkcje w Excelu</div>
+                            <div class="course-tag">Skróty klawiszowe</div>
+                            <div class="course-tag">Wykresy</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="carousel-control-buttons">
-            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-
     </div>
 
 
@@ -69,7 +164,7 @@
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-    <div class="container marketing">
+    <div class="container marketing " style="margin-top: 20rem">
 
         <!-- Three columns of text below the carousel -->
         <div class="row">

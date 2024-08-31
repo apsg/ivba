@@ -2028,7 +2028,7 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/material-icons/iconfont/material-icons.css":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/material-icons/iconfont/material-icons.css?9201":
 /*!***************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--11-1!./node_modules/postcss-loader/src??ref--11-2!./node_modules/material-icons/iconfont/material-icons.css ***!
   \***************************************************************************************************************************************************/
@@ -2290,7 +2290,7 @@ module.exports = "/fonts/vendor/material-icons/iconmaterial-icons-two-tone.woff2
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--11-1!../../postcss-loader/src??ref--11-2!./material-icons.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/material-icons/iconfont/material-icons.css");
+var content = __webpack_require__(/*! !../../css-loader??ref--11-1!../../postcss-loader/src??ref--11-2!./material-icons.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/material-icons/iconfont/material-icons.css?9201");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -22513,7 +22513,7 @@ window.app = app;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/ivba/resources/assets/js/inauka2.js */"./resources/assets/js/inauka2.js");
+module.exports = __webpack_require__(/*! /Users/pawelcebernik/ivba/resources/assets/js/inauka2.js */"./resources/assets/js/inauka2.js");
 
 
 /***/ })

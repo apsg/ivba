@@ -88,6 +88,49 @@ body {
 
 /* Carousel base class */
 .carousel {
+    .image-container {
+        position: relative;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            max-height: 500px;
+        }
+
+        // Add a dark gradient overlay
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2));
+            z-index: 1;
+            pointer-events: none;
+        }
+    }
+
+    .desktop-margin {
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,4) 70%);
+        margin: 2rem;
+
+        @media (min-width: $media-breakpoint-desktop) {
+            margin-left: 4rem;
+            margin-right: 4rem;
+        }
+
+        @media (min-width: 1500px) {
+            margin: 4rem 8rem;
+        }
+
+        @media (min-width: 2000px) {
+            margin: 4rem 16rem;
+        }
+    }
+
     margin-bottom: 4rem;
 
     &.nav {
@@ -104,11 +147,25 @@ body {
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
-    height: 32rem;
+    height: clamp(32rem);
+
+    @media (min-width: $media-breakpoint-tablet) {
+        height: 24rem;
+    }
+
+    @media (min-width: 900px) {
+        height: 26rem;
+    }
+
+    @media (min-width: $media-breakpoint-desktop) {
+        height: 34rem;
+    }
+
+    @media (min-width: 1500px) {
+        height: 38rem;
+    }
 
     &.nav {
-        height: 28rem;
-
         h1 {
             color: white;
             margin-top: 16px;
@@ -143,22 +200,83 @@ body {
             }
         }
     }
+    .carousel-top-text {
+        position: absolute;
+        top: 10%;
+        color: white;
+        margin-left: 2rem;
+        @include subtitle-2;
+    }
+
+    .carousel-desktop-content {
+        position: absolute;
+        top: 30%;
+        margin-left: 2rem;
+
+        @media (min-width: $media-breakpoint-desktop) {
+            top: 40%;
+        }
+
+        @media (min-width: $media-breakpoint-widescreen) {
+            top: 50%;
+        }
+    }
 }
 
 .carousel-control-prev {
-    right: 160px !important;
+    right: 10rem !important;
     left: unset !important;
     transform: translateY(-10%);
+
+    @media (min-width: $media-breakpoint-desktop) {
+        right: 12rem !important;
+    }
+
+    @media (min-width: 1500px) {
+        right: 18rem !important;
+    }
+
+    @media (min-width: 2000px) {
+        right: 24rem !important;
+    }
 }
 
 .carousel-control-next {
-    right: 60px;
+    right: 4rem;
+
+    @media (min-width: $media-breakpoint-desktop) {
+        right: 6rem;
+    }
+
+    @media (min-width: 1500px) {
+        right: 12rem;
+    }
+
+    @media (min-width: 2000px) {
+        right: 18rem;
+    }
 }
 
 .carousel-control-next, .carousel-control-prev {
     top: unset;
-    bottom: 60px;
+    bottom: 6rem;
     width: unset !important;
+
+    @media (min-width: $media-breakpoint-tablet) {
+        bottom: 5rem;
+    }
+
+    @media (min-width: $media-breakpoint-desktop) {
+        bottom: 9rem;
+    }
+
+    @media (min-width: $media-breakpoint-widescreen) {
+        bottom: 6rem;
+    }
+
+    @media (min-width: 1500px) {
+        bottom: 4rem;
+    }
 }
 
 .carousel-caption {

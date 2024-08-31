@@ -1,5 +1,5 @@
 $color-graphite: #161615;
-$color-coral: #FF6841;
+$color-coral: rgb(255, 104, 65);
 $color-white: #ffffff;
 $color-white-box: #f7f7f7;
 $color-white-faded: #fafafa;
@@ -21,6 +21,10 @@ $color-azure: #48CBEA;
     color: $color-red;
 }
 
-.color-graphite{
+.color-graphite {
     color: $color-graphite;
+
+    &-light {
+        opacity: 0.5;
+    }
 }
