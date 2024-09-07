@@ -192,6 +192,11 @@ class Course extends Model implements OrderableContract, AccessableContract
         return $this->belongsToMany(Tag::class);
     }
 
+    public function visibleTags(): BelongsToMany
+    {
+        return $this->tags()->where('is_hidden', '!=', true);
+    }
+
     public function visibleLessons(User $user = null)
     {
         if ($this->isSpecialAccess() && $user === null) {

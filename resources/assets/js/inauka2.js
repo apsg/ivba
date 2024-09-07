@@ -27,6 +27,7 @@ Vue.use(VueClipboard);
 
 import VueFlashMessage from 'vue-flash-message';
 import VTooltip from "v-tooltip";
+import CourseCountdown from "./components/Inauka2/CourseCountdown.vue";
 
 Vue.use(VueFlashMessage);
 Vue.use(VTooltip);
@@ -38,6 +39,7 @@ const app = new Vue({
         'ranking-user': RankingUser,
         'progress-bar': ProgressBar,
         'partner-link': PartnerLink,
+        'course-countdown': CourseCountdown,
     }
 });
 

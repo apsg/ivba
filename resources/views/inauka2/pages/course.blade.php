@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <section class="about inner padding-lg">
+    <section class="about inner padding-lg course-single">
         <div class="container py-3 color-graphite">
             <a href="{{ route('home') }}">Strona główna</a>
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40">
@@ -35,7 +35,7 @@
 
         <div class="container">
             <div class="row flex-column-reverse flex-md-row">
-                <div class="col-12 col-md-9">
+                <div class="col-12 col-md-8">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque venenatis vitae risus eu
                     sollicitudin. Aliquam tincidunt lacus ex, sit amet rutrum leo egestas eu. Praesent euismod magna
                     dolor, eu sollicitudin arcu iaculis sed. Sed lobortis placerat odio eu facilisis. Proin ac odio nec
@@ -157,9 +157,19 @@
 
                 </div>
 
-                <div class="col-12 col-md-3 align-self-stretch">
+                <div class="col-12 col-md-4 align-self-stretch">
                     <div class="sticky-top">
-                        right
+                        <div class="border border-gray rounded bg-white my-2 text-center px-2 pb-2 pt-3">
+                            <div class="tags d-flex justify-content-center w-100">
+                                @foreach($course->visibleTags as $tag)
+                                    @include('pages.course._tag', compact('tag'))
+                                @endforeach
+                            </div>
+                            <h3 class="subtitle-2 mt-3">Kup teraz i zgarnij losowy ebook gratis</h3>
+                            <course-countdown :timestamp="{{ \Carbon\Carbon::now()->addHours(2)->timestamp }}"></course-countdown>
+
+
+                        </div>
                     </div>
                 </div>
             </div>
