@@ -101814,13 +101814,13 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/pawelcebernik/ivba/resources/assets/js/app.js */"./resources/assets/js/app.js");
-__webpack_require__(/*! /Users/pawelcebernik/ivba/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
-__webpack_require__(/*! /Users/pawelcebernik/ivba/resources/assets/sass/inauka.scss */"./resources/assets/sass/inauka.scss");
-__webpack_require__(/*! /Users/pawelcebernik/ivba/resources/assets/sass/inauka2.scss */"./resources/assets/sass/inauka2.scss");
-__webpack_require__(/*! /Users/pawelcebernik/ivba/resources/assets/sass/projekt30.scss */"./resources/assets/sass/projekt30.scss");
-__webpack_require__(/*! /Users/pawelcebernik/ivba/resources/assets/sass/internetowisprzedawcy.scss */"./resources/assets/sass/internetowisprzedawcy.scss");
-module.exports = __webpack_require__(/*! /Users/pawelcebernik/ivba/resources/assets/sass/techniczni.scss */"./resources/assets/sass/techniczni.scss");
+__webpack_require__(/*! /var/www/ivba/resources/assets/js/app.js */"./resources/assets/js/app.js");
+__webpack_require__(/*! /var/www/ivba/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
+__webpack_require__(/*! /var/www/ivba/resources/assets/sass/inauka.scss */"./resources/assets/sass/inauka.scss");
+__webpack_require__(/*! /var/www/ivba/resources/assets/sass/inauka2.scss */"./resources/assets/sass/inauka2.scss");
+__webpack_require__(/*! /var/www/ivba/resources/assets/sass/projekt30.scss */"./resources/assets/sass/projekt30.scss");
+__webpack_require__(/*! /var/www/ivba/resources/assets/sass/internetowisprzedawcy.scss */"./resources/assets/sass/internetowisprzedawcy.scss");
+module.exports = __webpack_require__(/*! /var/www/ivba/resources/assets/sass/techniczni.scss */"./resources/assets/sass/techniczni.scss");
 
 
 /***/ })

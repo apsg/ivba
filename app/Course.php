@@ -2,6 +2,7 @@
 namespace App;
 
 use App\Domains\Admin\Helpers\SettingsHelper;
+use App\Domains\Courses\Models\Author;
 use App\Domains\Courses\Models\CourseLesson;
 use App\Domains\Courses\Models\Group;
 use App\Domains\Courses\Models\Tag;
@@ -67,6 +68,7 @@ use Illuminate\Support\Str;
  * @property-read Collection|Quiz[]            quizzes
  * @property-read Collection|Rating[]          ratings
  * @property-read User                         user
+ * @property-read Author                       author
  * @property-read Collection|UserCertificate[] user_certificates
  * @property-read Collection|User[]            users
  * @property-read Video|null                   video
@@ -149,6 +151,11 @@ class Course extends Model implements OrderableContract, AccessableContract
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(Author::class);
     }
 
     /**
