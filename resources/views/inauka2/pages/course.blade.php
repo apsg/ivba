@@ -159,16 +159,142 @@
 
                 <div class="col-12 col-md-4 align-self-stretch">
                     <div class="sticky-top">
-                        <div class="border border-gray rounded bg-white my-2 text-center px-2 pb-2 pt-3">
+                        <div class="border border-gray rounded bg-white my-2 text-center px-3 pb-2 pt-3">
                             <div class="tags d-flex justify-content-center w-100">
                                 @foreach($course->visibleTags as $tag)
                                     @include('pages.course._tag', compact('tag'))
                                 @endforeach
                             </div>
                             <h3 class="subtitle-2 mt-3">Kup teraz i zgarnij losowy ebook gratis</h3>
-                            <course-countdown :timestamp="{{ \Carbon\Carbon::now()->addHours(2)->timestamp }}"></course-countdown>
+                            <course-countdown
+                                    :timestamp="{{ \Carbon\Carbon::now()->addHours(2)->timestamp }}"></course-countdown>
 
+                            <div class="row mt-3" style="width: 385px; margin: 0 auto;">
+                                <div class="col-6 blue-box body-2 p-1">
+                                    <div class="bg-light-blue rounded p-1">
+                                        Zaoszczędź dzięki promocji
+                                    </div>
+                                </div>
+                                <div class="col-6 blue-box body-2 p-1">
+                                    <div class="bg-light-blue rounded p-1">
+                                        Polska firma + faktura VAT
+                                    </div>
+                                </div>
+                                <div class="col-6 blue-box body-2 p-1">
+                                    <div class="bg-light-blue rounded p-1">
+                                        30 dni gwarancji zwrotu
+                                    </div>
+                                </div>
+                                <div class="col-6 blue-box body-2 p-1">
+                                    <div class="bg-light-blue rounded p-1">
+                                        Wsparcie na każdym kroku
+                                    </div>
+                                </div>
+                                <div class="col-6 blue-box body-2 p-1">
+                                    <div class="bg-light-blue rounded p-1">
+                                        350 osób już korzysta
+                                    </div>
+                                </div>
+                                <div class="col-6 blue-box body-2 p-1">
+                                    <div class="bg-light-blue rounded p-1">
+                                        Dożywotni dostęp
+                                    </div>
+                                </div>
+                            </div>
 
+                            <h3 class="h4-headline mt-3">
+                                {{ $course->title }}
+                            </h3>
+                            <hr style="width: 80%; margin: 0 auto;"/>
+
+                            @if($course->isDiscounted())
+                                <div class="text-center p-2">
+                                    <div class="bg-azure inline mr-2 p-1 px-2 body-2 text-white"
+                                         style="font-weight: 700">
+                                        {{ $course->discountPercentage() }}
+                                    </div>
+                                    <div class="inline p-2 h5-headline color-gray"
+                                         style="text-decoration: line-through; font-weight: 400">
+                                        {{ $course->price_full }}
+                                    </div>
+                                </div>
+                            @endif
+                            <a href="{{ $course->payment_link }}"
+                               class="btn btn-coral w-100 py-3 h5-headline"
+                               style="font-weight: 400; font-size: 24px;"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40">
+                                    <g id="Group_585" data-name="Group 585" transform="translate(-191 -252)">
+                                        <rect id="Rectangle_366" data-name="Rectangle 366" width="40" height="40"
+                                              transform="translate(191 252)" fill="none"/>
+                                        <path id="Path_4140" data-name="Path 4140"
+                                              d="M4.6,0,0,.017,4.041,10.11.085,20,4.7,19.983,8.656,10.11Z"
+                                              transform="translate(206.672 262)" fill="currentColor"/>
+                                    </g>
+                                </svg>
+
+                                Kup kurs teraz za {{ $course->price }} zł
+                            </a>
+                            <div class="caption py-2" style="text-align: left">
+                                Najniższa cena z ostatnich 30 dni: 59.00 zł
+                            </div>
+
+                            <div class="body-1 p-2" style="text-align: left; font-size: 14px;">
+                                Bezpieczne płatności
+                            </div>
+                            <div class="body-1 p-2" style="text-align: left; font-size: 14px;">
+                                Kup teraz i otrzymaj błyskawiczny dostęp
+                            </div>
+                            <div class="body-1 p-2" style="text-align: left; font-size: 14px;">
+                                Transparentna Platforma: Maratony Excela, Zaufani trenerzy
+                            </div>
+                            <div class="body-1 p-2" style="text-align: left; font-size: 14px;">
+                                Najlepsza okazja + 30 dniowy zwrot
+                            </div>
+                        </div>
+
+                        <div class="d-flex border rounded p-3 justify-content-between">
+                            <div>
+                                <span class="subtitle-2">Miesięczny dostęp</span> <br />
+                                <span class="caption">Wszystkie kursy w abonamencie</span>
+                            </div>
+                            <div>
+                                <a href="" class="btn btn-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40">
+                                        <g id="Group_585" data-name="Group 585" transform="translate(-191 -252)">
+                                            <rect id="Rectangle_366" data-name="Rectangle 366" width="40" height="40"
+                                                  transform="translate(191 252)" fill="none"/>
+                                            <path id="Path_4140" data-name="Path 4140"
+                                                  d="M4.6,0,0,.017,4.041,10.11.085,20,4.7,19.983,8.656,10.11Z"
+                                                  transform="translate(206.672 262)" fill="currentColor"/>
+                                        </g>
+                                    </svg>
+
+                                    Kup za {{ \App\Domains\Payments\Helpers\PricesHelper::subscription() }} zł
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="d-flex border rounded p-3 justify-content-between mt-2">
+                            <div>
+                                <span class="subtitle-2">Roczny dostęp</span> <br />
+                                <span class="caption">Pełny dostęp na 365 dni</span>
+                            </div>
+                            <div>
+                                <a href="" class="btn btn-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40">
+                                        <g id="Group_585" data-name="Group 585" transform="translate(-191 -252)">
+                                            <rect id="Rectangle_366" data-name="Rectangle 366" width="40" height="40"
+                                                  transform="translate(191 252)" fill="none"/>
+                                            <path id="Path_4140" data-name="Path 4140"
+                                                  d="M4.6,0,0,.017,4.041,10.11.085,20,4.7,19.983,8.656,10.11Z"
+                                                  transform="translate(206.672 262)" fill="currentColor"/>
+                                        </g>
+                                    </svg>
+
+                                    Dostęp na rok [bez karty]
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

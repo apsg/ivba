@@ -16,15 +16,18 @@ body {
     background-color: $color-white-box;
 }
 
-a{
+a {
     text-decoration: none;
     color: $color-graphite;
 
-    &:hover{
+    &:hover {
         color: lighten($color-graphite, 10%);
     }
 }
 
+.inline {
+    display: inline-block;
+}
 
 .navbar {
     font-family: $font-sora;
@@ -39,11 +42,11 @@ a{
         }
     }
 
-    .navbar-collapse{
+    .navbar-collapse {
         flex-grow: 0;
     }
 
-    .account-menu{
+    .account-menu {
         flex-grow: 1;
         justify-content: end;
     }
@@ -116,7 +119,11 @@ a{
         @include font-button;
         background-color: $color-coral;
         color: $color-white;
-        text-transform: uppercase;
+
+        &:hover {
+            background-color: darken($color-coral, 5%);
+            color: $color-white;
+        }
 
         &-lg {
             @extend .btn-coral;
@@ -135,6 +142,15 @@ a{
         background-color: $color-blue;
         color: $color-white;
     }
+
+    &-white {
+        background-color: white;
+        color: $color-red;
+
+        &:hover{
+            color: darken($color-red, 10%);
+        }
+    }
 }
 
 .img-arrow {
@@ -147,7 +163,7 @@ a{
 }
 
 .learn-online-container {
-   display: flex;
+    display: flex;
     align-items: center;
     flex-direction: row;
     padding: 0;
@@ -159,6 +175,7 @@ a{
             @include h4-headline;
         }
     }
+
     p {
         @include subtitle-2;
 

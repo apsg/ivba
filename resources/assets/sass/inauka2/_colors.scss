@@ -7,6 +7,7 @@ $color-red: #FD5429;
 $color-red-darker: #D94924;
 $color-blue: #1F94F8;
 $color-azure: #48CBEA;
+$color-gray: #161615;
 
 @mixin background-gradient {
     background: transparent linear-gradient(90deg, var(--cta-czerwień) 0%, #F99140 100%) 0% 0% no-repeat padding-box;
@@ -15,6 +16,14 @@ $color-azure: #48CBEA;
 
 .bg-red {
     background-color: $color-red;
+}
+
+.bg-light-blue{
+    background-color: #48CBEA1A;
+}
+
+.bg-azure{
+    background-color: $color-azure;
 }
 
 .color-red {
@@ -27,4 +36,8 @@ $color-azure: #48CBEA;
     &-light {
         opacity: 0.5;
     }
+}
+
+.color-gray{
+    color: $color-gray;
 }

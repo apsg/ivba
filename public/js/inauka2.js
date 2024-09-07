@@ -2089,7 +2089,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".bg-red[data-v-9cef63ba] {\n  background-color: #FD5429;\n}\n.color-red[data-v-9cef63ba] {\n  color: #FD5429;\n}\n.color-graphite[data-v-9cef63ba] {\n  color: #161615;\n}\n.color-graphite-light[data-v-9cef63ba] {\n  opacity: 0.5;\n}\n.box .inner[data-v-9cef63ba] {\n  width: 90px;\n  height: 90px;\n  background-color: #ff6841;\n  text-align: center;\n  line-height: 90px;\n  color: white;\n}\n.divider[data-v-9cef63ba] {\n  line-height: 90px;\n}\n.caption[data-v-9cef63ba] {\n  text-transform: uppercase;\n  font-size: 10px;\n}", ""]);
+exports.push([module.i, ".bg-red[data-v-9cef63ba] {\n  background-color: #FD5429;\n}\n.bg-light-blue[data-v-9cef63ba] {\n  background-color: #48CBEA1A;\n}\n.bg-azure[data-v-9cef63ba] {\n  background-color: #48CBEA;\n}\n.color-red[data-v-9cef63ba] {\n  color: #FD5429;\n}\n.color-graphite[data-v-9cef63ba] {\n  color: #161615;\n}\n.color-graphite-light[data-v-9cef63ba] {\n  opacity: 0.5;\n}\n.color-gray[data-v-9cef63ba] {\n  color: #161615;\n}\n.box .inner[data-v-9cef63ba] {\n  width: 90px;\n  height: 90px;\n  background-color: #ff6841;\n  text-align: center;\n  line-height: 90px;\n  color: white;\n}\n.divider[data-v-9cef63ba] {\n  line-height: 90px;\n}\n.caption[data-v-9cef63ba] {\n  text-transform: uppercase;\n  font-size: 10px;\n}", ""]);
 
 // exports
 

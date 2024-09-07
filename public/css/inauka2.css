@@ -131,6 +131,14 @@
   background-color: #FD5429;
 }
 
+.bg-light-blue {
+  background-color: #48CBEA1A;
+}
+
+.bg-azure {
+  background-color: #48CBEA;
+}
+
 .color-red {
   color: #FD5429;
 }
@@ -141,6 +149,10 @@
 
 .color-graphite-light {
   opacity: 0.5;
+}
+
+.color-gray {
+  color: #161615;
 }
 
 .font-sora {
@@ -242,7 +254,6 @@
   font-family: "Sora", sans-serif;
   font-size: 12px;
   font-weight: 600;
-  text-transform: uppercase;
 }
 
 .caption {
@@ -656,7 +667,6 @@ body {
   font-family: "Sora", sans-serif;
   font-size: 12px;
   font-weight: 600;
-  text-transform: uppercase;
   background-color: #ffffff;
   color: #ff6841;
 }
@@ -678,6 +688,14 @@ body {
   background-color: #FD5429;
 }
 
+.bg-light-blue {
+  background-color: #48CBEA1A;
+}
+
+.bg-azure {
+  background-color: #48CBEA;
+}
+
 .color-red {
   color: #FD5429;
 }
@@ -688,6 +706,10 @@ body {
 
 .color-graphite-light {
   opacity: 0.5;
+}
+
+.color-gray {
+  color: #161615;
 }
 
 .icon-exit {
@@ -780,6 +802,10 @@ a:hover {
   color: #30302e;
 }
 
+.inline {
+  display: inline-block;
+}
+
 .navbar {
   font-family: "Sora", sans-serif;
   font-size: 20px;
@@ -867,10 +893,14 @@ a:hover {
   font-family: "Sora", sans-serif;
   font-size: 12px;
   font-weight: 600;
-  text-transform: uppercase;
   background-color: #ff6841;
   color: #ffffff;
-  text-transform: uppercase;
+}
+
+.btn-coral:hover,
+.btn-coral-lg:hover {
+  background-color: #ff5428;
+  color: #ffffff;
 }
 
 @media (min-width: 767px) {
@@ -889,9 +919,17 @@ a:hover {
   font-family: "Sora", sans-serif;
   font-size: 12px;
   font-weight: 600;
-  text-transform: uppercase;
   background-color: #1F94F8;
   color: #ffffff;
+}
+
+.btn-white {
+  background-color: white;
+  color: #FD5429;
+}
+
+.btn-white:hover {
+  color: #f13302;
 }
 
 .img-arrow {

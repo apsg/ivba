@@ -634,4 +634,26 @@ class Course extends Model implements OrderableContract, AccessableContract
     {
         return $this->title;
     }
+
+    public function isDiscounted(): bool
+    {
+        if (empty($this->price_full)) {
+            return false;
+        }
+
+        if ($this->price_full < $this->price) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function discountPercentage(): string
+    {
+        if (!$this->isDiscounted()) {
+            return '';
+        }
+
+        return number_format((($this->price - $this->price_full) * 100 / $this->price_full)) . '%';
+    }
 }
