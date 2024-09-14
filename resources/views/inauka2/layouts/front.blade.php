@@ -156,6 +156,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 <script src="{{ multisite_js() }}"></script>
+<script type="text/javascript" src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>
 
 </body>
 </html>

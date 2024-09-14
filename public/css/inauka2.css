@@ -139,6 +139,10 @@
   background-color: #48CBEA;
 }
 
+.bg-white-faded {
+  background-color: #fafafa;
+}
+
 .color-red {
   color: #FD5429;
 }
@@ -152,7 +156,7 @@
 }
 
 .color-gray {
-  color: #161615;
+  color: #161615cc;
 }
 
 .font-sora {
@@ -696,6 +700,10 @@ body {
   background-color: #48CBEA;
 }
 
+.bg-white-faded {
+  background-color: #fafafa;
+}
+
 .color-red {
   color: #FD5429;
 }
@@ -709,7 +717,7 @@ body {
 }
 
 .color-gray {
-  color: #161615;
+  color: #161615cc;
 }
 
 .icon-exit {
@@ -784,6 +792,24 @@ body {
 .course-single .tags {
   position: absolute;
   top: -10px;
+}
+
+.course-single .course-nav:hover {
+  color: #FD5429;
+}
+
+.course-single .course-detail-box {
+  width: 100%;
+  min-height: 130px;
+  background-color: #fafafa;
+  text-align: center;
+}
+
+.course-single .lesson {
+  padding: 10px;
+  background-color: #fafafa;
+  color: #ff6841;
+  font-size: 12px;
 }
 
 body {

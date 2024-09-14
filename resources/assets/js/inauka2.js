@@ -28,6 +28,8 @@ Vue.use(VueClipboard);
 import VueFlashMessage from 'vue-flash-message';
 import VTooltip from "v-tooltip";
 import CourseCountdown from "./components/Inauka2/CourseCountdown.vue";
+import CloudflareVideo from "./components/Inauka2/CloudflareVideo.vue";
+import TestimonialsCarousel from "./components/Inauka2/TestimonialsCarousel.vue";
 
 Vue.use(VueFlashMessage);
 Vue.use(VTooltip);
@@ -40,6 +42,8 @@ const app = new Vue({
         'progress-bar': ProgressBar,
         'partner-link': PartnerLink,
         'course-countdown': CourseCountdown,
+        'cloudflare-video': CloudflareVideo,
+        'testimonials-carousel': TestimonialsCarousel,
     }
 });
 

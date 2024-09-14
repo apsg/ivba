@@ -36,7 +36,6 @@
 <script>
 import moment from "moment";
 
-
 export default {
   name: "CourseCountdown",
 
@@ -79,6 +78,11 @@ export default {
   mounted() {
     let now = moment(new Date());
     let end = moment(new Date(this.timestamp * 1000));
+
+    if (end.isBefore(now)){
+      return;
+    }
+
     this.difference = moment.duration(end.diff(now));
 
     this.tick();
@@ -111,6 +115,18 @@ export default {
     text-align: center;
     line-height: 90px;
     color: white;
+
+    @media (max-width: 1280px){
+      width: 80px;
+    }
+
+    @media (max-width: 1024px){
+      width: 60px;
+    }
+
+    @media (max-width: 764px){
+      width: 90px;
+    }
   }
 }
 

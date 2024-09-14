@@ -35,126 +35,353 @@
 
         <div class="container">
             <div class="row flex-column-reverse flex-md-row">
-                <div class="col-12 col-md-8">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque venenatis vitae risus eu
-                    sollicitudin. Aliquam tincidunt lacus ex, sit amet rutrum leo egestas eu. Praesent euismod magna
-                    dolor, eu sollicitudin arcu iaculis sed. Sed lobortis placerat odio eu facilisis. Proin ac odio nec
-                    erat venenatis condimentum. Etiam elementum magna nibh, ac faucibus lectus venenatis a. Donec auctor
-                    quam sit amet luctus pretium. Vestibulum eleifend felis eget ligula porttitor, sit amet placerat
-                    metus congue. Duis ultricies tristique gravida. Fusce sodales nulla eu urna egestas, ut posuere erat
-                    imperdiet. Suspendisse suscipit, diam sed consectetur ultrices, tortor odio sagittis orci, eu semper
-                    dui turpis et tortor. Suspendisse eu imperdiet nisi. In hac habitasse platea dictumst. Nulla eu
-                    sollicitudin libero, ac maximus lacus. Nam mollis nulla tortor, ac fermentum dui vulputate vitae. Ut
-                    dictum sagittis justo, at efficitur mauris.
-
-                    Phasellus faucibus libero odio, eu varius enim elementum ut. Donec euismod augue sit amet justo
-                    tempus, at tincidunt arcu posuere. Nam at porta tellus. Cras eu sem eget ligula molestie placerat.
-                    Curabitur ac tempor lacus, sit amet eleifend elit. Sed diam eros, mattis vitae sollicitudin ac,
-                    vulputate ac risus. Nam vitae libero lorem. Curabitur ut justo elementum, cursus leo vitae,
-                    consequat nisi. Nullam ac massa erat. Class aptent taciti sociosqu ad litora torquent per conubia
-                    nostra, per inceptos himenaeos. Vivamus non blandit arcu. Praesent lacinia gravida lacus, nec dictum
-                    neque fermentum sit amet. Duis iaculis malesuada felis. Ut augue nulla, placerat vel purus a,
-                    scelerisque tempor neque. Donec et tortor quis velit egestas pharetra. Sed nunc eros, hendrerit ut
-                    nisl vestibulum, tincidunt tincidunt diam.
-
-                    In eu vehicula augue, a dapibus neque. Vestibulum felis mi, scelerisque vel purus ac, hendrerit
-                    pellentesque neque. Phasellus finibus gravida elementum. Pellentesque tortor ipsum, viverra a massa
-                    ut, maximus pellentesque risus. Fusce commodo nunc nec urna mattis, non condimentum turpis
-                    sollicitudin. Phasellus dignissim risus sapien, in sagittis lacus finibus vel. Etiam sed dictum
-                    nisl, maximus pretium lectus. Morbi ac convallis nisl. Nullam non consequat mauris, quis pulvinar
-                    tellus. Pellentesque vel tincidunt lacus. Integer vel lacus dictum urna imperdiet pharetra nec sit
-                    amet nibh. Proin interdum quam a ante aliquet, vel hendrerit augue tincidunt. Donec a iaculis nibh.
-
-                    Sed non varius mauris, eget placerat massa. Suspendisse dictum et leo et dignissim. Nam blandit nisi
-                    in erat pharetra hendrerit. Curabitur non enim in diam lacinia convallis eget id ipsum. Pellentesque
-                    feugiat consequat eleifend. Pellentesque in est elit. Donec nec iaculis libero. Nam accumsan ut est
-                    nec placerat. Morbi eu lacus vitae ipsum accumsan maximus ut quis mauris. Mauris ullamcorper ante
-                    erat, id molestie nisi tincidunt ut. Orci varius natoque penatibus et magnis dis parturient montes,
-                    nascetur ridiculus mus. Sed id cursus metus, at suscipit quam. Cras a neque dui.
-
-                    Sed pellentesque dictum nisl in eleifend. Pellentesque maximus dignissim eros a imperdiet. Duis
-                    porttitor eros id magna consectetur condimentum. Etiam in tincidunt massa, non convallis leo.
-                    Suspendisse felis massa, tincidunt ut purus vitae, eleifend dapibus mi. Phasellus in nibh nec lacus
-                    blandit facilisis volutpat ut tortor. Sed ut diam neque. Maecenas eget erat ultrices, porttitor diam
-                    et, bibendum erat. Curabitur est mi, consequat et tincidunt vel, rutrum vitae nulla. Donec dictum
-                    leo vitae purus fermentum cursus. Duis nibh lacus, pellentesque sit amet tristique vitae, malesuada
-                    vitae est. Pellentesque gravida dui ut diam porttitor, ut viverra dui luctus. In pellentesque
-                    finibus pulvinar.
-
-                    Vivamus euismod congue consectetur. Sed quis interdum odio. Class aptent taciti sociosqu ad litora
-                    torquent per conubia nostra, per inceptos himenaeos. Ut quis mauris purus. Fusce tincidunt, mauris
-                    ac lobortis blandit, lectus odio congue ligula, et pulvinar orci enim nec orci. Suspendisse sodales
-                    pharetra libero, non interdum velit euismod nec. Proin lobortis diam vel dapibus luctus. In tempus
-                    suscipit metus, nec gravida mauris commodo ac.
-
-                    Nam imperdiet ante vel quam volutpat, sed vulputate turpis consequat. Maecenas nec interdum nunc.
-                    Sed sodales ex non dolor gravida ultrices. Nunc malesuada mauris id odio imperdiet, quis volutpat
-                    tellus auctor. Nullam ornare dignissim nulla, eget ultricies turpis ultricies ut. Donec pretium a
-                    libero in varius. Nunc vestibulum lacinia nunc, a tempus nisi feugiat a. Morbi non accumsan tortor.
-                    Vivamus tempus at leo vitae sollicitudin. Pellentesque vitae suscipit turpis. Proin et odio
-                    vestibulum, congue justo in, tristique nisi. Suspendisse pulvinar molestie velit, id aliquet felis
-                    semper in. Suspendisse et libero vel metus mattis congue. Morbi eu laoreet nunc.
-
-                    Etiam et eros tortor. Sed nec aliquam nunc, sed vehicula nisl. Proin hendrerit urna nulla, eu dictum
-                    eros iaculis vitae. Quisque et lorem eget nisi condimentum dictum. Sed vel turpis eu arcu lacinia
-                    posuere et nec odio. Cras nibh velit, euismod at semper eget, varius et nisl. In diam nisl, accumsan
-                    nec dignissim nec, sollicitudin eu arcu. Pellentesque habitant morbi tristique senectus et netus et
-                    malesuada fames ac turpis egestas. Fusce dignissim fermentum ipsum, non rhoncus sem. Nulla facilisi.
-                    Ut imperdiet massa libero, sed elementum felis maximus tincidunt. Maecenas quis nunc eu tellus
-                    posuere consectetur quis non dui. Donec ultricies vestibulum dolor sed malesuada. Nullam auctor
-                    venenatis nisi bibendum egestas. Nullam congue eget nisi eget ultrices.
-
-                    Etiam vel venenatis nibh, eu dictum turpis. Cras in consequat sem. Mauris eu posuere risus. Maecenas
-                    ullamcorper, nibh sed ultricies lobortis, ex elit viverra arcu, id pellentesque nibh purus nec
-                    ipsum. Suspendisse quis lacus in felis aliquam varius sed vel ligula. Suspendisse molestie, risus id
-                    congue dignissim, leo enim hendrerit nibh, id accumsan velit odio vitae odio. Aliquam sodales nibh a
-                    tortor gravida molestie. Nulla ultricies volutpat lectus, vitae finibus erat dictum ut. Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit.
-
-                    Pellentesque sollicitudin ipsum metus, congue vulputate mi efficitur sed. Duis rhoncus ut purus vel
-                    rutrum. Vivamus porta urna lacus, non eleifend nisi efficitur non. Quisque volutpat nisl vitae urna
-                    ultricies, ac posuere ante interdum. Integer ullamcorper purus nec neque cursus, ac placerat neque
-                    ultricies. Sed in leo eu ex fringilla dictum. Aenean at lobortis sem, vel molestie risus. Integer
-                    interdum blandit felis. Curabitur imperdiet sollicitudin elit eu venenatis. Ut cursus nisi libero.
-                    Quisque enim tellus, pellentesque eget tellus non, blandit facilisis velit. Nulla facilisi.
-                    Curabitur faucibus, nibh sodales mollis finibus, libero neque maximus erat, at hendrerit odio sapien
-                    a ligula. Proin efficitur odio dui. Nam ac finibus eros.
-
-                    Phasellus aliquam justo vel nibh molestie mollis. Vivamus sagittis risus non arcu dignissim egestas.
-                    Pellentesque efficitur gravida diam quis venenatis. Morbi tempor est non eros luctus, et egestas
-                    nunc vestibulum. Sed vel pulvinar dui, vel hendrerit ex. Quisque non rutrum ligula. Proin dictum at
-                    diam vel aliquet. Aenean placerat eros tortor. Nam auctor, velit at molestie dapibus, neque tellus
-                    viverra risus, ut eleifend ante ante eu nulla. Duis mollis elit id mi imperdiet, et luctus ligula
-                    viverra. Donec tempus malesuada dignissim. Sed imperdiet tortor vel eros laoreet rutrum. Donec
-                    accumsan suscipit rutrum. Vivamus molestie dolor a maximus aliquet. Quisque fringilla blandit nunc
-                    pellentesque porta. Vestibulum fringilla placerat ipsum ut viverra.
-
-                    Quisque et nulla massa. Duis nisi leo, vulputate ut luctus non, egestas sit amet risus. Quisque
-                    metus mauris, volutpat maximus eros nec, pharetra malesuada mi. Nullam sem risus, dictum id rutrum
-                    eget, sagittis at odio. Nulla facilisi. Vivamus placerat tincidunt mi id gravida. Duis non arcu est.
-                    Curabitur lectus urna, elementum suscipit pellentesque at, posuere et nulla. In tristique, tortor ac
-                    ullamcorper finibus, ex leo interdum orci, sit amet semper mauris dui maximus leo. Cras eu metus eu
-                    tortor ornare semper ut sit amet lacus. Vestibulum laoreet sodales ex nec vulputate. Praesent
-                    consequat interdum congue.
-
-                    Nam posuere interdum lorem vitae hendrerit. Aenean at massa ut mauris gravida tempus sit amet a
-                    mauris. Aliquam lacinia tempor orci, ac tempor quam. In hendrerit eleifend auctor. Morbi rhoncus
-                    quam nisl, vel eleifend massa pretium vitae. Mauris a quam fringilla, sagittis diam sit amet,
-                    vehicula sem. Quisque at magna eu quam porta congue vel quis tellus.
-
-                    Quisque vel eros vitae libero bibendum euismod. Phasellus et neque mauris. Nam dignissim magna sem,
-                    eu tempor tortor imperdiet ut. Ut blandit sem est, nec ultricies elit maximus id. Nunc sed leo
-                    tincidunt, lobortis libero sed, mattis elit. In vehicula pellentesque tortor, sed aliquet lectus
-                    cursus sit amet. Pellentesque id tincidunt dui. Class aptent taciti sociosqu ad litora torquent per
-                    conubia nostra, per inceptos himenaeos.
-
-                    Aenean auctor imperdiet ante, ac fermentum lectus sodales at. Cras eu vulputate leo. Phasellus non
-                    rutrum felis. Nam eleifend leo sed iaculis posuere. Phasellus a nulla sit amet mauris accumsan
-                    pretium quis in odio. Duis felis enim, bibendum ac ullamcorper id, placerat ut mauris. Pellentesque
-                    id dignissim nisi. Curabitur gravida vulputate tortor, nec aliquam lacus dapibus in. Donec mauris
-                    velit, hendrerit et lorem sed, suscipit accumsan purus.
+                <div class="col-12 col-md-8 p-1">
+                    <div class="bg-white rounded p-2 pt-3 px-4">
+                        <div class="bg-white-faded d-flex py-1 px-3">
+                            <a href="#about" class="p-2 px-3 course-nav">Czego się dowiesz?</a>
+                            <a href="#author" class="p-2 px-3 course-nav">O autorze</a>
+                            <a href="#toc" class="p-2 px-3 course-nav">Spis treści</a>
+                            <a href="#faq" class="p-2 px-3 course-nav">FAQ</a>
+                        </div>
 
 
+                        <h2 class="h2-headline mt-3">
+                            {{ $course->title }}
+                        </h2>
+                        @if($course->author !== null)
+                            <div class="meta font-sora" style="font-size: 16px;">
+                                Autor: {{ $course->author->name }}
+                                @if($course->author->is_internal)
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40">
+                                        <g id="Group_951" data-name="Group 951" transform="translate(-1139 -7070)">
+                                            <g id="Group_737" data-name="Group 737"
+                                               transform="translate(1150.072 7080)">
+                                                <path id="Path_4298" data-name="Path 4298"
+                                                      d="M60.169,0,54.923,1.773,49.8.037V2.062L54.923,3.8l5.246-1.781Z"
+                                                      transform="translate(-46.104)" fill="#ff6842"/>
+                                                <path id="Path_4299" data-name="Path 4299"
+                                                      d="M11.516,35.43l4.23-1.709.024,3.426.041,6.216L8.786,46.21l-6.667-2.7-.033-4.267-.016-2.2-.024-3.228,4,1.618,2.738,1.106Zm4.222-3.913L8.794,34.324,2.037,31.591,0,30.766l.016,2.22.065,9.7L.1,44.906l2.038.825,3.92,1.585,2.738,1.106,2.73-1.106,4.311-1.742,2.021-.817-.016-2.2L17.775,32.9l-.016-2.2Z"
+                                                      transform="translate(0 -28.422)" fill="#ff6842"/>
+                                                <path id="Path_4300" data-name="Path 4300"
+                                                      d="M63.391,100.374,59.269,104.5l-2.079-2.08L55.906,103.7l3.363,3.363,5.406-5.406Z"
+                                                      transform="translate(-50.871 -91.768)" fill="#ff6842"/>
+                                            </g>
+                                            <rect id="Rectangle_629" data-name="Rectangle 629" width="40" height="40"
+                                                  transform="translate(1139 7070)" fill="none"/>
+                                        </g>
+                                    </svg>
+                                @endif
+                                <span class="color-gray" style="font-size: 14px;">
+                                {{ $course->author->description }}
+                            </span>
+                            </div>
+                        @endif
+
+                        <div class="row">
+                            <div class="col-10">
+                                @php
+                                    $lesson = $course->lessons->first();
+                                @endphp
+                                <cloudflare-video
+                                        uid="{{ $lesson->video->cloudflare_uid }}"
+                                        :width="702"
+                                        height=""
+                                ></cloudflare-video>
+                            </div>
+                            <div class="col-2">
+                                <div class="course-detail-box mb-3 d-flex flex-column justify-content-center">
+                                    <div class="align-self-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35"
+                                             viewBox="0 0 25 25">
+                                            <g id="Group_638" data-name="Group 638" transform="translate(3984 -3680)">
+                                                <rect id="Rectangle_401" data-name="Rectangle 401" width="25"
+                                                      height="25" transform="translate(-3984 3680)" fill="none"/>
+                                                <path id="Path_4162" data-name="Path 4162"
+                                                      d="M9.95,11.2,7.8,9.1,6.4,10.5,9.95,14.05,15.6,8.4,14.2,6.95Zm3.6-8.65L15,4.95l2.75.6-.25,2.8,1.85,2.15L17.5,12.6l.25,2.8L15,16.05l-1.4,2.4-2.6-1.1-2.55,1.1L7,16.05l-2.75-.6L4.5,12.6,2.65,10.5,4.5,8.349l-.25-2.8L7,4.95l1.4-2.4,2.6,1.1ZM14.4,0,11,1.45,7.6,0,5.7,3.2,2.1,4l.35,3.7L0,10.5l2.45,2.8L2.1,17l3.6.8L7.6,21,11,19.55,14.4,21l1.9-3.2,3.6-.8-.35-3.7L22,10.5,19.55,7.7,19.9,4l-3.6-.8Z"
+                                                      transform="translate(-3982 3682)" fill="#fd5429"/>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="caption">Średnia ocen:</div>
+                                    <div style="font-size: 24px;">
+                                        <span class="color-red">{{ $course->avg_rating }}</span>/5
+                                    </div>
+                                </div>
+                                <div class="course-detail-box mb-3 d-flex flex-column justify-content-center">
+                                    <div class="align-self-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36"
+                                             viewBox="0 0 36 36">
+                                            <defs>
+                                                <clipPath id="clip-path">
+                                                    <rect id="Rectangle_865" data-name="Rectangle 865" width="33"
+                                                          height="27" fill="none"/>
+                                                </clipPath>
+                                            </defs>
+                                            <g id="Group_969" data-name="Group 969" transform="translate(3984 -3680)">
+                                                <rect id="Rectangle_401" data-name="Rectangle 401" width="36"
+                                                      height="36" transform="translate(-3984 3680)" fill="none"/>
+                                                <g id="Group_976" data-name="Group 976"
+                                                   transform="translate(-3982 3684.727)">
+                                                    <g id="Group_975" data-name="Group 975" clip-path="url(#clip-path)">
+                                                        <path id="Path_4617" data-name="Path 4617"
+                                                              d="M0,24H33v3H0Zm4.5-1.5a2.894,2.894,0,0,1-2.119-.881A2.894,2.894,0,0,1,1.5,19.5V3A2.894,2.894,0,0,1,2.381.881,2.894,2.894,0,0,1,4.5,0h24a2.889,2.889,0,0,1,2.118.88A2.89,2.89,0,0,1,31.5,3V19.5a3.009,3.009,0,0,1-3,3Zm0-3h24V3H4.5Zm0,0v0Zm17.281-8.25L13.859,6.677v9.147Z"
+                                                              transform="translate(0 0)" fill="#5f6368"/>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="caption">Liczba lekcji:</div>
+                                    <div style="font-size: 24px;">
+                                        {{ $course->lessons->count() }}
+                                    </div>
+                                </div>
+                                <div class="course-detail-box mb-3 d-flex flex-column justify-content-center">
+                                    <div class="align-self-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36"
+                                             viewBox="0 0 36 36">
+                                            <defs>
+                                                <clipPath id="clip-path">
+                                                    <rect id="Rectangle_864" data-name="Rectangle 864" width="30"
+                                                          height="30" fill="rgba(22,22,21,0.8)"/>
+                                                </clipPath>
+                                            </defs>
+                                            <g id="Group_970" data-name="Group 970" transform="translate(3984 -3680)">
+                                                <rect id="Rectangle_401" data-name="Rectangle 401" width="36"
+                                                      height="36" transform="translate(-3984 3680)" fill="none"/>
+                                                <g id="Group_974" data-name="Group 974"
+                                                   transform="translate(-3981 3683)">
+                                                    <g id="Group_973" data-name="Group 973" clip-path="url(#clip-path)">
+                                                        <path id="Path_4616" data-name="Path 4616"
+                                                              d="M19.95,22.05l2.1-2.1L16.5,14.4V7.5h-3v8.1ZM15,30a14.615,14.615,0,0,1-5.85-1.181A14.971,14.971,0,0,1,1.181,20.85,14.615,14.615,0,0,1,0,15,14.615,14.615,0,0,1,1.181,9.15,14.971,14.971,0,0,1,9.15,1.181,14.615,14.615,0,0,1,15,0a14.615,14.615,0,0,1,5.85,1.181A14.971,14.971,0,0,1,28.819,9.15,14.615,14.615,0,0,1,30,15a14.615,14.615,0,0,1-1.181,5.85,14.971,14.971,0,0,1-7.969,7.969A14.615,14.615,0,0,1,15,30m0-3a11.571,11.571,0,0,0,8.494-3.506A11.571,11.571,0,0,0,27,15a11.571,11.571,0,0,0-3.506-8.494A11.571,11.571,0,0,0,15,3,11.571,11.571,0,0,0,6.506,6.506,11.571,11.571,0,0,0,3,15a11.571,11.571,0,0,0,3.506,8.494A11.571,11.571,0,0,0,15,27"
+                                                              fill="rgba(22,22,21,0.8)"/>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="caption">Czas trwania:</div>
+                                    <div style="font-size: 24px;">
+                                        {{ $course->duration() }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5 class="h5-headline">
+                            Opis kursu
+                        </h5>
+                        {!! $course->description !!}
+
+                        <testimonials-carousel></testimonials-carousel>
+
+
+                        <div class="rounded border border-2 p-3 d-flex" style="border-color: #FD5529 !important;">
+                            <div class="align-self-center">
+                                <img src="/images/inauka2/salary.png"/>
+                            </div>
+                            <div class="align-self-center flex-grow-1 border-right p-1">
+                                <div class="subtitle-2" style="color: #FF6841">
+                                    Wynagrodzenie:
+                                </div>
+                                <div class="h3-headline">
+                                    5.500 - 12.000 zł
+                                </div>
+                                <div class="font-sora">
+                                    Umiejętność: Power BI - Zaawansowane
+                                </div>
+                            </div>
+                            <div class="align-self-center">
+                                <a href="" class="btn btn-white" style="font-size: 16px">
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40">
+                                        <g id="Group_585" data-name="Group 585" transform="translate(-191 -252)">
+                                            <rect id="Rectangle_366" data-name="Rectangle 366" width="40" height="40"
+                                                  transform="translate(191 252)" fill="none"/>
+                                            <path id="Path_4140" data-name="Path 4140"
+                                                  d="M4.6,0,0,.017,4.041,10.11.085,20,4.7,19.983,8.656,10.11Z"
+                                                  transform="translate(206.672 262)" fill="currentColor"/>
+                                        </g>
+                                    </svg>
+                                    Zobacz oferty
+                                </a>
+                            </div>
+                        </div>
+
+                        <h3 class="h6-headline mt-3">
+                            Czego się dowiesz?
+                        </h3>
+                        <a name="about"></a>
+
+                        @if($course->hasQuiz())
+                            <div class="p-3 rounded color-red d-flex justify-content-center"
+                                 style="background-color: #FF68410A">
+                                <div class="px-3 align-self-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                                        <g id="Group_1026" data-name="Group 1026" transform="translate(-536 -3284)">
+                                            <rect id="Rectangle_377" data-name="Rectangle 377" width="32" height="32"
+                                                  transform="translate(536 3284)" fill="none"/>
+                                            <path id="school_24dp_5F6368_FILL0_wght400_GRAD0_opsz24"
+                                                  d="M55.111-815.273l-9.616-5.22v-8.242L40-831.758,55.111-840l15.111,8.242v10.99H67.475v-9.479l-2.747,1.511v8.242Zm0-11.4,9.41-5.083-9.41-5.083-9.41,5.083Zm0,8.277,6.869-3.709v-5.186l-6.869,3.778-6.869-3.778v5.186ZM55.111-826.675ZM55.111-823.584ZM55.111-823.584Z"
+                                                  transform="translate(496 4126.272)" fill="#ff6841"/>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div>
+                                    Kurs kończy się testem, a po zdaniu otrzymasz imienny certyfikat potwierdzający
+                                    nabyte umiejętności.
+                                </div>
+                            </div>
+                        @endif
+
+                        <h3 class="h6-headline mt-3">
+                            Dlaczego warto wybrać ten kurs?
+                        </h3>
+
+                        <div class="row">
+                            <div class="col-4 p-1">
+                                <div class="rounded p-3" style="background-color: #8EE55F0A;">
+                                    <img src="{{ url('/images/inauka2/courses/green.png') }}"/>
+                                    <h6 class="h6-headline mt-3">
+                                        We własnym tempie
+                                    </h6>
+                                    <p>
+                                        Ucz się, kiedy chcesz, bez presji. Twój rytm, Twoje tempo.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-4 p-1">
+                                <div class="rounded p-3" style="background-color: #48CBEA0A;">
+                                    <img src="{{ url('/images/inauka2/courses/blue.png') }}"/>
+                                    <h6 class="h6-headline mt-3">
+                                        Nasze wsparcie
+                                    </h6>
+                                    <p>
+                                        Masz pytania? Pisz śmiało na hello@inauka.pl – pomożemy!
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-4 p-1">
+                                <div class="rounded p-3" style="background-color: #FF68410A;">
+                                    <img src="{{ url('/images/inauka2/courses/red.png') }}"/>
+                                    <h6 class="h6-headline mt-3">
+                                        Ekspercka wiedza
+                                    </h6>
+                                    <p>
+                                        Zyskujesz sprawdzoną wiedzę od ekspertów w swojej dziedzinie.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        @if($course->author)
+                            <h3 class="h6-headline my-3">
+                                O autorze
+                            </h3>
+                            <a name="author"></a>
+
+                            <div class="d-flex">
+                                <div>
+                                    <img src="{{ $course->author->image }}" class="rouded">
+                                </div>
+                                <div class="d-flex flex-column justify-content-between px-3">
+                                    <div>
+                                        <h6 class="h6-headline">{{ $course->author->name }}</h6>
+                                        <p class="subtitle-1 color-gray">{{ $course->author->description }}</p>
+                                    </div>
+                                    <div>
+                                        <div class="my-2 p-1 px-3 color-red bg-white-faded">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20"
+                                                 viewBox="0 0 36 36">
+                                                <defs>
+                                                    <clipPath id="clip-path">
+                                                        <rect id="Rectangle_865" data-name="Rectangle 865" width="33"
+                                                              height="27" fill="none"/>
+                                                    </clipPath>
+                                                </defs>
+                                                <g id="Group_969" data-name="Group 969"
+                                                   transform="translate(3984 -3680)">
+                                                    <rect id="Rectangle_401" data-name="Rectangle 401" width="36"
+                                                          height="36" transform="translate(-3984 3680)" fill="none"/>
+                                                    <g id="Group_976" data-name="Group 976"
+                                                       transform="translate(-3982 3684.727)">
+                                                        <g id="Group_975" data-name="Group 975"
+                                                           clip-path="url(#clip-path)">
+                                                            <path id="Path_4617" data-name="Path 4617"
+                                                                  d="M0,24H33v3H0Zm4.5-1.5a2.894,2.894,0,0,1-2.119-.881A2.894,2.894,0,0,1,1.5,19.5V3A2.894,2.894,0,0,1,2.381.881,2.894,2.894,0,0,1,4.5,0h24a2.889,2.889,0,0,1,2.118.88A2.89,2.89,0,0,1,31.5,3V19.5a3.009,3.009,0,0,1-3,3Zm0-3h24V3H4.5Zm0,0v0Zm17.281-8.25L13.859,6.677v9.147Z"
+                                                                  transform="translate(0 0)" fill="currentColor"/>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                            <span class="color-gray body-2">Opublikowane kursy: {{ $course->author->courses()->count() }}</span>
+                                        </div>
+                                        @if($course->author->is_internal)
+                                            <div class="my-2 px-2 py-1 color-red" style="background-color: #FF68410A;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                     viewBox="0 0 30 30">
+                                                    <g id="Group_951" data-name="Group 951"
+                                                       transform="translate(-1139 -7070)">
+                                                        <g id="Group_737" data-name="Group 737"
+                                                           transform="translate(1150.072 7080)">
+                                                            <path id="Path_4298" data-name="Path 4298"
+                                                                  d="M60.169,0,54.923,1.773,49.8.037V2.062L54.923,3.8l5.246-1.781Z"
+                                                                  transform="translate(-46.104)" fill="currentColor"/>
+                                                            <path id="Path_4299" data-name="Path 4299"
+                                                                  d="M11.516,35.43l4.23-1.709.024,3.426.041,6.216L8.786,46.21l-6.667-2.7-.033-4.267-.016-2.2-.024-3.228,4,1.618,2.738,1.106Zm4.222-3.913L8.794,34.324,2.037,31.591,0,30.766l.016,2.22.065,9.7L.1,44.906l2.038.825,3.92,1.585,2.738,1.106,2.73-1.106,4.311-1.742,2.021-.817-.016-2.2L17.775,32.9l-.016-2.2Z"
+                                                                  transform="translate(0 -28.422)" fill="currentColor"/>
+                                                            <path id="Path_4300" data-name="Path 4300"
+                                                                  d="M63.391,100.374,59.269,104.5l-2.079-2.08L55.906,103.7l3.363,3.363,5.406-5.406Z"
+                                                                  transform="translate(-50.871 -91.768)"
+                                                                  fill="currentColor"/>
+                                                        </g>
+                                                        <rect id="Rectangle_629" data-name="Rectangle 629" width="40"
+                                                              height="40" transform="translate(1139 7070)" fill="none"/>
+                                                    </g>
+                                                </svg>
+                                                <span class="color-gray body-2">Trener iNauka.pl</span>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="py-1" style="max-width: 50%">
+                                    <div class="border-left body-1 color-gray">
+                                        {!! nl2br($course->author->bio) !!}
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
+                        <h3 class="h6-headline mt-3">
+                            Spis treści
+                        </h3>
+                        <a name="toc"></a>
+
+                        <table class="table">
+                            <tbody>
+                            @foreach($course->lessons as $id => $lesson)
+                                <tr>
+                                    <th scope="col" style="width: 10%">
+                                        <span class="lesson">Lekcja {{ $id + 1 }}</span>
+                                    </th>
+                                    <td>{{ $lesson->title }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+
+
+                        <h3 class="h6-headline mt-3">
+                            Najczęściej zadawane pytania
+                        </h3>
+                        <a name="faq"></a>
+
+
+                    </div>
                 </div>
 
                 <div class="col-12 col-md-4 align-self-stretch">
@@ -167,9 +394,9 @@
                             </div>
                             <h3 class="subtitle-2 mt-3">Kup teraz i zgarnij losowy ebook gratis</h3>
                             <course-countdown
-                                    :timestamp="{{ \Carbon\Carbon::now()->addHours(2)->timestamp }}"></course-countdown>
+                                    :timestamp="{{ \Carbon\Carbon::now()->subHours(2)->timestamp }}"></course-countdown>
 
-                            <div class="row mt-3" style="width: 385px; margin: 0 auto;">
+                            <div class="row mt-3" style="max-width: 385px; margin: 0 auto;">
                                 <div class="col-6 blue-box body-2 p-1">
                                     <div class="bg-light-blue rounded p-1">
                                         Zaoszczędź dzięki promocji
@@ -255,7 +482,7 @@
 
                         <div class="d-flex border rounded p-3 justify-content-between">
                             <div>
-                                <span class="subtitle-2">Miesięczny dostęp</span> <br />
+                                <span class="subtitle-2">Miesięczny dostęp</span> <br/>
                                 <span class="caption">Wszystkie kursy w abonamencie</span>
                             </div>
                             <div>
@@ -277,7 +504,7 @@
 
                         <div class="d-flex border rounded p-3 justify-content-between mt-2">
                             <div>
-                                <span class="subtitle-2">Roczny dostęp</span> <br />
+                                <span class="subtitle-2">Roczny dostęp</span> <br/>
                                 <span class="caption">Pełny dostęp na 365 dni</span>
                             </div>
                             <div>

@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string|null   description
  * @property string|null   image
  * @property boolean       is_internal
+ * @property string|null   bio
  * @property Carbon        created_at
  * @property Carbon        updated_at
  *

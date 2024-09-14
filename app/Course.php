@@ -238,6 +238,11 @@ class Course extends Model implements OrderableContract, AccessableContract
         return $this->hasMany(Quiz::class);
     }
 
+    public function hasQuiz(): bool
+    {
+        return $this->quizzes()->count() > 0;
+    }
+
     /**
      * Certyfikat przypisany do tego kursu.
      */

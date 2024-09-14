@@ -5,4 +5,24 @@
         position: absolute;
         top: -10px;
     }
+
+    .course-nav {
+        &:hover {
+            color: $color-red;
+        }
+    }
+
+    .course-detail-box {
+        width: 100%;
+        min-height: 130px;
+        background-color: $color-white-faded;
+        text-align: center;
+    }
+
+    .lesson {
+        padding: 10px;
+        background-color: $color-white-faded;
+        color: $color-coral;
+        font-size: 12px;
+    }
 }

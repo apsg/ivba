@@ -69,10 +69,6 @@ class CoursesController extends Controller
         ];
     }
 
-    /**
-     * [show description].
-     * @return [type] [description]
-     */
     public function show(Course $course)
     {
         return view('pages.course')->with(compact('course'));
