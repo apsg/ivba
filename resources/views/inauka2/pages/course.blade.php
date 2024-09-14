@@ -225,25 +225,26 @@
 
                         <div class="p-3 bg-white-faded mb-3 rounded">
                             <div class="row">
-                            @foreach($course->things_arr as $thing)
-                                <div class="col-6 d-flex my-2">
-                                    <div class="align-self-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
-                                             viewBox="0 0 40 40">
-                                            <g id="Group_981" data-name="Group 981" transform="translate(-191 -252)">
-                                                <rect id="Rectangle_366" data-name="Rectangle 366" width="40"
-                                                      height="40" transform="translate(191 252)" fill="none"/>
-                                                <path id="Path_4140" data-name="Path 4140"
-                                                      d="M4.6,0,0,.017,4.041,10.11.085,20,4.7,19.983,8.656,10.11Z"
-                                                      transform="translate(206.672 262)" fill="#ff6841"/>
-                                            </g>
-                                        </svg>
+                                @foreach($course->things_arr as $thing)
+                                    <div class="col-6 d-flex my-2">
+                                        <div class="align-self-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                                 viewBox="0 0 40 40">
+                                                <g id="Group_981" data-name="Group 981"
+                                                   transform="translate(-191 -252)">
+                                                    <rect id="Rectangle_366" data-name="Rectangle 366" width="40"
+                                                          height="40" transform="translate(191 252)" fill="none"/>
+                                                    <path id="Path_4140" data-name="Path 4140"
+                                                          d="M4.6,0,0,.017,4.041,10.11.085,20,4.7,19.983,8.656,10.11Z"
+                                                          transform="translate(206.672 262)" fill="#ff6841"/>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                        <div class="subtitle-2" style="font-weight: 400;">
+                                            {{ $thing }}
+                                        </div>
                                     </div>
-                                    <div class="subtitle-2" style="font-weight: 400;">
-                                        {{ $thing }}
-                                    </div>
-                                </div>
-                            @endforeach
+                                @endforeach
                             </div>
                         </div>
 
@@ -407,12 +408,12 @@
                         </table>
 
 
-                        <h3 class="h6-headline mt-3">
+                        <h3 class="h6-headline my-3">
                             Najczęściej zadawane pytania
                         </h3>
                         <a name="faq"></a>
 
-
+                        <faq-accordion></faq-accordion>
                     </div>
                 </div>
 
@@ -558,7 +559,13 @@
                     </div>
                 </div>
             </div>
+
+            <h2 class="mb-3 mt-5 h2-headline">
+                To może cię zaciekawić:
+            </h2>
+
         </div>
+
     </section>
 
 @endsection

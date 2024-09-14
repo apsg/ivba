@@ -25,6 +25,7 @@ $font-roboto: "Roboto", sans-serif;
 @mixin h2-headline {
     font-family: $font-sora;
     font-size: 60px;
+    font-weight: 400;
 
     @media (max-width: $media-breakpoint-tablet) {
         font-size: 32px;
