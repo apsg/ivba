@@ -93,12 +93,12 @@
             {{-- k. Strony --}}
 
             {{-- Kursy --}}
-            <li class="treeview @if(request()->is('admin/courses*') || request()->is('admin/quizzes*') || request()->is('admin/certificates*') || request()->is('admin/tags*')) active @endif">
+            <li class="treeview @if(request()->is('admin/courses*') || request()->is('admin/quizzes*') || request()->is('admin/certificates*') || request()->is('admin/tags*') || request()->is('admin/authors*')) active @endif">
                 <a href="#">
                     <i class="fa fa-institution"></i> <span>Kursy</span>
                     <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                </span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
                 </a>
                 <ul class="treeview-menu">
                     <li class="@if(request()->is('admin/courses')) active @endif"><a
@@ -113,11 +113,12 @@
                     <li class="@if(request()->is('admin/tags')) active @endif"><a
                                 href="{{ url('admin/tags') }}"><i class="fa fa-tags"></i> Etykiety</a>
                     </li>
+                    <li class="@if(request()->is('admin/authors')) active @endif"><a
+                                href="{{ url('admin/authors') }}"><i class="fa fa-users"></i> Autorzy</a>
+                    </li>
                 </ul>
-
             </li>
             {{-- k. kursy --}}
-
 
             {{-- Lekcje --}}
             <li class="treeview @if(request()->is('admin/lesson*')) active @endif">

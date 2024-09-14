@@ -51,6 +51,8 @@ use Illuminate\Support\Str;
  * @property Carbon|null                       scheduled_at
  * @property boolean                           is_systematic
  * @property int|null                          group_id
+ * @property string|null                       topics
+ * @property string|null                       things
  *
  * @property-read Collection|Access[]          access
  * @property-read Certificate                  certificate
@@ -105,6 +107,8 @@ class Course extends Model implements OrderableContract, AccessableContract
         'scheduled_at',
         'is_systematic',
         'group_id',
+        'thigs',
+        'topics',
     ];
 
     protected $casts = [
@@ -230,9 +234,6 @@ class Course extends Model implements OrderableContract, AccessableContract
         return $this->hasMany(Rating::class);
     }
 
-    /**
-     * Testy przypisane do tego kursu.
-     */
     public function quizzes()
     {
         return $this->hasMany(Quiz::class);
@@ -243,25 +244,16 @@ class Course extends Model implements OrderableContract, AccessableContract
         return $this->quizzes()->count() > 0;
     }
 
-    /**
-     * Certyfikat przypisany do tego kursu.
-     */
     public function certificate()
     {
         return $this->hasOne(Certificate::class);
     }
 
-    /**
-     * Certyfikaty użytkowników, dla tego kursu.
-     */
     public function user_certificates()
     {
         return $this->hasMany(UserCertificate::class);
     }
 
-    /**
-     * Lista wszystkich dostępów dla tego elementu.
-     */
     public function access()
     {
         return $this->morphMany(Access::class, 'accessable');
@@ -660,5 +652,15 @@ class Course extends Model implements OrderableContract, AccessableContract
         }
 
         return number_format((($this->price - $this->price_full) * 100 / $this->price_full)) . '%';
+    }
+
+    public function getTopicsArrAttribute(): array
+    {
+        return explode(PHP_EOL, $this->topics);
+    }
+
+    public function getThingsArrAttribute(): array
+    {
+        return explode(PHP_EOL, $this->things);
     }
 }

@@ -175,6 +175,14 @@
                         </h5>
                         {!! $course->description !!}
 
+                        <div>
+                            @foreach($course->topics_arr as $topic)
+                                <span class="mx-1 p-1 px-3 rounded body-2 bg-white-faded color-gray">
+                                    {{ $topic }}
+                                </span>
+                            @endforeach
+                        </div>
+
                         <testimonials-carousel></testimonials-carousel>
 
 
@@ -214,6 +222,30 @@
                             Czego się dowiesz?
                         </h3>
                         <a name="about"></a>
+
+                        <div class="p-3 bg-white-faded mb-3 rounded">
+                            <div class="row">
+                            @foreach($course->things_arr as $thing)
+                                <div class="col-6 d-flex my-2">
+                                    <div class="align-self-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                             viewBox="0 0 40 40">
+                                            <g id="Group_981" data-name="Group 981" transform="translate(-191 -252)">
+                                                <rect id="Rectangle_366" data-name="Rectangle 366" width="40"
+                                                      height="40" transform="translate(191 252)" fill="none"/>
+                                                <path id="Path_4140" data-name="Path 4140"
+                                                      d="M4.6,0,0,.017,4.041,10.11.085,20,4.7,19.983,8.656,10.11Z"
+                                                      transform="translate(206.672 262)" fill="#ff6841"/>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="subtitle-2" style="font-weight: 400;">
+                                        {{ $thing }}
+                                    </div>
+                                </div>
+                            @endforeach
+                            </div>
+                        </div>
 
                         @if($course->hasQuiz())
                             <div class="p-3 rounded color-red d-flex justify-content-center"

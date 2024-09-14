@@ -19,6 +19,18 @@
                               placeholder="wpisz ...">{!! $course->description ?? "" !!}</textarea>
                 </div>
 
+                <div class="form-group">
+                    <label>Na kursie dowiesz się... (jeden element per linia)</label>
+                    <textarea name="things" class="w-100 form-control" rows="3"
+                              placeholder="wpisz ...">{!! $course->things ?? "" !!}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Tematy (tagi) (jeden element per linia)</label>
+                    <textarea name="topics" class="w-100 form-control" rows="3"
+                              placeholder="wpisz ...">{!! $course->topics ?? "" !!}</textarea>
+                </div>
+
 
                 <div class="form-group">
                     <label for="seo-titlePL">Tytuł SEO </label>
