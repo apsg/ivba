@@ -35,6 +35,10 @@ $color-gray: #161615cc;
     color: $color-red;
 }
 
+.border-color-red{
+    border-color: $color-red !important;
+}
+
 .color-graphite {
     color: $color-graphite;
 

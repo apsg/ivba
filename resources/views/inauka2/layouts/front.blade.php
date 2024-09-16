@@ -157,6 +157,7 @@
         crossorigin="anonymous"></script>
 <script src="{{ multisite_js() }}"></script>
 <script type="text/javascript" src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>
+<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 
 </body>
 </html>

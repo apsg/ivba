@@ -115,6 +115,12 @@ a {
 }
 
 .btn {
+
+    &-large {
+        font-size: 16px !important;
+        font-weight: 400;
+    }
+
     &-coral {
         @include font-button;
         background-color: $color-coral;
@@ -147,7 +153,7 @@ a {
         background-color: white;
         color: $color-red;
 
-        &:hover{
+        &:hover {
             color: darken($color-red, 10%);
         }
     }

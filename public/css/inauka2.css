@@ -147,6 +147,10 @@
   color: #FD5429;
 }
 
+.border-color-red {
+  border-color: #FD5429 !important;
+}
+
 .color-graphite {
   color: #161615;
 }
@@ -709,6 +713,10 @@ body {
   color: #FD5429;
 }
 
+.border-color-red {
+  border-color: #FD5429 !important;
+}
+
 .color-graphite {
   color: #161615;
 }
@@ -913,6 +921,11 @@ a:hover {
 .cta .cta_button {
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.btn-large {
+  font-size: 16px !important;
+  font-weight: 400;
 }
 
 .btn-coral,
