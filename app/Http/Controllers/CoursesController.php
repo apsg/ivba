@@ -17,7 +17,9 @@ class CoursesController extends Controller
 {
     public function index(Group $group = null)
     {
-        return view('pages.courses')->with(compact('group'));
+        $groups = Group::orderBy('order')->get();
+
+        return view('pages.courses')->with(compact('group', 'groups'));
     }
 
     public function list(CourseListRequest $request, AccessRepository $accessRepository)

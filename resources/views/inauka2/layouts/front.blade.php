@@ -41,6 +41,7 @@
 </svg>
 
 <div id="app">
+    <overlay :news="{{ json_encode($news) }}"></overlay>
     <header data-bs-theme="dark">
         <div class="">
             @include('layouts._cta')
@@ -54,6 +55,60 @@
                     </a>
 
                     <div class="d-flex align-items-center account-menu">
+
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
+                            <div>&nbsp;</div>
+                            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                                @foreach($menu as $item)
+                                    @if($item->url != '/buy_access'
+                                    || Auth::guest()
+                                    || !Auth::user()->hasFullAccess()
+                                    || !Auth::user()->hasActiveSubscription())
+                                        @if($item->isDropdown())
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                                   role="button"
+                                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                                    {{ $item->title }}
+                                                </a>
+                                                <ul class="dropdown-menu mb-3" aria-labelledby="navbarDropdown">
+                                                    @foreach($item->children as $child)
+                                                        <li>
+                                                            <a
+                                                                    class="dropdown-item"
+                                                                    href="{{ url($child->url) }}">                                                        {{ $child->title }}
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                        @else
+                                            <li class="nav-item">
+                                                <a
+                                                        class="nav-link" aria-current="page"
+                                                        href="{{ url($item->url) }}"
+                                                        @if($item->is_new_window) target="_blank" @endif
+
+                                                >
+                                                    {{ $item->title }}
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                @guest()
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}">Zaloguj</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <div class="d-flex align-items-center">
+                                            <i class="icon-arrow-right white mx-2 mx-md-0"></i>
+                                            <a class="nav-link" href="{{ route('register') }}">Zarejestruj</a>
+                                        </div>
+                                    </li>
+                                @endguest
+                            </ul>
+                        </div>
                         @auth
                             <div class="dropdown dropdown-account">
                                 <button class="btn btn-secondary dropdown-toggle" type="button"
@@ -61,8 +116,23 @@
                                         aria-expanded="false"
                                         style="max-width: 200px;"
                                 >
-                                    <img src="{{ url('/images/inauka2/account.svg') }}" height="40"/>
+                                    <img
+                                            style="border-radius: 50%"
+                                            src="{{ "https://www.gravatar.com/avatar/" . hash( "sha256", strtolower( trim( Auth::user()->email ) ) ) . "?d=" . urlencode( url('/images/inauka2/account.svg') ) . "&s=40" }}"/>
                                     {{ Auth::user()->name }}
+                                    @if(Auth::user()->points_total > 0)
+                                        <div class="points-nav px-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="10.667" height="14.278"
+                                                 viewBox="0 0 10.667 14.278">
+                                                <path id="Shape"
+                                                      d="M5.333,14.278A5.339,5.339,0,0,1,0,8.945,9.21,9.21,0,0,1,2.154,3.019l-.021.24a2.428,2.428,0,0,0,2.42,2.486A2.308,2.308,0,0,0,6.826,3.259c0-.542-1.348-1.2-2.538-1.773C3.291,1,2.428.582,2.491.31,2.539.1,3.151,0,4.364,0c.531,0,1.194.02,1.969.058a11.36,11.36,0,0,1,4.334,8.887A5.339,5.339,0,0,1,5.333,14.278ZM7.947,6.385a5.1,5.1,0,0,1-3.081,1.72,2.076,2.076,0,0,0-1.873,2.08A2.123,2.123,0,0,0,5.14,12.279a3.2,3.2,0,0,0,3.2-3.2A9.288,9.288,0,0,0,7.947,6.385Z"
+                                                      fill="#ff6841"/>
+                                            </svg>
+
+                                            {{ Auth::user()->points_total }}
+                                        </div>
+                                    @endif
+
                                     <img src="{{ url('/images/inauka2/down.svg') }}"/>
                                 </button>
                                 <ul class="dropdown-menu">
@@ -79,7 +149,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <a href="#" class="px-3">
+                            <a href="#" class="px-3" onclick="document.getElementById('overlay').classList.remove('hidden')">
                                 <img src="{{ url('/images/inauka2/bell.svg') }}"/>
                             </a>
                         @endauth
@@ -94,48 +164,6 @@
                                 <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
                             </svg>
                         </button>
-                    </div>
-
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <div>&nbsp;</div>
-                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Kursy</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Cennik
-                                </a>
-                                <ul class="dropdown-menu mb-3" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    O nas
-                                </a>
-                                <ul class="dropdown-menu mb-3" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li>
-                            @guest()
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">Zaloguj</a>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="d-flex align-items-center">
-                                        <i class="icon-arrow-right white mx-2 mx-md-0"></i>
-                                        <a class="nav-link" href="{{ route('register') }}">Zarejestruj</a>
-                                    </div>
-                                </li>
-                            @endguest
-                        </ul>
                     </div>
                 </div>
             </nav>

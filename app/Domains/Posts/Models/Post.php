@@ -22,6 +22,10 @@ class Post extends Model
 {
     protected $guarded = [];
 
+    protected $casts = [
+        'published_at' => 'datetime',
+    ];
+
     public function image(): BelongsTo
     {
         return $this->belongsTo(Image::class);

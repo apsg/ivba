@@ -32,10 +32,10 @@ import CloudflareVideo from "./components/Inauka2/CloudflareVideo.vue";
 import TestimonialsCarousel from "./components/Inauka2/TestimonialsCarousel.vue";
 import FaqAccordion from "./components/Inauka2/FaqAccordion.vue";
 import Courses from "./components/Inauka2/Courses.vue";
+import Overlay from "./components/Inauka2/Overlay.vue";
 
 Vue.use(VueFlashMessage);
 Vue.use(VTooltip);
-
 
 const app = new Vue({
     el: '#app',
@@ -48,6 +48,7 @@ const app = new Vue({
         'testimonials-carousel': TestimonialsCarousel,
         'faq-accordion': FaqAccordion,
         'courses': Courses,
+        'overlay': Overlay,
     }
 });
 

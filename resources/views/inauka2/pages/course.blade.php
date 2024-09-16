@@ -563,7 +563,11 @@
             <h2 class="mb-3 mt-5 h2-headline">
                 To może cię zaciekawić:
             </h2>
+            <courses></courses>
 
+            <div class="container mt-5">
+                @include('partials.moving_banner')
+            </div>
         </div>
 
     </section>

@@ -237,3 +237,10 @@ a {
     @include subtitle-2;
     text-decoration: solid 1px line-through;
 }
+
+.points-nav{
+    display: inline-block;
+    border-left: 1px solid #cacaca;
+    color: $color-gray;
+    font-size: 10px;
+}

@@ -1,10 +1,14 @@
 <?php
 namespace App\ViewComposers;
 
+use App\Domains\Posts\Models\Post;
+use App\Domains\Posts\Transformers\PostTransformer;
 use App\MenuItem;
 use App\Services\LastLessonService;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\View\View;
+use Spatie\Fractalistic\ArraySerializer;
 
 class FrontLayoutViewComposer
 {
@@ -18,6 +22,12 @@ class FrontLayoutViewComposer
                 ->get(Auth::user());
         }
 
-        $view->with(compact('menu', 'lastLesson'));
+        $posts = Post::where('published_at', '<', Carbon::now())->orderBy('published_at', 'desc')->get();
+        $news = fractal()->collection($posts)
+            ->transformWith(new PostTransformer())
+            ->serializeWith(new ArraySerializer())
+            ->toArray();
+
+        $view->with(compact('menu', 'lastLesson', 'news'));
     }
 }

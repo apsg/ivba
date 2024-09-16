@@ -1,4 +1,4 @@
-@extends('layouts.front2')
+@extends('layouts.front')
 
 @section('content')
     <!-- Start Cources Section -->
@@ -10,7 +10,7 @@
                 </div>
             </div>
 
-            <courses :group="{{ $group->id ?? 'null' }}"></courses>
+            <courses :groups="{{ $groups }}"></courses>
 
         </div>
 
