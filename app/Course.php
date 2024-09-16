@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use function Clue\StreamFilter\fun;
 
 /**
  * App\Course.
@@ -107,7 +108,7 @@ class Course extends Model implements OrderableContract, AccessableContract
         'scheduled_at',
         'is_systematic',
         'group_id',
-        'thigs',
+        'things',
         'topics',
     ];
 
@@ -625,6 +626,15 @@ class Course extends Model implements OrderableContract, AccessableContract
     public function scopeWithoutGroups(Builder $query): Builder
     {
         return $query->whereDoesntHave('groups');
+    }
+
+    public function scopeWithMeta(Builder $query): Builder
+    {
+        return $query->addSelect([
+            'lessons_count' => DB::table('course_lesson')
+                ->whereColumn('course_id', 'courses.id')
+                ->selectRaw('count(*)'),
+        ]);
     }
 
     public function getLabelAttribute()

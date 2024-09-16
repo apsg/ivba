@@ -31,6 +31,7 @@ import CourseCountdown from "./components/Inauka2/CourseCountdown.vue";
 import CloudflareVideo from "./components/Inauka2/CloudflareVideo.vue";
 import TestimonialsCarousel from "./components/Inauka2/TestimonialsCarousel.vue";
 import FaqAccordion from "./components/Inauka2/FaqAccordion.vue";
+import Courses from "./components/Inauka2/Courses.vue";
 
 Vue.use(VueFlashMessage);
 Vue.use(VTooltip);
@@ -46,6 +47,7 @@ const app = new Vue({
         'cloudflare-video': CloudflareVideo,
         'testimonials-carousel': TestimonialsCarousel,
         'faq-accordion': FaqAccordion,
+        'courses': Courses,
     }
 });
 

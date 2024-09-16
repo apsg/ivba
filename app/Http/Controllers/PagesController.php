@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Domains\Courses\Models\Group;
 use App\FullAccessOption;
 use App\Lesson;
 use App\Order;
@@ -38,8 +39,10 @@ class PagesController extends Controller
 
         $is_front = true;
 
+        $groups = Group::orderBy('order')->get();
+
         return view('welcome')
-            ->with(compact('courses', 'lessons', 'blog_items', 'is_front', 'access_options'));
+            ->with(compact('courses', 'lessons', 'blog_items', 'is_front', 'access_options', 'groups'));
     }
 
     public function continue(Request $request)
