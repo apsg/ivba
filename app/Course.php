@@ -2,6 +2,7 @@
 namespace App;
 
 use App\Domains\Admin\Helpers\SettingsHelper;
+use App\Domains\Courses\Models\Author;
 use App\Domains\Courses\Models\CourseLesson;
 use App\Domains\Courses\Models\Group;
 use App\Domains\Courses\Models\Tag;
@@ -31,6 +32,7 @@ use Illuminate\Support\Str;
  * @property int                               id
  * @property string                            slug
  * @property int                               user_id
+ * @property int|null                          author_id
  * @property string                            title
  * @property string                            description
  * @property float                             price
@@ -50,6 +52,8 @@ use Illuminate\Support\Str;
  * @property Carbon|null                       scheduled_at
  * @property boolean                           is_systematic
  * @property int|null                          group_id
+ * @property string|null                       topics
+ * @property string|null                       things
  *
  * @property-read Collection|Access[]          access
  * @property-read Certificate                  certificate
@@ -67,6 +71,7 @@ use Illuminate\Support\Str;
  * @property-read Collection|Quiz[]            quizzes
  * @property-read Collection|Rating[]          ratings
  * @property-read User                         user
+ * @property-read Author                       author
  * @property-read Collection|UserCertificate[] user_certificates
  * @property-read Collection|User[]            users
  * @property-read Video|null                   video
@@ -103,6 +108,9 @@ class Course extends Model implements OrderableContract, AccessableContract
         'scheduled_at',
         'is_systematic',
         'group_id',
+        'things',
+        'topics',
+        'author_id',
     ];
 
     protected $casts = [
@@ -151,6 +159,11 @@ class Course extends Model implements OrderableContract, AccessableContract
         return $this->belongsTo(User::class);
     }
 
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(Author::class);
+    }
+
     /**
      * Użytkownicy, którzy zapisali się na ten kurs.
      */
@@ -183,6 +196,11 @@ class Course extends Model implements OrderableContract, AccessableContract
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function visibleTags(): BelongsToMany
+    {
+        return $this->tags()->where('is_hidden', '!=', true);
     }
 
     public function visibleLessons(User $user = null)
@@ -218,33 +236,26 @@ class Course extends Model implements OrderableContract, AccessableContract
         return $this->hasMany(Rating::class);
     }
 
-    /**
-     * Testy przypisane do tego kursu.
-     */
     public function quizzes()
     {
         return $this->hasMany(Quiz::class);
     }
 
-    /**
-     * Certyfikat przypisany do tego kursu.
-     */
+    public function hasQuiz(): bool
+    {
+        return $this->quizzes()->count() > 0;
+    }
+
     public function certificate()
     {
         return $this->hasOne(Certificate::class);
     }
 
-    /**
-     * Certyfikaty użytkowników, dla tego kursu.
-     */
     public function user_certificates()
     {
         return $this->hasMany(UserCertificate::class);
     }
 
-    /**
-     * Lista wszystkich dostępów dla tego elementu.
-     */
     public function access()
     {
         return $this->morphMany(Access::class, 'accessable');
@@ -618,8 +629,49 @@ class Course extends Model implements OrderableContract, AccessableContract
         return $query->whereDoesntHave('groups');
     }
 
+    public function scopeWithMeta(Builder $query): Builder
+    {
+        return $query->addSelect([
+            'lessons_count' => DB::table('course_lesson')
+                ->whereColumn('course_id', 'courses.id')
+                ->selectRaw('count(*)'),
+        ]);
+    }
+
     public function getLabelAttribute()
     {
         return $this->title;
+    }
+
+    public function isDiscounted(): bool
+    {
+        if (empty($this->price_full)) {
+            return false;
+        }
+
+        if ($this->price_full < $this->price) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function discountPercentage(): string
+    {
+        if (!$this->isDiscounted()) {
+            return '';
+        }
+
+        return number_format((($this->price - $this->price_full) * 100 / $this->price_full)) . '%';
+    }
+
+    public function getTopicsArrAttribute(): array
+    {
+        return explode(PHP_EOL, $this->topics);
+    }
+
+    public function getThingsArrAttribute(): array
+    {
+        return explode(PHP_EOL, $this->things);
     }
 }

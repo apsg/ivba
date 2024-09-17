@@ -36,6 +36,7 @@ class CourseRequest extends FormRequest
             'image_id'          => 'exists:images,id',
             'slug'              => 'unique:courses,slug,' . ($this->route('course')->id ?? ''),
             'is_special_access' => 'boolean',
+            'author_id'         => 'nullable|exists:authors,id',
         ];
     }
 

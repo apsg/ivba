@@ -1,0 +1,246 @@
+$media-breakpoint-mobile: 640px;
+$media-breakpoint-tablet: 767px;
+$media-breakpoint-desktop: 1024px;
+$media-breakpoint-widescreen: 1200px;
+
+@import "inauka2/colors";
+@import "inauka2/typography";
+@import "inauka2/layout";
+@import '~material-icons/iconfont/material-icons.css';
+@import "inauka2/icons";
+@import "inauka2/courses";
+
+body {
+    @include body-1;
+    padding-top: 0;
+    background-color: $color-white-box;
+}
+
+a {
+    text-decoration: none;
+    color: $color-graphite;
+
+    &:hover {
+        color: lighten($color-graphite, 10%);
+    }
+}
+
+.inline {
+    display: inline-block;
+}
+
+.navbar {
+    font-family: $font-sora;
+    font-size: 20px;
+
+    .navbar-toggler {
+        border: 0px;
+
+        &:focus {
+            border: 0px;
+            box-shadow: none;
+        }
+    }
+
+    .navbar-collapse {
+        flex-grow: 0;
+    }
+
+    .account-menu {
+        flex-grow: 1;
+        justify-content: end;
+    }
+
+    .dropdown-account {
+
+        .dropdown-toggle {
+            @include subtitle-2;
+
+            background-color: $color-white;
+            color: $color-graphite;
+
+            &::after {
+                display: none;
+            }
+        }
+
+
+        .dropdown-menu {
+            background-color: $color-white;
+
+            .dropdown-item {
+                color: $color-graphite;
+
+                &:hover {
+                    background-color: $color-white-faded;
+                }
+            }
+        }
+    }
+}
+
+.bg-dark {
+    background-color: $color-graphite !important;
+}
+
+.btn-white {
+    background-color: $color-white;
+    color: $color-red;
+
+    &:hover {
+        color: $color-red-darker;
+    }
+}
+
+
+.cta {
+    display: flex;
+    width: 100%;
+
+    .cta-inner {
+        display: flex;
+        flex-direction: column;
+
+
+        @media (min-width: $media-breakpoint-tablet) {
+            flex-direction: row;
+            justify-content: center;
+        }
+    }
+
+    .cta_button {
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+}
+
+.btn {
+
+    &-large {
+        font-size: 16px !important;
+        font-weight: 400;
+    }
+
+    &-coral {
+        @include font-button;
+        background-color: $color-coral;
+        color: $color-white;
+
+        &:hover {
+            background-color: darken($color-coral, 5%);
+            color: $color-white;
+        }
+
+        &-lg {
+            @extend .btn-coral;
+            @media (min-width: $media-breakpoint-tablet) {
+                padding: 0.5rem 1rem;
+            }
+
+            @media (min-width: $media-breakpoint-desktop) {
+                padding: 1rem 1.5rem;
+            }
+        }
+    }
+
+    &-blue {
+        @include font-button;
+        background-color: $color-blue;
+        color: $color-white;
+    }
+
+    &-white {
+        background-color: white;
+        color: $color-red;
+
+        &:hover {
+            color: darken($color-red, 10%);
+        }
+    }
+}
+
+.img-arrow {
+    scale: 0.5;
+    position: absolute;
+    left: 0;
+    @media ($media-breakpoint-desktop) {
+        scale: 1;
+    }
+}
+
+.learn-online-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 0;
+
+    h2 {
+        @include h5-headline;
+
+        @media ($media-breakpoint-desktop) {
+            @include h4-headline;
+        }
+    }
+
+    p {
+        @include subtitle-2;
+
+        @media ($media-breakpoint-desktop) {
+            @include body-1;
+        }
+    }
+}
+
+.filter-item {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border: none;
+    border-bottom: 2px transparent solid; // prevent moving content on hover
+    text-wrap: nowrap;
+
+    &:hover {
+        border-bottom: 2px solid $color-coral;
+    }
+}
+
+.scroll-x {
+    overflow: hidden;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.course-item-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 104, 65, 0.2);
+    opacity: 100%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.course-tag {
+    @include subtitle-2;
+    background-color: rgba(22, 22, 21, 0.05);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: rgba(22, 22, 21, 0.6);
+}
+
+.text-price {
+    @include subtitle-2;
+    text-decoration: solid 1px line-through;
+}
+
+.points-nav{
+    display: inline-block;
+    border-left: 1px solid #cacaca;
+    color: $color-gray;
+    font-size: 10px;
+}

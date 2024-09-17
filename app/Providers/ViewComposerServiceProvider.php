@@ -31,6 +31,7 @@ class ViewComposerServiceProvider extends ServiceProvider
         }
 
         View::composer('layouts.front2', FrontLayoutViewComposer::class);
+        View::composer('layouts.front', FrontLayoutViewComposer::class);
     }
 
     /**

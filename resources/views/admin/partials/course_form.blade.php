@@ -19,6 +19,17 @@
                               placeholder="wpisz ...">{!! $course->description ?? "" !!}</textarea>
                 </div>
 
+                <div class="form-group">
+                    <label>Na kursie dowiesz się... (jeden element per linia)</label>
+                    <textarea name="things" class="w-100 form-control" rows="3"
+                              placeholder="wpisz ...">{!! $course->things ?? "" !!}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Tematy (tagi) (jeden element per linia)</label>
+                    <textarea name="topics" class="w-100 form-control" rows="3"
+                              placeholder="wpisz ...">{!! $course->topics ?? "" !!}</textarea>
+                </div>
 
                 <div class="form-group">
                     <label for="seo-titlePL">Tytuł SEO </label>
@@ -45,6 +56,27 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="row">
+                    @if(isset($authors))
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="price">Autor</label>
+                                <div class="input-group">
+                                    <select name="author_id" class="form-control">
+                                        <option value="">-- brak --</option>
+                                        @foreach($authors as $author)
+                                            <option value="{{ $author->id }}"
+                                                    @if($course !== null && $course->author_id == $author->id)
+                                                        selected
+                                                    @endif
+                                            >
+                                                {{ $author->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="price">Cena</label>
@@ -127,7 +159,7 @@
                                    class="checkbox"
                                    value="1"
                                    @if(!empty($course->is_special_access))
-                                   checked
+                                       checked
                                     @endif
                             >
                             Dostęp specjalny
@@ -157,7 +189,7 @@
                                    class="checkbox"
                                    value="1"
                                    @if(!empty($course->is_systematic))
-                                   checked
+                                       checked
                                     @endif
                             >
                             Kurs systematyczny

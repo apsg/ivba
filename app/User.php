@@ -5,6 +5,7 @@ use App\Domains\Posts\Models\PostDisplay;
 use App\Events\UserRegisteredEvent;
 use App\Notifications\PasswordReset;
 use App\Services\CourseProgressService;
+use App\Services\RankingService;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -67,6 +68,7 @@ use Illuminate\Notifications\Notifiable;
  * @property-read Collection|Payment[]      $payments
  * @property-read Collection|Access[]       $accesses
  * @property-read Collection|PostDisplay[]  $post_displays
+ * @property-read int                       $points_total
  * @method static Builder|User followups()
  * @method static Builder|User expired()
  */
@@ -695,5 +697,13 @@ class User extends Authenticatable
         }
 
         return app(CourseProgressService::class)->progress($this, $course);
+    }
+
+    public function getPointsTotalAttribute()
+    {
+        /** @var RankingService $service */
+        $service = app(RankingService::class);
+
+        return $service->getUserPoints($this);
     }
 }

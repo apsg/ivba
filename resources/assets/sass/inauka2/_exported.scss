@@ -1,0 +1,8601 @@
+
+/* MEDIA QUERIES */
+.anima-desktop-only {
+    @media (max-width: 768px) {
+        display: none !important;
+    }
+}
+
+/* SCROLLBAR */
+
+[dark-scroll]::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+[dark-scroll]::-webkit-scrollbar-track-piece {
+    background-color: #2b2b2b;
+    border: 1px solid #1d1d1d;
+}
+
+[dark-scroll]::-webkit-scrollbar-thumb {
+    height: 10px;
+    background-color: #4d4d4d;
+}
+
+[dark-scroll]::-webkit-scrollbar-thumb:hover {
+    background-color: #5a5a5a;
+}
+
+/* LOAD PROGRESS */
+
+.turbolinks-progress-bar {
+    height: 3px;
+    background-color: #ff6250;
+}
+
+/* GROUPING */
+
+[data-id].ui-selecting {
+    box-shadow: inset 0 0 0 1px #4285f4 !important;
+}
+
+[data-id].ui-selected {
+    box-shadow: inset 0 0 0 1px #4285f4 !important;
+}
+
+/* CURSOR */
+
+body[mode='comments'] * {
+    cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00LjkxNjQ4IDIzLjQxMDlDNS40OTE1MyAyMi45ODg3IDUuOTMxNzkgMjIuMzkzNSA2LjIzMjggMjEuNjQwN0M0Ljc5MDY5IDE5LjczODMgNCAxNy4zOTMzIDQgMTQuOTk3NUM0IDguOTM0MSA4LjkzMjgyIDQgMTUuMDAyMiA0QzIxLjA3MTcgNCAyNiA4LjkzOTE5IDI2IDE1LjAwMjVDMjYgMjEuMDY1OSAyMS4wNjcyIDI2IDE0Ljk5NzggMjZDMTIuOTg5NiAyNiAxMS4wMzUzIDI1LjQ1NTcgOS4zMjM2NyAyNC40MjMxQzguNDI5NjUgMjQuOTU3MiA3LjQxNDM0IDI1LjIyNjggNi4zMDAxOCAyNS4yMjY4QzUuOTU0MjYgMjUuMjI2OCA1LjU5OTM1IDI1LjIwMTQgNS4yNTM0MiAyNS4xNDU0QzQuOTAzIDI1LjA4OTUgNC42Mjg5NiAyNC44MDQ2IDQuNTUyNTggMjQuNDE4QzQuNDc2MjEgMjQuMDI2NCA0LjYxOTk3IDIzLjYyOTYgNC45MTY0OCAyMy40MTA5WiIgZmlsbD0iI0ZGNjI1MCIvPgo8L3N2Zz4K') 0 24,
+    auto !important;
+}
+
+body[mode='code'] [data-id]:not(.hidden) {
+    cursor: default;
+}
+
+/* default node state */
+
+body[mode='code'] [data-id]:not(.hidden), body[mode='comments'] [data-id]:not(.hidden) {
+    pointer-events: all;
+}
+
+/* is_image */
+
+body[mode='code'] [data-id].is_image [data-id], body[mode='comments'] [data-id].is_image [data-id] {
+    pointer-events: none !important;
+}
+
+/* without a data-id or ignored */
+
+[data-id].ignore, body[mode='code'] *:not([data-id]) {
+    pointer-events: none !important;
+}
+
+/* disable transforms for ignored elements */
+
+
+body[mode='code'] [data-id]:hover {
+    transform: none !important;
+}
+
+/* ANIMA BUTTONS */
+.an-button {
+    position: relative;
+    height: 28px;
+    padding: 0 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    transition-property: all;
+    transition-duration: 100ms;
+    appearance: none;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+    border-width: 0;
+}
+
+.an-button > div {
+    width: 100%;
+}
+
+.an-button.primary {
+    background: #ff6250;
+    color: #ffffff;
+}
+
+.an-button.primary:hover:not(:disabled) {
+    background: #e2412e;
+}
+
+.an-button.secondary {
+    background: transparent;
+    border: 1px solid #ff6250;
+    color: #ff6250;
+}
+
+.an-button.secondary:hover:not(:disabled) {
+    color: #ffffff;
+    background: #ff6250;
+}
+
+.an-button.rounded {
+    border-radius: 100px;
+}
+
+.an-button:disabled {
+    opacity: 0.5;
+}
+
+.an-button:disabled {
+    cursor: default;
+}
+
+.an-button:active,
+.an-button:focus {
+    outline: none;
+}
+
+.screen textarea:focus,
+.screen input:focus {
+    outline: none;
+}
+
+.screen * {
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+
+.screen div {
+    -webkit-text-size-adjust: none;
+}
+
+.component-wrapper a {
+    display: contents;
+    pointer-events: auto;
+    text-decoration: none;
+}
+
+.component-wrapper * {
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.component-wrapper a *,
+.component-wrapper input,
+.component-wrapper video,
+.component-wrapper iframe {
+    pointer-events: auto;
+}
+
+.component-wrapper.not-ready,
+.component-wrapper.not-ready * {
+    visibility: hidden !important;
+}
+
+.screen a {
+    display: contents;
+    text-decoration: none;
+}
+
+.full-width-a {
+    width: 100%;
+}
+
+.full-height-a {
+    height: 100%;
+}
+
+.container-center-vertical {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    pointer-events: none;
+}
+
+.container-center-vertical > * {
+    flex-shrink: 0;
+    pointer-events: auto;
+}
+
+.container-center-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    pointer-events: none;
+    width: 100%;
+}
+
+.container-center-horizontal > * {
+    flex-shrink: 0;
+    pointer-events: auto;
+}
+
+.auto-animated div {
+    --z-index: -1;
+    opacity: 0;
+    position: absolute;
+}
+
+.auto-animated input {
+    --z-index: -1;
+    opacity: 0;
+    position: absolute;
+}
+
+.auto-animated .container-center-vertical,
+.auto-animated .container-center-horizontal {
+    opacity: 1;
+}
+
+.overlay-base {
+    display: none;
+    height: 100%;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.overlay-base.animate-appear {
+    align-items: center;
+    animation: reveal 0.3s ease-in-out 1 normal forwards;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+}
+
+.overlay-base.animate-disappear {
+    animation: reveal 0.3s ease-in-out 1 reverse forwards;
+    display: block;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.overlay-base.animate-disappear * {
+    pointer-events: none;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+.animate-nodelay {
+    animation-delay: 0s;
+}
+
+.align-self-flex-start {
+    align-self: flex-start;
+}
+
+.align-self-flex-end {
+    align-self: flex-end;
+}
+
+.align-self-flex-center {
+    align-self: flex-center;
+}
+
+.valign-text-middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.valign-text-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+input:focus {
+    outline: none;
+}
+
+.listeners-active,
+.listeners-active * {
+    pointer-events: auto;
+}
+
+.hidden,
+.hidden * {
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.smart-layers-pointers,
+.smart-layers-pointers * {
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.listeners-active-click,
+.listeners-active-click * {
+    cursor: pointer;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --cta-czerwie: #fd5429;
+    --grafit: #161615;
+    --hunter-green: #16161599;
+    --hunter-green-2: #161615cc;
+    --hunter-green-3: #161615b3;
+    --hunter-green-4: #1616150f;
+    --koralowy-pomaracz: #ff6841;
+    --niebiski-cta-kursy: #1f94f8;
+    --nieny-biay: #ffffff;
+    --outrageous-orange: #fd6d47;
+    --pojemnikowy-biay: #f7f7f7;
+    --smashed-pumpkin: #ff68410a;
+    --white: #ffffffcc;
+    --wygaszone-to: #fafafa;
+
+    --font-size-l: 16px;
+    --font-size-m: 14px;
+    --font-size-s: 12px;
+    --font-size-xl: 18px;
+    --font-size-xxl: 20px;
+    --font-size-xxxl: 28px;
+    --font-size-xxxxl: 40px;
+
+    --font-family-roboto: "Roboto", Helvetica;
+    --font-family-roboto-medium-medium: "Roboto-Medium-Medium", Helvetica;
+    --font-family-roboto-regular-regular: "Roboto-Regular-Regular", Helvetica;
+    --font-family-sora: "Sora", Helvetica;
+}
+
+.h3-sora-mobile--28pt {
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-xxxl);
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0px;
+}
+
+.h5-sora-mobile--20pt {
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-xxl);
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0px;
+}
+
+.subtitle-1-sora-mobile--16pt {
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-l);
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0px;
+}
+
+.roboto-medium-hunter-green-12px {
+    color: var(--grafit);
+    font-family: var(--font-family-roboto);
+    font-size: var(--font-size-s);
+    font-style: normal;
+    font-weight: 500;
+}
+
+.sora-semi-bold-hunter-green-14px {
+    color: var(--grafit);
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-m);
+    font-style: normal;
+    font-weight: 600;
+}
+
+.roboto-regular-regular-normal-white-12px {
+    color: var(--nieny-biay);
+    font-family: var(--font-family-roboto-regular-regular);
+    font-size: var(--font-size-s);
+    font-style: normal;
+    font-weight: 400;
+}
+
+.sora-semi-bold-white-14px {
+    color: var(--nieny-biay);
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-m);
+    font-style: normal;
+    font-weight: 600;
+}
+
+.roboto-regular-regular-normal-hunter-green-12px {
+    color: var(--grafit);
+    font-family: var(--font-family-roboto-regular-regular);
+    font-size: var(--font-size-s);
+    font-style: normal;
+    font-weight: 400;
+}
+
+.roboto-regular-regular-normal-hunter-green-14px {
+    color: var(--hunter-green-2);
+    font-family: var(--font-family-roboto-regular-regular);
+    font-size: var(--font-size-m);
+    font-style: normal;
+    font-weight: 400;
+}
+
+.sora-normal-smashed-pumpkin-24px {
+    color: var(--koralowy-pomaracz);
+    font-family: var(--font-family-sora);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.roboto-regular-regular-normal-hunter-green-12px-2 {
+    color: var(--hunter-green-3);
+    font-family: var(--font-family-roboto-regular-regular);
+    font-size: var(--font-size-s);
+    font-style: normal;
+    font-weight: 400;
+}
+
+.sora-semi-bold-white-14px-2 {
+    color: var(--white);
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-m);
+    font-style: normal;
+    font-weight: 600;
+}
+
+.sora-semi-bold-hunter-green-18px {
+    color: var(--grafit);
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-xl);
+    font-style: normal;
+    font-weight: 600;
+}
+
+.roboto-medium-medium-hunter-green-10px {
+    color: var(--grafit);
+    font-family: var(--font-family-roboto-medium-medium);
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.sora-normal-hunter-green-40px {
+    color: var(--grafit);
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-xxxxl);
+    font-style: normal;
+    font-weight: 400;
+}
+
+.roboto-medium-medium-smashed-pumpkin-10px {
+    color: var(--koralowy-pomaracz);
+    font-family: var(--font-family-roboto-medium-medium);
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.sora-normal-hunter-green-18px {
+    color: var(--grafit);
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-xl);
+    font-style: normal;
+    font-weight: 400;
+}
+
+.sora-semi-bold-flamingo-14px {
+    color: var(--cta-czerwie);
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-m);
+    font-style: normal;
+    font-weight: 600;
+}
+
+.sora-normal-white-40px {
+    color: var(--nieny-biay);
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-xxxxl);
+    font-style: normal;
+    font-weight: 400;
+}
+
+:root {
+}
+
+
+/* screen - mobile-inauka-pl-start */
+
+.mobile-inauka-pl-start {
+    background-color: var(--wygaszone-to);
+    height: 10944px;
+    overflow: hidden;
+    overflow-x: hidden;
+    position: relative;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .rectangle-676-GO8GT3 {
+    background-color: var(--grafit);
+    height: 625px;
+    left: 0px;
+    position: absolute;
+    top: 200px;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .scroll-group-10-GO8GT3::-webkit-scrollbar {
+    display: none;
+    width: 0;
+}
+
+.mobile-inauka-pl-start .scroll-group-10-GO8GT3 {
+    background-color: transparent;
+    height: 626px;
+    left: 0px;
+    mix-blend-mode: normal;
+    overflow-x: scroll;
+    position: absolute;
+    top: 199px;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .mobile-slider-gwny-C6hTLR {
+    height: 591px;
+    left: 2px;
+}
+
+.mobile-inauka-pl-start .group-864-kqjB1K {
+    height: 283px;
+}
+
+.mobile-inauka-pl-start .wyprbuj-za-darmo-FEOXy5 {
+    background-color: transparent;
+    color: var(--nieny-biay);
+    font-style: normal;
+    font-weight: 400;
+    height: 37px;
+    left: 0px;
+    line-height: 28px;
+    position: absolute;
+    text-align: left;
+    top: 0px;
+    width: calc(100.00% + 2px);
+}
+
+.mobile-inauka-pl-start .przetestuj-nasz-plat-FEOXy5 {
+    background-color: transparent;
+    height: 66px;
+    left: 0px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    position: absolute;
+    text-align: left;
+    top: calc(20.51% - 14px);
+    width: calc(100.00% - 8px);
+}
+
+.mobile-inauka-pl-start .mobile-cta-gwne-FEOXy5 {
+    bottom: calc(36.53% - 23px);
+    left: 0px;
+    width: 218px;
+}
+
+.mobile-inauka-pl-start .rectangle-368-4lU77x {
+    background-color: var(--cta-czerwie);
+}
+
+.mobile-inauka-pl-start .group-563-4lU77x {
+    height: calc(100.00% - 24px);
+    top: 12px;
+    width: calc(100.00% - 34px);
+}
+
+.mobile-inauka-pl-start .button-99ESiH {
+    bottom: calc(45.00% - 9px);
+    height: 20px;
+    letter-spacing: 1.35px;
+    line-height: 22px;
+    width: 146px;
+}
+
+.mobile-inauka-pl-start .path-4140-1u6WNw {
+    right: calc(50.00% - 4px);
+}
+
+.mobile-inauka-pl-start .group-856-c8XZgj {
+    left: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-664-couEQW {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-861-c8XZgj {
+    left: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .group-857-c8XZgj {
+    left: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-666-HqLTDl {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-858-c8XZgj {
+    right: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-667-xw6465 {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-859-c8XZgj {
+    right: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-668-0HDub5 {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-860-c8XZgj {
+    right: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-669-Cedc3U {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .kobieta-szablon-4KfJTA {
+    background-color: transparent;
+    border-radius: 10px;
+    height: 217px;
+    left: 14px;
+    object-fit: cover;
+    position: absolute;
+    top: 21px;
+    width: calc(100.00% - 28px);
+}
+
+.mobile-inauka-pl-start .mobile-slider-gwny-OC3Uij {
+    height: 626px;
+    left: -428px;
+}
+
+.mobile-inauka-pl-start .group-864-eD4T6B {
+    height: 318px;
+}
+
+.mobile-inauka-pl-start .zdobd-wiedz-ktr-potrzebujesz-6WOcpH {
+    background-color: transparent;
+    color: var(--nieny-biay);
+    font-style: normal;
+    font-weight: 400;
+    height: 72px;
+    left: 0px;
+    line-height: 28px;
+    position: absolute;
+    text-align: left;
+    top: 0px;
+    width: calc(100.00% + 2px);
+}
+
+.mobile-inauka-pl-start .przegldaj-setki-lekc-6WOcpH {
+    background-color: transparent;
+    height: 66px;
+    left: 0px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    position: absolute;
+    text-align: left;
+    top: calc(31.55% - 21px);
+    width: calc(100.00% - 8px);
+}
+
+.mobile-inauka-pl-start .mobile-cta-gwne-6WOcpH {
+    bottom: calc(31.50% - 20px);
+    left: 0px;
+    width: 183px;
+}
+
+.mobile-inauka-pl-start .rectangle-368-UgSlon {
+    background-color: var(--cta-czerwie);
+}
+
+.mobile-inauka-pl-start .group-563-UgSlon {
+    height: calc(100.00% - 24px);
+    top: 12px;
+    width: calc(100.00% - 34px);
+}
+
+.mobile-inauka-pl-start .button-M5cxfI {
+    bottom: calc(45.00% - 9px);
+    height: 20px;
+    letter-spacing: 1.35px;
+    line-height: 22px;
+    width: 111px;
+}
+
+.mobile-inauka-pl-start .path-4140-dR08Ek {
+    right: calc(50.00% - 4px);
+}
+
+.mobile-inauka-pl-start .group-861-sRheNo {
+    left: 0px;
+}
+
+.mobile-inauka-pl-start .group-856-sRheNo {
+    left: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-664-DkOcHy {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-857-sRheNo {
+    left: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-666-2JW4jZ {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-858-sRheNo {
+    right: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-667-Hmbjf9 {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-859-sRheNo {
+    right: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-668-LIVK01 {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-860-sRheNo {
+    right: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-669-yyL19v {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .banner2_inauka-ckr0fw {
+    background-color: transparent;
+    border-radius: 10px;
+    height: 217px;
+    left: 14px;
+    object-fit: cover;
+    position: absolute;
+    top: 21px;
+    width: calc(100.00% - 28px);
+}
+
+.mobile-inauka-pl-start .mobile-slider-gwny-hPs16j {
+    height: 591px;
+    left: 432px;
+}
+
+.mobile-inauka-pl-start .group-864-FiCGVW {
+    height: 283px;
+}
+
+.mobile-inauka-pl-start .x27000-uytkownikw-w6evOv {
+    background-color: transparent;
+    color: var(--nieny-biay);
+    font-style: normal;
+    font-weight: 400;
+    height: 37px;
+    left: 0px;
+    line-height: 28px;
+    position: absolute;
+    text-align: left;
+    top: 0px;
+    width: calc(100.00% + 2px);
+}
+
+.mobile-inauka-pl-start .ju-ponad-27000-osb-k-w6evOv {
+    background-color: transparent;
+    height: 66px;
+    left: 0px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    position: absolute;
+    text-align: left;
+    top: calc(20.51% - 14px);
+    width: calc(100.00% - 8px);
+}
+
+.mobile-inauka-pl-start .mobile-cta-gwne-w6evOv {
+    bottom: calc(36.53% - 23px);
+    left: 0px;
+    width: 221px;
+}
+
+.mobile-inauka-pl-start .rectangle-368-jvr7Fx {
+    background-color: var(--cta-czerwie);
+}
+
+.mobile-inauka-pl-start .group-563-jvr7Fx {
+    height: calc(100.00% - 24px);
+    top: 12px;
+    width: calc(100.00% - 34px);
+}
+
+.mobile-inauka-pl-start .button-ZllGsB {
+    bottom: calc(45.00% - 9px);
+    height: 20px;
+    letter-spacing: 1.35px;
+    line-height: 22px;
+    width: 149px;
+}
+
+.mobile-inauka-pl-start .path-4140-U2pVCx {
+    right: calc(50.00% - 4px);
+}
+
+.mobile-inauka-pl-start .group-856-BYaazd {
+    left: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-664-aHi8JO {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-857-BYaazd {
+    left: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-666-MtgMEY {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-861-BYaazd {
+    left: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .group-858-BYaazd {
+    right: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-667-gx3CKn {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-859-BYaazd {
+    right: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-668-J0Wh7z {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-860-BYaazd {
+    right: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-669-xv8Pao {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .banner3_inauka-rb421l {
+    background-color: transparent;
+    border-radius: 10px;
+    height: 217px;
+    left: 14px;
+    object-fit: cover;
+    position: absolute;
+    top: 21px;
+    width: calc(100.00% - 28px);
+}
+
+.mobile-inauka-pl-start .mobile-slider-gwny-8NNxCr {
+    height: 591px;
+    left: 862px;
+}
+
+.mobile-inauka-pl-start .group-864-07HRnD {
+    height: 283px;
+}
+
+.mobile-inauka-pl-start .nowe-materiay-co-miesic-ixS7XJ {
+    background-color: transparent;
+    color: var(--nieny-biay);
+    font-style: normal;
+    font-weight: 400;
+    height: 37px;
+    left: 0px;
+    line-height: 28px;
+    position: absolute;
+    text-align: left;
+    top: 0px;
+    width: calc(100.00% + 2px);
+}
+
+.mobile-inauka-pl-start .kadego-miesica-dodaj-ixS7XJ {
+    background-color: transparent;
+    height: 66px;
+    left: 0px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    position: absolute;
+    text-align: left;
+    top: calc(20.51% - 14px);
+    width: calc(100.00% - 8px);
+}
+
+.mobile-inauka-pl-start .mobile-cta-gwne-ixS7XJ {
+    bottom: calc(36.53% - 23px);
+    left: 0px;
+    width: 183px;
+}
+
+.mobile-inauka-pl-start .rectangle-368-5aXAxA {
+    background-color: var(--cta-czerwie);
+}
+
+.mobile-inauka-pl-start .group-563-5aXAxA {
+    height: calc(100.00% - 24px);
+    top: 12px;
+    width: calc(100.00% - 34px);
+}
+
+.mobile-inauka-pl-start .button-lH8xRm {
+    bottom: calc(45.00% - 9px);
+    height: 20px;
+    letter-spacing: 1.35px;
+    line-height: 22px;
+    width: 111px;
+}
+
+.mobile-inauka-pl-start .path-4140-so1Ojo {
+    right: calc(50.00% - 4px);
+}
+
+.mobile-inauka-pl-start .group-856-WPnaE3 {
+    left: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-664-YYcC5z {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-857-WPnaE3 {
+    left: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-666-Rtqamx {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-858-WPnaE3 {
+    left: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-667-0iZNNj {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-861-WPnaE3 {
+    right: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .group-859-WPnaE3 {
+    right: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-668-IyEPFk {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-860-WPnaE3 {
+    right: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-669-Vi55fH {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .banner4_inauka-mbSRei {
+    background-color: transparent;
+    border-radius: 10px;
+    height: 217px;
+    left: 14px;
+    object-fit: cover;
+    position: absolute;
+    top: 21px;
+    width: calc(100.00% - 28px);
+}
+
+.mobile-inauka-pl-start .mobile-slider-gwny-FZKBNC {
+    height: 591px;
+    left: 1292px;
+}
+
+.mobile-inauka-pl-start .group-864-P4pVc9 {
+    height: 283px;
+}
+
+.mobile-inauka-pl-start .zdobd-certyfikat-rxpkRi {
+    background-color: transparent;
+    color: var(--nieny-biay);
+    font-style: normal;
+    font-weight: 400;
+    height: 37px;
+    left: 0px;
+    line-height: 28px;
+    position: absolute;
+    text-align: left;
+    top: 0px;
+    width: calc(100.00% + 2px);
+}
+
+.mobile-inauka-pl-start .ukocz-kurs-na-i-nauk-rxpkRi {
+    background-color: transparent;
+    height: 66px;
+    left: 0px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    position: absolute;
+    text-align: left;
+    top: calc(20.51% - 14px);
+    width: calc(100.00% - 8px);
+}
+
+.mobile-inauka-pl-start .mobile-cta-gwne-rxpkRi {
+    bottom: calc(36.53% - 23px);
+    left: 0px;
+    width: 218px;
+}
+
+.mobile-inauka-pl-start .rectangle-368-mUOxBy {
+    background-color: var(--cta-czerwie);
+}
+
+.mobile-inauka-pl-start .group-563-mUOxBy {
+    height: calc(100.00% - 24px);
+    top: 12px;
+    width: calc(100.00% - 34px);
+}
+
+.mobile-inauka-pl-start .button-ToWDSd {
+    bottom: calc(45.00% - 9px);
+    height: 20px;
+    letter-spacing: 1.35px;
+    line-height: 22px;
+    width: 146px;
+}
+
+.mobile-inauka-pl-start .path-4140-u1MKNz {
+    right: calc(50.00% - 4px);
+}
+
+.mobile-inauka-pl-start .group-856-R8p3xs {
+    left: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-664-XkVNmN {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-857-R8p3xs {
+    left: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-666-AWZDOJ {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-858-R8p3xs {
+    left: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-667-Ax78ki {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-859-R8p3xs {
+    right: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-668-MgxCS9 {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-861-R8p3xs {
+    right: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .group-860-R8p3xs {
+    right: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-669-ktqvYk {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .banner5_inauka-Y3APVt {
+    background-color: transparent;
+    border-radius: 10px;
+    height: 217px;
+    left: 14px;
+    object-fit: cover;
+    position: absolute;
+    top: 21px;
+    width: calc(100.00% - 28px);
+}
+
+.mobile-inauka-pl-start .mobile-slider-gwny-D8OaW9 {
+    height: 614px;
+    left: 1722px;
+}
+
+.mobile-inauka-pl-start .group-864-9xxG2T {
+    height: 306px;
+}
+
+.mobile-inauka-pl-start .planuj-swoj-karier-mr2Qe8 {
+    background-color: transparent;
+    color: var(--nieny-biay);
+    font-style: normal;
+    font-weight: 400;
+    height: 37px;
+    left: 0px;
+    line-height: 28px;
+    position: absolute;
+    text-align: left;
+    top: 0px;
+    width: calc(100.00% + 2px);
+}
+
+.mobile-inauka-pl-start .wybierz-ciek-rozwoju-mr2Qe8 {
+    background-color: transparent;
+    height: 89px;
+    left: 0px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    position: absolute;
+    text-align: left;
+    top: calc(20.51% - 18px);
+    width: calc(100.00% - 8px);
+}
+
+.mobile-inauka-pl-start .mobile-cta-gwne-mr2Qe8 {
+    bottom: calc(33.06% - 21px);
+    left: 0px;
+    width: 218px;
+}
+
+.mobile-inauka-pl-start .rectangle-368-r3umIQ {
+    background-color: var(--cta-czerwie);
+}
+
+.mobile-inauka-pl-start .group-563-r3umIQ {
+    height: calc(100.00% - 24px);
+    top: 12px;
+    width: calc(100.00% - 34px);
+}
+
+.mobile-inauka-pl-start .button-dx72PY {
+    bottom: calc(45.00% - 9px);
+    height: 20px;
+    letter-spacing: 1.35px;
+    line-height: 22px;
+    width: 146px;
+}
+
+.mobile-inauka-pl-start .path-4140-Id4uLv {
+    right: calc(50.00% - 4px);
+}
+
+.mobile-inauka-pl-start .group-856-JNRW49 {
+    left: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-664-PsWxtO {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-857-JNRW49 {
+    left: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-666-D0gEv3 {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-858-JNRW49 {
+    left: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-667-tNDHPB {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-859-JNRW49 {
+    right: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-668-eIMLvx {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-860-JNRW49 {
+    right: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-669-qUxxUM {
+    background-color: var(--pojemnikowy-biay);
+}
+
+.mobile-inauka-pl-start .group-861-JNRW49 {
+    right: 0px;
+}
+
+.mobile-inauka-pl-start .banner6_inauka-iHmZRC {
+    background-color: transparent;
+    border-radius: 10px;
+    height: 217px;
+    left: 14px;
+    object-fit: cover;
+    position: absolute;
+    top: 21px;
+    width: calc(100.00% - 28px);
+}
+
+.mobile-inauka-pl-start .belka-GO8GT3 {
+    background-color: transparent;
+    height: 120px;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .rectangle-677-GO8GT3 {
+    background-color: var(--nieny-biay);
+    height: 517px;
+    left: 0px;
+    position: absolute;
+    top: 825px;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-GO8GT3 {
+    color: var(--nieny-biay);
+    font-family: var(--font-family-roboto-regular-regular);
+    font-size: var(--font-size-m);
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 19px;
+    letter-spacing: 0.39px;
+    line-height: 28px;
+    text-align: left;
+    top: 10px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-OznX2W {
+    color: var(--nieny-biay);
+    font-family: var(--font-family-roboto-regular-regular);
+    font-size: var(--font-size-m);
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 19px;
+    letter-spacing: 0.39px;
+    line-height: 28px;
+    text-align: left;
+    top: 82px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .mobile-cta-drugie-GO8GT3 {
+    left: 19px;
+    top: 41px;
+    width: 276px;
+}
+
+.mobile-inauka-pl-start .path-4439-a6udIw {
+    left: 0px;
+}
+
+.mobile-inauka-pl-start .group-563-a6udIw {
+    height: 100%;
+    top: 0px;
+    width: calc(100.00% - 34px);
+}
+
+.mobile-inauka-pl-start .button-xl7Z6g {
+    bottom: calc(45.00% - 9px);
+    height: 20px;
+    letter-spacing: 1.35px;
+    line-height: 22px;
+    width: 204px;
+}
+
+.mobile-inauka-pl-start .path-4140-uWNob7 {
+    right: calc(50.00% - 4px);
+}
+
+.mobile-inauka-pl-start .anuluj-bonus-belka-GO8GT3 {
+    background-color: transparent;
+    height: 40px;
+    left: 368px;
+    position: absolute;
+    top: 44px;
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .close_24dp_5-f6368_f-TTjrAw {
+    background-color: transparent;
+    height: calc(100.00% - 16px);
+    left: 8px;
+    object-fit: cover;
+    position: absolute;
+    top: 8px;
+    width: calc(100.00% - 16px);
+}
+
+.mobile-inauka-pl-start .mobile-menu-GO8GT3 {
+    background-color: transparent;
+    height: 80px;
+    left: 0px;
+    position: absolute;
+    top: 120px;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .path-4438-kIgnlC {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-825-kIgnlC {
+    background-color: transparent;
+    bottom: calc(50.00% - 21px);
+    height: 42px;
+    left: 20px;
+    position: absolute;
+    width: 151px;
+}
+
+.mobile-inauka-pl-start .path-4141-mxiCto {
+    background-color: transparent;
+    height: 9px;
+    left: 9px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 20px;
+}
+
+.mobile-inauka-pl-start .path-4142-mxiCto {
+    background-color: transparent;
+    height: calc(100.00% - 5px);
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 5px;
+    width: 38px;
+}
+
+.mobile-inauka-pl-start .path-4143-mxiCto {
+    background-color: transparent;
+    bottom: calc(34.19% - 4px);
+    height: 11px;
+    left: 15px;
+    object-fit: cover;
+    position: absolute;
+    width: 9px;
+}
+
+.mobile-inauka-pl-start .group-565-mxiCto {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-564-ebQWxW {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-826-kIgnlC {
+    background-color: transparent;
+    height: calc(100.00% - 20px);
+    position: absolute;
+    right: calc(36.52% - 31px);
+    top: 10px;
+    width: 85px;
+}
+
+.mobile-inauka-pl-start .headline-5-xe8x80 {
+    color: var(--nieny-biay);
+    font-style: normal;
+    font-weight: 400;
+    height: 23px;
+    left: 13px;
+    line-height: 16px;
+    top: 24px;
+    width: 72.94%;
+}
+
+.mobile-inauka-pl-start .group-832-kIgnlC {
+    background-color: transparent;
+    height: calc(100.00% - 20px);
+    position: absolute;
+    right: 8px;
+    top: 10px;
+    width: 60px;
+}
+
+.mobile-inauka-pl-start .mobile-hamburger-fNkpx7 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .menu_24dp_5-f6368_fi-Dg10xK {
+    background-color: transparent;
+    height: 20px;
+    left: calc(50.00% - 15px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(50.00% - 10px);
+    width: 30px;
+}
+
+.mobile-inauka-pl-start .mobile-beamer-kIgnlC {
+    background-color: transparent;
+    height: calc(100.00% - 20px);
+    position: absolute;
+    right: calc(18.38% - 11px);
+    top: 10px;
+    width: 60px;
+}
+
+.mobile-inauka-pl-start .group-814-qOFZxx {
+    background-color: transparent;
+    height: 28px;
+    position: absolute;
+    right: calc(50.00% - 11px);
+    top: calc(50.00% - 14px);
+    width: 22px;
+}
+
+.mobile-inauka-pl-start .group-813-xEgunV {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .illustracja_kursy-GO8GT3 {
+    background-color: transparent;
+    height: 118px;
+    left: 29px;
+    object-fit: cover;
+    position: absolute;
+    top: 874px;
+    width: 220px;
+}
+
+.mobile-inauka-pl-start .ucz-si-online-na-kur-GO8GT3 {
+    background-color: transparent;
+    color: var(--grafit);
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 36px;
+    line-height: 20px;
+    position: absolute;
+    text-align: left;
+    top: 1027px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .znajd-kursy-na-i-nau-GO8GT3 {
+    background-color: transparent;
+    height: auto;
+    left: 36px;
+    letter-spacing: 0.39px;
+    line-height: 22px;
+    position: absolute;
+    text-align: left;
+    top: 1085px;
+    width: 361px;
+}
+
+.mobile-inauka-pl-start .path-4163-GO8GT3 {
+    background-color: transparent;
+    height: 60px;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1017px;
+    width: 14px;
+}
+
+.mobile-inauka-pl-start .rectangle-239-GO8GT3 {
+    background-color: var(--wygaszone-to);
+    height: 64px;
+    left: 45px;
+    position: absolute;
+    top: 1199px;
+    width: 341px;
+}
+
+.mobile-inauka-pl-start .group-301-GO8GT3 {
+    background-color: transparent;
+    height: 24px;
+    left: 60px;
+    position: absolute;
+    top: 1220px;
+    width: 297px;
+}
+
+.mobile-inauka-pl-start .wyszukaj-znRo4k {
+    background-color: transparent;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 24px;
+}
+
+.mobile-inauka-pl-start .group-300-rDxQC7 {
+    background-color: transparent;
+    height: calc(100.00% - 5px);
+    left: 3px;
+    position: relative;
+    top: 3px;
+    width: calc(100.00% - 6px);
+}
+
+.mobile-inauka-pl-start .group-299-WcTcI3 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .wyszukaj-kurs-znRo4k {
+    background-color: transparent;
+    color: var(--grafit);
+    font-style: normal;
+    font-weight: 400;
+    height: calc(100.00% - 1px);
+    left: 0px;
+    line-height: 16px;
+    opacity: 0.5;
+    position: absolute;
+    text-align: left;
+    top: 4px;
+    white-space: nowrap;
+    width: 115px;
+}
+
+.mobile-inauka-pl-start .scroll-group-11-GO8GT3::-webkit-scrollbar {
+    display: none;
+    width: 0;
+}
+
+.mobile-inauka-pl-start .scroll-group-11-GO8GT3 {
+    background-color: transparent;
+    height: 36px;
+    left: 0px;
+    mix-blend-mode: normal;
+    overflow-x: scroll;
+    position: absolute;
+    top: 1306px;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .group-866-Xs7Ckx {
+    background-color: transparent;
+    height: 36px;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 1150px;
+}
+
+.mobile-inauka-pl-start .mobile-przycisk-sortowanie-92pBFG {
+    left: 0px;
+    width: 148px;
+}
+
+.mobile-inauka-pl-start .headline-5-wWVysv {
+    height: 20px;
+    left: 9px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    opacity: 0.7;
+    top: -2px;
+    width: calc(100.00% - 16px);
+}
+
+.mobile-inauka-pl-start .mobile-przycisk-sortowanie-Nq3xsc {
+    left: 168px;
+    width: 150px;
+}
+
+.mobile-inauka-pl-start .headline-5-1xLNe4 {
+    height: 20px;
+    left: 0px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    opacity: 0.7;
+    top: -2px;
+    width: calc(100.00% + 2px);
+}
+
+.mobile-inauka-pl-start .mobile-przycisk-sortowanie-Wq3Uru {
+    left: calc(35.96% - 76px);
+    width: 210px;
+}
+
+.mobile-inauka-pl-start .headline-5-pfsdHs {
+    height: 20px;
+    left: 0px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    opacity: 0.7;
+    top: -2px;
+    width: calc(100.00% + 2px);
+}
+
+.mobile-inauka-pl-start .mobile-przycisk-sortowanie-73ACBq {
+    right: calc(39.19% - 85px);
+    width: 216px;
+}
+
+.mobile-inauka-pl-start .headline-5-jKIV4F {
+    height: 20px;
+    left: 0px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    opacity: 0.7;
+    top: -2px;
+    width: calc(100.00% + 2px);
+}
+
+.mobile-inauka-pl-start .mobile-przycisk-sortowanie-ERILnb {
+    right: 168px;
+    width: 178px;
+}
+
+.mobile-inauka-pl-start .headline-5-oxeZBx {
+    height: 20px;
+    left: 0px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    opacity: 0.7;
+    top: -2px;
+    width: calc(100.00% + 2px);
+}
+
+.mobile-inauka-pl-start .mobile-przycisk-sortowanie-RY3rch {
+    right: 0px;
+    width: 148px;
+}
+
+.mobile-inauka-pl-start .headline-5-Hb7ylv {
+    height: 20px;
+    left: 9px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    opacity: 0.7;
+    top: -2px;
+    width: calc(100.00% - 16px);
+}
+
+.mobile-inauka-pl-start .mobile-widok-kursu-GO8GT3 {
+    height: 620px;
+    top: 1367px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-141Cju {
+    bottom: 13.89%;
+    height: 20px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    opacity: 0.8;
+    right: -2px;
+    white-space: nowrap;
+    width: 26px;
+}
+
+.mobile-inauka-pl-start .group-665-nxJudE {
+    width: 92px;
+}
+
+.mobile-inauka-pl-start .desktop-badge-bonus-nad-kursem-sSCMpZ {
+    left: 0px;
+    position: relative;
+    width: 92px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-NvZXxT {
+    bottom: calc(45.83% - 8px);
+    height: 18px;
+    left: 30.43%;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    white-space: nowrap;
+    width: 57.61%;
+}
+
+.mobile-inauka-pl-start .image-63-4N1eGD {
+    background-color: transparent;
+    border-radius: 8px;
+    height: 171px;
+    left: 19px;
+    object-fit: cover;
+    position: absolute;
+    top: 66px;
+    width: calc(100.00% - 38px);
+}
+
+.mobile-inauka-pl-start .desktop-badge-autor-4N1eGD {
+    top: calc(42.34% - 6px);
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-tjJ5Vs {
+    height: 15px;
+    left: 0px;
+    letter-spacing: 1.50px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: -3.85%;
+    white-space: nowrap;
+    width: 88.32%;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-4N1eGD {
+    height: 24px;
+    left: 30px;
+    letter-spacing: 0.14px;
+    line-height: 18px;
+    opacity: 0.8;
+    top: calc(46.64% - 11px);
+    width: calc(100.00% - 97px);
+}
+
+.mobile-inauka-pl-start .group-670-4N1eGD {
+    bottom: calc(45.74% - 10px);
+}
+
+.mobile-inauka-pl-start .poznaj-od-zupenych-p-4N1eGD {
+    bottom: calc(39.78% - 13px);
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-11umvY {
+    bottom: calc(33.58% - 7px);
+    height: 20px;
+    left: 30px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    opacity: 0.7;
+    text-decoration: line-through;
+    white-space: nowrap;
+    width: calc(100.00% - 97px);
+}
+
+.mobile-inauka-pl-start .group-868-4N1eGD {
+    bottom: calc(22.84% - 15px);
+}
+
+.mobile-inauka-pl-start .rectangle-368-rJ4eV5 {
+    background-color: var(--niebiski-cta-kursy);
+}
+
+.mobile-inauka-pl-start .group-563-rJ4eV5 {
+    height: 40px;
+    top: calc(50.00% - 20px);
+    width: 220px;
+}
+
+.mobile-inauka-pl-start .button-EFxJxX {
+    bottom: calc(45.00% - 9px);
+    height: 20px;
+    letter-spacing: 1.35px;
+    line-height: 22px;
+    width: 182px;
+}
+
+.mobile-inauka-pl-start .path-4140-DnPMHu {
+    right: calc(50.00% - 4px);
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-09DQ7i {
+    left: 0px;
+    width: 98px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-f3cFRC {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 102.56%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-v5IWA9 {
+    right: 0px;
+    width: 128px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-oqEJHY {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 101.85%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-EASKFb {
+    left: 0px;
+    width: 106px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-RT9j8b {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 102.33%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-GlsqGV {
+    right: calc(38.38% - 44px);
+    width: 114px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-edoV5k {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 102.13%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-vya8dc {
+    right: 0px;
+    width: 63px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-rYzP9r {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 104.65%;
+}
+
+.mobile-inauka-pl-start .mobile-widok-kursu-OznX2W {
+    height: 620px;
+    top: 2012px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-d18rUY {
+    bottom: 13.89%;
+    height: 20px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    opacity: 0.8;
+    right: -2px;
+    white-space: nowrap;
+    width: 26px;
+}
+
+.mobile-inauka-pl-start .group-665-2P4FTN {
+    width: 275px;
+}
+
+.mobile-inauka-pl-start .desktop-badge-bonus-nad-kursem-xmxgdH {
+    left: 0px;
+    position: absolute;
+    width: 92px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-te6922 {
+    bottom: calc(45.83% - 8px);
+    height: 18px;
+    left: 30.43%;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    white-space: nowrap;
+    width: 57.61%;
+}
+
+.mobile-inauka-pl-start .desktop-badge-bonus-nad-kursem-w8F4Nw {
+    position: absolute;
+    right: calc(47.83% - 44px);
+    width: 91px;
+}
+
+.mobile-inauka-pl-start .alarm_24dp_5-f6368_f-y4x43B {
+    top: 0px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-nJvmOL {
+    bottom: calc(45.83% - 8px);
+    height: 18px;
+    left: 30.77%;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    white-space: nowrap;
+    width: 57.14%;
+}
+
+.mobile-inauka-pl-start .desktop-badge-bonus-nad-kursem-Lh3yh4 {
+    position: absolute;
+    right: 0px;
+    width: 84px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-KwJvHa {
+    bottom: calc(45.83% - 8px);
+    height: 18px;
+    left: 33.33%;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    white-space: nowrap;
+    width: 53.57%;
+}
+
+.mobile-inauka-pl-start .kurs-power-query-T0RK8F {
+    background-color: transparent;
+    border-radius: 8px;
+    height: 171px;
+    left: 19px;
+    object-fit: cover;
+    position: absolute;
+    top: 66px;
+    width: calc(100.00% - 38px);
+}
+
+.mobile-inauka-pl-start .desktop-badge-autor-T0RK8F {
+    top: calc(42.34% - 6px);
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-vPFwgp {
+    height: 15px;
+    left: 0px;
+    letter-spacing: 1.50px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: -3.85%;
+    white-space: nowrap;
+    width: 88.32%;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-T0RK8F {
+    height: 24px;
+    left: 30px;
+    letter-spacing: 0.14px;
+    line-height: 18px;
+    opacity: 0.8;
+    top: calc(46.64% - 11px);
+    width: calc(100.00% - 97px);
+}
+
+.mobile-inauka-pl-start .group-670-T0RK8F {
+    bottom: calc(45.74% - 10px);
+}
+
+.mobile-inauka-pl-start .poznaj-od-zupenych-p-T0RK8F {
+    bottom: calc(39.78% - 13px);
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-8AoGpr {
+    bottom: calc(33.58% - 7px);
+    height: 20px;
+    left: 30px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    opacity: 0.7;
+    text-decoration: line-through;
+    white-space: nowrap;
+    width: calc(100.00% - 97px);
+}
+
+.mobile-inauka-pl-start .group-868-T0RK8F {
+    bottom: calc(22.84% - 15px);
+}
+
+.mobile-inauka-pl-start .rectangle-368-xBuzKC {
+    background-color: var(--niebiski-cta-kursy);
+}
+
+.mobile-inauka-pl-start .group-563-xBuzKC {
+    height: 40px;
+    top: calc(50.00% - 20px);
+    width: 220px;
+}
+
+.mobile-inauka-pl-start .button-lAGxUf {
+    bottom: calc(45.00% - 9px);
+    height: 20px;
+    letter-spacing: 1.35px;
+    line-height: 22px;
+    width: 182px;
+}
+
+.mobile-inauka-pl-start .path-4140-SfHy6F {
+    right: calc(50.00% - 4px);
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-YI1kfQ {
+    left: 0px;
+    width: 98px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-50gw2F {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 102.56%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-8b4Utv {
+    right: 0px;
+    width: 128px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-z7aYu9 {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 101.85%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-ldcgXW {
+    left: 0px;
+    width: 106px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-TexDnh {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 102.33%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-vGgsbd {
+    right: calc(38.38% - 44px);
+    width: 114px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-1slbwh {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 102.13%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-SxT5Wv {
+    right: 0px;
+    width: 63px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-Ttj7F5 {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 104.65%;
+}
+
+.mobile-inauka-pl-start .mobile-widok-kursu-YNZ80L {
+    height: 642px;
+    top: 2657px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-RDvXyO {
+    bottom: 13.89%;
+    height: 20px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    opacity: 0.8;
+    right: -2px;
+    white-space: nowrap;
+    width: 26px;
+}
+
+.mobile-inauka-pl-start .group-665-3egryA {
+    width: 275px;
+}
+
+.mobile-inauka-pl-start .desktop-badge-bonus-nad-kursem-HK7xXj {
+    left: 0px;
+    position: absolute;
+    width: 92px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-UCjc8L {
+    bottom: calc(45.83% - 8px);
+    height: 18px;
+    left: 30.43%;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    white-space: nowrap;
+    width: 57.61%;
+}
+
+.mobile-inauka-pl-start .desktop-badge-bonus-nad-kursem-yQFz2n {
+    position: absolute;
+    right: calc(47.83% - 44px);
+    width: 91px;
+}
+
+.mobile-inauka-pl-start .alarm_24dp_5-f6368_f-u99RyW {
+    top: 1px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-OBZJfd {
+    bottom: calc(45.83% - 8px);
+    height: 18px;
+    left: 30.77%;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    white-space: nowrap;
+    width: 57.14%;
+}
+
+.mobile-inauka-pl-start .desktop-badge-bonus-nad-kursem-mVUEYD {
+    position: absolute;
+    right: 0px;
+    width: 84px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-SxJJfG {
+    bottom: calc(45.83% - 8px);
+    height: 18px;
+    left: 33.33%;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    white-space: nowrap;
+    width: 53.57%;
+}
+
+.mobile-inauka-pl-start .power-bi-sredniozaawansowany-skOjty {
+    background-color: transparent;
+    border-radius: 8px;
+    height: 171px;
+    left: 19px;
+    object-fit: cover;
+    position: absolute;
+    top: 66px;
+    width: calc(100.00% - 38px);
+}
+
+.mobile-inauka-pl-start .desktop-badge-autor-skOjty {
+    top: calc(40.86% - 5px);
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-nUxTmj {
+    height: 15px;
+    left: 0px;
+    letter-spacing: 1.50px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: -3.85%;
+    white-space: nowrap;
+    width: 88.32%;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-skOjty {
+    height: 46px;
+    left: 30px;
+    letter-spacing: 0.14px;
+    line-height: 18px;
+    opacity: 0.8;
+    top: calc(46.64% - 21px);
+    width: calc(100.00% - 97px);
+}
+
+.mobile-inauka-pl-start .group-670-skOjty {
+    bottom: calc(44.12% - 9px);
+}
+
+.mobile-inauka-pl-start .poznaj-od-zupenych-p-skOjty {
+    bottom: calc(38.34% - 13px);
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-KkogNx {
+    bottom: calc(32.40% - 6px);
+    height: 20px;
+    left: 30px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    opacity: 0.7;
+    text-decoration: line-through;
+    white-space: nowrap;
+    width: calc(100.00% - 97px);
+}
+
+.mobile-inauka-pl-start .group-868-skOjty {
+    bottom: calc(21.97% - 14px);
+}
+
+.mobile-inauka-pl-start .rectangle-368-wTxZ0F {
+    background-color: var(--niebiski-cta-kursy);
+}
+
+.mobile-inauka-pl-start .group-563-wTxZ0F {
+    height: 40px;
+    top: calc(50.00% - 20px);
+    width: 220px;
+}
+
+.mobile-inauka-pl-start .button-IXL8do {
+    bottom: calc(45.00% - 9px);
+    height: 20px;
+    letter-spacing: 1.35px;
+    line-height: 22px;
+    width: 182px;
+}
+
+.mobile-inauka-pl-start .path-4140-sy98mM {
+    right: calc(50.00% - 4px);
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-FSawwH {
+    left: 0px;
+    width: 98px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-xPugzK {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 102.56%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-KqVxgi {
+    right: 0px;
+    width: 128px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-xOAcAx {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 101.85%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-kGvvBK {
+    left: 0px;
+    width: 106px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-EAZHUI {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 102.33%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-AdXSIQ {
+    right: calc(38.38% - 44px);
+    width: 114px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-YUoLkx {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 102.13%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-634TPk {
+    right: 0px;
+    width: 63px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-gSFAS9 {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 104.65%;
+}
+
+.mobile-inauka-pl-start .mobile-widok-kursu-6QCoZI {
+    height: 620px;
+    top: 3302px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-TLLtXG {
+    bottom: 13.89%;
+    height: 20px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    opacity: 0.8;
+    right: -2px;
+    white-space: nowrap;
+    width: 26px;
+}
+
+.mobile-inauka-pl-start .group-665-zEn2xM {
+    width: 275px;
+}
+
+.mobile-inauka-pl-start .desktop-badge-bonus-nad-kursem-DLPfTw {
+    left: 0px;
+    position: absolute;
+    width: 92px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-sTQILc {
+    bottom: calc(45.83% - 8px);
+    height: 18px;
+    left: 30.43%;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    white-space: nowrap;
+    width: 57.61%;
+}
+
+.mobile-inauka-pl-start .desktop-badge-bonus-nad-kursem-kxOYuy {
+    position: absolute;
+    right: calc(47.83% - 44px);
+    width: 91px;
+}
+
+.mobile-inauka-pl-start .alarm_24dp_5-f6368_f-OQMEdJ {
+    top: 1px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-GKje48 {
+    bottom: calc(45.83% - 8px);
+    height: 18px;
+    left: 30.77%;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    white-space: nowrap;
+    width: 57.14%;
+}
+
+.mobile-inauka-pl-start .desktop-badge-bonus-nad-kursem-KSDhzI {
+    position: absolute;
+    right: 0px;
+    width: 84px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-MLgqnc {
+    bottom: calc(45.83% - 8px);
+    height: 18px;
+    left: 33.33%;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    white-space: nowrap;
+    width: 53.57%;
+}
+
+.mobile-inauka-pl-start .kurs-makra-oggc7G {
+    background-color: transparent;
+    border-radius: 8px;
+    height: 171px;
+    left: 19px;
+    object-fit: cover;
+    position: absolute;
+    top: 66px;
+    width: calc(100.00% - 38px);
+}
+
+.mobile-inauka-pl-start .desktop-badge-autor-oggc7G {
+    top: calc(42.34% - 6px);
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-aRi62F {
+    height: 15px;
+    left: 0px;
+    letter-spacing: 1.50px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: -3.85%;
+    white-space: nowrap;
+    width: 88.32%;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-oggc7G {
+    height: 24px;
+    left: 30px;
+    letter-spacing: 0.14px;
+    line-height: 18px;
+    opacity: 0.8;
+    top: calc(46.64% - 11px);
+    width: calc(100.00% - 97px);
+}
+
+.mobile-inauka-pl-start .group-670-oggc7G {
+    bottom: calc(45.74% - 10px);
+}
+
+.mobile-inauka-pl-start .poznaj-od-zupenych-p-oggc7G {
+    bottom: calc(39.78% - 13px);
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-QLvdaf {
+    bottom: calc(33.58% - 7px);
+    height: 20px;
+    left: 30px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    opacity: 0.7;
+    text-decoration: line-through;
+    white-space: nowrap;
+    width: calc(100.00% - 97px);
+}
+
+.mobile-inauka-pl-start .group-868-oggc7G {
+    bottom: calc(22.84% - 15px);
+}
+
+.mobile-inauka-pl-start .rectangle-368-BSUGcp {
+    background-color: var(--niebiski-cta-kursy);
+}
+
+.mobile-inauka-pl-start .group-563-BSUGcp {
+    height: 40px;
+    top: calc(50.00% - 20px);
+    width: 220px;
+}
+
+.mobile-inauka-pl-start .button-LkvMej {
+    bottom: calc(45.00% - 9px);
+    height: 20px;
+    letter-spacing: 1.35px;
+    line-height: 22px;
+    width: 182px;
+}
+
+.mobile-inauka-pl-start .path-4140-K8SuxG {
+    right: calc(50.00% - 4px);
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-OwcHnh {
+    left: 0px;
+    width: 98px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-EWBhQp {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 102.56%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-xxjZsQ {
+    right: 0px;
+    width: 128px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-AxNIIw {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 101.85%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-67qDCW {
+    left: 0px;
+    width: 106px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-xMUiDH {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 102.33%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-jNr3w1 {
+    right: calc(38.38% - 44px);
+    width: 114px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-I6Eyg0 {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 102.13%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-yOWs1A {
+    right: 0px;
+    width: 63px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-h6I6jZ {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 104.65%;
+}
+
+.mobile-inauka-pl-start .mobile-widok-kursu-0RjBmh {
+    height: 642px;
+    top: 3947px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-SedCaD {
+    bottom: 13.89%;
+    height: 20px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    opacity: 0.8;
+    right: -2px;
+    white-space: nowrap;
+    width: 26px;
+}
+
+.mobile-inauka-pl-start .group-665-27cQ6u {
+    width: 275px;
+}
+
+.mobile-inauka-pl-start .desktop-badge-bonus-nad-kursem-Lkff0M {
+    left: 0px;
+    position: absolute;
+    width: 92px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-KxZjz7 {
+    bottom: calc(45.83% - 8px);
+    height: 18px;
+    left: 30.43%;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    white-space: nowrap;
+    width: 57.61%;
+}
+
+.mobile-inauka-pl-start .desktop-badge-bonus-nad-kursem-UH4V9f {
+    position: absolute;
+    right: calc(47.83% - 44px);
+    width: 91px;
+}
+
+.mobile-inauka-pl-start .alarm_24dp_5-f6368_f-7TEkem {
+    top: 1px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-LtSDSg {
+    bottom: calc(45.83% - 8px);
+    height: 18px;
+    left: 30.77%;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    white-space: nowrap;
+    width: 57.14%;
+}
+
+.mobile-inauka-pl-start .desktop-badge-bonus-nad-kursem-GxUZGg {
+    position: absolute;
+    right: 0px;
+    width: 84px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-oRiXF2 {
+    bottom: calc(45.83% - 8px);
+    height: 18px;
+    left: 33.33%;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    white-space: nowrap;
+    width: 53.57%;
+}
+
+.mobile-inauka-pl-start .kurs-blender-podstaw-vs5F1R {
+    background-color: transparent;
+    border-radius: 8px;
+    height: 171px;
+    left: 19px;
+    object-fit: cover;
+    position: absolute;
+    top: 66px;
+    width: calc(100.00% - 38px);
+}
+
+.mobile-inauka-pl-start .desktop-badge-autor-vs5F1R {
+    top: calc(40.86% - 5px);
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-YxI4XI {
+    height: 15px;
+    left: 0px;
+    letter-spacing: 1.50px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: -3.85%;
+    white-space: nowrap;
+    width: 88.32%;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-vs5F1R {
+    height: 46px;
+    left: 30px;
+    letter-spacing: 0.14px;
+    line-height: 18px;
+    opacity: 0.8;
+    top: calc(46.64% - 21px);
+    width: calc(100.00% - 97px);
+}
+
+.mobile-inauka-pl-start .group-670-vs5F1R {
+    bottom: calc(44.12% - 9px);
+}
+
+.mobile-inauka-pl-start .poznaj-od-zupenych-p-vs5F1R {
+    bottom: calc(38.34% - 13px);
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-Nk8Gjd {
+    bottom: calc(32.40% - 6px);
+    height: 20px;
+    left: 30px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    opacity: 0.7;
+    text-decoration: line-through;
+    white-space: nowrap;
+    width: calc(100.00% - 97px);
+}
+
+.mobile-inauka-pl-start .group-868-vs5F1R {
+    bottom: calc(21.97% - 14px);
+}
+
+.mobile-inauka-pl-start .rectangle-368-4kuVoA {
+    background-color: var(--niebiski-cta-kursy);
+}
+
+.mobile-inauka-pl-start .group-563-4kuVoA {
+    height: 40px;
+    top: calc(50.00% - 20px);
+    width: 220px;
+}
+
+.mobile-inauka-pl-start .button-OhPJHU {
+    bottom: calc(45.00% - 9px);
+    height: 20px;
+    letter-spacing: 1.35px;
+    line-height: 22px;
+    width: 182px;
+}
+
+.mobile-inauka-pl-start .path-4140-Mc1eeo {
+    right: calc(50.00% - 4px);
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-VpjVJP {
+    left: 0px;
+    width: 98px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-FbgXJd {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 102.56%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-fHqpWI {
+    right: 0px;
+    width: 128px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-yFOD0q {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 101.85%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-6z5OPK {
+    left: 0px;
+    width: 106px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-sxxxiv {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 102.33%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-lHKNUL {
+    right: calc(38.38% - 44px);
+    width: 114px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-IxuVy9 {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 102.13%;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag-q0QQuk {
+    right: 0px;
+    width: 63px;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p-PQRHLr {
+    height: 18px;
+    left: 0px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.6;
+    top: 6.25%;
+    white-space: nowrap;
+    width: 104.65%;
+}
+
+.mobile-inauka-pl-start .group-869-GO8GT3 {
+    background-color: transparent;
+    height: 60px;
+    left: 145px;
+    position: absolute;
+    top: 4617px;
+    width: 140px;
+}
+
+.mobile-inauka-pl-start .group-631-F9bjCZ {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    opacity: 0.4;
+    position: absolute;
+    top: 0px;
+    width: 60px;
+}
+
+.mobile-inauka-pl-start .group-624-vMjmHx {
+    opacity: 0.8;
+}
+
+.mobile-inauka-pl-start .ellipse-22-4Bu667 {
+    border-color: #151615;
+}
+
+.mobile-inauka-pl-start .strzaka-kursy-gwna-F9bjCZ {
+    background-color: transparent;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 60px;
+}
+
+.mobile-inauka-pl-start .group-673-WYzV6m {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    transform: rotate(180deg);
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .ellipse-22-hcrCsz {
+    border-color: #ff6842;
+}
+
+.mobile-inauka-pl-start .group-622-LTgSi0 {
+    transform: rotate(-180deg);
+}
+
+.mobile-inauka-pl-start .rectangle-679-GO8GT3 {
+    background-color: #fd54290f;
+    height: 780px;
+    left: 0px;
+    position: absolute;
+    top: 4739px;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .docz-do27000-osbna-i-naukapl-GO8GT3 {
+    background-color: transparent;
+    color: var(--grafit);
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-xxxxl);
+    font-weight: 400;
+    height: auto;
+    left: 89px;
+    letter-spacing: -0.80px;
+    line-height: 40px;
+    position: absolute;
+    text-align: center;
+    top: 5118px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .span0-51zelR {
+}
+
+.mobile-inauka-pl-start .span1-51zelR {
+}
+
+.mobile-inauka-pl-start .span2-51zelR {
+}
+
+.mobile-inauka-pl-start .image-68-GO8GT3 {
+    background-color: transparent;
+    height: 33px;
+    left: 92px;
+    object-fit: cover;
+    position: absolute;
+    top: 5160px;
+    width: 247px;
+}
+
+.mobile-inauka-pl-start .animcja-podglad-GO8GT3 {
+    background-color: transparent;
+    height: 290px;
+    left: 22px;
+    object-fit: cover;
+    position: absolute;
+    top: 4792px;
+    width: 386px;
+}
+
+.mobile-inauka-pl-start .mobile-cta-drugie-OznX2W {
+    left: 93px;
+    top: 5379px;
+    width: 244px;
+}
+
+.mobile-inauka-pl-start .path-4439-GqZtGb {
+    left: 0px;
+}
+
+.mobile-inauka-pl-start .group-563-GqZtGb {
+    height: 100%;
+    top: 0px;
+    width: calc(100.00% - 34px);
+}
+
+.mobile-inauka-pl-start .button-jIEhou {
+    bottom: calc(45.00% - 9px);
+    height: 20px;
+    letter-spacing: 1.35px;
+    line-height: 22px;
+    width: 172px;
+}
+
+.mobile-inauka-pl-start .path-4140-iSbYPy {
+    right: calc(50.00% - 4px);
+}
+
+.mobile-inauka-pl-start .mobile-cta-gwne-GO8GT3 {
+    left: 34px;
+    top: 5295px;
+    width: 363px;
+}
+
+.mobile-inauka-pl-start .rectangle-368-oskFv4 {
+    background-color: var(--cta-czerwie);
+}
+
+.mobile-inauka-pl-start .group-563-oskFv4 {
+    height: calc(100.00% - 24px);
+    top: 12px;
+    width: calc(100.00% - 34px);
+}
+
+.mobile-inauka-pl-start .button-3PZLMD {
+    bottom: calc(45.00% - 9px);
+    height: 20px;
+    letter-spacing: 1.35px;
+    line-height: 22px;
+    width: 291px;
+}
+
+.mobile-inauka-pl-start .path-4140-pNlJQP {
+    right: calc(50.00% - 4px);
+}
+
+.mobile-inauka-pl-start .path-4444-GO8GT3 {
+    background-color: transparent;
+    height: 660px;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 5519px;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-YNZ80L {
+    color: var(--koralowy-pomaracz);
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 141px;
+    line-height: 16px;
+    opacity: 0.8;
+    text-align: center;
+    top: 5606px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-6QCoZI {
+    color: var(--koralowy-pomaracz);
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 136px;
+    line-height: 16px;
+    opacity: 0.8;
+    text-align: center;
+    top: 7914px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-0RjBmh {
+    color: var(--grafit);
+    font-style: normal;
+    font-weight: 400;
+    height: 79px;
+    left: 56px;
+    line-height: 28px;
+    opacity: 0.8;
+    text-align: center;
+    top: 5645px;
+    width: 321px;
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-3SI8mk {
+    color: var(--nieny-biay);
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-xxxxl);
+    font-weight: 400;
+    height: 182px;
+    left: 56px;
+    letter-spacing: -0.80px;
+    line-height: 40px;
+    text-align: center;
+    top: 7953px;
+    width: 321px;
+}
+
+.mobile-inauka-pl-start .span0-BkJLW1 {
+    color: var(--hunter-green-2);
+    font-style: normal;
+}
+
+.mobile-inauka-pl-start .span1-BkJLW1 {
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-i3je9Y {
+    color: var(--grafit);
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-xxxxl);
+    font-weight: 400;
+    height: 162px;
+    left: 15px;
+    letter-spacing: -0.80px;
+    line-height: 40px;
+    text-align: center;
+    top: 6316px;
+    width: 402px;
+}
+
+.mobile-inauka-pl-start .span0-rEyxSn {
+}
+
+.mobile-inauka-pl-start .span1-rEyxSn {
+}
+
+.mobile-inauka-pl-start .span2-rEyxSn {
+}
+
+.mobile-inauka-pl-start .scroll-group-12-GO8GT3::-webkit-scrollbar {
+    display: none;
+    width: 0;
+}
+
+.mobile-inauka-pl-start .scroll-group-12-GO8GT3 {
+    background-color: transparent;
+    height: 364px;
+    left: 0px;
+    mix-blend-mode: normal;
+    overflow-x: scroll;
+    position: absolute;
+    top: 5752px;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .group-874-aYFD75 {
+    background-color: transparent;
+    height: 364px;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 1460px;
+}
+
+.mobile-inauka-pl-start .group-870-VqV9J3 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 276px;
+}
+
+.mobile-inauka-pl-start .ms-excel-Oq6xed {
+    background-color: transparent;
+    bottom: 30px;
+    height: 18px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.5;
+    position: absolute;
+    right: calc(49.56% - 24px);
+    text-align: center;
+    white-space: nowrap;
+    width: 48px;
+}
+
+.mobile-inauka-pl-start .konstancja-Oq6xed {
+    background-color: transparent;
+    bottom: calc(45.59% - 11px);
+    height: 24px;
+    letter-spacing: 0.14px;
+    line-height: 18px;
+    position: absolute;
+    right: calc(49.41% - 52px);
+    text-align: center;
+    white-space: nowrap;
+    width: 106px;
+}
+
+.mobile-inauka-pl-start .ambasador_excel-FIisEZ {
+    background-color: transparent;
+    border-radius: 60px;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-871-VqV9J3 {
+    background-color: transparent;
+    height: 100%;
+    left: calc(25.00% - 69px);
+    position: absolute;
+    top: 0px;
+    width: 276px;
+}
+
+.mobile-inauka-pl-start .power-bi-X6ySGj {
+    background-color: transparent;
+    bottom: 30px;
+    height: 18px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.5;
+    position: absolute;
+    right: calc(49.57% - 22px);
+    text-align: center;
+    white-space: nowrap;
+    width: 44px;
+}
+
+.mobile-inauka-pl-start .micha-X6ySGj {
+    background-color: transparent;
+    bottom: calc(45.59% - 11px);
+    height: 24px;
+    letter-spacing: 0.14px;
+    line-height: 18px;
+    position: absolute;
+    right: calc(49.53% - 31px);
+    text-align: center;
+    white-space: nowrap;
+    width: 62px;
+}
+
+.mobile-inauka-pl-start .ambasador_powerbi_python-bJ01Gn {
+    background-color: transparent;
+    border-radius: 60px;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .rectangle-451-VqV9J3 {
+    background-color: var(--koralowy-pomaracz);
+    border-radius: 10px;
+    height: calc(100.00% - 7px);
+    opacity: 0.05;
+    position: absolute;
+    right: 0px;
+    top: 2px;
+    width: 276px;
+}
+
+.mobile-inauka-pl-start .group-689-VqV9J3 {
+    background-color: transparent;
+    height: 40px;
+    position: absolute;
+    right: 37px;
+    top: calc(49.61% - 20px);
+    width: 225px;
+}
+
+.mobile-inauka-pl-start .button-jOUU2R {
+    bottom: calc(25.00% - 6px);
+    height: 24px;
+    letter-spacing: 0.14px;
+    line-height: 18px;
+    width: 187px;
+}
+
+.mobile-inauka-pl-start .group-688-jOUU2R {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .path-4140-8217OJ {
+    left: calc(48.66% - 4px);
+}
+
+.mobile-inauka-pl-start .group-872-VqV9J3 {
+    background-color: transparent;
+    height: 100%;
+    left: calc(50.00% - 138px);
+    position: absolute;
+    top: 0px;
+    width: 276px;
+}
+
+.mobile-inauka-pl-start .tableau-xggzWd {
+    background-color: transparent;
+    bottom: 31px;
+    height: 18px;
+    letter-spacing: -0.36px;
+    line-height: 16px;
+    opacity: 0.5;
+    position: absolute;
+    right: calc(49.57% - 21px);
+    text-align: center;
+    white-space: nowrap;
+    width: 42px;
+}
+
+.mobile-inauka-pl-start .dominik-xggzWd {
+    background-color: transparent;
+    bottom: calc(45.59% - 11px);
+    height: 24px;
+    letter-spacing: 0.14px;
+    line-height: 18px;
+    position: absolute;
+    right: calc(49.49% - 40px);
+    text-align: center;
+    white-space: nowrap;
+    width: 80px;
+}
+
+.mobile-inauka-pl-start .ambasador_tableau-zYrS2D {
+    background-color: transparent;
+    border-radius: 60px;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-873-VqV9J3 {
+    background-color: transparent;
+    height: 100%;
+    position: absolute;
+    right: calc(25.00% - 69px);
+    top: 0px;
+    width: 276px;
+}
+
+.mobile-inauka-pl-start .access-oBwLZa {
+    background-color: transparent;
+    bottom: 30px;
+    height: 18px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.5;
+    position: absolute;
+    right: calc(49.58% - 20px);
+    text-align: center;
+    white-space: nowrap;
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .katarzyna-oBwLZa {
+    background-color: transparent;
+    bottom: calc(45.59% - 11px);
+    height: 24px;
+    letter-spacing: 0.14px;
+    line-height: 18px;
+    position: absolute;
+    right: calc(49.46% - 46px);
+    text-align: center;
+    white-space: nowrap;
+    width: 92px;
+}
+
+.mobile-inauka-pl-start .ambasador_access-xv5ve1 {
+    background-color: transparent;
+    border-radius: 60px;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .gradinet-tlo-GO8GT3 {
+    background-color: transparent;
+    height: 104px;
+    left: 90px;
+    object-fit: cover;
+    position: absolute;
+    top: 6179px;
+    width: 250px;
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-YcQ3Pf {
+    color: var(--hunter-green-2);
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 10px;
+    line-height: 16px;
+    text-align: center;
+    top: 6496px;
+    width: 412px;
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-iuvmZr {
+    color: var(--cta-czerwie);
+    font-family: var(--font-family-sora);
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 47px;
+    letter-spacing: 0.00px;
+    line-height: 8px;
+    text-align: center;
+    top: 6655px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .group-693-GO8GT3 {
+    background-color: transparent;
+    height: 60px;
+    left: 185px;
+    position: absolute;
+    top: 6226px;
+    width: 60px;
+}
+
+.mobile-inauka-pl-start .path-4162-Biqsa1 {
+    background-color: transparent;
+    height: calc(100.00% - 13px);
+    left: 6px;
+    object-fit: cover;
+    position: absolute;
+    top: 7px;
+    width: calc(100.00% - 10px);
+}
+
+.mobile-inauka-pl-start .image-67-GO8GT3 {
+    background-color: transparent;
+    height: 41px;
+    left: 54px;
+    object-fit: cover;
+    position: absolute;
+    top: 6374px;
+    width: 323px;
+}
+
+.mobile-inauka-pl-start .scroll-group-13-GO8GT3::-webkit-scrollbar {
+    display: none;
+    width: 0;
+}
+
+.mobile-inauka-pl-start .scroll-group-13-GO8GT3 {
+    background-color: transparent;
+    height: 152px;
+    left: 0px;
+    mix-blend-mode: normal;
+    overflow-x: scroll;
+    position: absolute;
+    top: 6566px;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .group-875-DxnRTI {
+    background-color: transparent;
+    height: 152px;
+    left: -48px;
+    position: relative;
+    top: 0px;
+    width: 1608px;
+}
+
+.mobile-inauka-pl-start .logo-przykladowe-vjeiXt {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 360px;
+}
+
+.mobile-inauka-pl-start .informacyjne_aldi-vjeiXt {
+    background-color: transparent;
+    height: 100%;
+    left: calc(25.00% - 90px);
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 360px;
+}
+
+.mobile-inauka-pl-start .informacyjne_danone-vjeiXt {
+    background-color: transparent;
+    height: 100%;
+    left: calc(50.00% - 180px);
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 360px;
+}
+
+.mobile-inauka-pl-start .informacyjne_arcelormittal-vjeiXt {
+    background-color: transparent;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    right: calc(25.00% - 90px);
+    top: 1px;
+    width: 360px;
+}
+
+.mobile-inauka-pl-start .informacyjne_droetker-vjeiXt {
+    background-color: transparent;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    right: 0px;
+    top: 1px;
+    width: 360px;
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-ipdGfL {
+    color: #16161566;
+    font-family: var(--font-family-roboto);
+    font-size: var(--font-size-s);
+    font-style: normal;
+    font-weight: 500;
+    height: auto;
+    left: -65px;
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    text-align: center;
+    top: 6726px;
+    width: 562px;
+}
+
+.mobile-inauka-pl-start .co-zyskasz-uczc-si-wsplnie-z-nami-GO8GT3 {
+    background-color: transparent;
+    color: var(--grafit);
+    font-family: var(--font-family-sora);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    height: 62px;
+    left: 35px;
+    letter-spacing: 0.18px;
+    line-height: 24px;
+    position: absolute;
+    text-align: left;
+    top: 7171px;
+    width: 362px;
+}
+
+.mobile-inauka-pl-start .ilustracja-sciezki-GO8GT3 {
+    background-color: transparent;
+    height: 241px;
+    left: 15px;
+    object-fit: cover;
+    position: absolute;
+    top: 6880px;
+    width: 400px;
+}
+
+.mobile-inauka-pl-start .scroll-group-14-GO8GT3::-webkit-scrollbar {
+    display: none;
+    width: 0;
+}
+
+.mobile-inauka-pl-start .scroll-group-14-GO8GT3 {
+    background-color: transparent;
+    height: 577px;
+    left: 0px;
+    mix-blend-mode: normal;
+    overflow-x: scroll;
+    position: absolute;
+    top: 7251px;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .group-888-gEZ9Co {
+    background-color: transparent;
+    height: 577px;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 2487px;
+}
+
+.mobile-inauka-pl-start .mobile-lista-co-zyskasz-6hMvML {
+    left: 0px;
+    width: 400px;
+}
+
+.mobile-inauka-pl-start .group-877-BufPsT {
+    background-color: transparent;
+    height: 216px;
+    left: calc(50.00% - 108px);
+    position: absolute;
+    top: 40px;
+    width: 216px;
+}
+
+.mobile-inauka-pl-start .group-703-AxtEK7 {
+    background-color: transparent;
+    height: calc(100.00% - 49px);
+    left: 15px;
+    position: relative;
+    top: 24px;
+    width: calc(100.00% - 29px);
+}
+
+.mobile-inauka-pl-start .group-700-e9Knxv {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4216-BxKfjH {
+    background-color: transparent;
+    bottom: calc(36.92% - 9px);
+    height: 24px;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    width: 24px;
+}
+
+.mobile-inauka-pl-start .path-4217-BxKfjH {
+    background-color: transparent;
+    bottom: calc(36.92% - 9px);
+    height: 24px;
+    left: 20px;
+    object-fit: cover;
+    position: absolute;
+    width: calc(100.00% - 35px);
+}
+
+.mobile-inauka-pl-start .rectangle-470-BxKfjH {
+    background-color: var(--outrageous-orange);
+    bottom: calc(38.53% - 2px);
+    height: 4px;
+    left: 23px;
+    position: absolute;
+    width: calc(100.00% - 38px);
+}
+
+.mobile-inauka-pl-start .group-699-BxKfjH {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-698-mC2Cdm {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-878-BufPsT {
+    left: 42px;
+    width: calc(100.00% - 84px);
+}
+
+.mobile-inauka-pl-start .imienne-certyfikaty-UJnnXt {
+    background-color: transparent;
+    bottom: calc(38.24% - 12px);
+    height: 32px;
+    left: 40px;
+    letter-spacing: 0.18px;
+    line-height: 24px;
+    position: absolute;
+    text-align: center;
+    white-space: nowrap;
+    width: calc(100.00% - 78px);
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-BufPsT {
+    color: var(--grafit);
+    font-style: normal;
+    font-weight: 400;
+    height: 77px;
+    left: 45px;
+    line-height: 20px;
+    text-align: left;
+    top: 382px;
+    width: 78.00%;
+}
+
+.mobile-inauka-pl-start .group-879-BufPsT {
+    left: calc(40.91% - 119px);
+}
+
+.mobile-inauka-pl-start .group-861-9d5NhO {
+    left: 0px;
+}
+
+.mobile-inauka-pl-start .group-856-9d5NhO {
+    left: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-664-KEAn2t {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-857-9d5NhO {
+    left: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-666-FpiVrE {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-858-9d5NhO {
+    right: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-667-hd1ok3 {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-859-9d5NhO {
+    right: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-668-b4rDIM {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-860-9d5NhO {
+    right: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-669-rbkMJV {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .mobile-lista-co-zyskasz-XrTC7Q {
+    left: calc(20.07% - 79px);
+    width: 394px;
+}
+
+.mobile-inauka-pl-start .group-880-LAQs6i {
+    left: 89px;
+    width: calc(100.00% - 178px);
+}
+
+.mobile-inauka-pl-start .rectangle-479-6gK05m {
+    left: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-715-6gK05m {
+    background-color: transparent;
+    height: calc(100.00% - 34px);
+    left: 28px;
+    position: absolute;
+    top: 14px;
+    width: calc(100.00% - 51px);
+}
+
+.mobile-inauka-pl-start .group-882-TnRX1p {
+    background-color: transparent;
+    bottom: 0px;
+    height: 182px;
+    left: 0px;
+    position: absolute;
+    width: 165px;
+}
+
+.mobile-inauka-pl-start .group-881-zmOxoG {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-878-LAQs6i {
+    left: 62px;
+    width: calc(100.00% - 124px);
+}
+
+.mobile-inauka-pl-start .cieki-rozwoju-iTzLlB {
+    background-color: transparent;
+    bottom: calc(38.24% - 12px);
+    height: 32px;
+    left: 40px;
+    letter-spacing: 0.18px;
+    line-height: 24px;
+    position: absolute;
+    text-align: center;
+    white-space: nowrap;
+    width: calc(100.00% - 78px);
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-LAQs6i {
+    color: var(--grafit);
+    font-style: normal;
+    font-weight: 400;
+    height: 77px;
+    left: 42px;
+    line-height: 20px;
+    text-align: left;
+    top: 382px;
+    width: 79.19%;
+}
+
+.mobile-inauka-pl-start .group-879-LAQs6i {
+    left: calc(40.38% - 117px);
+}
+
+.mobile-inauka-pl-start .group-856-VirGwq {
+    left: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-664-C7JqRK {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-861-VirGwq {
+    left: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .group-857-VirGwq {
+    left: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-666-VQR3Pi {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-858-VirGwq {
+    right: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-667-Ax0cWi {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-859-VirGwq {
+    right: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-668-ujHxfU {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-860-VirGwq {
+    right: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-669-R4zWV3 {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .mobile-lista-co-zyskasz-eHt0Mt {
+    left: calc(39.85% - 157px);
+    width: 394px;
+}
+
+.mobile-inauka-pl-start .group-880-ZlCuqm {
+    left: 68px;
+    width: calc(100.00% - 136px);
+}
+
+.mobile-inauka-pl-start .rectangle-479-k27Idd {
+    left: 21px;
+    width: calc(100.00% - 42px);
+}
+
+.mobile-inauka-pl-start .group-883-k27Idd {
+    background-color: transparent;
+    bottom: 21px;
+    height: 180px;
+    left: 0px;
+    position: absolute;
+    width: 258px;
+}
+
+.mobile-inauka-pl-start .group-721-HUJvyS {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-878-ZlCuqm {
+    left: 99px;
+    width: calc(100.00% - 198px);
+}
+
+.mobile-inauka-pl-start .wsparcie-kCDTRu {
+    bottom: calc(38.24% - 12px);
+    height: 32px;
+    left: 40px;
+    text-align: center;
+    width: calc(100.00% - 78px);
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-ZlCuqm {
+    color: var(--grafit);
+    font-style: normal;
+    font-weight: 400;
+    height: 77px;
+    left: 42px;
+    line-height: 20px;
+    text-align: left;
+    top: 382px;
+    width: 79.19%;
+}
+
+.mobile-inauka-pl-start .group-879-ZlCuqm {
+    left: calc(40.38% - 117px);
+}
+
+.mobile-inauka-pl-start .group-856-xFsvtJ {
+    left: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-664-UpiWi4 {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-857-xFsvtJ {
+    left: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-666-4dOAiQ {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-861-xFsvtJ {
+    left: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .group-858-xFsvtJ {
+    right: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-667-a1priF {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-859-xFsvtJ {
+    right: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-668-NLqQai {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-860-xFsvtJ {
+    right: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-669-2svA5G {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .mobile-lista-co-zyskasz-Z6nPgS {
+    right: calc(40.37% - 159px);
+    width: 394px;
+}
+
+.mobile-inauka-pl-start .group-880-itaezV {
+    left: 89px;
+    width: calc(100.00% - 178px);
+}
+
+.mobile-inauka-pl-start .rectangle-479-UTmo5f {
+    left: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-884-UTmo5f {
+    background-color: transparent;
+    height: 162px;
+    left: 21px;
+    position: absolute;
+    top: 32px;
+    width: 173px;
+}
+
+.mobile-inauka-pl-start .path-4242-HIe2Jr {
+    background-color: transparent;
+    height: 21px;
+    object-fit: cover;
+    position: absolute;
+    right: 22px;
+    top: 6px;
+    width: 21px;
+}
+
+.mobile-inauka-pl-start .rectangle-506-HIe2Jr {
+    background-color: var(--outrageous-orange);
+    bottom: calc(25.09% - 1px);
+    height: 4px;
+    left: calc(19.66% - 4px);
+    position: absolute;
+    width: 23px;
+}
+
+.mobile-inauka-pl-start .rectangle-507-HIe2Jr {
+    background-color: var(--outrageous-orange);
+    bottom: calc(18.82% - 1px);
+    height: 4px;
+    left: calc(24.52% - 13px);
+    position: absolute;
+    width: 54px;
+}
+
+.mobile-inauka-pl-start .rectangle-508-HIe2Jr {
+    background-color: var(--outrageous-orange);
+    bottom: 20px;
+    height: 4px;
+    left: calc(24.52% - 13px);
+    position: absolute;
+    width: 54px;
+}
+
+.mobile-inauka-pl-start .rectangle-509-HIe2Jr {
+    background-color: var(--outrageous-orange);
+    bottom: 10px;
+    height: 4px;
+    left: calc(24.52% - 13px);
+    position: absolute;
+    width: 54px;
+}
+
+.mobile-inauka-pl-start .rectangle-510-HIe2Jr {
+    background-color: var(--outrageous-orange);
+    bottom: 1px;
+    height: 4px;
+    left: calc(21.11% - 7px);
+    position: absolute;
+    width: 35px;
+}
+
+.mobile-inauka-pl-start .rectangle-511-HIe2Jr {
+    background-color: #fdcdc1;
+    height: 78px;
+    left: 0px;
+    position: absolute;
+    top: calc(37.08% - 29px);
+    width: 112px;
+}
+
+.mobile-inauka-pl-start .rectangle-512-HIe2Jr {
+    background-color: #fd8f71;
+    height: 25px;
+    position: absolute;
+    right: 15px;
+    top: calc(49.26% - 12px);
+    width: 41px;
+}
+
+.mobile-inauka-pl-start .group-717-HIe2Jr {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-716-wxwqy4 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-878-itaezV {
+    left: 94px;
+    width: calc(100.00% - 188px);
+}
+
+.mobile-inauka-pl-start .wiczenia-Pm6BNn {
+    background-color: transparent;
+    bottom: calc(38.24% - 12px);
+    height: 32px;
+    left: 40px;
+    letter-spacing: 0.18px;
+    line-height: 24px;
+    position: absolute;
+    text-align: center;
+    white-space: nowrap;
+    width: calc(100.00% - 78px);
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-itaezV {
+    color: var(--grafit);
+    font-style: normal;
+    font-weight: 400;
+    height: 77px;
+    left: 42px;
+    line-height: 20px;
+    text-align: left;
+    top: 382px;
+    width: 79.19%;
+}
+
+.mobile-inauka-pl-start .group-879-itaezV {
+    left: calc(40.38% - 117px);
+}
+
+.mobile-inauka-pl-start .group-856-PFyLLP {
+    left: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-664-krAq3a {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-857-PFyLLP {
+    left: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-666-WpDdVg {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-858-PFyLLP {
+    left: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-667-GIBoFF {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-861-PFyLLP {
+    right: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .group-859-PFyLLP {
+    right: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-668-FfUd1Z {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-860-PFyLLP {
+    right: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-669-igRVk7 {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .mobile-lista-co-zyskasz-oOkA31 {
+    right: calc(20.59% - 81px);
+    width: 394px;
+}
+
+.mobile-inauka-pl-start .group-880-uq3DOB {
+    left: 89px;
+    width: calc(100.00% - 178px);
+}
+
+.mobile-inauka-pl-start .group-886-mY3m8K {
+    background-color: transparent;
+    bottom: 25px;
+    height: 166px;
+    left: 16px;
+    position: absolute;
+    width: 184px;
+}
+
+.mobile-inauka-pl-start .group-885-fhkCxD {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-878-uq3DOB {
+    left: 82px;
+    width: calc(100.00% - 164px);
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-uq3DOB {
+    color: var(--grafit);
+    font-style: normal;
+    font-weight: 400;
+    height: 77px;
+    left: 42px;
+    line-height: 20px;
+    text-align: left;
+    top: 382px;
+    width: 79.19%;
+}
+
+.mobile-inauka-pl-start .group-879-uq3DOB {
+    left: calc(40.38% - 117px);
+}
+
+.mobile-inauka-pl-start .group-856-P4Bawr {
+    left: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-664-Fv217f {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-857-P4Bawr {
+    left: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-666-0LMC1w {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-858-P4Bawr {
+    left: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-667-2th2Sj {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-859-P4Bawr {
+    right: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-668-TDLo3c {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-861-P4Bawr {
+    right: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .group-860-P4Bawr {
+    right: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-669-2Ig83i {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .mobile-lista-co-zyskasz-Zmg8BQ {
+    right: 17px;
+    width: 394px;
+}
+
+.mobile-inauka-pl-start .group-880-CTsBQu {
+    left: 89px;
+    width: calc(100.00% - 178px);
+}
+
+.mobile-inauka-pl-start .group-887-Menj9e {
+    background-color: transparent;
+    bottom: 30px;
+    height: 155px;
+    left: 16px;
+    position: absolute;
+    width: 193px;
+}
+
+.mobile-inauka-pl-start .group-726-sAftUN {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-878-CTsBQu {
+    left: 82px;
+    width: calc(100.00% - 164px);
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-CTsBQu {
+    color: var(--grafit);
+    font-style: normal;
+    font-weight: 400;
+    height: 77px;
+    left: 42px;
+    line-height: 20px;
+    text-align: left;
+    top: 382px;
+    width: 79.19%;
+}
+
+.mobile-inauka-pl-start .group-879-CTsBQu {
+    left: calc(40.38% - 117px);
+}
+
+.mobile-inauka-pl-start .group-856-dMLQN3 {
+    left: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-664-bhFo3z {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-857-dMLQN3 {
+    left: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-666-EsieEl {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-858-dMLQN3 {
+    left: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-667-E8G13p {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-859-dMLQN3 {
+    right: calc(40.00% - 16px);
+}
+
+.mobile-inauka-pl-start .rectangle-668-4g2NhO {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-860-dMLQN3 {
+    right: calc(20.00% - 8px);
+}
+
+.mobile-inauka-pl-start .rectangle-669-N0M7xT {
+    background-color: var(--hunter-green);
+}
+
+.mobile-inauka-pl-start .group-861-dMLQN3 {
+    right: 0px;
+}
+
+.mobile-inauka-pl-start .image-71-GO8GT3 {
+    background-color: transparent;
+    height: 37px;
+    left: 179px;
+    object-fit: cover;
+    position: absolute;
+    top: 8065px;
+    width: 169px;
+}
+
+.mobile-inauka-pl-start .group-934-GO8GT3 {
+    background-color: transparent;
+    height: 73px;
+    left: 303px;
+    position: absolute;
+    top: 8114px;
+    width: 100px;
+}
+
+.mobile-inauka-pl-start .group-733-d89YLD {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .scroll-group-15-GO8GT3::-webkit-scrollbar {
+    display: none;
+    width: 0;
+}
+
+.mobile-inauka-pl-start .scroll-group-15-GO8GT3 {
+    background-color: transparent;
+    height: 360px;
+    left: 0px;
+    mix-blend-mode: normal;
+    overflow-x: scroll;
+    position: absolute;
+    top: 8163px;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .group-933-aMQm0o {
+    background-color: transparent;
+    height: 360px;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 2353px;
+}
+
+.mobile-inauka-pl-start .group-932-BA9ht7 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .desktop-opinie-hZ3lx7 {
+    left: 43.22%;
+}
+
+.mobile-inauka-pl-start .mask-group-4-UUqNaI {
+    background-color: transparent;
+    height: 60px;
+    left: 40px;
+    overflow: hidden;
+    position: absolute;
+    top: 40px;
+    width: 60px;
+}
+
+.mobile-inauka-pl-start .x3-c_-layer_x3-e_-bCh427 {
+    top: 1px;
+}
+
+.mobile-inauka-pl-start .group-754-FJ2H6n {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .ellipse-28-Lz8xpx {
+    background-color: #fde3ec;
+    border-radius: 21.21px;
+    height: calc(100.00% - 18px);
+    left: 9px;
+    position: absolute;
+    top: 9px;
+    transform: rotate(-45.00deg);
+    width: calc(100.00% - 18px);
+}
+
+.mobile-inauka-pl-start .path-4301-Lz8xpx {
+    background-color: transparent;
+    bottom: 9px;
+    height: 15px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(45.08% - 13px);
+    width: 30px;
+}
+
+.mobile-inauka-pl-start .group-739-Lz8xpx {
+    background-color: transparent;
+    bottom: calc(27.15% - 3px);
+    height: 11px;
+    position: absolute;
+    right: calc(45.00% - 14px);
+    width: 30px;
+}
+
+.mobile-inauka-pl-start .path-4302-fNf7lT {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4303-Lz8xpx {
+    background-color: transparent;
+    height: 21px;
+    left: calc(44.71% - 8px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(35.18% - 7px);
+    width: 18px;
+}
+
+.mobile-inauka-pl-start .path-4304-Lz8xpx {
+    background-color: transparent;
+    height: 17px;
+    left: calc(49.99% - 8px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(29.81% - 5px);
+    width: 15px;
+}
+
+.mobile-inauka-pl-start .path-4305-Lz8xpx {
+    background-color: transparent;
+    height: 17px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(47.42% - 15px);
+    top: calc(49.24% - 8px);
+    width: 33px;
+}
+
+.mobile-inauka-pl-start .group-740-Lz8xpx {
+    background-color: transparent;
+    bottom: calc(48.03% - 4px);
+    height: 8px;
+    left: calc(24.72% - 1px);
+    position: absolute;
+    width: 6px;
+}
+
+.mobile-inauka-pl-start .path-4306-eULK8o {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-741-Lz8xpx {
+    background-color: transparent;
+    height: 7px;
+    position: absolute;
+    right: calc(43.18% - 4px);
+    top: calc(24.22% - 2px);
+    width: 10px;
+}
+
+.mobile-inauka-pl-start .path-4307-1xJXOT {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-742-Lz8xpx {
+    background-color: transparent;
+    height: 5px;
+    position: absolute;
+    right: calc(38.00% - 2px);
+    top: calc(36.08% - 2px);
+    width: 6px;
+}
+
+.mobile-inauka-pl-start .path-4308-CL4hbl {
+    background-color: transparent;
+    height: calc(100.00% - 1px);
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: calc(100.00% - 1px);
+}
+
+.mobile-inauka-pl-start .path-4309-CL4hbl {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-743-Lz8xpx {
+    background-color: transparent;
+    height: 4px;
+    left: calc(33.95% - 2px);
+    position: absolute;
+    top: calc(42.96% - 2px);
+    width: 6px;
+}
+
+.mobile-inauka-pl-start .path-4310-nxaV96 {
+    background-color: transparent;
+    height: calc(100.00% - 1px);
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: calc(100.00% - 1px);
+}
+
+.mobile-inauka-pl-start .path-4311-nxaV96 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-744-Lz8xpx {
+    background-color: transparent;
+    bottom: calc(39.89% - 8px);
+    height: 20px;
+    position: absolute;
+    right: calc(48.04% - 6px);
+    width: 13px;
+}
+
+.mobile-inauka-pl-start .path-4312-XuYicB {
+    background-color: transparent;
+    height: calc(100.00% - 1px);
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: calc(100.00% - 1px);
+}
+
+.mobile-inauka-pl-start .path-4313-XuYicB {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4314-Lz8xpx {
+    background-color: transparent;
+    height: 18px;
+    left: calc(48.22% - 7px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(40.22% - 7px);
+    width: 15px;
+}
+
+.mobile-inauka-pl-start .path-4315-Lz8xpx {
+    background-color: transparent;
+    height: 8px;
+    left: calc(36.76% - 1px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(31.18% - 2px);
+    width: 2px;
+}
+
+.mobile-inauka-pl-start .group-745-Lz8xpx {
+    background-color: transparent;
+    bottom: calc(47.50% - 3px);
+    height: 7px;
+    left: calc(45.38% - 6px);
+    position: absolute;
+    width: 13px;
+}
+
+.mobile-inauka-pl-start .path-4316-JvSsgh {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-746-Lz8xpx {
+    background-color: transparent;
+    height: 2px;
+    position: absolute;
+    right: 38.09%;
+    top: calc(36.25% - 1px);
+    width: 1px;
+}
+
+.mobile-inauka-pl-start .path-4317-Wcmkld {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-747-Lz8xpx {
+    background-color: transparent;
+    height: 2px;
+    left: calc(34.17% - 1px);
+    position: absolute;
+    top: calc(43.05% - 1px);
+    width: 2px;
+}
+
+.mobile-inauka-pl-start .path-4318-UK6MeG {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4319-Lz8xpx {
+    background-color: transparent;
+    height: 2px;
+    left: calc(42.27% - 1px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(38.15% - 1px);
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4320-Lz8xpx {
+    background-color: transparent;
+    height: 1px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(47.69% - 1px);
+    top: 36.38%;
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .group-748-Lz8xpx {
+    background-color: transparent;
+    height: 1px;
+    left: calc(43.07% - 1px);
+    position: absolute;
+    top: 41.54%;
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4321-2C927c {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-749-Lz8xpx {
+    background-color: transparent;
+    height: 1px;
+    position: absolute;
+    right: calc(46.89% - 1px);
+    top: 39.91%;
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4322-yQobvF {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-750-Lz8xpx {
+    background-color: transparent;
+    height: 4px;
+    left: calc(48.18% - 1px);
+    position: absolute;
+    top: calc(42.00% - 2px);
+    width: 1px;
+}
+
+.mobile-inauka-pl-start .path-4323-dxSEBO {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-751-Lz8xpx {
+    background-color: transparent;
+    height: 2px;
+    position: absolute;
+    right: calc(49.68% - 1px);
+    top: calc(46.56% - 1px);
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4324-m8WP0q {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4325-Lz8xpx {
+    background-color: transparent;
+    height: 5px;
+    left: calc(40.01% - 1px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(29.54% - 2px);
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4326-Lz8xpx {
+    background-color: transparent;
+    height: 4px;
+    left: calc(44.56% - 2px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(29.13% - 1px);
+    width: 4px;
+}
+
+.mobile-inauka-pl-start .path-4327-Lz8xpx {
+    background-color: transparent;
+    height: 5px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(49.48% - 4px);
+    top: calc(27.44% - 1px);
+    width: 7px;
+}
+
+.mobile-inauka-pl-start .group-752-Lz8xpx {
+    background-color: transparent;
+    height: 3px;
+    position: absolute;
+    right: calc(34.83% - 1px);
+    top: calc(39.85% - 1px);
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4328-syI1GX {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-753-Lz8xpx {
+    background-color: transparent;
+    height: 3px;
+    left: calc(33.01% - 1px);
+    position: absolute;
+    top: calc(47.70% - 2px);
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4329-49IVvl {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .jestem-od-dawna-wasz-UUqNaI {
+    background-color: transparent;
+    bottom: calc(49.12% - 65px);
+    height: 132px;
+    left: 40px;
+    letter-spacing: 0.39px;
+    line-height: 22px;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 78px);
+}
+
+.mobile-inauka-pl-start .agata-szulc-maj-UUqNaI {
+    background-color: transparent;
+    bottom: calc(18.38% - 4px);
+    height: 20px;
+    left: 40px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    position: absolute;
+    text-align: left;
+    white-space: nowrap;
+    width: 121px;
+}
+
+.mobile-inauka-pl-start .desktop-opinie-d6opkx {
+    left: 57.63%;
+}
+
+.mobile-inauka-pl-start .dzikuje-za-bardzo-in-d9O0DK {
+    background-color: transparent;
+    bottom: calc(49.12% - 65px);
+    height: 132px;
+    left: 40px;
+    letter-spacing: 0.39px;
+    line-height: 22px;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 78px);
+}
+
+.mobile-inauka-pl-start .pawe-kabat-d9O0DK {
+    background-color: transparent;
+    bottom: calc(18.38% - 4px);
+    height: 20px;
+    left: 40px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    position: absolute;
+    text-align: left;
+    white-space: nowrap;
+    width: 91px;
+}
+
+.mobile-inauka-pl-start .mask-group-13-d9O0DK {
+    background-color: transparent;
+    height: 60px;
+    left: 40px;
+    overflow: hidden;
+    position: absolute;
+    top: 40px;
+    width: 60px;
+}
+
+.mobile-inauka-pl-start .x3-c_-layer_x3-e_-FoUMt8 {
+    top: 1px;
+}
+
+.mobile-inauka-pl-start .group-914-Z3wtso {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .ellipse-51-2bapF1 {
+    background-color: #efcbbf;
+    border-radius: 21.21px;
+    height: calc(100.00% - 18px);
+    left: 9px;
+    position: absolute;
+    top: 9px;
+    transform: rotate(-45.00deg);
+    width: calc(100.00% - 18px);
+}
+
+.mobile-inauka-pl-start .path-4493-2bapF1 {
+    background-color: transparent;
+    bottom: 9px;
+    height: 12px;
+    left: 13px;
+    object-fit: cover;
+    position: absolute;
+    width: calc(100.00% - 26px);
+}
+
+.mobile-inauka-pl-start .group-913-2bapF1 {
+    background-color: transparent;
+    height: 27px;
+    left: calc(48.06% - 8px);
+    position: absolute;
+    top: calc(46.24% - 13px);
+    width: 17px;
+}
+
+.mobile-inauka-pl-start .path-4494-Pxvkph {
+    background-color: transparent;
+    height: 15px;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-905-Pxvkph {
+    background-color: transparent;
+    bottom: 0px;
+    height: 19px;
+    left: calc(49.53% - 3px);
+    position: absolute;
+    width: 7px;
+}
+
+.mobile-inauka-pl-start .path-4495-oiWvqe {
+    background-color: transparent;
+    height: calc(100.00% - 1px);
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: calc(100.00% - 1px);
+}
+
+.mobile-inauka-pl-start .path-4496-oiWvqe {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-906-Pxvkph {
+    background-color: transparent;
+    height: 6px;
+    left: 1px;
+    position: absolute;
+    top: calc(48.83% - 3px);
+    width: 4px;
+}
+
+.mobile-inauka-pl-start .path-4497-QMtdwh {
+    background-color: transparent;
+    height: calc(100.00% - 1px);
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: calc(100.00% - 1px);
+}
+
+.mobile-inauka-pl-start .path-4498-QMtdwh {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-907-Pxvkph {
+    background-color: transparent;
+    height: 6px;
+    position: absolute;
+    right: 1px;
+    top: calc(48.83% - 3px);
+    width: 4px;
+}
+
+.mobile-inauka-pl-start .path-4499-xU4KeX {
+    background-color: transparent;
+    height: calc(100.00% - 1px);
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: calc(100.00% - 1px);
+}
+
+.mobile-inauka-pl-start .path-4500-xU4KeX {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-908-Pxvkph {
+    background-color: transparent;
+    height: 20px;
+    left: 2px;
+    position: absolute;
+    top: 3px;
+    width: calc(100.00% - 4px);
+}
+
+.mobile-inauka-pl-start .path-4501-Z8lqIA {
+    background-color: transparent;
+    height: calc(100.00% - 1px);
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: calc(100.00% - 1px);
+}
+
+.mobile-inauka-pl-start .path-4502-Z8lqIA {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4503-Pxvkph {
+    background-color: transparent;
+    height: 2px;
+    left: 27.54%;
+    object-fit: cover;
+    position: absolute;
+    top: calc(47.69% - 1px);
+    width: 1px;
+}
+
+.mobile-inauka-pl-start .group-909-Pxvkph {
+    background-color: transparent;
+    height: 1px;
+    left: calc(25.23% - 1px);
+    position: absolute;
+    top: 41.80%;
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4504-PL9a10 {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4505-Pxvkph {
+    background-color: transparent;
+    height: 2px;
+    object-fit: cover;
+    position: absolute;
+    right: 34.26%;
+    top: calc(47.69% - 1px);
+    width: 1px;
+}
+
+.mobile-inauka-pl-start .group-910-Pxvkph {
+    background-color: transparent;
+    height: 1px;
+    position: absolute;
+    right: calc(31.08% - 1px);
+    top: 41.80%;
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4506-0zc8dZ {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-911-Pxvkph {
+    background-color: transparent;
+    bottom: calc(49.64% - 2px);
+    height: 5px;
+    left: calc(46.43% - 1px);
+    position: absolute;
+    width: 1px;
+}
+
+.mobile-inauka-pl-start .path-4507-W5U1Af {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-912-Pxvkph {
+    background-color: transparent;
+    bottom: calc(36.45% - 1px);
+    height: 2px;
+    position: absolute;
+    right: calc(41.59% - 1px);
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4508-jc6uOO {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4509-Pxvkph {
+    background-color: transparent;
+    height: 7px;
+    left: 2px;
+    object-fit: cover;
+    position: absolute;
+    top: 3px;
+    width: calc(100.00% - 3px);
+}
+
+.mobile-inauka-pl-start .desktop-opinie-ZEVaiR {
+    left: 72.04%;
+}
+
+.mobile-inauka-pl-start .szkolenie-wietne-jes-1ZxbQs {
+    background-color: transparent;
+    bottom: calc(49.12% - 65px);
+    height: 132px;
+    left: 40px;
+    letter-spacing: 0.39px;
+    line-height: 22px;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 78px);
+}
+
+.mobile-inauka-pl-start .aleksandra-bala-1ZxbQs {
+    background-color: transparent;
+    bottom: calc(18.38% - 4px);
+    height: 20px;
+    left: 40px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    position: absolute;
+    text-align: left;
+    white-space: nowrap;
+    width: 118px;
+}
+
+.mobile-inauka-pl-start .mask-group-14-1ZxbQs {
+    background-color: transparent;
+    height: 60px;
+    left: 38px;
+    overflow: hidden;
+    position: absolute;
+    top: 40px;
+    width: 60px;
+}
+
+.mobile-inauka-pl-start .x3-c_-layer_x3-e_-zKrOtq {
+    top: 1px;
+}
+
+.mobile-inauka-pl-start .group-922-yLhqrX {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .ellipse-53-PZBVwT {
+    background-color: #fdede0;
+    border-radius: 21.21px;
+    height: calc(100.00% - 18px);
+    left: 9px;
+    position: absolute;
+    top: 9px;
+    transform: rotate(-45.00deg);
+    width: calc(100.00% - 18px);
+}
+
+.mobile-inauka-pl-start .path-4510-PZBVwT {
+    background-color: transparent;
+    bottom: calc(47.09% - 16px);
+    height: 34px;
+    left: calc(41.72% - 13px);
+    object-fit: cover;
+    position: absolute;
+    width: 31px;
+}
+
+.mobile-inauka-pl-start .group-915-PZBVwT {
+    background-color: transparent;
+    height: 25px;
+    left: calc(30.86% - 6px);
+    position: absolute;
+    top: calc(41.02% - 10px);
+    width: 18px;
+}
+
+.mobile-inauka-pl-start .path-4511-FKhSU2 {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-916-PZBVwT {
+    background-color: transparent;
+    bottom: calc(43.84% - 15px);
+    height: 34px;
+    position: absolute;
+    right: calc(36.84% - 7px);
+    width: 19px;
+}
+
+.mobile-inauka-pl-start .path-4512-nfNyzI {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4513-PZBVwT {
+    background-color: transparent;
+    bottom: 9px;
+    height: 14px;
+    left: calc(43.53% - 15px);
+    object-fit: cover;
+    position: absolute;
+    width: 34px;
+}
+
+.mobile-inauka-pl-start .rectangle-736-PZBVwT {
+    background-color: var(--nieny-biay);
+    bottom: calc(39.72% - 5px);
+    height: 12px;
+    left: calc(44.41% - 4px);
+    position: absolute;
+    transform: rotate(15.45deg);
+    width: 9px;
+}
+
+.mobile-inauka-pl-start .path-4514-PZBVwT {
+    background-color: transparent;
+    bottom: calc(44.94% - 3px);
+    height: 7px;
+    left: calc(48.32% - 4px);
+    object-fit: cover;
+    position: absolute;
+    width: 8px;
+}
+
+.mobile-inauka-pl-start .path-4515-PZBVwT {
+    background-color: transparent;
+    height: 19px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(47.25% - 7px);
+    top: calc(36.73% - 7px);
+    width: 14px;
+}
+
+.mobile-inauka-pl-start .path-4516-PZBVwT {
+    background-color: transparent;
+    height: 10px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(49.70% - 7px);
+    top: calc(29.59% - 3px);
+    width: 14px;
+}
+
+.mobile-inauka-pl-start .path-4517-PZBVwT {
+    background-color: transparent;
+    height: 5px;
+    left: calc(39.89% - 2px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(42.85% - 2px);
+    width: 4px;
+}
+
+.mobile-inauka-pl-start .path-4518-PZBVwT {
+    background-color: transparent;
+    height: 2px;
+    object-fit: cover;
+    position: absolute;
+    right: 38.24%;
+    top: calc(41.78% - 1px);
+    width: 1px;
+}
+
+.mobile-inauka-pl-start .group-917-PZBVwT {
+    background-color: transparent;
+    height: 2px;
+    position: absolute;
+    right: calc(36.22% - 1px);
+    top: calc(38.88% - 1px);
+    width: 4px;
+}
+
+.mobile-inauka-pl-start .path-4519-NRA6Ej {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4520-PZBVwT {
+    background-color: transparent;
+    height: 2px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(46.32% - 1px);
+    top: calc(40.98% - 1px);
+    width: 1px;
+}
+
+.mobile-inauka-pl-start .group-918-PZBVwT {
+    background-color: transparent;
+    height: 1px;
+    position: absolute;
+    right: calc(45.57% - 2px);
+    top: 38.02%;
+    width: 4px;
+}
+
+.mobile-inauka-pl-start .path-4521-ULNc5Y {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-919-PZBVwT {
+    background-color: transparent;
+    height: 5px;
+    position: absolute;
+    right: calc(41.06% - 1px);
+    top: calc(43.15% - 2px);
+    width: 2px;
+}
+
+.mobile-inauka-pl-start .path-4522-JLICQ2 {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-920-PZBVwT {
+    background-color: transparent;
+    height: 2px;
+    position: absolute;
+    right: calc(44.63% - 1px);
+    top: calc(49.05% - 1px);
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4523-I1rB02 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4524-PZBVwT {
+    background-color: transparent;
+    bottom: calc(28.40% - 2px);
+    height: 9px;
+    left: calc(43.92% - 7px);
+    object-fit: cover;
+    position: absolute;
+    width: 15px;
+}
+
+.mobile-inauka-pl-start .group-921-PZBVwT {
+    background-color: transparent;
+    height: 3px;
+    left: calc(40.67% - 1px);
+    position: absolute;
+    top: calc(42.69% - 1px);
+    width: 1px;
+}
+
+.mobile-inauka-pl-start .path-4525-x8ARVf {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .desktop-opinie-u2Gwum {
+    left: 86.44%;
+}
+
+.mobile-inauka-pl-start .jestecie-panowie-bar-PfTpy2 {
+    background-color: transparent;
+    bottom: calc(49.12% - 65px);
+    height: 132px;
+    left: 40px;
+    letter-spacing: 0.39px;
+    line-height: 22px;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 78px);
+}
+
+.mobile-inauka-pl-start .julita-kacprowicz-PfTpy2 {
+    background-color: transparent;
+    bottom: calc(18.38% - 4px);
+    height: 20px;
+    left: 40px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    position: absolute;
+    text-align: left;
+    white-space: nowrap;
+    width: 132px;
+}
+
+.mobile-inauka-pl-start .mask-group-15-PfTpy2 {
+    background-color: transparent;
+    height: 60px;
+    left: 38px;
+    overflow: hidden;
+    position: absolute;
+    top: 40px;
+    width: 60px;
+}
+
+.mobile-inauka-pl-start .x3-c_-layer_x3-e_-NRXOrf {
+    top: 1px;
+}
+
+.mobile-inauka-pl-start .group-930-su3yII {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .ellipse-55-oU9s8l {
+    background-color: #b9d2d7;
+    border-radius: 21.21px;
+    height: calc(100.00% - 18px);
+    left: 9px;
+    position: absolute;
+    top: 9px;
+    transform: rotate(-45.00deg);
+    width: calc(100.00% - 18px);
+}
+
+.mobile-inauka-pl-start .path-4526-oU9s8l {
+    background-color: transparent;
+    bottom: calc(48.28% - 14px);
+    height: 29px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(46.19% - 10px);
+    width: 21px;
+}
+
+.mobile-inauka-pl-start .path-4527-oU9s8l {
+    background-color: transparent;
+    bottom: 9px;
+    height: 12px;
+    left: calc(48.35% - 13px);
+    object-fit: cover;
+    position: absolute;
+    width: 27px;
+}
+
+.mobile-inauka-pl-start .path-4528-oU9s8l {
+    background-color: transparent;
+    height: 17px;
+    left: calc(46.95% - 7px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(42.67% - 7px);
+    width: 16px;
+}
+
+.mobile-inauka-pl-start .path-4529-oU9s8l {
+    background-color: transparent;
+    height: 15px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(37.36% - 4px);
+    top: calc(36.03% - 5px);
+    width: 12px;
+}
+
+.mobile-inauka-pl-start .path-4530-oU9s8l {
+    background-color: transparent;
+    height: 6px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(42.59% - 4px);
+    top: calc(49.97% - 3px);
+    width: 9px;
+}
+
+.mobile-inauka-pl-start .path-4531-oU9s8l {
+    background-color: transparent;
+    bottom: calc(36.94% - 6px);
+    height: 15px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(46.16% - 5px);
+    width: 11px;
+}
+
+.mobile-inauka-pl-start .group-923-oU9s8l {
+    background-color: transparent;
+    height: 3px;
+    position: absolute;
+    right: calc(40.94% - 1px);
+    top: calc(26.67% - 1px);
+    width: 1px;
+}
+
+.mobile-inauka-pl-start .path-4532-XYLh2J {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-924-oU9s8l {
+    background-color: transparent;
+    height: 2px;
+    position: absolute;
+    right: calc(39.73% - 1px);
+    top: calc(27.63% - 1px);
+    width: 2px;
+}
+
+.mobile-inauka-pl-start .path-4533-QKZAsg {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .ellipse-56-oU9s8l {
+    background-color: #85bac6;
+    border-radius: 0.98px;
+    bottom: calc(45.87% - 1px);
+    height: 2px;
+    position: absolute;
+    right: calc(37.86% - 1px);
+    width: 2px;
+}
+
+.mobile-inauka-pl-start .group-925-oU9s8l {
+    background-color: transparent;
+    bottom: calc(42.33% - 1px);
+    height: 2px;
+    left: calc(49.01% - 2px);
+    position: absolute;
+    width: 4px;
+}
+
+.mobile-inauka-pl-start .path-4534-mJKiKw {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-926-oU9s8l {
+    background-color: transparent;
+    height: 5px;
+    left: calc(40.89% - 1px);
+    position: absolute;
+    top: calc(38.24% - 2px);
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4535-no5Qpw {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-927-oU9s8l {
+    background-color: transparent;
+    height: 4px;
+    left: calc(49.25% - 2px);
+    position: absolute;
+    top: calc(41.10% - 2px);
+    width: 4px;
+}
+
+.mobile-inauka-pl-start .path-4536-Fz7qV2 {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-928-oU9s8l {
+    background-color: transparent;
+    height: 1px;
+    left: calc(43.38% - 2px);
+    position: absolute;
+    top: calc(49.53% - 1px);
+    width: 4px;
+}
+
+.mobile-inauka-pl-start .path-4537-1Iya8x {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-929-oU9s8l {
+    background-color: transparent;
+    height: 1px;
+    position: absolute;
+    right: calc(39.22% - 1px);
+    top: 47.75%;
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4538-bCnfdW {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4539-oU9s8l {
+    background-color: transparent;
+    height: 1px;
+    left: calc(48.06% - 1px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(42.84% - 1px);
+    width: 1px;
+}
+
+.mobile-inauka-pl-start .path-4540-oU9s8l {
+    background-color: transparent;
+    height: 1px;
+    left: calc(40.07% - 1px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(39.92% - 1px);
+    width: 1px;
+}
+
+.mobile-inauka-pl-start .desktop-opinie-fMtV1U {
+    left: 28.81%;
+}
+
+.mobile-inauka-pl-start .polecam-fajny-sposb-H8IqFK {
+    background-color: transparent;
+    bottom: calc(49.12% - 65px);
+    height: 132px;
+    left: 40px;
+    letter-spacing: 0.39px;
+    line-height: 22px;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 78px);
+}
+
+.mobile-inauka-pl-start .katarzyna-tkacz-duda-H8IqFK {
+    background-color: transparent;
+    bottom: calc(18.38% - 4px);
+    height: 20px;
+    left: 40px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    position: absolute;
+    text-align: left;
+    white-space: nowrap;
+    width: 163px;
+}
+
+.mobile-inauka-pl-start .opinia-przesana-na-facebooku-H8IqFK {
+    background-color: transparent;
+    bottom: 38px;
+    height: 18px;
+    left: 40px;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    position: absolute;
+    text-align: left;
+    white-space: nowrap;
+    width: 162px;
+}
+
+.mobile-inauka-pl-start .group-891-H8IqFK {
+    background-color: transparent;
+    height: 60px;
+    left: 40px;
+    position: absolute;
+    top: 40px;
+    width: 60px;
+}
+
+.mobile-inauka-pl-start .x3-c_-layer_x3-e_-4gdxJ8 {
+    top: 0px;
+}
+
+.mobile-inauka-pl-start .group-785-GDhPTf {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .ellipse-33-fgaE7W {
+    background-color: #cee1e7;
+    border-radius: 21.21px;
+    height: calc(100.00% - 18px);
+    left: 9px;
+    position: absolute;
+    top: 9px;
+    transform: rotate(-45.00deg);
+    width: calc(100.00% - 18px);
+}
+
+.mobile-inauka-pl-start .path-4379-fgaE7W {
+    background-color: transparent;
+    bottom: 9px;
+    height: 11px;
+    left: calc(44.80% - 13px);
+    object-fit: cover;
+    position: absolute;
+    width: 29px;
+}
+
+.mobile-inauka-pl-start .path-4380-fgaE7W {
+    background-color: transparent;
+    bottom: calc(19.20% - 2px);
+    height: 10px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(32.18% - 2px);
+    width: 7px;
+}
+
+.mobile-inauka-pl-start .path-4381-fgaE7W {
+    background-color: transparent;
+    bottom: calc(18.43% - 2px);
+    height: 10px;
+    left: calc(28.98% - 4px);
+    object-fit: cover;
+    position: absolute;
+    width: 12px;
+}
+
+.mobile-inauka-pl-start .rectangle-631-fgaE7W {
+    background-color: var(--nieny-biay);
+    bottom: calc(32.42% - 4px);
+    height: 13px;
+    position: absolute;
+    right: calc(47.43% - 4px);
+    width: 9px;
+}
+
+.mobile-inauka-pl-start .path-4382-fgaE7W {
+    background-color: transparent;
+    bottom: calc(36.15% - 4px);
+    height: 10px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(45.50% - 3px);
+    width: 7px;
+}
+
+.mobile-inauka-pl-start .path-4383-fgaE7W {
+    background-color: transparent;
+    bottom: calc(47.19% - 7px);
+    height: 14px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(42.30% - 6px);
+    width: 14px;
+}
+
+.mobile-inauka-pl-start .path-4384-fgaE7W {
+    background-color: transparent;
+    bottom: calc(42.80% - 12px);
+    height: 27px;
+    left: calc(37.64% - 11px);
+    object-fit: cover;
+    position: absolute;
+    width: 29px;
+}
+
+.mobile-inauka-pl-start .ellipse-34-fgaE7W {
+    background-color: #000000;
+    border-radius: 4.41px;
+    height: 9px;
+    left: calc(43.36% - 4px);
+    position: absolute;
+    top: calc(27.57% - 2px);
+    transform: rotate(-51.32deg);
+    width: 9px;
+}
+
+.mobile-inauka-pl-start .path-4385-fgaE7W {
+    background-color: transparent;
+    bottom: calc(46.89% - 2px);
+    height: 4px;
+    left: calc(48.41% - 2px);
+    object-fit: cover;
+    position: absolute;
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4386-fgaE7W {
+    background-color: transparent;
+    bottom: calc(49.70% - 1px);
+    height: 2px;
+    object-fit: cover;
+    position: absolute;
+    right: 39.52%;
+    width: 1px;
+}
+
+.mobile-inauka-pl-start .group-781-fgaE7W {
+    background-color: transparent;
+    height: 1px;
+    position: absolute;
+    right: calc(40.38% - 1px);
+    top: calc(47.04% - 1px);
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4387-rpgIxz {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4388-fgaE7W {
+    background-color: transparent;
+    height: 2px;
+    object-fit: cover;
+    position: absolute;
+    right: 33.73%;
+    top: calc(49.41% - 1px);
+    width: 1px;
+}
+
+.mobile-inauka-pl-start .group-782-fgaE7W {
+    background-color: transparent;
+    height: 1px;
+    position: absolute;
+    right: calc(33.47% - 1px);
+    top: 45.88%;
+    width: 2px;
+}
+
+.mobile-inauka-pl-start .path-4389-EADHGQ {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-783-fgaE7W {
+    background-color: transparent;
+    bottom: calc(48.35% - 2px);
+    height: 4px;
+    position: absolute;
+    right: calc(34.46% - 1px);
+    width: 2px;
+}
+
+.mobile-inauka-pl-start .path-4390-RCcWGe {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-784-fgaE7W {
+    background-color: transparent;
+    bottom: calc(41.14% - 1px);
+    height: 3px;
+    position: absolute;
+    right: calc(36.89% - 1px);
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4391-GZSx3n {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .desktop-opinie-X4vnY2 {
+    left: 14.41%;
+}
+
+.mobile-inauka-pl-start .przede-wszystkim-dzi-IwLvuu {
+    background-color: transparent;
+    bottom: calc(49.12% - 65px);
+    height: 132px;
+    left: 40px;
+    letter-spacing: 0.39px;
+    line-height: 22px;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 78px);
+}
+
+.mobile-inauka-pl-start .ewelina-wysocka-IwLvuu {
+    background-color: transparent;
+    bottom: calc(18.38% - 4px);
+    height: 20px;
+    left: 40px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    position: absolute;
+    text-align: left;
+    white-space: nowrap;
+    width: 127px;
+}
+
+.mobile-inauka-pl-start .mask-group-11-IwLvuu {
+    background-color: transparent;
+    height: 60px;
+    left: 40px;
+    overflow: hidden;
+    position: absolute;
+    top: 40px;
+    width: 60px;
+}
+
+.mobile-inauka-pl-start .x3-c_-layer_x3-e_-KYqIC8 {
+    top: 0px;
+}
+
+.mobile-inauka-pl-start .group-896-6teqKO {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .ellipse-42-LTuxwI {
+    background-color: #f5f5f5;
+    border-radius: 21.21px;
+    height: calc(100.00% - 18px);
+    left: 9px;
+    position: absolute;
+    top: 9px;
+    transform: rotate(-45.00deg);
+    width: calc(100.00% - 18px);
+}
+
+.mobile-inauka-pl-start .ellipse-43-LTuxwI {
+    background-color: #e8edc5;
+    border-radius: 21.21px;
+    height: calc(100.00% - 18px);
+    left: 9px;
+    position: absolute;
+    top: 9px;
+    transform: rotate(-45.00deg);
+    width: calc(100.00% - 18px);
+}
+
+.mobile-inauka-pl-start .ellipse-44-LTuxwI {
+    background-color: #e8edc5;
+    border-radius: 21.21px;
+    height: calc(100.00% - 18px);
+    left: 9px;
+    position: absolute;
+    top: 9px;
+    transform: rotate(-45.00deg);
+    width: calc(100.00% - 18px);
+}
+
+.mobile-inauka-pl-start .group-895-LTuxwI {
+    background-color: transparent;
+    bottom: 9px;
+    height: 37px;
+    left: calc(46.46% - 18px);
+    position: absolute;
+    width: 39px;
+}
+
+.mobile-inauka-pl-start .group-894-1LzLRR {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .ellipse-45-H9XKey {
+    background-color: #000000;
+    border-radius: 6.77px;
+    height: calc(100.00% - 24px);
+    left: 3px;
+    position: absolute;
+    top: 12px;
+    transform: rotate(-45.00deg);
+    width: 14px;
+}
+
+.mobile-inauka-pl-start .path-4470-H9XKey {
+    background-color: transparent;
+    height: 28px;
+    left: 4px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: calc(100.00% - 9px);
+}
+
+.mobile-inauka-pl-start .path-4471-H9XKey {
+    background-color: transparent;
+    height: 10px;
+    left: calc(45.67% - 4px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(45.32% - 5px);
+    width: 8px;
+}
+
+.mobile-inauka-pl-start .path-4472-H9XKey {
+    background-color: transparent;
+    height: 6px;
+    left: calc(47.36% - 3px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(39.91% - 2px);
+    width: 6px;
+}
+
+.mobile-inauka-pl-start .path-4473-H9XKey {
+    background-color: transparent;
+    height: 10px;
+    left: calc(40.72% - 4px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(23.11% - 2px);
+    width: 11px;
+}
+
+.mobile-inauka-pl-start .group-892-H9XKey {
+    background-color: transparent;
+    height: 1px;
+    left: calc(37.32% - 1px);
+    position: absolute;
+    top: 21.78%;
+    width: 2px;
+}
+
+.mobile-inauka-pl-start .path-4474-lfzZxq {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-893-H9XKey {
+    background-color: transparent;
+    height: 1px;
+    left: calc(39.68% - 1px);
+    position: absolute;
+    top: 34.97%;
+    width: 2px;
+}
+
+.mobile-inauka-pl-start .path-4475-Ydo4Gi {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4476-H9XKey {
+    background-color: transparent;
+    height: 1px;
+    left: 36.64%;
+    object-fit: cover;
+    position: absolute;
+    top: 24.51%;
+    width: 1px;
+}
+
+.mobile-inauka-pl-start .path-4477-H9XKey {
+    background-color: transparent;
+    bottom: 0px;
+    height: 17px;
+    left: 5px;
+    object-fit: cover;
+    position: absolute;
+    width: calc(100.00% - 10px);
+}
+
+.mobile-inauka-pl-start .path-4478-H9XKey {
+    background-color: transparent;
+    height: 23px;
+    object-fit: cover;
+    position: absolute;
+    right: 0px;
+    top: calc(43.37% - 10px);
+    width: 20px;
+}
+
+.mobile-inauka-pl-start .desktop-opinie-qzMxQq {
+    left: 0px;
+}
+
+.mobile-inauka-pl-start .szkolenia-i-nauka-po-zyXkwW {
+    background-color: transparent;
+    bottom: calc(49.12% - 65px);
+    height: 132px;
+    left: 40px;
+    letter-spacing: 0.39px;
+    line-height: 22px;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 78px);
+}
+
+.mobile-inauka-pl-start .ukasz-kutyowski-zyXkwW {
+    background-color: transparent;
+    bottom: calc(18.38% - 4px);
+    height: 20px;
+    left: 40px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    position: absolute;
+    text-align: left;
+    white-space: nowrap;
+    width: 134px;
+}
+
+.mobile-inauka-pl-start .mask-group-12-zyXkwW {
+    background-color: transparent;
+    height: 60px;
+    left: 40px;
+    overflow: hidden;
+    position: absolute;
+    top: 40px;
+    width: 60px;
+}
+
+.mobile-inauka-pl-start .x3-c_-layer_x3-e_-vcpHM9 {
+    top: 1px;
+}
+
+.mobile-inauka-pl-start .group-904-Cy9xlw {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .ellipse-47-c7rOrv {
+    background-color: #efcbbf;
+    border-radius: 21.21px;
+    height: calc(100.00% - 18px);
+    left: 9px;
+    position: absolute;
+    top: 9px;
+    transform: rotate(-45.00deg);
+    width: calc(100.00% - 18px);
+}
+
+.mobile-inauka-pl-start .group-897-c7rOrv {
+    background-color: transparent;
+    bottom: calc(25.98% - 2px);
+    height: 8px;
+    position: absolute;
+    right: calc(44.63% - 13px);
+    width: 30px;
+}
+
+.mobile-inauka-pl-start .path-4479-frxzTY {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4480-c7rOrv {
+    background-color: transparent;
+    bottom: calc(27.50% - 3px);
+    height: 13px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(41.47% - 5px);
+    width: 11px;
+}
+
+.mobile-inauka-pl-start .path-4481-c7rOrv {
+    background-color: transparent;
+    bottom: calc(30.65% - 3px);
+    height: 10px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(45.39% - 4px);
+    width: 8px;
+}
+
+.mobile-inauka-pl-start .path-4482-c7rOrv {
+    background-color: transparent;
+    height: 19px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(49.33% - 10px);
+    top: calc(40.26% - 8px);
+    width: 21px;
+}
+
+.mobile-inauka-pl-start .ellipse-48-c7rOrv {
+    background-color: var(--nieny-biay);
+    border-radius: 12.24px/8.18px;
+    height: 16px;
+    left: calc(47.39% - 12px);
+    position: absolute;
+    top: calc(47.63% - 8px);
+    transform: rotate(-77.98deg);
+    width: 24px;
+}
+
+.mobile-inauka-pl-start .path-4483-c7rOrv {
+    background-color: transparent;
+    height: 11px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(40.66% - 3px);
+    top: calc(39.15% - 4px);
+    width: 7px;
+}
+
+.mobile-inauka-pl-start .path-4484-c7rOrv {
+    background-color: transparent;
+    height: 9px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(48.50% - 8px);
+    top: calc(31.47% - 3px);
+    width: 17px;
+}
+
+.mobile-inauka-pl-start .ellipse-49-c7rOrv {
+    background-color: var(--nieny-biay);
+    border-radius: 3.44px;
+    bottom: calc(45.50% - 3px);
+    height: 7px;
+    position: absolute;
+    right: calc(36.07% - 2px);
+    transform: rotate(-75.88deg);
+    width: 7px;
+}
+
+.mobile-inauka-pl-start .group-898-c7rOrv {
+    background-color: transparent;
+    height: 3px;
+    left: calc(39.47% - 3px);
+    position: absolute;
+    top: calc(26.78% - 1px);
+    width: 6px;
+}
+
+.mobile-inauka-pl-start .path-4485-igB7SS {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4486-c7rOrv {
+    background-color: transparent;
+    height: 2px;
+    left: 36.28%;
+    object-fit: cover;
+    position: absolute;
+    top: calc(49.75% - 1px);
+    width: 1px;
+}
+
+.mobile-inauka-pl-start .group-899-c7rOrv {
+    background-color: transparent;
+    height: 1px;
+    left: calc(35.28% - 1px);
+    position: absolute;
+    top: 46.25%;
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4487-HxJWVg {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4488-c7rOrv {
+    background-color: transparent;
+    height: 2px;
+    left: calc(44.95% - 1px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(50.00% - 1px);
+    width: 1px;
+}
+
+.mobile-inauka-pl-start .group-900-c7rOrv {
+    background-color: transparent;
+    height: 2px;
+    left: calc(45.70% - 2px);
+    position: absolute;
+    top: calc(46.80% - 1px);
+    width: 4px;
+}
+
+.mobile-inauka-pl-start .path-4489-RATXvY {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-901-c7rOrv {
+    background-color: transparent;
+    bottom: calc(48.47% - 2px);
+    height: 5px;
+    left: calc(39.07% - 1px);
+    position: absolute;
+    width: 2px;
+}
+
+.mobile-inauka-pl-start .path-4490-qAWxkx {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-902-c7rOrv {
+    background-color: transparent;
+    bottom: calc(42.39% - 1px);
+    height: 3px;
+    left: calc(42.62% - 2px);
+    position: absolute;
+    width: 4px;
+}
+
+.mobile-inauka-pl-start .path-4491-WPhJ0a {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-903-c7rOrv {
+    background-color: transparent;
+    bottom: calc(48.12% - 1px);
+    height: 2px;
+    position: absolute;
+    right: calc(37.63% - 1px);
+    width: 3px;
+}
+
+.mobile-inauka-pl-start .path-4492-FAJM0X {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-935-GO8GT3 {
+    background-color: transparent;
+    height: 12px;
+    left: 56px;
+    position: absolute;
+    top: 8563px;
+    width: 320px;
+}
+
+.mobile-inauka-pl-start .rectangle-624-9B4feZ {
+    background-color: var(--hunter-green-4);
+    border-radius: 10px;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 6.25%;
+}
+
+.mobile-inauka-pl-start .rectangle-625-9B4feZ {
+    background-color: var(--hunter-green-4);
+    border-radius: 10px;
+    height: 100%;
+    left: 12.50%;
+    position: absolute;
+    top: 0px;
+    width: 6.25%;
+}
+
+.mobile-inauka-pl-start .rectangle-626-9B4feZ {
+    background-color: var(--hunter-green-4);
+    border-radius: 10px;
+    height: 100%;
+    left: 25.00%;
+    position: absolute;
+    top: 0px;
+    width: 6.25%;
+}
+
+.mobile-inauka-pl-start .rectangle-613-9B4feZ {
+    background-color: var(--koralowy-pomaracz);
+    border-radius: 10px;
+    height: 100%;
+    left: 37.50%;
+    position: absolute;
+    top: 0px;
+    width: 25.00%;
+}
+
+.mobile-inauka-pl-start .rectangle-614-9B4feZ {
+    background-color: var(--hunter-green-4);
+    border-radius: 10px;
+    height: 100%;
+    left: 68.75%;
+    position: absolute;
+    top: 0px;
+    width: 6.25%;
+}
+
+.mobile-inauka-pl-start .rectangle-615-9B4feZ {
+    background-color: var(--hunter-green-4);
+    border-radius: 10px;
+    height: 100%;
+    left: 81.25%;
+    position: absolute;
+    top: 0px;
+    width: 6.25%;
+}
+
+.mobile-inauka-pl-start .rectangle-616-9B4feZ {
+    background-color: var(--hunter-green-4);
+    border-radius: 10px;
+    height: 100%;
+    left: 93.75%;
+    position: absolute;
+    top: 0px;
+    width: 6.25%;
+}
+
+.mobile-inauka-pl-start .path-4541-GO8GT3 {
+    background-color: transparent;
+    height: 1200px;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 8615px;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-bni2jk {
+    color: var(--koralowy-pomaracz);
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 198px;
+    line-height: 16px;
+    opacity: 0.8;
+    text-align: center;
+    top: 8702px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .tekst-na-belce-rNSUlZ {
+    color: var(--grafit);
+    font-style: normal;
+    font-weight: 400;
+    height: 79px;
+    left: 56px;
+    line-height: 28px;
+    opacity: 0.8;
+    text-align: center;
+    top: 8741px;
+    width: 321px;
+}
+
+.mobile-inauka-pl-start .group-939-GO8GT3 {
+    background-color: transparent;
+    height: 763px;
+    left: 25px;
+    position: absolute;
+    top: 8858px;
+    width: 381px;
+}
+
+.mobile-inauka-pl-start .mobile-faq-6dqiIw {
+    height: 81px;
+    top: 0px;
+}
+
+.mobile-inauka-pl-start .group-938-CRVcTL {
+    height: 81px;
+    top: calc(50.00% - 40px);
+}
+
+.mobile-inauka-pl-start .czy-wystawiacie-fakt-Hbx5yO {
+    background-color: transparent;
+    bottom: calc(45.95% - 20px);
+    color: var(--hunter-green-2);
+    font-style: normal;
+    font-weight: 400;
+    height: 44px;
+    left: 20px;
+    line-height: 16px;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 50px);
+}
+
+.mobile-inauka-pl-start .mobile-faq-0jIlNG {
+    height: 60px;
+    top: 101px;
+}
+
+.mobile-inauka-pl-start .group-938-3HTwpx {
+    height: 60px;
+    top: calc(50.00% - 30px);
+}
+
+.mobile-inauka-pl-start .jak-uzyskam-certyfikat-ze-szkolenia-YcJbjx {
+    background-color: transparent;
+    bottom: calc(45.95% - 11px);
+    color: var(--hunter-green-2);
+    font-style: normal;
+    font-weight: 400;
+    height: 23px;
+    left: 20px;
+    line-height: 16px;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 50px);
+}
+
+.mobile-inauka-pl-start .mobile-faq-sX6gxz {
+    height: 60px;
+    top: calc(25.75% - 15px);
+}
+
+.mobile-inauka-pl-start .group-938-g8Anqx {
+    height: 60px;
+    top: calc(50.00% - 30px);
+}
+
+.mobile-inauka-pl-start .czy-mog-pobra-filmy-na-dysk-unIT6Z {
+    background-color: transparent;
+    bottom: calc(45.95% - 11px);
+    color: var(--hunter-green-2);
+    font-style: normal;
+    font-weight: 400;
+    height: 23px;
+    left: 20px;
+    line-height: 16px;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 50px);
+}
+
+.mobile-inauka-pl-start .mobile-faq-fxEVYN {
+    height: 60px;
+    top: calc(37.13% - 22px);
+}
+
+.mobile-inauka-pl-start .group-938-PJjVn5 {
+    height: 60px;
+    top: calc(50.00% - 30px);
+}
+
+.mobile-inauka-pl-start .jak-mog-zrezygnowa-8o6dcU {
+    background-color: transparent;
+    bottom: calc(45.95% - 11px);
+    color: var(--hunter-green-2);
+    font-style: normal;
+    font-weight: 400;
+    height: 23px;
+    left: 20px;
+    line-height: 16px;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 50px);
+}
+
+.mobile-inauka-pl-start .mobile-faq-zfFIEl {
+    height: 60px;
+    top: calc(48.51% - 29px);
+}
+
+.mobile-inauka-pl-start .group-938-blgzqJ {
+    height: 60px;
+    top: calc(50.00% - 30px);
+}
+
+.mobile-inauka-pl-start .jak-uzyska-dostp-do-materiaw-CFSQ6v {
+    background-color: transparent;
+    bottom: calc(45.95% - 11px);
+    color: var(--hunter-green-2);
+    font-style: normal;
+    font-weight: 400;
+    height: 23px;
+    left: 20px;
+    line-height: 16px;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 50px);
+}
+
+.mobile-inauka-pl-start .mobile-faq-spenND {
+    bottom: calc(40.11% - 24px);
+    height: 60px;
+}
+
+.mobile-inauka-pl-start .group-938-IsSgaZ {
+    height: 60px;
+    top: calc(50.00% - 30px);
+}
+
+.mobile-inauka-pl-start .organizujecie-szkolenia-m6xBpM {
+    background-color: transparent;
+    bottom: calc(45.95% - 11px);
+    color: var(--hunter-green-2);
+    font-style: normal;
+    font-weight: 400;
+    height: 23px;
+    left: 20px;
+    line-height: 16px;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 50px);
+}
+
+.mobile-inauka-pl-start .mobile-faq-ekHGLY {
+    bottom: calc(28.73% - 17px);
+    height: 60px;
+}
+
+.mobile-inauka-pl-start .group-938-kLRxX0 {
+    height: 60px;
+    top: calc(50.00% - 30px);
+}
+
+.mobile-inauka-pl-start .czy-s-pakiety-dla-firm-34g1UM {
+    background-color: transparent;
+    bottom: calc(45.95% - 11px);
+    color: var(--hunter-green-2);
+    font-style: normal;
+    font-weight: 400;
+    height: 23px;
+    left: 20px;
+    line-height: 16px;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 50px);
+}
+
+.mobile-inauka-pl-start .mobile-faq-jzwqEI {
+    bottom: 101px;
+    height: 81px;
+}
+
+.mobile-inauka-pl-start .group-938-vP7kjL {
+    height: 81px;
+    top: calc(50.00% - 40px);
+}
+
+.mobile-inauka-pl-start .mam-wykupiony-dostp-khCOTW {
+    background-color: transparent;
+    bottom: calc(45.95% - 20px);
+    color: var(--hunter-green-2);
+    font-style: normal;
+    font-weight: 400;
+    height: 44px;
+    left: 20px;
+    line-height: 16px;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 50px);
+}
+
+.mobile-inauka-pl-start .mobile-faq-A7TsSN {
+    bottom: 0px;
+    height: 81px;
+}
+
+.mobile-inauka-pl-start .group-938-6O5lxx {
+    height: 81px;
+    top: calc(50.00% - 40px);
+}
+
+.mobile-inauka-pl-start .nie-mog-zresetowaustawi-hasa-do-konta-eydxch {
+    background-color: transparent;
+    bottom: calc(45.95% - 20px);
+    color: var(--hunter-green-2);
+    font-style: normal;
+    font-weight: 400;
+    height: 44px;
+    left: 20px;
+    line-height: 16px;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 50px);
+}
+
+.mobile-inauka-pl-start .masz-inne-pytania-GO8GT3 {
+    background-color: transparent;
+    color: var(--grafit);
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 121px;
+    line-height: 20px;
+    position: absolute;
+    text-align: left;
+    top: 9664px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .mobile-cta-drugie-YNZ80L {
+    left: 49px;
+    top: 9702px;
+    width: 333px;
+}
+
+.mobile-inauka-pl-start .path-4439-IR5xdd {
+    left: 1px;
+}
+
+.mobile-inauka-pl-start .group-563-IR5xdd {
+    height: 100%;
+    top: 0px;
+    width: calc(100.00% - 34px);
+}
+
+.mobile-inauka-pl-start .button-GIuIKE {
+    bottom: calc(45.00% - 9px);
+    height: 20px;
+    letter-spacing: 1.35px;
+    line-height: 22px;
+    width: 261px;
+}
+
+.mobile-inauka-pl-start .path-4140-RXeLPp {
+    right: calc(50.00% - 4px);
+}
+
+.mobile-inauka-pl-start .path-4416-GO8GT3 {
+    background-color: transparent;
+    height: 1129px;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 9815px;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .group-940-GO8GT3 {
+    background-color: transparent;
+    height: 270px;
+    left: 60px;
+    position: absolute;
+    top: 9895px;
+    width: 276px;
+}
+
+.mobile-inauka-pl-start .group-805-VzD1DM {
+    background-color: transparent;
+    height: 80px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-804-xIq5Lm {
+    background-color: transparent;
+    height: calc(100.00% - 11px);
+    left: 15px;
+    position: relative;
+    top: 6px;
+    width: calc(100.00% - 30px);
+}
+
+.mobile-inauka-pl-start .path-4417-SsmyYZ {
+    background-color: transparent;
+    height: 14px;
+    left: 14px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 33px;
+}
+
+.mobile-inauka-pl-start .path-4418-SsmyYZ {
+    background-color: transparent;
+    height: calc(100.00% - 9px);
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 9px;
+    width: 62px;
+}
+
+.mobile-inauka-pl-start .path-4419-SsmyYZ {
+    background-color: transparent;
+    bottom: calc(34.19% - 6px);
+    height: 18px;
+    left: 25px;
+    object-fit: cover;
+    position: absolute;
+    width: 15px;
+}
+
+.mobile-inauka-pl-start .group-803-SsmyYZ {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-802-LZO4OM {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .x2024-itbt-VzD1DM {
+    background-color: transparent;
+    bottom: calc(49.59% - 13px);
+    color: var(--nieny-biay);
+    font-style: normal;
+    font-weight: 400;
+    height: 27px;
+    left: 10px;
+    line-height: 20px;
+    position: absolute;
+    text-align: left;
+    white-space: nowrap;
+    width: 121px;
+}
+
+.mobile-inauka-pl-start .kontakt-helloinaukapl-VzD1DM {
+    background-color: transparent;
+    bottom: calc(31.30% - 8px);
+    color: var(--white);
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-xl);
+    font-style: normal;
+    font-weight: 400;
+    height: 24px;
+    left: 10px;
+    letter-spacing: 0.14px;
+    line-height: 18px;
+    position: absolute;
+    text-align: left;
+    white-space: nowrap;
+    width: calc(100.00% - 44px);
+}
+
+.mobile-inauka-pl-start .sociale-tiktok-VzD1DM {
+    background-color: transparent;
+    bottom: 0px;
+    height: 40px;
+    left: 10px;
+    position: absolute;
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .group-806-R9xxet {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .sociale-facebook-VzD1DM {
+    background-color: transparent;
+    bottom: 1px;
+    height: 40px;
+    left: calc(29.66% - 12px);
+    position: absolute;
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .group-808-I4VxmX {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .sociale-instagram-VzD1DM {
+    background-color: transparent;
+    bottom: 0px;
+    height: 40px;
+    position: absolute;
+    right: calc(44.92% - 18px);
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .group-810-bPNDCW {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .sociale-youtube-VzD1DM {
+    background-color: transparent;
+    bottom: 0px;
+    height: 40px;
+    position: absolute;
+    right: calc(19.49% - 8px);
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .group-812-QcJg7b {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .informacje-GO8GT3 {
+    background-color: transparent;
+    height: auto;
+    left: 60px;
+    letter-spacing: 0.18px;
+    line-height: 24px;
+    position: absolute;
+    text-align: left;
+    top: 10241px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .wsparcie-GO8GT3 {
+    height: auto;
+    left: 60px;
+    text-align: left;
+    top: 10511px;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .regulamin-GO8GT3 {
+    background-color: transparent;
+    color: var(--white);
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 60px;
+    line-height: 20px;
+    position: absolute;
+    text-align: left;
+    top: 10310px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .napisz-helloinaukapl-GO8GT3 {
+    background-color: transparent;
+    color: var(--white);
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 60px;
+    line-height: 20px;
+    position: absolute;
+    text-align: left;
+    top: 10580px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .polityka-prywatnoci-GO8GT3 {
+    background-color: transparent;
+    color: var(--white);
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 60px;
+    line-height: 20px;
+    position: absolute;
+    text-align: left;
+    top: 10356px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .twoje-konto-i-kursy-GO8GT3 {
+    background-color: transparent;
+    color: var(--white);
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 60px;
+    line-height: 20px;
+    position: absolute;
+    text-align: left;
+    top: 10626px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .o-nas-GO8GT3 {
+    background-color: transparent;
+    color: var(--white);
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 60px;
+    line-height: 20px;
+    position: absolute;
+    text-align: left;
+    top: 10400px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .cieki-specjalizacji-GO8GT3 {
+    background-color: transparent;
+    color: var(--white);
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 60px;
+    line-height: 20px;
+    position: absolute;
+    text-align: left;
+    top: 10670px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .zosta-autorem-GO8GT3 {
+    background-color: transparent;
+    color: var(--white);
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 60px;
+    line-height: 20px;
+    position: absolute;
+    text-align: left;
+    top: 10446px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .zweryfikuj-certyfikat-GO8GT3 {
+    background-color: transparent;
+    color: var(--white);
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 60px;
+    line-height: 20px;
+    position: absolute;
+    text-align: left;
+    top: 10716px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.mobile-inauka-pl-start .line-86-GO8GT3 {
+    background-color: transparent;
+    height: 1px;
+    left: 66px;
+    object-fit: cover;
+    position: absolute;
+    top: 10788px;
+    width: 300px;
+}
+
+.mobile-inauka-pl-start .it-business-training-GO8GT3 {
+    background-color: transparent;
+    color: #ffffff80;
+    font-family: var(--font-family-sora);
+    font-size: var(--font-size-m);
+    font-style: normal;
+    font-weight: 600;
+    height: 71px;
+    left: 53px;
+    letter-spacing: 0.10px;
+    line-height: 23px;
+    position: absolute;
+    text-align: left;
+    top: 10824px;
+    width: 326px;
+}
+
+.mobile-inauka-pl-start .aktualizacje {
+    background-color: transparent;
+    bottom: calc(38.24% - 12px);
+    height: 32px;
+    left: 40px;
+    letter-spacing: 0.18px;
+    line-height: 24px;
+    position: absolute;
+    text-align: center;
+    white-space: nowrap;
+    width: calc(100.00% - 78px);
+}
+
+.mobile-inauka-pl-start .alarm_24dp_5-f6368_f {
+    background-color: transparent;
+    height: calc(100.00% - 1px);
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .ambasador {
+    background-color: transparent;
+    bottom: calc(39.11% - 6px);
+    height: 15px;
+    letter-spacing: 1.50px;
+    line-height: 14px;
+    position: absolute;
+    right: calc(49.48% - 37px);
+    text-align: center;
+    white-space: nowrap;
+    width: 74px;
+}
+
+.mobile-inauka-pl-start .button {
+    background-color: transparent;
+    position: absolute;
+    right: -2px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.mobile-inauka-pl-start .campaign_24dp_5-f636 {
+    background-color: transparent;
+    height: calc(100.00% - 20px);
+    left: 10px;
+    object-fit: cover;
+    position: absolute;
+    top: 9px;
+    width: calc(100.00% - 80px);
+}
+
+.mobile-inauka-pl-start .desktop-ambasador-avatar {
+    background-color: transparent;
+    bottom: 26px;
+    height: 120px;
+    left: calc(50.00% - 60px);
+    position: absolute;
+    width: 120px;
+}
+
+.mobile-inauka-pl-start .desktop-badge-autor {
+    background-color: transparent;
+    height: 13px;
+    left: 30px;
+    position: absolute;
+    width: 137px;
+}
+
+.mobile-inauka-pl-start .desktop-badge-bonus-nad-kursem {
+    background-color: transparent;
+    height: 100%;
+    top: 0px;
+}
+
+.mobile-inauka-pl-start .desktop-mobile-tag {
+    background-color: transparent;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+}
+
+.mobile-inauka-pl-start .desktop-opinie {
+    background-color: transparent;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    width: 13.56%;
+}
+
+.mobile-inauka-pl-start .ellipse-22 {
+    background-color: transparent;
+    border: 1px solid;
+    border-radius: 30px;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .ellipse-25 {
+    background-color: var(--koralowy-pomaracz);
+    border-radius: 10px;
+    height: 100%;
+    left: 0px;
+    opacity: 0.2;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .ellipse-26 {
+    background-color: var(--koralowy-pomaracz);
+    border-radius: 10px;
+    height: 100%;
+    left: 0px;
+    opacity: 0.2;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-562 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .group-563 {
+    background-color: transparent;
+    left: 12px;
+    position: absolute;
+}
+
+.mobile-inauka-pl-start .group-622 {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-623 {
+    background-color: transparent;
+    height: 21px;
+    left: calc(49.75% - 6px);
+    position: absolute;
+    top: calc(49.13% - 10px);
+    width: 12px;
+}
+
+.mobile-inauka-pl-start .group-624 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-655 {
+    background-color: transparent;
+    height: calc(100.00% - 10px);
+    left: 10px;
+    position: absolute;
+    top: 5px;
+    width: calc(100.00% - 20px);
+}
+
+.mobile-inauka-pl-start .group-657 {
+    background-color: transparent;
+    height: calc(100.00% - 1px);
+    position: absolute;
+    right: 0px;
+    top: 1px;
+    width: 12px;
+}
+
+.mobile-inauka-pl-start .group-660 {
+    background-color: transparent;
+    bottom: 9px;
+    height: 12px;
+    left: 10px;
+    position: absolute;
+    width: 12px;
+}
+
+.mobile-inauka-pl-start .group-662 {
+    background-color: transparent;
+    height: 18px;
+    position: absolute;
+    right: 0px;
+    top: calc(50.00% - 9px);
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .group-665 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+}
+
+.mobile-inauka-pl-start .group-666 {
+    background-color: transparent;
+    height: calc(100.00% - 1px);
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 101px;
+}
+
+.mobile-inauka-pl-start .group-667 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 20px;
+}
+
+.mobile-inauka-pl-start .group-668 {
+    background-color: transparent;
+    height: calc(100.00% - 1px);
+    position: absolute;
+    right: calc(46.33% - 9px);
+    top: 1px;
+    width: 20px;
+}
+
+.mobile-inauka-pl-start .group-669 {
+    background-color: transparent;
+    height: 30px;
+    left: 19px;
+    position: absolute;
+    top: 22px;
+    width: calc(100.00% - 49px);
+}
+
+.mobile-inauka-pl-start .group-670 {
+    background-color: transparent;
+    height: 21px;
+    left: 30px;
+    position: absolute;
+    width: 236px;
+}
+
+.mobile-inauka-pl-start .group-671 {
+    background-color: transparent;
+    bottom: 56px;
+    height: 26px;
+    left: 30px;
+    position: absolute;
+    width: 234px;
+}
+
+.mobile-inauka-pl-start .group-672 {
+    background-color: transparent;
+    bottom: 22px;
+    height: 26px;
+    left: 30px;
+    position: absolute;
+    width: calc(100.00% - 81px);
+}
+
+.mobile-inauka-pl-start .group-677 {
+    background-color: transparent;
+    height: calc(100.00% - 3px);
+    left: 1px;
+    position: relative;
+    top: 2px;
+    width: calc(100.00% - 1px);
+}
+
+.mobile-inauka-pl-start .group-690 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-691 {
+    background-color: transparent;
+    height: 111px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-692 {
+    background-color: transparent;
+    bottom: calc(20.26% - 12px);
+    height: 58px;
+    left: calc(50.00% - 29px);
+    position: absolute;
+    width: 58px;
+}
+
+.mobile-inauka-pl-start .group-696 {
+    background-color: transparent;
+    height: 176px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-697 {
+    background-color: transparent;
+    height: calc(100.00% - 16px);
+    left: 8px;
+    position: absolute;
+    top: 8px;
+    width: calc(100.00% - 16px);
+}
+
+.mobile-inauka-pl-start .group-737 {
+    background-color: transparent;
+    bottom: calc(50.00% - 10px);
+    height: 20px;
+    position: absolute;
+    right: calc(50.00% - 9px);
+    width: 18px;
+}
+
+.mobile-inauka-pl-start .group-738 {
+    background-color: transparent;
+    bottom: 40px;
+    height: 40px;
+    position: absolute;
+    right: 40px;
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .group-800 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-855 {
+    background-color: transparent;
+    height: 217px;
+    left: 14px;
+    opacity: 0.6;
+    position: absolute;
+    top: 21px;
+    width: calc(100.00% - 28px);
+}
+
+.mobile-inauka-pl-start .group-856 {
+    background-color: transparent;
+    bottom: 0px;
+    height: 40px;
+    position: absolute;
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .group-857 {
+    background-color: transparent;
+    bottom: 0px;
+    height: 40px;
+    position: absolute;
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .group-858 {
+    background-color: transparent;
+    bottom: 0px;
+    height: 40px;
+    position: absolute;
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .group-859 {
+    background-color: transparent;
+    bottom: 0px;
+    height: 40px;
+    position: absolute;
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .group-860 {
+    background-color: transparent;
+    bottom: 0px;
+    height: 40px;
+    position: absolute;
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .group-861 {
+    background-color: transparent;
+    bottom: 0px;
+    height: 40px;
+    position: absolute;
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .group-862 {
+    background-color: transparent;
+    bottom: 0px;
+    height: 40px;
+    left: calc(40.20% - 117px);
+    position: absolute;
+    width: 290px;
+}
+
+.mobile-inauka-pl-start .group-864 {
+    background-color: transparent;
+    bottom: 40px;
+    left: 24px;
+    position: absolute;
+    width: calc(100.00% - 38px);
+}
+
+.mobile-inauka-pl-start .group-865 {
+    background-color: transparent;
+    height: 100%;
+    left: calc(50.00% - 215px);
+    position: absolute;
+    top: 0px;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .group-868 {
+    background-color: transparent;
+    height: 64px;
+    left: 30px;
+    position: absolute;
+    width: 273px;
+}
+
+.mobile-inauka-pl-start .group-878 {
+    background-color: transparent;
+    bottom: calc(45.99% - 30px);
+    height: 66px;
+    position: absolute;
+}
+
+.mobile-inauka-pl-start .group-879 {
+    background-color: transparent;
+    bottom: 40px;
+    height: 40px;
+    position: absolute;
+    width: 290px;
+}
+
+.mobile-inauka-pl-start .group-880 {
+    background-color: transparent;
+    height: calc(100.00% - 361px);
+    position: absolute;
+    top: 40px;
+}
+
+.mobile-inauka-pl-start .group-936 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .group-938 {
+    background-color: transparent;
+    left: 0px;
+    position: relative;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .headline-5 {
+    background-color: transparent;
+    position: absolute;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.mobile-inauka-pl-start .introduction-basic-p {
+    background-color: transparent;
+    position: absolute;
+    text-align: left;
+}
+
+.mobile-inauka-pl-start .line-82 {
+    background-color: transparent;
+    bottom: 27.72%;
+    height: 1px;
+    left: 40px;
+    object-fit: cover;
+    position: absolute;
+    width: calc(100.00% - 80px);
+}
+
+.mobile-inauka-pl-start .logo-excel {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .mobile-cta-drugie {
+    background-color: transparent;
+    height: 40px;
+    position: absolute;
+}
+
+.mobile-inauka-pl-start .mobile-cta-gwne {
+    background-color: transparent;
+    height: 64px;
+    position: absolute;
+}
+
+.mobile-inauka-pl-start .mobile-faq {
+    background-color: transparent;
+    left: 0px;
+    position: absolute;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .mobile-lista-co-zyskasz {
+    background-color: transparent;
+    height: 577px;
+    position: absolute;
+    top: calc(50.00% - 288px);
+}
+
+.mobile-inauka-pl-start .mobile-przycisk-sortowanie {
+    background-color: transparent;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+}
+
+.mobile-inauka-pl-start .mobile-slider-gwny {
+    background-color: transparent;
+    position: absolute;
+    top: 0px;
+    width: 430px;
+}
+
+.mobile-inauka-pl-start .mobile-widok-kursu {
+    background-color: transparent;
+    left: 25px;
+    position: absolute;
+    width: 380px;
+}
+
+.mobile-inauka-pl-start .najnisza-cena-w-cigu-30-dni-przed-obnik {
+    background-color: transparent;
+    bottom: 106px;
+    height: 18px;
+    left: 30px;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    opacity: 0.5;
+    position: absolute;
+    text-align: left;
+    white-space: nowrap;
+    width: calc(100.00% - 61px);
+}
+
+.mobile-inauka-pl-start .opinia-przesana-przez-e-mail {
+    background-color: transparent;
+    bottom: 38px;
+    height: 18px;
+    left: 40px;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    position: absolute;
+    text-align: left;
+    white-space: nowrap;
+    width: 152px;
+}
+
+.mobile-inauka-pl-start .path-4140 {
+    background-color: transparent;
+    bottom: calc(50.00% - 10px);
+    height: 20px;
+    object-fit: cover;
+    position: absolute;
+    width: 9px;
+}
+
+.mobile-inauka-pl-start .path-4164 {
+    background-color: transparent;
+    height: calc(100.00% - 9px);
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 4px;
+    width: 10px;
+}
+
+.mobile-inauka-pl-start .path-4165 {
+    background-color: transparent;
+    height: 100%;
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4212 {
+    background-color: transparent;
+    bottom: 0px;
+    height: 17px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(49.92% - 20px);
+    width: 40px;
+}
+
+.mobile-inauka-pl-start .path-4214 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4298 {
+    background-color: transparent;
+    height: 4px;
+    left: 4px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: calc(100.00% - 7px);
+}
+
+.mobile-inauka-pl-start .path-4299 {
+    background-color: transparent;
+    height: calc(100.00% - 2px);
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 2px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4300 {
+    background-color: transparent;
+    bottom: calc(35.34% - 2px);
+    height: 7px;
+    object-fit: cover;
+    position: absolute;
+    right: calc(44.60% - 4px);
+    width: 9px;
+}
+
+.mobile-inauka-pl-start .path-4330 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4439 {
+    background-color: transparent;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .path-4456 {
+    background-color: transparent;
+    height: 100%;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .play_circle_24dp_5-f {
+    background-color: transparent;
+    height: 10px;
+    left: calc(50.00% - 5px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(50.00% - 5px);
+    width: 10px;
+}
+
+.mobile-inauka-pl-start .poznaj-od-zupenych-p {
+    background-color: transparent;
+    height: 33px;
+    left: 30px;
+    letter-spacing: -0.24px;
+    line-height: 15px;
+    opacity: 0.5;
+    position: absolute;
+    text-align: left;
+    width: calc(100.00% - 61px);
+}
+
+.mobile-inauka-pl-start .psychiatry_24dp_5-f6 {
+    background-color: transparent;
+    height: 11px;
+    object-fit: cover;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 11px;
+}
+
+.mobile-inauka-pl-start .rectangle-368 {
+    border-radius: 4px;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .rectangle-409 {
+    background-color: var(--grafit);
+    border-radius: 8px;
+    height: 100%;
+    left: 0px;
+    opacity: 0.04;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .rectangle-412 {
+    background-color: var(--cta-czerwie);
+    border-radius: 8px;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .rectangle-418 {
+    background-color: var(--nieny-biay);
+    border-radius: 10px;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .rectangle-439 {
+    background-color: var(--nieny-biay);
+    border-radius: 8px;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .rectangle-456 {
+    background-color: var(--smashed-pumpkin);
+    border-radius: 10px;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .rectangle-479 {
+    background-color: var(--nieny-biay);
+    height: 100%;
+    opacity: 0.0;
+    position: absolute;
+    top: 0px;
+}
+
+.mobile-inauka-pl-start .rectangle-480 {
+    background-color: var(--nieny-biay);
+    border-radius: 10px;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .rectangle-5 {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.69) 91.37%);
+    background-color: transparent;
+    border-radius: 8px;
+    height: 100%;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .rectangle-632 {
+    background-color: var(--pojemnikowy-biay);
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .rectangle-663 {
+    background-color: var(--grafit);
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.mobile-inauka-pl-start .rectangle-664 {
+    height: 10px;
+    left: calc(50.00% - 5px);
+    position: relative;
+    top: calc(50.00% - 5px);
+    width: 10px;
+}
+
+.mobile-inauka-pl-start .rectangle-665 {
+    background-color: var(--koralowy-pomaracz);
+    bottom: 15px;
+    box-shadow: 0px 3px 10px #ff684166;
+    height: 10px;
+    left: calc(50.00% - 5px);
+    position: absolute;
+    width: 10px;
+}
+
+.mobile-inauka-pl-start .rectangle-666 {
+    height: 10px;
+    left: calc(50.00% - 5px);
+    position: relative;
+    top: calc(50.00% - 5px);
+    width: 10px;
+}
+
+.mobile-inauka-pl-start .rectangle-667 {
+    height: 10px;
+    left: calc(50.00% - 5px);
+    position: relative;
+    top: calc(50.00% - 5px);
+    width: 10px;
+}
+
+.mobile-inauka-pl-start .rectangle-668 {
+    height: 10px;
+    left: calc(50.00% - 5px);
+    position: relative;
+    top: calc(50.00% - 5px);
+    width: 10px;
+}
+
+.mobile-inauka-pl-start .rectangle-669 {
+    height: 10px;
+    left: calc(50.00% - 5px);
+    position: relative;
+    top: calc(50.00% - 5px);
+    width: 10px;
+}
+
+.mobile-inauka-pl-start .schedule_24dp_5-f636 {
+    background-color: transparent;
+    height: 10px;
+    left: calc(50.00% - 5px);
+    object-fit: cover;
+    position: absolute;
+    top: calc(50.00% - 5px);
+    width: 10px;
+}
+
+.mobile-inauka-pl-start .tekst-na-belce {
+    background-color: transparent;
+    position: absolute;
+}
+
+.mobile-inauka-pl-start .verified_24dp_5-f636 {
+    background-color: transparent;
+    height: calc(100.00% - 2px);
+    left: 1px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: calc(100.00% - 2px);
+}
+
+.mobile-inauka-pl-start .wsparcie {
+    background-color: transparent;
+    letter-spacing: 0.18px;
+    line-height: 24px;
+    position: absolute;
+    white-space: nowrap;
+}
+
+.mobile-inauka-pl-start .x12-materiaw {
+    background-color: transparent;
+    height: calc(100.00% - 2px);
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.82;
+    position: absolute;
+    right: -2px;
+    text-align: left;
+    top: 3px;
+    white-space: nowrap;
+    width: 75px;
+}
+
+.mobile-inauka-pl-start .x2-godzin-30-minut {
+    background-color: transparent;
+    height: calc(100.00% - 3px);
+    letter-spacing: -0.36px;
+    line-height: 14px;
+    opacity: 0.82;
+    position: absolute;
+    right: -2px;
+    text-align: left;
+    top: 3px;
+    white-space: nowrap;
+    width: 93px;
+}
+
+.mobile-inauka-pl-start .x3-c_-layer_x3-e_ {
+    background-color: transparent;
+    height: 60px;
+    left: 1px;
+    position: relative;
+    width: 60px;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+
+#anima-interface {
+    transition: all 0.5s ease-in-out;
+}
+
+#anima-watermark {
+    transition: all 0.5s ease-in-out;
+    display: none;
+}
+
+#anima-watermark-link {
+    position: fixed;
+    bottom: 20px;
+    height: 30px;
+    border-radius: 1000px;
+    background: #3B3B3B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    transition: width 0.25s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 16px 8px 11px;
+    font-family: Mulish, sans-serif;
+    font-size: 12px;
+}
+
+#anima-watermark-link .text {
+    margin-left: 6px;
+}
+
+.omniview-anima-action-links .link {
+    height: 30px;
+    width: 30px;
+    border-radius: 1000px;
+    background: #3B3B3B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    transition: width 0.25s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    text-decoration: none;
+    color: #fff;
+}
+
+.omniview-anima-action-links #comment-link .text, .omniview-anima-action-links #code-link .text {
+    display: none;
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.omniview-anima-action-links #comment-link:hover, .omniview-anima-action-links #code-link:hover {
+    width: 105px;
+}
+
+.omniview-anima-action-links #comment-link.pop-active, .omniview-anima-action-links #code-link.pop-active {
+    width: 105px;
+    background: #FF6250;
+}
+
+.omniview-anima-action-links #comment-link.pop-active .text, .omniview-anima-action-links #code-link.pop-active .text {
+    display: block
+}
+
+.omniview-anima-action-links #comment-link:hover .text, .omniview-anima-action-links #code-link:hover .text {
+    display: block;
+}
+
+.link.navigation {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: 32px;
+    color: #fff;
+    font-size: 12px;
+    cursor: default;
+    padding: 0 5px;
+}
+
+.link.navigation .icon {
+    margin: 0 6px;
+    fill: none;
+    stroke: currentColor;
+    cursor: pointer;
+}
+
+.link.navigation .icon.disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+
+.link.navigation .home-icon {
+    margin-left: 6px;
+    fill: currentColor;
+    stroke: currentColor;
+    cursor: pointer;
+}
+
+.omniview-anima-action-links .restart {
+    height: 30px;
+    padding: 0 12px;
+    background: #3B3B3B;
+    border-radius: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #f1f1f1;
+    font-size: 12px;
+}
+
+.omniview-anima-action-links {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-family: Mulish, sans-serif;
+    transition: all 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.omniview-anima-action-links > * + * {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+.idle {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#popoverOpener {
+    position: absolute;
+    left: 50%;
+    margin-left: -10vw;
+    text-align: center;
+    top: 45vh;
+    width: 20vw;
+}
+
+
+.popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1060;
+    display: none;
+    font-family: "sans-serif";
+    font-size: 14px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+.popover.top {
+    margin-top: -12px
+}
+
+.popover.right {
+    margin-left: 10px
+}
+
+.popover.bottom {
+    margin-top: 10px
+}
+
+.popover.left {
+    margin-left: -10px
+}
+
+.popover-title {
+    padding: 8px 14px;
+    margin: 0;
+    font-size: 14px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ebebeb;
+    border-radius: 5px 5px 0 0
+}
+
+.popover-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    font-family: Mulish, sans-serif;
+}
+
+
+.popover > .arrow, .popover > .arrow:after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid
+}
+
+.popover > .arrow {
+    border-width: 11px
+}
+
+.popover > .arrow:after {
+    content: "";
+    border-width: 10px
+}
+
+.popover.top > .arrow {
+    bottom: -11px;
+    left: 50%;
+    margin-left: -11px;
+    border-top-color: #999;
+    border-top-color: rgba(0, 0, 0, .25);
+    border-bottom-width: 0
+}
+
+.popover.top > .arrow:after {
+    bottom: 1px;
+    margin-left: -10px;
+    content: " ";
+    border-top-color: #fff;
+    border-bottom-width: 0
+}
+
+.popover.right > .arrow {
+    top: 50%;
+    left: -11px;
+    margin-top: -11px;
+    border-right-color: #999;
+    border-right-color: rgba(0, 0, 0, .25);
+    border-left-width: 0
+}
+
+.popover.right > .arrow:after {
+    bottom: -10px;
+    left: 1px;
+    content: " ";
+    border-right-color: #fff;
+    border-left-width: 0
+}
+
+.popover.bottom > .arrow {
+    top: -11px;
+    left: 50%;
+    margin-left: -11px;
+    border-top-width: 0;
+    border-bottom-color: #999;
+    border-bottom-color: rgba(0, 0, 0, .25)
+}
+
+.popover.bottom > .arrow:after {
+    top: 1px;
+    margin-left: -10px;
+    content: " ";
+    border-top-width: 0;
+    border-bottom-color: #fff
+}
+
+.popover.left > .arrow {
+    top: 50%;
+    right: -11px;
+    margin-top: -11px;
+    border-right-width: 0;
+    border-left-color: #999;
+    border-left-color: rgba(0, 0, 0, .25)
+}
+
+.popover.left > .arrow:after {
+    right: 1px;
+    bottom: -10px;
+    content: " ";
+    border-right-width: 0;
+    border-left-color: #fff
+}
+
+
+#anima-comment-popover, #anima-code-popover {
+    background: #333333;
+    color: #fff;
+}
+
+#anima-comment-popover.top > .arrow, #anima-comment-popover.top > .arrow:after, #anima-code-popover.top > .arrow:after, #anima-code-popover.top > .arrow {
+    border-top-color: #333;
+}
+
+#anima-comment-popover .btn, #anima-code-popover .btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px 20px;
+    background: #FF6250;
+    color: #fff;
+    border-radius: 100px;
+    width: max-content;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 550px) {
+    #anima-watermark-link {
+        padding: 6px !important;
+    }
+
+    #anima-watermark-link .text {
+        display: none !important;
+    }
+}

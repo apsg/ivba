@@ -1,0 +1,52 @@
+$color-graphite: #161615;
+$color-coral: rgb(255, 104, 65);
+$color-white: #ffffff;
+$color-white-box: #f7f7f7;
+$color-white-faded: #fafafa;
+$color-red: #FD5429;
+$color-red-darker: #D94924;
+$color-blue: #1F94F8;
+$color-azure: #48CBEA;
+$color-gray: #161615cc;
+
+
+@mixin background-gradient {
+    background: transparent linear-gradient(90deg, var(--cta-czerwień) 0%, #F99140 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(90deg, #FD5429 0%, #F99140 100%) 0% 0% no-repeat padding-box;
+}
+
+.bg-red {
+    background-color: $color-red;
+}
+
+.bg-light-blue{
+    background-color: #48CBEA1A;
+}
+
+.bg-azure{
+    background-color: $color-azure;
+}
+
+.bg-white-faded{
+    background-color: $color-white-faded;
+}
+
+.color-red {
+    color: $color-red;
+}
+
+.border-color-red{
+    border-color: $color-red !important;
+}
+
+.color-graphite {
+    color: $color-graphite;
+
+    &-light {
+        opacity: 0.5;
+    }
+}
+
+.color-gray{
+    color: $color-gray;
+}

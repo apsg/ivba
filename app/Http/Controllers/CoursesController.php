@@ -2,11 +2,13 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Domains\Courses\CourseSearchBuilder;
 use App\Domains\Courses\Http\Requests\CourseListRequest;
 use App\Domains\Courses\Http\Transformers\GroupWithAccessTransformer;
 use App\Domains\Courses\Models\Group;
 use App\Repositories\AccessRepository;
 use App\Transformers\CoursesTransformer;
+use App\Transformers\DetailedCoursesTransformer;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Fractalistic\ArraySerializer;
@@ -15,7 +17,9 @@ class CoursesController extends Controller
 {
     public function index(Group $group = null)
     {
-        return view('pages.courses')->with(compact('group'));
+        $groups = Group::orderBy('order')->get();
+
+        return view('pages.courses')->with(compact('group', 'groups'));
     }
 
     public function list(CourseListRequest $request, AccessRepository $accessRepository)
@@ -26,7 +30,11 @@ class CoursesController extends Controller
 
         $accessIds = $accessRepository->getCourseAccessIdsForUser(Auth::user());
 
-        if ($request->input('group') !== null){
+        if ($request->input('newsearch')) {
+            return $this->listWithSearch($accessIds, $request);
+        }
+
+        if ($request->input('group') !== null) {
             $group = Group::findOrFail($request->input('group'));
             return [
                 'courses' => [],
@@ -69,10 +77,6 @@ class CoursesController extends Controller
         ];
     }
 
-    /**
-     * [show description].
-     * @return [type] [description]
-     */
     public function show(Course $course)
     {
         return view('pages.course')->with(compact('course'));
@@ -81,5 +85,23 @@ class CoursesController extends Controller
     public function redirect()
     {
         return redirect('/courses');
+    }
+
+    private function listWithSearch(array $accessIds, CourseListRequest $request)
+    {
+        $courses = (new CourseSearchBuilder($accessIds))
+            ->forGroup($request->input('group'))
+            ->setSort($request->input('sort'))
+            ->setSearch($request->input('search'))
+            ->get();
+
+        return [
+            'courses' => fractal()
+                ->collection($courses)
+                ->transformWith(new DetailedCoursesTransformer())
+                ->serializeWith(new ArraySerializer())
+                ->toArray(),
+            'groups'  => [],
+        ];
     }
 }

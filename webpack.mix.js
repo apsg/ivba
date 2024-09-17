@@ -46,10 +46,12 @@ mix.scripts([
 // ----- MULTISITE -----------------
 let domains = [
     'inauka',
+    'inauka2',
     'projekt30',
     'internetowisprzedawcy',
     'techniczni'
 ];
+
 
 for (let domain of domains) {
     mix.js('resources/assets/js/' + domain + '.js', 'public/js', domain + '.js')

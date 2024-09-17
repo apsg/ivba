@@ -5,6 +5,7 @@ use App\Domains\Admin\Controllers\LoginAsUserController;
 use App\Domains\Admin\Controllers\SettingsController;
 use App\Domains\Admin\Controllers\TagsController;
 use App\Domains\Admin\Controllers\UserActionsController;
+use App\Domains\Courses\Http\Controllers\AuthorsController;
 use App\Domains\Courses\Http\Controllers\CourseGroupsController;
 use App\Domains\Forms\Controllers\Admin\FormAnswersController;
 use App\Domains\Forms\Controllers\Admin\FormsController;
@@ -294,4 +295,14 @@ Route::group([
     Route::post('/', TagsController::class . '@store')->name('store');
     Route::post('/{tag}', TagsController::class . '@update')->name('update');
     Route::delete('/{tag}', TagsController::class . '@destroy')->name('destroy');
+});
+
+Route::group([
+    'prefix' => 'authors',
+    'as'     => 'authors.',
+], function () {
+    Route::get('/', AuthorsController::class . '@index')->name('index');
+    Route::post('/', AuthorsController::class . '@store')->name('store');
+    Route::post('/{author}', AuthorsController::class . '@update')->name('update');
+    Route::delete('/{author}', AuthorsController::class . '@destroy')->name('destroy');
 });
