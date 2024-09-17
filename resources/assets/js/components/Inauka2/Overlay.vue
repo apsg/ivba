@@ -1,5 +1,5 @@
 <template>
-  <div class="overlay" id="overlay">
+  <div class="overlay hidden" id="overlay">
     <div style="text-align: right" class="py-3 px-1">
       <a href="#" @click="hide">
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
