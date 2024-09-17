@@ -82,11 +82,13 @@
                                 @php
                                     $lesson = $course->lessons->first();
                                 @endphp
+                                @if($lesson)
                                 <cloudflare-video
                                         uid="{{ $lesson->video->cloudflare_uid }}"
                                         :width="702"
                                         height=""
                                 ></cloudflare-video>
+                                @endif
                             </div>
                             <div class="col-2">
                                 <div class="course-detail-box mb-3 d-flex flex-column justify-content-center">

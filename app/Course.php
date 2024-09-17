@@ -25,7 +25,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use function Clue\StreamFilter\fun;
 
 /**
  * App\Course.
@@ -33,6 +32,7 @@ use function Clue\StreamFilter\fun;
  * @property int                               id
  * @property string                            slug
  * @property int                               user_id
+ * @property int|null                          author_id
  * @property string                            title
  * @property string                            description
  * @property float                             price
@@ -110,6 +110,7 @@ class Course extends Model implements OrderableContract, AccessableContract
         'group_id',
         'things',
         'topics',
+        'author_id',
     ];
 
     protected $casts = [

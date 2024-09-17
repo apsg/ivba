@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Domains\Courses\Models\Author;
 use App\Domains\Courses\Models\Group;
 use App\Domains\Courses\Models\Tag;
 use App\Domains\Courses\Repositories\CoursesRepository;
@@ -51,8 +52,9 @@ class AdminCoursesController extends Controller
     public function show(Course $course)
     {
         $tags = Tag::query()->orderBy('name')->get();
+        $authors = Author::query()->orderBy('name')->get();
 
-        return view('admin.courses.course')->with(compact('course', 'tags'));
+        return view('admin.courses.course')->with(compact('course', 'tags', 'authors'));
     }
 
     public function update(Course $course, CourseRequest $request)

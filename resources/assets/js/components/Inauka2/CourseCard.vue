@@ -14,7 +14,9 @@
       </div>
     </div>
     <div class="card border-0">
-      <img :src="course.image || '/images/inauka2/courses/placeholder.png'" alt="programs icons"/>
+      <a :href="course.url">
+        <img :src="course.image || '/images/inauka2/courses/placeholder.png'" class="course-img"/>
+      </a>
       <div class="card-body">
         <div v-if="course.is_internal" class="d-flex flex-row align-items-center mb-2">
           <i class="icon-verified" style="scale: 50%"></i>
@@ -25,7 +27,11 @@
         <span v-else>
             {{ course.author }}
           </span>
-        <h5 class="card-title">{{ course.title }}</h5>
+        <h5 class="card-title">
+          <a :href="course.url">
+            {{ course.title }}
+          </a>
+        </h5>
         <div class="d-flex flex-row flex-wrap gap-3 mb-3">
           <div class="d-flex flex-row flex-nowrap align-items-center gap-2">
             <div class="course-item-background">
@@ -85,5 +91,7 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-
+.course-img {
+  width: 100%;
+}
 </style>

@@ -26,6 +26,7 @@ class DetailedCoursesTransformer extends TransformerAbstract
             'topics'       => $course->topics ?? '',
             'author'       => $course->author->name ?? '',
             'is_internal'  => $course->author->is_internal ?? false,
+            'url'          => route('courses.show', $course),
         ];
     }
 
