@@ -1,4 +1,4 @@
-@extends('layouts.front2')
+@extends('layouts.front')
 
 @section('title', $lesson->seo_title ?? $lesson->title)
 @section('seo_description', $lesson->seo_description)
