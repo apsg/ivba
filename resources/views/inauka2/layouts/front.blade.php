@@ -137,8 +137,6 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route('account.show') }}">Konto</a></li>
-{{--                                    <li><a class="dropdown-item" href="{{ route('account.mycourses') }}">Moje kursy</a>--}}
-                                    </li>
                                     <li>
                                         <form action="{{ route('logout') }}" method="post">
                                             @csrf
