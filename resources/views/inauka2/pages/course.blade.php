@@ -82,7 +82,7 @@
                                 @php
                                     $lesson = $course->lessons->first();
                                 @endphp
-                                @if($lesson)
+                                @if($lesson !== null && $lesson->video !== null)
                                 <cloudflare-video
                                         uid="{{ $lesson->video->cloudflare_uid }}"
                                         :width="702"
