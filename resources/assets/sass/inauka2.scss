@@ -244,3 +244,15 @@ a {
     color: $color-gray;
     font-size: 10px;
 }
+
+.join-us-container {
+    background-color: #FD54290F;
+    border-radius: 1.25rem;
+    @media (min-width: $media-breakpoint-tablet) {
+        border: solid $color-coral 4px;
+    }
+}
+
+.opinion-indicators {
+
+}
