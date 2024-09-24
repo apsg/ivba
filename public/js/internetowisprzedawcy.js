@@ -104,7 +104,11 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! /var/www/ivba/resources/assets/js/internetowisprzedawcy.js */"./resources/assets/js/internetowisprzedawcy.js");
+=======
+module.exports = __webpack_require__(/*! /Users/pawelcebernik/ivba/resources/assets/js/internetowisprzedawcy.js */"./resources/assets/js/internetowisprzedawcy.js");
+>>>>>>> inauka2
 
 
 /***/ })

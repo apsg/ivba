@@ -483,7 +483,11 @@ body {
 .carousel .carousel-indicators button {
   width: 10px;
   height: 10px;
+<<<<<<< HEAD
   background-color: white !important;
+=======
+  background-color: #1616150F !important;
+>>>>>>> inauka2
 }
 
 .carousel .carousel-indicators button.active {
@@ -741,8 +745,13 @@ body {
 .icon-arrow-right {
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cg id='Group_585' data-name='Group 585' transform='translate(-191 -252)'%3E%3Crect id='Rectangle_366' data-name='Rectangle 366' width='40' height='40' transform='translate(191 252)' fill='none'/%3E%3Cpath id='Path_4140' data-name='Path 4140' d='M4.6,0,0,.017,4.041,10.11.085,20,4.7,19.983,8.656,10.11Z' transform='translate(206.672 262)' fill='%23fff'/%3E%3C/g%3E%3C/svg%3E");
           mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cg id='Group_585' data-name='Group 585' transform='translate(-191 -252)'%3E%3Crect id='Rectangle_366' data-name='Rectangle 366' width='40' height='40' transform='translate(191 252)' fill='none'/%3E%3Cpath id='Path_4140' data-name='Path 4140' d='M4.6,0,0,.017,4.041,10.11.085,20,4.7,19.983,8.656,10.11Z' transform='translate(206.672 262)' fill='%23fff'/%3E%3C/g%3E%3C/svg%3E");
+<<<<<<< HEAD
   width: 20px !important;
   height: 20px !important;
+=======
+  width: 20px;
+  height: 20px;
+>>>>>>> inauka2
   min-width: 20px;
   min-height: 20px;
   display: inline-block !important;
@@ -1087,6 +1096,7 @@ a:hover {
   font-size: 10px;
 }
 
+<<<<<<< HEAD
 .ambassador {
   background-color: #fafafa;
   min-width: 230px;
@@ -1120,5 +1130,16 @@ a:hover {
 
 .ambassador:hover .image .chevron svg {
   width: 50px;
+=======
+.join-us-container {
+  background-color: #FD54290F;
+  border-radius: 1.25rem;
+}
+
+@media (min-width: 767px) {
+  .join-us-container {
+    border: solid #ff6841 4px;
+  }
+>>>>>>> inauka2
 }
 

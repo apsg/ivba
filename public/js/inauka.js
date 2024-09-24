@@ -104,7 +104,11 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! /var/www/ivba/resources/assets/js/inauka.js */"./resources/assets/js/inauka.js");
+=======
+module.exports = __webpack_require__(/*! /Users/pawelcebernik/ivba/resources/assets/js/inauka.js */"./resources/assets/js/inauka.js");
+>>>>>>> inauka2
 
 
 /***/ })
