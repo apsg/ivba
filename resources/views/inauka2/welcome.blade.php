@@ -40,54 +40,14 @@
         </div>
     </courses>
 
-
-
     {{--Banner Join Us--}}
-    <div class="container-fluid mt-5 p-0">
+    <div class="container mt-5 p-0">
         @include('partials.moving_banner')
     </div>
 
-
     {{--Ambasadors container--}}
-    <div class="container" style="margin-top: 8rem">
-        <div class="text-center">
-            <p>Nasi ambasadorzy</p>
-            <h2>Monitorowanie przez specjalistów</h2>
-        </div>
-        <div class="row">
-            <div class="col-3">
-                <div class="d-flex flex-column align-items-center">
-                    <img src="{{ url('/images/inauka2/ambasadors/avatar.svg') }}" alt="ambasadors" class="w-100" style="max-width: 120px"/>
-                    <h2 class="fw-normal">Konstancja</h2>
-                    <p class="color-red text-uppercase overline">AMBASADORKA</p>
-                    <img src="" />
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="d-flex flex-column align-items-center">
-                    <img src="{{ url('/images/inauka2/ambasadors/avatar.svg') }}" alt="ambasadors" class="w-100" style="max-width: 120px"/>
-                    <h2 class="fw-normal">Konstancja</h2>
-                    <p class="color-red text-uppercase overline">AMBASADORKA</p>
-                    <img src="" />
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="d-flex flex-column align-items-center">
-                    <img src="{{ url('/images/inauka2/ambasadors/avatar.svg') }}" alt="ambasadors" class="w-100" style="max-width: 120px"/>
-                    <h2 class="fw-normal">Konstancja</h2>
-                    <p class="color-red text-uppercase overline">AMBASADORKA</p>
-                    <img src="" />
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="d-flex flex-column align-items-center">
-                    <img src="{{ url('/images/inauka2/ambasadors/avatar.svg') }}" alt="ambasadors" class="w-100" style="max-width: 120px"/>
-                    <h2 class="fw-normal">Konstancja</h2>
-                    <p class="color-red text-uppercase overline">AMBASADORKA</p>
-                    <img src="" />
-                </div>
-            </div>
-        </div>
+    <div class=" mt-5 py-5 bg-white">
+        @include('partials.ambassadors')
     </div>
 
     {{--Adv--}}
@@ -529,8 +489,5 @@
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
-    <div class=" mt-5 py-5 bg-white">
-        @include('partials.ambassadors')
-    </div>
 
 @endsection
