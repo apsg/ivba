@@ -238,9 +238,48 @@ a {
     text-decoration: solid 1px line-through;
 }
 
-.points-nav{
+.points-nav {
     display: inline-block;
     border-left: 1px solid #cacaca;
     color: $color-gray;
     font-size: 10px;
+}
+
+.ambassador {
+    background-color: $color-white-faded;
+    min-width: 230px;
+    background-image: url("/images/inauka2/bg-red.svg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    .image {
+        text-align: center;
+        position: relative;
+
+        .chevron {
+            position: absolute;
+            bottom: -60px;
+            text-align: center;
+            width: 100%;
+
+            svg{
+                margin: 0 auto;
+                width: 150px;
+                height: auto;
+
+            }
+        }
+    }
+
+    &:hover{
+        .image{
+            .chevron{
+                bottom: -30px;
+                svg{
+                    width: 50px;
+                }
+            }
+        }
+    }
 }

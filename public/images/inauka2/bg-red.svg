@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="25"
+   height="25"
+   viewBox="0 0 25 25"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="bg-red.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs9" />
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="32"
+     inkscape:cx="17.53125"
+     inkscape:cy="10.21875"
+     inkscape:window-width="2560"
+     inkscape:window-height="1368"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Group_581" />
+  <g
+     id="Group_581"
+     data-name="Group 581"
+     transform="translate(877 -11073.56)">
+    <rect
+       id="Rectangle_373"
+       data-name="Rectangle 373"
+       width="25"
+       height="25"
+       transform="translate(-877 11073.56)"
+       fill="none" />
+    <path
+       id="Path_4155"
+       data-name="Path 4155"
+       d="m -851.9616,11079.561 0.0701,-5.989 c 0,0 -11.69797,0.01 -25.16182,-0.04 l 0.0721,6.004 12.41087,5.078 z"
+       fill="#fd5429"
+       sodipodi:nodetypes="cccccc"
+       style="stroke-width:1.24715" />
+  </g>
+</svg>
