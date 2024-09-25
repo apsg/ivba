@@ -263,7 +263,7 @@ a {
             text-align: center;
             width: 100%;
 
-            svg{
+            svg {
                 margin: 0 auto;
                 width: 150px;
                 height: auto;
@@ -272,14 +272,36 @@ a {
         }
     }
 
-    &:hover{
-        .image{
-            .chevron{
+    &:hover {
+        .image {
+            .chevron {
                 bottom: -30px;
-                svg{
+
+                svg {
                     width: 50px;
                 }
             }
+        }
+    }
+}
+
+.ambassadors-more {
+    background-color: #FF68410A;
+    height: 100%;
+
+    a{
+        &:hover{
+
+            color: darken($color-coral, 10%);
+        }
+    }
+
+    &:hover {
+        background-color: #FD54290F;
+
+        svg{
+            margin-right: 10px;
+            transition: margin-right 500ms ease-in-out;
         }
     }
 }
