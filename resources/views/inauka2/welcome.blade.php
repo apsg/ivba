@@ -293,22 +293,19 @@
 
     {{--Platform opinions--}}
     <div class="container-fluid px-0 mt-5">
-        <div class="row">
-            <div class="col-12">
+        <div class="row mt-5 pt-5 ">
+            <div class="col-12 bg-testimonials">
                 <div class="d-flex flex-column justify-content-center">
-                    <p class="text-center">Opinie o platformie</p>
-                    <h2 class="text-center">
-                        Twoje zadowolenie to nasz <span>priorytet</span>
-                    </h2>
+                    <p class="text-center color-red">Opinie o platformie</p>
+                    <h3 class="text-center h3-headline">
+                        Twoje zadowolenie to nasz <span class="color-gradient">priorytet</span>
+                    </h3>
 
                     <client-opinion-carousel></client-opinion-carousel>
                 </div>
             </div>
         </div>
-
     </div>
-
-
 
     <!-- Marketing messaging and featurettes
     ================================================== -->

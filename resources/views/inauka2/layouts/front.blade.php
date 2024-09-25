@@ -147,7 +147,8 @@
                                     </li>
                                 </ul>
                             </div>
-                            <a href="#" class="px-3" onclick="document.getElementById('overlay').classList.remove('hidden')">
+                            <a href="#" class="px-3"
+                               onclick="document.getElementById('overlay').classList.remove('hidden')">
                                 <img src="{{ url('/images/inauka2/bell.svg') }}"/>
                             </a>
                         @endauth
@@ -172,10 +173,172 @@
         @yield('content')
 
         <!-- FOOTER -->
-        <footer class="container">
-            <p class="float-end"><a href="#">Back to top</a></p>
-            <p>&copy; 2017–2024 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-        </footer>
+        <div class="bg-graphite py-5">
+            <footer class="container">
+                <div class="row border-bottom" style="border-color: #FFFFFF80;">
+                    <div class="col-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="276"
+                             height="80" viewBox="0 0 276 80">
+                            <defs>
+                                <clipPath id="clip-path">
+                                    <rect id="Rectangle_640" data-name="Rectangle 640" width="246.381" height="68.934"
+                                          fill="none"/>
+                                </clipPath>
+                            </defs>
+                            <g id="Group_805" data-name="Group 805" transform="translate(-194 -8663)">
+                                <rect id="Rectangle_641" data-name="Rectangle 641" width="276" height="80"
+                                      transform="translate(194 8663)" fill="none"/>
+                                <g id="Group_804" data-name="Group 804" transform="translate(209 8669)">
+                                    <path id="Path_4417" data-name="Path 4417"
+                                          d="M83,0,66.2,6.713,49.8.14V7.809L66.2,14.382,83,7.641Z"
+                                          transform="translate(-35.81)" fill="#fff"/>
+                                    <path id="Path_4418" data-name="Path 4418"
+                                          d="M39.692,46.8l14.579-5.815.084,11.658.14,21.152L30.281,83.482,7.3,74.3,7.191,59.774l-.056-7.5L7.051,41.29,20.843,46.8l9.439,3.764ZM54.243,33.481,30.31,43.032l-23.287-9.3L0,30.925l.056,7.556L.281,71.488l.056,7.556L7.36,81.853l13.511,5.393L30.31,91.01l9.41-3.764,14.86-5.927,6.966-2.781-.056-7.5L61.265,38.2l-.056-7.5Z"
+                                          transform="translate(0 -22.076)" fill="#fff"/>
+                                    <path id="Path_4419" data-name="Path 4419"
+                                          d="M103.388,128.6l-7.95,4.747L88.5,137.537V119.7Z"
+                                          transform="translate(-63.64 -86.076)" fill="#fff"/>
+                                    <g id="Group_803" data-name="Group 803" transform="translate(0 0)">
+                                        <g id="Group_802" data-name="Group 802" clip-path="url(#clip-path)">
+                                            <path id="Path_4420" data-name="Path 4420"
+                                                  d="M297.33,78.768A3.049,3.049,0,1,0,297.3,72.7a3.114,3.114,0,0,0-2.416.843,3.445,3.445,0,0,0,0,4.382,3.223,3.223,0,0,0,2.444.843"
+                                                  transform="translate(-211.486 -52.278)" fill="#fff"/>
+                                            <path id="Path_4421" data-name="Path 4421"
+                                                  d="M288.4,99.5v4.438h2.332v14.045h6.1V99.5H288.4Z"
+                                                  transform="translate(-207.387 -71.55)" fill="#fff"/>
+                                            <path id="Path_4422" data-name="Path 4422"
+                                                  d="M354.121,97.867h-.478L345.5,78.4H335.3v24.411h5.759V83.344h.506l8.118,19.467h10.281V78.4h-5.843Z"
+                                                  transform="translate(-241.113 -56.377)" fill="#fff"/>
+                                            <path id="Path_4423" data-name="Path 4423"
+                                                  d="M448.231,99.143A12.4,12.4,0,0,0,443.4,98.3c-.674,0-1.4,0-2.191.028s-1.545.056-2.3.112c-.73.056-1.376.084-1.91.14v5.084c.758-.056,1.6-.084,2.5-.14.927-.056,1.8-.084,2.612-.112s1.461-.028,1.882-.028a2.44,2.44,0,0,1,1.91.618,2.631,2.631,0,0,1,.59,1.826h-2.921a15.165,15.165,0,0,0-4.438.59A6.377,6.377,0,0,0,436.1,108.3a5.017,5.017,0,0,0-1.1,3.371,5.819,5.819,0,0,0,.843,3.174,5.555,5.555,0,0,0,2.359,2.023,8,8,0,0,0,3.455.7,6.738,6.738,0,0,0,3.258-.7,5.327,5.327,0,0,0,2.079-2.023,7.46,7.46,0,0,0,.506-1.18v3.455h4.8V105.913a7.547,7.547,0,0,0-1.067-4.242,6.234,6.234,0,0,0-3.006-2.528m-2.191,13.09a2.414,2.414,0,0,1-1.011.983,3.346,3.346,0,0,1-1.433.281,2.7,2.7,0,0,1-1.91-.618,2.34,2.34,0,0,1,0-3.287,2.652,2.652,0,0,1,1.91-.618h2.921v1.292a4.911,4.911,0,0,1-.478,1.966"
+                                                  transform="translate(-312.807 -70.687)" fill="#fff"/>
+                                            <path id="Path_4424" data-name="Path 4424"
+                                                  d="M521.445,110.387a2.824,2.824,0,0,1-.758,2.079,2.712,2.712,0,0,1-1.995.758,2.6,2.6,0,0,1-1.966-.758,2.81,2.81,0,0,1-.73-1.994V99.6h-6.1v10.7c0,2.837.562,4.944,1.713,6.292a5.989,5.989,0,0,0,4.86,2.051h.281a6.417,6.417,0,0,0,3.483-.9,5.513,5.513,0,0,0,2.135-2.753c.14-.393.281-.843.393-1.292v4.354h4.8V99.6h-6.124Z"
+                                                  transform="translate(-366.667 -71.622)" fill="#fff"/>
+                                            <path id="Path_4425" data-name="Path 4425"
+                                                  d="M607.364,84.327h-6.349l-6.32,8.624V78.4h-6.1v24.411h6.1V94.187h1.573l5.45,8.624h6.77l-6.966-10.59Z"
+                                                  transform="translate(-423.26 -56.377)" fill="#fff"/>
+                                            <path id="Path_4426" data-name="Path 4426"
+                                                  d="M674.33,99.143A12.4,12.4,0,0,0,669.5,98.3c-.674,0-1.4,0-2.191.028s-1.545.056-2.3.112c-.73.056-1.376.084-1.91.14v5.084c.759-.056,1.6-.084,2.5-.14.927-.056,1.8-.084,2.613-.112s1.461-.028,1.882-.028A2.44,2.44,0,0,1,672,104a2.631,2.631,0,0,1,.59,1.826h-2.922a15.164,15.164,0,0,0-4.438.59A6.378,6.378,0,0,0,662.2,108.3a5.017,5.017,0,0,0-1.1,3.371,5.82,5.82,0,0,0,.843,3.174,5.556,5.556,0,0,0,2.36,2.023,8,8,0,0,0,3.455.7,6.739,6.739,0,0,0,3.258-.7,5.327,5.327,0,0,0,2.079-2.023,7.471,7.471,0,0,0,.506-1.18v3.455h4.8V105.913a7.546,7.546,0,0,0-1.068-4.242,6.108,6.108,0,0,0-3.006-2.528m-2.191,13.09a2.415,2.415,0,0,1-1.011.983,3.347,3.347,0,0,1-1.433.281,2.7,2.7,0,0,1-1.91-.618,2.34,2.34,0,0,1,0-3.287,2.652,2.652,0,0,1,1.91-.618h2.921v1.292a4.484,4.484,0,0,1-.478,1.966"
+                                                  transform="translate(-475.394 -70.687)" fill="#fff"/>
+                                            <rect id="Rectangle_639" data-name="Rectangle 639" width="6.545"
+                                                  height="6.629" transform="translate(206.24 39.804)" fill="#fff"/>
+                                            <path id="Path_4427" data-name="Path 4427"
+                                                  d="M788.262,100.312a7.491,7.491,0,0,0-2.64-1.938,8.521,8.521,0,0,0-3.455-.674,7.75,7.75,0,0,0-3.9.983,7.088,7.088,0,0,0-2.7,2.893,9.687,9.687,0,0,0-.562,1.348V98.234h-4.8V123.4h6.1v-8.82a5.88,5.88,0,0,0,2.135,1.854,8.2,8.2,0,0,0,3.792.843,8.427,8.427,0,0,0,3.568-.7,7.06,7.06,0,0,0,2.612-1.994,9.078,9.078,0,0,0,1.6-3.006,12.439,12.439,0,0,0,.534-3.764V107a11.329,11.329,0,0,0-.59-3.736,8.984,8.984,0,0,0-1.685-2.949m-4.326,9.607a3.931,3.931,0,0,1-1.433,1.714,3.668,3.668,0,0,1-2.135.618,4.5,4.5,0,0,1-1.966-.478,4.044,4.044,0,0,1-1.6-1.4,3.83,3.83,0,0,1-.646-2.219v-1.124a4.355,4.355,0,0,1,.59-2.332,4.047,4.047,0,0,1,1.545-1.461,4.264,4.264,0,0,1,2.051-.506,3.8,3.8,0,0,1,2.135.59,4.274,4.274,0,0,1,1.433,1.629,5.754,5.754,0,0,1,.506,2.5,5.481,5.481,0,0,1-.477,2.472"
+                                                  transform="translate(-553.848 -70.256)" fill="#fff"/>
+                                            <path id="Path_4428" data-name="Path 4428"
+                                                  d="M850.179,78.4H848.1v4.41h2.079v20h6.068V78.4Z"
+                                                  transform="translate(-609.865 -56.377)" fill="#fff"/>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+
+                        <p class="color-white mt-3">&copy; 2024 ITBT</p>
+                        <p class="color-white-faded">
+                            Kontakt: <a class="color-white-faded" href="mailto:hello@inauka.pl">hello@inauka.pl</a>
+                        </p>
+
+                        <div class="d-flex mb-3">
+
+                            <div class="px-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     width="40" height="40" viewBox="0 0 40 40">
+                                    <defs>
+                                        <clipPath id="clip-path">
+                                            <rect id="Rectangle_642" data-name="Rectangle 642" width="40" height="40"
+                                                  fill="#fafafa"/>
+                                        </clipPath>
+                                    </defs>
+                                    <g id="Group_806" data-name="Group 806" clip-path="url(#clip-path)">
+                                        <path id="Path_4429" data-name="Path 4429"
+                                              d="M19.974,0A19.974,19.974,0,1,0,39.948,19.974,19.974,19.974,0,0,0,19.974,0M30.087,18.131a9.874,9.874,0,0,1-5.774-1.853L24.3,24.2a7.214,7.214,0,1,1-6.256-7.156V20.93A3.406,3.406,0,1,0,20.486,24.2V8.531h4a5.6,5.6,0,0,0,5.6,5.6h0Z"
+                                              transform="translate(0 0.052)" fill="#fafafa"/>
+                                    </g>
+                                </svg>
+                            </div>
+
+                            <div class="px-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     width="40" height="40" viewBox="0 0 40 40">
+                                    <defs>
+                                        <clipPath id="clip-path">
+                                            <rect id="Rectangle_643" data-name="Rectangle 643" width="40" height="40"
+                                                  transform="translate(-0.36 -0.36)" fill="#f7f7f7"/>
+                                        </clipPath>
+                                    </defs>
+                                    <g id="Group_808" data-name="Group 808" transform="translate(0.36 0.36)"
+                                       clip-path="url(#clip-path)">
+                                        <path id="Path_4430" data-name="Path 4430"
+                                              d="M19.64,0a19.64,19.64,0,1,0,19.64,19.64A19.64,19.64,0,0,0,19.64,0m5.186,11.771a9.89,9.89,0,0,0-2.8.134c-1.309.483-1.34,1.614-1.34,2.692v2.2h4L24.1,21.009H20.685V31.4H16.166v-10.4H12.409V16.8h3.757V13.227A5.105,5.105,0,0,1,20.813,7.91a15.949,15.949,0,0,1,4.013.329Z"
+                                              fill="#f7f7f7"/>
+                                    </g>
+                                </svg>
+                            </div>
+
+                            <div class="px-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     width="40" height="40" viewBox="0 0 40 40">
+                                    <defs>
+                                        <clipPath id="clip-path">
+                                            <rect id="Rectangle_644" data-name="Rectangle 644" width="40" height="40"
+                                                  fill="#fafafa"/>
+                                        </clipPath>
+                                    </defs>
+                                    <g id="Group_810" data-name="Group 810" clip-path="url(#clip-path)">
+                                        <path id="Path_4431" data-name="Path 4431"
+                                              d="M160.59,147.525h-9.181a3.884,3.884,0,0,0-3.884,3.884h0v9.181a3.884,3.884,0,0,0,3.884,3.884h9.181a3.884,3.884,0,0,0,3.884-3.884v-9.181a3.884,3.884,0,0,0-3.884-3.884ZM156,161.343A5.343,5.343,0,1,1,161.343,156,5.343,5.343,0,0,1,156,161.343m5.566-9.595a1.271,1.271,0,1,1,1.271-1.271h0a1.271,1.271,0,0,1-1.271,1.271"
+                                              transform="translate(-136 -136)" fill="#fafafa"/>
+                                        <path id="Path_4432" data-name="Path 4432"
+                                              d="M215.018,211.545a3.473,3.473,0,1,0,3.473,3.473,3.473,3.473,0,0,0-3.473-3.473"
+                                              transform="translate(-195.018 -195.018)" fill="#fafafa"/>
+                                        <path id="Path_4433" data-name="Path 4433"
+                                              d="M20,0A20,20,0,1,0,40,20,20,20,0,0,0,20,0M30.417,24.414a6,6,0,0,1-6,6H15.586a6,6,0,0,1-6-6V15.586a6,6,0,0,1,6-6h8.828a6,6,0,0,1,6,6Z"
+                                              fill="#fafafa"/>
+                                    </g>
+                                </svg>
+                            </div>
+
+                            <div class="px-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     width="40" height="40" viewBox="0 0 40 40">
+                                    <defs>
+                                        <clipPath id="clip-path">
+                                            <rect id="Rectangle_645" data-name="Rectangle 645" width="40" height="40"
+                                                  fill="#fafafa"/>
+                                        </clipPath>
+                                    </defs>
+                                    <g id="Group_812" data-name="Group 812" clip-path="url(#clip-path)">
+                                        <path id="Path_4434" data-name="Path 4434"
+                                              d="M20,0A20,20,0,1,0,40,20,20,20,0,0,0,20,0M13.6,29.9V10.1L31.088,20.168Z"
+                                              fill="#fafafa"/>
+                                    </g>
+                                </svg>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-4">
+                        <h5 class="color-red">Informacje</h5>
+                        <div class="col-md-9 footer-menu">
+                            {!! App\MenuItem::make(2, 'asc') !!}
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <h5 class="color-red">Wsparcie</h5>
+                        <div class="col-md-9 footer-menu">
+                            {!! App\MenuItem::make(3, 'asc') !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="py-2" style="color: #FFFFFF80">
+                    IT&Business Training Mateusz Grabowski <br />
+                    ul. Zygmunta Starego 1/3, 44-100 Gliwice | NIP: 6312273946 | REGON: 240829920
+                </div>
+            </footer>
+        </div>
     </main>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

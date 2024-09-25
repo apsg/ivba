@@ -8,8 +8,8 @@
               :autoplayTimeout="5000">
       <slide>
         <div class="p-4">
-          <div class="row">
-            <div class="col-12 mb-4">
+          <div class="row rounded bg-white">
+            <div class="col-12 mb-4 p-3">
               <img src="/images/inauka2/opinions/People Avatar-02-12.svg" alt="avatar logo" height="60" />
             </div>
             <div class="col-12 color-graphite-light mb-5">
@@ -31,8 +31,8 @@
       </slide>
       <slide>
         <div class="p-4">
-          <div class="row">
-            <div class="col-12 mb-4">
+          <div class="row rounded bg-white">
+            <div class="col-12 mb-4 p-3">
               <img src="/images/inauka2/opinions/People Avatar-02-05.svg" alt="avatar logo" height="60"/>
             </div>
             <div class="col-12 color-graphite-light mb-5">
@@ -55,8 +55,8 @@
       </slide>
       <slide>
         <div class="p-4">
-          <div class="row">
-            <div class="col-12 mb-4">
+          <div class="row rounded bg-white">
+            <div class="col-12 mb-4 p-3">
               <img src="/images/inauka2/opinions/People Avatar-02-13.svg" alt="avatar logo" height="60" />
             </div>
             <div class="col-12 color-graphite-light mb-5">
@@ -78,8 +78,8 @@
       </slide>
       <slide>
         <div class="p-4">
-          <div class="row">
-            <div class="col-12 mb-4">
+          <div class="row rounded bg-white">
+            <div class="col-12 mb-4 p-3">
               <img src="/images/inauka2/opinions/People Avatar-02-19.svg" alt="avatar logo" height="60" />
             </div>
             <div class="col-12 color-graphite-light mb-5">
@@ -101,8 +101,8 @@
       </slide>
       <slide>
         <div class="p-4">
-          <div class="row">
-            <div class="col-12 mb-4">
+          <div class="row rounded bg-white">
+            <div class="col-12 mb-4 p-3">
               <img src="/images/inauka2/opinions/People Avatar-02-06.svg" alt="avatar logo" height="60" />
             </div>
             <div class="col-12 color-graphite-light mb-5">
@@ -124,8 +124,8 @@
       </slide>
       <slide>
         <div class="p-4">
-          <div class="row">
-            <div class="col-12 mb-4">
+          <div class="row rounded bg-white">
+            <div class="col-12 mb-4 p-3">
               <img src="/images/inauka2/opinions/People Avatar-02-17.svg" alt="avatar logo" height="60"/>
             </div>
             <div class="col-12 color-graphite-light mb-5">
@@ -147,8 +147,8 @@
       </slide>
       <slide>
         <div class="p-4">
-          <div class="row">
-            <div class="col-12 mb-4">
+          <div class="row rounded bg-white">
+            <div class="col-12 mb-4 p-3">
               <img src="/images/inauka2/opinions/People Avatar-02-09.svg" alt="avatar logo" height="60" />
             </div>
             <div class="col-12 color-graphite-light mb-5">

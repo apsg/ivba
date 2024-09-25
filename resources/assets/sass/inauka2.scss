@@ -289,8 +289,8 @@ a {
     background-color: #FF68410A;
     height: 100%;
 
-    a{
-        &:hover{
+    a {
+        &:hover {
 
             color: darken($color-coral, 10%);
         }
@@ -299,7 +299,7 @@ a {
     &:hover {
         background-color: #FD54290F;
 
-        svg{
+        svg {
             margin-right: 10px;
             transition: margin-right 500ms ease-in-out;
         }
@@ -316,4 +316,10 @@ a {
 
 .opinion-indicators {
 
+}
+
+.bg-testimonials {
+    background-image: url("/images/inauka2/opinie.svg");
+    background-position: top right;
+    background-repeat: no-repeat;
 }
