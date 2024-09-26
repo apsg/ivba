@@ -94,7 +94,7 @@
 
 {{--CAROUSEL DESKTOP--}}
 
-<div id="myCarousel" class="carousel slide bg-dark mb-6" data-bs-ride="carousel">
+<div id="myCarousel" class="d-none d-lg-block carousel slide bg-dark mb-6" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item nav active">
             <div class="position-relative desktop-margin">

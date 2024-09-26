@@ -175,7 +175,7 @@
         <!-- FOOTER -->
         <footer class="text-center text-lg-start p-5 bg-graphite">
             <section class="">
-                <div class="container text-center text-md-start mt-5">
+                <div class="container text-start mt-5">
                     <!-- Grid row -->
                     <div class="row mt-3">
                         <!-- Grid column -->
@@ -310,7 +310,7 @@
             </section>
 
             <div class="container mt-5">
-                <div class="px-5 h6-headline" style="color: #FFFFFF80">
+                <div class="px-md-5 h6-headline" style="color: #FFFFFF80">
                     IT&Business Training Mateusz Grabowski <br>
                     ul. Zygmunta Starego 1/3, 44-100 Gliwice | NIP: 6312273946 | REGON: 240829920
                 </div>
