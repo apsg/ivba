@@ -24,8 +24,48 @@
                         <input class="form-control" type="email" name="email" value="{{ old('email') ?? $user->email }}"
                                required="required">
                     </div>
-                    <button class="btn btn-success">Zapisz</button>
-                    <a href="{{ url('admin/user') }}" class="btn btn-default">Anuluj/wróć do spisu</a>
+
+                    <div class="col-md-12">
+
+                        <div class="card">
+                            <div class="card-header text-bold">
+                                Dane do faktury
+                            </div>
+                            <div class="card-body">
+
+                                <div class="form-group">
+                                    <label>Imię</label>
+                                    <input class="form-control" type="first_name" name="first_name" value="{{ old('first_name') ?? $user->first_name }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Nazwisko</label>
+                                    <input class="form-control" type="last_name" name="last_name" value="{{ old('last_name') ?? $user->last_name }}"
+                                           >
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Adres</label>
+                                    <input class="form-control" type="address" name="address" value="{{ old('address') ?? $user->address }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>NIP</label>
+                                    <input class="form-control" type="taxid" name="taxid" value="{{ old('taxid') ?? $user->taxid }}"
+                                    >
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Nazwa firmy</label>
+                                    <input class="form-control" type="company_name" name="company_name" value="{{ old('company_name') ?? $user->company_name }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <button class="btn btn-success">Zapisz</button>
+                        <a href="{{ url('admin/user') }}" class="btn btn-default">Anuluj/wróć do spisu</a>
+                    </div>
                 </form>
             </div>
             <div class="col-md-12 mt-3">
@@ -186,12 +226,14 @@
                                 <i class="fa fa-times"></i> Anuluj natychmiast pełen dostęp
                             </a>
                         @endif
-                        <a href="{{ route('admin.users.reset_quizzes', compact('user')) }}" class="mt-2 btn btn-secondary">
+                        <a href="{{ route('admin.users.reset_quizzes', compact('user')) }}"
+                           class="mt-2 btn btn-secondary">
                             Zresetuj czas oczekiwania na powtórkę testów
                         </a>
                     </div>
                 </div>
             </div>
+
         </div>
 
     </section>

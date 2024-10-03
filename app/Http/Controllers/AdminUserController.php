@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Events\FullAccessGrantedEvent;
 use App\Http\Requests\Admin\AccessRequest;
+use App\Http\Requests\Admin\UpdateUserRequest;
 use App\Notifications\RandomPasswordGenerated;
 use App\Repositories\SubscriptionRepository;
 use App\Services\PartnerProgramService;
@@ -86,24 +87,9 @@ class AdminUserController extends Controller
         return view('admin.users.edit')->with(compact('user'));
     }
 
-    /**
-     * Zaktualizuj użytkownika.
-     * @param User    $user [description]
-     * @param Request $request [description]
-     * @return [type]           [description]
-     */
-    public function patch(User $user, Request $request)
+    public function patch(User $user, UpdateUserRequest $request)
     {
-        $this->validate($request, [
-            'name'  => 'required',
-            'email' => [
-                'required',
-                'email',
-                Rule::unique('users')->ignore($user->id),
-            ],
-        ]);
-
-        $user->update($request->only(['name', 'email']));
+        $user->update($request->validated());
 
         flash('Zaktualizowano pomyślnie');
 
