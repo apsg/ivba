@@ -5,7 +5,6 @@
 @section('content')
 
     @include('layouts._carousel-nav')
-
     <!-- Learn online courses -->
     <div class="container-fluid learn-online-container">
         <div class="">
@@ -305,6 +304,13 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="container mt-5">
+        <span class="text-red">FAQ</span>
+        <h1>Najczęściej zadawane pytania</h1>
+
+        <faq-main></faq-main>
     </div>
 
     <!-- Marketing messaging and featurettes
