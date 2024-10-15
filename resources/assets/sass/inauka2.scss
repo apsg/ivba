@@ -323,3 +323,15 @@ a {
     background-position: top right;
     background-repeat: no-repeat;
 }
+
+.selected-card {
+    border: 2px solid $color-red;
+    border-radius: 8px;
+
+    @media (max-width: $media-breakpoint-tablet) {
+        position: absolute;
+        z-index: 1;
+        background-color: $color-white;
+        width: 100%;
+    }
+}

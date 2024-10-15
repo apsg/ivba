@@ -168,10 +168,9 @@
         </div>
     </header>
 
-    <main>
+    <main class="bg-white">
         @yield('content')
 
-        <!-- FOOTER -->
         <!-- FOOTER -->
         <footer class="text-center text-lg-start p-5 bg-graphite">
             <section class="">

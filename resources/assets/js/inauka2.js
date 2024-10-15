@@ -34,6 +34,7 @@ import FaqAccordion from "./components/Inauka2/FaqAccordion.vue";
 import Courses from "./components/Inauka2/Courses.vue";
 import Overlay from "./components/Inauka2/Overlay.vue";
 import ClientOpinionCarousel from "./components/Inauka2/ClientOpinionCarousel.vue";
+import FaqMain from "./components/Inauka2/FaqMain.vue";
 
 Vue.use(VueFlashMessage);
 Vue.use(VTooltip);
@@ -51,6 +52,7 @@ const app = new Vue({
         'courses': Courses,
         'overlay': Overlay,
         'client-opinion-carousel': ClientOpinionCarousel,
+        'faq-main': FaqMain,
     }
 });
 
