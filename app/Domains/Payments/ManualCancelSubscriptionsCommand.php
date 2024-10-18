@@ -4,6 +4,8 @@ namespace App\Domains\Payments;
 use App\Payments\Drivers\StripeDriver;
 use App\Subscription;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
+use Stripe\Exception\ApiErrorException;
 
 class ManualCancelSubscriptionsCommand extends Command
 {
@@ -33,7 +35,17 @@ class ManualCancelSubscriptionsCommand extends Command
             ->get();
 
         foreach ($subscriptions as $subscription) {
-            $this->stripe->cancelSubscription($subscription);
+            try {
+                $this->stripe->cancelSubscription($subscription);
+            } catch (ApiErrorException $exception) {
+                // probably no such subscription
+
+                Log::info('STRIPE CANCEL EXCEPTION', [
+                    'message'         => $exception->getMessage(),
+                    'subscription_id' => $subscription->id,
+                    'stripe_id'       => $subscription->stripe_subscription_id,
+                ]);
+            }
         }
     }
 }
