@@ -13,6 +13,7 @@ use App\Console\Commands\SendPasswordResetCommand;
 use App\Console\Commands\TestServicesCommand;
 use App\Console\Commands\UploadFontsCommand;
 use App\Domains\Integrations\Mailerlite\Commands\AddStripeSubscriptionsToMailerliteCommand;
+use App\Domains\Payments\ManualCancelSubscriptionsCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -40,6 +41,7 @@ class Kernel extends ConsoleKernel
         TestServicesCommand::class,
         FixFullAccessCommand::class,
         AddStripeSubscriptionsToMailerliteCommand::class,
+        ManualCancelSubscriptionsCommand::class,
     ];
 
     protected function schedule(Schedule $schedule)
@@ -55,6 +57,9 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('iexcel:expired')
             ->everyTenMinutes();
+
+        $schedule->command('subscriptions:cancel')
+            ->hourly();
 
         $schedule->command('iexcel:orders')
             ->dailyAt('13:00');
