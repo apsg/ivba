@@ -2,6 +2,7 @@
 namespace App\Domains\Payments;
 
 use App\Payments\Drivers\StripeDriver;
+use App\Payments\PaymentService;
 use App\Subscription;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
@@ -22,11 +23,17 @@ class ManualCancelSubscriptionsCommand extends Command
     {
         parent::__construct();
 
-        $this->stripe = app(StripeDriver::class);
+        if (PaymentService::isDriverStripe()) {
+            $this->stripe = app(StripeDriver::class);
+        }
     }
 
     public function handle()
     {
+        if (!PaymentService::isDriverStripe()) {
+            return;
+        }
+
         $days = (int) $this->argument('days') ?? 1;
 
         $subscriptions = Subscription::whereNotNull('stripe_subscription_id')
