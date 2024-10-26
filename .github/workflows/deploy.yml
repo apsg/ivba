@@ -51,7 +51,7 @@ jobs:
           SOURCE: "/"
           REMOTE_HOST: ${{ secrets.HOST }}
           REMOTE_USER: ${{ secrets.USER }}
-          TARGET: "domains/testy.inauka.pl/public_html/"
+          TARGET: "domains/testy.inauka.pl/"
           EXCLUDE: "/node_modules/, /.idea/, /.git/, /vendor/, /.github/"
       - name: Creating .env file should go here
         run: echo "Creating env file..."
@@ -61,7 +61,7 @@ jobs:
           hosts: ${{ secrets.USER }}@${{ secrets.HOST }}
           privateKey: ${{ secrets.KEY }}
           command: |
-            cd domains/testy.inauka.pl/public_html/
+            cd domains/testy.inauka.pl/
             ln -s public public_html
             ln -s public private_html
             php74 composer.phar install
