@@ -42,6 +42,35 @@ jobs:
             php74 artisan config:cache
             php74 artisan storage:link
 
+      - uses: actions/checkout@v1
+      - name: Deploy iNauka2
+        uses: easingthemes/ssh-deploy@v2.1.6
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.KEY }}
+          ARGS: "-rltgoDzvO"
+          SOURCE: "/"
+          REMOTE_HOST: ${{ secrets.HOST }}
+          REMOTE_USER: ${{ secrets.USER }}
+          TARGET: "domains/testy.inauka.pl/public_html/"
+          EXCLUDE: "/node_modules/, /.idea/, /.git/, /vendor/, /.github/"
+      - name: Creating .env file should go here
+        run: echo "Creating env file..."
+      - name: Composer and migrations
+        uses: JimCronqvist/action-ssh@master
+        with:
+          hosts: ${{ secrets.USER }}@${{ secrets.HOST }}
+          privateKey: ${{ secrets.KEY }}
+          command: |
+            cd domains/testy.inauka.pl/public_html/
+            ln -s public public_html
+            ln -s public private_html
+            php74 composer.phar install
+            php74 artisan migrate --force
+            php74 artisan cache:clear
+            php74 artisan view:cache
+            php74 artisan config:cache
+            php74 artisan storage:link
+
       - name: Deploy projekt30
         uses: easingthemes/ssh-deploy@v2.1.6
         env:
