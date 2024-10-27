@@ -3,6 +3,7 @@
     <div class="d-flex flex-row justify-content-between mb-3" style="min-height: 32px;">
       <div class="d-flex flex-row flex-wrap gap-2">
         <button v-for="tag in course.tags"
+                v-if="tag.is_hidden != true"
                 class="btn btn-coral"
                 :style="{'background-color': tag.color}"
         >{{ tag.name }}

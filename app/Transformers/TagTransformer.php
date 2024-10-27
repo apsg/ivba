@@ -10,9 +10,10 @@ class TagTransformer extends TransformerAbstract
     public function transform(Tag $tag): array
     {
         return [
-            'id'    => $tag->id,
-            'name'  => $tag->name,
-            'color' => $tag->color,
+            'id'        => $tag->id,
+            'name'      => $tag->name,
+            'color'     => $tag->color,
+            'is_hidden' => $tag->is_hidden,
         ];
     }
 }

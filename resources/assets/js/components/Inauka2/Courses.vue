@@ -75,11 +75,37 @@
       </div>
     </div>
 
-    <div class="container-fluid px-1 px-md-5 row">
-      <CourseCard v-for="course in courses" v-bind:key="course.id" :course="course"></CourseCard>
-
+    <div class="">
+      <div class="container-fluid px-1 px-md-5 row">
+        <CourseCard v-for="course in visible" v-bind:key="course.id" :course="course"></CourseCard>
+      </div>
+      <div class="text-center d-flex justify-content-center justify-content-md-end">
+        <a href="#"
+           class="round-button d-flex justify-content-center align-items-center"
+           :class="{
+            'active': this.offset > 0
+           }"
+           @click="prev"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+               fill="currentColor">
+            <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
+          </svg>
+        </a>
+        <a href="#"
+           class="round-button d-flex justify-content-center align-items-center"
+           :class="{
+            'active': this.hasMore,
+           }"
+           @click="next"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+               fill="currentColor">
+            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
+          </svg>
+        </a>
+      </div>
     </div>
-
 
   </div>
 
@@ -101,6 +127,10 @@ export default {
 
   data() {
     return {
+      cols: 4,
+      offset: 0,
+      limit: 8,
+      hasMore: true,
       sort: null,
       search: null,
       courses: [],
@@ -110,6 +140,19 @@ export default {
 
   mounted() {
     this.loadCourses();
+
+    this.computeCols(window.innerWidth);
+    window.addEventListener('resize', () => {
+      this.computeCols(window.innerWidth)
+    });
+  },
+
+  computed: {
+    visible() {
+      return this.courses.filter((el, id) => {
+        return id >= this.offset && id < this.offset + this.limit;
+      });
+    }
   },
 
   methods: {
@@ -126,8 +169,26 @@ export default {
         .then((r) => {
           console.log(r);
           this.courses = r.data.courses;
+          this.offset = 0;
+          this.hasMore = this.courses.length > this.limit;
         });
       // }, 300);
+    },
+
+    next(e) {
+      e.preventDefault();
+      if (this.hasMore) {
+        this.offset = this.offset + this.limit;
+        this.hasMore = this.courses.length > this.offset + this.limit;
+      }
+    },
+
+    prev(e) {
+      e.preventDefault();
+      if (this.offset > 0) {
+        this.offset = Math.max(0, this.offset - this.limit);
+        this.hasMore = this.courses.length > this.offset + this.limit;
+      }
     },
 
     selectGroup(id) {
@@ -142,6 +203,29 @@ export default {
     setSort(sort) {
       this.sort = sort;
       this.loadCourses();
+    },
+
+    computeCols(width) {
+      if (width > 1200) {
+        this.cols = 4;
+        this.limit = 8;
+        return;
+      }
+
+      if (width > 990) {
+        this.cols = 3;
+        this.limit = 6;
+        return;
+      }
+
+      if (width > 580) {
+        this.cols = 2;
+        this.limit = 4;
+        return;
+      }
+
+      this.cols = 1;
+      this.limit = 5;
     }
   }
 
@@ -149,5 +233,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.round-button {
+  display: flex;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #151615cc;
+  color: #151615cc;
+  text-align: center;
+  line-height: 60px;
+  margin: 0 10px;
 
+  &.active {
+    border-color: #FF6743;
+    color: #FF6743;
+
+    &:hover {
+      background-color: #FF6743;
+      color: #ffffff;
+    }
+  }
+}
 </style>
