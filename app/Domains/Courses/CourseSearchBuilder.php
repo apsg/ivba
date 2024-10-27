@@ -45,7 +45,9 @@ class CourseSearchBuilder
             ->with('tags', 'author', 'lessons');
 
         if (!empty($this->groupId)) {
-            $builder = $builder->where('group_id', $this->groupId);
+            $builder = $builder->whereHas('groups', function ($query) {
+                $query->where('groups.id', $this->groupId);
+            });
         }
 
         $builder = $this->applySort($builder);
