@@ -12,27 +12,27 @@
               <li>
                 <a
                   class="dropdown-item"
-                  @click="sort=null">Domyślnie</a></li>
+                  @click="setSort(null)">Domyślnie</a></li>
               <li>
                 <a
                   class="dropdown-item"
-                  @click="sort='new'">Nowe produkty</a></li>
+                  @click="setSort('new')">Nowe produkty</a></li>
               <li>
                 <a
                   class="dropdown-item"
-                  @click="sort='cheapest'">Najtańsze</a></li>
+                  @click="setSort('cheapest')">Najtańsze</a></li>
               <li>
                 <a
                   class="dropdown-item"
-                  @click="sort='expensive'">Najdroższe</a></li>
+                  @click="setSort('expensive')">Najdroższe</a></li>
               <li>
                 <a
                   class="dropdown-item"
-                  @click="sort='promotion'">Promocje</a></li>
+                  @click="setSort('promotion')">Promocje</a></li>
               <li>
                 <a
                   class="dropdown-item"
-                  @click="sort='bestseller'">Bestsellery</a></li>
+                  @click="setSort('bestseller')">Bestsellery</a></li>
             </ul>
           </div>
         </div>
@@ -76,7 +76,7 @@
     </div>
 
     <div class="container-fluid px-1 px-md-5 row">
-        <CourseCard v-for="course in courses" v-bind:key="course.id" :course="course"></CourseCard>
+      <CourseCard v-for="course in courses" v-bind:key="course.id" :course="course"></CourseCard>
 
     </div>
 
@@ -136,6 +136,11 @@ export default {
       } else {
         this.selectedGroup = id;
       }
+      this.loadCourses();
+    },
+
+    setSort(sort) {
+      this.sort = sort;
       this.loadCourses();
     }
   }
