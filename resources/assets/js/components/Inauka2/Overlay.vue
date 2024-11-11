@@ -46,7 +46,8 @@ export default {
   }
 
   z-index: 1000;
-  position: absolute;
+  position: fixed;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 10px 20px;
   top: 0px;
   right: 0px;
   width: 30%;
