@@ -17,7 +17,9 @@ export default {
 
   methods: {
     reset() {
-      axios.post('/admin/user/' + this.user + '/reset_password', {})
+      axios.post('/admin/user/reset_password', {
+        id: this.user
+      })
         .then((res) => {
           this.new_password = res.data.password;
         })

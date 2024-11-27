@@ -1,6 +1,7 @@
 <?php
 namespace App\Domains\Admin\Controllers;
 
+use App\Domains\Admin\Requests\ResetUserPasswordRequest;
 use App\Events\FullAccessGrantedEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AccessRequest;
@@ -92,9 +93,10 @@ class UserActionsController extends Controller
         return back();
     }
 
-    public function resetPassword(User $user)
+    public function resetPassword(ResetUserPasswordRequest $request)
     {
         $password = Str::random();
+        $user = $request->getUser();
         $user->update([
             'password' => Hash::make($password),
         ]);
