@@ -229,7 +229,7 @@ Route::group([
 Route::group([
     'prefix' => 'access',
 ], function () {
-    Route::get('/{user}', AccessController::class . '@index')->name('access.inde');
+    Route::get('/{user}', AccessController::class . '@index')->name('access.index');
     Route::post('/', AccessController::class . '@store')->name('access.store');
     Route::delete('/', AccessController::class . '@revoke')->name('access.revoke');
     Route::delete('/{access}', AccessController::class . '@destroy')->name('access.delete');
