@@ -39,9 +39,9 @@ class AccessController extends Controller
     private function listAccess(User $user)
     {
         return $user->accesses()
-            ->whereHas('accessable')
             ->where('accessable_type', Course::class)
             ->with('accessable')
-            ->get();
+            ->get()
+            ->filter(function (Access $access) { return $access->accessable !== null; });
     }
 }
