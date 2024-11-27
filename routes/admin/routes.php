@@ -136,6 +136,7 @@ Route::prefix('user')
             ->name('cancel_full_access');
         Route::get('/{user}/reset_quizzes', UserActionsController::class . '@resetQuizzes')
             ->name('reset_quizzes');
+        Route::post('/{user}/reset_password', UserActionsController::class . '@resetPassword');
     });
 
 Route::get('/menu', AdminMenusController::class . '@index');

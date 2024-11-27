@@ -32,6 +32,7 @@ import FormAnswers from "./components/Admin/FormAnswers";
 import WeekSelector from "./components/WeekSelector";
 import TooltipInfo from "./components/TooltipInfo.vue";
 import TagsSelector from "./components/Admin/TagsSelector.vue";
+import PasswordReset from "./components/Admin/PasswordReset.vue";
 
 import {VuejsDatatableFactory} from 'vuejs-datatable';
 
@@ -84,6 +85,7 @@ const app = new Vue({
         'form-answers': FormAnswers,
         'week-selector': WeekSelector,
         'tooltip-info': TooltipInfo,
+        'password-reset': PasswordReset,
     }
 });
 

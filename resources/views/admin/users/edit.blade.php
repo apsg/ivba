@@ -230,6 +230,8 @@
                            class="mt-2 btn btn-secondary">
                             Zresetuj czas oczekiwania na powtórkę testów
                         </a>
+
+                        <password-reset :user="{{ $user->id }}"></password-reset>
                     </div>
                 </div>
             </div>

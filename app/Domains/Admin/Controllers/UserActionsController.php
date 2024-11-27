@@ -11,6 +11,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserActionsController extends Controller
 {
@@ -89,5 +90,17 @@ class UserActionsController extends Controller
         flash('Zresetowano');
 
         return back();
+    }
+
+    public function resetPassword(User $user)
+    {
+        $password = Str::random();
+        $user->update([
+            'password' => Hash::make($password),
+        ]);
+
+        return [
+            'password' => $password,
+        ];
     }
 }
