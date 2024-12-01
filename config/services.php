@@ -49,6 +49,6 @@ return [
     ],
 
     'freshdesk' => [
-        'email'  => env('FRESHDESK_SUPPORT_MAIL', 'support@tmg.freshdesk.com'),
+        'email' => env('FRESHDESK_SUPPORT_MAIL', 'support@tmg.freshdesk.com'),
     ],
 ];
