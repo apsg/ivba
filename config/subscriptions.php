@@ -3,5 +3,5 @@
 use App\Payments\PaymentService;
 
 return [
-    'provider' => env('SUBSCRIPTIONS_PROVIDER', PaymentService::DRIVER_TPAY),
+    'provider' => env('SUBSCRIPTIONS_PROVIDER', PaymentService::DRIVER_STRIPE),
 ];

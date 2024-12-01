@@ -42,17 +42,17 @@ class ManualCancelSubscriptionsCommand extends Command
             ->get();
 
         foreach ($subscriptions as $subscription) {
-//            try {
+            try {
                 $this->stripe->cancelSubscription($subscription);
-//            } catch (ApiErrorException $exception) {
-//                // probably no such subscription
-//
-//                Log::info('STRIPE CANCEL EXCEPTION', [
-//                    'message'         => $exception->getMessage(),
-//                    'subscription_id' => $subscription->id,
-//                    'stripe_id'       => $subscription->stripe_subscription_id,
-//                ]);
-//            }
+            } catch (ApiErrorException $exception) {
+                // probably no such subscription
+
+                Log::info('STRIPE CANCEL EXCEPTION', [
+                    'message'         => $exception->getMessage(),
+                    'subscription_id' => $subscription->id,
+                    'stripe_id'       => $subscription->stripe_subscription_id,
+                ]);
+            }
         }
     }
 }
