@@ -12,6 +12,7 @@ class PaymentService
 {
     const DRIVER_TPAY = 'tpay';
     const DRIVER_STRIPE = 'stripe';
+    const DRIVER_NONE = 'none';
 
     public function payUrl(Payment $payment): string
     {
