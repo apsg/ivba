@@ -41,6 +41,11 @@ class PaymentService
         return config('subscriptions.provider') === static::DRIVER_STRIPE;
     }
 
+    public static function hasStripeConfig(): bool
+    {
+        return !empty(config('services.stripe.secret'));
+    }
+
     public static function isDriverTpay(): bool
     {
         return config('subscriptions.provider') === static::DRIVER_TPAY;

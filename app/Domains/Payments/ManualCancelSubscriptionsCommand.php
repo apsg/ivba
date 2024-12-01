@@ -23,14 +23,14 @@ class ManualCancelSubscriptionsCommand extends Command
     {
         parent::__construct();
 
-        if (PaymentService::isDriverStripe()) {
+        if (PaymentService::isDriverStripe() && PaymentService::hasStripeConfig()) {
             $this->stripe = app(StripeDriver::class);
         }
     }
 
     public function handle()
     {
-        if (!PaymentService::isDriverStripe()) {
+        if ($this->stripe === null) {
             return;
         }
 
