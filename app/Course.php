@@ -674,4 +674,9 @@ class Course extends Model implements OrderableContract, AccessableContract
     {
         return explode(PHP_EOL, $this->things);
     }
+
+    public function hasDirectBuyLink() : bool
+    {
+        return !empty($this->payment_link) && $this->price > 0;
+    }
 }

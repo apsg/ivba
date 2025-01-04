@@ -55,14 +55,27 @@
                                     <span class="icon-more-icon"></span></a>
                             </div>
                         @else
-                            <div>
+                            <div style="max-width: 30%">
                                 Nie masz jeszcze dostępu do tego kursu. Poczekaj aż uzyskasz dostęp w ramach swojego
                                 abonamentu lub wykup pełen dostęp.
                             </div>
-                            <div>
-                                <a href="{{ url('/buy_access') }}" class="btn btn-primary">
-                                    Kup dostęp
-                                </a>
+                            <div class="flex-grow-1 d-flex align-items-end">
+                                @if($course->hasDirectBuyLink())
+                                    <a href="{{ $course->payment_link }}" class="btn btn-primary mr-2 flex-grow-1"
+                                       style="max-height: 50%">
+                                        @if(!empty($course->price_full))
+                                            <span style="text-decoration: line-through">{{ $course->price_full }}&nbsp;zł</span>
+                                        @endif
+                                        {{ $course->price }}&nbsp;zł
+                                        <br/>
+                                        <span style="font-size:10px;">Kup dostęp do kursu</span>
+                                    </a>
+                                @endif
+                                <div>
+                                    <a href="{{ url('/buy_access') }}" class="btn btn-primary">
+                                        Kup dostęp do platformy
+                                    </a>
+                                </div>
                             </div>
                         @endif
                     </div>
