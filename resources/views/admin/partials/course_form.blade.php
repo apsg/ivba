@@ -201,11 +201,66 @@
                 </div>
             </div>
 
-            <div class="box-footer">
-                <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-save"></i> Zapisz</button>
+
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Licznik</h3>
+            </div>
+            <div class="box-body row">
+                <label>
+                    Odliczanie do:
+                    <input type="datetime-local"
+                           name="promo_counter"
+                           value="{{ (isset($course) && $course->promo_counter !== null) ? $course->promo_counter : '' }}"
+                    >
+                </label>
+                <label>Tekst nad licznikiem:</label>
+                <input type="text"
+                       class="form-control"
+                       name="promo_text"
+                       value="{{ old('promo_text', $course->promo_text ?? '') }}"
+                >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Sekcja wynagrodzenie</h3>
+            </div>
+            <div class="box-body row">
+                <label>Zakres wynagrodzenia:
+                    <input type="text"
+                           class="form-control"
+                           name="salary_range"
+                           placeholder="np. 100-200 zł lub 4000 PLN - 5000 PLN"
+                           value="{{ old('salary_range', $course->salary_range) }}">
+                </label>
+                <label>Umiejętności (lub inny tekst pod zakresem):
+                    <input type="text"
+                           class="form-control"
+                           name="salary_skills"
+                           placeholder="np. Umiejętności: Power BI"
+                           value="{{ old('salary_skills', $course->salary_skills) }}">
+                </label>
+                <label>Link do CTA:
+                    <input type="text"
+                           class="form-control"
+                           name="salary_cta"
+                           value="{{ old('salary_cta', $course->salary_cta) }}">
+                </label>
             </div>
 
         </div>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-save"></i> Zapisz</button>
     </div>
 </div>
 

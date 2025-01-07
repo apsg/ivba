@@ -54,6 +54,11 @@ use Illuminate\Support\Str;
  * @property int|null                          group_id
  * @property string|null                       topics
  * @property string|null                       things
+ * @property string|null                       promo_counter
+ * @property string|null                       promo_text
+ * @property string|null                       salary_range
+ * @property string|null                       salary_skills
+ * @property string|null                       salary_cta
  *
  * @property-read Collection|Access[]          access
  * @property-read Certificate                  certificate
@@ -111,6 +116,11 @@ class Course extends Model implements OrderableContract, AccessableContract
         'things',
         'topics',
         'author_id',
+        'promo_counter',
+        'promo_text',
+        'salary_range',
+        'salary_skills',
+        'salary_cta',
     ];
 
     protected $casts = [
@@ -675,8 +685,31 @@ class Course extends Model implements OrderableContract, AccessableContract
         return explode(PHP_EOL, $this->things);
     }
 
-    public function hasDirectBuyLink() : bool
+    public function hasDirectBuyLink(): bool
     {
         return !empty($this->payment_link) && $this->price > 0;
+    }
+
+    public function hasSalarySection(): bool
+    {
+        return !empty($this->salary_range)
+            && !empty($this->salary_skills)
+            && !empty($this->salary_cta);
+    }
+
+    public function hasCountdown(): bool
+    {
+        return !empty($this->promo_counter)
+            && !empty($this->promo_text);
+    }
+
+    public function promoCountdownToTimestamp(): ?int
+    {
+        if (empty($this->promo_counter)) {
+            return null;
+        }
+
+        return Carbon::createFromTimeString($this->promo_counter,'Europe/Warsaw')
+            ->timestamp;
     }
 }

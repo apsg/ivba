@@ -57,7 +57,7 @@ export default {
         return 0;
       }
 
-      return this.difference.hours();
+      return this.difference.days()*24+this.difference.hours();
     },
     minutes: function () {
       if (this.difference === null) {

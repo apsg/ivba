@@ -187,38 +187,7 @@
 
                         <testimonials-carousel></testimonials-carousel>
 
-
-                        <div class="rounded border border-2 p-3 d-flex" style="border-color: #FD5529 !important;">
-                            <div class="align-self-center">
-                                <img src="/images/inauka2/salary.png"/>
-                            </div>
-                            <div class="align-self-center flex-grow-1 border-right p-1">
-                                <div class="subtitle-2" style="color: #FF6841">
-                                    Wynagrodzenie:
-                                </div>
-                                <div class="h3-headline">
-                                    5.500 - 12.000 zł
-                                </div>
-                                <div class="font-sora">
-                                    Umiejętność: Power BI - Zaawansowane
-                                </div>
-                            </div>
-                            <div class="align-self-center">
-                                <a href="" class="btn btn-white" style="font-size: 16px">
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40">
-                                        <g id="Group_585" data-name="Group 585" transform="translate(-191 -252)">
-                                            <rect id="Rectangle_366" data-name="Rectangle 366" width="40" height="40"
-                                                  transform="translate(191 252)" fill="none"/>
-                                            <path id="Path_4140" data-name="Path 4140"
-                                                  d="M4.6,0,0,.017,4.041,10.11.085,20,4.7,19.983,8.656,10.11Z"
-                                                  transform="translate(206.672 262)" fill="currentColor"/>
-                                        </g>
-                                    </svg>
-                                    Zobacz oferty
-                                </a>
-                            </div>
-                        </div>
+                        @include('pages.course._salary')
 
                         <h3 class="h6-headline mt-3">
                             Czego się dowiesz?
@@ -427,9 +396,11 @@
                                     @include('pages.course._tag', compact('tag'))
                                 @endforeach
                             </div>
-                            <h3 class="subtitle-2 mt-3">Kup teraz i zgarnij losowy ebook gratis</h3>
+                            @if($course->hasCountdown())
+                            <h3 class="subtitle-2 mt-3">{{ $course->promo_text }}</h3>
                             <course-countdown
-                                    :timestamp="{{ \Carbon\Carbon::now()->subHours(2)->timestamp }}"></course-countdown>
+                                    :timestamp="{{ $course->promoCountdownToTimestamp() }}"></course-countdown>
+                            @endif
 
                             <div class="row mt-3" style="max-width: 385px; margin: 0 auto;">
                                 <div class="col-6 blue-box body-2 p-1">

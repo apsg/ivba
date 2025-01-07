@@ -62,6 +62,7 @@
                 <h3 class="box-title">Przypisz lekcje do kursu</h3>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-6">
 
