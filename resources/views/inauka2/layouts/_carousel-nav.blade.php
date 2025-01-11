@@ -9,9 +9,11 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item nav active">
-            <img class="d-block w-100"
-                 src="{{ url('/images/inauka2/nav/banner2_inauka.png') }}"
-                 alt="Woman holding laptop"/>
+            <div class="carousel-image" style="background-image: url('/images/inauka2/nav/banner2_inauka.png');">
+                &nbsp;
+            </div>
+
+            </div>
             <h1>Zdobądź wiedzę, którą potrzebujesz</h1>
             <p class="opacity-75 text-white">
                 Przeglądaj setki lekcji na iNauka i wybierz ten, który <br>
@@ -99,8 +101,9 @@
         <div class="carousel-item nav active">
             <div class="position-relative desktop-margin">
                 <div class="image-container">
-                    <img src="{{ url('/images/inauka2/nav/banner2_inauka.png') }}"
-                         alt="Woman holding laptop"/>
+                    <div class="carousel-image" style="background-image: url('/images/inauka2/nav/banner2_inauka.png');">
+                        &nbsp;
+                    </div>
                 </div>
                 <div class="carousel-top-text">
                     Przeglądaj Kursy
@@ -122,7 +125,9 @@
         <div class="carousel-item nav">
             <div class="position-relative desktop-margin">
                 <div class="image-container">
-                    <img src="{{ url('/images/inauka2/nav/kobieta-szablon.png') }}"/>
+                    <div class="carousel-image" style="background-image: url('/images/inauka2/nav/kobieta-szablon.png');" >
+                        &nbsp;
+                    </div>
                 </div>
                 <div class="carousel-top-text">
                     7 dni za darmo na iNauka
@@ -144,7 +149,9 @@
         <div class="carousel-item nav">
             <div class="position-relative desktop-margin">
                 <div class="image-container">
-                    <img src="{{ url('/images/inauka2/nav/banner3_inauka.png') }}"/>
+                    <div class="carousel-image" style="background-image: url('/images/inauka2/nav/banner3_inauka.png');" >
+                        &nbsp;
+                    </div>
                 </div>
                 <div class="carousel-top-text">
                     Zaufaj naszej platformie
@@ -165,7 +172,9 @@
         <div class="carousel-item nav">
             <div class="position-relative desktop-margin">
                 <div class="image-container">
-                    <img src="{{ url('/images/inauka2/nav/banner4_inauka.png') }}"/>
+                    <div class="carousel-image" style="background-image: url('/images/inauka2/nav/banner4_inauka.png');" >
+                        &nbsp;
+                    </div>
                 </div>
                 <div class="carousel-top-text">
                     Stale rozwijaj swoje umiejętności
@@ -186,7 +195,9 @@
         <div class="carousel-item nav">
             <div class="position-relative desktop-margin">
                 <div class="image-container">
-                    <img src="{{ url('/images/inauka2/nav/banner5_inauka.png') }}"/>
+                    <div class="carousel-image" style="background-image: url('/images/inauka2/nav/banner5_inauka.png');" >
+                        &nbsp;
+                    </div>
                 </div>
                 <div class="carousel-top-text">
                     Imienne certyfikaty
@@ -207,7 +218,9 @@
         <div class="carousel-item nav">
             <div class="position-relative desktop-margin">
                 <div class="image-container">
-                    <img src="{{ url('/images/inauka2/nav/banner6_inauka.png') }}"/>
+                    <div class="carousel-image" style="background-image: url('/images/inauka2/nav/banner6_inauka.png');" >
+                        &nbsp;
+                    </div>
                 </div>
                 <div class="carousel-top-text">
                     Ścieżki Rozwoju
