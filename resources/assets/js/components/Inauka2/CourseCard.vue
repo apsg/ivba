@@ -1,6 +1,6 @@
 <template>
   <div class="col-12 col-sm-6 col-lg-4 col-xl-3 pt-3">
-    <div class="d-flex flex-row justify-content-between mb-3" style="min-height: 32px;">
+    <div class="d-flex flex-row justify-content-between mb-2 bg-white pt-1 px-1" style="min-height: 32px;">
       <div class="d-flex flex-row flex-wrap gap-2">
         <button v-for="tag in course.tags"
                 v-if="tag.is_hidden != true"

@@ -17,7 +17,7 @@
                     <img class="w-100 mb-5" style="max-height: 232px"
                          src="{{ url('/images/inauka2/illustracja_kursy.png') }}"/>
                 </div>
-                <div class="order-1 order-md-0">
+                <div class="order-1 order-md-0" style="max-width: 60%">
                     <h2 class="mb-3">Ucz się online na kursach dostosowanych do Twoich potrzeb.</h2>
                     <p>Znajdź kursy na iNauka, które pomogą Ci rozwinąć umiejętności w wybranej dziedzinie. Dołącz do
                         naszej społeczności i zdobywaj certyfikaty uznawane przez pracodawców.</p>
@@ -25,13 +25,12 @@
             </div>
         </div>
     </div>
-
+<div>
     <courses :groups="{{ $groups }}">
-        <div class="d-flex flex-row justify-content-end align-items-center gap-2">
+        <div class="d-flex flex-row justify-content-end align-items-center gap-2 container">
             <div style="max-width: 150px;">
                 <img class="w-100 h-auto" src="/images/inauka2/programs-icons.png" alt="programs icons"/>
             </div>
-
             <a class="d-inline-flex align-items-center btn cta_button font-button btn-coral-lg"
                href="{{ url('/buy_access') }}">
                 <i class="icon-arrow-right white"></i>
@@ -39,7 +38,7 @@
             </a>
         </div>
     </courses>
-
+</div>
     {{--Banner Join Us--}}
     <div class="container mt-5 p-0">
         @include('partials.moving_banner')

@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('content')
-    <!-- Start Cources Section -->
+    <!-- Start Courses Section -->
     <section class="our-cources sub padding-lg">
         <div class="container">
             <div class="row">
@@ -9,11 +9,11 @@
                     <h2>Czego się chcesz dzisiaj nauczyć?</h2>
                 </div>
             </div>
-
-            <courses :groups="{{ $groups }}"></courses>
-
         </div>
-
     </section>
-    <!-- End Cources Section -->
+    <section class="bg-gray">
+            <courses :groups="{{ $groups }}"></courses>
+    </section>
+
+    <!-- End Courses Section -->
 @endsection

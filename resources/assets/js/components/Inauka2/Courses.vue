@@ -1,7 +1,8 @@
 <template>
-  <div class="container-fluid px-5">
-    <div class="row align-items-center">
-      <div class="d-none d-md-block col-0 col-md-3">
+  <div class="bg-white">
+
+    <div class="d-flex container-fluid justify-content-between flex-column flex-md-row">
+      <div class="row">
         <div class="dropdown">
           <div class="d-flex align-items-center">
             <img class="me-4" src="/images/inauka2/sorting-icon.svg" alt="sort icon"/>
@@ -37,9 +38,9 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-3 px-5 px-lg-0 justify-content-center">
+      <div>
         <div class="d-flex justify-content-center">
-          <div class="input-group bg-light p-2 w-100">
+          <div class="input-group  p-2 w-100">
             <input type="text"
                    class="form-control border-0"
                    placeholder="Wyszukaj kurs"
@@ -47,68 +48,71 @@
                    aria-describedby="search-text"
                    v-model="search"
                    @change="loadCourses"
+                   @keyup="loadCourses"
             >
-            <span class="input-group-text border-0" id="basic-addon2">
+            <span class="input-group-text border-0 bg-white" id="basic-addon2">
                             <i class="icon-search" style="scale: 0.8" aria-hidden="true"></i>
                         </span>
           </div>
         </div>
       </div>
-      <div class="d-none d-md-block col-0 col-md-6">
+      <div>
         <slot></slot>
       </div>
     </div>
-    <div class="row mt-5">
-      <div class="col-12">
-        <div class="d-flex flex-row gap-4 flex-nowrap scroll-x">
-          <button
-            v-for="group in groups"
-            v-bind:key="group.id"
-            @click="selectGroup(group.id)"
-            class="filter-item"
-            :class="{
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 mb-3">
+          <div class="d-flex flex-row gap-4 flex-nowrap scroll-x">
+            <button
+              v-for="group in groups"
+              v-bind:key="group.id"
+              @click="selectGroup(group.id)"
+              class="filter-item"
+              :class="{
               'active' : group.id == selectedGroup
             }"
-          >{{ group.name }}
-          </button>
+            >{{ group.name }}
+            </button>
+          </div>
         </div>
       </div>
     </div>
+    <div class="container-fluid px-3 px-lg-5 bg-gray">
 
-    <div class="">
-      <div class="container-fluid px-1 px-md-5 row">
-        <CourseCard v-for="course in visible" v-bind:key="course.id" :course="course"></CourseCard>
-      </div>
-      <div class="text-center d-flex justify-content-center justify-content-md-end">
-        <a href="#"
-           class="round-button d-flex justify-content-center align-items-center"
-           :class="{
+      <div class="">
+        <div class="row">
+          <CourseCard v-for="course in visible" v-bind:key="course.id" :course="course"></CourseCard>
+        </div>
+        <div class="text-center d-flex justify-content-center justify-content-md-end">
+          <a href="#"
+             class="round-button d-flex justify-content-center align-items-center"
+             :class="{
             'active': this.offset > 0
            }"
-           @click="prev"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-               fill="currentColor">
-            <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
-          </svg>
-        </a>
-        <a href="#"
-           class="round-button d-flex justify-content-center align-items-center"
-           :class="{
+             @click="prev"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                 fill="currentColor">
+              <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
+            </svg>
+          </a>
+          <a href="#"
+             class="round-button d-flex justify-content-center align-items-center"
+             :class="{
             'active': this.hasMore,
            }"
-           @click="next"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-               fill="currentColor">
-            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
-          </svg>
-        </a>
+             @click="next"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                 fill="currentColor">
+              <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
-
   </div>
-
 </template>
 <script>
 import CourseCard from "../Inauka2/CourseCard.vue"
@@ -254,4 +258,15 @@ export default {
     }
   }
 }
+
+.filter-item {
+  color: #cacaca;
+
+  &:hover,
+  &.active {
+    border-color: #FF6743;
+    color: #161615cc;
+  }
+}
+
 </style>

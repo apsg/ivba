@@ -21,7 +21,7 @@ class DetailedCoursesTransformer extends TransformerAbstract
             'payment_link' => $course->payment_link,
             'lesson_count' => $course->lessons->count(),
             'duration'     => $course->duration,
-            'rating'       => $course->avg_rating,
+            'rating'       => number_format($course->avg_rating,1),
             'image'        => $course->image ? $course->image->thumb(600, 300) : null,
             'topics'       => $course->topics ?? '',
             'author'       => $course->author->name ?? '',
