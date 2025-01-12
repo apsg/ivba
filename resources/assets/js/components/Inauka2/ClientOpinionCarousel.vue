@@ -212,5 +212,4 @@ export default {
 .VueCarousel-dot--active .VueCarousel-dot-button {
   width: 50px !important;
 }
-
 </style>
