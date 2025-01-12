@@ -57,15 +57,16 @@
             <img src="{{ url('/images/inauka2/gradinet.png') }}" class="w-100" alt=""/>
         </div>
 
-        <div class="d-flex flex-column align-items-center mt-5">
-            <i class="icon-verified" style="width: 50px; height: 50px"></i>
-            <h2 class="h2-headline text-center mb-3">
-                Stawiamy na <br>
+        <div class="d-flex flex-column align-items-center" style="margin-top: 150px">
+            <i class="icon-verified mt-5" style="width: 50px; height: 50px"></i>
+            <h3 class="h3-headline text-center mt-5 mb-3">
+                Stawiamy na
                 <span class="color-red">najwyższą jakość</span> <br>
                 naszych materiałów.
-            </h2>
-            <p class="subtitle-1">
-                Dołącz do grona zadowolonych klientów, którzy docenili nasze profesjonalne podejście.
+            </h3>
+            <p class="subtitle-1 text-center py-5">
+                Dołącz do grona zadowolonych klientów, którzy docenili nasze <br />
+                profesjonalne podejście.
             </p>
         </div>
         <div class="row">
@@ -98,7 +99,7 @@
             </div>
 
             {{--desktop adv--}}
-            <div class="container px-5">
+            <div class="container px-5 py-5">
                 <div class="d-none d-lg-flex justify-content-center align-items-center px-5">
                     <img src="{{ url('/images/inauka2/partners/ing.svg') }}" alt="logo ing">
 
@@ -113,6 +114,11 @@
                          alt="logo dr.oetker">
                 </div>
             </div>
+
+            <p class="subtitle-1 text-center mt-5" style="font-size: 12px;">
+                Loga marek są użyte wyłącznie w celach informacyjnych.<br/>
+                Wszystkie prawa należą do odpowiednich właścicieli.
+            </p>
         </div>
 
 
@@ -126,7 +132,7 @@
             </div>
 
             {{--Desktop view--}}
-            <div class="row d-none d-lg-flex">
+            <div class="row d-none d-lg-flex px-5">
                 <div class="col-6 mt-4 p-4 g-4">
                     <div class="row">
                         <div class="col-8">
