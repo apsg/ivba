@@ -327,11 +327,12 @@
                     </div>
                 </div>
             </div>
+            <div class="py-5"></div>
         </div>
 
 
         {{--Platform opinions--}}
-        <div class="container-fluid px-0 mt-5">
+        <div class="container-fluid px-0 pt-5 bg-gray">
             <div class="row mt-5 pt-5 ">
                 <div class="col-12 bg-testimonials">
                     <div class="d-flex flex-column justify-content-center">
@@ -344,6 +345,7 @@
                     </div>
                 </div>
             </div>
+            <div class="py-5"></div>
         </div>
 
         {{--Faq--}}

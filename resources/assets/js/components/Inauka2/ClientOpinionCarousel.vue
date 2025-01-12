@@ -1,19 +1,23 @@
 <template>
   <div class="container">
-    <carousel :paginationEnabled="false"
+    <carousel :paginationEnabled="true"
               :perPage="3"
               :navigate-to="page"
               :mouseDrag="true"
               :autoplay="true"
-              :autoplayTimeout="5000">
+              :autoplayTimeout="5000"
+              paginationActiveColor="#FD5429"
+              paginationColor="#1616150F"
+    >
       <slide>
         <div class="p-4">
           <div class="row rounded bg-white">
             <div class="col-12 mb-4 p-3">
-              <img src="/images/inauka2/opinions/People Avatar-02-12.svg" alt="avatar logo" height="60" />
+              <img src="/images/inauka2/opinions/People Avatar-02-12.svg" alt="avatar logo" height="60"/>
             </div>
             <div class="col-12 color-graphite-light mb-5">
-              Szkolenia iNauka pozwoliły mi na prowadzeniu szeregu usprawnień w Firmie. Pomimo ciągłej pracy na Excelu, moje analizy są teraz zdecydowanie bardziej profesjonalne.
+              Szkolenia iNauka pozwoliły mi na prowadzeniu szeregu usprawnień w Firmie. Pomimo ciągłej pracy na Excelu,
+              moje analizy są teraz zdecydowanie bardziej profesjonalne.
             </div>
             <div class="col-12">
               <div class="d-flex justify-content-between">
@@ -22,7 +26,7 @@
                   <span class="body-2">Opinia przesłana przez e-mail</span>
                 </div>
                 <div class="mt-auto">
-                  <img src="/images/inauka2/inauka-logo.svg" alt="logo" height="60" />
+                  <img src="/images/inauka2/inauka-logo.svg" alt="logo" height="60"/>
                 </div>
               </div>
             </div>
@@ -36,7 +40,8 @@
               <img src="/images/inauka2/opinions/People Avatar-02-05.svg" alt="avatar logo" height="60"/>
             </div>
             <div class="col-12 color-graphite-light mb-5">
-              Przede wszystkim dziękuję za ogromną dawkę wiedzy i pokazanie narzędzi takich jak Power Query! Już mam kilka pomysłów jak
+              Przede wszystkim dziękuję za ogromną dawkę wiedzy i pokazanie narzędzi takich jak Power Query! Już mam
+              kilka pomysłów jak
               mogłabym wykorzystać tą wiedzę w pracy.
             </div>
             <div class="col-12">
@@ -57,7 +62,7 @@
         <div class="p-4">
           <div class="row rounded bg-white">
             <div class="col-12 mb-4 p-3">
-              <img src="/images/inauka2/opinions/People Avatar-02-13.svg" alt="avatar logo" height="60" />
+              <img src="/images/inauka2/opinions/People Avatar-02-13.svg" alt="avatar logo" height="60"/>
             </div>
             <div class="col-12 color-graphite-light mb-5">
               Polecam! Fajny sposób na przypomnienie sobie pracy w Excelu jak i możliwość nauczenia się nowych rzeczy 💪
@@ -69,7 +74,7 @@
                   <span class="body-2">Opinia przesłana komentarz na Facebooku</span>
                 </div>
                 <div class="mt-auto">
-                  <img src="/images/inauka2/inauka-logo.svg" alt="logo" height="60" />
+                  <img src="/images/inauka2/inauka-logo.svg" alt="logo" height="60"/>
                 </div>
               </div>
             </div>
@@ -80,7 +85,7 @@
         <div class="p-4">
           <div class="row rounded bg-white">
             <div class="col-12 mb-4 p-3">
-              <img src="/images/inauka2/opinions/People Avatar-02-19.svg" alt="avatar logo" height="60" />
+              <img src="/images/inauka2/opinions/People Avatar-02-19.svg" alt="avatar logo" height="60"/>
             </div>
             <div class="col-12 color-graphite-light mb-5">
               Jestem od dawna Waszą wielką fanką. :) Robicie cudowną robotę na Mega Sobotach i maratonach.
@@ -92,7 +97,7 @@
                   <span class="body-2">Opinia przesłana przez e-mail</span>
                 </div>
                 <div class="mt-auto">
-                  <img src="/images/inauka2/inauka-logo.svg" alt="logo" height="60" />
+                  <img src="/images/inauka2/inauka-logo.svg" alt="logo" height="60"/>
                 </div>
               </div>
             </div>
@@ -103,7 +108,7 @@
         <div class="p-4">
           <div class="row rounded bg-white">
             <div class="col-12 mb-4 p-3">
-              <img src="/images/inauka2/opinions/People Avatar-02-06.svg" alt="avatar logo" height="60" />
+              <img src="/images/inauka2/opinions/People Avatar-02-06.svg" alt="avatar logo" height="60"/>
             </div>
             <div class="col-12 color-graphite-light mb-5">
               Dziękuje za bardzo interesujące i dokładnie przeprowadzone szkolenie. Bardzo dużo nowych informacji.
@@ -115,7 +120,7 @@
                   <span class="body-2">Opinia przesłana przez e-mail</span>
                 </div>
                 <div class="mt-auto">
-                  <img src="/images/inauka2/inauka-logo.svg" alt="logo" height="60" />
+                  <img src="/images/inauka2/inauka-logo.svg" alt="logo" height="60"/>
                 </div>
               </div>
             </div>
@@ -149,10 +154,11 @@
         <div class="p-4">
           <div class="row rounded bg-white">
             <div class="col-12 mb-4 p-3">
-              <img src="/images/inauka2/opinions/People Avatar-02-09.svg" alt="avatar logo" height="60" />
+              <img src="/images/inauka2/opinions/People Avatar-02-09.svg" alt="avatar logo" height="60"/>
             </div>
             <div class="col-12 color-graphite-light mb-5">
-              Jesteście Panowie bardzo komunikatywni i życzliwie nastawieni do uczestników, którzy są różni. Gratuluję profesjonalizmu!
+              Jesteście Panowie bardzo komunikatywni i życzliwie nastawieni do uczestników, którzy są różni. Gratuluję
+              profesjonalizmu!
             </div>
             <div class="col-12">
               <div class="d-flex justify-content-between">
@@ -161,7 +167,7 @@
                   <span class="body-2">Opinia przesłana przez e-mail</span>
                 </div>
                 <div class="mt-auto">
-                  <img src="/images/inauka2/inauka-logo.svg" alt="logo" height="60" />
+                  <img src="/images/inauka2/inauka-logo.svg" alt="logo" height="60"/>
                 </div>
               </div>
             </div>
@@ -180,20 +186,31 @@ export default {
 
   components: {Carousel, Slide},
 
-  data () {
+  data() {
     return {
       page: 0,
     }
   },
 
   methods: {
-    onPageChange (page) {
+    onPageChange(page) {
       this.page = page;
     }
   }
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+.VueCarousel-dot {
+  .VueCarousel-dot-button {
+    width: 30px !important;
+    height: 10px !important;
+    border-radius: 10px !important;
+  }
+}
+
+.VueCarousel-dot--active .VueCarousel-dot-button {
+  width: 50px !important;
+}
 
 </style>
