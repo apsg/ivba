@@ -84,7 +84,7 @@
         <div class="row">
           <CourseCard v-for="course in visible" v-bind:key="course.id" :course="course"></CourseCard>
         </div>
-        <div class="text-center d-flex justify-content-center justify-content-md-end">
+        <div class="text-center d-flex justify-content-center justify-content-md-end mt-1">
           <a href="#"
              class="round-button d-flex justify-content-center align-items-center"
              :class="{
@@ -171,7 +171,6 @@ export default {
         }
       })
         .then((r) => {
-          console.log(r);
           this.courses = r.data.courses;
           this.offset = 0;
           this.hasMore = this.courses.length > this.limit;

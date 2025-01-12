@@ -25,23 +25,24 @@
             </div>
         </div>
     </div>
-<div>
     <courses :groups="{{ $groups }}">
         <div class="d-flex flex-row justify-content-end align-items-center gap-2 container">
             <div style="max-width: 150px;">
                 <img class="w-100 h-auto" src="/images/inauka2/programs-icons.png" alt="programs icons"/>
             </div>
-            <a class="d-inline-flex align-items-center btn cta_button font-button btn-coral-lg"
+            <a class="d-inline-flex align-items-center btn cta_button font-button btn-coral-lg btn-large"
                href="{{ url('/buy_access') }}">
                 <i class="icon-arrow-right white"></i>
                 ODBLOKUJ PEŁNY DOSTĘP
             </a>
         </div>
     </courses>
-</div>
+
     {{--Banner Join Us--}}
-    <div class="container mt-5 p-0">
-        @include('partials.moving_banner')
+    <div class="gradient-tlo bg-gray py-5">
+        <div class="container p-0 ">
+            @include('partials.moving_banner')
+        </div>
     </div>
 
     {{--Ambasadors container--}}
@@ -73,19 +74,24 @@
                 <div id="adv" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ url('/images/inauka2/partners/ing.svg') }}" class="d-block w-100" alt="logo ing">
+                            <img src="{{ url('/images/inauka2/partners/ing.svg') }}" class="d-block w-100"
+                                 alt="logo ing">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ url('/images/inauka2/partners/aldi.svg') }}" class="d-block w-100" alt="logo aldi">
+                            <img src="{{ url('/images/inauka2/partners/aldi.svg') }}" class="d-block w-100"
+                                 alt="logo aldi">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ url('/images/inauka2/partners/danone.svg') }}" class="d-block w-100" alt="logo danone">
+                            <img src="{{ url('/images/inauka2/partners/danone.svg') }}" class="d-block w-100"
+                                 alt="logo danone">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ url('/images/inauka2/partners/arcelor.mittal.svg') }}" class="d-block w-100" alt="logo arcelor.mittal">
+                            <img src="{{ url('/images/inauka2/partners/arcelor.mittal.svg') }}" class="d-block w-100"
+                                 alt="logo arcelor.mittal">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ url('/images/inauka2/partners/dr.oetker.svg') }}" class="d-block w-100" alt="logo dr.oetker">
+                            <img src="{{ url('/images/inauka2/partners/dr.oetker.svg') }}" class="d-block w-100"
+                                 alt="logo dr.oetker">
                         </div>
                     </div>
                 </div>
@@ -100,219 +106,247 @@
 
                     <img src="{{ url('/images/inauka2/partners/danone.svg') }}" class="d-block w-100" alt="logo danone">
 
-                    <img src="{{ url('/images/inauka2/partners/arcelor.mittal.svg') }}" class="d-block w-100" alt="logo arcelor.mittal">
+                    <img src="{{ url('/images/inauka2/partners/arcelor.mittal.svg') }}" class="d-block w-100"
+                         alt="logo arcelor.mittal">
 
-                    <img src="{{ url('/images/inauka2/partners/dr.oetker.svg') }}" class="d-block w-100" alt="logo dr.oetker">
-                </div>
-            </div>
-    </div>
-
-
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-12">
-                <div class="d-flex justify-content-center">
-                    <p class="h4-headline">Co zyskasz, ucząc się wspólnie z nami?</p>
+                    <img src="{{ url('/images/inauka2/partners/dr.oetker.svg') }}" class="d-block w-100"
+                         alt="logo dr.oetker">
                 </div>
             </div>
         </div>
 
-        {{--Desktop view--}}
-        <div class="row d-none d-lg-flex">
-            <div class="col-6 mt-4 p-4 g-4">
-                <div class="row">
-                    <div class="col-8">
-                        <h2 class="h4-headline color-red rounded p-3 mb-4" style="background-color: #FF68410A">
-                            Imienne certyfikaty
-                        </h2>
-                        <p class="h6-headline color-graphite-light">
-                            Otrzymaj imienny certyfikat, który wyróżni Cię na rynku pracy.
-                        </p>
-                    </div>
-                    <div class="col-4">
-                        <img src="{{ url('/images/inauka2/learning/pencil-cert.svg') }}" class="d-block w-100" alt="pencil image">
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex justify-content-center">
+                        <p class="h4-headline">Co zyskasz, ucząc się wspólnie z nami?</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-6 mt-4 p-4 rounded" style="background: transparent linear-gradient(249deg, #FD5429 0%, #F99140 100%) 0% 0% no-repeat padding-box;">
-                <div class="row">
-                    <div class="col-4">
-                        <img src="{{ url('/images/inauka2/learning/cup.svg') }}" class="d-block w-100" alt="cup image">
+            {{--Desktop view--}}
+            <div class="row d-none d-lg-flex">
+                <div class="col-6 mt-4 p-4 g-4">
+                    <div class="row">
+                        <div class="col-8">
+                            <h2 class="h4-headline color-red rounded p-3 mb-4" style="background-color: #FF68410A">
+                                Imienne certyfikaty
+                            </h2>
+                            <p class="h6-headline color-graphite-light">
+                                Otrzymaj imienny certyfikat, który wyróżni Cię na rynku pracy.
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <img src="{{ url('/images/inauka2/learning/pencil-cert.svg') }}" class="d-block w-100"
+                                 alt="pencil image">
+                        </div>
                     </div>
-                    <div class="col-8">
-                        <h2 class="h4-headline text-white p-3 mb-4">
-                            Ścieżki rozwojuńmin
-                        </h2>
-                        <p class="h6-headline text-white">
-                            Ukończ wybrane ścieżki, aby zdobyć kluczowe umiejętności w swojej branży.
-                        </p>
+                </div>
+
+                <div class="col-6 mt-4 p-4 rounded"
+                     style="background: transparent linear-gradient(249deg, #FD5429 0%, #F99140 100%) 0% 0% no-repeat padding-box;">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="{{ url('/images/inauka2/learning/cup.svg') }}" class="d-block w-100"
+                                 alt="cup image">
+                        </div>
+                        <div class="col-8">
+                            <h2 class="h4-headline text-white p-3 mb-4">
+                                Ścieżki rozwojuńmin
+                            </h2>
+                            <p class="h6-headline text-white">
+                                Ukończ wybrane ścieżki, aby zdobyć kluczowe umiejętności w swojej branży.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-7 mt-4 p-4">
+                    <div class="row">
+                        <div class="col-8">
+                            <h2 class="h4-headline color-red rounded p-3 mb-4" style="background-color: #FF68410A">
+                                Wsparcie
+                            </h2>
+                            <p class="h6-headline color-graphite-light">
+                                Otrzymaj pomoc od społeczności na Facebooku i ekspertów mailowo.
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <img src="{{ url('/images/inauka2/learning/connect.svg') }}" class="d-block w-100"
+                                 alt="connect image">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-5 mt-4 p-4">
+                    <div class="row">
+                        <div class="col-6">
+                            <h2 class="h4-headline color-red rounded p-3 mb-4" style="background-color: #FF68410A">
+                                Ćwiczenia
+                            </h2>
+                            <p class="h6-headline color-graphite-light">
+                                Ćwicz pod okiem ekspertów, aby lepiej przyswoić materiał z lekcji.
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <img src="{{ url('/images/inauka2/learning/pencil-book.svg') }}" class="d-block w-100"
+                                 alt="connect image">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 mt-4 p-4 rounded" style="background-color: #48CBEA">
+                    <div class="row">
+                        <div class="col-8">
+                            <h2 class="h4-headline text-white rounded p-3 mb-4"
+                                style="background-color: rgba(255, 255, 255, 0.2)">
+                                Aktualizacje
+                            </h2>
+                            <p class="h6-headline text-white">
+                                Co miesiąc dodajemy nowy kurs lub szkolenie.
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <img src="{{ url('/images/inauka2/learning/computer-white.svg') }}" class="d-block w-100"
+                                 alt="computer image">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 mt-4 p-4">
+                    <div class="row">
+                        <div class="col-8">
+                            <h2 class="h4-headline color-red rounded p-3 mb-4" style="background-color: #FF68410A">
+                                Egzaminy sprawdzające
+                            </h2>
+                            <p class="h6-headline color-graphite-light">
+                                Sprawdź swoje umiejętności dzięki testom końcowym i zdobądź certyfikat.
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <img src="{{ url('/images/inauka2/learning/file-pencil.svg') }}" class="d-block w-100"
+                                 alt="file pencil image">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            {{--Mobile view--}}
+            <div class="offset-2 col-8 d-lg-none">
+                <div id="adv" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators pt-5">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                                aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                                aria-label="Slide 5"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+                                aria-label="Slide 6"></button>
+                    </div>
+
+                    <div class="carousel-inner" style="min-height: 32rem">
+                        <div class="carousel-item active">
+                            <img src="{{ url('/images/inauka2/learning/pencil-cert.svg') }}" class="d-block w-100"
+                                 alt="pencil image" style="max-height: 14rem">
+                            <p class="h5-headline text-center mt-5 color-red rounded p-3"
+                               style="background-color: #FF68410A">
+                                Imienne certyfikaty
+                            </p>
+                            <p class="h6-headline color-graphite my-3">
+                                Otrzymaj imienny certyfikat, który wyróżni Cię na rynku pracy.
+                            </p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ url('/images/inauka2/learning/cup.svg') }}" class="d-block w-100"
+                                 alt="cup image" style="max-height: 14rem">
+                            <p class="h5-headline text-center mt-5 color-red rounded p-3"
+                               style="background-color: #FF68410A">
+                                Ścieżki rozwoju
+                            </p>
+                            <p class="h6-headline color-graphite my-3">
+                                Ukończ wybrane ścieżki, aby zdobyć kluczowe umiejątnności w swojej branności.
+                            </p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ url('/images/inauka2/learning/connect.svg') }}" class="d-block w-100"
+                                 alt="connect image" style="max-height: 14rem">
+                            <p class="h5-headline text-center mt-5 color-red rounded p-3"
+                               style="background-color: #FF68410A">
+                                Wsparcie
+                            </p>
+                            <p class="h6-headline color-graphite my-3">
+                                Otrzymaj pomoc od społeczności na Facebooku i ekspertów mailowo.
+                            </p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ url('/images/inauka2/learning/pencil-book.svg') }}" class="d-block w-100"
+                                 alt="connect image" style="max-height: 14rem">
+                            <p class="h5-headline text-center mt-5 color-red rounded p-3"
+                               style="background-color: #FF68410A">
+                                Ćwiczenia
+                            </p>
+                            <p class="h6-headline color-graphite my-3">
+                                Ćwicz pod okiem ekspertów, aby lepiej przyswoć materiał z lekcji.
+                            </p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ url('/images/inauka2/learning/pencil-computer.svg') }}" class="d-block w-100"
+                                 alt="connect image" style="max-height: 14rem">
+                            <p class="h5-headline text-center mt-5 color-red rounded p-3"
+                               style="background-color: #FF68410A">
+                                Aktualizacje
+                            </p>
+                            <p class="h6-headline color-graphite my-3">
+                                Co miesiąc dodajemy nowy kurs lub szkolenie.
+                            </p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ url('/images/inauka2/learning/file-pencil.svg') }}" class="d-block w-100"
+                                 alt="file pencil image" style="max-height: 14rem">
+                            <p class="h5-headline text-center mt-5 color-red rounded p-3"
+                               style="background-color: #FF68410A">
+                                Egzaminy sprawdzające
+                            </p>
+                            <p class="h6-headline color-graphite my-3">
+                                Sprawdź swoje umiejętności dzięki testom końcowym i zdobądź certyfikat.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-7 mt-4 p-4">
-                <div class="row">
-                    <div class="col-8">
-                        <h2 class="h4-headline color-red rounded p-3 mb-4" style="background-color: #FF68410A">
-                            Wsparcie
-                        </h2>
-                        <p class="h6-headline color-graphite-light">
-                            Otrzymaj pomoc od społeczności na Facebooku i ekspertów mailowo.
-                        </p>
-                    </div>
-                    <div class="col-4">
-                        <img src="{{ url('/images/inauka2/learning/connect.svg') }}" class="d-block w-100" alt="connect image">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-5 mt-4 p-4">
-                <div class="row">
-                    <div class="col-6">
-                        <h2 class="h4-headline color-red rounded p-3 mb-4" style="background-color: #FF68410A">
-                            Ćwiczenia
-                        </h2>
-                        <p class="h6-headline color-graphite-light">
-                            Ćwicz pod okiem ekspertów, aby lepiej przyswoić materiał z lekcji.
-                        </p>
-                    </div>
-                    <div class="col-6">
-                        <img src="{{ url('/images/inauka2/learning/pencil-book.svg') }}" class="d-block w-100" alt="connect image">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 mt-4 p-4 rounded" style="background-color: #48CBEA">
-                <div class="row">
-                    <div class="col-8">
-                        <h2 class="h4-headline text-white rounded p-3 mb-4" style="background-color: rgba(255, 255, 255, 0.2)">
-                            Aktualizacje
-                        </h2>
-                        <p class="h6-headline text-white">
-                            Co miesiąc dodajemy nowy kurs lub szkolenie.
-                        </p>
-                    </div>
-                    <div class="col-4">
-                        <img src="{{ url('/images/inauka2/learning/computer-white.svg') }}" class="d-block w-100" alt="computer image">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 mt-4 p-4">
-                <div class="row">
-                    <div class="col-8">
-                        <h2 class="h4-headline color-red rounded p-3 mb-4" style="background-color: #FF68410A">
-                            Egzaminy sprawdzające
-                        </h2>
-                        <p class="h6-headline color-graphite-light">
-                            Sprawdź swoje umiejętności dzięki testom końcowym i zdobądź certyfikat.
-                        </p>
-                    </div>
-                    <div class="col-4">
-                        <img src="{{ url('/images/inauka2/learning/file-pencil.svg') }}" class="d-block w-100" alt="file pencil image">
-                    </div>
-                </div>
-            </div>
-
         </div>
 
-        {{--Mobile view--}}
-        <div class="offset-2 col-8 d-lg-none">
-            <div id="adv" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators pt-5">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
-                </div>
 
-                <div class="carousel-inner" style="min-height: 32rem">
-                    <div class="carousel-item active">
-                        <img src="{{ url('/images/inauka2/learning/pencil-cert.svg') }}" class="d-block w-100" alt="pencil image" style="max-height: 14rem">
-                        <p class="h5-headline text-center mt-5 color-red rounded p-3" style="background-color: #FF68410A">
-                            Imienne certyfikaty
-                        </p>
-                        <p class="h6-headline color-graphite my-3">
-                            Otrzymaj imienny certyfikat, który wyróżni Cię na rynku pracy.
-                        </p>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ url('/images/inauka2/learning/cup.svg') }}" class="d-block w-100" alt="cup image" style="max-height: 14rem">
-                        <p class="h5-headline text-center mt-5 color-red rounded p-3" style="background-color: #FF68410A">
-                            Ścieżki rozwoju
-                        </p>
-                        <p class="h6-headline color-graphite my-3">
-                            Ukończ wybrane ścieżki, aby zdobyć kluczowe umiejątnności w swojej branności.
-                        </p>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ url('/images/inauka2/learning/connect.svg') }}" class="d-block w-100" alt="connect image" style="max-height: 14rem">
-                        <p class="h5-headline text-center mt-5 color-red rounded p-3" style="background-color: #FF68410A">
-                            Wsparcie
-                        </p>
-                        <p class="h6-headline color-graphite my-3">
-                            Otrzymaj pomoc od społeczności na Facebooku i ekspertów mailowo.
-                        </p>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ url('/images/inauka2/learning/pencil-book.svg') }}" class="d-block w-100" alt="connect image" style="max-height: 14rem">
-                        <p class="h5-headline text-center mt-5 color-red rounded p-3" style="background-color: #FF68410A">
-                            Ćwiczenia
-                        </p>
-                        <p class="h6-headline color-graphite my-3">
-                            Ćwicz pod okiem ekspertów, aby lepiej przyswoć materiał z lekcji.
-                        </p>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ url('/images/inauka2/learning/pencil-computer.svg') }}" class="d-block w-100" alt="connect image" style="max-height: 14rem">
-                        <p class="h5-headline text-center mt-5 color-red rounded p-3" style="background-color: #FF68410A">
-                            Aktualizacje
-                        </p>
-                        <p class="h6-headline color-graphite my-3">
-                            Co miesiąc dodajemy nowy kurs lub szkolenie.
-                        </p>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ url('/images/inauka2/learning/file-pencil.svg') }}" class="d-block w-100" alt="file pencil image" style="max-height: 14rem">
-                        <p class="h5-headline text-center mt-5 color-red rounded p-3" style="background-color: #FF68410A">
-                            Egzaminy sprawdzające
-                        </p>
-                        <p class="h6-headline color-graphite my-3">
-                            Sprawdź swoje umiejętności dzięki testom końcowym i zdobądź certyfikat.
-                        </p>
+        {{--Platform opinions--}}
+        <div class="container-fluid px-0 mt-5">
+            <div class="row mt-5 pt-5 ">
+                <div class="col-12 bg-testimonials">
+                    <div class="d-flex flex-column justify-content-center">
+                        <p class="text-center color-red">Opinie o platformie</p>
+                        <h3 class="text-center h3-headline">
+                            Twoje zadowolenie to nasz <span class="color-gradient">priorytet</span>
+                        </h3>
+
+                        <client-opinion-carousel></client-opinion-carousel>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-
-    {{--Platform opinions--}}
-    <div class="container-fluid px-0 mt-5">
-        <div class="row mt-5 pt-5 ">
-            <div class="col-12 bg-testimonials">
-                <div class="d-flex flex-column justify-content-center">
-                    <p class="text-center color-red">Opinie o platformie</p>
-                    <h3 class="text-center h3-headline">
-                        Twoje zadowolenie to nasz <span class="color-gradient">priorytet</span>
-                    </h3>
-
-                    <client-opinion-carousel></client-opinion-carousel>
-                </div>
-            </div>
+        {{--Faq--}}
+        <div class="container my-5">
+            <faq-main></faq-main>
         </div>
-    </div>
 
-    {{--Faq--}}
-    <div class="container my-5">
-         <faq-main></faq-main>
-    </div>
-
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
+        <!-- Marketing messaging and featurettes
+        ================================================== -->
+        <!-- Wrap the rest of the page in another container to center all the content. -->
 
 @endsection
