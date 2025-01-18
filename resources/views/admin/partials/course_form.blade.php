@@ -222,7 +222,7 @@
                 <input type="text"
                        class="form-control"
                        name="promo_text"
-                       value="{{ old('promo_text', isset($course) ? $course->promo_text : '') }}"
+                       value="{{ old('promo_text', isset($course) ? $course->promo_text :  '') }}"
                 >
             </div>
         </div>
