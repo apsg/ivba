@@ -328,7 +328,7 @@ a {
 }
 
 .selected-card {
-    border: 2px solid $color-red;
+    border: 2px solid $color-red !important;
     border-radius: 8px;
 
     @media (max-width: $media-breakpoint-tablet) {
@@ -339,6 +339,21 @@ a {
     }
 }
 
-.bg-gray{
+.bg-gray {
     background-color: #f7f7f7;
+}
+
+
+.footer-menu {
+    padding-top: 30px;
+
+    a {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: $color-white;
+
+        &:hover {
+            color: darken($color-white, 20%);
+        }
+    }
 }

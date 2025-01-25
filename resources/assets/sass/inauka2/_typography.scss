@@ -78,6 +78,7 @@ $font-roboto: "Roboto", sans-serif;
 @mixin h6-headline {
     font-family: $font-sora;
     font-size: 20px;
+    font-weight: 400;
 
     @media (max-width: $media-breakpoint-tablet) {
         font-size: 18px;
