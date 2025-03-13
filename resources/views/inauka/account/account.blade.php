@@ -25,7 +25,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="courses-tab" data-toggle="tab" href="#courses" role="tab"
-                       aria-controls="courses" aria-selected="true">Kursy i dodatki</a>
+                       aria-controls="courses" aria-selected="true">Kursy, certyfikaty i dodatki</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
@@ -79,6 +79,8 @@
                         </tbody>
                     </table>
                     @include('account.quick_sales')
+                    @include('common.account.certificates')
+
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="row">
