@@ -30,7 +30,7 @@
             <div style="max-width: 150px;">
                 <img class="w-100 h-auto" src="/images/inauka2/programs-icons.png" alt="programs icons"/>
             </div>
-            <a class="d-inline-flex align-items-center btn cta_button font-button btn-coral-lg btn-large"
+            <a class="d-inline-flex align-items-center btn cta_button font-button btn-coral btn-large"
                href="{{ url('/buy_access') }}">
                 <i class="icon-arrow-right white"></i>
                 ODBLOKUJ PEŁNY DOSTĘP

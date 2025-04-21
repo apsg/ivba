@@ -50,8 +50,7 @@
                 <div class="container">
                     <a class="navbar-brand subtitle-2" style="font-weight: 900"
                        href="{{ url('/') }}">
-                        <img src="{{ url('/images/inauka2/logo.svg') }}" height="60"/>
-                        iNauka.pl
+                        <img src="{{ url('/images/inauka2/logo_bialy.svg') }}" height="60"/>
                     </a>
 
                     <div class="d-flex align-items-center account-menu">

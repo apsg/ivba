@@ -1,6 +1,6 @@
 <template>
   <div class="col-12 col-sm-6 col-lg-4 col-xl-3 pt-3">
-    <div class="d-flex flex-row justify-content-between mb-2 bg-white pt-1 px-1" style="min-height: 32px;">
+    <div class="d-flex flex-row justify-content-between pb-1 bg-white pt-1 px-1 rounded-top" style="min-height: 32px;">
       <div class="d-flex flex-row flex-wrap gap-2">
         <button v-for="tag in course.tags"
                 v-if="tag.is_hidden != true"
@@ -11,7 +11,9 @@
       </div>
 
       <div class="d-flex flex-row gap-2">
-        <span class="subtitle-2">{{ course.rating > 0 ? course.rating : '&nbsp;' }}</span>
+        <span class="subtitle-2">
+        <img src="/images/inauka2/icon_star.svg" v-if="course.rating > 0">
+          {{ course.rating > 0 ? course.rating : '&nbsp;' }}</span>
       </div>
     </div>
     <div class="card border-0">
@@ -36,15 +38,15 @@
         <div class="d-flex flex-row flex-wrap gap-3 mb-3">
           <div class="d-flex flex-row flex-nowrap align-items-center gap-2">
             <div class="course-item-background">
-              <i class="icon-play"></i>
+              <img src="/images/inauka2/icon_play.svg">
             </div>
             <span class="caption">{{ course.lesson_count }} materiałów</span>
           </div>
           <div class="d-flex flex-row flex-nowrap align-items-center gap-2">
             <div class="course-item-background">
-              <i class="icon-time"></i>
+              <img src="/images/inauka2/icon_time.svg">
             </div>
-            <span class="caption">{{ course.duration_str }}</span>
+            <span class="caption">{{ course.duration }}</span>
           </div>
         </div>
         <div>
@@ -52,10 +54,10 @@
             {{ course.description }}
           </p>
           <p v-if="course.price_full" class="text-price">Cena: {{ course.price_full }} zł</p>
-          <button class="d-flex btn btn-blue align-items-center justify-content-center w-100 py-3 mb-1" href="#">
+          <a class="d-flex btn btn-blue align-items-center justify-content-center w-100 py-3 mb-1" :href="course.url">
             <i class="icon-arrow-right white"></i>
             <span class="subtitle-1">KUP ZA {{ course.price }} ZŁ</span>
-          </button>
+          </a>
           <p class="body-2 color-graphite-light">Najniższa cena w ciągu 30 dni przed obniżką:</p>
         </div>
         <div class="d-flex flex-row flex-wrap gap-2">
@@ -88,6 +90,9 @@ export default {
       else
         return m + ' minut';
     },
+    has_rating() {
+      return this.course.rating > 0;
+    }
   }
 }
 </script>

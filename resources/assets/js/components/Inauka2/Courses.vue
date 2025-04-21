@@ -2,47 +2,48 @@
   <div class="bg-white">
 
     <div class="d-flex container-fluid justify-content-between flex-column flex-md-row">
-      <div class="row">
-        <div class="dropdown">
-          <div class="d-flex align-items-center">
-            <img class="me-4" src="/images/inauka2/sorting-icon.svg" alt="sort icon"/>
+      <div></div>
+      <div>
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="row">
+            <div class="dropdown">
+              <div class="d-flex align-items-center">
             <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             Sortuj
                         </span>
-            <ul class="dropdown-menu">
-              <li>
-                <a
-                  class="dropdown-item"
-                  @click="setSort(null)">Domyślnie</a></li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  @click="setSort('new')">Nowe produkty</a></li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  @click="setSort('cheapest')">Najtańsze</a></li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  @click="setSort('expensive')">Najdroższe</a></li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  @click="setSort('promotion')">Promocje</a></li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  @click="setSort('bestseller')">Bestsellery</a></li>
-            </ul>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      @click="setSort(null)">Domyślnie</a></li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      @click="setSort('new')">Nowe produkty</a></li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      @click="setSort('cheapest')">Najtańsze</a></li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      @click="setSort('expensive')">Najdroższe</a></li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      @click="setSort('promotion')">Promocje</a></li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      @click="setSort('bestseller')">Bestsellery</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div>
-        <div class="d-flex justify-content-center">
+
           <div class="input-group  p-2 w-100">
             <input type="text"
-                   class="form-control border-0"
+                   class="form-control border-0 bg-color-white-box"
                    placeholder="Wyszukaj kurs"
                    aria-label="Wyszukaj kurs"
                    aria-describedby="search-text"
@@ -50,7 +51,7 @@
                    @change="loadCourses"
                    @keyup="loadCourses"
             >
-            <span class="input-group-text border-0 bg-white" id="basic-addon2">
+            <span class="input-group-text border-0 bg-color-white-box" id="basic-addon2">
                             <i class="icon-search" style="scale: 0.8" aria-hidden="true"></i>
                         </span>
           </div>
@@ -62,7 +63,7 @@
     </div>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-12 mb-3">
+        <div class="col-12 mb-5 mt-5" >
           <div class="d-flex flex-row gap-4 flex-nowrap scroll-x">
             <button
               v-for="group in groups"
@@ -78,13 +79,12 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid px-3 px-lg-5 bg-gray">
-
+    <div class="container-fluid px-3 px-lg-5 bg-gray" ref="scrollToMe">
       <div class="">
         <div class="row">
           <CourseCard v-for="course in visible" v-bind:key="course.id" :course="course"></CourseCard>
         </div>
-        <div class="text-center d-flex justify-content-center justify-content-md-end mt-1">
+        <div class="text-center d-flex justify-content-center justify-content-md-end mt-3">
           <a href="#"
              class="round-button d-flex justify-content-center align-items-center"
              :class="{
@@ -183,6 +183,7 @@ export default {
       if (this.hasMore) {
         this.offset = this.offset + this.limit;
         this.hasMore = this.courses.length > this.offset + this.limit;
+        this.scrollToMe();
       }
     },
 
@@ -191,6 +192,7 @@ export default {
       if (this.offset > 0) {
         this.offset = Math.max(0, this.offset - this.limit);
         this.hasMore = this.courses.length > this.offset + this.limit;
+        this.scrollToMe();
       }
     },
 
@@ -206,6 +208,13 @@ export default {
     setSort(sort) {
       this.sort = sort;
       this.loadCourses();
+    },
+
+    scrollToMe(){
+      const el = this.$refs.scrollToMe;
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     },
 
     computeCols(width) {
