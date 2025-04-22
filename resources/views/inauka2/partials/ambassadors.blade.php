@@ -4,13 +4,13 @@
         <img src="/images/inauka2/tarcza.png"/>
         Monitorowane przez specjalistów
     </h4>
-    <div class="d-block d-md-flex" style="max-width: 100%; overflow-x: auto;">
+    <div class="d-block d-md-flex mt-5" style="max-width: 100%; overflow-x: auto;">
 
         <div class="px-2">
             <div class="ambassador rounded p-3 pt-5">
                 <div class="image">
                     <img
-                            src="{{ url('/images/inauka2/ambassadors/konstancja.svg') }}"
+                            src="{{ url('/images/inauka2/ambassadors/konstancja.png') }}"
                             class="rounded rounded-50"
                     />
                     <div class="chevron">
@@ -42,7 +42,7 @@
             <div class="ambassador rounded p-3 pt-5">
                 <div class="image">
                     <img
-                            src="{{ url('/images/inauka2/ambassadors/michal.svg') }}"
+                            src="{{ url('/images/inauka2/ambassadors/michal.png') }}"
                             class="rounded rounded-50"
                     />
                     <div class="chevron">
@@ -74,7 +74,7 @@
             <div class="ambassador rounded p-3 pt-5">
                 <div class="image">
                     <img
-                            src="{{ url('/images/inauka2/ambassadors/dominik.svg') }}"
+                            src="{{ url('/images/inauka2/ambassadors/dominik.png') }}"
                             class="rounded rounded-50"
                     />
                     <div class="chevron">
@@ -105,7 +105,7 @@
             <div class="ambassador rounded p-3 pt-5">
                 <div class="image">
                     <img
-                            src="{{ url('/images/inauka2/ambassadors/katarzyna.svg') }}"
+                            src="{{ url('/images/inauka2/ambassadors/katarzyna.png') }}"
                             class="rounded rounded-50"
                     />
                     <div class="chevron">

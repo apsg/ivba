@@ -9,7 +9,7 @@ export default {
           id: 1,
           title: 'Czy wystawiacie fakturę vat? (+ gdzie znaleźć fakturę?)',
           subtitle: 'Tak, wystawiamy faktury',
-          description: `<p class="my-3"> Jesteśmy polsk firma</p>
+          description: `<p class="my-3"> Jesteśmy polską firma</p>
                         <p class="my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, totam!</p>`,
         },
         {
@@ -86,7 +86,7 @@ export default {
         </div>
       </div>
     </div>
-    <p class="p-3 font-sora text-uppercase">
+    <p class="p-3 font-sora text-uppercase" style="scale: 50%">
       Masz inne pytania?
       <a
         class="color-red "

@@ -260,29 +260,21 @@ a {
         text-align: center;
         position: relative;
 
+        img{
+            width: 100px;
+        }
+
         .chevron {
             position: absolute;
-            bottom: -60px;
+            bottom: -30px;
             text-align: center;
             width: 100%;
 
             svg {
                 margin: 0 auto;
-                width: 150px;
+                width: 50px;
                 height: auto;
 
-            }
-        }
-    }
-
-    &:hover {
-        .image {
-            .chevron {
-                bottom: -30px;
-
-                svg {
-                    width: 50px;
-                }
             }
         }
     }

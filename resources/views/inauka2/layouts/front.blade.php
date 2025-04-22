@@ -18,6 +18,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sora:wght@100..800&display=swap"
           rel="stylesheet">
 
+    <link rel="icon" type="image/png" href="/images/inauka2/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/images/inauka2/favicon.svg" />
+    <link rel="shortcut icon" href="/images/inauka2/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/inauka2/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="iNauka" />
+    <link rel="manifest" href="/images/inauka2/site.webmanifest" />
+
     <!-- Favicons -->
     <meta name="theme-color" content="#712cf9">
     <link href="{{ multisite_css() }}" rel="stylesheet">

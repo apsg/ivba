@@ -10,8 +10,8 @@
               paginationColor="#1616150F"
     >
       <slide>
-        <div class="p-4">
-          <div class="row rounded bg-white">
+        <div class="p-4" style="height: 100%">
+          <div class="row rounded bg-white" style="height: 100%">
             <div class="col-12 mb-4 p-3">
               <img src="/images/inauka2/opinions/People Avatar-02-12.svg" alt="avatar logo" height="60"/>
             </div>
@@ -34,8 +34,8 @@
         </div>
       </slide>
       <slide>
-        <div class="p-4">
-          <div class="row rounded bg-white">
+        <div class="p-4" style="height: 100%">
+          <div class="row rounded bg-white" style="height: 100%">
             <div class="col-12 mb-4 p-3">
               <img src="/images/inauka2/opinions/People Avatar-02-05.svg" alt="avatar logo" height="60"/>
             </div>
@@ -59,8 +59,8 @@
         </div>
       </slide>
       <slide>
-        <div class="p-4">
-          <div class="row rounded bg-white">
+        <div class="p-4" style="height: 100%">
+          <div class="row rounded bg-white" style="height: 100%">
             <div class="col-12 mb-4 p-3">
               <img src="/images/inauka2/opinions/People Avatar-02-13.svg" alt="avatar logo" height="60"/>
             </div>
@@ -82,8 +82,8 @@
         </div>
       </slide>
       <slide>
-        <div class="p-4">
-          <div class="row rounded bg-white">
+        <div class="p-4" style="height: 100%">
+          <div class="row rounded bg-white" style="height: 100%">
             <div class="col-12 mb-4 p-3">
               <img src="/images/inauka2/opinions/People Avatar-02-19.svg" alt="avatar logo" height="60"/>
             </div>
@@ -105,8 +105,8 @@
         </div>
       </slide>
       <slide>
-        <div class="p-4">
-          <div class="row rounded bg-white">
+        <div class="p-4" style="height: 100%">
+          <div class="row rounded bg-white" style="height: 100%">
             <div class="col-12 mb-4 p-3">
               <img src="/images/inauka2/opinions/People Avatar-02-06.svg" alt="avatar logo" height="60"/>
             </div>
@@ -128,8 +128,8 @@
         </div>
       </slide>
       <slide>
-        <div class="p-4">
-          <div class="row rounded bg-white">
+        <div class="p-4" style="height: 100%">
+          <div class="row rounded bg-white" style="height: 100%">
             <div class="col-12 mb-4 p-3">
               <img src="/images/inauka2/opinions/People Avatar-02-17.svg" alt="avatar logo" height="60"/>
             </div>
@@ -151,8 +151,8 @@
         </div>
       </slide>
       <slide>
-        <div class="p-4">
-          <div class="row rounded bg-white">
+        <div class="p-4" style="height: 100%">
+          <div class="row rounded bg-white" style="height: 100%">
             <div class="col-12 mb-4 p-3">
               <img src="/images/inauka2/opinions/People Avatar-02-09.svg" alt="avatar logo" height="60"/>
             </div>
@@ -211,5 +211,15 @@ export default {
 
 .VueCarousel-dot--active .VueCarousel-dot-button {
   width: 50px !important;
+}
+
+.VueCarousel-slide {
+  & > p {
+    height: 100%;
+
+    & > div {
+      height: 100%;
+    }
+  }
 }
 </style>
