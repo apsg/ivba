@@ -8,16 +8,16 @@
 
     <!-- Learn online courses -->
     <div class="container-fluid learn-online-container">
-        <div class="">
+        <div class="big-arrow">
             <img class="" src="{{ url('/images/inauka2/orange-big-arrow.svg') }}" alt=""/>
         </div>
-        <div class="container">
-            <div class="d-flex justify-content-start align-items-center flex-column flex-md-row px-3 px-md-5 gap-4 gap-md-5">
-                <div class="order-0 order-md-1">
+        <div class="container mt-3">
+            <div class="d-flex justify-content-start align-items-center flex-column flex-md-row px-3 px-md-5 gap-1 gap-md-5">
+                <div class="order-0 order-md-1 ilustracja display-md-plus">
                     <img class="w-100 mb-5" style="max-height: 232px"
                          src="{{ url('/images/inauka2/illustracja_kursy.png') }}"/>
                 </div>
-                <div class="order-1 order-md-0" style="max-width: 60%">
+                <div class="order-1 order-md-0 learn-online-text">
                     <h2 class="mb-3">Ucz się online na kursach dostosowanych do Twoich potrzeb.</h2>
                     <p>Znajdź kursy na iNauka, które pomogą Ci rozwinąć umiejętności w wybranej dziedzinie. Dołącz do
                         naszej społeczności i zdobywaj certyfikaty uznawane przez pracodawców.</p>
@@ -39,8 +39,8 @@
     </courses>
 
     {{--Banner Join Us--}}
-    <div class="gradient-tlo bg-gray py-5" style="padding-bottom: 100px !important;">
-        <div class="container p-0 ">
+    <div class="gradient-tlo bg-gray py-5 moving-banner" style="padding-bottom: 100px !important;">
+        <div class="container p-0">
             @include('partials.moving_banner')
         </div>
     </div>
@@ -60,7 +60,7 @@
                 <i class="icon-verified mt-5" style="width: 50px; height: 50px"></i>
                 <h3 class="h3-headline text-center mt-5 mb-3">
                     Stawiamy na
-                    <span class="color-red">najwyższą jakość</span> <br>
+                    <span class="color-red">najwyższą&nbsp;jakość</span> <br>
                     naszych materiałów.
                 </h3>
                 <p class="subtitle-1 text-center py-5">
@@ -99,23 +99,19 @@
             </div>
 
             {{--desktop adv--}}
-            <div class="container px-5 py-5">
-                <div class="d-none d-lg-flex justify-content-center align-items-center px-5">
-                    <img src="{{ url('/images/inauka2/partners/ing.svg') }}" alt="logo ing">
-
+            <div class="container">
+                <div class="d-none d-lg-flex justify-content-center align-items-center px-5 py-5">
+                    <img src="{{ url('/images/inauka2/partners/ing.svg') }}" class="d-block w-100" alt="logo ing">
                     <img src="{{ url('/images/inauka2/partners/aldi.svg') }}" class="d-block w-100" alt="logo aldi">
-
                     <img src="{{ url('/images/inauka2/partners/danone.svg') }}" class="d-block w-100" alt="logo danone">
-
                     <img src="{{ url('/images/inauka2/partners/arcelor.mittal.svg') }}" class="d-block w-100"
                          alt="logo arcelor.mittal">
-
                     <img src="{{ url('/images/inauka2/partners/dr.oetker.svg') }}" class="d-block w-100"
                          alt="logo dr.oetker">
                 </div>
             </div>
 
-            <p class="subtitle-1 text-center mt-5" style="font-size: 10px; opacity: 50%;">
+            <p class="subtitle-1 text-center mt-1 mt-lg-5" style="font-size: 10px; opacity: 50%;">
                 Loga marek są użyte wyłącznie w celach informacyjnych.<br/>
                 Wszystkie prawa należą do odpowiednich właścicieli.
             </p>

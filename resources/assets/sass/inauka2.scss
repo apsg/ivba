@@ -317,6 +317,10 @@ a {
     background-image: url("/images/inauka2/opinie.svg");
     background-position: top right;
     background-repeat: no-repeat;
+
+    @media (max-width: $media-breakpoint-tablet) {
+        background-image: none;
+    }
 }
 
 .selected-card {
@@ -347,5 +351,29 @@ a {
         &:hover {
             color: darken($color-white, 20%);
         }
+    }
+}
+.learn-online-container{
+    @media (max-width: $media-breakpoint-tablet) {
+        .big-arrow{
+            scale: 0.3;
+        }
+
+        .learn-online-text{
+            max-width: 100%;
+        }
+    }
+}
+
+.display-md-plus {
+    @media (max-width: $media-breakpoint-tablet) {
+        display: none;
+    }
+}
+
+.moving-banner{
+    @media (max-width: $media-breakpoint-tablet) {
+        padding-left: 30px;
+        padding-right: 30px;
     }
 }

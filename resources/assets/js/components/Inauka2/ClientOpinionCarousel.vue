@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <carousel :paginationEnabled="true"
-              :perPage="3"
+              :perPage="perPage"
               :navigate-to="page"
               :mouseDrag="true"
               :autoplay="true"
@@ -189,12 +189,29 @@ export default {
   data() {
     return {
       page: 0,
+      perPage: 3,
     }
+  },
+
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.onResize);
+    });
   },
 
   methods: {
     onPageChange(page) {
       this.page = page;
+    },
+    onResize(){
+      console.log(window.innerWidth);
+      if (window.innerWidth < 600) {
+        this.perPage = 1;
+      } else if (window.innerWidth < 988) {
+        this.perPage = 2;
+      } else {
+        this.perPage = 3;
+      }
     }
   }
 }

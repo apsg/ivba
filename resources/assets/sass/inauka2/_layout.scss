@@ -92,6 +92,7 @@ body {
         height: 400px;
         background-position: top center;
         background-size: cover;
+        background-repeat: no-repeat;
     }
 
     .image-container {
@@ -127,33 +128,11 @@ body {
 
     margin-bottom: 4rem;
 
-    &.nav {
-        @media (min-width: $media-breakpoint-tablet) {
-            display: none !important;
-        }
+    @media (max-width: $media-breakpoint-tablet) {
+        display: none !important;
     }
-}
-
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-    bottom: 3rem;
-    z-index: 10;
-}
-
-/* Declare heights because of positioning of img element */
-.carousel-item {
-    height: clamp(32rem);
 
 
-    &.nav {
-        h1 {
-            color: white;
-            margin-top: 16px;
-        }
-    }
-}
-
-.carousel {
     .carousel-control-next-icon {
         background-image: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="UTF-8" standalone="no"%3F><svg width="60" height="60" viewBox="0 0 60 60" version="1.1" id="svg16" sodipodi:docname="download.svg" inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview id="namedview18" pagecolor="%23ffffff" bordercolor="%23666666" borderopacity="1.0" inkscape:pageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" showgrid="false" inkscape:zoom="14.516667" inkscape:cx="29.965557" inkscape:cy="29.965557" inkscape:window-width="2560" inkscape:window-height="1368" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="svg16" /><defs id="defs4"><clipPath id="clip-path"><rect id="Rectangle_388" data-name="Rectangle 388" width="11.754" height="21.324" transform="translate(0 0)" fill="%23fff" /></clipPath></defs><g id="Group_631" data-name="Group 631" transform="rotate(179.83931,71.792376,238.44181)"><g id="Group_624" data-name="Group 624" transform="translate(-8522,-5882)" opacity="0.8"><g id="Group_623" data-name="Group 623" transform="translate(8629,6318)"><g id="Group_622" data-name="Group 622" clip-path="url(%23clip-path)"><path id="Path_4158" data-name="Path 4158" d="M 0.311,11.442 9.88,21.008 A 1.0740954,1.0740954 0 1 0 11.4,19.49 L 2.587,10.683 11.4,1.876 A 1.075,1.075 0 1 0 9.879,0.357 L 0.31,9.923 a 1.084,1.084 0 0 0 0,1.519" fill="%23ffffff" /></g></g><g id="Ellipse_22" data-name="Ellipse 22" transform="translate(8605,6299)" fill="none" stroke="%23ffffff" stroke-width="1"><circle cx="30" cy="30" r="30" stroke="none" id="circle9" /><circle cx="-30" cy="-30" r="29.5" fill="none" id="circle11" transform="matrix(0,-1,-1,0,0,0)" /></g></g></g></svg>') !important;
         width: 60px !important;
@@ -199,12 +178,30 @@ body {
         background: #000000;
         background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.57) 70%, rgba(0, 0, 0, 0) 100%);
 
-        h1{
+        h1 {
             font-family: $font-sora;
         }
 
-        p{
+        p {
             font-family: $font-sora;
+        }
+    }
+}
+
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+    height: clamp(32rem);
+
+    &.nav {
+        h1 {
+            color: white;
+            margin-top: 16px;
         }
     }
 }
