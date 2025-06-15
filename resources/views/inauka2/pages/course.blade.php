@@ -45,11 +45,11 @@
                         </div>
 
 
-                        <h2 class="h2-headline mt-3">
+                        <h2 class="h3-headline mt-3">
                             {{ $course->title }}
                         </h2>
                         @if($course->author !== null)
-                            <div class="meta font-sora" style="font-size: 16px;">
+                            <div class="meta font-sora mb-3" style="font-size: 16px;">
                                 Autor: {{ $course->author->name }}
                                 @if($course->author->is_internal)
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40">
@@ -83,11 +83,11 @@
                                     $lesson = $course->lessons->first();
                                 @endphp
                                 @if($lesson !== null && $lesson->video !== null)
-                                <cloudflare-video
-                                        uid="{{ $lesson->video->cloudflare_uid }}"
-                                        :width="702"
-                                        height=""
-                                ></cloudflare-video>
+                                    <cloudflare-video
+                                            uid="{{ $lesson->video->cloudflare_uid }}"
+                                            :width="702"
+                                            height=""
+                                    ></cloudflare-video>
                                 @endif
                             </div>
                             <div class="col-2">
@@ -116,8 +116,8 @@
                                              viewBox="0 0 36 36">
                                             <defs>
                                                 <clipPath id="clip-path">
-                                                    <rect id="Rectangle_865" data-name="Rectangle 865" width="33"
-                                                          height="27" fill="none"/>
+                                                    <rect id="Rectangle_865" data-name="Rectangle 865" width="36"
+                                                          height="36" fill="none"/>
                                                 </clipPath>
                                             </defs>
                                             <g id="Group_969" data-name="Group 969" transform="translate(3984 -3680)">
@@ -184,9 +184,9 @@
                                 </span>
                             @endforeach
                         </div>
-
-                        <testimonials-carousel></testimonials-carousel>
-
+                        <div class="mt-3">
+                            <testimonials-carousel></testimonials-carousel>
+                        </div>
                         @include('pages.course._salary')
 
                         <h3 class="h6-headline mt-3">
@@ -240,7 +240,7 @@
                             </div>
                         @endif
 
-                        <h3 class="h6-headline mt-3">
+                        <h3 class="h6-headline mt-5">
                             Dlaczego warto wybrać ten kurs?
                         </h3>
 
@@ -248,10 +248,10 @@
                             <div class="col-4 p-1">
                                 <div class="rounded p-3" style="background-color: #8EE55F0A;">
                                     <img src="{{ url('/images/inauka2/courses/green.png') }}"/>
-                                    <h6 class="h6-headline mt-3">
+                                    <h6 class="font-sora mt-3" style="font-size: 16px; font-weight: 600">
                                         We własnym tempie
                                     </h6>
-                                    <p>
+                                    <p style="font-size: 14px">
                                         Ucz się, kiedy chcesz, bez presji. Twój rytm, Twoje tempo.
                                     </p>
                                 </div>
@@ -259,10 +259,10 @@
                             <div class="col-4 p-1">
                                 <div class="rounded p-3" style="background-color: #48CBEA0A;">
                                     <img src="{{ url('/images/inauka2/courses/blue.png') }}"/>
-                                    <h6 class="h6-headline mt-3">
+                                    <h6 class="font-sora mt-3" style="font-size: 16px; font-weight: 600">
                                         Nasze wsparcie
                                     </h6>
-                                    <p>
+                                    <p style="font-size: 14px">
                                         Masz pytania? Pisz śmiało na hello@inauka.pl – pomożemy!
                                     </p>
                                 </div>
@@ -270,10 +270,10 @@
                             <div class="col-4 p-1">
                                 <div class="rounded p-3" style="background-color: #FF68410A;">
                                     <img src="{{ url('/images/inauka2/courses/red.png') }}"/>
-                                    <h6 class="h6-headline mt-3">
+                                    <h6 class="font-sora mt-3" style="font-size: 16px; font-weight: 600">
                                         Ekspercka wiedza
                                     </h6>
-                                    <p>
+                                    <p style="font-size: 14px">
                                         Zyskujesz sprawdzoną wiedzę od ekspertów w swojej dziedzinie.
                                     </p>
                                 </div>
@@ -397,40 +397,40 @@
                                 @endforeach
                             </div>
                             @if($course->hasCountdown())
-                            <h3 class="subtitle-2 mt-3">{{ $course->promo_text }}</h3>
-                            <course-countdown
-                                    :timestamp="{{ $course->promoCountdownToTimestamp() }}"></course-countdown>
+                                <h3 class="subtitle-2 mt-3">{{ $course->promo_text }}</h3>
+                                <course-countdown
+                                        :timestamp="{{ $course->promoCountdownToTimestamp() }}"></course-countdown>
                             @endif
 
                             <div class="row mt-3" style="max-width: 385px; margin: 0 auto;">
-                                <div class="col-6 blue-box body-2 p-1">
+                                <div class="col-6 blue-box font-roboto font-10 p-1">
                                     <div class="bg-light-blue rounded p-1">
-                                        Zaoszczędź dzięki promocji
+                                        💸 Zaoszczędź dzięki promocji
                                     </div>
                                 </div>
-                                <div class="col-6 blue-box body-2 p-1">
+                                <div class="col-6 blue-box font-roboto font-10 p-1">
                                     <div class="bg-light-blue rounded p-1">
-                                        Polska firma + faktura VAT
+                                        🇵🇱 Polska firma + faktura VAT
                                     </div>
                                 </div>
-                                <div class="col-6 blue-box body-2 p-1">
+                                <div class="col-6 blue-box font-roboto font-10 p-1">
                                     <div class="bg-light-blue rounded p-1">
-                                        30 dni gwarancji zwrotu
+                                        💰 30 dni gwarancji zwrotu
                                     </div>
                                 </div>
-                                <div class="col-6 blue-box body-2 p-1">
+                                <div class="col-6 blue-box font-roboto font-10 p-1">
                                     <div class="bg-light-blue rounded p-1">
-                                        Wsparcie na każdym kroku
+                                        🤝 Wsparcie na każdym kroku
                                     </div>
                                 </div>
-                                <div class="col-6 blue-box body-2 p-1">
+                                <div class="col-6 blue-box font-roboto font-10 p-1">
                                     <div class="bg-light-blue rounded p-1">
-                                        350 osób już korzysta
+                                        👥 {{ $course->users_count }} osób już korzysta
                                     </div>
                                 </div>
-                                <div class="col-6 blue-box body-2 p-1">
+                                <div class="col-6 blue-box font-roboto font-10 p-1">
                                     <div class="bg-light-blue rounded p-1">
-                                        Dożywotni dostęp
+                                        🔒 Dożywotni dostęp
                                     </div>
                                 </div>
                             </div>
@@ -473,15 +473,61 @@
                             </div>
 
                             <div class="body-1 p-2" style="text-align: left; font-size: 14px;">
+                                <svg id="Group_44" data-name="Group 44" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+                                    <defs>
+                                        <clipPath id="clip-path">
+                                            <rect id="Rectangle_15" data-name="Rectangle 15" width="16" height="20" fill="#ff4819"/>
+                                        </clipPath>
+                                    </defs>
+                                    <circle id="Ellipse_4" data-name="Ellipse 4" cx="16" cy="16" r="16" fill="#fff3f1"/>
+                                    <g id="Group_7" data-name="Group 7" transform="translate(8 6)">
+                                        <g id="Group_6" data-name="Group 6" clip-path="url(#clip-path)">
+                                            <path id="Path_13" data-name="Path 13" d="M6.95,13.55,12.6,7.9,11.175,6.475,6.95,10.7,4.85,8.6,3.425,10.025ZM8,20a9.967,9.967,0,0,1-5.738-3.987A11.488,11.488,0,0,1,0,9.1V3L8,0l8,3V9.1a11.488,11.488,0,0,1-2.262,6.913A9.967,9.967,0,0,1,8,20m0-2.1a8.138,8.138,0,0,0,4.3-3.3A9.5,9.5,0,0,0,14,9.1V4.375L8,2.125,2,4.375V9.1a9.5,9.5,0,0,0,1.7,5.5A8.138,8.138,0,0,0,8,17.9" fill="#ff4819"/>
+                                        </g>
+                                    </g>
+                                </svg>
+
                                 Bezpieczne płatności
                             </div>
                             <div class="body-1 p-2" style="text-align: left; font-size: 14px;">
+                                <svg id="Group_9" data-name="Group 9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+                                    <defs>
+                                        <clipPath id="clip-path">
+                                            <rect id="Rectangle_16" data-name="Rectangle 16" width="20" height="20" fill="#ff4819"/>
+                                        </clipPath>
+                                    </defs>
+                                    <g id="Group_8" data-name="Group 8" clip-path="url(#clip-path)">
+                                        <path id="Path_14" data-name="Path 14" d="M7.5,14.5l7-4.5-7-4.5ZM10,20a9.723,9.723,0,0,1-3.9-.788A9.978,9.978,0,0,1,.788,13.9,9.723,9.723,0,0,1,0,10,9.723,9.723,0,0,1,.788,6.1,9.978,9.978,0,0,1,6.1.788,9.723,9.723,0,0,1,10,0a9.723,9.723,0,0,1,3.9.788A9.978,9.978,0,0,1,19.212,6.1,9.723,9.723,0,0,1,20,10a9.723,9.723,0,0,1-.788,3.9A9.978,9.978,0,0,1,13.9,19.212,9.723,9.723,0,0,1,10,20m0-2a7.722,7.722,0,0,0,5.675-2.325A7.722,7.722,0,0,0,18,10a7.722,7.722,0,0,0-2.325-5.675A7.722,7.722,0,0,0,10,2,7.722,7.722,0,0,0,4.325,4.325,7.722,7.722,0,0,0,2,10a7.722,7.722,0,0,0,2.325,5.675A7.722,7.722,0,0,0,10,18" fill="#ff4819"/>
+                                    </g>
+                                </svg>
+
                                 Kup teraz i otrzymaj błyskawiczny dostęp
                             </div>
                             <div class="body-1 p-2" style="text-align: left; font-size: 14px;">
+                                <svg id="Group_11" data-name="Group 11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+                                    <defs>
+                                        <clipPath id="clip-path">
+                                            <rect id="Rectangle_17" data-name="Rectangle 17" width="20" height="20" fill="#ff4819"/>
+                                        </clipPath>
+                                    </defs>
+                                    <g id="Group_10" data-name="Group 10" clip-path="url(#clip-path)">
+                                        <path id="Path_15" data-name="Path 15" d="M13.5,9A1.5,1.5,0,0,0,15,7.5a1.5,1.5,0,1,0-2.562,1.062A1.443,1.443,0,0,0,13.5,9m-7,0A1.5,1.5,0,0,0,8,7.5,1.494,1.494,0,0,0,6.5,6,1.494,1.494,0,0,0,5,7.5,1.5,1.5,0,0,0,6.5,9M10,15.5a5.3,5.3,0,0,0,3.087-.962A5.491,5.491,0,0,0,15.1,12H4.9a5.491,5.491,0,0,0,2.013,2.538A5.3,5.3,0,0,0,10,15.5M10,20a9.723,9.723,0,0,1-3.9-.788A9.978,9.978,0,0,1,.788,13.9,9.723,9.723,0,0,1,0,10,9.723,9.723,0,0,1,.788,6.1,9.978,9.978,0,0,1,6.1.788,9.723,9.723,0,0,1,10,0a9.723,9.723,0,0,1,3.9.788A9.978,9.978,0,0,1,19.212,6.1,9.723,9.723,0,0,1,20,10a9.723,9.723,0,0,1-.788,3.9A9.978,9.978,0,0,1,13.9,19.212,9.723,9.723,0,0,1,10,20m0-2a7.722,7.722,0,0,0,5.675-2.325A7.722,7.722,0,0,0,18,10a7.722,7.722,0,0,0-2.325-5.675A7.722,7.722,0,0,0,10,2,7.722,7.722,0,0,0,4.325,4.325,7.722,7.722,0,0,0,2,10a7.722,7.722,0,0,0,2.325,5.675A7.722,7.722,0,0,0,10,18" fill="#ff4819"/>
+                                    </g>
+                                </svg>
                                 Transparentna Platforma: Maratony Excela, Zaufani trenerzy
                             </div>
                             <div class="body-1 p-2" style="text-align: left; font-size: 14px;">
+                                <svg id="Group_12" data-name="Group 12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="19.975" height="20" viewBox="0 0 19.975 20">
+                                    <defs>
+                                        <clipPath id="clip-path">
+                                            <rect id="Rectangle_18" data-name="Rectangle 18" width="19.975" height="20" fill="#ff4819"/>
+                                        </clipPath>
+                                    </defs>
+                                    <g id="Group_12-2" data-name="Group 12" clip-path="url(#clip-path)">
+                                        <path id="Path_16" data-name="Path 16" d="M10.575,19.4a1.992,1.992,0,0,1-2.85,0L.575,12.25a2.022,2.022,0,0,1,0-2.825L9.375.6a2.071,2.071,0,0,1,.65-.437,1.981,1.981,0,0,1,.8-.163h7.15a1.93,1.93,0,0,1,1.413.587A1.93,1.93,0,0,1,19.975,2V9.15a2,2,0,0,1-.162.8,2.091,2.091,0,0,1-.438.65ZM15.475,6a1.494,1.494,0,0,0,1.5-1.5,1.5,1.5,0,1,0-3,0,1.5,1.5,0,0,0,1.5,1.5M9.15,18l8.825-8.85V2h-7.15L2,10.85Z" fill="#ff4819"/>
+                                    </g>
+                                </svg>
+
                                 Najlepsza okazja + 30 dniowy zwrot
                             </div>
                         </div>

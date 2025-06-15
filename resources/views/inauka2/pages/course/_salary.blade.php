@@ -1,5 +1,5 @@
 @if($course->hasSalarySection())
-    <div class="rounded border border-2 p-3 d-flex" style="border-color: #FD5529 !important;">
+    <div class="rounded border border-2 p-3 d-flex my-5" style="border-color: #FD5529 !important;">
         <div class="align-self-center">
             <img src="/images/inauka2/salary.png"/>
         </div>
@@ -7,7 +7,7 @@
             <div class="subtitle-2" style="color: #FF6841">
                 Wynagrodzenie:
             </div>
-            <div class="h3-headline">
+            <div class="font-sora" style="font-size: 32px; font-weight: 600">
                 {{ $course->salary_range }}
             </div>
             <div class="font-sora">

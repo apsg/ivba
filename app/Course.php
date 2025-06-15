@@ -672,6 +672,10 @@ class Course extends Model implements OrderableContract, AccessableContract
             return '';
         }
 
+        if ($this->price_full == 0){
+            return '';
+        }
+
         return number_format((($this->price - $this->price_full) * 100 / $this->price_full)) . '%';
     }
 

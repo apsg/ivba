@@ -109,29 +109,29 @@ export default {
 
 .box {
   .inner {
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
     background-color: $color-coral;
     text-align: center;
-    line-height: 90px;
+    line-height: 70px;
     color: white;
 
     @media (max-width: 1280px){
-      width: 80px;
+      width: 50px;
     }
 
     @media (max-width: 1024px){
-      width: 60px;
+      width: 40px;
     }
 
     @media (max-width: 764px){
-      width: 90px;
+      width: 70px;
     }
   }
 }
 
 .divider {
-  line-height: 90px;
+  line-height: 70px;
 }
 
 .caption{

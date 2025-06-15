@@ -175,7 +175,7 @@
         </div>
     </header>
 
-    <main class="bg-white">
+    <main class="">
         @yield('content')
 
         <!-- FOOTER -->
