@@ -2,6 +2,8 @@
 namespace App\Domains\Api\Transformers;
 
 use App\Lesson;
+use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\Item;
 use League\Fractal\TransformerAbstract;
 
 class CopyLessonTransformer extends TransformerAbstract
@@ -13,17 +15,13 @@ class CopyLessonTransformer extends TransformerAbstract
         return $lesson->toArray();
     }
 
-    public function includeVideo(Lesson $lesson)
+    public function includeVideo(Lesson $lesson): Item
     {
-        if (!$lesson->video) {
-            return null;
-        }
-
-        return $lesson->video->toArray();
+        return $this->item($lesson->video, new GenericModelTransformer());
     }
 
-    public function includeItems(Lesson $lesson)
+    public function includeItems(Lesson $lesson): Collection
     {
-        return $this->collection($lesson->items(), new ItemTransformer());
+        return $this->collection($lesson->items(), new GenericModelTransformer());
     }
 }

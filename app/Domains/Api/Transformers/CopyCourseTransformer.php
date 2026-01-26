@@ -3,17 +3,21 @@ namespace App\Domains\Api\Transformers;
 
 use App\Course;
 use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\Item;
 use League\Fractal\TransformerAbstract;
 
 class CopyCourseTransformer extends TransformerAbstract
 {
     protected array $defaultIncludes = [
-        'lessons', 'image', 'video',
+        'lessons',
+        'video',
     ];
 
     public function transform(Course $course): array
     {
-        return $course->toArray();
+        return $course->toArray() + [
+                'image_url' => $course->image !== null ? $course->image->url : null,
+            ];
     }
 
     public function includeLessons(Course $course): Collection
@@ -24,20 +28,8 @@ class CopyCourseTransformer extends TransformerAbstract
         );
     }
 
-    public function includeImage(Course $course)
+    public function includeVideo(Course $course): Item
     {
-        if (!$course->image) {
-            return null;
-        }
-
-        return $course->image->toArray();
-    }
-    public function includeVideo(Course $course)
-    {
-        if (!$course->video) {
-            return null;
-        }
-
-        return $course->video->toArray();
+        return $this->item($course->video, new GenericModelTransformer());
     }
 }
