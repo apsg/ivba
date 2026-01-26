@@ -275,7 +275,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     /**
      * Uzytkownik ukończył lekcję.
      */
-    public function finish(int $courseId = null) : self
+    public function finish(int $courseId = null): self
     {
         $user = Auth::user();
 
@@ -301,7 +301,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     /**
      * Nazwa do wyświetlania w koszyku.
      */
-    public function cartName() : string
+    public function cartName(): string
     {
         return 'Lekcja #' . $this->id . ' - ' . $this->title;
     }
@@ -309,7 +309,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     /**
      * Link usuwania z koszyka.
      */
-    public function removeLink(Order $order) : string
+    public function removeLink(Order $order): string
     {
         return url('/order/' . $order->id . '/lesson/' . $this->id . '/remove');
     }
@@ -317,7 +317,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
     /**
      * Zwraca sformatowany tekst stopnia trudności.
      */
-    public function difficulty() : string
+    public function difficulty(): string
     {
         switch ($this->difficulty) {
             case 1:
@@ -331,7 +331,7 @@ class Lesson extends Model implements OrderableContract, AccessableContract
         return '';
     }
 
-    public function link() : string
+    public function link(): string
     {
         return $this->previewLink();
     }
