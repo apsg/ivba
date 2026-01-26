@@ -24,4 +24,5 @@ Route::group([
 ], function () {
     Route::post('/access', ExternalAccessController::class . '@grant');
     Route::get('/user', UsersController::class . '@check');
+    Route::get('/courses/{courseId}', CoursesController::class . '@show');
 });
