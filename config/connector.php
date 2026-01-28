@@ -9,6 +9,7 @@ return [
     ],
 
     'providers' => [
-        'inauka' => 'https://inauka.pl',
+        'inauka'     => 'https://inauka.pl',
+        'inauka_key' => env('INAUKA_CONNECTOR_KEY'),
     ],
 ];

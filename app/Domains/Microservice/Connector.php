@@ -31,7 +31,7 @@ class Connector
         $baseUrl = config("connector.providers.{$provider}");
 
         return json_decode($client->get("{$baseUrl}/api/courses/{$courseId}", [
-            'headers' => ['X-INAUKA-KEY' => config('connector.key')],
+            'headers' => ['X-INAUKA-KEY' => config("connector.providers.{$provider}_key")],
         ])->getBody()->getContents(), true);
     }
 }
