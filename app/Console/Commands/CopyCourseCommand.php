@@ -133,6 +133,7 @@ class CopyCourseCommand extends Command
 
     public function createItem(array $data): Item
     {
+        $this->info(Arr::get($data, 'path'));
         return ItemFile::create(Arr::except($data, [
             'id',
             'created_at',
