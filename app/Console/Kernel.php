@@ -2,6 +2,7 @@
 namespace App\Console;
 
 use App\Console\Commands\ClearAccountCommand;
+use App\Console\Commands\CopyCourseCommand;
 use App\Console\Commands\ExportUsersToExcelmailingCommand;
 use App\Console\Commands\FixAccessDays;
 use App\Console\Commands\FixFullAccessCommand;
@@ -42,6 +43,7 @@ class Kernel extends ConsoleKernel
         FixFullAccessCommand::class,
         AddStripeSubscriptionsToMailerliteCommand::class,
         ManualCancelSubscriptionsCommand::class,
+        CopyCourseCommand::class,
     ];
 
     protected function schedule(Schedule $schedule)

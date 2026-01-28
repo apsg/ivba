@@ -6,5 +6,9 @@ return [
     'certificates' => [
         'url' => env('CERTIFICATES_URL', 'https://certyfikat.inauka.pl'),
         'key' => env('CERTIFICATES_KEY'),
-    ]
+    ],
+
+    'providers' => [
+        'inauka' => 'https://inauka.pl',
+    ],
 ];
