@@ -13,6 +13,7 @@ return [
             'prod_MooSFl3WjyXRuU', // test IS
             'prod_MwytfH8LrIVPK0', // Prod iNauka
             'prod_MyXueF7WD386Kn', // Test iNauka
+            'prod_Tt7r5Uqrwk4JFl', // techniczni
         ],
     ],
 ];
