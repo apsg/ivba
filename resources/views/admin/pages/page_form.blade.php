@@ -1,10 +1,10 @@
-<div class="row">			
+<div class="row">
 {{ csrf_field() }}
 	<div class="col-md-12">
 		<div class="box box-primary">
             <div class="box-header with-border">
               	<h3 class="box-title">Treść</h3>
-                
+
             </div>
             <!-- /.box-header -->
               <div class="box-body">
@@ -44,7 +44,7 @@
                 window.media_src_input = "#"+field_name;
                 $("#medialibrary").fadeIn(100);
                 loadImages();
-          },    
+          },
           plugins: [
                 "advlist autolink lists link image charmap print preview anchor",
                 "searchreplace visualblocks code fullscreen",
@@ -54,7 +54,6 @@
           // imagetools_cors_hosts: ['www.tinymce.com', 'codepen.io'],
           content_css: [
             '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-            '//www.tinymce.com/css/codepen.min.css'
           ]
         });
     });
