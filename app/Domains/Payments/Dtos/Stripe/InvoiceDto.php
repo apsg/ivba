@@ -23,7 +23,7 @@ class InvoiceDto
 
     public function getPlanId(): string
     {
-        return Arr::get($this->data, 'lines.data.0.plan.id');
+        return Arr::get($this->data, 'lines.data.0.plan.id', '');
     }
 
     public function getPlanAmount(): float
