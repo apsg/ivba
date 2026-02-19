@@ -28,18 +28,24 @@ class AdminOrdersController extends Controller
      */
     public function getData(Request $request)
     {
-        $orders = Order::confirmed()
+        $orders = Order::query()
             ->with(['user']);
+
+        if ($request->input('type') == 'rejected') {
+            $orders = $orders->notConfirmed();
+        } else {
+            $orders = $orders->confirmed();
+        }
 
         return DataTables::of($orders)
             ->addColumn('total', function ($item) {
                 return $item->total();
             })
-            ->addColumn('items2', function ($item) {
+            ->addColumn('items2', function (Order $item) {
                 if ($item->is_full_access) {
                     return 'Pałen dostęp';
                 } else {
-                    return '';
+                    return $item->quick_sales->pluck('name')->implode(', ');
                 }
             })
             ->addColumn('coupons', function ($item) {

@@ -37,6 +37,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read InvoiceRequest|null    invoice_request
  *
  * @method static Builder|Order confirmed()
+ * @method static Builder|Order notConfirmed()
  * @method static Builder|Order quickSales()
  */
 class Order extends Model implements InvoicableContract
@@ -76,7 +77,7 @@ class Order extends Model implements InvoicableContract
     /**
      * Suma cen elementów (przed ewentualnymi rabatami).
      */
-    public function sum() : float
+    public function sum(): float
     {
         if ($this->is_full_access || $this->is_easy_access) {
             return $this->price;
@@ -85,7 +86,7 @@ class Order extends Model implements InvoicableContract
         return $this->countOrderablesSum();
     }
 
-    protected function countOrderablesSum() : float
+    protected function countOrderablesSum(): float
     {
         $quickSalesSum = $this->quick_sales()->sum('price');
 
@@ -95,7 +96,7 @@ class Order extends Model implements InvoicableContract
     /**
      * Suma końcowa.
      */
-    public function total() : float
+    public function total(): float
     {
         if ($this->final_total != null) {
             return $this->final_total;
@@ -112,7 +113,7 @@ class Order extends Model implements InvoicableContract
     /**
      * Kwota netto.
      */
-    public function netto() : float
+    public function netto(): float
     {
         return number_format($this->total() / 1.23, 2);
     }
@@ -120,7 +121,7 @@ class Order extends Model implements InvoicableContract
     /**
      * Kwota podatku.
      */
-    public function tax() : float
+    public function tax(): float
     {
         return $this->total() - $this->netto();
     }
@@ -128,7 +129,7 @@ class Order extends Model implements InvoicableContract
     /**
      * Potwierdź zamówienie.
      */
-    public function confirm(string $externalId = null) : bool
+    public function confirm(string $externalId = null): bool
     {
         if (!is_null($this->confirmed_at)) {
             return false;
@@ -192,7 +193,7 @@ class Order extends Model implements InvoicableContract
         return true;
     }
 
-    public function isEmpty() : bool
+    public function isEmpty(): bool
     {
         if ($this->is_full_access) {
             return false;
@@ -209,12 +210,25 @@ class Order extends Model implements InvoicableContract
         });
     }
 
+    public function scopeNotConfirmed($query)
+    {
+        $query->whereNull('confirmed_at')
+            ->whereNull('external_payment_id')
+        ->where(function ($q){
+            $q->where('is_full_access', true)
+                ->orWhereIn('id', function ($sub) {
+                    $sub->select('order_id')
+                        ->from('orderables');
+                });
+        });
+    }
+
     public function scopeQuickSales($query)
     {
         $query->has('quick_sales');
     }
 
-    public function setEasyAccess(int $duration) : self
+    public function setEasyAccess(int $duration): self
     {
         $this->update([
             'is_full_access' => false,
@@ -227,7 +241,7 @@ class Order extends Model implements InvoicableContract
         return $this;
     }
 
-    public function setFullAccess() : self
+    public function setFullAccess(): self
     {
         $this->update([
             'is_full_access' => true,
@@ -237,7 +251,7 @@ class Order extends Model implements InvoicableContract
         return $this;
     }
 
-    public function clear() : self
+    public function clear(): self
     {
         $this->update([
             'is_full_access' => false,
@@ -253,7 +267,7 @@ class Order extends Model implements InvoicableContract
         return $this;
     }
 
-    public function getDescription() : string
+    public function getDescription(): string
     {
         if ($this->isQuickSales()) {
             return $this->quick_sales->first()->name;
@@ -262,14 +276,14 @@ class Order extends Model implements InvoicableContract
         return $this->description ?? '';
     }
 
-    public function isQuickSales() : bool
+    public function isQuickSales(): bool
     {
         return $this->quick_sales()->count() > 0;
     }
 
     // ------ InvoicableContract ------
 
-    public function invoiceDownloadUrl() : ?string
+    public function invoiceDownloadUrl(): ?string
     {
         if ($this->hasInvoice()) {
             return (new OrderInvoice($this))->getDownloadUrl();
@@ -278,27 +292,27 @@ class Order extends Model implements InvoicableContract
         return null;
     }
 
-    public function hasInvoice() : bool
+    public function hasInvoice(): bool
     {
         return $this->invoice_id !== null;
     }
 
-    public function invoiceId() : ?int
+    public function invoiceId(): ?int
     {
         return $this->invoice_id;
     }
 
-    public function getSellDateFormatted() : string
+    public function getSellDateFormatted(): string
     {
         return $this->confirmed_at->format('Y-m-d');
     }
 
-    public function getEmail() : string
+    public function getEmail(): string
     {
         return $this->user->email ?? '';
     }
 
-    public function getUser() : User
+    public function getUser(): User
     {
         return $this->user;
     }
