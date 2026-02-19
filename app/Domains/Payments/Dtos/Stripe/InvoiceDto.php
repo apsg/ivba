@@ -18,7 +18,13 @@ class InvoiceDto
 
     public function getSubscriptionId(): string
     {
-        return Arr::get($this->data, 'subscription');
+        $subscriptionId =  Arr::get($this->data, 'subscription');
+
+        if (empty($subscriptionId)) {
+            $subscriptionId = Arr::get($this->data, 'parent.subscription_details.subscription');
+        }
+
+        return $subscriptionId;
     }
 
     public function getPlanId(): string
@@ -59,7 +65,13 @@ class InvoiceDto
 
     public function getProductId(): ?string
     {
-        return Arr::get($this->data, 'lines.data.0.plan.product');
+        $product = Arr::get($this->data, 'lines.data.0.plan.product');
+
+        if (empty($product)) {
+            $product = Arr::get($this->data, 'lines.data.0.pricing.price_details.product');
+        }
+
+        return $product;
     }
 
     public function getEmail(): ?string
