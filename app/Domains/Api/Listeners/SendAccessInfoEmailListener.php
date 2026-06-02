@@ -9,6 +9,10 @@ class SendAccessInfoEmailListener
 {
     public function handle(CourseAccessGrantedEvent $event)
     {
+        if (config('app.name') == 'techniczni.pro') {
+            return;
+        }
+
         Mail::to($event->user)
             ->send(new AccessGrantedMail());
     }
