@@ -56,6 +56,12 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label>PESEL</label>
+                                    <input class="form-control" type="pesel" name="pesel" value="{{ old('pesel') ?? $user->pesel }}"
+                                    >
+                                </div>
+
+                                <div class="form-group">
                                     <label>Nazwa firmy</label>
                                     <input class="form-control" type="company_name" name="company_name" value="{{ old('company_name') ?? $user->company_name }}">
                                 </div>

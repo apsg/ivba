@@ -17,7 +17,7 @@ class AccountController extends Controller
         $this->middleware('auth');
     }
 
-    public function show(LastLessonService $service, CertificatesService  $certificatesService)
+    public function show(LastLessonService $service, CertificatesService $certificatesService)
     {
         /** @var User $user */
         $user = Auth::user();
@@ -49,11 +49,6 @@ class AccountController extends Controller
         return redirect('account');
     }
 
-    /**
-     * Zmień hasło.
-     * @param Request $request [description]
-     * @return [type]           [description]
-     */
     public function changePassword(Request $request)
     {
         PasswordReset::send();
@@ -67,10 +62,7 @@ class AccountController extends Controller
 
     public function patch(UpdateUserInvoiceDataRequest $request)
     {
-        Auth::user()
-            ->update(
-                $request->validated()
-            );
+        Auth::user()->update($request->validated());
 
         return back()->with(['status' => 'Zaktualizowano']);
     }

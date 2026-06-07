@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Requests\Admin;
 
+use App\Rules\PeselRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -25,6 +26,7 @@ class UpdateUserRequest extends FormRequest
             'address'      => 'nullable|string',
             'taxid'        => 'nullable|string',
             'company_name' => 'nullable|string',
+            'pesel'        => ['nullable', new PeselRule()],
         ];
     }
 }
